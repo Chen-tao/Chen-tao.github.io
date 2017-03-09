@@ -347,26 +347,19 @@
       
         
           
-            <p>一 启动</p>
-<p>1、启动一个WEB项目的时候，WEB容器会去读取它的配置文件web.xml，读取<listener>和<context-param>两个结点。 </context-param></listener></p>
-<p>2、紧接着，容器会创建一个ServletContext（servlet上下文），这个web项目的所有部分都将共享这个上下文。 </p>
-<p>3、容器将<context-param>转换为键值对，并交给servletContext。 </context-param></p>
-<p>4、容器创建<listener>中的类实例，创建监听器。</listener></p>
-<p>二  Load-on-startup</p>
-<p>Load-on-startup元素在web应用启动的时候指定了servlet被加载的顺序，它的值必须是一个整数。</p>
-<p>如果它的值是一个负整数或是这个元素不存在，容器会在该servlet被调用的时候才加载这个servlet；如果值是正整数或零，容器在配置的时候就加载并初始化这个servlet；容器必须保证值小的先被加载；如果值相等，容器可以自动选择先加载谁。 </p>
-<p>在servlet的配置当中，<load-on-startup>5</load-on-startup>的含义是： </p>
-<p>标记容器是否在启动的时候就加载这个servlet。 </p>
-<p>当值为0或者大于0时，表示容器在应用启动时就加载这个servlet； </p>
-<p>当是一个负数时或者没有指定时，则指示容器在该servlet被选择时才加载。 </p>
-<p>正数的值越小，启动该servlet的优先级越高。 </p>
-<p>三  加载顺序</p>
-<p>首先可以肯定的是，加载顺序与它们在 web.xml 文件中的先后顺序无关。即不会因为 filter 写在 listener的前面而会先加载 filter。最终得出的结论是：</p>
-<p>ServletContext-&gt; listener -&gt;filter -&gt; servlet </p>
-<pre><code>同时还存在着这样一种配置节点：context-param，它用于向 ServletContext提供键值对，即应用程序上下文信息。我们的 listener, filter 等在初始化时会用到这些上下文中的信息，context-param配置可写在任意位置，因此真正的加载序为：
-</code></pre><p>context-param -&gt; listener-&gt; filter -&gt; servlet</p>
-
-          
+          一 启动
+1、启动一个WEB项目的时候，WEB容器会去读取它的配置文件web.xml，读取和两个结点。 
+2、紧接着，容器会创建一个ServletContext（servlet上下文），这个web项目的所有部分都将共享这个上下文。 
+3、容器将转换为键值对，并交给servletContext。 
+4
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/09/java-web-xml/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -482,40 +475,17 @@
       
         
           
-            <p>APNs介绍</p>
-<p>APNs是Apple开发的一种设备消息推送服务(Apple Push Notification service)，自iOS 5开始作为统一的分发服务引入到Apple生态系统。APNs是一套鲁棒而安全的推送服务，因而被微信借鉴使用，并加以改造，成为微信推送的根基。</p>
-<p>APNs主要结构如下： </p>
-<p><img src="/wp-content/uploads/2014/09/20140902212340_43565.png" alt=""></p>
-<p>Provider是App应用的提供端，APNs则作为中转的驿站和验证的服务器存在。其他Provider与Client App都是多端存在的(Mutil)。</p>
-<p>提供端需要推送的数据有两个部分组成： </p>
-<ol>
-<li>Device Token</li>
-<li>Payload</li>
-</ol>
-<p>Token很容易理解，就是验证双份身份时需要携带的认证讯息；而Payload则是需要推送的主要信息了，它又包括：</p>
-<ol>
-<li>展示给用户的信息</li>
-<li>给App展示的icon徽标(俗称小红点)数量信息</li>
-<li>在设备端发出的声音</li>
-</ol>
-<p>当然其中只有1是必需的。</p>
-<p>APNs与微信</p>
-<p>程可以这里通过APNs分析与微信的对比展示消息推送在微信中的一些使用。</p>
-<p>1. 基本流程</p>
-<p>APNs推送的基本流程可以参考Apple官方文档，这里借助官网的图来说明一下：</p>
-<p><img src="/wp-content/uploads/2014/09/20140902212407_61375.png" alt=""></p>
-<p>1) Provider -&gt; APNs</p>
-<p>应用后台把推送内容发给APNs，这里是通过Device Token来标识不同的接收设备的，需要Client App从APNs申请，并预先注册到后台。如下图：</p>
-<p><img src="/wp-content/uploads/2014/09/20140902212446_39932.png" alt=""></p>
-<p>2) Device -&gt; APNs</p>
-<p>用户设备联网后，会保持跟苹果APNs服务器的连接，所有推送都通过这个连接发送到用户设备，系统再根据设置弹出提醒。如下图：</p>
-<p><img src="/wp-content/uploads/2014/09/20140902212505_12641.png" alt=""></p>
-<p>3) Device -&gt; Client App</p>
-<p>如果Client App在运行，会收到通知；否则可以点击通知来激活Client App。</p>
-<p><img src="/wp-content/uploads/2014/09/20140902212522_15063.png" alt=""></p>
-<p>这里我们看到，从Device到server使用的是SSL连接，而从Provider到server则使用的是TSL连接，这里其实是很巧妙的设计，SSL是标准化的，再加上Apple本身的密钥协议，保证了只有Apple设备可以认证到APNs服务器，防止了一系列的入侵可能，而TSL则是SSL的前身，虽然非标准化，但差异已经与SSL非常细微，这可以让一些服务供应商在可能的条件下尽可能『多态』的实现他们的通知分发功能，而这些细微的设计又是对用户端隐藏的，保证了整体的一致性要求。</p>
-
-          
+          APNs介绍
+APNs是Apple开发的一种设备消息推送服务(Apple Push Notification service)，自iOS 5开始作为统一的分发服务引入到Apple生态系统。APNs是一套鲁棒而安全的推送服务，因而被微信借鉴使用，并加以改造，成为微信推送的根基。
+APNs主要结构如下：
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/02/apns-and-wechat/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -631,28 +601,17 @@
       
         
           
-            <p>QQ作为IM的业界翘楚，已经在IM方面积累了相当的经验，这次的事故（其实也不能叫事故，只是PV稍微受到了一点影响）是一次典型的沟通问题，也在一定程度上反映了目前一些监控的效率问题。</p>
-<p>8月14日晚间大约7点半，我发布了后台的一部分服务，这是这次事件的触发点。</p>
-<p>由于本次更新调用了另一个部门的接口，并且由于部门间合作项目的急于上线，我在之前的基础上调用了原来对方提供的接口。这个服务按照原来的设想是全量上线，也就是说，线上几乎所有的write都会经过这个服务调用的过滤和判断。这个服务是后端早已存在的，也在之前的逻辑中有交互，刨除负载均衡和链路传输的各种优化（都是内部组件恕我不能说明），应该不会有问题；但到了晚间8点半左右开始，该调用服务产生大量超时：Timeout 200以上，甚至有30%左右的请求达到了1000-2000的延时，直接的影响就是移动客户端开发的速度明显变慢，且这个情况在晚间高峰（21点-次日凌晨1点）一直存在，影响了整体的服务体验！</p>
-<p>这个问题到了次日早上终于被定位到：由于调用的服务对请求量的估计不足，导致了服务请求将对付服务器跑满，处理队列难以承受高压而几近崩溃。</p>
-<p>回头总结会议再次定位时，还发觉前一天有我方的服务器宕机，虽然影响了大概一小时，但被容灾组件剔除后恢复，又加入了大量服务容错的机组，一直处于较为不稳定的状态，这可能也有一部分原因。</p>
-<p>时间线大致如下：</p>
-<p>（1）7：30 后台相关发布</p>
-<p>（2）8：40 发现请求延时上升，后台一台机器出现oom</p>
-<p>（3）9：30-10：00左右 后端leader查出pv视图异常，开始联系大家自查</p>
-<p>（4）10：50 剔除后台故障机器，观察发现整体延迟没有明显改善</p>
-<p>（5）11：20 系统完全恢复正常</p>
-<p>这里暴漏的问题不少：</p>
-<p>1. 后台告警梳理，避免过多的告警影响重要告警的发现。此次问题持续了大概一整晚的时间，到次日早上才得以平缓，警告的作用没有很好的发挥。平时很多监控视图的警告，甚至有一些同学为了查看自己带量情况而加入的“伪警告”和正常情况下警告，严重影响了警告的效率，使得真正有用的警告却被湮没。</p>
-<p>2. 模块分离部署，避免故障影响其他模块。在调用其他部门其他服务时，最好将模块分离，一旦有问题可以及时拔插，这也是估计上的不足，但对方并没有对IM这种大型的服务做出评估质疑也相对失误。</p>
-<p>3. 后端服务宕机和oom故障后续处理流程，后续需要更谨慎一些，加强对发生过的机器的视图观察，避免可用性的下降。</p>
-<p>4. 视图基础属性问题分析，监控存在一些基础属性错误上报，需要梳理。</p>
-<p>5. 监控细化，对各个调用步骤分别监控，争取能在第一时间定位到问题。</p>
-<p>6. 单机故障引起整个系统延迟大规模上升的问题，仍然需要进一步分析，预防。</p>
-<p>7. 在今后的联合部署发布中，需要认真周密的与对方沟通请求量的情况；督促对方增加对服务质量的监控。</p>
-<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#529" title="2014-08-16 14:25:16">Lo</a>:</strong> 学习了</p>
-
-          
+          QQ作为IM的业界翘楚，已经在IM方面积累了相当的经验，这次的事故（其实也不能叫事故，只是PV稍微受到了一点影响）是一次典型的沟通问题，也在一定程度上反映了目前一些监控的效率问题。
+8月14日晚间大约7点半，我发布了后台的一部分服务，这是这次事件的触发点。
+由于本次更新调用了另一个部门的接口，并且由
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/08/16/mobile-qq-problem-monitor/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -768,30 +727,18 @@
       
         
           
-            <p><img src="/wp-content/uploads/2014/07/ChannelBuffer.png" alt="ChannelBuffer"></p>
-<pre><code>+-------------------+------------------+------------------+
-| discardable bytes |  readable bytes  |  writable bytes  |
-|                   |     (CONTENT)    |                  |
-+-------------------+------------------+------------------+
-|                   |                  |                  |
-0      &lt;=      readerIndex   &lt;=   writerIndex    &lt;=    capacity
-</code></pre><p>NIO中,ByteBuffer用了4个属性来表示缓存区的标志，而ChannelBuffer对此进行了优化，取消了mark属性，将limit指针改成了writeIndex，更容易理解，同时，使用了zero-based indexing来表示段(segment)的类型。</p>
-<p>具体地，ChannelBuffer有两个属性，readerIndex和writerIndex两个指针来分别控制读写；</p>
-<p>一个ChannelBuffer被分成三个区域：discardable、readable和writeable，分别表示已经读过的内容、实际还剩下的内容、Buffer剩余的空间也就是可以写的缓冲区大小；</p>
-<p>read和skip操作：会从readerIndex位置读取或skip指定数量的bytes，readerIndex+=size(bytes)，如果读区的下标越界，抛出<a href="http://java.sun.com/javase/6/docs/api/java/lang/IndexOutOfBoundsException.html?is-external=true" target="_blank" rel="external">IndexOutOfBoundsException</a>异常;</p>
-<p>write操作：从writerIndex位置写入buffer指定size的bytes，writeIndex+=size(bytes),如果空间不够，抛出<a href="http://java.sun.com/javase/6/docs/api/java/lang/IndexOutOfBoundsException.html?is-external=true" target="_blank" rel="external">IndexOutOfBoundsException</a>异常</p>
-<p>几个常用的方法： </p>
-<p>readable() 返回 boolean (writerIndex-readerIndex)</p>
-<p>readableBytes() 返回int (writerIndex-readerIndex)</p>
-<p>writeableBytes() 返回int (capacity-writerIndex)</p>
-<p>关于discardable bytes，有一个释放discardable区域的方法：discardReadBytes()</p>
-<p>调用 discardReadBytes()方法前后，相对于ByteBuffer，改进了flip()方法，使得空间得到更好的利用，也防止了调用flip()不当而出现的错误。</p>
-<pre><code>before
-+-------------------+------------------+------------------+
-| discardable bytes |  readable bytes  |  writable bytes  |
-+-------------------+------------------+------------------+
-</code></pre>
           
++-------------------+------------------+------------------+
+| discardable bytes |  readable bytes  |  writable bytes  |
+|                   |     (CO
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/07/30/netty-channelbuffer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -907,47 +854,23 @@
       
         
           
-            <p>网络相关文件： </p>
-<ol>
-<li><p>/etc/sysconfig/network 设置主机名称及能否启动Network</p>
-</li>
-<li><p>/etc/sysconfig/network-scripts/ifcfg-eth0 设置默认网卡参数</p>
-</li>
-<li><p>/etc/modprobe.conf 开机时设置加载内核模块</p>
-</li>
-<li><p>/etc/resolv.conf 设置DNS IP</p>
-</li>
-<li><p>/etc/hosts 设置IP映射</p>
-</li>
-<li><p>/etc/protocols 定义IP数据包协议的相关数据，包括ICMP、TCP方面的数据包协议的定义等</p>
-</li>
-</ol>
-<p>网络相关指令： </p>
-<p>1. /etc/init.d/network restart 重启整个网络</p>
-<ol>
-<li>ifup eth0(ifdown eth0) 启动或是关闭某个网络接口，可以通过简单的script来处理，这两个script会主动到/etc/sysconfig/network-scripts/目录下：</li>
-</ol>
-<p>·ifconfig 查询、设置网卡与IP网段等相关参数</p>
-<p>·ifup/ifdown 启动/关闭网络接口</p>
-<p>配置IP的三种方法：</p>
-<ol>
-<li>bash设置：</li>
-</ol>
-<p>只是暂时修改网络接口，立即生效，重启无效重置 </p>
-<h1 id="ifconfig-ethX-ip-netmask"><a href="#ifconfig-ethX-ip-netmask" class="headerlink" title="ifconfig ethX ip/netmask"></a>ifconfig ethX ip/netmask</h1><h1 id="ifconfig-eth0-192-168-100-1-设置eth0的IP"><a href="#ifconfig-eth0-192-168-100-1-设置eth0的IP" class="headerlink" title="ifconfig eth0 192.168.100.1 设置eth0的IP"></a>ifconfig eth0 192.168.100.1 设置eth0的IP</h1><h1 id="ifconfig-eth0-192-168-100-1-netmask-255-255-255-0-gt-mtu-8000-设置网络接口值，同时设置MTU的值"><a href="#ifconfig-eth0-192-168-100-1-netmask-255-255-255-0-gt-mtu-8000-设置网络接口值，同时设置MTU的值" class="headerlink" title="ifconfig eth0 192.168.100.1 netmask 255.255.255.0 &gt; mtu 8000 设置网络接口值，同时设置MTU的值"></a>ifconfig eth0 192.168.100.1 netmask 255.255.255.0 &gt; mtu 8000 设置网络接口值，同时设置MTU的值</h1><ol>
-<li>图形界面设置：</li>
-</ol>
-<p>system-config-network-gui </p>
-<p>system-config-network-tui </p>
-<p>输入setup命令，进入图形界面（配置设备IP等相关属性信息、system-config中的服务集中在这一面板中），有时进入图形设置网络接口的界面时会出现乱码，这时的解决方法是：退出此图形界面，输入当命令“export LANG=en”，再进入图形界面。</p>
-<p>进入图形界面，选择“Network configuration”</p>
-<p>修改后网络接口退出，网络接口修改完成。让IP生效的解决方法是(修改配置永久生效)：</p>
-<p>1) #ifdown eth1 &amp;&amp; ifup eth1 先禁用，再启用</p>
-<p>2) #service network restart 网络服务重启</p>
-<p>3) #/etc/init.d/network restart 也可以重启网络接口</p>
-<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#539" title="2014-08-19 05:12:12">石灰窑</a>:</strong> 看看觉着，写的很好。</p>
+          网络相关文件： 
 
-          
+/etc/sysconfig/network 设置主机名称及能否启动Network
+
+/etc/sysconfig/network-scripts/ifcfg-eth0 设置默认网卡参数
+
+/etc/modprobe.conf 开机时设置加载内核模块
+
+/etc/resolv.c
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/07/30/linux-ip-config/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1063,18 +986,16 @@
       
         
           
-            <p>二战时期的密码学发展到了一个空前的程度。一方面，德军使用的多替换（多码）恩尼格码密码在海陆军作战中广泛使用；另一方面，盟军的破译密码专家阿兰·图灵（英）与信息论之父克劳德·香农（美）则在密码学的两端做着不同的工作，试图得到完美密码的破解与证明并用于实践。</p>
-<pre><code>简单的加密也就是替换，但由于拉丁语系语言的冗余特点，很容易被语言中的模式匹配。在香农看来，模式就等同于冗余，并且他大胆预测：英语的冗余度是百分之五十。后来证明这一推断的科学性非常之高之接近。
-
-拿开那些艰深的数学论据和公式推导，在数学科学日益发展中我们发现，纯粹（传统）语言学在解决一些语言编码问题和一些大规模的论断中已经越来越力不从心了。在数学家们一天天的唱衰中，语言学逐渐在退到时代的幕后，“伺机而动”。
-
-“语言学在这些前沿的方向不是没有用”，这样的论点很多，但缺乏有力的支持。J·J·托尔金在《指环王》中创造了精灵族、霍比特人以及矮人族在内的数种不同的语言，当然他本人在语言学方面的造诣登峰造极，而这可能正是一种相对“反抗”统计学和数学破译的加密方法——通过系统的构造，在纯语言的角度创造新的语言去加密，这样的密文相对于那些“已证明”的无法破解的繁复密码可能更符合人类的学习习惯。想象一下，如果MI6和克格勃早先就开始研究自己的几种语言，如果德军使用几种不是“德语”的德语，再如果丘吉尔和罗斯福没有依靠香农的信息论而是跟着托尔金的咕噜姆“咕噜咕噜”的交谈，二战的结局可能还未可知。当然这只是想象。相对于机械化来说，人的能动性恐怕还没有达到这个程度，有朝一日兵临城下，这些也恐怕来不及了。方言也可能是一个方向。民国时期的语言学大家赵元任，精通数十种方言土语，游历世界到哪里都被认为是“老乡”，如果将方言的某些特殊化的表达方式与密码相糅合，也许会有奇效吧。也有一些将数学统计与语言特点结合的案例。小说《暗算》的瞎子阿炳，一方面用统计学模式来判断敌人，另一方面用语言学的法则来定义密文，但他的得天独厚，仅仅是没有视觉导致的听觉感知灵敏；然而，一切总是有规律可循，不管是语法，还是模式，有特例，而这些特定领域的瑕疵在大环境下几乎影响不到正常的交流。所以我们说信息学是极其伟大的战争科学，当然也不只是战争科学。
-
-J·J·托尔金的语言自然有其语法，但可以确认的是它仍然比那些多码密码更难以破解，或者说，就是翻译。打乱的模式之间共通的可能性已经很小，再加上不明确的表示方式，使得单独自成语言的密码“熵”更高。“信息是不确定性，是出人意料，是困难程度，是熵”。由于人类记忆的特点，人类需要不停反复的去那些他们赖以生存的事情，直到他们的潜意识接收这些重复的信号并做出下意识的反应，这就是“熟能生巧”，这也是为什么“带有模式（语法语义）”的语言会成为人类的交流方式，这里也包括肢体语言和其他可能的通信，“万物皆比特”。那么，一种语言在长期发展使用的过程中，总可以用一些模式来表述，一方面是人们的使用与总结——人总是希望减少自己的工作量，希望对一切事物都找到一种“通性通法”；另一方面则是传播所导致的膨胀，由之衍生出的文化、贸易锁带来的“学习”的潮流，这结果是，语言的熵随着传播而下降，或者是那些不为人所揣摩的特点被逐渐挖掘了出来，而新语言则又总是艰深的，回想拿破仑从埃及带回的那块罗塞塔石碑，上面的象形文字虽然在数十年后被破译，但那无疑是一种极其伟大的“加密”方法，只是这并非当年埃及人的本意，而又正是由着这样的意义，这块石碑至今仍然是大英博物馆的镇馆之宝。
-
-加密为了保证信息的安全，而从根源上讲，就是翻译，那么将明文变成密文实际上就是更换了一种表述的“语言”。无论是数字信号也好，模拟信号也好，还是肢体之间的沟通也罢，都是在传递信息，促进人类的进步发展。
-</code></pre>
-          
+          二战时期的密码学发展到了一个空前的程度。一方面，德军使用的多替换（多码）恩尼格码密码在海陆军作战中广泛使用；另一方面，盟军的破译密码专家阿兰·图灵（英）与信息论之父克劳德·香农（美）则在密码学的两端做着不同的工作，试图得到完美密码的破解与证明并用于实践。
+简单的加密也就是替换，但由于拉丁语系语言的冗
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/07/27/language-and-encrypt/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1190,102 +1111,16 @@ J·J·托尔金的语言自然有其语法，但可以确认的是它仍然比�
       
         
           
-            <p>缓存是我们日常开发中是必不可少的一种解决性能问题的结构。简单讲，cache 就是为了提升系统性能而开辟的一块内存空间。 </p>
-<p>缓存的主要作用是暂时在内存中保存业务系统的数据处理结果，并且等待下次访问使用。在日常开发的很多场合，由于受限于硬盘IO的性能或者我们自身业务系统的数据处理和获取可能非常费时，当我们发现我们的系统这个数据请求量很大的时候，频繁的IO和频繁的逻辑处理会导致硬盘和CPU资源的瓶颈出现。缓存的作用就是将这些来自不易的数据保存在内存中，当有其他线程或者客户端需要查询相同的数据资源时，直接从缓存的内存块中返回数据，这样不但可以提高系统的响应时间，同时也可以节省对这些数据的处理流程的资源消耗，整体上来说，系统性能会有大大的提升。 </p>
-<p>缓存在很多系统和架构中都用广泛的应用,例如： </p>
-<p>1.CPU缓存 </p>
-<p>2.操作系统缓存 </p>
-<p>3.本地缓存 </p>
-<p>4.分布式缓存 </p>
-<p>5.HTTP缓存 </p>
-<p>6.数据库缓存 </p>
-<p>等等，可以说在计算机和网络领域，缓存无处不在。可以这么说，只要有硬件性能不对等，涉及到网络传输的地方都会有缓存的身影。 </p>
-<p>Guava Cache是一个全内存的本地缓存实现，它提供了线程安全的实现机制。整体上来说Guava cache 是本地缓存的不二之选，简单易用，性能好。当然如果你希望在分布式系统中使用缓存，那么还是需要Memcache来解决问题。 </p>
-<p>Guava Cache有两种： </p>
-<p>1. CacheLoader </p>
-<p>2. Cache </p>
-<p>区别在于Cache并不会自动处理加载缓存，定制程度较高。 </p>
-<p>创建方式： </p>
-<p>1. cacheLoader </p>
-<p>2. callable callback </p>
-<p>通过这两种方法创建的cache，和通常用map来缓存的做法比，有一个明显的特点–两种方法都实现了一种逻辑–从缓存中取key X的值，如果该值已经缓存过了，则返回缓存中的值，如果没有缓存过，可以通过某个方法(也就是业务上返回数据的逻辑)来获取这个值。guava提供的这两种方法的区别在于，cacheloader的定义比较宽泛，是针对整个cache定义的，可以认为是统一的根据key值load value的方法。而callable的方式较为灵活，允许你在get的时候指定。 </p>
-<p>cacheLoader方式实现实例： </p>
-<pre><code> public void TestLoadingCache() throws Exception{
-    LoadingCache&lt;String,String&gt; cahceBuilder=CacheBuilder
-    .newBuilder()
-    .build(new CacheLoader&lt;String, String&gt;(){
-        @Override
-        public String load(String key) throws Exception {        
-            String strProValue=&quot;hello &quot;+key+&quot;!&quot;;                
-            return strProValue;
-        }
-
-    });        
-
-    System.out.println(&quot;jerry value:&quot;+cahceBuilder.apply(&quot;jerry&quot;));
-    System.out.println(&quot;jerry value:&quot;+cahceBuilder.get(&quot;jerry&quot;));
-    System.out.println(&quot;peida value:&quot;+cahceBuilder.get(&quot;peida&quot;));
-    System.out.println(&quot;peida value:&quot;+cahceBuilder.apply(&quot;peida&quot;));
-    System.out.println(&quot;lisa value:&quot;+cahceBuilder.apply(&quot;lisa&quot;));
-    cahceBuilder.put(&quot;harry&quot;, &quot;ssdded&quot;);
-    System.out.println(&quot;harry value:&quot;+cahceBuilder.get(&quot;harry&quot;));
-}
-</code></pre><p>输出：</p>
-<pre><code>jerry value:hello jerry!
-jerry value:hello jerry!
-peida value:hello peida!
-peida value:hello peida!
-lisa value:hello lisa!
-harry value:ssdded
-</code></pre><p>callable callback的实现： </p>
-<pre><code>@Test
-    public void testcallableCache()throws Exception{
-        Cache&lt;String, String&gt; cache = CacheBuilder.newBuilder().maximumSize(1000).build();  
-        String resultVal = cache.get(&quot;jerry&quot;, new Callable&lt;String&gt;() {  
-            public String call() {  
-                String strProValue=&quot;hello &quot;+&quot;jerry&quot;+&quot;!&quot;;                
-                return strProValue;
-            }  
-        });  
-        System.out.println(&quot;jerry value : &quot; + resultVal);
-
-        resultVal = cache.get(&quot;peida&quot;, new Callable&lt;String&gt;() {  
-            public String call() {  
-                String strProValue=&quot;hello &quot;+&quot;peida&quot;+&quot;!&quot;;                
-                return strProValue;
-            }  
-        });  
-        System.out.println(&quot;peida value : &quot; + resultVal);  
-    }
-</code></pre><p>输出： </p>
-<pre><code>jerry value : hello jerry!
-peida value : hello peida!
-</code></pre><p> cache的常用方法： </p>
-<p>回收(Evictions)： </p>
-<p>1. 大小的设置：CacheBuilder.maximumSize(long)  CacheBuilder.weigher(Weigher)  CacheBuilder.maxumumWeigher(long) </p>
-<p>2. 时间：expireAfterAccess(long, TimeUnit) expireAfterWrite(long, TimeUnit) </p>
-<p>3. 引用：CacheBuilder.weakKeys() CacheBuilder.weakValues()  CacheBuilder.softValues() </p>
-<p>4. 明确的删除：invalidate(key)  invalidateAll(keys)  invalidateAll() </p>
-<p>5. 删除监听器：CacheBuilder.removalListener(RemovalListener) </p>
-<p>refresh机制： </p>
-<p>1. LoadingCache.refresh(K)  在生成新的value的时候，旧的value依然会被使用。 </p>
-<p>2. CacheLoader.reload(K, V) 生成新的value过程中允许使用旧的value </p>
-<p>3. CacheBuilder.refreshAfterWrite(long, TimeUnit) 超时自动刷新cache </p>
-<p> 　　基于泛型的实现： </p>
-<pre><code>/**
-     * 不需要延迟处理(泛型的方式封装)
-     * @return
-     */
-    public  &lt;K , V&gt; LoadingCache&lt;K , V&gt; cached(CacheLoader&lt;K , V&gt; cacheLoader) {
-          LoadingCache&lt;K , V&gt; cache = CacheBuilder
-          .newBuilder()
-          .maximumSize(2)
-          .weakKeys()
-          .softValues()
-          .refreshAfterWrite(120, TimeUnit.SECONDS)
-          .expireAfterWrite(10, TimeUnit.MINUTES)
-</code></pre>
-          
+          缓存是我们日常开发中是必不可少的一种解决性能问题的结构。简单讲，cache 就是为了提升系统性能而开辟的一块内存空间。 
+缓存的主要作用是暂时在内存中保存业务系统的数据处理结果，并且等待下次访问使用。在日常开发的很多场合，由于受限于硬盘IO的性能或者我们自身业务系统的数据处理和获取可能非常费时，当我
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/07/25/guava-cache/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1401,14 +1236,17 @@ peida value : hello peida!
       
         
           
-            <p>那是一千多年前的事情，<br>我刚刚被编译完成，<br>有四个大名鼎鼎的程序员，<br>他们的名字流传至今： </p>
-<p><em>勇敢的格兰芬多，来自荒芜的班加罗尔，</em><br><em>美丽的拉文克劳，来自宁静的埃因霍温，</em><br><em>仁慈的赫奇帕奇，来自开阔的硅谷，</em><br><em>精明的斯莱特林，来自宇宙的中心，中关村。</em> </p>
-<p>他们共有一个梦想、一个心愿，<br>同时有一个大胆的打算，<br>要把年轻的程序员培育成材，<br>霍格沃茨学校就这样创办 。<br>这四位伟大的程序员<br>每人都把自己的学院建立，<br>他们在所教的学生身上<br>看重的才华想法不一。 </p>
-<p><em>格兰芬多认为，用C++的人</em><br><em>应该受到最高的奖励；</em><br><em>拉文克劳觉得，用lisp的</em><br><em>总是最有出息；</em><br><em>赫奇帕奇感到，java的程序员</em><br><em>才最有资格进入学院；</em><br><em>而渴望效率的斯莱特林</em><br><em>最喜欢那些用python的少年。</em> </p>
-<p>四大程序员在活着的年月<br>亲自把得意门生挑选出来，<br>可是当他们长眠于九泉，<br>怎样挑出学生中的黑客？<br>是格兰芬多想出了办法，<br>他把我从他机器中开源，<br>四巨头都给我注入了代码，<br>从此就由我来挑选、评价！<br>好了，把我好好的注入，<br>我从来没有看走过眼，<br>我要看一看你的电脑，<br>判断你属于哪个学院！ </p>
-<p>编者按：(部分来自Wiki有删改) 班加罗尔：又称邦加罗尔，是印度卡纳塔克邦的首府，全国第三大城市。班加罗尔都会区人口约650万，为印度第5大都会区。 1947年印度独立以后，班加罗尔发展成重工业的中心，现如今已成为印度乃至整个南亚IT行业的代表。 埃因霍温：一个位于荷兰南部北布拉邦省的自治市，是荷兰的第五大城市。埃因霍温是欧洲领先的科技中心之一，地处西欧悠久科技中心的战略位置，在科技领域排名第一，一个多世纪以来一直是飞利浦电子研究和发展设施的基地。 硅谷：高科技事业云集的美国加州圣塔克拉拉谷的别称。位于加利福尼亚州北部，旧金山湾区南部；一般包含圣塔克拉拉县和东旧金山湾区的费利蒙市。最早是研究和生産以硅为基础的半导体芯片的地方，因此得名。 中关村：中国北京的高科技中心，它发展自1980至90年代的“电子一条街”。现在它被誉为“中国的硅谷，其周边的人们特别是周边各大高校的学生们习惯玩笑性地简称它为“村子”。 来自知乎-<a href="http://www.zhihu.com/question/23988361" target="_blank" rel="external">http://www.zhihu.com/question/23988361</a>  有删改</p>
-
-          
+          那是一千多年前的事情，我刚刚被编译完成，有四个大名鼎鼎的程序员，他们的名字流传至今： 
+勇敢的格兰芬多，来自荒芜的班加罗尔，美丽的拉文克劳，来自宁静的埃因霍温，仁慈的赫奇帕奇，来自开阔的硅谷，精明的斯莱特林，来自宇宙的中心，中关村。 
+他们共有一个梦想、一个心愿，同时有一个大胆的打算，要把年轻的程序
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/07/20/harry-is-a-programmer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1524,31 +1362,20 @@ peida value : hello peida!
       
         
           
-            <p>线程池,指的是管理一组”同构工作线程的资源池”.</p>
-<p>提供相似的资源,或者是用户定制的配置,预先准备槽位等待任务的到来.</p>
-<p>首先区别一下,”在线程池中执行任务”和”为每一个任务分配一个线程”.</p>
-<ol>
-<li>前者的重点是”重用”,后者的重点是任务的”独立”,每次都在创建新的线程.</li>
-<li>前者在处理多个请求时比后者消耗的资源要少得多,后者需要大量重复的建立销毁线程的工作</li>
-<li>前者在任务到达时,往往线程已经存在,只需要简单的分配,后者需要即时的创建,响应速度较慢</li>
-<li>使用线程池,更可以通过对资源的计算规划最大程度的利用CPU,Mem,文件句柄等等资源,保证系统的高效运行</li>
-</ol>
-<p>一般使用Execteor框架中Executors的静态工厂方法来创建线程池</p>
-<ul>
-<li>newFixedThreadPool</li>
-</ul>
-<p>创建一个固定大小的线程池，当然不会一开始就创建好最大数量的线程，而是等待任务到来的同时创建，当任务总量大于线程池大小时，在任务队列中等待，否则，线程池中有空闲线程，此时会将空闲线程回收</p>
-<ul>
-<li>newCachedThreadExecutor</li>
-</ul>
-<p>创建一个可变大小的线程池，其他方面与Fixed类似，当线程数量超过当前线程池大小时，线程池会跟随任务量膨胀，理论上没有等待队列，当然此方法受限于系统的资源总量和网络因素，容易在大量请求并发时发生OOM</p>
-<ul>
-<li>newSingleThreadExecutor</li>
-</ul>
-<p>创建一个只有一个线程的线程池，在特殊条件下，需要对任务的执行进行排序时用到，如FIFO，Priority</p>
-<p>当然，内部机制为了防止过度等待和超时以及线程饥饿死锁，会在队列上加入一定的等待和阻塞限制</p>
+          线程池,指的是管理一组”同构工作线程的资源池”.
+提供相似的资源,或者是用户定制的配置,预先准备槽位等待任务的到来.
+首先区别一下,”在线程池中执行任务”和”为每一个任务分配一个线程”.
 
-          
+前者的重点是”重用”,后者的重点是任务的”独立”,每次都在创建新的线程.
+前者在处理多个请求时比后者消耗的资源
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/07/17/java-thread-pool/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1664,16 +1491,18 @@ peida value : hello peida!
       
         
           
-            <p><img src="http://mmbiz.qpic.cn/mmbiz/pAs67Mdlw1xWFYHy79hIkibicSXYnv6jH0EcbEr2oytQPzoHfWic1dhQsB9jp70ZIe1cgd1YpUlX1x3HI7pqgcW2Q/0" alt=""></p>
-<p>微信iOS版本终于更新了！ 这次的几个新添加的功能，从“数字加群”到“智能翻译”，我觉得都具有代表意义，这里一一来看一下。 -——- </p>
-<ol>
-<li>聚会见面，大家输入同一个数字可加入同一个群 从一开始的小群，到现在的“大群”，再加上今年红包的助跑，微信群结结实实火了起来，一开始就借鉴RTX的“随意模式”，摒弃了QQ群的限制，我觉得这是相当赞的一点，自由度大了，互动的可能性也更多，只是对于消息提示还需要一些改进，混乱的大群我已经不能忍。这个消息屏蔽的粒度还需要再细分一下。 这次加入的“数字加群”，实际上是把“群号”这个东西重新定义了一把。QQ群已经泛滥，但群号跟QQ号一样日渐加长，难记了。微信把这个改进了，大家可以同时输入一个四位的数字，来进入到群聊，方便快捷，就跟记一个手机密码一样简单，更易于群在熟人之间的传播，更增加了每个人的参与度和认可度，这也是这个版本首推的一个功能，反应如何，值得期待。  </li>
-<li>收藏加标签 微信的收藏，我一直没用怎么用。微云收藏比微信收藏做的好太多了：跨平台，可分类，易整理，重点是不仅限于微信，腾讯的很多产品包括你自己做笔记都可以用。 微信收藏这次加入标签的概念，也算是一种学习和跟进，至少是积极的回应。这个服务怎么发展，我觉得见仁见智，跟微云一起改造“收藏”这个点，而不是“分而治之”的将“收藏”和“收藏到微云”这两个功能分开来，我认为有更长远的意义。  </li>
-<li>多条聊天记录的统一收藏 从体验的角度，微信这次又参考了QQ邮箱的做法：邮箱前段时间采用了“次要聚合”的方式，将广告邮件聚合在一起，意在增强用户对重要邮件的直观体验，降低广告邮件在邮箱中的视觉位置。微信这里将不同的聊天消息收藏在一起，“节约”了视觉上的空间，从一个侧面增加了信息量，提升体验度，是一个微小但很值得回味的改动。  </li>
-<li>外文消息，长按翻译 从QQ国际版刮起的翻译风，走过QQ，走进了微信。我觉得这只能算是国际化道路上的一个小小驿站，微信希望逐步成为睥睨天下的国际SNS大鳄，需要做的很多。既然微信从语音对讲而起家，那么，下一步是否该做语音识别方面的翻译呢？这应该也是一个可以尝试的方向。</li>
-</ol>
-
           
+微信iOS版本终于更新了！ 这次的几个新添加的功能，从“数字加群”到“智能翻译”，我觉得都具有代表意义，这里一一来看一下。 -——- 
+
+聚会见面，大家输入同一个数字可加入同一个群 从一开始的小群，到现在的“大群”，再加上今年红包的助跑，微信群结结实实火了起来，一开始就借鉴RTX的“随意模式”，摒
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/05/09/wechat53/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

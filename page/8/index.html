@@ -347,25 +347,19 @@
       
         
           
-            <p>方法1： 用SET PASSWORD命令</p>
-<p>　　mysql -u root</p>
-<p>　　mysql> SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);</p>
-<p>方法2：用mysqladmin</p>
-<p>　　mysqladmin -u root password “newpass”</p>
-<p>　　如果root已经设置过密码，采用如下方法</p>
-<p>　　mysqladmin -u root password oldpass “newpass”</p>
-<p>方法3： 用UPDATE直接编辑user表</p>
-<p>　　mysql -u root</p>
-<p>　　mysql> use mysql;</p>
-<p>　　mysql> UPDATE user SET Password = PASSWORD(‘newpass’) WHERE user = ‘root’;</p>
-<p>　　mysql> FLUSH PRIVILEGES;</p>
-<p>在丢失root密码的时候，可以这样</p>
-<p>　　mysqld_safe –skip-grant-tables&amp;</p>
-<p>　　mysql -u root mysql</p>
-<p>　　mysql> UPDATE user SET password=PASSWORD(“new password”) WHERE user=’root’;</p>
-<p>　　mysql> FLUSH PRIVILEGES;</p>
-
-          
+          方法1： 用SET PASSWORD命令
+　　mysql -u root
+　　mysql> SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);
+方法2：用mysqladmin
+　　mysqladmin -u root password
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/06/23/set-password-for-mysql-root-user/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -481,80 +475,28 @@
       
         
           
-            <p>一般而言，我们在processlist结果中如果经常能看到某些SQL的话，至少可以说明这些SQL的频率很高，通常需要对这些SQL进行进一步优化。以下是一些需要关注的点：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">状态</th>
-<th style="text-align:left">触发原因</th>
-<th style="text-align:left">建议</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">copy to tmp table</td>
-<td style="text-align:left">执行ALTER TABLE修改表结构时</td>
-<td style="text-align:left">放在闲时(如凌晨)执行或者采用类似pt-osc工具</td>
-</tr>
-<tr>
-<td style="text-align:left">Copying to tmp table</td>
-<td style="text-align:left">拷贝数据到内存中的临时表，常见于GROUP BY操作时</td>
-<td style="text-align:left">创建适当的索引</td>
-</tr>
-<tr>
-<td style="text-align:left">Copying to tmp table on disk</td>
-<td style="text-align:left">临时结果集太大，内存中放不下，需要将内存中的临时表拷贝到磁盘上，形成 #sql<strong><em>.MYD、#sql</em></strong>.MYI</td>
-<td style="text-align:left">创建适当的索引，并且适当加大sort_buffer_size/tmp_table_size/max_heap_table_size</td>
-</tr>
-<tr>
-<td style="text-align:left">Creating sort index</td>
-<td style="text-align:left">当前的SELECT中需要用到临时表在进行ORDER BY排序</td>
-<td style="text-align:left">创建适当的索引</td>
-</tr>
-<tr>
-<td style="text-align:left">Creating tmp table</td>
-<td style="text-align:left">创建基于内存或磁盘的临时表，当从内存转成磁盘的临时表时，状态会变成：Copying to tmp table on disk</td>
-<td style="text-align:left">创建适当的索引，或者少用UNION、视图(VIEW)、子查询(SUBQUERY)之类的，确实需要用到临时表的时候，可以在session级临时适当调大 tmp_table_size/max_heap_table_size 的值</td>
-</tr>
-<tr>
-<td style="text-align:left">Reading from net</td>
-<td style="text-align:left">表示server端正通过网络读取客户端发送过来的请求</td>
-<td style="text-align:left">减小客户端发送数据包大小，提高网络带宽/质量</td>
-</tr>
-<tr>
-<td style="text-align:left">Sending data</td>
-<td style="text-align:left">从server端发送数据到客户端，也有可能是接收存储引擎层返回的数据，再发送给客户端，数据量很大时尤其经常能看见备注：Sending Data不是网络发送，是从硬盘读取，发送到网络是Writing to net</td>
-<td style="text-align:left">通过索引或加上LIMIT，减少需要扫描并且发送给客户端的数据量</td>
-</tr>
-<tr>
-<td style="text-align:left">Sorting result</td>
-<td style="text-align:left">正在对结果进行排序，类似Creating sort index，不过是正常表，而不是在内存表中进行排序</td>
-<td style="text-align:left">创建适当的索引</td>
-</tr>
-<tr>
-<td style="text-align:left">statistics</td>
-<td style="text-align:left">进行数据统计以便解析执行计划，如果状态比较经常出现，有可能是磁盘IO性能很差</td>
-<td style="text-align:left">查看当前io性能状态，例如iowait,vmstat</td>
-</tr>
-<tr>
-<td style="text-align:left">Waiting for global read lock</td>
-<td style="text-align:left">FLUSH TABLES WITH READ LOCK整等待全局读锁</td>
-<td style="text-align:left">不要对线上业务数据库加上全局读锁，通常是备份引起，可以放在业务低谷期间执行或者放在slave服务器上执行备份</td>
-</tr>
-<tr>
-<td style="text-align:left">Waiting for tables,Waiting for table flush</td>
-<td style="text-align:left">FLUSH TABLES, ALTER TABLE, RENAME TABLE, REPAIR TABLE, ANALYZE TABLE, OPTIMIZE TABLE等需要刷新表结构并重新打开</td>
-<td style="text-align:left">不要对线上业务数据库执行这些操作，可以放在业务低谷期间执行</td>
-</tr>
-<tr>
-<td style="text-align:left">Waiting for lock_type lock</td>
-<td style="text-align:left">等待各种类型的锁</td>
-<td style="text-align:left">比较常见的是global read lock以及table metadata lock，建议不要对线上业务数据库执行这些操作，可以放在业务低谷期间执行。</td>
-</tr>
-</tbody>
-</table>
+          一般而言，我们在processlist结果中如果经常能看到某些SQL的话，至少可以说明这些SQL的频率很高，通常需要对这些SQL进行进一步优化。以下是一些需要关注的点：
 
-          
+
+
+状态
+触发原因
+建议
+
+
+
+
+copy to tmp table
+执行ALTER TABLE修改表结构时
+放在闲时(如凌晨)
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/06/10/mysql-processlist-status/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -670,38 +612,17 @@
       
         
           
-            <p>linux curl是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称url为下载工具。</p>
-<p>一，curl命令参数，有好多我没有用过，也不知道翻译的对不对，如果有误的地方，还请指正。</p>
-<p> -a/–append 上传文件时，附加到目标文件<br> -A/–user-agent <string>  设置用户代理发送给服务器  </string></p>
-<ul>
-<li>anyauth   可以使用“任何”身份验证方法<br>-b/–cookie <name=string file=""> cookie字符串或文件读取位置  </name=string></li>
-<li>basic 使用HTTP基本验证<br>-B/–use-ascii 使用ASCII /文本传输<br>-c/–cookie-jar <file> 操作结束后把cookie写入到这个文件中<br>-C/–continue-at <offset>  断点续转<br>-d/–data <data>   HTTP POST方式传送数据<br>–data-ascii <data>  以ascii的方式post数据<br>–data-binary <data> 以二进制的方式post数据<br>–negotiate     使用HTTP身份验证<br>–digest        使用数字身份验证<br>–disable-eprt  禁止使用EPRT或LPRT<br>–disable-epsv  禁止使用EPSV<br>-D/–dump-header <file> 把header信息写入到该文件中<br>–egd-file <file> 为随机数据(SSL)设置EGD socket路径<br>–tcp-nodelay   使用TCP_NODELAY选项<br>-e/–referer 来源网址<br>-E/–cert <cert[:passwd]> 客户端证书文件和密码 (SSL)<br>–cert-type <type> 证书文件类型 (DER/PEM/ENG) (SSL)<br>–key <key>     私钥文件名 (SSL)<br>–key-type <type> 私钥文件类型 (DER/PEM/ENG) (SSL)<br>–pass  <pass>  私钥密码 (SSL)<br>–engine <eng>  加密引擎使用 (SSL). “–engine list” for list<br>–cacert <file> CA证书 (SSL)<br>–capath <directory> CA目录 (made using c_rehash) to verify peer against (SSL)<br>–ciphers <list>  SSL密码<br>–compressed    要求返回是压缩的形势 (using deflate or gzip)<br>–connect-timeout <seconds> 设置最大请求时间<br>–create-dirs   建立本地目录的目录层次结构<br>–crlf          上传是把LF转变成CRLF<br>-f/–fail          连接失败时不显示http错误<br>–ftp-create-dirs 如果远程目录不存在，创建远程目录<br>–ftp-method [multicwd/nocwd/singlecwd] 控制CWD的使用<br>–ftp-pasv      使用 PASV/EPSV 代替端口<br>–ftp-skip-pasv-ip 使用PASV的时候,忽略该IP地址<br>–ftp-ssl       尝试用 SSL/TLS 来进行ftp数据传输<br>–ftp-ssl-reqd  要求用 SSL/TLS 来进行ftp数据传输<br>-F/–form <name=content> 模拟http表单提交数据<br>-form-string <name=string> 模拟http表单提交数据<br>-g/–globoff 禁用网址序列和范围使用{}和[]<br>-G/–get 以get的方式来发送数据<br>-h/–help 帮助<br>-H/–header <line></line>自定义头信息传递给服务器<br>–ignore-content-length  忽略的HTTP头信息的长度<br>-i/–include 输出时包括protocol头信息<br>-I/–head  只显示文档信息<br>从文件中读取-j/–junk-session-cookies忽略会话Cookie  </name=string></name=content></seconds></list></directory></file></eng></pass></type></key></type></cert[:passwd]></file></file></data></data></data></offset></file></li>
-<li>界面<interface>指定网络接口/地址使用  </interface></li>
-<li>krb4 &lt;级别&gt;启用与指定的安全级别krb4<br>-j/–junk-session-cookies 读取文件进忽略session cookie<br>–interface <interface> 使用指定网络接口/地址<br>–krb4 <level>  使用指定安全级别的krb4<br>-k/–insecure 允许不使用证书到SSL站点<br>-K/–config  指定的配置文件读取<br>-l/–list-only 列出ftp目录下的文件名称<br>–limit-rate <rate> 设置传输速度<br>–local-port<num> 强制使用本地端口号<br>-m/–max-time <seconds> 设置最大传输时间<br>–max-redirs <num> 设置最大读取的目录数<br>–max-filesize <bytes> 设置最大下载的文件总量<br>-M/–manual  显示全手动<br>-n/–netrc 从netrc文件中读取用户名和密码<br>–netrc-optional 使用 .netrc 或者 URL来覆盖-n<br>–ntlm          使用 HTTP NTLM 身份验证<br>-N/–no-buffer 禁用缓冲输出<br>-o/–output 把输出写到该文件中<br>-O/–remote-name 把输出写到该文件中，保留远程文件的文件名<br>-p/–proxytunnel   使用HTTP代理<br>–proxy-anyauth 选择任一代理身份验证方法<br>–proxy-basic   在代理上使用基本身份验证<br>–proxy-digest  在代理上使用数字身份验证<br>–proxy-ntlm    在代理上使用ntlm身份验证<br>-P/–ftp-port <address> 使用端口地址，而不是使用PASV<br>-Q/–quote <cmd>文件传输前，发送命令到服务器<br>-r/–range <range>检索来自HTTP/1.1或FTP服务器字节范围<br>–range-file 读取（SSL）的随机文件<br>-R/–remote-time   在本地生成文件时，保留远程文件时间<br>–retry <num>   传输出现问题时，重试的次数<br>–retry-delay <seconds>  传输出现问题时，设置重试间隔时间<br>–retry-max-time <seconds> 传输出现问题时，设置最大重试时间<br>-s/–silent静音模式。不输出任何东西<br>-S/–show-error   显示错误<br>–socks4 <host[:port]> 用socks4代理给定主机和端口<br>–socks5 <host[:port]> 用socks5代理给定主机和端口<br>–stderr <file><br>-t/–telnet-option <opt=val> Telnet选项设置<br>–trace <file>  对指定文件进行debug<br>–trace-ascii <file> Like –跟踪但没有hex输出<br>–trace-time    跟踪/详细输出时，添加时间戳<br>-T/–upload-file <file> 上传文件<br>–url <url>     Spet URL to work with<br>-u/–user <user[:password]>设置服务器的用户和密码<br>-U/–proxy-user <user[:password]>设置代理用户名和密码<br>-v/–verbose<br>-V/–version 显示版本信息<br>-w/–write-out [format]什么输出完成后<br>-x/–proxy <host[:port]>在给定的端口上使用HTTP代理<br>-X/–request <command>指定什么命令<br>-y/–speed-time 放弃限速所要的时间。默认为30<br>-Y/–speed-limit 停止传输速度的限制，速度时间’秒<br>-z/–time-cond  传送时间设置<br>-0/–http1.0  使用HTTP 1.0<br>-1/–tlsv1  使用TLSv1（SSL）<br>-2/–sslv2 使用SSLv2的（SSL）<br>-3/–sslv3         使用的SSLv3（SSL）<br>–3p-quote      like -Q for the source URL for 3rd party transfer<br>–3p-url        使用url，进行第三方传送<br>–3p-user       使用用户名和密码，进行第三方传送<br>-4/–ipv4   使用IP4<br>-6/–ipv6   使用IP6<br>-#/–progress-bar 用进度条显示当前的传送状态<br>二，常用curl实例<br>1，抓取页面内容到一个文件中</host[:port]></user[:password]></user[:password]></url></file></file></file></opt=val></file></host[:port]></host[:port]></seconds></seconds></num></range></cmd></address></bytes></num></seconds></num></rate></level></interface></li>
-</ul>
-<p>[mytest]# curl -o home.html  <a href="http://blog.51yip.com" target="_blank" rel="external">http://blog.51yip.com</a><br>2，用-O（大写的），后面的url要具体到某个文件，不然抓不下来。我们还可以用正则来抓取东西</p>
-<p>[mytest]# curl -O <a href="http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg" target="_blank" rel="external">http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg</a><br>[mytest]# curl -O <a href="http://blog.51yip.com/wp-content/uploads/2010/[0-9][0-9]/aaaaa.jpg" target="_blank" rel="external">http://blog.51yip.com/wp-content/uploads/2010/[0-9][0-9]/aaaaa.jpg</a><br>3，模拟表单信息，模拟登录，保存cookie信息</p>
-<p>[mytest]# curl -c ./cookie_c.txt -F log=aaaa -F pwd=<strong>**</strong> <a href="http://blog.51yip.com/wp-login.php" target="_blank" rel="external">http://blog.51yip.com/wp-login.php</a><br>4，模拟表单信息，模拟登录，保存头信息</p>
-<p>[mytest]# curl -D ./cookie_D.txt -F log=aaaa -F pwd=<strong>**</strong> <a href="http://blog.51yip.com/wp-login.php" target="_blank" rel="external">http://blog.51yip.com/wp-login.php</a><br>-c(小写)产生的cookie和-D里面的cookie是不一样的。<br>5，使用cookie文件</p>
-<p>[mytest]# curl -b ./cookie_c.txt  <a href="http://blog.51yip.com/wp-admin" target="_blank" rel="external">http://blog.51yip.com/wp-admin</a><br>6，断点续传，-C(大写的)</p>
-<p>[mytest]# curl -C -O <a href="http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg" target="_blank" rel="external">http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg</a><br>7，传送数据,最好用登录页面测试，因为你传值过去后，curl回抓数据，你可以看到你传值有没有成功</p>
-<p>[mytest]# curl -d log=aaaa  <a href="http://blog.51yip.com/wp-login.php" target="_blank" rel="external">http://blog.51yip.com/wp-login.php</a><br>8，显示抓取错误，下面这个例子，很清楚的表明了。</p>
-<p>[mytest]# curl -f <a href="http://blog.51yip.com/asdf" target="_blank" rel="external">http://blog.51yip.com/asdf</a><br>curl: (22) The requested URL returned error: 404<br>[mytest]# curl <a href="http://blog.51yip.com/asdf" target="_blank" rel="external">http://blog.51yip.com/asdf</a>  </p>
-<p><html><head><title>404,not found</title><br>。。。。。。。。。。。。<br>9，伪造来源地址，有的网站会判断，请求来源地址。</head></html></p>
-<p>[mytest]# curl -e <a href="http://localhost" target="_blank" rel="external">http://localhost</a> <a href="http://blog.51yip.com/wp-login.php" target="_blank" rel="external">http://blog.51yip.com/wp-login.php</a><br>10，当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的,这个时候,我们可以用代理</p>
-<p>[mytest]# curl -x 24.10.28.84:32779 -o home.html <a href="http://blog.51yip.com" target="_blank" rel="external">http://blog.51yip.com</a><br>11，比较大的东西，我们可以分段下载</p>
-<p>[mytest]# curl -r 0-100 -o img.part1 <a href="http://blog.51yip.com/wp-" target="_blank" rel="external">http://blog.51yip.com/wp-</a>  </p>
-<p>content/uploads/2010/09/compare_varnish.jpg<br> % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br> Dload  Upload   Total   Spent    Left  Speed<br>100   101  100   101    0     0    105      0 –:–:– –:–:– –:–:–     0<br>[mytest]# curl -r 100-200 -o img.part2 <a href="http://blog.51yip.com/wp-" target="_blank" rel="external">http://blog.51yip.com/wp-</a>  </p>
-<p>content/uploads/2010/09/compare_varnish.jpg<br> % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br> Dload  Upload   Total   Spent    Left  Speed<br>100   101  100   101    0     0     57      0  0:00:01  0:00:01 –:–:–     0<br>[mytest]# curl -r 200- -o img.part3 <a href="http://blog.51yip.com/wp-" target="_blank" rel="external">http://blog.51yip.com/wp-</a>  </p>
-<p>content/uploads/2010/09/compare_varnish.jpg<br> % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br> Dload  Upload   Total   Spent    Left  Speed<br>100  104k  100  104k    0     0  52793      0  0:00:02  0:00:02 –:–:– 88961<br>[mytest]# ls |grep part | xargs du -sh<br>4.0K    one.part1<br>112K    three.part3<br>4.0K    two.part2<br>用的时候，把他们cat一下就OK了,cat img.part* &gt;img.jpg<br>12，不会显示下载进度信息</p>
-<p>[mytest]# curl -s -o aaa.jpg  <a href="http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg" target="_blank" rel="external">http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg</a><br>13，显示下载进度条</p>
-<p>[mytest]# curl -# -O  <a href="http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg" target="_blank" rel="external">http://blog.51yip.com/wp-content/uploads/2010/09/compare_varnish.jpg</a>  </p>
-<p>######################################################################## 100.0%<br>14,通过ftp下载文件</p>
-<p>[~]$ curl -u 用户名:密码 -O <a href="http://blog.51yip.com/demo/curtain/bbstudy_files/style.css" target="_blank" rel="external">http://blog.51yip.com/demo/curtain/bbstudy_files/style.css</a><br> % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current<br> Dload  Upload   Total   Spent    Left  Speed<br>101  1934  101  1934    0     0   3184      0 –:–:– –:–:– –:–:–  7136<br>或者用下面的方式</p>
-<p>[~]$ curl -O ftp://用户名:密码@ip:port/demo/curtain/bbstudy_files/style.css<br>15，通过ftp上传</p>
-<p>[~]$ curl -T test.sql ftp://用户名:密码@ip:port/demo/curtain/bbstudy_files/ </p>
-
-          
+          linux curl是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称url为下载工具。
+一，curl命令参数，有好多我没有用过，也不知道翻译的对不对，如果有误的地方，还请指正。
+ -a/–append 上传文件时，附加到目标文件 -A/–
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/06/06/linux-curl-explain/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -817,210 +738,25 @@
       
         
           
-            <h2 id="">并发</h2>
+          并发
 
-<p>为什么要并发？ 比如因为IO操作遇到了阻塞，CPU可以转去执行其他线程，这时并发的优点就显示出来了：更高效的利用CPU，提高程序的响应速度。</p>
+为什么要并发？ 比如因为IO操作遇到了阻塞，CPU可以转去执行其他线程，这时并发的优点就显示出来了：更高效的利用CPU，提高程序的响应速度。
 
-<p>Java的线程机制是抢占式的，会为每个线程分配时间片。</p>
+Java的线程机制是抢占式的，会为每个线程分配时间片。
 
-<h3 id="">线程中断与上下文切换</h3>
+线程中断与上下文切换
 
-<p><a href="http://www.cnblogs.com/ktgu/p/3529144.html" target="_blank" rel="external">并发编程 - 多线程的代价及上下文切换</a> <br><br><a href="http://ifeve.com/context-switching-and-multi-processor/" target="_blank" rel="external">上下文切换与多处理器</a></p>
+并发编程 - 多线程的代价及上下文切换 上下文切换与多处理器
 
-<h3 id="java">Java本身还有另外一个“线程中断”</h3>
-
-<p><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism" target="_blank" rel="external">详细分析Java中断机制</a>  </p>
-
-<h2 id="">基本的线程机制</h2>
-
-<h3 id="runnablethread">使用Runnable和Thread创建线程：</h3>
-
-<p><a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html" target="_blank" rel="external">Defining and Starting a Thread</a> <br><br><a href="http://stackoverflow.com/questions/541487/implements-runnable-vs-extends-thread" target="_blank" rel="external">“implements Runnable” vs. “extends Thread”</a></p>
-
-<h3 id="executor">使用执行器Executor执行线程：</h3>
-
-<p><a href="http://blog.csdn.net/ns_code/article/details/17465497" target="_blank" rel="external">并发新特性—Executor框架与线程池（含代码）</a> <br><br><a href="http://blog.csdn.net/ghsau/article/details/7443324" target="_blank" rel="external">Java线程(六)：线程池</a> <br><br><a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html" target="_blank" rel="external">Interface Executor</a></p>
-
-<h3 id="callable">让线程中的任务返回值：Callable</h3>
-
-<p><a href="http://blog.csdn.net/ghsau/article/details/7451464" target="_blank" rel="external">Java线程(七)：Callable和Future</a> <br><br><a href="http://www.journaldev.com/1090/java-callable-future-example" target="_blank" rel="external">Java Callable Future Example</a></p>
-
-<h3 id="sleepyield">休眠sleep()、让步yield()</h3>
-
-<p>休眠（sleep）和让步(yield)会导致线程阻塞，CPU转而执行其他线程。对调用yield时，是在建议具有相同优先级的其他线程运行。</p>
-
-<p><a href="http://dylanxu.iteye.com/blog/1322066" target="_blank" rel="external">java之yield(),sleep(),wait()区别详解</a>  </p>
-
-<h3 id="">线程优先级、后台线程</h3>
-
-<p><a href="http://www.cnblogs.com/ChrisWang/archive/2009/11/28/1612815.html" target="_blank" rel="external">关于Java的Daemon线程的理解</a> <br><br><a href="http://www.cnblogs.com/luochengor/archive/2011/08/11/2134818.html" target="_blank" rel="external">JAVA并发编程——守护线程(Daemon Thread)</a> <br><br><a href="http://www.cnblogs.com/skywang12345/p/3479982.html" target="_blank" rel="external">Java多线程系列–“基础篇”10之 线程优先级和守护线程</a> <br><br><a href="http://blog.sina.com.cn/s/blog_5c5bc9070100yty5.html" target="_blank" rel="external">java 线程的优先级Priority</a>  </p>
-
-<h3 id="join">join()</h3>
-
-<p><a href="http://www.cnblogs.com/techyc/p/3286678.html" target="_blank" rel="external">简谈Java的join()方法</a> <br><br><a href="http://uule.iteye.com/blog/1101994" target="_blank" rel="external">Java多线程中join方法的理解</a>  </p>
-
-<h3 id="">捕获线程的异常</h3>
-
-<p><a href="http://www.cnblogs.com/chenfei0801/archive/2013/04/23/3039286.html" target="_blank" rel="external">JAVA 线程中的异常捕获</a>  </p>
-
-<h2 id="">共享受限资源</h2>
-
-<p><a href="http://blog.csdn.net/xiao__gui/article/details/8934832" target="_blank" rel="external">Java线程安全和非线程安全</a>  </p>
-
-<h3 id="synchronized">synchronized</h3>
-
-<p><a href="http://blog.csdn.net/ghsau/article/details/7424694" target="_blank" rel="external">Java线程(二)：线程同步synchronized和volatile</a> <br><br><a href="http://stackoverflow.com/questions/1085709/what-does-synchronized-mean" target="_blank" rel="external">What does ‘synchronized’ mean?</a></p>
-
-<h3 id="reentrantlock">重入锁ReentrantLock</h3>
-
-<p><a href="http://blog.csdn.net/ghsau/article/details/7461369" target="_blank" rel="external">Java线程(八)：锁对象Lock-同步问题更完美的处理方式</a> <br><br><a href="https://www.ibm.com/developerworks/cn/java/j-jtp10264/" target="_blank" rel="external">Java 理论与实践: JDK 5.0 中更灵活、更具可伸缩性的锁定机制</a>  </p>
-
-<h3 id="">锁</h3>
-
-<p><a href="http://ifeve.com/java_lock_see1/" target="_blank" rel="external">java锁的种类以及辨析（一）：自旋锁</a> <br><br><a href="http://ifeve.com/java_lock_see2/" target="_blank" rel="external">Java锁的种类以及辨析（二）：自旋锁的其他种类</a> <br><br><a href="http://ifeve.com/java_lock_see3/" target="_blank" rel="external">Java锁的种类以及辨析（三）：阻塞锁</a> <br><br><a href="http://ifeve.com/java_lock_see4/" target="_blank" rel="external">Java锁的种类以及辨析（四）：可重入锁</a>  </p>
-
-<h3 id="volatile">Volatile变量</h3>
-
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-jtp06197.html" target="_blank" rel="external">Java 理论与实践: 正确使用 Volatile 变量</a> <br><br><a href="http://www.infoq.com/cn/articles/ftf-java-volatile" target="_blank" rel="external">聊聊并发（一）——深入分析Volatile的实现原理</a>  </p>
-
-<h3 id="cas">CAS</h3>
-
-<p><a href="http://zl198751.iteye.com/blog/1848575" target="_blank" rel="external">JAVA CAS原理深度分析</a>  </p>
-
-<h3 id="">原子类</h3>
-
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-jtp11234/" target="_blank" rel="external">Java 理论与实践: 流行的原子</a> <br><br><a href="http://blog.csdn.net/vernonzheng/article/details/8206349" target="_blank" rel="external">Java多线程（二）之Atomic：原子变量与原子类</a> </p>
-
-<h3 id="criticalsection">临界区(critical section)</h3>
-
-<p><a href="http://ifeve.com/race-conditions-and-critical-sections/" target="_blank" rel="external">竞态条件与临界区</a>  </p>
-
-<h3 id="threadlocal">线程本地存储ThreadLocal</h3>
-
-<p><a href="http://blog.csdn.net/ghsau/article/details/15732053" target="_blank" rel="external">Java线程(篇外篇)：线程本地变量ThreadLocal</a> <br><br><a href="http://my.oschina.net/lichhao/blog/111362" target="_blank" rel="external">彻底理解ThreadLocal</a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/lang/ThreadLocal.html" target="_blank" rel="external">Class ThreadLocal<t></t></a> <br><br><a href="http://tutorials.jenkov.com/java-concurrency/threadlocal.html" target="_blank" rel="external">Java ThreadLocal</a> <br><br><a href="http://stackoverflow.com/questions/817856/when-and-how-should-i-use-a-threadlocal-variable" target="_blank" rel="external">When and how should I use a ThreadLocal variable?</a>  </p>
-
-<h2 id="">终结任务</h2>
-
-<h3 id="">线程状态</h3>
-
-<p><a href="http://my.oschina.net/mingdongcheng/blog/139263" target="_blank" rel="external">一张图让你看懂JAVA线程间的状态转换</a> <br><br><a href="http://www.journaldev.com/1044/life-cycle-of-thread-understanding-thread-states-in-java" target="_blank" rel="external">Life Cycle of Thread – Understanding Thread States in Java</a> <br><br><a href="http://www.uml-diagrams.org/examples/java-6-thread-state-machine-diagram-example.html" target="_blank" rel="external">Java 6 Thread States and Life Cycle</a>  </p>
-
-<h3 id="">中断线程</h3>
-
-<p><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism" target="_blank" rel="external">详细分析Java中断机制</a> <br><br><a href="http://stackoverflow.com/questions/3590000/what-does-java-lang-thread-interrupt-do" target="_blank" rel="external">What does java.lang.Thread.interrupt() do?</a>  </p>
-
-<h3 id="">如何停止线程</h3>
-
-<p>stop()方法已经被废弃了。</p>
-
-<p><a href="http://ibruce.info/2013/12/19/how-to-stop-a-java-thread/" target="_blank" rel="external">如何停止一个正在运行的java线程</a> <br><br><a href="http://stackoverflow.com/questions/3194545/how-to-stop-a-java-thread-gracefully" target="_blank" rel="external">How to stop a java thread gracefully?</a>  </p>
-
-<h2 id="">线程协作</h2>
-
-<h3 id="waitnotifynotifyall">wait()、notify()、notifyAll()</h3>
-
-<blockquote><br>  <p>阻塞是进程在等待某种资源,但是不能马上得到，必须等待别的进程释放资源才能继续，属于被动无法得到时间片，内核就切换其它进程运行 <br><br>  休眠一般为主动式的放弃一段CPU时间。 <br><br>  挂起是运行时间片到了,内核要调度其它进程运行,被动式的失去CPU。（挂起可以被别的进程给抢占导致挂起，也可以自己主动挂起自己。）</p><br></blockquote>
-
-<p>wait()会在等待时将当前任务挂起，等到notify()/notifyAll()发生时，任务才被唤醒。</p>
-
-<p>调用sleep()、yield()时不会释放锁；调用wait()时线程被挂起，对象上的锁也会被释放。</p>
-
-<p>wait()、notify()、notifyAll()属于类Object，不属于Thread。</p>
-
-<p>只能在同步控制方法或者同步控制块（synchronized）中调用wait()、notify()、notifyAll()。而sleep()、yield()可以在非同步控制方法里使用。</p>
-
-<p>notifyAll()比notify()更安全一些。使用notify()时，众多等待同一个锁的任务中只有一个会被唤醒。</p>
-
-<p><a href="http://www.journaldev.com/1037/java-thread-wait-notify-and-notifyall-example" target="_blank" rel="external">Java Thread wait, notify and notifyAll Example</a>  </p>
-
-<h3 id="lockcondition">Lock和Condition</h3>
-
-<p><a href="http://blog.csdn.net/ghsau/article/details/7481142" target="_blank" rel="external">Java线程(九)：Condition-线程通信更高效的方式</a>  </p>
-
-<h2 id="">死锁</h2>
-
-<p><a href="http://www.cnblogs.com/vettel/p/3438257.html" target="_blank" rel="external">哲学家就餐问题</a> <br><br><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-deadlock/" target="_blank" rel="external">一个 Linux 上分析死锁的简单方法、死锁的4个必要条件</a> <br><br><a href="http://magustest.com/blog/computer/deadlock-condition-and-how-to-prevent/" target="_blank" rel="external">什么是死锁，死锁的四个必要条件以及处理死锁的策略</a> <br><br><a href="http://ifeve.com/deadlock-prevention/" target="_blank" rel="external">如何避免死锁</a>  </p>
-
-<h2 id="">类库中的其他构件</h2>
-
-<h3 id="countdownlatch">CountDownLatch</h3>
-
-<p>CountDownLatch，闭锁。</p>
-
-<p>首先给该对象一个初始计数值，每个在该该对象上调用await()的任务会阻塞。当计数值到0时，所有因为await()而阻塞的任务都继续执行。</p>
-
-<p><a href="http://zapldy.iteye.com/blog/746458" target="_blank" rel="external">Java CountDownLatch应用</a> <br><br><a href="http://tutorials.jenkov.com/java-util-concurrent/countdownlatch.html" target="_blank" rel="external">CountDownLatch</a> <br><br><a href="http://www.cnblogs.com/skywang12345/p/3533887.html" target="_blank" rel="external">Java多线程系列–“JUC锁”09之 CountDownLatch原理和示例</a>  </p>
-
-<h3 id="cyclicbarrier">CyclicBarrier</h3>
-
-<p>CyclicBarrier，关卡，栅栏。</p>
-
-<blockquote><br>  <p>CountDownLatch和CyclicBarrier的区别<br>  (01) CountDownLatch的作用是允许1或N个线程等待其他线程完成执行；而CyclicBarrier则是允许N个线程相互等待。<br>  (02) CountDownLatch的计数器无法被重置；CyclicBarrier的计数器可以被重置后使用，因此它被称为是循环的barrier。</p><br></blockquote>
-
-<p><a href="http://www.cnblogs.com/skywang12345/p/3533995.html" target="_blank" rel="external">Java多线程系列–“JUC锁”10之 CyclicBarrier原理和示例</a> <br><br><a href="http://tutorials.jenkov.com/java-util-concurrent/cyclicbarrier.html" target="_blank" rel="external">CyclicBarrier</a>  </p>
-
-<h3 id="blockingqueue">BlockingQueue</h3>
-
-<p><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html" target="_blank" rel="external">Interface BlockingQueue<e></e></a> <br><br><a href="http://www.infoq.com/cn/articles/java-blocking-queue" target="_blank" rel="external">聊聊并发（七）——Java中的阻塞队列</a>  </p>
-
-<h3 id="delayqueue">DelayQueue</h3>
-
-<p><a href="http://www.concretepage.com/java/example_delayqueue_java" target="_blank" rel="external">Examples of DelayQueue in Java</a> <br><br><a href="http://www.cnblogs.com/jobs/archive/2007/04/27/730255.html" target="_blank" rel="external">精巧好用的DelayQueue</a>  </p>
-
-<h3 id="timertimertask">Timer和TimerTask</h3>
-
-<p>这两个在<code>java.util</code>这个包下面。</p>
-
-<blockquote><br>  <p>Timer和TimerTask可以做为实现线程的第三种方式，前两种方式分别是继承自Thread类和实现Runnable接口。</p><br></blockquote>
-
-<p><a href="http://blog.csdn.net/ghsau/article/details/7436458" target="_blank" rel="external">Java线程(五)：Timer和TimerTask</a>  </p>
-
-<h3 id="scheduledthreadpoolexecutor">ScheduledThreadPoolExecutor</h3>
-
-<p><a href="http://www.importnew.com/7276.html" target="_blank" rel="external">Java ScheduledThreadPoolExecutor延迟或周期性执行任务</a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ScheduledThreadPoolExecutor.html" target="_blank" rel="external">Class ScheduledThreadPoolExecutor</a>  </p>
-
-<h3 id="semaphore">信号量Semaphore</h3>
-
-<p><a href="http://www.cnblogs.com/whgw/archive/2011/09/29/2195555.html" target="_blank" rel="external">Java 信号量 Semaphore 介绍</a> <br><br><a href="http://www.javacodegeeks.com/2011/09/java-concurrency-tutorial-semaphores.html" target="_blank" rel="external">Java Concurrency Tutorial – Semaphores</a>  </p>
-
-<h3 id="exchanger">Exchanger</h3>
-
-<p>用于两个线程之间交换数据。</p>
-
-<p><a href="http://blog.csdn.net/andycpp/article/details/8854593" target="_blank" rel="external">Java线程之Exchanger</a>  </p>
-
-<h2 id="">性能调优</h2>
-
-<blockquote><br>  <p>使用Lock通常比sychronized高效，sychronized的开销看起来变化范围很大，Lock相对一致。synchronized产生的代码，与Lock所需要的“加锁-try/finally-解锁”相比，可读性更高。</p><br></blockquote>
-
-<h3 id="copyonwritearraylistcopyonwritearrayset">CopyOnWriteArrayList、CopyOnWriteArraySet</h3>
-
-<p>在该类的对象中，写入将导致创建整个底层数组的副本，而原数组保留在原地，使得复制的数组在被修改时，读取操作可以安全的执行。当对副本的修改完成时，会发生一个原子性的操作：用副本替换源数组，使得新的读取操作可以看到这个新的修改。</p>
-
-<p><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CopyOnWriteArrayList.html" target="_blank" rel="external">Class CopyOnWriteArrayList<e></e></a> <br><br><a href="http://www.javamex.com/tutorials/synchronization_concurrency_8_copy_on_write.shtml" target="_blank" rel="external">Java copy-on-write collections</a> <br><br><a href="http://www.cnblogs.com/skywang12345/p/3498497.html" target="_blank" rel="external">Java多线程系列–“JUC集合”03之 CopyOnWriteArraySet</a>  </p>
-
-<h3 id="concurrenthashmapconcurrentlinkedqueue">ConcurrentHashMap、ConcurrentLinkedQueue</h3>
-
-<p><a href="http://www.infoq.com/cn/articles/ConcurrentHashMap" target="_blank" rel="external">聊聊并发（四）——深入分析ConcurrentHashMap</a> <br><br><a href="http://www.infoq.com/cn/articles/ConcurrentLinkedQueue" target="_blank" rel="external">聊聊并发（六）——ConcurrentLinkedQueue的实现原理分析</a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentHashMap.html" target="_blank" rel="external">Class ConcurrentHashMap<k,v></k,v></a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentLinkedQueue.html" target="_blank" rel="external">Class ConcurrentLinkedQueue<e></e></a>  </p>
-
-<h3 id="">乐观锁</h3>
-
-<p><a href="http://my.oschina.net/u/1445731/blog/420263" target="_blank" rel="external">悲观锁与乐观锁</a> <br><br><a href="http://zh.wikipedia.org/zh/%E4%B9%90%E8%A7%82%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6" target="_blank" rel="external">乐观并发控制</a> <br><br><a href="http://en.wikipedia.org/wiki/Concurrency_control" target="_blank" rel="external">Concurrency control</a> <br><br><a href="http://en.wikipedia.org/wiki/Optimistic_concurrency_control" target="_blank" rel="external">Optimistic concurrency control</a></p>
-
-<h3 id="readwritelock">读写锁ReadWriteLock</h3>
-
-<p>适合读多写少的场景。</p>
-
-<p><a href="http://ifeve.com/read-write-locks/" target="_blank" rel="external">Java中的读/写锁</a> <br><br><a href="http://examples.javacodegeeks.com/core-java/util/concurrent/locks-concurrent/readwritelock/java-readwritelock-example/" target="_blank" rel="external">Java ReadWriteLock Example</a> <br><br><a href="http://tutorials.jenkov.com/java-util-concurrent/readwritelock.html" target="_blank" rel="external">ReadWriteLock</a>  </p>
-
-<h2 id="">生产者消费者问题</h2>
-
-<p><a href="http://blog.csdn.net/ghsau/article/details/7433673" target="_blank" rel="external">Java线程(三)：线程协作-生产者/消费者问题</a>  </p>
-
-<h2 id="">其他</h2>
-
-<p><a href="http://www.importnew.com/14506.html" target="_blank" rel="external">Java并发的四种风味：Thread、Executor、ForkJoin和Actor</a> <br><br><a href="http://www.journaldev.com/1079/java-thread-tutorial" target="_blank" rel="external">Java Thread and Multithreading Tutorial</a> <br><br><a href="http://segmentfault.com/a/1190000000389806" target="_blank" rel="external">JAVA 多线程和并发基础面试问答</a> <br><br><a href="http://www.journaldev.com/1162/java-multi-threading-concurrency-interview-questions-with-answers" target="_blank" rel="external">Java Multi-Threading and Concurrency Interview Questions with Answers</a> <br><br><a href="http://en.wikipedia.org/wiki/Monitor_%28synchronization%29" target="_blank" rel="external">Monitor (synchronization)</a><br><a href="http://ifeve.com/talk-concurrency/" target="_blank" rel="external">聊聊并发</a>  </p>
-          
+J
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/06/03/java-concurrents-links/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1136,16 +872,23 @@
       
         
           
-            <p>采采景云    照我明堂</p>
-<p>樽中靉靆    堪息彷徨</p>
-<p>理易昭灼    道且惚恍</p>
-<p>惚兮恍兮    与子颉颃</p>
-<p>有风东来    翼彼高冈</p>
-<p>巧智交作    劳忧若狂</p>
-<p>并介已矣    漆园茫茫</p>
-<p>呼凤唤麟    同归大荒</p>
+          采采景云    照我明堂
+樽中靉靆    堪息彷徨
+理易昭灼    道且惚恍
+惚兮恍兮    与子颉颃
+有风东来    翼彼高冈
+巧智交作    劳忧若狂
+并介已矣    漆园茫茫
+呼凤唤麟    同归大荒
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/30/mu-xin-some/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1261,8 +1004,15 @@
       
         
           
-            <p></p><p style="">系统架构是一个工程和研究相结合的领域，既注重实践又依赖理论指导，入门容易但精通很难，有时候还要讲点悟性，很具有“伪科学”的特征。要在此领域进阶，除了要不断设计并搭建实际系统，也要注意方法论和设计理念的学习和提炼。</p><br><p style="">经常有同学询问如何学习，特贴一篇学习材料，供大家参考。09年时写的，在系统领域浩如烟海的文献中提取了一些我认为值得研究和学习的项目，没包括近几年出现的一些工作，也不够全面。不过，其实也足够了，看paper是一个从少到多再到少的过程。对问题本质、背景和发展历史有大致了解，再辅以hands-on的实践（长期的真正的实践），足以摸到本领域的门径。</p><br><p style="">此文在网上转载不少，但多数没有说明出处。今天在这里重发，也顺便向315致敬。</p><br><p style="">—</p><br><p style="">对于工程师来说，到一定阶段后往往会遇到成长瓶颈。要突破此瓶颈，需要在所属技术领域更深入学习，了解本领域的问题本质、方法论与设计理念、发展历史等。以下提供一些架构相关领域的学习材料，附上简单点评，供有兴趣的工程师参考。希望大家能通过对这些领域的了解和学习，掌握更多system design principles，在自己的工作中得心应手，步入自由王国。</p><br><strong style="">1. Operating Systems</strong><br><p style=""><strong style="">Mach</strong> [Intro: <a href="http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/mach.html" target="_blank" rel="external">http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/mach.html</a>,Paper: <a href="http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/doc/publications.html" target="_blank" rel="external">http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/doc/publications.html</a>]</p><br><p style="">传统的kernel实现中，对中断的响应是在一个“大函数”里实现的。称为大函数的原因是从中断的入口到出口都是同一个控制流，当有中断重入发生的时候，实现逻辑将变得非常复杂。大多数的OS，如UNIX，都采用这种monolithic kernel architecture。</p><br><p style="">1985年开始的Mach项目，提出了一种全新的microkernel结构，使得由于70年代UNIX的发展到了极致而觉得后续无枝可依的学术界顿时找到了兴奋点，也开始了沸沸扬扬的monokernel与microkernel的争论。</p><br><p style="">插播一个花絮：Mach的主导者Richard Rashid，彼时是CMU的教授，受BillGates之托去游说JimGray加盟MS。结果把自己也被绕了进来，组建了Microsoft Research。他到中国来做过几次21Century Computing的keynotes。</p><br><p style=""><strong style="">Exokernel</strong> [Intro:<a href="http://pdos.csail.mit.edu/exo/" target="_blank" rel="external">http://pdos.csail.mit.edu/exo/</a>，Paper:<a href="http://pdos.csail.mit.edu/PDOS-papers.html#Exokernels" target="_blank" rel="external">http://pdos.csail.mit.edu/PDOS-papers.html#Exokernels</a>]</p><br><p style="">虽然microkernel的结构很好，但实际中并没有广泛应用，因为performance太差，而且大家逐渐发现OS的问题并不在于实现的复杂性，而更多在于如何提高application使用资源的灵活性。这也就是在kernel extension（例如loadable module in Linux）出现后，有关OS kernel architecture的争论就慢慢淡出人们视线的原因。</p><br><p style="">Exokernel正是在这样的背景中出现的，它并不提供传统OS的abstraction（process,virtual memory等），而是专注于资源隔离与复用（resource isolation and multiplexing），由MIT提出。在exokernel之上，提供了一套库，著名的libOS，用于实现各种OS的interface。这样的结构为application提供了最大的灵活度，使不同的application可以或专注于调度公平性或响应实时性，或专注于提高资源使用效率以优化性能。以今天的眼光来看，exokernel更像是一个virtual machine monitor。</p><br><p style=""><strong style="">Singularity</strong> [Intro:<a href="http://research.microsoft.com/os/Singularity/" target="_blank" rel="external">http://research.microsoft.com/os/Singularity/</a>,Paper: <a href="http://www.research.microsoft.com/os/singularity/publications/HotOS2005_BroadNewResearch.pdf" target="_blank" rel="external">http://www.<br><br>research.microsoft.com/os/singularity/publications/HotOS2005_BroadNewResearch.pdf</a>]</p><br><p style="">Singularity出现在virus，spyware取之不尽、杀之不绝的21世纪初期，由Microsoft Research提出。学术界和工业界都在讨论如何提供一个trust-worthy computing环境，如何使计算机系统更具有manage-ability。Singularity认为要解决这些问题，底层系统必须提供hardisolation，而以前人们都依赖的硬件virtual memory机制并无法提供高灵活性和良好性能。在.Net和Java等runtime出现之后，一个软件级的解决方案成为可能。</p><br><p style="">Singularity在microkernel的基础上，通过.Net构建了一套type-safed assembly作为ABI，同时规定了数据交换的message passing机制，从根本上防止了修改隔离数据的可能。再加上对application的安全性检查，从而提供一个可控、可管理的操作系统。由于.NetCLR的持续优化以及硬件的发展，加了这些检查后的Singularity在性能上的损失相对于它提供的这些良好特性，仍是可以接受的。</p><br><p style="">这种设计目前还处于实验室阶段，是否能最终胜出，还需要有当年UNIX的机遇。</p><br><strong style="">2. Virtual Machines</strong><br><p style=""><strong style="">VMWare</strong> [“<a href="http://www.usenix.org/events/osdi02/tech/waldspurger/waldspurger.pdf" target="_blank" rel="external">MemoryResource Management in VMware ESX Server</a>“，OSDI’02,Best paper award]</p><br><p style="">耳熟能详的vmware，无需多说。</p><br><p style=""><strong style="">XEN</strong> [“<a href="http://www.cl.cam.ac.uk/research/srg/netos/papers/2003-xensosp.pdf" target="_blank" rel="external">Xen and the Art of Virtualization</a>”, OSDI’04]</p><br><p style="">性能极好的VMM，来自Cambridge。</p><br><p style=""><strong style="">Denali</strong> [“<a href="http://denali.cs.washington.edu/pubs/distpubs/papers/denali_osdi.pdf" target="_blank" rel="external">Scaleand Performance in the Denali Isolation Kernel</a>”, OSDI’02, UW]</p><br><p style="">为internetservices而设计的application level virtual machine，在普通机器上可运行数千个VMs。其VMM基于isolation kernel，提供隔离，但并不要求资源分配绝对公平，以此减少性能消耗。</p><br><p style=""><strong style="">Entropia</strong> [“<a href="http://www-csag.ucsd.edu/papers/Entropia-VM.pdf" target="_blank" rel="external">The Entropia VirtualMachine for Desktop Grids</a>”, VEE’05]</p><br><p style="">要统一利用公司内桌面机器资源来进行计算，需要对计算任务进行良好的包装，以保证不影响机器正常使用并与用户数据隔离。Entropia就提供了这样的一个计算环境，基于windows实现了一个application level virtual machine。其基本做法就是对计算任务所调用的syscall进行重定向以保证隔离。类似的工作还有FVM：“<a href="http://www.usenix.org/events/vee06/full_papers/p24-yu.pdf" target="_blank" rel="external">AFeather-weight Virtual Machine for Windows Applications</a>”。</p><br><strong style="">3. Design Revisited</strong><br><p style="">&nbsp;“<a href="http://www.usenix.org/event/hotos05/final_papers/full_papers/hand/hand.pdf" target="_blank" rel="external">Are Virtual Machine Monitors Microkernels Done Right?</a>”，HotOS’05</p><br><p style="">这个题目乍听起来，十分费解，其意思是VMMs其实就是Microkernel的正确实现方法。里面详细讨论了VMM和Microkernel，是了解这两个概念的极好参考。</p><br><p style="">“<a href="http://www.usenix.org/events/hotos05/final_papers/full_papers/brewer/brewer.pdf" target="_blank" rel="external">Thirty Years Is Long Enough: Getting Beyond C</a>”, HotOS’05</p><br><p style="">C可能是这个世界上最成功的编程语言，但其缺点也十分明显。比如不支持thread，在今天高度并行的硬件结构中显得有点力不从心，而这方面则是functional programming language的长处，如何结合二者的优点，是一个很promising的领域。</p><br><strong style="">4. Programming Model</strong><br><p style="">“<a href="http://www.stanford.edu/class/cs240/readings/threads-bad-usenix96.pdf" target="_blank" rel="external">Why Threads Are a Bad Idea</a>”</p><br><p style="">单使用thread结构的server是很难真正做到高性能的，原因在于内存使用、切换开销、同步开销和保证锁正确性带来的编程复杂度等。</p><br><p style="">“<a href="http://www.eecs.harvard.edu/~mdw/papers/seda-sosp01.pdf" target="_blank" rel="external">SEDA: An Architecture for Well-Conditioned, Scalable Internet Services</a>”，OSDI’01</p><br><p style="">Thread不好，但event也没法解决所有问题，于是我们寻找一个结合的方法。SEDA将应用拆分为多个stage，不同stage通过queue相连接，同一个stage内可以启动多个thread来执行queue中的event，并且可通过反馈来自动调整thread数量。</p><br><p style=""><strong style="">Software Transactional Memory</strong></p><br><p style="">如果内存可以提供transaction语义，那么我们面对的世界将完全两样，language, compiler, OS, runtime都将发生根本变化。虽然intel现在正在做hardware transactional memory，但估计可预见的将来不会商用，所以人们转而寻求软件解决方案。可想而知，这个方案无法base在native assembly上，目前有C#,haskell等语言的实现版本。资料比较多，参见<a href="http://en.wikipedia.org/wiki/Software_transactional_memory" target="_blank" rel="external">Wikipedia</a>。</p><br><strong style="">5. Distributed Algorithms</strong><br><p style=""><strong style="">Logical clock</strong>, [“<a href="http://portal.acm.org/ft_gateway.cfm?id=359563&amp;type=pdf&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744388&amp;CFTOKEN=15273596" target="_blank" rel="external">Time,clocks, and the ordering of events in a distributed system</a>”, Leslie Lamport, 1978]</p><br><p style="">这是一篇关于Logic clock, time stamp, distributed synchronization的经典paper。</p><br><p style=""><strong style="">Byzantine</strong> [“<a href="http://research.microsoft.com/users/lamport/pubs/byz.pdf" target="_blank" rel="external">The ByzantineGenerals Problem</a>”, Leslie Lamport, 1982]</p><br><p style="">分布式系统中的错误各种各样，有出错就能停机的，有出错了拖后腿的，更严重的是出错了会做出恶意行为的。最后的这种malicious behavior，就好像出征将军的叛变，将会对系统造成严重影响。对于这类问题，Lamport提出了Byzantine failure model，对于一个由3f+1个replica组成的statemachine，只要叛变的replica数量小于等于f，整个state machine还能正常工作。</p><br><p style=""><strong style="">Paxos</strong> [“<a href="http://portal.acm.org/ft_gateway.cfm?id=279229&amp;type=pdf&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744388&amp;CFTOKEN=15273596" target="_blank" rel="external">The part-time parliament</a>”, Leslie Lamport, 1998]</p><br><p style="">如何在一个异步的分布式环境中达成consensus，这是分布式算法研究的最根本问题。Paxos是这类算法的顶峰。不过这篇paper太难了，据说全世界就3.5人能看懂，所以Lamport后来又写了一篇普及版paper：“<a href="http://research.microsoft.com/users/lamport/pubs/paxos-simple.pdf" target="_blank" rel="external">Paxos Made Simple</a>” ，不过还是很难懂。另外，也可参看Butler Lampson写的“<a href="http://portal.acm.org/citation.cfm?id=383962.383969&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744978&amp;CFTOKEN=60475496" target="_blank" rel="external">The ABCD’s of Paxos</a>”（PODC’01），其中关于replicated state machine的描述会严重启发你对并行世界本质的认识，图灵奖的实力可不是盖的。</p><br><p style="">这上面反复出现了一个名字：<a href="http://research.microsoft.com/users/lamport/" target="_blank" rel="external">Leslie Lamport</a>，他在distributed computing这个领域挖坑不辍，终成一代宗师。关于他，也有几则轶事。记得以前他在MSR的主页是这么写的，“当我在研究logicalclock的时候，BillGates还穿着开裆裤(in diaper)…”（大意如此，原文现在找不到了）。另外，他在写paper的时候，很喜欢把其他牛人的名字变换一下编排进去。这可能也是他还没拿到图灵奖的原因。[注1]</p><br><p style="">关于Lamport的其他成就，还可以参见这篇向他60岁生日献礼的paper：“<a href="http://portal.acm.org/ft_gateway.cfm?id=383967&amp;type=pdf&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744388&amp;CFTOKEN=15273596" target="_blank" rel="external">Lamport on mutual exclusion: 27 years of planting seeds</a>”, PODC’01。</p><br><strong style="">6. Overlay Networking, and P2P DHT</strong><br><p style=""><strong style="">RON</strong> [“<a href="http://nms.lcs.mit.edu/papers/ron-sosp2001.html" target="_blank" rel="external">Resilient Overlay Networks</a>”, SOSP’01]</p><br><p style="">RON描述了如何在应用层搭建一个overlay，以提供秒级广域网网络层故障恢复速度，而现有的通过路由协议来恢复通信的时间至少在几十分钟。这种快速恢复特性和灵活性使得overlay networking现在被广泛应用。</p><br><p style=""><strong style="">Application Level Multicast</strong></p><br><p style="">“<a href="http://www.cs.cmu.edu/~hzhang/papers/sigmetrics-2000.ps.gz" target="_blank" rel="external">End System Multicast</a>”, SigMetrics’00</p><br><p style="">“<a href="http://pages.cs.wisc.edu/~suman/pubs/sigcomm02.pdf" target="_blank" rel="external">Scalable Application Layer Multicast</a>”, SigComm’02</p><br><p style="">关于ALM的paper很多，基本上都是描述如何搭建一个mesh network用以鲁棒的传输控制信息，另外再搭建一个multicast tree用以高效传输数据，然后再根据多媒体数据的特点做一些layered delivery。前几年出现的coolstream, pplive等系统都是这类系统的商业化产品。</p><br><p style=""><strong style="">P2P</strong></p><br><p style="">P2P的出现改变了网络。按照各种P2P网络的结构，可以分为三种。</p><br><p style="">1.&nbsp;&nbsp;&nbsp;&nbsp;Napster式，集中式目录服务，数据传输Peer to peer。</p><br><p style="">2.&nbsp;&nbsp;&nbsp;&nbsp;Gnutella式，通过在邻居间gossip来查询，也被称为unstructured P2P。</p><br><p style="">3.&nbsp;&nbsp;&nbsp;&nbsp;DHT，与unstructured P2P不同的是，DHT进行的查询有保证，如果数据存在，可在一定的hop数内返回。这个hop数通常为logN，N为系统节点数。</p><br><p style="">典型的DHT有<a href="http://berkeley.intel-research.net/sylvia/cans.pdf" target="_blank" rel="external">CAN</a>, <a href="http://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf" target="_blank" rel="external">Chord</a>,<a href="http://research.microsoft.com/~antr/PAST/pastry.pdf" target="_blank" rel="external">Pastry</a>, <a href="http://oceanstore.cs.berkeley.edu/publications/papers/pdf/tapestry_sigcomm_tr.pdf" target="_blank" rel="external">Tapestry</a>等四种。这些研究主要在算法层面，系统方面的工作主要是在其上建立广域网存储系统。还有一些人在机制层面进行研究，例如如何激励用户共享、防止作弊等。</p><br><strong style="">7. Distributed Systems</strong><br><p style=""><strong style="">GFS/MapReduce/BigTable/Chubby/Sawzall</strong></p><br><p style="">Google的系列paper，大家比较熟悉，不再多说。在<a href="http://research.google.com/pubs/papers.html" target="_blank" rel="external">此</a>可查。</p><br><p style=""><strong style="">Storage</strong></p><br><p style="">Distributed storage system的paper太多了。下面列出几篇最相关的。</p><br><p style="">“<a href="http://www.cs.cornell.edu/fbs/publications/chainreplicosdi.pdf" target="_blank" rel="external">Chain Replication for Supporting High Throughput and Availability</a>”, OSDI’04。</p><br><p style="">“<a href="http://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf" target="_blank" rel="external">Dynamo: Amazon’s Highly Available Key-value Store</a>”，SOSP’07。</p><br><p style="">“<a href="http://research.microsoft.com/asia/dload_files/group/system/2007/BitVault-SigOpsOSR0704.pdf" target="_blank" rel="external">BitVault: a Highly Reliable Distributed Data Retention Platform</a>”, SIGOPS OSR’07。</p><br><p style="">“<a>PacificA: Replication inLog-Based Distributed Storage Systems</a>”, MSR-TR。</p><br><p style=""><strong style="">Distributed Simulation</strong></p><br><p style="">“<a href="http://research.microsoft.com/asia/dload_files/group/system/wids-mascots.pdf" target="_blank" rel="external">Simulating Large-Scale P2P Systems with the WiDS Toolkit</a>”, MASCOTS’05。Distributed simulation有意思的地方是simulated protocol是distributed的，而这个simulation engine本身也是distributed的。Logical和physical的time和event交杂在系统中，需要仔细处理。</p><br><strong style="">8. Controversial Computing Models</strong><br><p style="">现在的软件系统已经复杂到了人已经无法掌握的程度，很多系统在发布时都仍然带着许多确定性(deterministic)或非确定性(non-deterministic)的bugs，只能不断的patch。既然作为人类，不够精细的特性决定了我们无法把系统的bug fix干净，我们只能从其他角度入手研究一种让系统在这令人沮丧的环境中仍能工作的方法。这就像一个分布式系统，故障无法避免，我们选择让系统作为整体来提供高可靠性。</p><br><p style="">以下3个便是典型代表。基本上，主要研究内容都集中于1) 如何正确保存状态；2)如何捕捉错误并恢复状态；3)在进行单元级恢复时，如何做到不影响整体。</p><br><p style=""><a href="http://roc.cs.berkeley.edu/" target="_blank" rel="external">Recovery Oriented Computing</a></p><br><p style=""><a href="http://www.cag.lcs.mit.edu/~rinard/paper/osdi04.pdf" target="_blank" rel="external">Failure oblivious computing</a>, OSDI’04</p><br><p style=""><a href="http://opera.cs.uiuc.edu/paper/Rx-SOSP05.pdf" target="_blank" rel="external">Treating Bugs as Allergies</a>, SOSP’05</p><br><strong style="">9. Debugging</strong><br><p style="">系统很复杂，人类无法从逻辑上直接分析，只能通过data mining的方法在宏观上进行观察。</p><br><p style="">Black box debugging[“<a href="http://pdos.csail.mit.edu/~athicha/papers/blackboxes:sosp03.pdf" target="_blank" rel="external">Performance debugging for distributed systems of black boxes</a>”, SOSP’03]</p><br><p style="">对大型系统的performance debugging非常困难，因为里面的问题很多都是非确定性的，而且无法重现。只能通过对log的挖掘，找出配对的调用/消息以定位问题。</p><br><p style="">CP-miner [“A Tool for Finding Copy-paste and Related Bugs in Operating System Code”, OSDI’04]</p><br><p style="">很多人在重用代码的时候，都使用copy-paste。但有时候简单的CP会带来严重的问题，例如局部变量的重名等。CP-miner通过分析代码，建立语法树结构，然后mine出这类错误。</p><br><p style="">—</p><br><p style="">注1：2014年3月19日，Lamport获得2013年度图灵奖，也是Microsoft Research的第5位图灵奖获得者。一代宗师，实至名归，功德圆满，可喜可贺。</p> <p></p>
-          
+          系统架构是一个工程和研究相结合的领域，既注重实践又依赖理论指导，入门容易但精通很难，有时候还要讲点悟性，很具有“伪科学”的特征。要在此领域进阶，除了要不断设计并搭建实际系统，也要注意方法论和设计理念的学习和提炼。经常有同学询问如何学习，特贴一篇学习材料，供大家参考。09年时写的，在系统领域浩如烟海的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/28/system-arch-learning/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1378,8 +1128,15 @@
       
         
           
-            <p>本文整理了一些MySQL的通用优化方法，做个简单的总结分享，旨在帮助那些没有专职MySQL DBA的企业做好基本的优化工作，至于具体的SQL优化，大部分通过加适当的索引即可达到效果，更复杂的就需要具体分析了，可以参考本站的一些优化案例或者联系我，下方有我的联系方式。这是上篇。</p><br><h1>1、硬件层相关优化</h1><br><h2>1.1、CPU相关</h2><br><p>在服务器的BIOS设置中，可调整下面的几个配置，目的是发挥CPU最大性能，或者避免经典的NUMA问题：</p><br><pre>1、选择Performance Per Watt Optimized(DAPC)模式，发挥CPU最大性能，跑DB这种通常需要高运算量的服务就不要考虑节电了；<br>2、关闭C1E和C States等选项，目的也是为了提升CPU效率；<br>3、Memory Frequency（内存频率）选择Maximum Performance（最佳性能）；<br><br>4、内存设置菜单中，启用Node Interleaving，避免NUMA问题；</pre><br><h2>1.2、磁盘I/O相关</h2><br><p>下面几个是按照IOPS性能提升的幅度排序，对于磁盘I/O可优化的一些措施：</p><br><pre>1、使用SSD或者PCIe SSD设备，至少获得数百倍甚至万倍的IOPS提升；<br>2、购置阵列卡同时配备CACHE及BBU模块，可明显提升IOPS（主要是指机械盘，SSD或PCIe SSD除外。同时需要定期检查CACHE及BBU模块的健康状况，确保意外时不至于丢失数据）；<br><br>3、有阵列卡时，设置阵列写策略为WB，甚至FORCE WB（若有双电保护，或对数据安全性要求不是特别高的话），严禁使用WT策略。并且闭阵列预读策略，基本上是鸡肋，用处不大；<br><br>4、尽可能选用RAID-10，而非RAID-5；<br><br>5、使用机械盘的话，尽可能选择高转速的，例如选用15KRPM，而不是7.2KRPM的盘，不差几个钱的；</pre><br><h1>2、系统层相关优化</h1><br><h2>2.1、文件系统层优化</h2><br><p>在文件系统层，下面几个措施可明显提升IOPS性能：</p><br><pre>1、使用deadline/noop这两种I/O调度器，千万别用cfq（它不适合跑DB类服务）；<br>2、使用xfs文件系统，千万别用ext3；ext4勉强可用，但业务量很大的话，则一定要用xfs；<br><br>3、文件系统mount参数中增加：noatime, nodiratime, nobarrier几个选项（nobarrier是xfs文件系统特有的）；</pre><br><h2>2.2、其他内核参数优化</h2><br><p>针对关键内核参数设定合适的值，目的是为了减少swap的倾向，并且让内存和磁盘I/O不会出现大幅波动，导致瞬间波峰负载：</p><br><pre>1、将vm.swappiness设置为5-10左右即可，甚至设置为0（RHEL 7以上则慎重设置为0，除非你允许OOM kill发生），以降低使用SWAP的机会；<br>2、将vm.dirty_background_ratio设置为5-10，将vm.dirty_ratio设置为它的两倍左右，以确保能持续将脏数据刷新到磁盘，避免瞬间I/O写，产生严重等待（和MySQL中的innodb_max_dirty_pages_pct类似）；<br><br>3、将net.ipv4.tcp_tw_recycle、net.ipv4.tcp_tw_reuse都设置为1，减少TIME_WAIT，提高TCP效率；<br><br>4、至于网传的read_ahead_kb、nr_requests这两个参数，我经过测试后，发现对读写混合为主的OLTP环境影响并不大（应该是对读敏感的场景更有效果），不过没准是我测试方法有问题，可自行斟酌是否调整；</pre><br><br><br><h1>附录：延伸阅读</h1><br><p>1、<a href="http://imysql.com/2014/09/11/pc-server-raid-controller-disk-health-monitoring.shtml" target="_blank">常用PC服务器阵列卡、硬盘健康监控</a><br><br>2、<a href="http://t.cn/R2GdzMT" target="_blank">PC服务器阵列卡管理简易手册</a><br><br>3、<a href="http://t.cn/zY1jYQC" target="_blank">实测Raid5 VS Raid1+0下的innodb性能</a><br><br>4、<a href="http://t.cn/zHJimYn" target="_blank">SAS vs SSD各种模式下MySQL TPCC OLTP对比测试结果</a><br><br>5、<a href="http://imysql.com/2015/03/19/mysql-percona-mariadb-which-is-your-choosen.shtml" target="_blank">MySQL出了门，Percona在左，MariaDB在右</a><br><br>6、<a href="http://imysql.com/2014/07/02/percona-thread-pool-benchmark-testing.shtml" target="_blank">Percona Thread Pool性能基准测试</a><br><br>7、<a href="http://imysql.com/2014/07/26/mysql-optimization-case-paging-optimize.shtml" target="_blank">[MySQL优化案例]系列 — 分页优化</a><br><br>8、<a href="http://imysql.com/2014/09/14/mysql-faq-why-innodb-table-using-autoinc-int-as-pk.shtml" target="_blank">[MySQL FAQ]系列 — 为什么InnoDB表要建议用自增列做主键</a><br><br>9、<a href="http://imysql.com/2015/03/27/mysql-faq-why-should-we-disable-query-cache.shtml" target="_blank">[MySQL FAQ]系列 — 为什么要关闭query cache，如何关闭</a></p>
-          
+          本文整理了一些MySQL的通用优化方法，做个简单的总结分享，旨在帮助那些没有专职MySQL DBA的企业做好基本的优化工作，至于具体的SQL优化，大部分通过加适当的索引即可达到效果，更复杂的就需要具体分析了，可以参考本站的一些优化案例或者联系我，下方有我的联系方式。这是上篇。1、硬件层相关优化1.1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/28/some-mysql-optimize/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1517,16 +1274,17 @@
       
         
           
-            <p>Uses<br>What are some possible uses for counting semaphores? The following come to mind:</p>
-<ul>
-<li>Limiting concurrent access to disk (this can kill performance due to competing disk seeks)</li>
-<li>Thread creation limiting</li>
-<li>JDBC connection pooling / limiting</li>
-<li>Network connection throttling</li>
-<li>Throttling CPU or memory intensive tasks</li>
-</ul>
+          UsesWhat are some possible uses for counting semaphores? The following come to mind:
 
-          
+Limiting concurrent access to disk (this can kill performance du
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/18/java-concurrency-tips/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1642,9 +1400,15 @@
       
         
           
-            <p>在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于<a href="http://dev.mysql.com/doc/refman/5.6/en/general-thread-states.html" target="_blank" rel="external">Waiting for tables</a>的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询<span style="color: #ff0000;"><strong>阻塞</strong></span>了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，这还是说不通的。那么我们就来看看所有的请求处于Waiting for tables这个状态是什么原因导致的：</p><p></p>
-<p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table, it must wait until all other threads have closed the table in question.</p><br><p>This notification takes place if another thread has used <a title="12.4.6.3. FLUSH Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/flush.html" target="_blank" rel="external"><code>FLUSH TABLES</code></a> or one of the following statements on the table in question: <code>FLUSH TABLES <em><code>tbl<em>name</em></code></em></code>, <a title="12.1.6. ALTER TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="external"><code>ALTER TABLE</code></a>, <a title="12.1.26. RENAME TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/rename-table.html" target="_blank" rel="external"><code>RENAME TABLE</code></a>, <a title="12.4.2.5. REPAIR TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/repair-table.html" target="_blank" rel="external"><code>REPAIR TABLE</code></a>, <a title="12.4.2.1. ANALYZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/analyze-table.html" target="_blank" rel="external"><code>ANALYZE TABLE</code></a>, or<a title="12.4.2.4. OPTIMIZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/optimize-table.html" target="_blank" rel="external"><code>OPTIMIZE TABLE</code></a>.</p><br><p>从文档上的解释来看，是主库做了一个flush tables的操作，导致所有的表都需要打开，但是由于在10-07号放假，应该不会有人在主库上执行flush tables，而且从日志中可以看到：</p><br><p>1044    system user                     Connect 27406   Flushing tables FLUSH TABLES</p><br><p>所以可以判断是系统自己执行了这个操作，那么既然不是主库上执行而来，那么这个flush tables操作是从slave上复制过来的（M-M结构)，</p><br><p>那么备库的什么操作会有flush tables，真的百思不其解，我们备库在6点之前做的是什么，后端应用的dump?还是数据库的备份？是不是xtrabackup，很有可能是xtrabackup在备份的时候做的fulsh tables，查看备份脚本，应该轮到mysqldump做逻辑备份操作了，并不是xtrabackup，检查了mysqldump的备份脚本，脚本里：</p><br><p>-uroot -P$port &#8211;protocol=tcp &#8211;single-transaction &#8211;master-data=2是这样的</p><br><p>Single-transaction这个选项是加上了的，希望再一次被打破 &gt;&lt;</p><br><p>最后想还是想到到官网上去看看，mysqldump+flush tables是否有bug，</p><br><p>唉，搜索了一下果然发现了蹊跷：</p><br><p><a href="http://bugs.mysql.com/bug.php?id=35157" target="_blank" rel="external">http://bugs.mysql.com/bug.php?id=35157</a></p><br><p>When using the &#8211;master-data option with mysqldump, mysqldump uses   a FLUSH TABLES command.  However, this statement got replicated to   the slave(s), which caused the slave(s) to block unnecessarily while  the FLUSH tables command completed.</p><br><p>在5.0存在的bug很好的解释了这个问题，在mysqldump加入了&#8211;master-data就会将flush tables记录到binglog中，然后在被同步到主库，主库执行binglog后，由于有一个大查询正在</p><br><p>执行，这个子查询由于执行了很长时间，阻塞了flush tables的操作,最后导致了雪崩，所有的请求都被阻塞：</p><br><p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table,</p><br><p>it must wait until all other threads have closed the table in question.</p><br><p>综合上篇的所写，Mysqldump的在5.0的bug加上数据库的低效子查询构成这次故障的原因。</p><br><p>峰回路转，山穷水尽，哈哈</p>
-          
+          在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于Waiting for tables的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询阻塞了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/15/mysqlwaiting-for-tables/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1760,27 +1524,21 @@
       
         
           
-            <p>早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。</p>
-<ol>
-<li><p>试图定位</p>
-<p> 连接过多，连续登录也无法入库，这时候先去查看了<code>/etc/my.cnf</code>，发现预设的连接数<code>max_connection=500</code>，排除了预设不足的问题</p>
-</li>
-<li><p>确认现场</p>
-<p> 使用<code>netstat -plan | grep 3306</code>查看已经存在的连接，发现已经到上限，果然还是不行</p>
-</li>
-<li><p>重启服务</p>
-<p> <code>/etc/init.d/mysql restart</code></p>
-<p> 正常stop，但是start时出现<code>manager of pid-file quit without updating file</code>，检查文件后发现正常，检查磁盘发现磁盘满了= =，清理文件后，正常启动</p>
-</li>
-<li><p>重新定位</p>
-<p> 重启后执行<code>show processlist;</code>，发现有很多线程状态是<code>waiting for table</code>, 而且基本都是一些写操作<code>(insert)</code>，感觉很奇怪，google了一下发现可能是有系统线程lock了表导致其他任务等待，进一步查询发现有一个<code>checking table</code>的线程，kill之后，处于等待状态的任务被迅速执行完毕，基本确定是这里的问题。</p>
-</li>
-<li><p>mysql系统任务</p>
-<p> mysql系统会定期执行一些维护的任务，<code>check table</code>就是其中的一类，当然也可以手动执行(本质上都是命令)，它用于检查一个或多个表是否有错误。<code>CHECK TABLE</code>对<code>MyISAM</code>和<code>InnoDB</code>表有作用。这里，<code>check</code>比较重要的一点就是，执行期间会将相应的表锁定，而且如果参数不当会导致执行时间过长，对于任务密集的表来说，要谨慎操作。</p>
-</li>
-</ol>
+          早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。
 
-          
+试图定位
+ 连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题
+
+确认现场
+ 使用netstat -
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/15/mysql-too-many-connection-solve/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

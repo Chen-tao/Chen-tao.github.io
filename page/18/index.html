@@ -347,31 +347,28 @@
       
         
           
-            <p><em>文/聂鲁达（智利)</em></p>
-<p>正因为时世艰辛，你要等着我；</p>
-<p>让我们怀着希望去生活。</p>
-<p>把你纤细的小手给我；</p>
-<p>让我们去攀登和经受，</p>
-<p>去感受和突破。</p>
-<p>我们曾闯过荆棘之地，</p>
-<p>屈身于石块堆砌的窝里，</p>
-<p>我们又重新结成伴侣。</p>
-<p>正因为岁月漫长，你要等着我；</p>
-<p>带上一只篮子，你的铁锨，</p>
-<p>你的衣履。</p>
-<p>我们现在要做的</p>
-<p>不仅仅是为了石竹和丁香，</p>
-<p>也不是去寻找蜜糖：</p>
-<p>需要用我们的手，</p>
-<p>去冲刷，去放火，</p>
-<p>看这险恶的世道是否敢</p>
-<p>与这坚定的四只手和四只眼挑战。</p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          文/聂鲁达（智利)
+正因为时世艰辛，你要等着我；
+让我们怀着希望去生活。
+把你纤细的小手给我；
+让我们去攀登和经受，
+去感受和突破。
+我们曾闯过荆棘之地，
+屈身于石块堆砌的窝里，
+我们又重新结成伴侣。
+正因为岁月漫长，你要等着我；
+带上一只篮子，你的铁锨，
+你的衣履。
+我们现在要做的
+不仅仅是为了石
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/22/waiting-for-me/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -487,27 +484,20 @@
       
         
           
-            <p>Python对于日志的分析常用正则表达式来进行，对于长篇累牍的日志，编写正则表达式确实是个技术+体力工作。 简单讲，海量的日志数据分为2种： </p>
-<ul>
-<li><p>预定义好的JSON</p>
-<p>这种日志相对比较容易解析，当然很少用到正则(<img src="file:///C:\\Users\\chentao\\AppData\\Roaming\\Tencent\\QQPinyin\\Face\\ImageCache\\43.gif" alt="">鼓掌~)</p>
-</li>
-<li><p>写成API返回形式的日志，常用: , ‘ , “ , &amp; , - 等字符连接，有时还会出现混合的情况，这种常用正则表达式来解析(终于意识到规范的重要性……)</p>
-</li>
-</ul>
-<p>下图列出了Python支持的正则表达式元字符和语法： <img src="/wp-content/uploads/2013/08/pyre1.png" alt="pyre"> </p>
-<p>表中的元字符可以满足我们几乎所有的匹配需求(除了变态的乱码可以不考虑)。 </p>
-<p>今天遇到的问题是，在多个特殊字符之间，如何形成可选的(<code>optional</code>) 比如：<br><code>a = &#39;aa=8&amp;bb=9&amp;cc=10&#39; b=&#39;aa=9&amp;cc=10&#39;</code> </p>
-<p>这里需要将a,b串中的k/v分别提出来，当在大型日志当中，经常会出现这种情况。 </p>
-<p>经过测试，下面的方法是可行的： </p>
-<p><code>import re DD = re.compile(r&quot;a=(?P&lt;a&gt;&lt;em&gt;&lt;strong&gt;[^\&amp;]&lt;/strong&gt;&lt;/em&gt;*)(\&amp;b=(?P&lt;b&gt;&lt;em&gt;&lt;strong&gt;[^\&amp;]&lt;/strong&gt;&lt;/em&gt;*))?\&amp;c=(?P&lt;c&gt;&lt;em&gt;&lt;strong&gt;[^\&amp;]&lt;/strong&gt;&lt;/em&gt;*)&quot;) mm = DD.match(a) mm.groupdict()</code> </p>
-<p>这样通配字符串，就可以实现多种optianal的匹配输出，适合用于项目较多较为复杂的Web Log或者API Log，具体的请注意斜体部分的字符，使用 <code>[^\&amp;]*</code> 代替我们常用<code>.*</code> ，这也是匹配的重点所在。 好了，今天就说这么多，改天继续。 </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
+          Python对于日志的分析常用正则表达式来进行，对于长篇累牍的日志，编写正则表达式确实是个技术+体力工作。 简单讲，海量的日志数据分为2种： 
 
-          
+预定义好的JSON
+这种日志相对比较容易解析，当然很少用到正则(鼓掌~)
+
+写成API返回形式的日志，常用: , ‘ , “ , &amp; , - 等字
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/21/python-regular-expression1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -623,50 +613,17 @@
       
         
           
-            <p>还在用show processlist查看进程然后监控Mysql的运行情况吗？你out了！ </p>
-<p>由M. Montgomery编写的一套脚本可以帮你迅速的判断Mysql服务的运行情况，并对你的Mysql优化与其他处理做出相应有利的建议。 </p>
-<p>首先，下载<a href="/wp-content/uploads/2013/08/tuning-primer.zip">tuning-primer</a>(右键另存后传入到服务器即可)，或者运行以下指令 </p>
-<p><code>wget http://qyappchentao.sinaapp.com/wp-content/uploads/2013/08/tuning-primer.zip</code></p>
-<p>接下来解压到当前文件夹，复制一份到<code>my.cnf</code>同目录下，我这里是<code>/etc/</code></p>
-<p>然后赋予这个脚本执行权限，最好将文件属性设置为MySQL用户：<br><code>chmod a+x tuning-primer.sh(不做此修改也可，需要运行时加入 sh filename)</code></p>
-<p><code>chown root:root tuning-primer.sh</code></p>
-<p>这样就大功告成了！</p>
-<p>如果你的MySQL在管理员权限下需要输入密码，脚本会提示你手动输入或者遵循<code>my.cnf</code>中的配置。 </p>
-<p>接下来运行脚本: </p>
-<p><code>./tuning-primer.sh</code> </p>
-<p>这个脚本会根据你MySQL服务的实际情况做出判断并给出你相应的调整优化建议： </p>
-<p>– MYSQL PERFORMANCE TUNING PRIMER –</p>
-<ul>
-<li>By: Matthew Montgomery -</li>
-</ul>
-<p>MySQL Version 5.0.89-log x86_64(MySQL当前版本)</p>
-<p>Uptime = 21 days 23 hrs 8 min 3 sec<br>Avg. qps = 0<br>Total Questions = 19080<br>Threads Connected = 11</p>
-<p>Server has been running for over 48hrs.<br>It should be safe to follow these recommendations</p>
-<p>To find out more information on how each of these<br>runtime variables effects performance visit:</p>
-<p><a href="http://dev.mysql.com/doc/refman/5.0/en/server-system-variables.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.0/en/server-system-variables.html</a></p>
-<p>Visit <a href="http://www.mysql.com/products/enterprise/advisors.html" target="_blank" rel="external">http://www.mysql.com/products/enterprise/advisors.html</a><br>for info about MySQL’s Enterprise Monitoring and Advisory Service</p>
-<p>SLOW QUERIES(慢查询)<br>The slow query log is enabled.<br>Current long_query_time = 1 sec.<br>You have 529 out of 19101 that take longer than 1 sec. to complete<br>Your long_query_time seems to be fine</p>
-<p>BINARY UPDATE LOG(二进制升级日志，没有启用)<br>The binary update log is NOT enabled.<br>You will not be able to do point in time recovery<br>See <a href="http://dev.mysql.com/doc/refman/5.0/en/point-in-time-recovery.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.0/en/point-in-time-recovery.html</a></p>
-<p>WORKER THREADS(工作线程)<br>Current thread_cache_size = 32<br>Current threads_cached = 1<br>Current threads_per_sec = 0<br>Historic threads_per_sec = 0<br>Your thread_cache_size is fine(线程缓存大小还是合适的)</p>
-<p>MAX CONNECTIONS(最大连接数)<br>Current max_connections = 10000<br>Current threads_connected = 11<br>Historic max_used_connections = 12<br>The number of used connections is 0% of the configured maximum.<br>You are using less than 10% of your configured max_connections.<br>Lowering max_connections could help to avoid an over-allocation of memory<br>See “MEMORY USAGE” section to make sure you are not over-allocating</p>
-<p>INNODB STATUS(Innodb引擎状态)<br>Current InnoDB index space = 0 bytes<br>Current InnoDB data space = 0 bytes<br>Current InnoDB buffer pool free = 96 %<br>Current innodb_buffer_pool_size = 8 M<br>Depending on how much space your innodb indexes take up it may be safe<br>to increase this value to up to 2 / 3 of total system memory</p>
-<p>MEMORY USAGE(内存消耗情况)<br>Max Memory Ever Allocated : 1.32 G<br>Configured Max Per-thread Buffers : 238.03 G<br>Configured Max Global Buffers : 1.04 G<br>Configured Max Memory Limit : 239.07 G<br>Physical Memory : 11.63 G</p>
-<p>Max memory limit exceeds 90% of physical memory</p>
-<p>KEY BUFFER(Key缓存情况)<br>Current MyISAM index space = 28 M<br>Current key_buffer_size = 1.00 G<br>Key cache miss rate is 1 : 2470<br>Key buffer free ratio = 81 %<br>Your key_buffer_size seems to be fine</p>
-<p>QUERY CACHE(查询缓存)<br>Query cache is enabled<br>Current query_cache_size = 32 M<br>Current query_cache_used = 163 K<br>Current query_cache_limit = 1 M<br>Current Query cache Memory fill ratio = .49 %<br>Current query_cache_min_res_unit = 4 K<br>Your query_cache_size seems to be too high.<br>Perhaps you can use these resources elsewhere<br>MySQL won’t cache query results that are larger than query_cache_limit in size</p>
-<p>SORT OPERATIONS(排序操作)<br>Current sort_buffer_size = 4 M<br>Current read_rnd_buffer_size = 16 M<br>Sort buffer seems to be fine</p>
-<p>JOINS(连接)<br>Current join_buffer_size = 132.00 K<br>You have had 0 queries where a join could not use an index properly<br>Your joins seem to be using indexes properly</p>
-<p>OPEN FILES LIMIT(打开文件限制，类似于文件描述符)<br>Current open_files_limit = 51200 files<br>The open_files_limit should typically be set to at least 2x-3x<br>that of table_cache if you have heavy MyISAM usage.<br>Your open_files_limit value seems to be fine</p>
-<p>TABLE CACHE(表缓存)<br>Current table_cache value = 1024 tables<br>You have a total of 38 tables<br>You have 41 open tables.<br>The table_cache value seems to be fine</p>
-<p>TEMP TABLES(临时表状态)<br>Current max_heap_table_size = 16 M<br>Current tmp_table_size = 32 M<br>Of 725 temp tables, 2% were created on disk<br>Effective in-memory tmp_table_size is limited to max_heap_table_size.<br>Created disk tmp tables ratio seems fine</p>
-<p>TABLE SCANS(表扫描情况)<br>Current read_buffer_size = 4 M<br>Current table scan ratio = 11165776 : 1<br>read_buffer_size seems to be fine</p>
-<p>TABLE LOCKING(表加锁情况)<br>Current Lock Wait ratio = 0 : 19356<br>Your table locking seems to be fine </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          还在用show processlist查看进程然后监控Mysql的运行情况吗？你out了！ 
+由M. Montgomery编写的一套脚本可以帮你迅速的判断Mysql服务的运行情况，并对你的Mysql优化与其他处理做出相应有利的建议。 
+首先，下载tuning-primer(右键另存后传入到服务器即可
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/20/mysql-performance-optimization/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -782,46 +739,15 @@
       
         
           
-            <p>大规模信息系统中，日志的处理其实是一个非常基础又重要的部分。对于日志Log文件的采集，一般都是分布式的集群：一方面单一的采集节点会造成流量的拥堵，另一方面，大量日志的处理与存放对于单节点来说压力巨大，这也是分布式系统常需考虑的方面。 采集的另一个重点是增量模式，对于实时系统来说，需要进行类似于流处理(Stream)的增量实时采集(类似于Flume工具的一种实现模式)；当然，采集并不是目的，只是为分析打基础的第一步——采集后实时处理，以及处理之后的实时分析参考运用才是重点。 日志文件通常是非结构化的文本，常见的一般是JSON，XML等等。很明显，非结构化的文件中包含了可以结构化出来的信息(总之就是解析啦)，因此，对于日志的存储有几种方案： </p>
-<ul>
-<li>使用mongoDB数据库进行存储</li>
-<li>使用Hadoop+Hive+HBase进行存储</li>
-</ul>
-<p>2种方案差异不是很大，当然还有很多类似的NoSQL数据库，这里暂时不表。 对于mongoDB来说： </p>
-<ul>
-<li>很大程度的保留了SQL的一些友好的特性(查询，特性)</li>
-<li>Master/Slave复制机制(支持自动错误恢复吗，使用sets copy)</li>
-<li>内建的分片机制</li>
-<li>支持Javascript表达式查询</li>
-<li>性能相对更好(关注性能多于功能)</li>
-<li>总体上讲，适用于有性能需求的场合，希望使用MySQL或者PostgreSQL但本身预定义分隔符无法满足要求的场合</li>
-</ul>
-<p>而对于HBase来说： </p>
-<ul>
-<li>支持数十亿行×上百万列(很诱人)</li>
-<li>脱胎于Hadoop项目，采用分布式架构MapReduce</li>
-<li>对实时查询进行优化</li>
-<li>对配置改变和小升级都会重新回滚</li>
-<li>没有单点故障</li>
-<li>良好的随机访问性能(堪比MySQL)</li>
-<li>总体上说，适用于BigTable和需要对大数据进行随机、实时访问的场合</li>
-</ul>
-<p>言归正传，存储选好之后，接下来就是对日志文件进行实时的解析与入库。 这里的难点是：需要开发对于不同格式的日志的解析规则的适配器，这里也有2种方案： </p>
-<ul>
-<li>对所有终端报回的日志做统一的规范，在解析端只需要简单的解析重要与次要，分开即可，在实时的情况下节约时间与流量成本，这样方便分析，也更加统一。</li>
-<li>使用正则表达式在存储之前对日志进行清洗处理，这样稍被动，但处理之后的Log更加有利于查询，容易提升未来查询的速度。</li>
-</ul>
-<p>这里我们采用了第一种方案，同时汲取方案2的有点，尝试一次性解决日志的解析存储问题。通过灵活的解析配置，动态的支持所有类型的日志文件(当然是合乎统一规范的)，同时还可以自定义相关的解析规则以满足临时查询和其他情况的需要。 </p>
-<p>对于任何日志文件，这里简单的举例，基本都可以采集发生的时间，日志类型，关键词，异常信息，状态信息和标志等等。假如在mongoDB中存储可以实现本身在数据存储层面的灵活水平扩展。 </p>
-<p>在对采集的日志进行处理并持久化存储入库后，接下来的工作就相当简单，即需要开发相应的日志查询和分析功能，可以根据时间段，日志类型，可以根据具体的异常编码，异常关键字内容等对日志信息进行快速的查询和定位。进一步的，可以根据系统的具体需求建立上层的数据报表平台，进行自动化的实时分析。 </p>
-<p>在ITIL里面我们经常看到一个功能即问题树和知识库，那么基于日志的分析和处理仍然可以采用该模式，对于关键的日志异常信息的处理，我们可以将实际的处理方法和结果信息直接登记入库，同时关键日常和处理方法建立对应的关联关系，那么这就不仅仅是一个日志采集分析功能，而是一个基于日志快速的解决问题的知识库。 </p>
-<p>要将该思路实现为一个产品，涉及到诸多的分布式，云计算相关技术的应用。这个选点可能比较小，但是却有实际支撑的业务场景，能够发挥我们说的在大规模分布式集群架构下的实时流处理，实时分析，半结构化数据库的使用等。任何云技术的使用都应该根据目标驱动的方式去思考问题，而不是为了技术而技术——驱动技术的，永远是商业需求；不懂商业，技术永远只是技术；不懂包装，数据就永远只是数据。 </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          大规模信息系统中，日志的处理其实是一个非常基础又重要的部分。对于日志Log文件的采集，一般都是分布式的集群：一方面单一的采集节点会造成流量的拥堵，另一方面，大量日志的处理与存放对于单节点来说压力巨大，这也是分布式系统常需考虑的方面。 采集的另一个重点是增量模式，对于实时系统来说，需要进行类似于流处理
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/19/log-anaysis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -959,13 +885,15 @@
       
         
           
-            <h1 id="从Bonferroni-Corretion说起"><a href="#从Bonferroni-Corretion说起" class="headerlink" title="从Bonferroni Corretion说起"></a>从Bonferroni Corretion说起</h1><p>Mining of Massive Datasets一书中曾简要介绍了有关Bonferroni的知识。 关于Bonferroni。统计学上，为了解决多重比较(Multiple comparisons)的问题，我们使用在同一数据集(Same Dataset)上检验多个独立假设的1/n方法，也即：将显著水平设置为仅检验一个假设时的1/n。之所以为每一次独立的假设加权，是因为在实际统计的过程中，我们无法预测巨大样本中出现的随机事件所占的百分比，更通俗的说法是：在同一数据集上进行的这种多重假设，若显著水平设为5%(normal)，那么每20个假设中就有一个可能纯粹由于随机概率的影响而达到显著。(Bonferroni/Olive Jean Dunn 1959&amp;1961) Bonferroni Corretion的应用又称为Bonferroni T Tests，是目前最为常用的事后鉴定方法之一，用于解决方差分析中反应变量的平均数差异。 这里反映了进行数据挖掘与分析时需要注意的很重要的一点——在对数据分析的过程中，需要理性看待假设，随机数据的结论很可能正与你心中的假设“巧合”，如果在这时对准等概率事件的判断失误，那么就将做出错误乃至更加危险的决策。 当然，选择合适的统计学方法在一定程度上避免了这些情况的发生。得出真实有用的建议与意见，是建立在对数据的整体把握上的。 </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          从Bonferroni Corretion说起Mining of Massive Datasets一书中曾简要介绍了有关Bonferroni的知识。 关于Bonferroni。统计学上，为了解决多重比较(Multiple comparisons)的问题，我们使用在同一数据集(Same Dataset
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/18/bonferroni-corretion/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1081,67 +1009,15 @@
       
         
           
-            <h1 id="Flume使用总结"><a href="#Flume使用总结" class="headerlink" title="Flume使用总结"></a>Flume使用总结</h1><p>Flume可能是现阶段最为优秀的开源分布式采集日志框架，高可靠性，高可用性，并且可以定制多种数据发送方，同时还可以进行简单的日志处理，满足基本的数据需求。 作为Apache基金会的顶级项目，Flume发展迅速，现在已经发布了1.4.0版本。对于开发者来说，0.x与1.x版本之间还是有相当的差别的。 </p>
-<ul>
-<li>0.x版本属于早期版本，它将整个框架分成了有机的4部分 <ul>
-<li>master <ul>
-<li>协调管理agent &amp; colletor的配置信息，是Flume集群的控制节点</li>
-</ul>
-</li>
-<li>agent <ul>
-<li>将数据源(DB or Log or others)的数据发送给collector</li>
-</ul>
-</li>
-<li>collector <ul>
-<li>将多个agent发来的数据汇总后，加载到storage中</li>
-</ul>
-</li>
-<li>storage <ul>
-<li>Flume汇总日志的存储系统，可以是文本文件，也可以是分布式文件系统或架构，如HDFS，Hive，HBase，MongoDB等等</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>1.x版本则对上面的结构做了大刀阔斧的改进：只剩下agent和storage作为Flume的模块(实际上，storage严格说都不能算作是Flume的模块)，这样精简的效果是使得彼此的之间的通讯更为透明</li>
-<li>0.x版本中使用多个master来实现容错和安全机制(zookeeper管理)，而在1.x版本中，每一个agent都可以被配置成master，只需要接收相应的数据即可，动态增加节点更为方便<br>通过以上总结，我们基本了解了Flume的2代产品，现在着重介绍1.x版本(以下未特别说明的，Flume都是指代1.4.0)。 Flume agent主要有3个组件： </li>
-<li>Source <ul>
-<li>完成对日志的采集，将收集到的数据分成transtion &amp; event 输出到channel中</li>
-</ul>
-</li>
-<li>Channel <ul>
-<li>提供一个类似管道的功能，对Source提供的数据进行有序缓存</li>
-</ul>
-</li>
-<li><p>Sink </p>
-<ul>
-<li>接收由Channel传送的数据，写入到相应的文件系统进行存储，或者再次提交到别的agent或者远程服务器<br><img src="/wp-content/uploads/2013/08/flume_ct1-300x225.png" alt="flume_ct"> 对于Source文件的读取，Flume提供了2种方式： </li>
-</ul>
-</li>
-<li><p>ExecSource </p>
-<ul>
-<li>通过Linux/Unix终端命令的方式持续输出最新的数据(如tail -F filename)，在这种方式下，文件名不能使用通配符，需要确定名称</li>
-</ul>
-</li>
-<li>SpoolSource <ul>
-<li>检测配置文件中读取目录下新增的文件，并读出文件中的数据<br>这里需要声明的是： </li>
-</ul>
-</li>
-<li>spool目录下的文件不可以2次编辑</li>
-<li>spool目录下应只含有文件，不得嵌套目录<br>鉴于此，可以在实际操作中，配合log4j使用，将日志文件进行定时切割，通过Flume集中传输。 对比这2种读取方式： </li>
-<li>ExecSource可以实现对日志的实时收集，但是，当Flume由于故障停止运行或者指令发生错误异常时，将无法正常收集到数据，无法保证数据的完整性</li>
-<li>SpoolSource没有办法完全实时的收集数据，但可以用分割文件的方式保证数据的完整性，当分割的时间段越小，也就越接近实时的效果，对于实时性要求不告的情况支持得更好</li>
-<li>如果由于服务器限制或者Web App对分割日志的不支持，可以选择2种方式结合使用<br>在Flume中，Channel是一个很重要的组件，它有以下集中实现： </li>
-<li>MemoryChannel</li>
-<li>JDBC Channel</li>
-<li>MemoryRecoverChannel</li>
-<li>FileChannel<br>MemoryChannel可以实现高速大量吞吐，但是比较消耗内存，同时也无法保证数据的完整性。MemoryChannel在官方文档中已经建议使用FileChannel来替换。 FileChannel可以很好的保证数据的完整性与一致性。在具体配置FileChannel时，建议将传输目录和程序日志文件保存的目录设置不同的磁盘，以便提高传输效率。 Sink在设置存储数据时，可以向各类文件系统中，数据库中，hadoop中，远程服务器存储数据。在日志数据较少时，可以将数据存储在文件系统中，并且设定一定的时间间隔将数据保存到合适的文件系统。在日志数据较多时，可以将相应的日志数据进行简单清洗，然后存储到Hadoop中，便于日后进行相应的数据分析，同时也减少后期ETL的负担。 </li>
-</ul>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          Flume使用总结Flume可能是现阶段最为优秀的开源分布式采集日志框架，高可靠性，高可用性，并且可以定制多种数据发送方，同时还可以进行简单的日志处理，满足基本的数据需求。 作为Apache基金会的顶级项目，Flume发展迅速，现在已经发布了1.4.0版本。对于开发者来说，0.x与1.x版本之间还是
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/17/flume_use/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1257,13 +1133,15 @@
       
         
           
-            <p>观望了很久终于搞了这个独立博。 挣钱了啊！第一笔正式的薪酬，我就冲动了。不过自己觉得还是不贵（因为用的是新浪的域名服务，大家从跳转域名可以看出来），嗯，在天朝，很多人死在了备案这一步，准备走愤青路线可能不能…… 虽然迟，但是我肯定会非常勤劳的（平时在知识管理那边写的东西估计也会都搬过来），有句话怎么说的：目光聚集的地方，金钱比将追随——用在我这里，就是金钱消费的地方，精力必将跟进（这边由于流量的问题，我肯定不会发水文和转帖的，这个质量请诸君放心——说大了）。 周末，就说这么多，欢迎常来。 </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          观望了很久终于搞了这个独立博。 挣钱了啊！第一笔正式的薪酬，我就冲动了。不过自己觉得还是不贵（因为用的是新浪的域名服务，大家从跳转域名可以看出来），嗯，在天朝，很多人死在了备案这一步，准备走愤青路线可能不能…… 虽然迟，但是我肯定会非常勤劳的（平时在知识管理那边写的东西估计也会都搬过来），有句话怎么
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/12/晚来风急/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1379,90 +1257,20 @@
       
         
           
-            <h1 id="Ambar"><a href="#Ambar" class="headerlink" title="Ambar"></a>Ambar</h1><h2 id="1-检测依赖软件安装情况"><a href="#1-检测依赖软件安装情况" class="headerlink" title="1.检测依赖软件安装情况"></a>1.检测依赖软件安装情况</h2><h3 id="RHEL-CentOS-v5"><a href="#RHEL-CentOS-v5" class="headerlink" title="RHEL/CentOS v5"></a>RHEL/CentOS v5</h3><p><code>Ambari Agent</code></p>
-<p><code>libffi 3.0.5-1.el5</code></p>
-<p><code>python26 2.6.``8``-``2``.el5</code></p>
-<p><code>python26-libs ``2.6``.``8``-``2``.el5</code></p>
-<p><code>Nagios Server</code></p>
-<p><code>nagios ``3.2``.``3``-``2``.el5</code></p>
-<p><code>nagios-plugins ``1.4``.``15``-``2``.el5</code></p>
-<p><code>nagios-common ``2.12``-``10``.el5</code></p>
-<p><code>Ganglia Collector</code></p>
-<p><code>ganglia-gmetad ``3.2``.``0``-``99</code></p>
-<p><code>rrdtool ``1.4``.``5``-``1``.el5</code></p>
-<p><code>Ganglia Monitor</code></p>
-<p><code>ganglia-gmond ``3.2``.``0``-``99</code></p>
-<p><code>(将未安装的一并yum安装)</code></p>
-<h2 id="2-检查SELinux"><a href="#2-检查SELinux" class="headerlink" title="2.检查SELinux"></a>2.检查SELinux</h2><p><code>暂时关闭</code></p>
-<p><code>setenforce ``0</code></p>
-<p><code>永久关闭</code></p>
-<p><code>vi /etc/selinux/config</code></p>
-<p><code># This file controls the state of SELinux on the system.</code></p>
-<p><code># SELINUX= can take one of these three values:</code></p>
-<p><code># enforcing - SELinux security policy is enforced.</code></p>
-<p><code># permissive - SELinux prints warnings instead of enforcing.</code></p>
-<p><code># disabled - SELinux is fully disabled.</code></p>
-<p><code>SELINUX=disabled</code></p>
-<p><code># SELINUXTYPE= type of policy in use. Possible values are:</code></p>
-<p><code># targeted - Only targeted network daemons are ``protected``.</code></p>
-<p><code># strict - Full SELinux protection.</code></p>
-<p><code>SELINUXTYPE=targeted</code></p>
-<h2 id="3-关闭防火墙"><a href="#3-关闭防火墙" class="headerlink" title="3.关闭防火墙"></a>3.关闭防火墙</h2><p><code>chkconfig iptables off</code></p>
-<p><code>/etc/init.d/iptables stop</code></p>
-<h2 id="4-关闭PackageKit"><a href="#4-关闭PackageKit" class="headerlink" title="4.关闭PackageKit"></a>4.关闭PackageKit</h2><p><code>vim /etc/yum/pluginconf.d/refresh-packagekit.conf</code></p>
-<p><code>enable=``0</code></p>
-<h2 id="5-检查umask值"><a href="#5-检查umask值" class="headerlink" title="5.检查umask值"></a>5.检查umask值</h2><p><code>umask</code></p>
-<p><code>022``(``0022``)</code></p>
-<h1 id="二-安装"><a href="#二-安装" class="headerlink" title="二. 安装"></a>二. 安装</h1><h2 id="1-setup-bits"><a href="#1-setup-bits" class="headerlink" title="1.setup bits"></a>1.setup bits</h2><p><code>yum install epel-release</code></p>
-<p><code>yum repolist</code></p>
-<p><code>(保证执行后列表中出现以下项目)</code></p>
-<p><code>repo id repo name status</code></p>
-<p><code>HDP-UTILS-``1.1``.``0.15</code> <code>Hortonworks Data Platform Utils Version - HDP-UTILS-``1.1``.``0.15</code> <code>52</code></p>
-<p><code>Updates-ambari-``1``.x ambari-``1``.x - Updates ``35</code></p>
-<p><code>ambari-``1``.x Ambari ``1``.x ``5</code></p>
-<p><code>epel Extra Packages ``for</code> <code>Enterprise Linux ``5</code> <code>\- x86_64 ``7``,``397</code></p>
-<p><code>yum install ambari-server</code></p>
-<h2 id="2-set-up-the-Server"><a href="#2-set-up-the-Server" class="headerlink" title="2.set up the Server"></a>2.set up the Server</h2><p><code>ambari-server setup</code></p>
-<p><code>过程中会出现询问PostgreSQL数据库(Ambari默认DB)的用户名密码</code></p>
-<p><code>n ``//使用默认 ambari-server/bigdata</code></p>
-<p><code>y ``//使用自己指定的</code></p>
-<p><code> </code></p>
-<p><code>#成功配置显示的内容</code></p>
-<p><code>ambari-server setup</code></p>
-<p><code>Using python /usr/bin/python2.``6</code></p>
-<p><code>Initializing ...</code></p>
-<p><code>Setup ambari-server</code></p>
-<p><code>Checking SELinux...</code></p>
-<p><code>SELinux status is ``&#39;disabled&#39;</code></p>
-<p><code>Checking iptables...</code></p>
-<p><code>iptables is disabled now</code></p>
-<p><code>Checking JDK...</code></p>
-<p><code>Completing setup...</code></p>
-<p><code>Configuring database...</code></p>
-<p><code>Enter advanced database configuration [y/n] (n)?</code></p>
-<p><code>Default properties detected. Using built-in database.</code></p>
-<p><code>Checking PostgreSQL...</code></p>
-<p><code>Running initdb: This may take upto a minute.</code></p>
-<p><code>About to start PostgreSQL</code></p>
-<p><code>Configuring database...</code></p>
-<p><code>Configuring PostgreSQL...</code></p>
-<p><code>Restarting PostgreSQL</code></p>
-<p><code>Ambari Server ``&#39;setup&#39;</code> <code>finished successfully</code></p>
-<h2 id="3-start-amp-login"><a href="#3-start-amp-login" class="headerlink" title="3.start&amp;login"></a>3.start&amp;login</h2><p><code>#成功启动显示的内容</code></p>
-<p><code>ambari-server start</code></p>
-<p><code>Using python /usr/bin/python2.``6</code></p>
-<p><code>Starting ambari-server</code></p>
-<p><code>Checking iptables...</code></p>
-<p><code>iptables is disabled now</code></p>
-<p><code>Running server: /usr/jdk64/jdk1.``6``.0_31/bin/java -server -XX:NewRatio=``3</code> <code>-XX:+UseConcMarkSweepGC</code></p>
-<p><code>-XX:-UseGCOverheadLimit -XX:CMSInitiatingOccupancyFraction=``60</code> <code>-Xms512m -Xmx2048m -cp</code></p>
-<p><code>/etc/ambari-server/conf:/usr/lib/ambari-server/*:/usr/kerberos/sbin:/usr/local/hadoop/hive/bin:/usr/local/jdk1.``6``.0_45/bin:</code></p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          Ambar1.检测依赖软件安装情况RHEL/CentOS v5Ambari Agent
+libffi 3.0.5-1.el5
+python26 2.6.``8``-``2``.el5
+python26-libs ``2.6``.``8``-``2``.el5
+Nagios Server
+nagios
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/08/10/ambari-cluster-conf/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

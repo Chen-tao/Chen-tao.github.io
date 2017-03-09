@@ -347,108 +347,19 @@
       
         
           
-            <p>由于需要写一些解析方面的脚本，所以研究了一下Python的调试，有IDE的情况下就简单很多，但是在Server环境下还是需要掌握基本的调试模块pdb。</p>
-<p>pdb在python中是类似于gcc/gdb那样的调试模块，使用时只要引入即可。</p>
-<p>假设现在需要调试的程序如下：</p>
-<pre><code>$ vim t.py
-#!/usr/bin/python26
-
-def main():
-        i, sum = 1, 0
-        for i in xrange(100):
-                sum = sum + i
-        print sum
-
-if __name__ == &apos;__main__&apos;:
-        main()
-</code></pre><p>这时，需要对程序进行调试，将pdb模块引入：</p>
-<pre><code>$ python -m pdb t.py
-</code></pre><p>注： Python 模块也可以当作脚本使用。它们可以用 python -m module [arg] … 调用， 这样就会像你在命令行中给出其完整名字一样运行模块源文件。</p>
-<p>运行上面的命令后进入以下界面，可以输入类似 gdb 的命令来改变程序的执行流程：</p>
-<pre><code>$ python -m pdb t.py 
-&gt; d.py(3)()
--&gt; def main():
-(Pdb) 
-</code></pre><p>使用list显示代码上下文：</p>
-<pre><code>(Pdb) list
-  1      #!/usr/bin/python26
-  2      
-  3  -&gt;    def main():
-  4          i, sum = 1, 0
-  5          for i in xrange(100):
-  6              sum = sum + i
-  7          print sum
-  8       
-  9      if __name__ == &apos;__main__&apos;:
- 10          main()
-[EOF]
-</code></pre><p>使用next | n 执行下一行代码： </p>
-<pre><code>(Pdb) next
-&gt; t.py(9)()
--&gt; if __name__ == &apos;__main__&apos;:
-</code></pre><h2 id="使用break设置断点，同样可以在函数的位置设置断点："><a href="#使用break设置断点，同样可以在函数的位置设置断点：" class="headerlink" title="使用break设置断点，同样可以在函数的位置设置断点："></a>使用break设置断点，同样可以在函数的位置设置断点：</h2><pre><code>(Pdb) break t.py:6
-Breakpoint 1 at t.py:6
-
-(Pdb) list
-  1      #!/usr/bin/python26
-  2      
-  3      def main():
-  4          i, sum = 1, 0
-  5  -&gt;        for i in xrange(100):
-  6 B            sum = sum + i
-  7          print sum
-  8       
-  9      if __name__ == &apos;__main__&apos;:
- 10          main()
-[EOF]
-
-(Pdb) break t.main
-t.py:3
-
-(Pdb) list
-  1      #!/usr/bin/python26
-  2      
-  3 B    def main():
-  4  -&gt;        i, sum = 1, 0
-  5          for i in xrange(100):
-  6              sum = sum + i
-  7          print sum
-  8       
-  9      if __name__ == &apos;__main__&apos;:
- 10          main()
-[EOF]
-</code></pre><p>使用step进入函数内部执行，使用pp打印变量的值：</p>
-<pre><code>(Pdb) step
-&gt; t.py(5)main()
--&gt; for i in xrange(100):
-(Pdb) pp sum
-0
-</code></pre><p>更加直接的方法是在python脚本中直接引入pdb模块，需要的时候写入pdb.set_trace()之类的命令就可以了：</p>
-<pre><code>#!/usr/bin/python26
-import pdb
-
-def main():
-        i, sum = 1, 0
-        for i in xrange(100):
-                sum = sum + i
-        pdb.set_trace()
-        print sum
-
-if __name__ == &apos;__main__&apos;:
-        main()
-</code></pre><p>按照以上的写法，只要运行</p>
-<pre><code>$ python t.py    #或者./t.py 前提是有加执行的权限 
-&gt; t.py(9)main()
--&gt; print sum
-(Pdb) 
-</code></pre><p>这样就直接到设置trace的位置了。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>命令 用途</p>
-<p>break 或 b<br>设置断点</p>
-<p>continue 或 c<br>继续执行程序</p>
-<p>list 或 l<br>查看当前行的代码段</p>
-<p>step 或 s<br>进入函数</p>
-
-          
+          由于需要写一些解析方面的脚本，所以研究了一下Python的调试，有IDE的情况下就简单很多，但是在Server环境下还是需要掌握基本的调试模块pdb。
+pdb在python中是类似于gcc/gdb那样的调试模块，使用时只要引入即可。
+假设现在需要调试的程序如下：
+$ vim t.py
+#!/usr/
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/21/python-pdb/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -564,82 +475,15 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>上一节我们概述了MySQL的锁机制，讲到了<a href="">MySQL锁定机制分析–表级锁定</a>，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。 </p>
-<h2 id="InnoDB行锁简介"><a href="#InnoDB行锁简介" class="headerlink" title="InnoDB行锁简介"></a>InnoDB行锁简介</h2><p>InnoDB的行级锁定分为2种类型： </p>
-<ul>
-<li>共享锁 shared (<em><code>S</code></em>)</li>
-<li>排它锁 exclusive (<em><code>X</code></em>)</li>
-</ul>
-<p>而为了使得表锁和行锁共存，InnoDB引入了意向锁的概念，也就有了意向共享锁和意向排它锁这2种。 当一个事务需要给某些资源加锁的时候，如果 </p>
-<ul>
-<li>一个共享锁已经(正在)锁定当前资源，那么再加一个共享锁，但不能加排他锁</li>
-<li><p>一个排它锁已经(正在)锁定当前资源，则事务只能等待其释放后才能再加锁<br>意向锁的作用就是当希望锁定资源而遇到已经在资源上面的排它锁时可以添加的一种锁类型。如果需要 </p>
-</li>
-<li><p>共享锁，那么在表上添加一个意向共享锁(此锁可以多个并存)</p>
-</li>
-<li>排它锁，那么在表的某行(或某些行)添加一个排它锁(前提是之前没有其他事务添加意向排它锁，否则依然需要加入等待队列，也就是说此锁不可以多个并存，有且只能有一个加在当前表)</li>
-</ul>
-<p>那么，MySQL实际上就存在4种锁类型，下面是这些锁的共存逻辑关系(<em>lock type compatibility matrix)</em>。√代表可以共存(Compatible)，×表示加锁冲突(Conflict) </p>
-<table>
-<thead>
-<tr>
-<th style="text-align:right"></th>
-<th style="text-align:right">排它锁(X)</th>
-<th style="text-align:right">意向共享锁(IS)</th>
-<th style="text-align:right">意向排它锁(IX)</th>
-<th style="text-align:right">共享锁(S)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">共享锁(S)</td>
-<td style="text-align:right">√</td>
-<td style="text-align:right">×</td>
-<td style="text-align:right">√</td>
-<td style="text-align:right">×</td>
-</tr>
-<tr>
-<td style="text-align:right">排它锁(X)</td>
-<td style="text-align:right">×</td>
-<td style="text-align:right">×</td>
-<td style="text-align:right">×</td>
-<td style="text-align:right">×</td>
-</tr>
-<tr>
-<td style="text-align:right">意向共享锁(IS)</td>
-<td style="text-align:right">√</td>
-<td style="text-align:right">×</td>
-<td style="text-align:right">√</td>
-<td style="text-align:right">√</td>
-</tr>
-<tr>
-<td style="text-align:right">意向排它锁(IX)</td>
-<td style="text-align:right">×</td>
-<td style="text-align:right">×</td>
-<td style="text-align:right">√</td>
-<td style="text-align:right">√</td>
-</tr>
-</tbody>
-</table>
-<h2 id="行级锁定演示与死锁-Deadlock"><a href="#行级锁定演示与死锁-Deadlock" class="headerlink" title="行级锁定演示与死锁(Deadlock)"></a>行级锁定演示与死锁(Deadlock)</h2><p>当使用行级锁定的时候，往往会发生死锁，死锁的概念比较简单，就是互相等待对方释放资源而导致的停滞。 这里我们简单展示一下MySQL InnoDB在使用行级锁定的情况下发生的死锁。 使用行级锁定的方法是：<br> <a href="http://dev.mysql.com/doc/refman/5.0/en/select.html" target="_blank" rel="external"><code>SELECT ... LOCK IN SHARE MODE</code></a> sets an <em><code>IS</code></em> lock and <a href="http://dev.mysql.com/doc/refman/5.0/en/select.html" target="_blank" rel="external"><code>SELECT ... FOR UPDATE</code></a> sets an _<code>IX</code>_lock. </p>
-<ol>
-<li>建立测试表，插入测试数据，并加上共享锁。</li>
-</ol>
-<p><img src="http://chentaohome.qiniudn.com/create_test_table.jpg" alt="create_test_table"></p>
-<ol>
-<li>使用另一个session提交一个获取写锁的事务，由于读写锁的冲突，阻塞。</li>
-</ol>
-<p><img src="http://chentaohome.qiniudn.com/session2_trans.jpg" alt="session2_trans"></p>
-<ol>
-<li>当前session提交相同事务，由于当前session需要一个写锁来操作当前行，但另一session已经在等待获取此写锁，因而发生死锁，InnoDB根据事务量来选择回滚相应的session事务，同时回滚的事务返回一个死锁的error。</li>
-</ol>
-<p><img src="http://chentaohome.qiniudn.com/deadlock.jpg" alt="deadlock"></p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/17/mysql-row-lock/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -755,70 +599,27 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： </p>
-<ul>
-<li>MyISAM</li>
-<li>InnoDB</li>
-<li>NDB Cluster</li>
-<li>Maria</li>
-<li>Falcon</li>
-<li>Memory</li>
-<li>Archive</li>
-<li>Merge</li>
-<li>Federated</li>
-</ul>
-<p>其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机制有3个级别： </p>
-<ul>
-<li>行级锁定(row-level)</li>
-<li>表级锁定(table-level)</li>
-<li>页级锁定(page-level)</li>
-</ul>
-<p>##行级锁定 </p>
-<p>属于最小的锁定粒度。因为锁定粒度很小，所以发生资源争用的概率也是最小的，能应对App最大的并发处理需求，提升性能。但也正是由于粒度小，使得每次获取和释放锁的时候需要的操作和消耗的资源也变得更多，也最容易发生死锁。使用这种锁定的引擎主要是MyISAM、Memory、CSV等。 </p>
-<p>##表级锁定 </p>
-<p>表级锁定是MySQL中锁定粒度最大的一种锁定。实现的逻辑最简单，系统处理锁使用的资源也最少，可以很好的避免死锁问题。当然，相对于行级锁定，并行处理的能力也由于对整个表的一次性锁定而大打折扣。使用这种锁定的引擎为InnoDB、NDB Cluster。 </p>
-<p>##页级锁定 </p>
-<p>属于MySQL中一种特殊的锁定机制。锁定某一类查询页的时候会用到(并不常用)，粒度介于以上2种锁定之间，其他特性也相对如此。这种锁定方式为BDB的锁定形式。 先简单看一下表级锁定。 一般来讲，表级锁定分为读锁和写锁。MySQL通过4个队列来维护这2种锁定的信息： </p>
-<ul>
-<li>Current read-lock queue(lock-&gt;read)</li>
-<li>Pending read-lock queue(lock-&gt;read_wait)</li>
-<li>Current write-lock queue(lock-&gt;write)</li>
-<li>Pending write-lock queue(lock-&gt;write_wait)</li>
-</ul>
-<p>很简单，从字面上就可以知道这些队列分别的公用。 </p>
-<p>##读锁 </p>
-<p>一个新的Client Requset Resources(Read读锁)，需要满足以下2个条件： </p>
-<ul>
-<li>请求锁定的资源上没有写锁。</li>
-<li>写锁等待队列(Pending write-lock queue)中没有更高优先级(high-level-priority)的写锁在等待(获取资源)。</li>
-</ul>
-<p>如果满足了以上的2个条件，那么当前Client立即获取资源，并加上读锁。 </p>
-<p>如果任一条件没有得到满足，这个请求会被迫进入等待队列(Pending read-lock queue)中等待资源的释放。 </p>
-<p>##写锁 </p>
-<p>当Client Requset Resources(Write写锁)的时候，MySQL首先会Check Current write-lock queue是否已经有锁定相同资源的信息存在。然后是检查Pending write-lock queue，如果有锁已经存在，则进入等待队列。 </p>
-<p>MyISAM引擎使用的锁机制完全是由MySQL提供的表级锁定实现的。下面以MyISAM引擎为例，对显式的加锁做一个演示： </p>
-<ol>
-<li><p>显式给qqlist表加读锁，session之间的操作未被阻塞。 <img src="http://chentaohome.qiniudn.com/readlock1.jpg" alt="readlock1"> </p>
-</li>
-<li><p>更新操作：当前拥有锁的session遇到加锁的错误，其他session的操作被阻塞。 <img src="http://chentaohome.qiniudn.com/readlock2.jpg" alt="readlock2"> </p>
-</li>
-<li><p>释放读锁。其他session获取资源，操作顺利执行。 <img src="http://chentaohome.qiniudn.com/readlock3.jpg" alt="readlock3"> </p>
-</li>
-<li><p>获取local read，其他线程的insert操作未被阻塞(Concurrent Insert特性)。 <img src="http://chentaohome.qiniudn.com/readlock4.jpg" alt="readlock4"> </p>
-</li>
-<li><p>显式给qqlist表加写锁，其他session的读操作被阻塞。 <img src="http://chentaohome.qiniudn.com/writelock1.jpg" alt="writelock1"> </p>
-</li>
-<li><p>释放写锁。其他session获取资源，操作顺利执行。 <img src="http://chentaohome.qiniudn.com/writelock2.jpg" alt="writelock2"> </p>
-</li>
-<li><p>通过DDL(Alter table)获取WRITE_ALLOW_READ类型的写锁，其他session的读操作未被阻塞。 <img src="http://chentaohome.qiniudn.com/writelock3.jpg" alt="writelock3"></p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-</li>
-</ol>
+          为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
 
-          
+MyISAM
+InnoDB
+NDB Cluster
+Maria
+Falcon
+Memory
+Archive
+Merge
+Federated
+
+其中，使用最多最
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/16/mysql-table-lock/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -934,48 +735,24 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>兰波 </p>
-<p>##一##</p>
-<p>我们并不当真，当我们年方十七。</p>
-<p>——一个美妙的晚上，去他的柠檬汁和啤酒，</p>
-<p>去他的吵闹咖啡厅灯火熠熠！</p>
-<p>——我们去散步的地方绿色的菩提树下悠游。</p>
-<p>菩提树闻起来芬芳在六月的美好夜晚！</p>
-<p>空气有时如此温柔，弄得我们闭上眼皮；</p>
-<p>带着种种声息的风，——城市并不遥远，——</p>
-<p>有葡萄藤的香气和啤酒的香气……</p>
-<p>##二##</p>
-<p>——这就是我们看到的小小一团</p>
-<p>暗沉天空，环绕着一根小树枝，</p>
-<p>刺上了一颗正以轻柔的寒颤</p>
-<p>熔化的坏星星，微小而白皙……</p>
-<p>六月的夜晚！十七岁！——我们让自己微醺。</p>
-<p>汁液是香槟，冲上你的头……</p>
-<p>我们胡言乱语；我们感到唇上有一个吻</p>
-<p>在那里悸动，如同一只小小的野兽……</p>
-<p>##三##</p>
-<p>经过一个个传奇的鲁滨逊的疯狂心脏，</p>
-<p>——当一盏昏暗路灯的光亮里面，</p>
-<p>走过一个哼唱着迷人小调的姑娘，</p>
-<p>在她父亲吓人的假领子的阴影下面……</p>
-<p>而且，因为她觉得你极其幼稚，</p>
-<p>正踩着小皮靴一路小跑，</p>
-<p>她一下子转身，敏捷又伶俐，</p>
-<p>——短歌咏叹就在你的唇上死掉……</p>
-<p>##四##</p>
-<p>你恋爱了。一直被赞美到八月。</p>
-<p>你恋爱了。——你的商籁让她发笑又开心。</p>
-<p>你所有的朋友都离开了，你是死皮赖脸风度缺缺。</p>
-<p>——然后钟爱的人儿，一天晚上，屈尊给你写了信……！</p>
-<p>——这天晚上……——你回到咖啡厅光彩熠熠，</p>
-<p>你点上啤酒或者柠檬汁……</p>
-<p>——我们并不当真，当我们年方十七</p>
-<p>当我们在散步的地方有绿色的菩提。</p>
-<hr>
-<p><img src="http://chentaohome.qiniudn.com/lb1.jpg" alt="lb1"></p>
-<p><img src="http://chentaohome.qiniudn.com/lb2.jpg" alt="lb2"></p>
-
-          
+          兰波 
+##一##
+我们并不当真，当我们年方十七。
+——一个美妙的晚上，去他的柠檬汁和啤酒，
+去他的吵闹咖啡厅灯火熠熠！
+——我们去散步的地方绿色的菩提树下悠游。
+菩提树闻起来芬芳在六月的美好夜晚！
+空气有时如此温柔，弄得我们闭上眼皮；
+带着种种声息的风，——城市并不遥远，——
+有葡萄藤的香气和啤酒
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/07/legend/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1091,19 +868,15 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，<a href="/hadoop-job-scheduler/">Hadoop多用户作业调度器</a>，<a href="http://qyappchentao.sinaapp.com/centos-tmux-screen-byobu/" target="_blank" rel="external">CentOS下tmux,screen,byobu安装与使用</a>，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;Telnet的问题，当我们登录了远程服务器，运行了一些耗时较长的任务， 结果却由于网络的不稳定导致任务中途失败。如何让命令提交后不受本地关闭终端窗口或网络断开连接或其他意外情况的干扰呢？之前我们介绍了nohup 和 screen(参见以上2篇文章内容)，这次着重介绍一下setsid 、 &amp;  和 disown。 </p>
-<h2 id="setsid"><a href="#setsid" class="headerlink" title="setsid"></a>setsid</h2><p>nohup 可以通过忽略 HUP 信号来使我们的进程避免被中断，但如果我们换个角度思考，如果我们的进程不属于接受 HUP 信号的终端的子进程，那么自然也就不会受到 HUP 信号的影响了。setsid 就能帮助我们做到这一点。让我们先来看一下 setsid 的帮助： [code] SETSID(1) Linux Programmer’s Manual SETSID(1) NAME setsid - run a program in a new session SYNOPSIS setsid program [arg…] DESCRIPTION setsid runs a program in a new session. SEE ALSO setsid(2) AUTHOR Rick Sladkey <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#58;&#106;&#114;&#115;&#x40;&#119;&#111;&#114;&#x6c;&#x64;&#46;&#x73;&#x74;&#x64;&#46;&#99;&#x6f;&#x6d;">&#106;&#114;&#115;&#x40;&#119;&#111;&#114;&#x6c;&#x64;&#46;&#x73;&#x74;&#x64;&#46;&#99;&#x6f;&#x6d;</a> AVAILABILITY The setsid command is part of the util-linux-ng package and is available from ftp://ftp.kernel.org/pub/linux/utils/util-linux-ng/. Linux 0.99 20 November 1993 SETSID(1) [/code] 举个例子，我们用setsid运行一个ping job： [code] [root@localhost hbase]# setsid ping www.google.com [root@localhost hbase]# ps -ef | grep www root 64312 1 0 07:48 ? 00:00:00 ping www.google.com root 64925 64776 0 07:49 pts/10 00:00:00 grep www [/code] 可以看到，setsid指定了job的父进程的进程号为1，也就是说，这个job已经不是当前终端的子进程了。 </p>
-<h2 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h2><p>我们知道，将命名包含在“()”中就能让这些命令在子 shell 中运行，而当我们将”&amp;”也放入“()”内之后，我们就会发现所提交的作业并不在作业列表中，也就是说，是无法通过jobs来查看的。这样就巧妙的避开了HUP信号，起到了安全后台运行的作用。 [code][root@localhost hbase]# (ping www.google.com &amp;) [root@localhost hbase]# ps -ef | grep www root 5328 1 0 07:54 pts/10 00:00:00 ping www.google.com root 5527 5395 0 07:54 pts/11 00:00:00 grep www[/code] 这里看到，&amp; 与 setsid的情况相同，父进程的进程号变成了1。 </p>
-<h2 id="disown"><a href="#disown" class="headerlink" title="disown"></a>disown</h2><p>如果事先在命令前加上 nohup 或者 setsid 就可以避免 HUP 信号的影响。但是如果我们未加任何处理就已经提交了命令，该如何补救才能让它避免 HUP 信号的影响呢？ 这时想加 nohup 或者 setsid 已经为时已晚，只能通过作业调度和 disown 来解决这个问题了。对于disown有以下几种使用方式： </p>
-<ul>
-<li>用disown -h jobspec    使某个作业忽略HUP信号。</li>
-<li>用disown -ah                使所有的作业都忽略HUP信号。</li>
-<li>用disown -rh                使正在运行的作业忽略HUP信号。<br>当使用过 disown 之后，会将把目标作业从作业列表中移除，我们将不能再使用jobs来查看它，但是依然能够用ps -ef查找到它。 使用示例： [code] [root@localhost hbase]# ping www.google.com ^Z [1]+ Stopped ping www.google.com [root@localhost hbase]# jobs [1]+ Stopped ping www.google.com [root@localhost hbase]# bg %1 [1]+ ping www.google.com &amp; [root@localhost hbase]# disown -h %1 [root@localhost hbase]# ps -ef | grep www root 13196 5395 0 08:02 pts/11 00:00:00 ping www.google.com root 17803 13349 0 08:07 pts/8 00:00:00 grep www <pre> [/code] 这里举的例子是在完全没有进行后台运行的情况下使用disown，当然也可以先用&amp;再使用disown进行操作。 如果是大批量的操作，还是建议使用screen/tmux/byobu一类的多终端软件。 </pre></li>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，Hadoop多用户作业调度器，CentOS下tmux,screen,byobu安装与使用，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;Telnet的问题，当我们登录了远程服务器，运行了一些
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/06/linux-process-bg/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1219,22 +992,15 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>上次介绍了Linux下几款强大的多任务处理终端 <a href="/linux-session-process/">Linux会话与进程剖析</a>，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install <em>*</em>[/code] 来解决，不过，对于RedHat系列的就没有那么简单了，下面介绍一下在RedHat/CentOS一类的发行版上安装这些软件的方法。 </p>
-<h2 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h2><p>Screen是一种用于保持终端可持续会话、可以同时进行多个会话的一个工具。而Byobu呢，则是Ubuntu开发的，在Screen的基础上进行包装，使其更加易用的一个工具。安装时，screen算是比较幸运的一种，可以直接用yum搞定 [code]yum install screen[/code] </p>
-<h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p>tmux是BSD实现的Screen替代品，相对于Screen，它更加先进：支持屏幕切分，而且具备丰富的命令行参数，使其可以灵活、动态的进行各种布局和操作。它可以做到一条命令就启动起来(强大的配置)，左侧是终端，右侧是Vim，下面来一个gdb——总之它就是一个灵活的IDE，任仍你配置。安装tmux之前需要先安装一些支持的组件 [code]yum install libevent-devel ncurses-devel[/code] 接下来就是下载源码包进行安装了，这里要说明一点：到目前为止，tmux的最新版本是1.8，但进过我测试1.8在编译的时候会出现小小的问题，所以建议选择低一点的版本，1.6/1.7均可。 [code] wget <a href="http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz" target="_blank" rel="external">http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz</a> tar zxvf tmux-1.6.tar.gz cd tmux-1.6 ./configure make make install [/code] 这样依赖，tumx就安装完毕了，具体的配置我会另作说明，其实，默认的配置就很好用了。 </p>
-<h2 id="byobu"><a href="#byobu" class="headerlink" title="byobu"></a>byobu</h2><p>上篇说过，byobu是tmux的再封装，不过有screen的存在他依然可以运行。最新的Byobu（5.9），已经是基于Tmux作为后端了。也就是说，Byobu也是支持屏幕切分，并且通过「byobu-tmux」这个命令行前端来接受各种与tmux一模一样的参数来控制它(还有更多扩展的命令大家可以去自己挖掘)。 安装byobu之前需要保证你已经安装了screen/tmux的其中一种，否则会报错(就是依赖错误) 去到byobu官网下载byobu的源码然后安装即可 [code]wget <a href="https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz" target="_blank" rel="external">https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz</a> tar -zxvf byobu_5.57.orig.tar.gz cd byobu-5.57 ./configure make &amp;&amp; make install[/code] 接下来就可以体验byobu的美好啦(Linux下装X利器之一，另一个是zsh，直接yum就OK，LOL) </p>
-<h2 id="byobu入门"><a href="#byobu入门" class="headerlink" title="byobu入门"></a>byobu入门</h2><h3 id="热键说明"><a href="#热键说明" class="headerlink" title="热键说明"></a>热键说明</h3><p>F2 创建新的窗口<br>F3 回到先前窗口</p>
-<p>F4:跳到下一个窗口<br>F5 重新加载文件</p>
-<p>F6 释放该次对话<br>F7 进入 复制/回滚模式</p>
-<p>F8 重新命名一个窗口<br>F9 配置菜单，也可以使用组合键Ctrl+a, Ctrl+@<br>配置界面展示： <img src="/wp-content/uploads/2013/09/byobu-conf.jpg" alt="byobu-conf"> 想要在byobu中退出一个终端，使用exit或者Ctrl+d即可。 当你退出了byobu的最后一个终端，相应的你也就退出了byobu，byobu程序关闭并且你回到了常规的终端界面。除此之外，还有其他两种退出byobu的方法：锁住和断开链接。F12锁住进入你的屏幕直到你输入系统密码。断开链接是screen最为强大的特征，同样在byobu中也可以完美工作。你可以断开链接退出屏幕去做其他的事情，然后再重新链接；screen和byobu都可以保存你断开时的状态。例如，你可以在你的写字台上输入，然后断开这个session，回到家，重新链接，继续输入，就像什么都没发生过一样。而且，即使screen和byobu断开，所有从screen和byobu运行的程序仍然继续运行。当screen或byobu处于lock状态（Ctrl+a+x）时，如果其他人关闭了你的终端，它会自动断开链接。按住F6即可断开链接，你又回到了你最开始打开screen或者byobu的界面，你可以继续工作，关闭你之前打开的终端，甚至完全退出screen或byobu。当你想要重新链接时，运行命令screen -r或者byobu -r。你可以断开链接再重新建立链接一个session任意多次。 更多信息可以使用man byobu查询(screen和tmux的很多命令在byobu下都是可用的)。 另外，关于byobu的配置也是千千万万，网上有很多，我自己也使用了一些简单的配置，由于个人的操作习惯不同(比如我就很喜欢Ctrl/Shift+F2的窗口切分[下图示例]，有的同学则喜欢用Ctrl+a/c来激活热键)，这里就不做推荐了，有兴趣的同学可以去研究合适自己的配置。 <img src="http://qyappchentao.sinaapp.com/wp-content/uploads/2013/09/slipt-window.jpg" alt="slipt-window"></p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#577" title="2014-08-25 10:26:53">sum</a>:</strong> 你好，我用securecrt连接centos，然后在上面安装了byobu，但是像F9之类的快捷键都失效了。请问有什么解决方案吗？</p>
-<p><strong><a href="#581" title="2014-08-25 21:04:58">CT</a>:</strong> 建议检查一下securecrt的配置，这种桥接的环境下，确实会导致一些快捷键失效。可以在securtcrt里的Global Setting里面设置一下相关的参数试一下，感觉其实tmux差不多够用了，加上高亮基本可以满足。</p>
-
-          
+          上次介绍了Linux下几款强大的多任务处理终端 Linux会话与进程剖析，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install *[/code] 来
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/05/centos-tmux-screen-byobu/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1350,21 +1116,15 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>Linux下的rm命令虽然强大，但是误删的情况还是时有发生。当遇到重要文件被不小心rm –rf的时候，就欲哭无泪了，trash-cli帮助我们解决这个问题——将文件不直接删除，而是像Windows一样移动到回收站去。 trash-put命令会把我们想要删除的文件移动到 [code]~/.local/share/Trash/files[/code] 相关信息记录在 [code]~/.local/share/Trash/info[/code] </p>
-<h2 id="Get-amp-Install-trash-cli"><a href="#Get-amp-Install-trash-cli" class="headerlink" title="Get&amp;Install trash-cli"></a>Get&amp;Install trash-cli</h2><p>[code]git clone <a href="https://github.com/andreafrancia/trash-cli" target="_blank" rel="external">https://github.com/andreafrancia/trash-cli</a> cd trash-cli-master[/code] 如果希望给本机的所有用户都安装： [code]sudo python setup.py install[/code] 给指定用户安装： [code]python setup.py install –user[/code] </p>
-<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>因为和 rm命令接口是兼容的，所以，可以使用 trash-put 代替 rm，trash-cli 在删除文件时会记录文件的原始路径、删除时间和文件权限，并且兼容GNOME和 KDE的 trash实现。同时也实现了 FreeDesktop.org Trash Specification。也支持除 home文件系统以外的其他文件系统和文件分区以及移动设备分区。 安装完毕之后我们可以通过一些配置，用它替代 rm命令： 在 ~/.bashrc 文件中间加入(当然这是给当前用户添加的)： [code]alias rm=”trush-put”[/code] 但这时候会出现一些问题，当希望使用rm –r 的时候就会发生错误，因为trash-cli本身不支持这种方式(很多rm的参数都是不支持的)，所以还是不建议大家使用trash-put来替换rm，直接使用这个新命令即可 </p>
-<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><p>trash-cli提供以下命令： </p>
-<p>trash-put<br>将文件或者目录放入回收站</p>
-<p>trash-empty<br>清空回收站</p>
-<p>trash-list<br>列出回收站文件</p>
-<p>restore-trash<br>还原回收站文件(会显示列表，方便使用标号还原)</p>
-<p>trash-rm<br>删除回收站文件(单个永久删除)</p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          Linux下的rm命令虽然强大，但是误删的情况还是时有发生。当遇到重要文件被不小心rm –rf的时候，就欲哭无泪了，trash-cli帮助我们解决这个问题——将文件不直接删除，而是像Windows一样移动到回收站去。 trash-put命令会把我们想要删除的文件移动到 [code]~/.local/
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/04/trash-cli/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1480,62 +1240,16 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <h2 id="Hadoop队列管理机制"><a href="#Hadoop队列管理机制" class="headerlink" title="Hadoop队列管理机制"></a>Hadoop队列管理机制</h2><h3 id="用户权限管理"><a href="#用户权限管理" class="headerlink" title="用户权限管理"></a>用户权限管理</h3><p>在mapred-site.xml中配置队列，并启用权限管理功能 在mapred-queue-acls.xml中配置用户对队列操作的权限(需要自定相关的用户组) </p>
-<h3 id="系统资源管理"><a href="#系统资源管理" class="headerlink" title="系统资源管理"></a>系统资源管理</h3><p>根据不同的调度器，在其自己的配置文件中规划 如：capacity-scheduler.xml             fair-scheduler.xml </p>
-<h2 id="Capacity-Scheduler"><a href="#Capacity-Scheduler" class="headerlink" title="Capacity Scheduler"></a>Capacity Scheduler</h2><p><a href="http://hadoop.apache.org/docs/stable/capacity_scheduler.html" target="_blank" rel="external">http://hadoop.apache.org/docs/stable/capacity_scheduler.html</a> 功能调度器主要体现在： </p>
-<ol>
-<li>资源保证</li>
-<li>灵活性</li>
-<li>多重任务分配</li>
-<li>大内存作业&amp;资源密集型作业支持</li>
-<li>作业优先级支持</li>
-</ol>
-<h2 id="Fair-Scheduler"><a href="#Fair-Scheduler" class="headerlink" title="Fair Scheduler"></a>Fair Scheduler</h2><p><a href="http://hadoop.apache.org/docs/stable/fair_scheduler.html" target="_blank" rel="external">http://hadoop.apache.org/docs/stable/fair_scheduler.html</a> 核心思想：基于资源池的最小资源量和公平共享量进行任务调度 公平调度器主要体现在： </p>
-<ol>
-<li>资源公平分配</li>
-<li>资源抢占</li>
-<li>负载均衡</li>
-<li>本地任务延时</li>
-<li>配置文件动态加载</li>
-</ol>
-<h2 id="Capacity-Scheduler-VS-Fair-Scheduler"><a href="#Capacity-Scheduler-VS-Fair-Scheduler" class="headerlink" title="Capacity Scheduler VS Fair Scheduler"></a>Capacity Scheduler VS Fair Scheduler</h2><p>Capacity Scheduler</p>
-<p>Fair Scheduler</p>
-<p>目标</p>
-<p>提供一种多用户共享Hadoop集群的方法，提高资源利用率降低管理成本</p>
-<p>设计思想</p>
-<p>资源按比例分配给各队列，添加严格的限制防止用户或队列独占资源</p>
-<p>基于最大最小攻破算法将资源分配给各个资源池或用户</p>
-<p>动态加载配置文件</p>
-<p>×</p>
-<p>√</p>
-<p>负载均衡</p>
-<p>×</p>
-<p>√</p>
-<p>资源抢占</p>
-<p>×</p>
-<p>√</p>
-<p>大内存作业</p>
-<p>√ 允许一个Task占用多个Slot</p>
-<p>× 一个Task只能占用一个Slot</p>
-<p>批量调度</p>
-<p>√</p>
-<p>√</p>
-<p>本地任务调度优化</p>
-<p>基于跳过次数的延迟调度</p>
-<p>基于时间的延迟调度</p>
-<p>队列间资源分配方式</p>
-<p>资源使用率低优先</p>
-<p>队列内部资源分配方式</p>
-<p>默认FIFO，支持优先级</p>
-<p>默认Fair，支持FIFO</p>
-<p>事实上，Fair Scheduler一定程度上包含了Capacity Scheduler，后者是前者在配置为队列模式时的特例(排除大内存作业的特性，这写作业可以单独进行其他方式的优化) 建议选择Fair Scheduler，在商定ACL后，即可加入调度器进行任务规划。 </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#534" title="2014-08-18 10:54:32">石灰窑设备</a>:</strong> 不错，看着挺好的。</p>
-
-          
+          Hadoop队列管理机制用户权限管理在mapred-site.xml中配置队列，并启用权限管理功能 在mapred-queue-acls.xml中配置用户对队列操作的权限(需要自定相关的用户组) 
+系统资源管理根据不同的调度器，在其自己的配置文件中规划 如：capacity-scheduler.xm
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/03/hadoop-job-scheduler/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1651,34 +1365,18 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 </p>
-<h2 id="SIGHUP信号"><a href="#SIGHUP信号" class="headerlink" title="SIGHUP信号"></a>SIGHUP信号</h2><p>在Linux系统中，关于进程与会话有这样几个概念： </p>
-<ul>
-<li>进程组(process group)<br>一个或多个进程的集合，每个进程都有一个进程组ID，这个ID也是进程组长进程的ID </li>
-<li>会话期(session)<br>一个或多个进程组的集合，每个会话有唯一一个会话首进程(session leader)，会话ID为会话首进程ID </li>
-<li>控制终端(controlling terminal)<br>每一个会话可以有一个单独的控制终端，与控制终端连接的会话首进程就是控制进程(controlling process)。 这时候，与当前终端交互的就是前台进程组，其他的都是后台进程组。 </li>
-</ul>
-<h2 id="终止过程"><a href="#终止过程" class="headerlink" title="终止过程"></a>终止过程</h2><p>根据POSIX.1中的定义： </p>
-<ul>
-<li>控制信号(SIGHUP)默认动作是终止程序</li>
-<li>当终端接口检测到网络断开，会将挂断信号发送给控制进程(也就是会话首进程)</li>
-<li>如果会话首进程中止，则该信号发送给该会话的前台进程组</li>
-<li>一个进程退出导致了一个孤儿进程组产生时，如果任意一个孤儿进程组的进程处于STOP状态，则发送SIGHUP或者SIGCONT信号到该进程组中的所有进程，这时就相当于下达了判决书，所有此进程组中的进程被终止。</li>
-</ul>
-<h2 id="nohup后台程序"><a href="#nohup后台程序" class="headerlink" title="nohup后台程序"></a>nohup后台程序</h2><p>我们常常需要运行一个时限很长的进程(FTP文件传输，大作业Hadoop程序，Flume日志处理，etc)，像是用 telnet/ssh 登录了远程的 Linux 服务器，运行了一些耗时较长的任务，结果却由于网络的不稳定导致任务中途失败。如何让命令提交后不受本地关闭终端窗口/网络断开连接的干扰呢？这就与SIGHUP信号有关。 事实上，我们要做的是不希望在关闭窗口的同时，接收到SIGHUP信号的响应，这时候，nohup命令就可以帮助我们：如果程序的标准输出(包括错误输出)是终端直接输出，那么nohup可以将这些输出重定向到nohup.txt文件中。 当然这样做后没有结束，nohup只是忽略了这些信号，我们还需要使用&amp;将进程放在后台运行，具体为： [code]nohup <command> [argument…] &amp;[/code] </p>
-<h2 id="终端多路复用"><a href="#终端多路复用" class="headerlink" title="终端多路复用"></a>终端多路复用</h2><p>nohup虽然简单好用，但往往只能解决简单的操作，如果是复杂的人机交互，nohup就无能为力了，这时候，我们就要请出众多的多终端复用的软件。 </p>
-<ul>
-<li>screen<br>最古老也是最经典的多路复用窗口管理，可以轻松实现SSH断开任务和重新恢复，简单实用 用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。(不过个人觉得热键稍微不好用，常常是Ctrl-a + XX，而且也缺少一些可见的提示，不过跟nohup比较还是升级了一大步) </li>
-<li><p>tumx<br>优秀的终端复用软件，类似<a href="http://www.gnu.org/software/screen/" target="_blank" rel="external">GNU Screen</a>，但来自于OpenBSD，采用BSD授权。使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机；当然其功能远不止于此。与screen相比的优点：可以横向和纵向分割窗口，且窗格可以自由移动和调整大小。可在多个缓冲区进行复制和粘贴，支持跨窗口搜索；非正常断线后不需重新detach；…… 有人说——与tmux相比，screen简直弱爆了。 </p>
-</li>
-<li><p>byobu<br>由Ubuntu开发，在Screen的基础上进行包装，使其更加易用的一个工具。最新的Byobu，已经是基于Tmux作为后端了。目前的Ubuntu11以上的版本都有预装，可通过“byobu-tmux”这个命令行前端来接受各种与tmux一模一样的参数来控制它。Byobu的细节做的非常好，以下是我在Elementary OS上安装的效果：<img src="/wp-content/uploads/2013/09/ele-bo.png" alt="ele-bo"> 以上的几款命令行软件都可以轻松的下载，RedHat/CentOS 使用yum(某些可能要更新yum源)，Ubuntu系列使用apt-get即可。 </p>
-</li>
-<li><p>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></p>
-</li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
+          我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 
+SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念： 
 
-          
+进程组(process group)一个或多个进程的集合，每个进程都
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/02/linux-session-process/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1794,15 +1492,16 @@ if __name__ == &apos;__main__&apos;:
       
         
           
-            <p>接触数据分析的时间虽然不长，不过对数据还是有很深的感触，尤其是我的几次经历，让我由衷的对数据产生了深深的敬畏。 </p>
-<h2 id="马失前蹄"><a href="#马失前蹄" class="headerlink" title="马失前蹄"></a>马失前蹄</h2><p>每周都要为运营部门汇报整体的数据情况，由于旧的数据分析系统“年迈”，已经难以负荷现阶段的高数据量增长的需求，而新的数据系统，由于API Log的混乱和标准不一致，使得新平台的进展也不如想象中的顺利。情况基本是：周一需要的数据，周二还是没办法推出。而且，由于多个平台的反馈，加上渠道的不断增加，很多相关的数据甚至已经不能保证正确性(干脆将一些不重要的渠道数据暂时停止供应，等待新的平台上线很快就可以满足要求)。 在这样的情况下，由于服务器的不堪重负，导致了数据流的溢出，报回的数据中断——然而我们浑然不觉，在汇报时，仍然使用旧的系统作为过渡，获取定时任务的错误数据上报，结果“马失前蹄”，发生了这一次的“自摆乌龙”。 当然当天就重新获取新的数据源信息修正了错误，但我仍然惊出了一身冷汗，一方面是系统的瓶颈，但更重要的一方面是我们对于这个“瓶颈”与“桎梏”的认知不足，更深的角度看，我们需要一种“不破不立”的魄力来看待这件事情，该放弃的数据就需要先放下，该满足的重点数据需求我们仍然要第一时间提供给决策层和运营方面，这才是我们从数据事故中真正需要学到的东西，这样也才能保证相似的事件不再重演。 </p>
-<h2 id="流量之惑"><a href="#流量之惑" class="headerlink" title="流量之惑"></a>流量之惑</h2><p>近期经常推出活动，使得数据量不停的飙升，但数据流方面上下行的流量异常奇怪，经常会在报回API Log时将带宽占满！这对于实际带宽和预期来说是不可能发生的事情！ 经过对日志的分析，我们发现部分用户在不停的上传下载文件，每日的PV可以达到7-8位数的操作量，这是非常异常的行为！但更进一步分析发现，这样的用户占到的比例很小，几乎难以影响到整体的流量情况，另一些用户虽然PV更多，但并非每天都有登录，所以基本排除了活动期间的恶意用户行为。至此，流量的分析告一段落，对于大量操作的用户，拟定了选择忙时闲时的政策进行同步，暂缓带宽的压力，同时对报回的数据进行分流，基本解决了流量的问题。 简单的2件事，实际上都是数据在跟我们“开玩笑”，我读到的是从数据中挖掘出真正的需要，从最本质的角度切入，一针见血的看待问题，同时也对数据的准确性有了更加深刻的体会，这是决定产品决策乃至整体公司走势的至关重要的一环，需要我们无时无刻不紧绷着这根弦，去探索，去发现。 </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
-
-          
+          接触数据分析的时间虽然不长，不过对数据还是有很深的感触，尤其是我的几次经历，让我由衷的对数据产生了深深的敬畏。 
+马失前蹄每周都要为运营部门汇报整体的数据情况，由于旧的数据分析系统“年迈”，已经难以负荷现阶段的高数据量增长的需求，而新的数据系统，由于API Log的混乱和标准不一致，使得新平台的进展
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/09/01/awestruck-data/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
