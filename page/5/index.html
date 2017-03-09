@@ -527,7 +527,7 @@ git clone https://github.c
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettytcp/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettyjava/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -549,8 +549,8 @@ git clone https://github.c
             
               
                 
-                <a class="post-title-link" href="/2015/10/03/nettytcp/" itemprop="url">
-                  高性能网络框架Netty的TCP拆包、粘包解决方案
+                <a class="post-title-link" href="/2015/10/03/nettyjava/" itemprop="url">
+                  Netty之Java堆外内存扫盲贴
                 </a>
               
             
@@ -626,11 +626,12 @@ git clone https://github.c
       
         
           
-          p&gt;简单地说，网络通信时由于TCP会对传输的数据报进行对用户透明的拆分与重新组装，然后将拆分后的分别发送，而我们接收时要获取发送时的数据报，如何再对其拆分与组装，以便于我们能知道报文的意思，这个提取报文的过程就是TCP的拆包与粘包，在我们自己做底层的通信设计时，这是必须要考虑的。结合最近在做一
+          Java的堆外内存本来是高贵而神秘的东西，只在一些缓存方案的收费企业版里出现。但自从用了Netty，就变成了天天打交道的事情，毕竟堆外内存能减少IO时的内存复制，不需要堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中；而且也没了烦人的GC。
+好在，Netty所用的堆外内存只是Java
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/03/nettytcp/#more" rel="contents">
+            <a class="btn" href="/2015/10/03/nettyjava/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -819,7 +820,7 @@ git clone https://github.c
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettyjava/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettytcp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -841,8 +842,8 @@ git clone https://github.c
             
               
                 
-                <a class="post-title-link" href="/2015/10/03/nettyjava/" itemprop="url">
-                  Netty之Java堆外内存扫盲贴
+                <a class="post-title-link" href="/2015/10/03/nettytcp/" itemprop="url">
+                  高性能网络框架Netty的TCP拆包、粘包解决方案
                 </a>
               
             
@@ -918,12 +919,11 @@ git clone https://github.c
       
         
           
-          Java的堆外内存本来是高贵而神秘的东西，只在一些缓存方案的收费企业版里出现。但自从用了Netty，就变成了天天打交道的事情，毕竟堆外内存能减少IO时的内存复制，不需要堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中；而且也没了烦人的GC。
-好在，Netty所用的堆外内存只是Java
+          p&gt;简单地说，网络通信时由于TCP会对传输的数据报进行对用户透明的拆分与重新组装，然后将拆分后的分别发送，而我们接收时要获取发送时的数据报，如何再对其拆分与组装，以便于我们能知道报文的意思，这个提取报文的过程就是TCP的拆包与粘包，在我们自己做底层的通信设计时，这是必须要考虑的。结合最近在做一
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/03/nettyjava/#more" rel="contents">
+            <a class="btn" href="/2015/10/03/nettytcp/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

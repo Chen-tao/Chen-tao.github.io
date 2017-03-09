@@ -270,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/28/some-shell-tips/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/28/postgresql-prompting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -292,8 +292,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/11/28/some-shell-tips/" itemprop="url">
-                  常用Shell复合命令
+                <a class="post-title-link" href="/2014/11/28/postgresql-prompting/" itemprop="url">
+                  PostgreSQL Prompting
                 </a>
               
             
@@ -347,13 +347,34 @@
       
         
           
-          1、列出当前目录的文件、文件夹完整路径   ls -1 |awk ‘{print i$0}’ i=pwd‘/‘
-2、列出当前目录及子目录的文件、文件夹完整路径   ls -R |awk ‘{print i$0}’ i=pwd‘/‘
-2b） 列出当前目录及子目录下的文件夹完整路径    ls -FR 
+           Prompting 参数以百分号 % 打头，主要有如下：
+
+
+
+Prompting  参数
+含义
+
+
+
+
+%M
+数据库主机全名，如果通过 UNIX Socket 连接则显示为 [local]
+
+
+%m
+也表示数据库主机名，会截断第一个 . 后的内容
+
+
+%&gt;
+数据库端口号
+
+
+%n
+会话的用
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/11/28/some-shell-tips/#more" rel="contents">
+            <a class="btn" href="/2014/11/28/postgresql-prompting/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
