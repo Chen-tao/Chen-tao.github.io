@@ -1,0 +1,742 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="surge,ios," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Surge 是基于 iOS 9 的新特性 Network Extension 开发的一款网络调试工具，工作原理是使用 Packet Tunnel Provider 给系统套上一个代理，Surge 有两个主要组件：Surge 代理服务器和 Surge TUN 接口。程序运行之后，Surge 会将自身设置为默认的 HTTP/HTTPS 代理服务器来处理所有的 HTTP/HTTPS 流量。针对一些不服从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Surge 新手使用指南">
+<meta property="og:url" content="http://chen-tao.github.io/2015/11/04/surge-new-user/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Surge 是基于 iOS 9 的新特性 Network Extension 开发的一款网络调试工具，工作原理是使用 Packet Tunnel Provider 给系统套上一个代理，Surge 有两个主要组件：Surge 代理服务器和 Surge TUN 接口。程序运行之后，Surge 会将自身设置为默认的 HTTP/HTTPS 代理服务器来处理所有的 HTTP/HTTPS 流量。针对一些不服从">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934714/6df70690-831c-11e5-9c65-cc02d5ed4ef5.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934730/8639af96-831c-11e5-859f-b25fb1ac2a87.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934755/a7b021dc-831c-11e5-8e25-d39cc63bca72.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934852/4066bd50-831d-11e5-85fa-9b04bf27c96e.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934877/716087e2-831d-11e5-888e-2c0fb02d8ea7.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934902/95840310-831d-11e5-84d6-6a67fcc8dfc9.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10935768/4dcc45ea-8323-11e5-8242-13a6fc71d15b.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Surge 新手使用指南">
+<meta name="twitter:description" content="Surge 是基于 iOS 9 的新特性 Network Extension 开发的一款网络调试工具，工作原理是使用 Packet Tunnel Provider 给系统套上一个代理，Surge 有两个主要组件：Surge 代理服务器和 Surge TUN 接口。程序运行之后，Surge 会将自身设置为默认的 HTTP/HTTPS 代理服务器来处理所有的 HTTP/HTTPS 流量。针对一些不服从">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/1845119/10934714/6df70690-831c-11e5-9c65-cc02d5ed4ef5.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/11/04/surge-new-user/"/>
+
+
+
+
+
+  <title> Surge 新手使用指南 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/surge-new-user/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Surge 新手使用指南
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-04T00:00:00+08:00">
+                2015-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Surge 是基于 iOS 9 的新特性 Network Extension 开发的一款网络调试工具，工作原理是使用 Packet Tunnel Provider 给系统套上一个代理，Surge 有两个主要组件：Surge 代理服务器和 Surge TUN 接口。程序运行之后，Surge 会将自身设置为默认的 HTTP/HTTPS 代理服务器来处理所有的 HTTP/HTTPS 流量。针对一些不服从系统代理设置（如 Mail.app ）的应用程序 ，将由 Surge 的 TUN 接口来进行处理。</p>
+<p>Surge 会接管全局的（几乎）所有通信，所以所有网络方面的电量消耗都会被算在 Surge 头上，实际上 Surge 的运行功耗很少，使用中也不会感到 Surge 对电量有明显影响。</p>
+<h3 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h3><p>打开 Surge，默认包含有一个 Default 的配置文件，点击右上角的编辑（Edit）可以打开了解配置文件的基本结构：日志模式（Log Level）的设定、代理服务器（Proxy）的设置以及规则（Rules）的设置。</p>
+<p>一条一条添加内容是困难的，而且对刚接触这一块的用户来说也不明所以，所以简单的方法是从网上复制一份现成配置内容下来，保存成后缀为.conf 的文本（Uncode UTF-8）文件，最后连接数据线通过 iTunes 导入到 Surge中。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934714/6df70690-831c-11e5-9c65-cc02d5ed4ef5.png" alt="image"></p>
+<p>配置文件中服务器的部分需要填写，如果不知道服务器的地址和端口是多少，不妨打开 GoagentX 停止服务后选择不同的服务器并查看具体地址，你既可以直接在 Surge 中填写，也可以直接编辑 .conf 配置文件最后再导入到 Surge。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934730/8639af96-831c-11e5-859f-b25fb1ac2a87.png" alt="image"></p>
+<p>对于大多数人来说，基于范例文件编辑加上自己的服务器（Proxy）地址 Surge 就可以开始工作了。规则部分可以借鉴范例文件进行补充，规则并不是越多越好，除了利用 DNS 缓存对经常访问的网站进行加速外，仅需要补充本地 DNS 无法正常解析的域名到规则中。</p>
+<blockquote>
+<p>如果您使用的是 HTTPS 代理，尽量设置 SSL 加密（Cipher）以减少内存占用，推荐 GCM 模式加密算法，例如：TLS_RSA_WITH_AES_128_GCM_SHA256。</p>
+</blockquote>
+<h3 id="使用单独的服务器配置文件"><a href="#使用单独的服务器配置文件" class="headerlink" title="使用单独的服务器配置文件"></a>使用单独的服务器配置文件</h3><p>配置文件的 Proxy 部分可以写入多个服务器地址，Surge 会将当前命名为「Proxy」的地址作为当前使用地址，这种方式每次想切换代理服务器时比较麻烦，例如我想使用香港代理服务器，需要找到 HK 条目，并将现有「 Proxy = 」中的 Proxy 改成别的名字，然后将「 HK = 」中的 HK 改成 Proxy，说起来都比较绕。</p>
+<p>多个服务器切换更简单的方式是单独写「服务器配置覆盖文件」，在这种覆盖文件中只需要指向自定义配置的主文件（如图示中HK(HKG3).conf 第一行），然后写上服务器地址的部分（Proxy 定义部分）即可。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934755/a7b021dc-831c-11e5-8e25-d39cc63bca72.png" alt="image"></p>
+<p>主文件（如，Main.conf）是个独立的标准文件，所以其中 Proxy 部分是必须的，服务器覆盖配置文件（如，HK.conf、TYO.conf）中只写一个服务器地址，并且这个地址不需要和 Main.conf 的中 Proxy 部分形成对应关系，如果你打算使用 5 个服务器切换，Main.conf 的 Proxy 部分可以写 1 ，然后其他覆盖配置文件里分别写 2、3、4、5 的地址，在 Surge 主界面中选中哪个使用哪一个。（点击示范代码名称后的链接下载配置文件范例，导入后修改服务器地址、端口、用户名和密码部分）</p>
+<blockquote>
+<p>Main.conf (for SSLEdge)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[General]</div><div class="line"># warning, notify, info, verbose</div><div class="line">skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local</div><div class="line">bypass-tun = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12</div><div class="line">dns-server = 119.29.29.29,223.5.5.5,114.114.114.114</div><div class="line">loglevel = notify</div><div class="line"></div><div class="line">[Proxy]</div><div class="line"># SSLEdge,自行修改 Proxy 中的服务器地址、端口、用户名、密码</div><div class="line">Proxy = https,1.2.3.4,443,username,password</div><div class="line"></div><div class="line">[Rule]</div><div class="line"># 规则部分请参照范例补充完善，此处只列出几条示意</div><div class="line">DOMAIN-KEYWORD,umeng.co,REJECT</div><div class="line">DOMAIN-KEYWORD,google,Proxy,force-remote-dns</div><div class="line"></div><div class="line">GEOIP,CN,DIRECT</div><div class="line">FINAL,Proxy</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Main.conf (for ShadowSocks)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[General]</div><div class="line"># warning, notify, info, verbose</div><div class="line">skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local</div><div class="line">bypass-tun = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12</div><div class="line">dns-server = 119.29.29.29,223.5.5.5,114.114.114.114</div><div class="line">loglevel = notify</div><div class="line">[Proxy]</div><div class="line"># ShadowSocks,custom不要变，修改服务器地址、端口、加密方式、密码、Shadowsocks 模块URL</div><div class="line">Proxy = custom,$IP,$PORT,$METHOD,$PASSWORD,$MODULE_URL</div><div class="line">[Rule]</div><div class="line"># 规则部分请参照范例补充完善，此处只列出几条示意</div><div class="line">DOMAIN-KEYWORD,umeng.co,REJECT</div><div class="line">DOMAIN-KEYWORD,google,Proxy,force-remote-dns</div><div class="line">GEOIP,CN,DIRECT</div><div class="line">FINAL,Proxy</div><div class="line"></div><div class="line"></div><div class="line">&gt; 🇭🇰HK(HKG3).CONF</div></pre></td></tr></table></figure>
+<p>#!PROXY-OVERRIDE:Main.conf</p>
+<p>[Proxy]<br>Proxy = https,2.2.3.5,6556,username,password<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; 🇯🇵JP(TYO2).CONF</div></pre></td></tr></table></figure></p>
+<p>#!PROXY-OVERRIDE:Main.conf</p>
+<p>[Proxy]<br>Proxy = https,3.2.3.6,15560,username,password<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">SSLEdge 和 ShadowSocks 的差别只是 Proxy 代理服务器那一行，服务器覆盖配置中同理，SSEncrypt.module 模块的下载链接请自行 Google。</div><div class="line"></div><div class="line">为了显示上的直观，图示服务器覆盖文件的文件名加入了表情符号（原生拼音输入法输入香港🇭🇰）。 Dropbox 目前还不支持同步文件名包含表情符号的文件，所以如果要传到 Surge 里请使用 iTunes 或 iCloud Drive 方式。</div><div class="line"></div><div class="line">### 具体配置和规则</div><div class="line"></div><div class="line">![image](https://cloud.githubusercontent.com/assets/1845119/10934808/fabd4508-831c-11e5-9baf-f335e473a1c9.png)</div></pre></td></tr></table></figure></p>
+<h1 id="通用设置"><a href="#通用设置" class="headerlink" title="通用设置"></a>通用设置</h1><p>loglevel = notify<br>bypass-system = true<br>skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local<br>bypass-tun = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12<br>dns-server = 8.8.8.8, 8.8.4.4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 记录日志的几种方式: verbose、info、notify、warning。默认是 notify，分析（Analytics）模块中可以查看具体的 Logs，日志对分析 Surge 的使用状况很有帮助，打开具体日志能看到 Surge 的行为和动作，如果遇到异常情况可以打开具体日志并通过右上角的分享将日志通过邮件发送给作者</div><div class="line">- 除非是在调试 Bug 的时候，平时请不要启动 verbose 级别的日志，因为日志需要保证完整写入，使用的是同步式地写入，性能上会有严重问题</div></pre></td></tr></table></figure></p>
+<h1 id="代理设置"><a href="#代理设置" class="headerlink" title="代理设置"></a>代理设置</h1><p>[Proxy]<br>Proxy = https,127.0.0.1,3120,username,password,cipher<br>ProxyA = socks5,127.0.0.1,3129<br>ProxyC = http,127.0.0.1,3120<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 可以创建多个代理服务器条目，规则中可以指定某条规则走哪个代理</div><div class="line">- SSLedge 使用 HTTPS，老式 APNp 用 HTTP</div><div class="line">- Surge 支持 HTTP, HTTPS 和 SOCKS5 的代理服务器，当前仅 HTTP/HTTPS 代理支持验证（用户名、密码）</div></pre></td></tr></table></figure></p>
+<h1 id="规则设置"><a href="#规则设置" class="headerlink" title="规则设置"></a>规则设置</h1><p>[Rule] </p>
+<h1 id="基于域名判断并屏蔽（REJECT）请求"><a href="#基于域名判断并屏蔽（REJECT）请求" class="headerlink" title="基于域名判断并屏蔽（REJECT）请求"></a>基于域名判断并屏蔽（REJECT）请求</h1><p>DOMAIN,pingma.qq.com,REJECT</p>
+<h1 id="基于域名后缀判断屏蔽（REJECT）请求"><a href="#基于域名后缀判断屏蔽（REJECT）请求" class="headerlink" title="基于域名后缀判断屏蔽（REJECT）请求"></a>基于域名后缀判断屏蔽（REJECT）请求</h1><p>DOMAIN-SUFFIX,flurry.com,REJECT</p>
+<h1 id="基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走-Packet-Tunnel-Provider"><a href="#基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走-Packet-Tunnel-Provider" class="headerlink" title="基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走 Packet-Tunnel-Provider"></a>基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走 Packet-Tunnel-Provider</h1><p>DOMAIN-KEYWORD,google,Proxy,force-remote-dns</p>
+<h1 id="基于域名后缀判断请求走直连（DIRECT）"><a href="#基于域名后缀判断请求走直连（DIRECT）" class="headerlink" title="基于域名后缀判断请求走直连（DIRECT）"></a>基于域名后缀判断请求走直连（DIRECT）</h1><p>DOMAIN-SUFFIX,126.net,DIRECT</p>
+<h1 id="Telegram-app-指定“no-resolve”Surge-忽略这个规则与域的请求。"><a href="#Telegram-app-指定“no-resolve”Surge-忽略这个规则与域的请求。" class="headerlink" title="Telegram.app 指定“no-resolve”Surge 忽略这个规则与域的请求。"></a>Telegram.app 指定“no-resolve”Surge 忽略这个规则与域的请求。</h1><p>IP-CIDR,91.108.56.0/22,Proxy,no-resolve </p>
+<h1 id="判断是否是局域网，如果是，走直连"><a href="#判断是否是局域网，如果是，走直连" class="headerlink" title="判断是否是局域网，如果是，走直连"></a>判断是否是局域网，如果是，走直连</h1><p>IP-CIDR,192.168.0.0/16,DIRECT</p>
+<h1 id="判断服务器所在地，如果是国内，走直连"><a href="#判断服务器所在地，如果是国内，走直连" class="headerlink" title="判断服务器所在地，如果是国内，走直连"></a>判断服务器所在地，如果是国内，走直连</h1><p>GEOIP,CN,DIRECT</p>
+<h1 id="其他的走代理"><a href="#其他的走代理" class="headerlink" title="其他的走代理"></a>其他的走代理</h1><p>FINAL,Proxy<br>```</p>
+<blockquote>
+<p>规则配置的高级选项中，「Force Remote DNS」的作用主要是用来解决本地 DNS 解析受到污染的问题，在添加针对 Google、Twitter 的规则时可以开启。<br>规则按照顺序执行，注意不要出现先后矛盾的地方，同一个域名或后缀的规则定义不要重复，使用文本编辑器编辑时注意每条规则间的分隔逗号是英文标点。</p>
+</blockquote>
+<h3 id="高级设置中的选项"><a href="#高级设置中的选项" class="headerlink" title="高级设置中的选项"></a>高级设置中的选项</h3><p><img src="https://cloud.githubusercontent.com/assets/1845119/10934852/4066bd50-831d-11e5-85fa-9b04bf27c96e.png" alt="image"></p>
+<blockquote>
+<p>最右侧的图是分析模块中的统计（Statistics）数据，可以直观的看到当前连接（Surge 断开后统计重置）的时长以及Wi-Fi 和蜂窝移动网络的流量使用情况。</p>
+</blockquote>
+<p>主配置文件设置高级选项中的「Bypass System Related」不要关闭，Surge 通过这个开关和内置规则放行系统层面的通讯请求。如果禁用此选项，它可能会导致一些系统问题，如推送通知的延迟。</p>
+<p>高级选项中的其他两项设置「SKIP PROXY」和「BYPASS TUN」是为了解决一些应用的兼容性问题，通过指定具体域名（apple.com或者<em>apple.com）或者 IP（192.168.2.</em> 或 192.168.2.0/24）让这类请求绕过 Surge 代理服务器和 TUN 接口。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934877/716087e2-831d-11e5-888e-2c0fb02d8ea7.png" alt="image"></p>
+<p>Skip Proxy 和 Bypass TUN 的功能与原理(By @Blankwonder )<br>Surge 能作为 DNS Client 使用，「DNS OVERRIDE」中填写的 DNS 地址将覆盖缺省的 DNS，针对较差的网络环境 Surge 能进行更高频率地重发，并同样适用于蜂窝数据网络，支持设置中（如：119.29.29.29,223.5.5.5,114.114.114.114）的多服务器并发查询。</p>
+<h3 id="分析网络活动"><a href="#分析网络活动" class="headerlink" title="分析网络活动"></a>分析网络活动</h3><p>Surge 分析模块中能直观看到 Surge 启动后最近地访问请求（Recent Requests）。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934902/95840310-831d-11e5-84d6-6a67fcc8dfc9.png" alt="image"></p>
+<p>还可以通过规则结果测试（Rule Test Results）临时调整规则（点击某条记录），REJECT、DIRECT 或者指定它走某个代理。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10935768/4dcc45ea-8323-11e5-8242-13a6fc71d15b.png" alt="image"></p>
+<p>通过规则结果测试（Rule Test Results）可以方便地跟踪当前 App 的网络访问，临时改变规则后可以观察 App 的实际运行情况，如果有效随后就能补充到主配置文件中。</p>
+<p>在 iPad 分屏模式的使用场景中，我经常干的一件事就是打开某个国产应用，然后分屏查看 Surge 里 Test Results 的网络访问情况，侦查那些和应用功能无关的隐私或广告请求，然后记录下来添加到自己的规则列表中。</p>
+<p>如果说 Surge 最吸引人的地方在哪里，估计就是这种透明的网络访问方式，在轻松访问各种网络服务以外还是一个强有力地调试工具。安全和隐私已经变成只有少数人才能掌控的东西，学习掌握一款这样的工具还是很重要的。</p>
+<h3 id="常见问答"><a href="#常见问答" class="headerlink" title="常见问答"></a>常见问答</h3><h4 id="Q：为什么-Surge-一直显示是下载状态没有安装成功？"><a href="#Q：为什么-Surge-一直显示是下载状态没有安装成功？" class="headerlink" title="Q：为什么 Surge 一直显示是下载状态没有安装成功？"></a>Q：为什么 Surge 一直显示是下载状态没有安装成功？</h4><blockquote>
+<p>A：不能开启 Surge 的同时更新它自己，需要先停用 Surge，等更新完成后再打开 Surge。</p>
+<h4 id="Q：修改配置文件中的规则后会立即生效吗？"><a href="#Q：修改配置文件中的规则后会立即生效吗？" class="headerlink" title="Q：修改配置文件中的规则后会立即生效吗？"></a>Q：修改配置文件中的规则后会立即生效吗？</h4><p>A：不会，需要到 Surge 中停止（Stop）后重新开始（Start）。</p>
+<h4 id="Q：Surge-的配置文件中的服务器该如何填写？"><a href="#Q：Surge-的配置文件中的服务器该如何填写？" class="headerlink" title="Q：Surge 的配置文件中的服务器该如何填写？"></a>Q：Surge 的配置文件中的服务器该如何填写？</h4><p>A：Surge 是一个网络调试工具，并不提供代理服务器，需要另行购买或自行搭建服务器，具体的服务器地址和端口可以咨询服务器提供商。</p>
+<h4 id="Q：如何快速启动或关闭-Surge-？"><a href="#Q：如何快速启动或关闭-Surge-？" class="headerlink" title="Q：如何快速启动或关闭 Surge ？"></a>Q：如何快速启动或关闭 Surge ？</h4><p>A：Surge 提供了通知中心扩展 Widget，加载后由通知中心就能快速切换 Surge 状态。如果使用 Launcher 这类软件，可以通过 URL Scheme 命令<code>surge:///toggle</code>来控制 Surge 的切换，更多命令参见 surge.run。</p>
+<h4 id="Q：网上分享和供参考的配置中为什么规则都不一样-？"><a href="#Q：网上分享和供参考的配置中为什么规则都不一样-？" class="headerlink" title="Q：网上分享和供参考的配置中为什么规则都不一样 ？"></a>Q：网上分享和供参考的配置中为什么规则都不一样 ？</h4><p>A：配置文件中 [Rule] 的部分可以根据各自的使用环境进行定制，合并或借鉴时注意不要前后冲突或重复即可。</p>
+</blockquote>
+<p>Surge 是一款开发者调试和代理工具，需要一定的专业背景知识才可使用，请在仔细阅读 AppStore 说明且理解软件功能后再进行购买。</p>
+<p>后续版本可能还会有功能、界面上的变化，如有必要本文会进行补充和更新。</p>
+<p>本文档适用于：<code>Surge 1.0.1（Bulid 300）</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/surge/" rel="tag"># surge</a>
+          
+            <a href="/tags/ios/" rel="tag"># ios</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/04/the-trust-machine/" rel="next" title="The trust machine 信任机器">
+                <i class="fa fa-chevron-left"></i> The trust machine 信任机器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/04/surge-the-missing-tool-for-ios/" rel="prev" title="Surge, the missing tool for iOS">
+                Surge, the missing tool for iOS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加配置文件"><span class="nav-number">1.</span> <span class="nav-text">添加配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用单独的服务器配置文件"><span class="nav-number">2.</span> <span class="nav-text">使用单独的服务器配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用设置"><span class="nav-number"></span> <span class="nav-text">通用设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理设置"><span class="nav-number"></span> <span class="nav-text">代理设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#规则设置"><span class="nav-number"></span> <span class="nav-text">规则设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于域名判断并屏蔽（REJECT）请求"><span class="nav-number"></span> <span class="nav-text">基于域名判断并屏蔽（REJECT）请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于域名后缀判断屏蔽（REJECT）请求"><span class="nav-number"></span> <span class="nav-text">基于域名后缀判断屏蔽（REJECT）请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走-Packet-Tunnel-Provider"><span class="nav-number"></span> <span class="nav-text">基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走 Packet-Tunnel-Provider</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于域名后缀判断请求走直连（DIRECT）"><span class="nav-number"></span> <span class="nav-text">基于域名后缀判断请求走直连（DIRECT）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Telegram-app-指定“no-resolve”Surge-忽略这个规则与域的请求。"><span class="nav-number"></span> <span class="nav-text">Telegram.app 指定“no-resolve”Surge 忽略这个规则与域的请求。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断是否是局域网，如果是，走直连"><span class="nav-number"></span> <span class="nav-text">判断是否是局域网，如果是，走直连</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断服务器所在地，如果是国内，走直连"><span class="nav-number"></span> <span class="nav-text">判断服务器所在地，如果是国内，走直连</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他的走代理"><span class="nav-number"></span> <span class="nav-text">其他的走代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高级设置中的选项"><span class="nav-number">1.</span> <span class="nav-text">高级设置中的选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析网络活动"><span class="nav-number">2.</span> <span class="nav-text">分析网络活动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见问答"><span class="nav-number">3.</span> <span class="nav-text">常见问答</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q：为什么-Surge-一直显示是下载状态没有安装成功？"><span class="nav-number">3.1.</span> <span class="nav-text">Q：为什么 Surge 一直显示是下载状态没有安装成功？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q：修改配置文件中的规则后会立即生效吗？"><span class="nav-number">3.2.</span> <span class="nav-text">Q：修改配置文件中的规则后会立即生效吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q：Surge-的配置文件中的服务器该如何填写？"><span class="nav-number">3.3.</span> <span class="nav-text">Q：Surge 的配置文件中的服务器该如何填写？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q：如何快速启动或关闭-Surge-？"><span class="nav-number">3.4.</span> <span class="nav-text">Q：如何快速启动或关闭 Surge ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q：网上分享和供参考的配置中为什么规则都不一样-？"><span class="nav-number">3.5.</span> <span class="nav-text">Q：网上分享和供参考的配置中为什么规则都不一样 ？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

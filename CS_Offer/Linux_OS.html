@@ -1,0 +1,758 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Linux、OS 知识常用命令系统
+
+uname -a   # 查看内核/操作系统/CPU信息
+hostname   # 查看计算机名
+env        # 查看环境变量
+uptime     # 查看系统运行时间、用户数、负载
+
+资源
+
+free       # 查看内存使用量和交换区使用量
+df -h      # 查看各分区使用情况
+top        # 实时显示进程状态
+ps">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/Linux_OS.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Linux、OS 知识常用命令系统
+
+uname -a   # 查看内核/操作系统/CPU信息
+hostname   # 查看计算机名
+env        # 查看环境变量
+uptime     # 查看系统运行时间、用户数、负载
+
+资源
+
+free       # 查看内存使用量和交换区使用量
+df -h      # 查看各分区使用情况
+top        # 实时显示进程状态
+ps">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_1.jpg">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_2.gif">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Linux、OS 知识常用命令系统
+
+uname -a   # 查看内核/操作系统/CPU信息
+hostname   # 查看计算机名
+env        # 查看环境变量
+uptime     # 查看系统运行时间、用户数、负载
+
+资源
+
+free       # 查看内存使用量和交换区使用量
+df -h      # 查看各分区使用情况
+top        # 实时显示进程状态
+ps">
+<meta name="twitter:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/Linux_OS.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="Linux、OS-知识"><a href="#Linux、OS-知识" class="headerlink" title="Linux、OS 知识"></a>Linux、OS 知识</h1><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>系统</p>
+<ul>
+<li>uname -a   # 查看内核/操作系统/CPU信息</li>
+<li>hostname   # 查看计算机名</li>
+<li>env        # 查看环境变量</li>
+<li>uptime     # 查看系统运行时间、用户数、负载</li>
+</ul>
+<p>资源</p>
+<ul>
+<li>free       # 查看内存使用量和交换区使用量</li>
+<li>df -h      # 查看各分区使用情况</li>
+<li>top        # 实时显示进程状态</li>
+<li>ps         # 系统中当前运行的那些进程</li>
+<li>ipcs       # 进程间通信</li>
+</ul>
+<p>网络</p>
+<ul>
+<li>ifconfig     # 查看所有网络接口的属性</li>
+<li>iptables -L  # 查看防火墙设置</li>
+<li>route -n     # 查看路由表</li>
+<li>netstat -s   # 查看网络统计信息</li>
+<li>ss           # netstat 的替代</li>
+<li>tcpdump      # 用来抓包</li>
+</ul>
+<p>任务</p>
+<ul>
+<li>ctrl + z       # 可以将一个正在前台执行的命令放到后台，并且暂停</li>
+<li>jobs           # 查看当前有多少在后台运行的命令</li>
+<li>fg %jobnumber  # 将后台中的命令调至前台继续运行（%jobnumber是通过jobs命令查到的后台正在执行的命令的序号(不是pid)）</li>
+<li>bg %jobnumber # 将一个在后台暂停的命令，变成继续执行。</li>
+</ul>
+<p><code>netstat</code>：用来显示相关的网络信息，如接口/网卡状态(-i)，路由表(-r)，网络连接(-a)，tcp相关选项(-t)，udp相关选项(-u)，按各个协议统计(-s)。</p>
+<p><code>top</code>：在系统维护的过程中，随时可能有需要查看 CPU 使用率，并根据相应信息分析系统状况的需要。运行 top 命令后，CPU 使用状态会以全屏的方式显示，并且会处在对话的模式，此时用基于 top 的命令，可以控制显示方式。退出 top 的命令为 q。</p>
+<p><code>ipcs</code>：Linux下显示进程间通信设施状态的工具。可以显示消息队列、共享内存和信号量的信息。</p>
+<p>参考： <a href="http://linuxtools-rst.readthedocs.org/zh_CN/latest/tool/index.html" target="_blank" rel="external">工具参考篇</a></p>
+<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><p>并发和并行的区别就是一个处理器同时处理多个任务和多个处理器或者是多核的处理器同时处理多个不同的任务。前者是逻辑上的同时发生，而后者是物理上的同时发生．</p>
+<ul>
+<li>并发(concurrent)：指能处理多个同时性活动的能力，并发事件之间不一定要同一时刻发生。</li>
+<li>并行(parallel)：指同时发生的两个并发事件，具有并发的含义，而并发则不一定并行。</li>
+</ul>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_1.jpg" alt=""></p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/1f6cc9c0ef354f86b1727c6c030a1a19" target="_blank" rel="external">fork 输出个数</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/686a6b91356042cab35d7429b4e86547" target="_blank" rel="external">进程和线程描述</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/e77f38359f074676b7f6f6e981c71cce" target="_blank" rel="external">线程共享的资源</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/532ddd8c34e84eaab24c6538b8091445" target="_blank" rel="external">线程并发脏数据</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/1469627261884cd3ac5755a49a46d8f9" target="_blank" rel="external">进程轮询调度周转时间</a>］  </p>
+<h2 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h2><p><code>守护进程</code>，也即通常所说的 Daemon 进程，是 Linux 下一种特殊的后台服务进程，它独立于控制终端并且周期性的执行某种任务或者等待处理某些发生的事件。守护进程通常在系统引导装入时启动，在系统关闭时终止。Linux 系统下大多数服务都是通过守护进程实现的，守护进程的名称通常以 d 结尾，如 httpd、crond、mysqld等。</p>
+<p>守护进程首要的特性是后台运行；其次，要与从启动它的父进程的运行环境隔离开来，需要处理的内容大致包括会话、控制终端、进程组、文件描述符、文件权限掩码以及工作目录等。</p>
+<p>守护进程可以在 Linux 启动时从脚本 /etc/rc.d 启动，也可以由作业规划进程 crond 启动，还可以通过用户终端（一般是 Shell）启动。实现一个守护进程，其实就是将普通进程按照上述特性改造为守护进程的过程。</p>
+<p>从终端 Shell 启动守护进程的步骤如下：</p>
+<ol>
+<li>创建子进程，父进程退出</li>
+<li>子进程创建新会话</li>
+<li>改变当前工作目录</li>
+<li>重设文件权限掩码</li>
+<li>关闭文件描述符</li>
+</ol>
+<p>守护进程的详细内容参见 <a href="more/Linux_OS_Daemon.md">Linux_OS_Daemon.md</a>.</p>
+<h2 id="僵尸、孤儿进程"><a href="#僵尸、孤儿进程" class="headerlink" title="僵尸、孤儿进程"></a>僵尸、孤儿进程</h2><p>子进程先于父进程结束，而且父进程没有函数调用 wait() 或 waitpid() 等待子进程结束，也没有注册 SIGCHLD 信号处理函数，结果使得子进程的进程列表信息无法回收，这样子进程就变成了<code>僵尸进程（Zombie）</code>。</p>
+<p>所以简单<strong>来说一个已经终止，但是其父进程尚未对其进行善后处理</strong>（终止子进程的有关信息）的进程被称为僵尸进程。</p>
+<p>UNIX 提供了一种机制可以保证只要父进程想知道子进程结束时的状态信息，就可以得到。这种机制就是: 在每个进程(init除外)退出的时候，内核释放该进程所有的资源，包括打开的文件，占用的内存等。但是仍然为其保留一定的信息（包括进程号PID，退出状态，运行时间等)，直到父进程通过wait/waitpid 来取时才释放。</p>
+<p>如果父进程不调用wait/waitpid的话，那么保留的那段信息就不会释放，其进程号就会一直被占用（这时用ps命令就能看到子进程的状态是“Z”），但是系统所能使用的进程号是有限的，如果大量的产生僵死进程，将因为没有可用的进程号而导致系统不能产生新的进程。此即为僵尸进程的危害，应当避免。</p>
+<p>注意如果父进程先于子进程结束，这时的子进程应该称作<code>孤儿进程（Orphan）</code>。每当出现一个孤儿进程的时候，内核就把孤儿进程的父进程设置为init，而init进程会循环地调用wait()。这样，当一个孤儿进程结束其生命周期后，init进程就会进行善后工作。因此孤儿进程并不会有什么危害。</p>
+<p>参考： <a href="http://www.cnblogs.com/Anker/p/3271773.html" target="_blank" rel="external">孤儿进程与僵尸进程</a></p>
+<h2 id="死锁以及避免死锁的策略"><a href="#死锁以及避免死锁的策略" class="headerlink" title="死锁以及避免死锁的策略"></a>死锁以及避免死锁的策略</h2><p>死锁的规范定义如下：如果一个进程集合中的每个进程都在等待只能由该进程集合中其他进程才能引发的事件，那么该进程集合就是死锁的。</p>
+<p>产生死锁的原因主要是：</p>
+<ul>
+<li>因为系统资源不足。</li>
+<li>进程运行推进的顺序不合适。</li>
+<li>资源分配不当等。</li>
+</ul>
+<p>产生死锁的四个必要条件：</p>
+<ol>
+<li>互斥条件：每个资源要么已经分配给了一个进程，要么就是可用的。</li>
+<li>占有和等待条件：已经得到了某个资源的进程可以再请求新的资源。</li>
+<li>不可抢占条件：已经分配给一个进程的资源不能强制性地被抢占，只能被占有它的进程显式地释放；</li>
+<li>环路等待条件：死锁发生时，系统中一定有两个或者两个以上的进程组成的一条环路，该环路中的每个进程都在等待着下一个进程所占有的资源。</li>
+</ol>
+<p>这四个条件是死锁的必要条件，只要系统发生死锁，这些条件必然成立，而只要上述条件之一不满足，就不会发生死锁。</p>
+<p>四种处理死锁的策略：</p>
+<ol>
+<li>鸵鸟策略（忽略死锁）；</li>
+<li>检测死锁并恢复；</li>
+<li>仔细对资源进行分配，动态地避免死锁；</li>
+<li>通过破坏引起死锁的四个必要条件之一，防止死锁的产生。</li>
+</ol>
+<p>避免死锁的主要算法是基于一个<code>安全状态</code>的概念。在任何时刻，如果没有死锁发生，并且即使所有进程忽然请求对资源的最大请求，也仍然存在某种调度次序能够使得每一个进程运行完毕，则称该状态是安全的。从安全状态出发，系统能够保证所有进程都能完成，而从不安全状态出发，就没有这样的保证。</p>
+<p><code>银行家算法</code>：判断对请求的满足是否会进入不安全状态，如果是，就拒绝请求，如果满足请求后系统仍然是安全的，就予以分配。不安全状态不一定引起死锁，因为客户不一定需要其最大贷款额度。</p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/28e91f200206451b9ee44dd1613f94ce" target="_blank" rel="external">死锁产生必要条件</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/18b1f01c1901424382735d5d158a8f7f" target="_blank" rel="external">资源一定，进程最多申请多少资源</a>］</p>
+<h1 id="存储管理"><a href="#存储管理" class="headerlink" title="存储管理"></a>存储管理</h1><p>对任何一个普通进程来讲，它都会涉及到5种不同的数据段。</p>
+<ol>
+<li>代码段：代码段是用来存放可执行文件的操作指令，也就是说是它是可执行程序在内存中的镜像。代码段需要防止在运行时被非法修改，所以只准许读取操作，而不允许写入（修改）操作——它是不可写的。</li>
+<li>数据段：数据段用来存放可执行文件中已初始化全局变量，换句话说就是存放程序静态分配的变量和全局变量。</li>
+<li>BSS段：BSS段包含了程序中未初始化的全局变量，在内存中 bss段全部置零。</li>
+<li>堆（heap）：堆是用于存放进程运行中被动态分配的内存段，它的大小并不固定，可动态扩张或缩减。当进程调用malloc等函数分配内存时，新分配的内存就被动态添加到堆上（堆被扩张）；当利用free等函数释放内存时，被释放的内存从堆中被剔除（堆被缩减）</li>
+<li>栈：栈是用户存放程序临时创建的局部变量，也就是说我们函数括弧“{}”中定义的变量（但不包括static声明的变量，static意味着在数据段中存放变量）。除此以外，在函数被调用时，其参数也会被压入发起调用的进程栈中，并且待到调用结束后，函数的返回值也会被存放回栈中。由于栈的先进先出特点，所以栈特别方便用来保存/恢复调用现场。从这个意义上讲，我们可以把堆栈看成一个寄存、交换临时数据的内存区。</li>
+</ol>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_2.gif" alt=""></p>
+<p>参考：<a href="http://www.kerneltravel.net/journal/v/mem.htm" target="_blank" rel="external">Linux内存管理</a></p>
+<h2 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h2><p>常见的页面调度算法：</p>
+<ol>
+<li><p>随机算法rand（Random Algorithm）</p>
+<p> 利用软件或硬件的随机数发生器来确定主存储器中被替换的页面。这种算法最简单，而且容易实现。但是，这种算法完全没用利用主存储器中页面调度情况的历史信息，也没有反映程序的局部性，所以命中率较低。</p>
+</li>
+<li><p>先进先出调度算法（FIFO）</p>
+<p> 先进先出调度算法根据页面进入内存的时间先后选择淘汰页面，本算法实现时需要将页面按进入内存的时间先后组成一个队列，每次调度队首页面予以淘汰。它的优点是比较容易实现，能够利用主存储器中页面调度情况的历史信息，但是，它没有反映程序的局部性，因为最先调入主存的页面，很可能也是经常要使用的页面。</p>
+</li>
+<li><p>最近最少使用算法LRU（Least Recently Used Algorithm）</p>
+<p> 根据程序执行的局部性特点，程序一旦访问了某些代码和数据，则在一段时间内会经常访问他们，因此最近最少使用在选择淘汰页面时会考虑页面最近的使用，总是选择在最近一段时间以来最少使用的页面予以淘汰。算法实现时需要为每个页面设置数据结构记录页面自上次访问以来所经历的时间。</p>
+</li>
+<li>最近最不频繁使用算法 LFU（Least Frequently Used Algorithm ）<br> 由于程序设计中经常使用循环结构，根据程序执行的局部性特点，可以设想在一段时间内经常被访问的代码和数据在将来也会经常被访问，显然这样的页面不应该被淘汰。最近最不常用调度算法总是根据一段时间内页面的访问次数来选择淘汰页面，每次淘汰访问次数最少的页面。算法实现时需要为每个页面设置计数器，记录访问次数。计数器由硬件或操作系统自动定时清零。</li>
+</ol>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/b6ba25af8c474d11909f756052f29c0e" target="_blank" rel="external">LRU 缺页次数</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/0a0e709f1c7343799c0194a1996ae202" target="_blank" rel="external">缺页率计算</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/40a2ed91959b4586b8a7255bbabdad7d" target="_blank" rel="external">缺页替换影响效率</a>］  </p>
+<h2 id="主存、辅存、虚拟存储"><a href="#主存、辅存、虚拟存储" class="headerlink" title="主存、辅存、虚拟存储"></a>主存、辅存、虚拟存储</h2><p>概括的说，CPU对所需要的数据进行计算时，要求很高的存储速度，且不需要能永久保存这些数据，高速存储设备的成本很高。但其他设备对存储速度的要求不像CPU这么高，一般要求永久保存数据。一般低速的存储设备就可以满足，且低速的存储成本也低。</p>
+<p>所以有主存和辅存之分： </p>
+<ul>
+<li>内存（主存）直接给CPU提供存储，高速，低容量，价格贵，不能永久保存数据，断电消失，需要从辅存中重新调入数据。</li>
+<li>外存（辅存）给主存提供数据，低速，大容量，价格低，能永久保存数据。</li>
+</ul>
+<p>所以更高缓存的CPU和更大的内存能够大大提升系统的性能。 </p>
+<ul>
+<li>常见主存有：CPU的高速缓存，电脑的内存条。</li>
+<li>常见辅存有：硬盘、光盘、U盘、磁盘、移动硬盘等等。</li>
+</ul>
+<p><code>虚拟存储</code>：根据程序执行的互斥性和局部性两个特点，允许作业装入的时候只装入一部分，另一部分放在磁盘上，当需要的时候再装入到主存，这样以来，在一个小的主存空间就可以运行一个比它大的作业。同时，用户编程的时候也摆脱了一定要编写小于主存容量的作业的限制。也就是说，用户的逻辑地址空间可以比主存的绝对地址空间要大。<strong>对用户来说，好像计算机系统具有一个容量很大的主存储器，称为“虚拟存储器”。</strong></p>
+<p>虚拟存储（Storage Virtualization）是指将多个不同类型、独立存在的物理存储体，通过软、硬件技术，集成转化为一个逻辑上的虚拟的存储单元，集中管理供用户统一使用。这个虚拟逻辑存储单元的存储容量是它所集中管理的各物理存储体的存储量的总和，而它具有的访问带宽则在一定程度上接近各个物理存储体的访问带宽之和。</p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/8622d41af5f343c58ebbdf6e2e427ae3" target="_blank" rel="external">虚拟存储的目的</a>］</p>
+<h2 id="内存存储模式"><a href="#内存存储模式" class="headerlink" title="内存存储模式"></a>内存存储模式</h2><p>存储模型可以分为六种方式：</p>
+<ol>
+<li>单一连续区：一段时间内只能有一个进程在内存中，因此内存利用率低；</li>
+<li>固定分区：把内存空间分割成若干区域，成为分区，每个分区装载一个且只能有进程；</li>
+<li>可变分区：根据进程的需要，把内存空间分割出一个分区，分配给进程，剩余的部分成为新的空闲区。缺点：产生外部碎片，内存利用率低。</li>
+<li>页式存储：用户程序的地址空间被划分成若干固定大小的区域，称为“页”；相应地，内存空间分成若干个物理块，页和块的大小相等。可将用户程序的任一页放在内存的任一块中，实现了离散分配。分页方式的优点是页长固定，因而便于构造页表、易于管理，且不存在外碎片。但分页方式的缺点是页长与程序的逻辑大小不相关。</li>
+<li>段式存储：将用户程序地址空间分成若干个大小不等的段，每段可以定义一组相对完整的逻辑信息。存储分配时，以段为单位，段与段在内存中可以不相邻接，也实现了离散分配。</li>
+<li>段页式存储：段页式存储组织是分段式和分页式结合的存储组织方法，这样可充分利用分段管理和分页管理的优点。用分段方法来分配和管理虚拟存储器。程序的地址空间按逻辑单位分成基本独立的段，而每一段有自己的段名，再把每段分成固定大小的若干页。用分页方法来分配和管理实存。即把整个主存分成与上述页大小相等的存储块，可装入作业的任何一页。程序对内存的调入或调出是按页进行的。</li>
+</ol>
+<p>更多内容参见 <a href="More/Linux_OS_MemoryManage.md">Linux_OS_MemoryManage.md</a></p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/833de887bf7b438e9a96c1caf759c9da" target="_blank" rel="external">页表辅存始地址</a>］  </p>
+<h2 id="Linux-的任务调度机制是什么？"><a href="#Linux-的任务调度机制是什么？" class="headerlink" title="Linux 的任务调度机制是什么？"></a>Linux 的任务调度机制是什么？</h2><p><a href="http://www.nowcoder.com/questionTerminal/683d207653d9460ba9b60418695f2c8d" target="_blank" rel="external">作业调度设备利用率</a></p>
+<h2 id="系统如何将信号通知到进程？"><a href="#系统如何将信号通知到进程？" class="headerlink" title="系统如何将信号通知到进程？"></a>系统如何将信号通知到进程？</h2><h2 id="标准库函数与系统调用的区别？"><a href="#标准库函数与系统调用的区别？" class="headerlink" title="标准库函数与系统调用的区别？"></a>标准库函数与系统调用的区别？</h2><h2 id="共享内存的实现原理（共享内存段被映射进进程空间之后，存在于进程空间的什么位置？共享内存段最大限制是多少？）"><a href="#共享内存的实现原理（共享内存段被映射进进程空间之后，存在于进程空间的什么位置？共享内存段最大限制是多少？）" class="headerlink" title="共享内存的实现原理（共享内存段被映射进进程空间之后，存在于进程空间的什么位置？共享内存段最大限制是多少？）"></a>共享内存的实现原理（共享内存段被映射进进程空间之后，存在于进程空间的什么位置？共享内存段最大限制是多少？）</h2><h2 id="经典布局-和-灵活布局"><a href="#经典布局-和-灵活布局" class="headerlink" title="经典布局 和 灵活布局"></a>经典布局 和 灵活布局</h2><h2 id="可执行的链接格式-ELF"><a href="#可执行的链接格式-ELF" class="headerlink" title="可执行的链接格式 ELF"></a>可执行的链接格式 ELF</h2><h2 id="内存泄露检测"><a href="#内存泄露检测" class="headerlink" title="内存泄露检测"></a>内存泄露检测</h2><p>内存泄漏指由于疏忽或错误造成程序未能释放已经不再使用的内存的情况。内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，导致在释放该段内存之前就失去了对该段内存的控制，从而造成了内存的浪费。</p>
+<p>最难捉摸也最难检测到的错误之一是内存泄漏，即未能正确释放以前分配的内存的 bug。只发生一次的小的内存泄漏可能不会被注意，但泄漏大量内存的程序或泄漏日益增多的程序可能会表现出各种征兆：从性能不良（并且逐渐降低）到内存完全用尽。更糟的是，泄漏的程序可能会用掉太多内存，以致另一个程序失败，而使用户无从查找问题的真正根源。</p>
+<p>内存泄漏的原因可以概括为：调用了malloc/new等内存申请的操作，但缺少了对应的free/delete，总之就是，malloc/new比free/delete的数量多。实际项目中检测内存泄漏通常会十分繁琐，所以有许多工具帮助我们检测内存泄漏，比如 <a href="http://en.wikipedia.org/wiki/Mtrace" target="_blank" rel="external">mtrace</a>，<a href="http://valgrind.org" target="_blank" rel="external">valgrind</a>。</p>
+<p>详细内容参见 <a href="More/Linux_OS_MemoryLeaks.md">Linux_OS_MemoryLeaks.md</a></p>
+<p>参考：<br><a href="http://www.cnblogs.com/skynet/archive/2011/02/20/1959162.html" target="_blank" rel="external">C/C++内存泄漏及检测</a></p>
+<h2 id="Linux-IO-模式"><a href="#Linux-IO-模式" class="headerlink" title="Linux IO 模式"></a>Linux IO 模式</h2><p>select，poll，epoll都是IO多路复用的机制。I/O多路复用就通过一种机制，实现单进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。select，poll，epoll本质上都是同步I/O，因为他们都需要在读写事件就绪后自己负责进行读写，也就是说这个读写过程是阻塞的（异步I/O则无需自己负责进行读写，异步I/O的实现会负责把数据从内核拷贝到用户空间）。</p>
+<p>［<a href="http://www.nowcoder.com/test/question/done?tid=2625399&amp;qid=25654#summary" target="_blank" rel="external">epoll和select</a>］</p>
+<p>更多内容参见：<br><a href="More/Linux_OS_IO_Model.md">Linux_OS_IO_Multiplexing.md</a></p>
+<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><p>Linux中文件的权限有r(读) w(写) x(执行)，分别用数字4，2，1代表。创建文件时，默认权限666，目录的权限为777（对于目录来说，x意味着可以查看目录内容）。</p>
+<p>Umask是设置系统创建文件时的默认权限，umask是从权限中“拿走”相应的位。</p>
+<p><code>硬链接</code>就是在原有的iNode的引用加一，用ls -li是可以看到，硬连接的文件与源文件iNode值相同；而软连接是建立了一个iNode，专门用来指向实际文件的iNode，像快捷方式。</p>
+<p>文件储存在硬盘上，硬盘的最小存储单位叫做”扇区”（Sector）。每个扇区储存512字节（相当于0.5KB）。操作系统读取硬盘的时候，不会一个个扇区地读取，这样效率太低，而是一次性连续读取多个扇区，即一次性读取一个”块”（block）。这种由多个扇区组成的”块”，是文件存取的最小单位。”块”的大小，最常见的是4KB，即连续八个 sector组成一个 block。</p>
+<p>文件数据都储存在”块”中，那么很显然，我们还必须找到一个地方储存文件的元信息，比如文件的创建者、文件的创建日期、文件的大小等等。这种储存文件元信息的区域就叫做inode，中文译名为”索引节点”。</p>
+<h2 id="硬盘存取"><a href="#硬盘存取" class="headerlink" title="硬盘存取"></a>硬盘存取</h2><p>硬盘的存取访问时间分为三个部分：寻道时间Ts，旋转延迟时间Tr和传送时间Tt</p>
+<h2 id="两级缓存机制"><a href="#两级缓存机制" class="headerlink" title="两级缓存机制"></a>两级缓存机制</h2><p>为了兼顾速度和容量的问题，一般采用两级Cache结构，第一级Cache小而快，第二辑Cache容量大。</p>
+<pre><code>平均的访问时间=命中时间(L1)+失效率(L1)*失效开销(L1)
+            =命中时间(L1)+失效率(L1)*((命中时间(L2)+失效率(L2)*失效开销(L2))
+</code></pre><p>［<a href="http://www.nowcoder.com/questionTerminal/c0acab67e0794f3b84c0827f8bad6174" target="_blank" rel="external">两级缓存访问开销</a>］</p>
+<h2 id="RAID-工作模式"><a href="#RAID-工作模式" class="headerlink" title="RAID 工作模式"></a>RAID 工作模式</h2><ol>
+<li><p>RAID 0：无差错控制的带区组<br> 要实现RAID0必须要有两个以上硬盘驱动器，RAID0实现了带区组，数据并不是保存在一个硬盘上，而是分成数据块保存在不同驱动器上。在所有的级别中，RAID 0的速度是最快的。但是RAID 0没有冗余功能的，如果一个磁盘(物理)损坏，则所有的数据都无法使用。</p>
+</li>
+<li><p>RAID 1：镜像结构</p>
+<p> 当主硬盘损坏时，镜像硬盘就可以代替主硬盘工作。镜像硬盘相当于一个备份盘，可想而知，这种硬盘模式的安全性是非常高的，RAID 1的数据安全性在所有的RAID级别上来说是最好的。但是其磁盘的利用率却只有50%，是所有RAID级别中最低的。</p>
+</li>
+<li><p>RAID5：分布式奇偶校验的独立磁盘结构</p>
+<p> RAID5最大的好处是在一块盘掉线的情况下，RAID照常工作，相对于RAID0必须每一块盘都正常才可以正常工作的状况容错性能好多了。因此 RAID5是RAID级别中最常见的一个类型。RAID5校验位即P位是通过其它条带数据做异或(xor)求得的。计算公式为 P=D0xorD1xorD2…xorDn，其中p代表校验块，Dn代表相应的数据块，xor是数学运算符号异或。</p>
+</li>
+<li><p>RAID10：高可靠性与高效磁盘结构</p>
+<p> RAID 10是先镜像再分区数据。是将所有硬盘分为两组，视为是RAID 0的最低组合，然后将这两组各自视为RAID 1运作。RAID 10有着不错的读取速度，而且拥有比RAID 0更高的数据保护性。<br>参考： <a href="http://www.nowcoder.com/test/question/done?tid=2502355&amp;qid=14636#summary" target="_blank" rel="external">RAID 工作模式</a></p>
+</li>
+</ol>
+<h2 id="linux-core文件"><a href="#linux-core文件" class="headerlink" title="linux core文件"></a>linux core文件</h2><p>在一个程序崩溃时，它一般会在当前工作目录（或者指定目录）下生成一个core文件。core文件仅仅是一个内存映象(同时加上调试信息)，主要是用来调试的。</p>
+<p>下面的命令可以检查生成core文件的选项是否打开:</p>
+<pre><code>$ ulimit -a
+-c: core file size (blocks)         0
+</code></pre><p>注意core file size是0，程序出错时不会产生core文件。可以用以下命令来允许系统生成core文件，并设定core文件最大大小:</p>
+<pre><code>$ulimit -c 1024
+</code></pre><p>使用gdb来查看core文件，可以指示出导致程序出错的代码所在文件和行数。</p>
+<p>参考： <a href="http://www.nginx.cn/1521.html" target="_blank" rel="external">Linux生成core文件、core文件路径设置</a></p>
+<p>［<a href="http://www.nowcoder.com/test/question/done?tid=2503141&amp;qid=14834#summary" target="_blank" rel="external">对应题目</a>］</p>
+<h2 id="一个由C-C-编译的程序占用的内存分为以下几个部分："><a href="#一个由C-C-编译的程序占用的内存分为以下几个部分：" class="headerlink" title="一个由C/C++编译的程序占用的内存分为以下几个部分："></a>一个由C/C++编译的程序占用的内存分为以下几个部分：</h2><ul>
+<li>栈区（stack）：由编译器自动分配释放，存放函数的参数值，局部变变量的值等，其操作方式类似于数据结构中的栈，可静态亦可动态分配。栈从高地址到低地址分配</li>
+<li>堆区（heap）：一般由程序员分配释放（new/delete, malloc/free），若程序员不释放，可能造成内存泄漏，程序结束时可能由OS回收。只可动态分配，分配方式类似于链表。堆从低地址到高地址分配</li>
+<li>全局区（静态区）：存放全局变量、静态数据，程序结束后由系统释放。</li>
+<li>常量存储区：特殊的存储区，存放常量，不允许修改。</li>
+<li>程序代码区：存放函数体（类成员函数和全局函数）的二进制代码。</li>
+</ul>
+<h2 id="C-线程安全"><a href="#C-线程安全" class="headerlink" title="C++ 线程安全"></a>C++ 线程安全</h2><p><code>线程安全</code>就是多线程访问时，采用了加锁机制，当一个线程访问某个数据时，进行保护，其他线程不能进行访问直到该线程访问完毕，其他线程才可使用。不会出现数据不一致或者数据污染。线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据</p>
+<p>线程安全问题都是由<code>全局变量</code>或者<code>静态变量</code>引起的。若每个线程中对全局变量、静态变量只有读操作，而无写操作，一般来说是线程安全的；若有多个线程同时执行写操作，一般都需要考虑线程同步，否则的话就可能影响线程安全。</p>
+<p>C++ 中 volatile 关键字不能保证全局变量多线程安全，因为 volatile 仅仅是告诫compiler 不要对这个变量作优化，每次都要从 memory 取数值，而不是从register。</p>
+<p>POSIX线程标准要求C标准库中的大多数函数具备线程安全性。C++标准库里面的string保证不是线程安全的。</p>
+<p>［<a href="http://www.nowcoder.com/profile/509/test/2519469/3919#summary" target="_blank" rel="external">对应题目</a>］</p>
+<p>参考：<br><a href="http://blog.csdn.net/ghevinn/article/details/37764791" target="_blank" rel="external">线程安全和线程不安全理解</a></p>
+<h2 id="Linux-用户权限管理"><a href="#Linux-用户权限管理" class="headerlink" title="Linux 用户权限管理"></a>Linux 用户权限管理</h2><p>［<a href="http://www.nowcoder.com/questionTerminal/43d2ccded19445b18ec61069416c299f" target="_blank" rel="external">新建管理员用户</a>］</p>
+<h2 id="awk-与-sed"><a href="#awk-与-sed" class="headerlink" title="awk 与 sed"></a>awk 与 sed</h2><h1 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h1><h2 id="数值的存储"><a href="#数值的存储" class="headerlink" title="数值的存储"></a>数值的存储</h2><p>正数的原码、反码、补码形式一致，负数的反码为原码的<code>数值位取反</code>，补码为反码+1也即是原码的数值位取反再+1，计算机中以补码表示数据和运算，而32位最小负整数的补码为 1000 0000 0000 0000 0000 0000 0000 0000。</p>
+<p>对一个数值执行单目运算符 -  表示的是对该数取反然后再+1，也即是我们常说的<code>求补运算</code>，注意这里取反+1与原码求补码的区别！也就是求补运算与求补码是不一样的！例子（4位有符号整数）：x=-4  1100（补码）   -x=~x+1 也即是 0011+0001=0100（4），而1100再求补码应是先数值位取反，即1011，然后+1，变成1100！注意这两者（求补与求补码）之间的区别。</p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/5f5f30bea94748fe903ff5616e73de00" target="_blank" rel="external">－2^31 -1 的各种计算</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/3327439779e146dc9035b0977d9469eb" target="_blank" rel="external">unsigned 取值</a>］</p>
+<p>参考：<br><a href="http://selfboot.cn/2015/09/23/something_about_bit_operation/" target="_blank" rel="external">你不知道的按位运算</a></p>
+<h1 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h1><p>分布式领域CAP理论：</p>
+<ul>
+<li>Consistency(一致性)，数据一致更新，所有数据变动都是同步的</li>
+<li>Availability(可用性)，好的响应性能</li>
+<li>Partition tolerance(分区容错性)：可靠性</li>
+</ul>
+<p>定理：任何分布式系统只可同时满足二点，没法三者兼顾。<br>忠告：架构师不要将精力浪费在如何设计能满足三者的完美分布式 系统，而是应该进行取舍。</p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/3666684e8eb142369092da0a559925bb" target="_blank" rel="external">分布式系统三个指标</a>］</p>
+<h1 id="用户态，内核态"><a href="#用户态，内核态" class="headerlink" title="用户态，内核态"></a>用户态，内核态</h1><p>用户态切换到内核态的 3 种方式</p>
+<ul>
+<li>系统调用</li>
+<li>异常</li>
+<li>外围设备的中断</li>
+</ul>
+<h1 id="作业调度"><a href="#作业调度" class="headerlink" title="作业调度"></a>作业调度</h1><p>周转时间 = 作业完成时间-作业提交时间<br>响应比 =（作业等待时间+作业执行时间）/作业执行时间</p>
+<p><a href="http://www.nowcoder.com/questionTerminal/9a714e7cb8fe4d158aa230ec7277e6a1" target="_blank" rel="external">响应比高者优先调度</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2075 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/page/10/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/page/10/"/>
+
+
+
+
+
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/13/static-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/13/static-blog/" itemprop="url">
+                  静态博客一键贴图
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-13T00:00:00+08:00">
+                2015-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##引子</p>
+<p>在Mac下，使用Markdown写博客，最蛋疼的一点就是贴图的问题。</p>
+<p>通常我们在文章中加入一张图，要做如下操作：</p>
+<ol>
+<li>随便找个工具或者用系统工具截图；</li>
+<li>将截图存储到桌面或者随便什么地方；</li>
+<li>修改截图文件名；</li>
+<li>将截图上传到图床或者云空间去；</li>
+<li>在文档中写上图片的Markdown标签，指向图片；</li>
+<li>如果图床又前缀，还要相应的修改图片url</li>
+</ol>
+<p>一个字，烦躁的很！如果一篇文章中涉及到多张图片，来源多样，那更加烦不胜烦累觉不爱。</p>
+<p>这里参考了之前的两篇文章，使用几个知识点，做到两组快捷键完成以上操作。</p>
+<p>##准备工具</p>
+<blockquote>
+<p>「这里使用的素材，没有特别说明的，都是Mac下的」</p>
+</blockquote>
+<p>###Alfred</p>
+<p><a href="http://www.alfredapp.com/" target="_blank" rel="external">Mac神器</a>，这里不再过多介绍。</p>
+<p>实现这个逻辑需要使用到Alfred的Workflow，所以，需要用点软妹币拿下PowerPack。</p>
+<p>###云存储平台</p>
+<p>这里选择<a href="http://www.qiniu.com" target="_blank" rel="external">qiniu</a>，国内一款比较不错的平台，重点是平台工具支持的比较全面。</p>
+<p>##开始作业</p>
+<p>###确定目录</p>
+<p>这个图片存储的目录，非常重要，是本机写入和云端同步的必需。</p>
+<p>###搞定存储</p>
+<p>注册qiuniu帐号，新建空间，<a href="http://developer.qiniu.com/docs/v6/tools/qrsbox.html" target="_blank" rel="external">获取开发者的key</a>, 在命令行跑起来。（这个时候会用到之前的目录）</p>
+<p>###编写Alfred</p>
+<ol>
+<li><p>先呼出Alfred的管理界面：<br> <img src="http://chentaohome.qiniudn.com/948b26ab5e11e8e1a7f103d9e2610509.png" alt=""></p>
+</li>
+<li><p>在workflow下面的+添加一个空白workflow（Blank）<br> <img src="http://chentaohome.qiniudn.com/4304843053ab5b333a9dece9490257fb.png" alt=""></p>
+</li>
+<li><p>配置界面输入自己的信息</p>
+</li>
+<li>新建一个Trigger–&gt; HotKey 这里选择了Ctrl+Cmd+V</li>
+<li>新建一个Action–&gt; Run Script </li>
+<li>贴入以下代码段：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">    property fileTypes : &#123;¬</div><div class="line">    &#123;«class PNGf», &quot;.png&quot;&#125;, ¬</div><div class="line">    &#123;JPEG picture, &quot;.jpg&quot;&#125;&#125;</div><div class="line"></div><div class="line">on getType() --判断剪贴板中的数据类型，暂时只支持png和jpg，优先用png</div><div class="line">    repeat with aType in fileTypes</div><div class="line">        repeat with theInfo in (clipboard info)</div><div class="line">            if (first item of theInfo) is equal to (first item of aType) then return aType</div><div class="line">        end repeat</div><div class="line">    end repeat</div><div class="line">    return missing value</div><div class="line">end getType</div><div class="line"></div><div class="line">set theType to getType()</div><div class="line"></div><div class="line">if theType is not missing value then</div><div class="line">    set filePath to &quot;/Users/chentao/Pictures/pics/&quot; --这里换成你自己放置图片的路径</div><div class="line">    set fileName to do shell script &quot;date \&quot;+%Y%m%d%H%M%S\&quot; | md5&quot; --用当前时间的md5值做文件名</div><div class="line">    if fileName does not end with (second item of theType) then set fileName to (fileName &amp; second item of theType as text)</div><div class="line">    set markdownUrl to &quot;![](http://chentaohome.qiniudn.com/&quot; &amp; fileName &amp; &quot;)&quot; --这里如果没有用到图床，就把前面前缀去掉，用到的话换成你自己图床的url</div><div class="line">    set filePath to filePath &amp; fileName</div><div class="line"></div><div class="line">    try</div><div class="line">        set imageFile to (open for access filePath with write permission)</div><div class="line">        set eof imageFile to 0</div><div class="line">        write (the clipboard as (first item of theType)) to imageFile -- as whatever</div><div class="line">        close access imageFile</div><div class="line">        set the clipboard to markdownUrl</div><div class="line">        try</div><div class="line">            tell application &quot;System Events&quot;</div><div class="line">                keystroke &quot;v&quot; using command down</div><div class="line">            end tell</div><div class="line">        end try</div><div class="line">    on error</div><div class="line">        try</div><div class="line">            close access imageFile</div><div class="line">        end try</div><div class="line">        return &quot;&quot;</div><div class="line">    end try</div><div class="line">else</div><div class="line">    return &quot;&quot;</div><div class="line">end if</div></pre></td></tr></table></figure>
+<ol>
+<li>language选择/usr/bin/osascript</li>
+<li>将markdownUrl改成你的七牛空间地址，如果你的空间名为test，则改为<a href="http://test.qiniudn.com/" target="_blank" rel="external">http://test.qiniudn.com/</a></li>
+</ol>
+<p>##DONE<br>到此为止，大功告成。</p>
+<p>试验一下：</p>
+<ul>
+<li><p>使用QQ截图或者系统截图将图片截到剪贴板</p>
+</li>
+<li><p>将光标点到需要插入图片的位置，按快捷键CTL + CMD + V（也可以自己在Alfred中自定义其它快捷键），会看到在文章中多出了一行类似下面的东西</p>
+<p><code>![](http://chentaohome.qiniudn.com/4304843053ab5b333a9dece9490257fb.png)</code></p>
+</li>
+</ul>
+<p>说明成功了，如果你使用的是Mou这类可以实时预览的编辑器，这时候就可以在右侧窗口看到图片咯。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/12/vim-useful/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/12/vim-useful/" itemprop="url">
+                  vim useful
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-12T00:00:00+08:00">
+                2015-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>缩写</li>
+</ul>
+<p>在vim中，可以定义缩写，快速替换内容。语法格式为：</p>
+<p>:ab [缩写] [要替换的文字]<br>如定义Java Virtual Mechine的缩写是jvm：</p>
+<p>:ab jvm Java Virtual Mechine<br>插入模式下输入jvm，然后按esc，jvm就好自动替换成Java Virtual Mechine。</p>
+<ul>
+<li>忘记以root打开的时候</li>
+</ul>
+<p>当打开一个文件，修改后输入:w忽然发现没有写权限的时候，可以键入:</p>
+<p>:w !sudo tee % 这样就已root权限保存了。</p>
+<ul>
+<li>文本对比</li>
+</ul>
+<p>vimdiff [文件1] [文件2]    </p>
+<ul>
+<li>全部退出</li>
+</ul>
+<p>当在窗口分离模式或者diff模式的时候，如果想关闭所有窗口，键入：</p>
+<p>:qa    </p>
+<ul>
+<li>删除标记内部的文字</li>
+</ul>
+<p>如果想要把[]，””，{}，()等标记内部文字删除，键入：</p>
+<p>di符合开始或者结束 这个命令既可以在标记开始删除，也可以在标记结束的地方删除。</p>
+<ul>
+<li>删除指定标记前的内容</li>
+</ul>
+<p>与di类似，命令为:</p>
+<p>dt标记 从光标位置到标记位置的内容全部被删除(标记不会被删除)。</p>
+<ul>
+<li>跳到上一个／下一个位置</li>
+</ul>
+<p>当你编辑一个很大的文件时，经常要做的事是在某处进行修改，然后跳到另外一处。如果你想跳回之前修改的地方，使用命令：</p>
+<p>Ctrl+o 来回到之前修改的地方</p>
+<p>类似的：</p>
+<p>Ctrl+i 会回退上面的跳动。    </p>
+<ul>
+<li>自动补齐</li>
+</ul>
+<p>vim默认就提供了自动补全功能，根据已经输入的单词预测补齐，这个功能可以通过插件增强。<br>如输入pub保持插入模式键入Ctrl+n会自动补全成public，如果有多种可能，会弹出下拉菜单可供选择。</p>
+<ul>
+<li>基本计算器</li>
+</ul>
+<p>在插入模式下，使用 Ctrl+r 键然后输入 =，再输入一个简单的算式。按Enter键，计算结果就会插入到文件中。例如，尝试输入：</p>
+<p> Ctrl+r ‘=3*6’ ENTER 然后计算结果”18”会被插入到文件中。</p>
+<ul>
+<li>搜索高亮</li>
+</ul>
+<p>让你一眼看到整屏匹配关键字</p>
+<p>set hlsearch</p>
+<p>- </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/10/cocoapod-install-and-simple-use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/10/cocoapod-install-and-simple-use/" itemprop="url">
+                  cocoapod install and simple use
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-10T00:00:00+08:00">
+                2015-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>CocoaPods是什么？</p>
+<p>当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。如果能有什么工具能解决这些恼人的问题，那将“善莫大焉”。所以，你需要 CocoaPods。</p>
+<p>CocoaPods应该是iOS最常用最有名的类库管理工具了，上述两个烦人的问题，通过cocoaPods，只需要一行命令就可以完全解决，当然前提是你必须正确设置它。重要的是，绝大部分有名的开源类库，都支持CocoaPods。所以，作为iOS程序员的我们，掌握CocoaPods的使用是必不可少的基本技能了。</p>
+<p>如何下载和安装CocoaPods？</p>
+<p>在安装CocoaPods之前，首先要在本地安装好Ruby环境。至于如何在Mac中安装好Ruby环境，请google一下，本文不再涉及。</p>
+<p>假如你在本地已经安装好Ruby环境，那么下载和安装CocoaPods将十分简单，只需要一行命令。在Terminator（也就是终端）中输入以下命令（注意，本文所有命令都是在终端中输入并运行的。什么，你不知道什么是终端？那请小编吃饭，小编告诉你）：</p>
+<p><code>sudo gem install cocoapods</code></p>
+<p>但是，且慢。如果你在天朝，在终端中敲入这个命令之后，会发现半天没有任何反应。原因无他，因为那堵墙阻挡了cocoapods.org。（你会问，我靠，这都要墙！是的，小编也纳闷。）</p>
+<p>但是，是的，又但是（不过是个可喜的“但是”）。我们可以用淘宝的Ruby镜像来访问cocoapods。按照下面的顺序在终端中敲入依次敲入命令：</p>
+<p><code>$ gem sources --remove https://rubygems.org/</code></p>
+<p>//等有反应之后再敲入以下命令</p>
+<p><code>$ gem sources -a http://ruby.taobao.org/</code></p>
+<p>为了验证你的Ruby镜像是并且仅是taobao，可以用以下命令查看：</p>
+<p><code>$ gem sources -l</code></p>
+<p>只有在终端中出现下面文字才表明你上面的命令是成功的：</p>
+<p><strong><em> CURRENT SOURCES </em></strong></p>
+<p><a href="http://ruby.taobao.org/" target="_blank" rel="external">http://ruby.taobao.org/</a></p>
+<p>上面所有的命令完成之时，在小编的终端上是这个的样子：</p>
+<p>Figure 1</p>
+<p>这时候，你再次在终端中运行：</p>
+<p>$ sudo gem install cocoapods<br>等上十几秒钟，CocoaPods就可以在你本地下载并且安装好了，不再需要其他设置。</p>
+<p>敲入以上命令时，小编终端上是这个样子的（由于太长，仅截取前面一部分）：</p>
+<p>Figure 2</p>
+<p>看到这里，你心里会不会说，我靠！太爽了，这么容易就可以下载并且安装好了！是的，小编也是这么想的。CocoPods就是这么简单，使用也十分简单。继续往下看吧。</p>
+<p>如何使用CocoaPods？<br>好了，安装好CocoPods之后，接下来就是使用它。所幸，使用CocoPods和安装它一样简单，也是通过一两行命令就可以搞定。</p>
+<p>小编在这里用两种使用场景来具体说明如何使用CocoaPods。</p>
+<p>场景1：利用CocoaPods，在项目中导入AFNetworking类库</p>
+<p>AFNetworking类库在GitHub地址是：<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">https://github.com/AFNetworking/AFNetworking</a></p>
+<p>为了确定AFNetworking是否支持CocoaPods，可以用CocoaPods的搜索功能验证一下。在终端中输入：</p>
+<p>$ pod search AFNetworking<br>过几秒钟之后，你会在终端中看到关于AFNetworking类库的一些信息。比如：</p>
+<p>Figure 3</p>
+<p>这说明，AFNetworking是支持CocoaPods，所以我们可以利用CocoaPods将AFNetworking导入你的项目中。</p>
+<p>首先，我们需要在我们的项目中加入CocoaPods的支持。你可以跟随小编的步骤，先利用Xcode创建一个名字CocoaPodsDemo的项目，用于以下的教程。创建好之后，在继续下一步之前，小编先截图，看看项目没有支持CocoaPods时的项目Xcode目录结构：</p>
+<p>Figure 4</p>
+<p>上图等一下要跟项目支持CocoaPods之后的项目Xcode目录结构做对比。</p>
+<p>你看到这里也许会问，CocoaPods为什么能下载AFNetworking呢，而不是下载其他类库呢？这个问题的答案是，有个文件来控制CocoaPods该下载什么。这个文件就叫做“Podfile”（注意，一定得是这个文件名，而且没有后缀）。你创建一个Podfile文件，然后在里面添加你需要下载的类库，也就是告诉CocoaPods，“某某和某某和某某某，快到碗里来！”。每个项目只需要一个Podfile文件。</p>
+<p>好吧，废话少说，我们先创建这个神奇的PodFile。在终端中进入（cd命令）你项目所在目录，然后在当前目录下，利用vim创建Podfile，运行：</p>
+<p>$ vim Podfile<br>然后在Podfile文件中输入以下文字：</p>
+<p>platform :ios, ‘7.0’<br>pod “AFNetworking”, “~&gt; 2.0”<br>注意，这段文字不是小编凭空生成的，可以在AFNetworking的github页面找到。这两句文字的意思是，当前AFNetworking支持的iOS最高版本是iOS 7.0, 要下载的AFNetworking版本是2.0。</p>
+<p>然后保存退出。vim环境下，保存退出命令是：</p>
+<p>:wq<br>这时候，你会发现你的项目目录中，出现一个名字为Podfile的文件，而且文件内容就是你刚刚输入的内容。注意，Podfile文件应该和你的工程文件.xcodeproj在同一个目录下。</p>
+<p>这时候，你就可以利用CocoPods下载AFNetworking类库了。还是在终端中的当前项目目录下，运行以下命令：</p>
+<p>$ pod install<br>因为是在你的项目中导入AFNetworking，这就是为什么这个命令需要你进入你的项目所在目录中运行。</p>
+<p>运行上述命令之后，小编的终端出现以下信息：</p>
+<p>EricmatoMacBook-Pro:CocoaPodsDemo ericwang$ pod install<br>Analyzing dependencies<br>Downloading dependencies<br>Installing AFNetworking (2.0.2)<br>Generating Pods project<br>Integrating client project</p>
+<p>[!] From now on use <code>CocoaPodsDemo.xcworkspace</code>.<br>注意最后一句话，意思是：以后打开项目就用 CocoaPodsDemo.xcworkspace 打开，而不是之前的.xcodeproj文件。</p>
+<p>你也许会郁闷，为什么会出现.xcodeproj文件呢。这正是你刚刚运行$ pod install命令产生的新文件。除了这个文件，你会发现还多了另外一个文件“Podfile.lock”和一个文件夹“Pods”。 点击 CocoaPodsDemo.xcworkspace 打开之后工程之后，项目Xcode目录结构如下图：</p>
+<p>Figure 5</p>
+<p>你会惊喜地发现，AFNetwoking已经成功导入项目了（红框部分）！</p>
+<p>现在，你就可以开始使用AFNetworking.h啦。可以稍微测试一下，在你的项目任意代码文件中输入：</p>
+<p>#import <afnetworking.h><br>或者</afnetworking.h></p>
+<p>#import “AFNetworking.h”<br>然后编译，看看是否出错。如果你严格按照小编上述的步骤来，是不可能出错的啦。</p>
+<p>至此，CocoPods的第一个应用场景讲述完毕。别看小编写了这么多，其实过程是十分简单的。总结一下就是：</p>
+<p>先在项目中创建Podfile，Podfile的内容是你想导入的类库。一般类库的原作者会告诉你导入该类库应该如何写Podfile；<br>运行命令：`$ pod install.<br>下面，小编继续讲述第二种使用场景。</p>
+<p>场景2：如何正确编译运行一个包含CocoPods类库的项目</p>
+<p>你也许曾经遇到过（特别是新手iOS开发者）这种情况，好不容易在GitHub上找到一份代码符合自己想需求，兴冲冲下载下来，一编译，傻眼了，发现有各种各样错误。一看，原来是缺失了各种其他第三方类库。这时候莫慌，你再仔细一看，会发现你下载的代码包含了Podfile。没错，这意味着你可以用CocoaPods很方便下载所需要的类库。</p>
+<p>下面，小编以代码 UAAppReviewManager 为例来说明如何正确编译运行一个包含CocoPods类库的项目。</p>
+<p>UAAppReviewManager是一个能够让你方便地将提醒用户评分的功能加入你的应用中。当你去UAAppReviewManager的GitHub地址下载这份代码之后，打开Example工程（UAAppReviewManagerExample），编译，你会发现Xcode报告一大堆错误，基本都是说你编译的这份代码找不到某某头文件，这就意味着你要成功编译UAAppReviewManager的Example代码，必须先导入一些第三方类库。同时你会发现在UAAppReviewManagerExample文件夹下面有三个跟CocosPods相关的文件（文件夹）：Podfile，Podfile.lock和Pods，如下图：</p>
+<p>Figure 6</p>
+<p>用</p>
+<p>这时候，打开终端，进入UAAppReviewManagerExample所在的目录，也就是和Podfile在同一目录下，和场景1一样，输入以下命令（由于已经有Podfile，所以不需要再创建Podfile）：</p>
+<p>$ pod update<br>过几秒（也许需要十几秒，取决于你的网络状况）之后，终端出现：</p>
+<p>Analyzing dependencies<br>Fetching podspec for <code>UAAppReviewManager</code> from <code>../</code><br>Downloading dependencies<br>Installing UAAppReviewManager (0.1.6)<br>Generating Pods project<br>Integrating client project</p>
+<p>[!] From now on use <code>UAAppReviewManagerExample.xcworkspace</code>.<br>这时候，再回到UAAppReviewManagerExample文件夹看一看，会看到多了一个文件UAAppReviewManagerExample.xcworkspace：</p>
+<p>Figure 7</p>
+<p>根据终端的信息提示，你以后就需用新产生的UAAppReviewManagerExample.xcworkspace来运行这个Example代码了。</p>
+<p>打开UAAppReviewManagerExample.xcworkspace，编译运行，成功！如下图：</p>
+<p>Figure 8</p>
+<p>注意，这里有个小问题，如果刚刚你不是输入$ pod update，而是输入$ pod install，会发现类库导入不成功，并且终端出现下面提示：</p>
+<p>[!] Required version (UAAppReviewManager (from <code>../</code>)) not found for <code>UAAppReviewManager</code>.<br>Available versions: 0.1.6<br>这里的意思大概是Podfile文件过期，类库有升级，但是Podfile没有更改。$ pod install只会按照Podfile的要求来请求类库，如果类库版本号有变化，那么将获取失败。但是 $ pod update会更新所有的类库，获取最新版本的类库。而且你会发现，如果用了 $ pod update，再用 $ pod install 就成功了。</p>
+<p>那你也许会问，什么时候用 $ pod install，什么时候用 $ pod update 呢，我又不知道类库有没有新版本。好吧，那你每次直接用 $ pod update 算了。或者先用 $ pod install，如果不行，再用 $ pod update。</p>
+<p>好了，小编就啰嗦到这里吧。上述都只是CocoaPods的最基本用法。要继续研究CocoaPods其他高级用法，请点击这里CocoaPods Wiki<a href="https://github.com/CocoaPods/CocoaPods/wiki" target="_blank" rel="external">https://github.com/CocoaPods/CocoaPods/wiki</a> 。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/05/wireshark-crash-on-mac-osx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/05/wireshark-crash-on-mac-osx/" itemprop="url">
+                  wireshark crash on Mac OSX
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-05T00:00:00+08:00">
+                2015-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Intsall wireshark on Mac OSX</li>
+</ul>
+<p><code>➜  ~  wireshark</code></p>
+<p>2015-04-05 10:12:52.143 defaults[37890:7495980]<br>The domain/default pair of (kCFPreferencesAnyApplication, AppleHighlightColor) does not exist<br>dyld: Library not loaded: /usr/X11/lib/libcairo.2.dylib<br>  Referenced from: /Applications/Wireshark.app/Contents/Resources/bin/wireshark-bin<br>  Reason: image not found<br>[1]    37879 trace trap  wireshark`</p>
+<ul>
+<li>Solution:</li>
+</ul>
+<p><code>➜  ~  sudo ln -s /opt/X11 /usr/X11</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/" itemprop="url">
+                  Analysing iOS App Network Performances on Cellular/Wi Fi
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-05T00:00:00+08:00">
+                2015-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>There are good chances that, at a point, your app is connected and talk to a backend. Having best network performances is crucial, maybe as important as the responsiveness of the UI. Instruments provides good built-in tools for analysing memory, cpu, leaks, fps but analysing an app network performances is not easy.<br>There are a lot of different methods here and here for instance to inspect how behave your app, and for the most part the presented solution is to enable a HTTP proxy on the iPhone Wi-Fi interface and capture Wi-Fi packets. There is also an Apple Technical Q&amp;A here that describes in details how to capture packets, but I’m going to present a method that can also works when you want to analyse your app on a 3G/Edge connection, or if you can’t have a proxy on the Wi-Fi connection.<br>Create a remote virtual interface (RVI) on your iPhone<br>Capture packets using tcpdump in a .pcap file<br>Using HAR (HTTP Archive) file format<br>Instruments network profiling</p>
+<ol>
+<li>Create a remote virtual interface (RVI) on your iPhone</li>
+</ol>
+<p>Really easy, just plug your iPhone to your Mac via USB and type in a terminal</p>
+<p><code>rvictl -s abcdef01234563e91f1f2f8a8cb0841d2dafeebbc</code></p>
+<p>where abcdef01234563e91f1f2f8a8cb0841d2dafeebbc is the UDID of your iPhone. You whould see</p>
+<p><code>$ Starting device abcdef01234563e91f1f2f8a8cb0841d2dafeebbc [SUCCEEDED]</code></p>
+<p>You can check that you have a new network interface</p>
+<p><code>ifconfig -l</code></p>
+<p>will give you</p>
+<p><code>$ lo0 gif0 stf0 en0 en1 p2p0 fw0 rvi0</code></p>
+<p>where rvi0 is the new remote virtual interface. When you’ll be done, you will be able to delete the RVI</p>
+<p><code>rvictl -x abcdef01234563e91f1f2f8a8cb0841d2dafeebbc</code></p>
+<p>will ouput</p>
+<p><code>$ Stopping device 74bd53c647548234ddcef0ee3abee616005051ed [SUCCEEDED]</code></p>
+<ol>
+<li>Capture packets using tcpdump in a .pcap file</li>
+</ol>
+<p>After having instanciate a RVI, type in a terminal</p>
+<p><code>sudo tcpdump -i rv0 -n -s 0 -w dumpFile.pcap tcp</code></p>
+<p>This will start the capture of TCP packets on the remote interface</p>
+<p><code>-i rv0 causes tcpdump to capture on the RVI</code><br><code>-n option means that addresses are not converted to domain names (which is faster)</code><br><code>-s 0 option causes tcpdump to capture the entire packet and not just the first bytes</code><br><code>-w dumpFile.pcp option specifies the output file, in libpcap file format.</code></p>
+<p>tcp option to capture only TCP packets.</p>
+<p>On the device, launch your app, play with it and once you’ve finished, quit tcpdump. At this point, you can also close your remove virtual interface</p>
+<p><code>rvictl -x abcdef01234563e91f1f2f8a8cb0841d2dafeebbc</code></p>
+<p>Once we have this pcap file, there is still some work in order to load this file in our favorite analyser tool. The TCP packets have been captured in RAW format and most of the tools work only on Ethernet captured packed. To convert this pcap file, you will need to install tcpreplay (with Homebrew for instance)</p>
+<p><code>brew install tcpreplay</code></p>
+<p>tcprewrite is a part of tcpreplay suite and can be used to convert your raw packets capture to Ethernet packets capture</p>
+<p><code>tcprewrite --dlt=enet --enet-dmac=00:11:22:33:44:55 --enet-smac=66:77:88:99:AA:BB --infile=dumpFile.pcap --outfile=dumpFileFinal.pcap</code></p>
+<p>Now, your packet is ready to be analysed via your favorite tool, like Charles HTTP Proxy or Wireshark.</p>
+<ol>
+<li>Using HAR (HTTP Archive) file format</li>
+</ol>
+<p>HTTP Archive (HAR) is an open file format for archiving HTTP packets. The really good news is that there is a lot of tools (often free) available to analyse, visualize HAR files. For instance, provided you have a HAR captured file, you can preview it online with the HAR Viewer<br>HAR viewer result</p>
+<p>You can convert the .pcap captured file to HAR with a Python script, pcap2har. pcap2har depends on the dpkt packet-parsing library (<a href="http://code.google.com/p/dpkt/" target="_blank" rel="external">http://code.google.com/p/dpkt/</a>) so we need to install it first. Download the dpkt latest version tar.gz, untar it on your disk, go to the dpkt-1.7 directory and type</p>
+<p><code>sudo python setup.py install</code></p>
+<p>to install dpkt in your Python 2 package library.</p>
+<p>Now, clone the lastest pcap2har version at <a href="https://github.com/andrewf/pcap2har" target="_blank" rel="external">https://github.com/andrewf/pcap2har</a> on your disk. Then, to convert your .pcap file to HAR</p>
+<p><code>./main.py dumpFileFinal.cap dumpFileFinal.har</code></p>
+<p>Be sure to convert the .pcap file that has been rewrite with tcprewrite, otherwise the conversion will fail.</p>
+<ol>
+<li>Instruments network profiling</li>
+</ol>
+<p>If you have the source code of the application, you can try to profile it with Instruments ( Xcode &gt; Product &gt; Profile then choose Network template).</p>
+<p>Instrument network template</p>
+<p>I’ve played a little with the network activities, but I find it hard to extract useful informations for analysing. Let’s hope Apple will improve the tool to profile network activities and bring it to the same level as the Instrument OpenGL template for instance.</p>
+<p><a href="http://blog.manbolo.com/2013/02/22/analysing-ios-app-network-performances-on-cellularwifi" target="_blank" rel="external">http://blog.manbolo.com/2013/02/22/analysing-ios-app-network-performances-on-cellularwifi</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/05/use-mac-to-catch-web-pkg-on-iphone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/05/use-mac-to-catch-web-pkg-on-iphone/" itemprop="url">
+                  Use Mac to Catch Web Pkg on iPhone
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-05T00:00:00+08:00">
+                2015-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>As title.</p>
+<ol>
+<li><p>Make iPhone link with Mac (USB)</p>
+</li>
+<li><p>Open the iTenus , get the UDID , e.g. My UDID is 7d266806774f5d78b98651042d0658417482e67e</p>
+</li>
+<li><p>Open the terminal, input :<br> <code>➜  ~  rvictl -s 7d266806774f5d78b98651042d0658417482e67e</code></p>
+<p> if terminal seen as follow is succes.<br> <code>Starting device 7d266806774f5d78b98651042d0658417482e67e [SUCCEEDED] with interface rvi0</code></p>
+</li>
+<li><p>Then found the new network as rvi(n), for your first time , it’s 0,so rvi0</p>
+</li>
+<li><p>Use wireshark to catch. Done</p>
+</li>
+</ol>
+<p>For the attention, USB cannot be cut when you analysis your catch pkg.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/04/mac-os-x-1010-yosemite-dashboardspotlight/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/04/mac-os-x-1010-yosemite-dashboardspotlight/" itemprop="url">
+                  Mac OS X 10.10 Yosemite 关闭Dashboard和Spotlight
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-04T00:00:00+08:00">
+                2015-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          Mac
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/04/mac-os-x-1010-yosemite-dashboardspotlight/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/04/starting-and-stopping-background-services-with-homebrew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/04/starting-and-stopping-background-services-with-homebrew/" itemprop="url">
+                  Starting and Stopping Background Services with Homebrew
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-04T00:00:00+08:00">
+                2015-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>I love Homebrew, but sometimes it really gets me down, you know? Especially when I have to deal with launchctl.</p>
+<p>+<br>launchctl loads and unloads services that start at login. In OS X, these services are represented by files ending with .plist (which stands for “property list”). These plists are usually stored in either ~/Library/LaunchAgents or /Library/LaunchAgents. You load them (i.e. tell them to start at login) with launchctl load $PATH_TO_LIST and unload them with launchctl unload $PATH_TO_LIST. Loading a plist tells the program it represents (e.g. redis) to start at login, while unloading it tells the program not to start at login.</p>
+<p>+<br>This post-install message from Homebrew may look familiar:</p>
+<p>+<br>To have launchd start mysql at login:<br>    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents<br>Then to load mysql now:<br>    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>Or, if you don’t want/need launchctl, you can just run:<br>    mysql.server start<br>+<br>Doing all that takes too long, and I can never remember where Homebrew plists are. Fortunately, Homebrew includes a lovely interface for managing this without using ln, launchctl or knowing where plists are.</p>
+<p>brew services</p>
+<p>+<br>First, install brew services by tapping gapple/services (one time):</p>
+<p>+<br>brew tap gapple/services<br>+<br>Here’s an example usage:</p>
+<p>3<br>$ brew services start mysql<br>==&gt; Successfully started <code>mysql</code> (label: homebrew.mxcl.mysql)<br>+<br>Behind the scenes, brew services start is doing everything in the post-install message above. First it runs ln -sfv … for you. Then it runs launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist. It Just Works.</p>
+<p>+<br>Let’s say MySQL’s acting funky. We can easily restart it:</p>
+<p>+<br>brew services restart mysql<br>Stopping <code>mysql</code>… (might take a while)<br>==&gt; Successfully stopped <code>mysql</code> (label: homebrew.mxcl.mysql)<br>==&gt; Successfully started <code>mysql</code> (label: homebrew.mxcl.mysql)<br>+<br>Now let’s see everything we’ve loaded:</p>
+<p>+<br>$ brew services list<br>redis      started      442 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.redis.plist<br>postgresql started      443 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.postgresql.plist<br>mongodb    started      444 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mongodb.plist<br>memcached  started      445 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.memcached.plist<br>mysql      started    87538 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>+<br>Note that the list of services includes services you started with launchctl load, not just services you loaded with brew services.</p>
+<p>+<br>Let’s say we uninstalled MySQL and Homebrew didn’t remove the plist for some reason (it usually removes it for you). There’s a command for you:</p>
+<p>+<br>$ brew services cleanup<br>Removing unused plist /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>+<br>Kachow.</p>
+<p>Hidden Homebrew commands</p>
+<p>1<br>Homebrew ships with a whole bunch of commands that don’t show up in brew –help. You can see a list of them in the Homebrew git repo. Each file is named like brew-COMMAND, and you run them with brew command. I recommend brew beer.</p>
+<p>What’s next</p>
+<p>+<br>If you liked this, I recommend reading through Homebrew’s Tips and Tricks. You can also try out another Homebrew extension for installing Mac apps: homebrew-cask.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/02/11/mac-homebrew--update-all-packages-at-once/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/02/11/mac-homebrew--update-all-packages-at-once/" itemprop="url">
+                  Mac Homebrew – Update all packages at once
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-11T00:00:00+08:00">
+                2015-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>With the release of Mountain Lion, some brew packages have stopped working… because they need updates!</p>
+<p>Updating all my brew packages installed via mac homebrew was my solution, unfortunatly there is no easy way to do this built-in.</p>
+<p>Run this command, it first updates homebrew itself then looks for outdated formulas and updates them one by one. (Since there is no built-in command to update all brew packages at once)</p>
+<p><code>brew update; brew list | xargs brew upgrade</code><br>Afterwards, you can issue a</p>
+<p><code>brew outdated</code><br>to confirm that there are no packages requiring updates.</p>
+<p>brew upgrade <code>brew outdated</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/28/postgresql-prompting/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/28/postgresql-prompting/" itemprop="url">
+                  PostgreSQL Prompting
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-28T00:00:00+08:00">
+                2014-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> Prompting 参数以百分号 % 打头，主要有如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Prompting  参数</th>
+<th style="text-align:right">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">%M</td>
+<td style="text-align:right">数据库主机全名，如果通过 UNIX Socket 连接则显示为 [local]</td>
+</tr>
+<tr>
+<td style="text-align:right">%m</td>
+<td style="text-align:right">也表示数据库主机名，会截断第一个 . 后的内容</td>
+</tr>
+<tr>
+<td style="text-align:right">%&gt;</td>
+<td style="text-align:right">数据库端口号</td>
+</tr>
+<tr>
+<td style="text-align:right">%n</td>
+<td style="text-align:right">会话的用户名</td>
+</tr>
+<tr>
+<td style="text-align:right">%/</td>
+<td style="text-align:right">当前数据库名</td>
+</tr>
+<tr>
+<td style="text-align:right">%#</td>
+<td style="text-align:right">如果是超级用户显示为 #，否则显示为 &gt;</td>
+</tr>
+<tr>
+<td style="text-align:right">%R</td>
+<td style="text-align:right">在prompt 1中，通常显示 = ，单用户模式显示为 ^，如果会话被断开显示为 !, 等等。</td>
+</tr>
+</tbody>
+</table>
+<p> <strong>备注： 默认的 prompt 的设置为 ‘%/%R%# ‘。</strong></p>
+<p> 常用的<code>.psqlrc</code>文件例子：</p>
+<pre><code>\set PROMPT1 &apos;SQL&gt;%n@ %/ %`date +%H:%M:%S`%R%#&apos;
+这里显示为：
+SQL&gt;chentao@ template1 12:22:29=#
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

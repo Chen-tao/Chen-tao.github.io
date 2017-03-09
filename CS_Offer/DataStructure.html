@@ -1,0 +1,649 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="图树树（Tree）是n（n≥0）个有限数据元素的集合。当n＝0 时，称这棵树为空树。在一棵非空树T 中：
+
+有一个特殊的数据元素称为树的根结点，根结点没有前驱结点。
+除根结点之外的其余数据元素被分成m（m&amp;gt;0）个互不相交的集合T1，T2，…，Tm，其中每一个集合Ti（1≤i≤m）本身又是一棵树。树T1，T2，…，Tm 为这个根结点的子树（subtree）。
+
+树具有以下特点：
+
+每个节点有零个或多">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/DataStructure.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="图树树（Tree）是n（n≥0）个有限数据元素的集合。当n＝0 时，称这棵树为空树。在一棵非空树T 中：
+
+有一个特殊的数据元素称为树的根结点，根结点没有前驱结点。
+除根结点之外的其余数据元素被分成m（m&amp;gt;0）个互不相交的集合T1，T2，…，Tm，其中每一个集合Ti（1≤i≤m）本身又是一棵树。树T1，T2，…，Tm 为这个根结点的子树（subtree）。
+
+树具有以下特点：
+
+每个节点有零个或多">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_2.jpg">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_3.jpg">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_1.jpg">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="图树树（Tree）是n（n≥0）个有限数据元素的集合。当n＝0 时，称这棵树为空树。在一棵非空树T 中：
+
+有一个特殊的数据元素称为树的根结点，根结点没有前驱结点。
+除根结点之外的其余数据元素被分成m（m&amp;gt;0）个互不相交的集合T1，T2，…，Tm，其中每一个集合Ti（1≤i≤m）本身又是一棵树。树T1，T2，…，Tm 为这个根结点的子树（subtree）。
+
+树具有以下特点：
+
+每个节点有零个或多">
+<meta name="twitter:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_2.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/DataStructure.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>树（Tree）是n（n≥0）个有限数据元素的集合。当n＝0 时，称这棵树为空树。在一棵非空树T 中：</p>
+<ol>
+<li>有一个特殊的数据元素称为树的根结点，根结点没有前驱结点。</li>
+<li>除根结点之外的其余数据元素被分成m（m>0）个互不相交的集合T1，T2，…，Tm，其中每一个集合Ti（1≤i≤m）本身又是一棵树。树T1，T2，…，Tm 为这个根结点的子树（subtree）。</li>
+</ol>
+<p>树具有以下特点：</p>
+<ol>
+<li>每个节点有零个或多个子节点。</li>
+<li>每个非根节点只有一个父节点。</li>
+<li>没有父节点的节点称为根节点。</li>
+</ol>
+<p>相关术语（结点、孩子结点等术语忽略）：</p>
+<ul>
+<li>祖先结点: 从根到该结点的所经分支上的所有结点子孙结点：以某结点为根的子树中任一结点都称为该结点的子孙；</li>
+<li>结点层：规定树的根结点的层数为1，其余结点的层数等于它的双亲结点的层数加1；</li>
+<li>结点的<code>度</code>：结点子树的个数。</li>
+</ul>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/fe30dbe0dfb1498183e832dcba5ed908" target="_blank" rel="external">二叉树与森林的转换</a>］</p>
+<p>参考：<a href="http://c.biancheng.net/cpp/u/shuju7/" target="_blank" rel="external">数据结构之树</a></p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>二叉树是<code>每个节点最多有两个子树</code>的树结构。二叉树的每个结点至多只有二棵子树，二叉树的子树有左右之分，次序不能颠倒。</p>
+<p>图论中二叉树的定义如下：二叉树是一个连通无环图，并且每一个顶点的度不大于3。有根二叉树还要满足根结点的度不大于2。</p>
+<p>二叉树的一些不是那么明显的性质：</p>
+<ol>
+<li>对任何一棵二叉树T，度为2的结点数为m，则叶子结点数为：m＋1。</li>
+<li>给定N个节点，能构成h(N)种不同的二叉树，其中h(N)为<code>卡特兰数</code>的第N项。h(n)=C(2*n，n)/(n+1)。</li>
+</ol>
+<p>几种常用的二叉树：</p>
+<ul>
+<li>满二叉树：一棵深度为k，且有2^k - 1个节点的二叉树称为；</li>
+<li>完全二叉树：深度为k，有n个节点的二叉树，当且仅当其每一个节点都与深度为k的满二叉树中，序号为1至n的节点对应时。</li>
+<li><p>二叉堆：它一棵完全的二叉树，二叉堆一般分为两种：最大堆和最小堆。</p>
+<ul>
+<li>最大（小）堆中的最大（小）元素值出现在根结点（堆顶）；</li>
+<li>堆中每个父节点的元素值都大（小）于等于其孩子结点（如果存在）。</li>
+</ul>
+</li>
+<li><p>二叉排序树：是一棵空树，或者是具有下列性质的二叉树：</p>
+<ul>
+<li>若左子树不空，则左子树上所有结点的值均小于它的根结点的值；</li>
+<li>若右子树不空，则右子树上所有结点的值均大于它的根结点的值；</li>
+<li>左、右子树也分别为二叉排序树；</li>
+<li>没有键值相等的节点。</li>
+</ul>
+</li>
+<li>平衡二叉树（AVL树）：它是一棵二叉排序树，且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</li>
+</ul>
+<p>参考：<br><a href="http://blog.csdn.net/luckyxiaoqiang/article/details/7518888" target="_blank" rel="external">轻松搞定面试中的二叉树题目</a><br><a href="https://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0" target="_blank" rel="external">卡特兰数</a></p>
+<h2 id="树与二叉树的转换"><a href="#树与二叉树的转换" class="headerlink" title="树与二叉树的转换"></a>树与二叉树的转换</h2><p>如果设定一定规则，就可用二叉树结构表示树，这样对树的操作实现就可以借助二叉树存储，利用二叉树上的操作来实现。</p>
+<p><code>树转换为二叉树</code>：将一棵树转换为二叉树的方法是：</p>
+<ul>
+<li>树中所有相邻兄弟之间加一条连线。</li>
+<li>对树中的每个结点，只保留它与第一个孩子结点之间的连线，删去它与其它孩子结点之间的连线。</li>
+<li>以树的根结点为轴心，将整棵树顺时针转动一定的角度，使之结构层次分明。</li>
+</ul>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_2.jpg" alt=""></p>
+<p>二叉树转换为树或森林的过程如下：</p>
+<ul>
+<li>若某结点是其双亲的左孩子，则把该结点的右孩子、右孩子的右孩子……都与该结点的双亲结点用线连起来；</li>
+<li>删去原二叉树中所有的双亲结点与右孩子结点的连线；</li>
+<li>整理由（1）、（2）两步所得到的树或森林，使之结构层次分明。</li>
+</ul>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_3.jpg" alt=""></p>
+<p>参考：<a href="http://c.biancheng.net/cpp/html/987.html" target="_blank" rel="external">树、森林与二叉树的转换</a></p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p>红黑树是一种自平衡二叉查找树。它的统计性能要好于平衡二叉树（AVL树），因此，红黑树在很多地方都有应用。在C++ STL中，很多部分(目前包括set, multiset, map, multimap)应用了红黑树的变体。它是复杂的，但它的操作有着良好的最坏情况运行时间，并且在实践中是高效的: 它可以在O(log n)时间内做查找，插入和删除等操作。</p>
+<p>详细内容参见：<a href="More/DataStructure_RB_Tree.md">DataStructure_RB_Tree</a></p>
+<h1 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h1><p>哈希表就是一种以键-值(key-indexed) 存储数据的结构，我们只要输入待查找的值即 key，即可查找到其对应的值。</p>
+<p>哈希查找第一步就是使用哈希函数将键映射成索引，这种映射函数就是<code>哈希函数</code>。如果我们有一个保存0-M数组，那么我们就需要一个能够将任意键转换为该数组范围内的索引（0~M-1）的哈希函数。哈希函数需要易于计算并且能够均匀分布所有键。一个好的哈希函数必须在理论上非常的快、稳定并且是可确定的。</p>
+<p>哈希函数通常是由他们产生哈希值的方法来定义的，有两种主要的方法：</p>
+<ol>
+<li>基于加法和乘法的散列：这种方式是通过遍历数据中的元素然后每次对某个初始值进行加操作，其中加的值和这个数据的一个元素相关。通常这对某个元素值的计算要乘以一个素数。</li>
+<li>基于移位的散列：和加法散列类似，基于移位的散列也要利用字符串数据中的每个元素，但是和加法不同的是，后者更多的而是进行位的移位操作。通常是结合了左移和右移，移的位数的也是一个素数。每个移位过程的结果只是增加了一些积累计算，最后移位的结果作为最终结果。</li>
+</ol>
+<p>DEK：Knuth在《编程的艺术 第三卷》的第六章排序和搜索中给出一个 Hash 函数如下：</p>
+<pre><code>long DEKHash(string str)
+{
+    long hash = str.length();
+    for(int i = 0; i &lt; str.length(); i++)
+    {
+        hash = ((hash &lt;&lt; 5) ^ (hash &gt;&gt; 27)) ^ str[i];
+    }
+    return hash;
+}
+</code></pre><p>对于两个或者多个键具有相同索引值的情况，如何有效避免hash结果值的碰撞？</p>
+<ul>
+<li><code>拉链法</code>：将大小为M的数组的每一个元素指向一个条链表，链表中的每一个节点都存储散列值为该索引的键值对。</li>
+<li><code>开放寻址法</code>：使用大小为M的数组来保存N个键值对，其中M>N，使用数组中的空位解决碰撞冲突。其中最简单的是线性探测法，当碰撞发生时即一个键的散列值被另外一个键占用时，直接检查散列表中的下一个位置即将索引值加1。</li>
+</ul>
+<p>为什么一般hashtable的桶数会取一个<code>素数</code>？</p>
+<p>首先来说假如关键字是随机分布的，那么无所谓一定要模质数。但在实际中往往关键字有某种规律，例如大量的等差数列，那么公差和模数不互质的时候发生碰撞的概率会变大，而用质数就可以很大程度上回避这个问题。</p>
+<p>参考： <a href="http://www.cnblogs.com/yangecnu/p/Introduce-Hashtable.html" target="_blank" rel="external">浅谈算法和数据结构: 十一 哈希表</a></p>
+<h1 id="bitmap"><a href="#bitmap" class="headerlink" title="bitmap"></a>bitmap</h1><p>位图（bitmap）是一种非常常用的结构，在索引，数据压缩等方面有广泛应用，能同时使存储空间和速度最优化。例如可用一个10位长的字符串来表示一个所有元素都小于10的简单的非负整数集合，可以用 <code>01110100100</code> 表示集合 {1,2,4,5,8} ，对应位置数字存在标记为1，否则标记为0。</p>
+<p>C 语言位图实现如下：</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_1.jpg" alt=""></p>
+<p>主要程序如下：</p>
+<pre><code>#define SHIFT 5  
+#define MASK 0x1F  
+
+//set 设置所在的bit位为1  
+//clr 初始化所有的bit位为0  
+//test 测试所在的bit为是否为1  
+set(int i) {
+    a[i&gt;&gt;SHIFT] |=  (1&lt;&lt;(i &amp; MASK)); }  
+clr(int i) {
+    a[i&gt;&gt;SHIFT] &amp;= ~(1&lt;&lt;(i &amp; MASK)); }  
+test(int i){
+    return a[i&gt;&gt;SHIFT] &amp; (1&lt;&lt;(i &amp; MASK)); } 
+</code></pre><p>字节位置=数据/32 (采用位运算即右移5位)<br>位位置=数据%32   (采用位运算即跟0X1F进行与操作)。</p>
+<p>特定适用场合：</p>
+<ol>
+<li>对10亿个不重复的整数进行排序。</li>
+<li>找出10亿个数字中重复的数字。</li>
+</ol>
+<p>如果用普通的排序算法，数据放进内存就需要 ( 10^9 * 4)/( 2^30 ) = 3.7G。改用 Bitmap 的话，一个数字占一位，一共需要 3.7/32 ＝ 0.1 G 内存。</p>
+<p>参考：<a href="http://www.wjxfpf.com/2015/10/300404.html" target="_blank" rel="external">详解bitmap算法</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

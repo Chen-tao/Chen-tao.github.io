@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="web,http/2," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="我们知道，HTTP/2 协议由两个 RFC 组成：一个是 RFC 7540，描述了 HTTP/2 协议本身；一个是 RFC 7541，描述了 HTTP/2 协议中使用的头部压缩技术。本文将通过实际案例带领大家详细地认识 HTTP/2 头部压缩这门技术。
+###为什么要压缩
+在 HTTP/1 中，HTTP 请求和响应都是由「状态行、请求 / 响应头部、消息主体」三部分组成。一般而言，消息主体都会经过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP/2 头部压缩技术介绍">
+<meta property="og:url" content="http://chen-tao.github.io/2015/11/05/http2-comp/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="我们知道，HTTP/2 协议由两个 RFC 组成：一个是 RFC 7540，描述了 HTTP/2 协议本身；一个是 RFC 7541，描述了 HTTP/2 协议中使用的头部压缩技术。本文将通过实际案例带领大家详细地认识 HTTP/2 头部压缩这门技术。
+###为什么要压缩
+在 HTTP/1 中，HTTP 请求和响应都是由「状态行、请求 / 响应头部、消息主体」三部分组成。一般而言，消息主体都会经过">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961173/e645b29a-83c6-11e5-9a35-cc1e4bc10d48.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961184/20d86858-83c7-11e5-9d0e-682637bd96f7.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961196/36c73d56-83c7-11e5-9d20-2adad534603c.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961208/526c10f4-83c7-11e5-9d5a-345fb7aa71d0.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961219/66c3457c-83c7-11e5-9847-39b00478a63f.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961227/81aee8be-83c7-11e5-90d4-bee12338250a.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961234/9735063c-83c7-11e5-9685-2e5bfcee85c5.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961261/cfab5ed0-83c7-11e5-9b04-d70ac8afc962.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961268/ea5336d6-83c7-11e5-8aa3-8b99de030c7a.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961286/11ebab4c-83c8-11e5-9efe-3bdbeff4395e.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10961292/2a87c5a0-83c8-11e5-9ee7-b1d7653e36a1.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP/2 头部压缩技术介绍">
+<meta name="twitter:description" content="我们知道，HTTP/2 协议由两个 RFC 组成：一个是 RFC 7540，描述了 HTTP/2 协议本身；一个是 RFC 7541，描述了 HTTP/2 协议中使用的头部压缩技术。本文将通过实际案例带领大家详细地认识 HTTP/2 头部压缩这门技术。
+###为什么要压缩
+在 HTTP/1 中，HTTP 请求和响应都是由「状态行、请求 / 响应头部、消息主体」三部分组成。一般而言，消息主体都会经过">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/1845119/10961173/e645b29a-83c6-11e5-9a35-cc1e4bc10d48.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/11/05/http2-comp/"/>
+
+
+
+
+
+  <title> HTTP/2 头部压缩技术介绍 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/05/http2-comp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTTP/2 头部压缩技术介绍
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-05T00:00:00+08:00">
+                2015-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我们知道，HTTP/2 协议由两个 RFC 组成：一个是 <a href="https://httpwg.github.io/specs/rfc7540.html" target="_blank" rel="external">RFC 7540</a>，描述了 HTTP/2 协议本身；一个是 <a href="https://httpwg.github.io/specs/rfc7541.html" target="_blank" rel="external">RFC 7541</a>，描述了 HTTP/2 协议中使用的头部压缩技术。本文将通过实际案例带领大家详细地认识 HTTP/2 头部压缩这门技术。</p>
+<p>###为什么要压缩</p>
+<p>在 HTTP/1 中，HTTP 请求和响应都是由<strong>「状态行、请求 / 响应头部、消息主体」</strong>三部分组成。一般而言，消息主体都会经过 <code>gzip</code> 压缩，或者本身传输的就是压缩过后的二进制文件（例如图片、音频），但状态行和头部却没有经过任何压缩，直接以纯文本传输。</p>
+<p>随着 Web 功能越来越复杂，每个页面产生的请求数也越来越多，根据 <a href="http://httparchive.org/trends.php" target="_blank" rel="external">HTTP Archive</a> 的统计，当前平均每个页面都会产生上百个请求。越来越多的请求导致消耗在头部的流量越来越多，尤其是每次都要传输 <code>UserAgent</code>、<code>Cookie</code> 这类不会频繁变动的内容，完全是一种浪费。</p>
+<p>以下是我随手打开的一个页面的抓包结果。可以看到，传输头部的网络开销超过 100kb，比 HTML 还多：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961173/e645b29a-83c6-11e5-9a35-cc1e4bc10d48.png" alt="image"></p>
+<p>下面是其中一个请求的明细。可以看到，为了获得 58 字节的数据，在头部传输上花费了好几倍的流量：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961184/20d86858-83c7-11e5-9d0e-682637bd96f7.png" alt="image"></p>
+<p>HTTP/1 时代，为了减少头部消耗的流量，有很多优化方案可以尝试，例如合并请求、启用 <code>Cookie-Free</code> 域名等等，但是这些方案或多或少会引入一些新的问题，这里不展开讨论。</p>
+<p>###压缩后的效果</p>
+<p>接下来我将使用访问本博客的抓包记录来说明 HTTP/2 头部压缩带来的变化。本文使用的抓包文件，可以点<a href="http://qgy18.imququ.com/file/http2.pcapng" target="_blank" rel="external">这里下载</a>。</p>
+<p>首先直接上图。下图选中的 Stream 是首次访问本站，浏览器发出的请求头：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961196/36c73d56-83c7-11e5-9d20-2adad534603c.png" alt="image"></p>
+<p>从图片中可以看到这个 HEADERS 流的长度是 206 个字节，而解码后的头部长度有 451 个字节。由此可见，压缩后的头部大小减少了一半多。</p>
+<p>然而这就是全部吗？再上一张图。下图选中的 Stream 是点击本站链接后，浏览器发出的请求头：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961208/526c10f4-83c7-11e5-9d5a-345fb7aa71d0.png" alt="image"></p>
+<p>可以看到这一次，HEADERS 流的长度只有 49 个字节，但是解码后的头部长度却有 470 个字节。这一次，压缩后的头部大小几乎只有原始大小的 1/10。</p>
+<p>为什么前后两次差距这么大呢？我们把两次的头部信息展开，查看同一个字段两次传输所占用的字节数：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961219/66c3457c-83c7-11e5-9847-39b00478a63f.png" alt="image"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961227/81aee8be-83c7-11e5-90d4-bee12338250a.png" alt="image"></p>
+<p>对比后可以发现，第二次的请求头部之所以非常小，是因为大部分键值对只占用了一个字节。尤其是 UserAgent、Cookie 这样的头部，首次请求中需要占用很多字节，后续请求中都只需要一个字节。</p>
+<p>###技术原理</p>
+<p>下面这张截图，取自 Google 的性能专家 Ilya Grigorik 在 Velocity 2015 • SC 会议中分享的「<a href="http://velocityconf.com/devops-web-performance-2015/public/schedule/detail/42385" target="_blank" rel="external">HTTP/2 is here, let’s optimize!</a>」，非常直观地描述了 HTTP/2 中头部压缩的原理：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961234/9735063c-83c7-11e5-9685-2e5bfcee85c5.png" alt="image"></p>
+<p>我再用通俗的语言解释下，头部压缩需要在支持 HTTP/2 的浏览器和服务端之间：</p>
+<ul>
+<li>维护一份相同的静态字典（Static Table），包含常见的头部名称，以及特别常见的头部名称与值的组合；</li>
+<li>维护一份相同的动态字典（Dynamic Table），可以动态的添加内容；</li>
+<li>支持基于静态哈夫曼码表的哈夫曼编码（Huffman Coding）；</li>
+</ul>
+<p>静态字典的作用有两个：1）对于完全匹配的头部键值对，例如 <code>:method :GET</code>，可以直接使用一个字符表示；2）对于头部名称可以匹配的键值对，例如 <code>cookie :xxxxxxx</code>，可以将名称使用一个字符表示。HTTP/2 中的静态字典如下（以下只截取了部分，完整表格在<a href="https://httpwg.github.io/specs/rfc7541.html#static.table.definition" target="_blank" rel="external">这里</a>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">| Index | Header Name | Header Value |</div><div class="line">| --- | --- | --- |</div><div class="line">| 1 | :authority |</div><div class="line">| 2 | :method | GET |</div><div class="line">| 3 | :method | POST |</div><div class="line">| 4 | :path | / |</div><div class="line">| 5 | :path | /index.html |</div><div class="line">| 6 | :scheme | http |</div><div class="line">| 7 | :scheme | https |</div><div class="line">| 8 | :status | 200 |</div><div class="line">| ... | ... | ... |</div><div class="line">| 32 | cookie |</div><div class="line">| ... | ... | ... |</div><div class="line">| 60 | via |</div><div class="line">| 61 | www-authenticate |</div></pre></td></tr></table></figure>
+<p>同时，浏览器可以告知服务端，将 <code>cookie :xxxxxxx</code> 添加到动态字典中，这样后续整个键值对就可以使用一个字符表示了。类似的，服务端也可以更新对方的动态字典。需要注意的是，动态字典上下文有关，需要为每个 HTTP/2 连接维护不同的字典。</p>
+<p>使用字典可以极大地提升压缩效果，其中静态字典在首次请求中就可以使用。对于静态、动态字典中不存在的内容，还可以使用哈夫曼编码来减小体积。HTTP/2 使用了一份静态哈夫曼码表（<a href="https://httpwg.github.io/specs/rfc7541.html#huffman.code" target="_blank" rel="external">详见</a>），也需要内置在客户端和服务端之中。</p>
+<p>这里顺便说一下，HTTP/1 的状态行信息（Method、Path、Status 等），在 HTTP/2 中被拆成键值对放入头部（冒号开头的那些），同样可以享受到字典和哈夫曼压缩。另外，HTTP/2 中所有头部名称必须小写。</p>
+<p>###实现细节</p>
+<p>了解了 HTTP/2 头部压缩的基本原理，最后我们来看一下具体的实现细节。HTTP/2 的头部键值对有以下这些情况：</p>
+<p><strong>1）整个头部键值对都在字典中</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 1 |        Index (7+)         |</div><div class="line">+---+---------------------------+</div></pre></td></tr></table></figure>
+<p>这是最简单的情况，使用一个字节就可以表示这个头部了，最左一位固定为 1，之后七位存放键值对在静态或动态字典中的索引。例如下图中，头部索引值为 2（0000010），在静态字典中查询可得 <code>:method :GET</code>。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961261/cfab5ed0-83c7-11e5-9b04-d70ac8afc962.png" alt="image"></p>
+<p><strong>2）头部名称在字典中，更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 1 |      Index (6+)       |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>对于这种情况，首先需要使用一个字节表示头部名称：左两位固定为 01，之后六位存放头部名称在静态或动态字典中的索引。接下来的一个字节第一位 H 表示头部值是否使用了哈夫曼编码，剩余七位表示头部值的长度 L，后续 L 个字节就是头部值的具体内容了。例如下图中索引值为 32（100000），在静态字典中查询可得 <code>cookie</code>；头部值使用了哈夫曼编码（1），长度是 28（0011100）；接下来的 28 个字节是 <code>cookie</code> 的值，将其进行哈夫曼解码就能得到具体内容。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961268/ea5336d6-83c7-11e5-8aa3-8b99de030c7a.png" alt="image"></p>
+<p>客户端或服务端看到这种格式的头部键值对，会将其添加到自己的动态字典中。后续传输这样的内容，就符合第 1 种情况了。</p>
+<p><strong>3）头部名称不在字典中，更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 1 |           0           |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Name Length (7+)      |</div><div class="line">+---+---------------------------+</div><div class="line">|  Name String (Length octets)  |</div><div class="line">+---+---------------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>这种情况与第 2 种情况类似，只是由于头部名称不在字典中，所以第一个字节固定为 01000000；接着申明名称是否使用哈夫曼编码及长度，并放上名称的具体内容；再申明值是否使用哈夫曼编码及长度，最后放上值的具体内容。例如下图中名称的长度是 5（0000101），值的长度是 6（0000110）。对其具体内容进行哈夫曼解码后，可得 <code>pragma: no-cache</code>。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961286/11ebab4c-83c8-11e5-9efe-3bdbeff4395e.png" alt="image"></p>
+<p>客户端或服务端看到这种格式的头部键值对，会将其添加到自己的动态字典中。后续传输这样的内容，就符合第 1 种情况了。</p>
+<p><strong>4）头部名称在字典中，不允许更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 0 | 0 | 1 |  Index (4+)   |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>这种情况与第 2 种情况非常类似，唯一不同之处是：第一个字节左四位固定为 0001，只剩下四位来存放索引了，如下图：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961292/2a87c5a0-83c8-11e5-9ee7-b1d7653e36a1.png" alt="image"></p>
+<p>这里需要介绍另外一个知识点：对整数的解码。上图中第一个字节为 00011111，并不代表头部名称的索引为 15（1111）。第一个字节去掉固定的 0001，只剩四位可用，将位数用 N 表示，它只能用来表示小于「2 ^ N - 1 = 15」的整数 I。对于 I，需要按照以下规则求值（RFC 7541 中的伪代码，<a href="http://http2.github.io/http2-spec/compression.html#integer.representation" target="_blank" rel="external">via</a>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">if I &lt; 2 ^ N - 1, return I         # I 小于 2 ^ N - 1 时，直接返回</div><div class="line">else</div><div class="line">    M = 0</div><div class="line">    repeat</div><div class="line">        B = next octet             # 让 B 等于下一个八位</div><div class="line">        I = I + (B &amp; 127) * 2 ^ M  # I = I + (B 低七位 * 2 ^ M)</div><div class="line">        M = M + 7</div><div class="line">    while B &amp; 128 == 128           # B 最高位 = 1 时继续，否则返回 I</div><div class="line">    return I</div></pre></td></tr></table></figure>
+<p>对于上图中的数据，按照这个规则算出索引值为 32（00011111 00010001，15 + 17），代表 <code>cookie</code>。需要注意的是，协议中所有写成（N+）的数字，例如 Index (4+)、Name Length (7+)，都需要按照这个规则来编码和解码。</p>
+<p>这种格式的头部键值对，不允许被添加到动态字典中（但可以使用哈夫曼编码）。对于一些非常敏感的头部，比如用来认证的 Cookie，这么做可以提高安全性。</p>
+<p><strong>5）头部名称不在字典中，不允许更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 0 | 0 | 1 |       0       |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Name Length (7+)      |</div><div class="line">+---+---------------------------+</div><div class="line">|  Name String (Length octets)  |</div><div class="line">+---+---------------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>这种情况与第 3 种情况非常类似，唯一不同之处是：第一个字节固定为 00010000。这种情况比较少见，没有截图，各位可以脑补。同样，这种格式的头部键值对，也不允许被添加到动态字典中，只能使用哈夫曼编码来减少体积。</p>
+<p>实际上，协议中还规定了与 4、5 非常类似的另外两种格式：将 4、5 格式中的第一个字节第四位由 1 改为 0 即可。它表示「本次不更新动态词典」，而 4、5 表示「绝对不允许更新动态词典」。区别不是很大，这里略过。</p>
+<p>明白了头部压缩的技术细节，理论上可以很轻松写出 HTTP/2 头部解码工具了。我比较懒，直接找来 node-http2 中的 <a href="https://github.com/molnarg/node-http2/blob/master/lib/protocol/compressor.js" target="_blank" rel="external">compressor.js</a> 验证一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Decompressor = require(&apos;./compressor&apos;).Decompressor;</div><div class="line"></div><div class="line">var testLog = require(&apos;bunyan&apos;).createLogger(&#123;name: &apos;test&apos;&#125;);</div><div class="line">var decompressor = new Decompressor(testLog, &apos;REQUEST&apos;);</div><div class="line"></div><div class="line">var buffer = new Buffer(&apos;820481634188353daded6ae43d3f877abdd07f66a281b0dae053fad0321aa49d13fda992a49685340c8a6adca7e28102e10fda9677b8d05707f6a62293a9d810020004015309ac2ca7f2c3415c1f53b0497ca589d34d1f43aeba0c41a4c7a98f33a69a3fdf9a68fa1d75d0620d263d4c79a68fbed00177febe58f9fbed00177b518b2d4b70ddf45abefb4005db901f1184ef034eff609cb60725034f48e1561c8469669f081678ae3eb3afba465f7cb234db9f4085aec1cd48ff86a8eb10649cbf&apos;, &apos;hex&apos;);</div><div class="line"></div><div class="line">console.log(decompressor.decompress(buffer));</div><div class="line"></div><div class="line">decompressor._table.forEach(function(row, index) &#123;</div><div class="line">    console.log(index + 1, row[0], row[1]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>头部原始数据来自于本文第三张截图，运行结果如下（静态字典只截取了一部分）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&#123; &apos;:method&apos;: &apos;GET&apos;,</div><div class="line">  &apos;:path&apos;: &apos;/&apos;,</div><div class="line">  &apos;:authority&apos;: &apos;imququ.com&apos;,</div><div class="line">  &apos;:scheme&apos;: &apos;https&apos;,</div><div class="line">  &apos;user-agent&apos;: &apos;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:41.0) Gecko/20100101 Firefox/41.0&apos;,</div><div class="line">  accept: &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;,</div><div class="line">  &apos;accept-language&apos;: &apos;en-US,en;q=0.5&apos;,</div><div class="line">  &apos;accept-encoding&apos;: &apos;gzip, deflate&apos;,</div><div class="line">  cookie: &apos;v=47; u=6f048d6e-adc4-4910-8e69-797c399ed456&apos;,</div><div class="line">  pragma: &apos;no-cache&apos; &#125;</div><div class="line">1 &apos;:authority&apos; &apos;&apos;</div><div class="line">2 &apos;:method&apos; &apos;GET&apos;</div><div class="line">3 &apos;:method&apos; &apos;POST&apos;</div><div class="line">4 &apos;:path&apos; &apos;/&apos;</div><div class="line">5 &apos;:path&apos; &apos;/index.html&apos;</div><div class="line">6 &apos;:scheme&apos; &apos;http&apos;</div><div class="line">7 &apos;:scheme&apos; &apos;https&apos;</div><div class="line">8 &apos;:status&apos; &apos;200&apos;</div><div class="line">... ...</div><div class="line">32 &apos;cookie&apos; &apos;&apos;</div><div class="line">... ...</div><div class="line">60 &apos;via&apos; &apos;&apos;</div><div class="line">61 &apos;www-authenticate&apos; &apos;&apos;</div><div class="line">62 &apos;pragma&apos; &apos;no-cache&apos;</div><div class="line">63 &apos;cookie&apos; &apos;u=6f048d6e-adc4-4910-8e69-797c399ed456&apos;</div><div class="line">64 &apos;accept-language&apos; &apos;en-US,en;q=0.5&apos;</div><div class="line">65 &apos;accept&apos; &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;</div><div class="line">66 &apos;user-agent&apos; &apos;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:41.0) Gecko/20100101 Firefox/41.0&apos;</div><div class="line">67 &apos;:authority&apos; &apos;imququ.com&apos;</div></pre></td></tr></table></figure>
+<p>可以看到，这段从 Wireshark 拷出来的头部数据可以正常解码，动态字典也得到了更新（62 - 67）。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a name="toc-4"></a>总结</h3><p>在进行 HTTP/2 网站性能优化时很重要一点是「使用尽可能少的连接数」，本文提到的头部压缩是其中一个很重要的原因：同一个连接上产生的请求和响应越多，动态字典积累得越全，头部压缩效果也就越好。所以，针对 HTTP/2 网站，最佳实践是不要合并资源，不要散列域名。</p>
+<p>默认情况下，浏览器会针对这些情况使用同一个连接：</p>
+<ul>
+<li>同一域名下的资源；</li>
+<li>不同域名下的资源，但是满足两个条件：1）解析到同一个 IP；2）使用同一个证书；</li>
+</ul>
+<p>上面第一点容易理解，第二点则很容易被忽略。实际上 Google 已经这么做了，Google 一系列网站都共用了同一个证书，可以这样验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ openssl s_client -connect google.com:443 |openssl x509 -noout -text | grep DNS</div><div class="line">depth=2 C = US, O = GeoTrust Inc., CN = GeoTrust Global CA</div><div class="line">verify error:num=20:unable to get local issuer certificate</div><div class="line">verify return:0</div><div class="line">                DNS:*.google.com, DNS:*.android.com, DNS:*.appengine.google.com, DNS:*.cloud.google.com, DNS:*.google-analytics.com, DNS:*.google.ca, DNS:*.google.cl, DNS:*.google.co.in, DNS:*.google.co.jp, DNS:*.google.co.uk, DNS:*.google.com.ar, DNS:*.google.com.au, DNS:*.google.com.br, DNS:*.google.com.co, DNS:*.google.com.mx, DNS:*.google.com.tr, DNS:*.google.com.vn, DNS:*.google.de, DNS:*.google.es, DNS:*.google.fr, DNS:*.google.hu, DNS:*.google.it, DNS:*.google.nl, DNS:*.google.pl, DNS:*.google.pt, DNS:*.googleadapis.com, DNS:*.googleapis.cn, DNS:*.googlecommerce.com, DNS:*.googlevideo.com, DNS:*.gstatic.cn, DNS:*.gstatic.com, DNS:*.gvt1.com, DNS:*.gvt2.com, DNS:*.metric.gstatic.com, DNS:*.urchin.com, DNS:*.url.google.com, DNS:*.youtube-nocookie.com, DNS:*.youtube.com, DNS:*.youtubeeducation.com, DNS:*.ytimg.com, DNS:android.com, DNS:g.co, DNS:goo.gl, DNS:google-analytics.com, DNS:google.com, DNS:googlecommerce.com, DNS:urchin.com, DNS:youtu.be, DNS:youtube.com, DNS:youtubeeducation.com</div></pre></td></tr></table></figure>
+<p>使用多域名加上相同的 IP 和证书部署 Web 服务有特殊的意义：让支持 HTTP/2 的终端只建立一个连接，用上 HTTP/2 协议带来的各种好处；而只支持 HTTP/1.1 的终端则会建立多个连接，达到同时更多并发请求的目的。这在 HTTP/2 完全普及前也是一个不错的选择。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+            <a href="/tags/http-2/" rel="tag"># http/2</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/04/surge-the-missing-tool-for-ios/" rel="next" title="Surge, the missing tool for iOS">
+                <i class="fa fa-chevron-left"></i> Surge, the missing tool for iOS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/07/atom-shortcuts/" rel="prev" title="atom shortcuts">
+                atom shortcuts <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,c++," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。
+创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux动态库相关知识整理">
+<meta property="og:url" content="http://chen-tao.github.io/2015/11/12/cpp-d-lib/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。
+创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux动态库相关知识整理">
+<meta name="twitter:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。
+创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/11/12/cpp-d-lib/"/>
+
+
+
+
+
+  <title> Linux动态库相关知识整理 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/12/cpp-d-lib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux动态库相关知识整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-12T00:00:00+08:00">
+                2015-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。</p>
+<h2 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h2><p>这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，返回一个无符号整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//elfhash.h</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">unsigned long  ELFhash(const char* key);</div><div class="line"></div><div class="line">//elfhash.c</div><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">unsigned long ELFhash(const char* key)  </div><div class="line">&#123;</div><div class="line">  unsigned long h = 0, g;</div><div class="line">  while( *key ) &#123;</div><div class="line">    h = ( h &lt;&lt; 4 ) + *key++;</div><div class="line">    if ( (g = h &amp; 0xF0000000) != 0 )</div><div class="line">       h ^= g &gt;&gt; 24;</div><div class="line">    h &amp;= ~g;</div><div class="line">&#125;</div><div class="line">  return h;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来使用gcc编译以上代码，并用ld将编译的目标文件链接成动态库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gcc -fPIC -c -Wall elfhash.c  </div><div class="line">ld  -shared elfhash.o -o libelfhash.so</div></pre></td></tr></table></figure>
+<p>其中-fPIC意思是生成位置无关的代码(Position Independent Code)，适用于动态库，在多个进程中共享动态库的同一份代码。ld的-shared选项告诉链接器创建的是动态库。gcc也可以间接调用ld生成动态库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -fPIC -shared -Wall -o libelfhash.so elfhash.c</div></pre></td></tr></table></figure>
+<h2 id="使用动态库"><a href="#使用动态库" class="headerlink" title="使用动态库"></a>使用动态库</h2><p>动态库的使用方法有两种一种是隐式使用，第二种是显式使用。隐式使用的方法很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">int main()  </div><div class="line">&#123;</div><div class="line">    printf(&quot;%ld\n&quot;, ElfHash(&quot;key-for-test&quot;));</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显式使用动态库需要借助以下几个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#include &lt;dlfcn.h&gt;</div><div class="line">void *dlopen(const char *filename, int flag); //flag可以是RTLD_LAZY，执行共享库中的代码时解决未定义符号，RTLD_NOW则是dlopen返回前解决未定义符号。  </div><div class="line">char *dlerror(void); //当发生错误时，返回错误信息  </div><div class="line">void *dlsym(void *handle, const char *symbol); //获取符号  </div><div class="line">int dlclose(void *handle); //关闭</div></pre></td></tr></table></figure>
+<p>应用上面几个函数，调用ELFhash实现跟隐式调用一样的功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;dlfcn.h&gt;</div><div class="line"></div><div class="line">int main() &#123;  </div><div class="line">    void *handle;</div><div class="line">    unsigned long (*hash)(const char*);</div><div class="line">    char *error;</div><div class="line">    handle = dlopen (&quot;./libelfhash.so&quot;, RTLD_LAZY);</div><div class="line">    if (!handle) &#123;</div><div class="line">        fputs (dlerror(), stderr);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    hash = dlsym(handle, &quot;ElfHash&quot;);</div><div class="line">    if ((error = dlerror()) != NULL)  &#123;</div><div class="line">         fputs(error, stderr);</div><div class="line">         exit(1);</div><div class="line">    &#125;</div><div class="line">    printf (&quot;%ld\n&quot;, (*hash)(&quot;key-for-test&quot;));</div><div class="line">    dlclose(handle);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此了解以上的知识就可以创建和使用动态库了。 实际应用中我们可能还是会遇到一些问题。</p>
+<h2 id="动态库的加载"><a href="#动态库的加载" class="headerlink" title="动态库的加载"></a>动态库的加载</h2><p>动态库创建那一节，我演示如何隐式使用动态库，那么编译运行这段代码试一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gcc main.c -L./ -lelfhash  </div><div class="line">./a.out //执行可执行程序</div><div class="line">//以下是输出结果</div><div class="line">./a.out: error while loading shared libraries: libelfhash.so: cannot open shared object file: No such file or directory</div></pre></td></tr></table></figure>
+<p>结果运行时报错，可执行程序找不到动态库。 网上有一些说法是编译时设置-L选项，但在Linux上面证明是不行的（SunOS上可行），这个选项只能在编译链接时有效， 可以让你使用-l如上面的-lelfhash。使用readelf -d a.out可以看到可执行文件依赖的动态库信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0x0000000000000001 (NEEDED)  Shared library: [libelfhash.so]</div></pre></td></tr></table></figure>
+<p>可以看到这里面并没有包含动态库的路径信息。查阅一下动态链接器的文档man ld-linux.so可以发现这样一句话(有的没有，版本问题)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">If a slash is found, then the dependency string is interpreted as a (relative or absolute) pathname, and the library is loaded using that pathname</div></pre></td></tr></table></figure>
+<p>这段话太长，我只截取一部分，大致就是说，当依赖中有/符号,那么会被解析成动态库加载的路径，隐式使用的例子换一种编译方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gcc main.c ./libelfhash.so  </div><div class="line">./a.out</div><div class="line">23621492 //输出正常</div></pre></td></tr></table></figure>
+<p>再用readelf -d a.out查看会发现，依赖信息中有了一个路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0x0000000000000001 (NEEDED)  Shared library: [./libelfhash.so]</div></pre></td></tr></table></figure>
+<p>这种方法虽然解决了问题，但是依赖中的路径是硬编码，不是很灵活。 动态链接器是如何查找的动态库的需要进一步查阅文档。关于查找的顺序有点长，这里就不直接引用了，大致是这样：</p>
+<p>(仅ELF文件) 使用可执行文件中DT_RPATH区域设置的属性,如果DT_RUNPATH被设置，那么忽略DT_RPATH（在我的Linux对应的是RPATH和RUNPATH）。</p>
+<p>使用环境变量LD_LIBRARY_PATH，如果可执行文件中有set-user-id/set-group-id, 会被忽略。</p>
+<p>(仅ELF文件) 使用可执行文件中DT_RUNPATH区域设置的属性</p>
+<p>从/etc/ld.so.cache缓存文件中查找</p>
+<p>从默认路径/lib, /usr/lib文件目录中查找</p>
+<p>我们需要设置RPATH或者RUNPATH,可以这样做</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc main.c -Wl,-rpath,/home/xxx,--enable-new-dtags -L./  -lelfhash</div></pre></td></tr></table></figure>
+<p>这里的-Wl选项告诉链接器ld如果如何处理，接下来传递的-rpath(或者使用-R)告诉ld动态库的路径信息(注意-Wl,和后面选项之间不能有空格)。如果没有–enable-new-dtags那么只会设置RPATH，反之，RPATH和RUNPATH会同时被设置。使用readelf -d a.out查看结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">0x000000000000000f (RPATH)  Library rpath: [/home/xxx]  </div><div class="line">0x000000000000001d (RUNPATH)  Library runpath: [/home/xxx]</div></pre></td></tr></table></figure>
+<p>如果使用环境变量LD_LIBRARY_PATH，那么一般这样用 export</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export LD_LIBRARY_PATH=/home/xxx;$LD_LIBRARY_PATH</div></pre></td></tr></table></figure>
+<p>RPATH和RUNPATH指定动态库的路径，用起来简单，但是也缺乏灵活性，LDLIBRARYPATH在临时测试的也是很有用的，但是在正式环境中，直接使用它也不是好的实践，因为环境变量跟用户的环境关系比较大。动态库不仅要考虑自己使用， 还有分发给别的用户使用的情况。</p>
+<p>更通用的方法是使用ldconfig，有几种方法，先在/etc/ld.so.conf.d/目录下创建一个文件，然后把你的动态库路径写进去。或者将你的动态库放到/lib,/lib64(64位),/usr/lib,/usr/lib64(64位)然后运行sudo ldconfig重建/etc/ld.so.cache文件。</p>
+<h2 id="动态库版本"><a href="#动态库版本" class="headerlink" title="动态库版本"></a>动态库版本</h2><p>通常在使用第三方给的动态库的时候，都是带有版本（文件命名），可以在/usr/lib64下看到很多这样的动态库。现在我重新编译动态库，这次加上版本信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -fPIC -shared -Wall -Wl,-soname,libelfhash.so.0  -o libelfhash.so.0.0.0 elfhash.c</div></pre></td></tr></table></figure>
+<p>每个动态库都有一个名字，如这里的libelfhash.so.0.0.0，叫real name，命名规则跟简单,通常是libxxx.so.MAJOR.MINOR.VERSION(有的时候VERSION会被省略),如果动态库在接口上的兼容性，比如删除了接口或者修改了接口参数，MAJOR增加，如果接口兼容，只是做了更新或者bug修复那么MINOR和VERSION增加。也就是说MAJOR相同的库接口都是兼容的，反之不兼容，如果使用不兼容的动态库需要重新编译可执行程序。</p>
+<p>编译动态库时，通过给ld传递连接选项-soname可以指定一个soname, 如这里的libelfhash.so.0 只保留MAJOR,可执行程序运行加载动态库时，会加载这个指定名字的库。</p>
+<p>动态库还有一个名字是link name,编译可执行程序时，传个链接器ld的动态库名字，通常是没有版本号以.so结尾的文件名。 一般作法是对soname创建软链。</p>
+<p>按照这个规则来命名的动态库可以ldconfig识别，我们把libelfhash.so.0.0.0放到/usr/lib64文件夹中，执行以下指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$sudo ldconfig -v | grep libelfhash.so</div><div class="line">libelfhash.so.0 -&gt; libelfhash.so.0.0.0</div></pre></td></tr></table></figure>
+<p>可以发现ldconfig根据libelfhash.so.0.0.0的信息，创建了一个soname指向real name的软链，当动态库更新(MINOR,VERSION增加)，拷贝新库到相应的位置，再执行sudo ldconfig会自动更新软链指向最新的动态库，动态库更新就完成了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>OK，关于Linux动态库知识整理就到这里了，这些知识虽说都是些基础，少有涉及动态库内部的一些原理，但是却很常用。整理过程中我带着疑问去阅读了ld和ld-linux.so的文档，收获颇丰。同样，希望本文能帮你解释遇到的部分问题或疑惑。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/09/linux-nc/" rel="next" title="linux nc命令">
+                <i class="fa fa-chevron-left"></i> linux nc命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/13/code-self-discipline/" rel="prev" title="程序员的自我修养 读书笔记">
+                程序员的自我修养 读书笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建动态库"><span class="nav-number">1.</span> <span class="nav-text">创建动态库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用动态库"><span class="nav-number">2.</span> <span class="nav-text">使用动态库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态库的加载"><span class="nav-number">3.</span> <span class="nav-text">动态库的加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态库版本"><span class="nav-number">4.</span> <span class="nav-text">动态库版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

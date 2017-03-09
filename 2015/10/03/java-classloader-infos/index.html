@@ -1,0 +1,757 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="为了尽量简单明了容易背，有些部分写得比较干。
+0. 参考资料：书：《深入了解Java虚拟机》、《实战Java虚拟机》规范：Java语言规范 第12章源码： OpenJDK 7的Java及C代码( Class.c , Classloader.c，jvm.cpp)
+
+
+1. Class装载的三个阶段1.1 载入 (Load)从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖">
+<meta property="og:url" content="http://chen-tao.github.io/2015/10/03/java-classloader-infos/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="为了尽量简单明了容易背，有些部分写得比较干。
+0. 参考资料：书：《深入了解Java虚拟机》、《实战Java虚拟机》规范：Java语言规范 第12章源码： OpenJDK 7的Java及C代码( Class.c , Classloader.c，jvm.cpp)
+
+
+1. Class装载的三个阶段1.1 载入 (Load)从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖">
+<meta name="twitter:description" content="为了尽量简单明了容易背，有些部分写得比较干。
+0. 参考资料：书：《深入了解Java虚拟机》、《实战Java虚拟机》规范：Java语言规范 第12章源码： OpenJDK 7的Java及C代码( Class.c , Classloader.c，jvm.cpp)
+
+
+1. Class装载的三个阶段1.1 载入 (Load)从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/10/03/java-classloader-infos/"/>
+
+
+
+
+
+  <title> ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/java-classloader-infos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为了尽量简单明了容易背，有些部分写得比较干。</p>
+<h3 id="0-参考资料："><a href="#0-参考资料：" class="headerlink" title="0. 参考资料："></a>0. 参考资料：</h3><ul><br><li>书：《深入了解Java虚拟机》、《实战Java虚拟机》</li><br><li>规范：<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范</a> 第12章</li><br><li>源码： <a href="http://hg.openjdk.java.net/jdk7" target="_blank" rel="external">OpenJDK 7</a>的Java及C代码( <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/Class.c" target="_blank" rel="external">Class.c</a> , <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/ClassLoader.c" target="_blank" rel="external">Classloader.c</a>，<a href="http://hg.openjdk.java.net/jdk7/jdk7/hotspot/file/9b0ca45cd756/src/share/vm/prims/jvm.cpp" target="_blank" rel="external">jvm.cpp</a>)</li><br></ul>
+
+
+<h3 id="1-Class装载的三个阶段"><a href="#1-Class装载的三个阶段" class="headerlink" title="1. Class装载的三个阶段"></a>1. Class装载的三个阶段</h3><h4 id="1-1-载入-Load"><a href="#1-1-载入-Load" class="headerlink" title="1.1 载入 (Load)"></a>1.1 载入 (Load)</h4><p>从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行时数据结构，生成一个Class对象。</p>
+<h4 id="1-2-链接-Resolve"><a href="#1-2-链接-Resolve" class="headerlink" title="1.2 链接 (Resolve)"></a>1.2 链接 (Resolve)</h4><p>将之前载入的数据结构里的符号引用表，解析成直接引用。<br>中间如果遇到引用的类还没被加载，就会触发该类的加载。<br>可能JDK会很懒惰的在运行某个函数实际使用到该引用时才发生链接，也可能在类加载时就解析全部引用。</p>
+<h4 id="1-3-初始化-Initniazle"><a href="#1-3-初始化-Initniazle" class="headerlink" title="1.3 初始化 (Initniazle)"></a>1.3 初始化 (Initniazle)</h4><p>初始化静态变量，并执行静态初始化语句。</p>
+<h3 id="2-Class装载的时机"><a href="#2-Class装载的时机" class="headerlink" title="2. Class装载的时机"></a>2. Class装载的时机</h3><ul>
+<li>ClassLoader.loadClass()</li>
+<li>前文所说的链接时触发的装载</li>
+<li>Class.forName() 等java.lang.reflect反射包</li>
+<li>new 构造对象</li>
+<li>初始化子类时，会同时初始化父类</li>
+<li>访问类的静态变量或静态方法（但static final的常量除外，此君在常量池里)</li>
+</ul>
+<p>本质上，也是很懒惰的按需加载的，由于类装载的Lazy和前面解释引用的Lazy，所以Jar包里有时候有些类用到的了没在Class Path里的其他类，也能人品爆发的照跑不误。</p>
+<p>除了1，其他几种方式默认都到达类装载的初始化阶段。</p>
+<h3 id="3-ClassLoader-loadClass-与-Class-forName"><a href="#3-ClassLoader-loadClass-与-Class-forName" class="headerlink" title="3. ClassLoader.loadClass() 与 Class.forName()"></a>3. ClassLoader.loadClass() 与 Class.forName()</h3><p>ClassLoader.loadClass(String name, boolean resolve)，其中resolve默认为false，即只执行类装载的第一个阶段。</p>
+<p>Class.forName(String name, boolean initialize, ClassLoader loader)， 其中initialize默认为true，即执行到类装载的第三个阶段。</p>
+<h3 id="4-ClassNotFoundException-和-NoClassDefFoundError"><a href="#4-ClassNotFoundException-和-NoClassDefFoundError" class="headerlink" title="4. ClassNotFoundException 和 NoClassDefFoundError"></a>4. ClassNotFoundException 和 NoClassDefFoundError</h3><p>ClassLoader.loadClass() 与 Class.forName() 找不到类定义的二进制流时抛出ClassNotFoundException。</p>
+<p>链接阶段解释引用失败，找不到引用的类时抛出NoClassDefFoundError。</p>
+<h3 id="5-ClassLoader及双亲委派机制"><a href="#5-ClassLoader及双亲委派机制" class="headerlink" title="5. ClassLoader及双亲委派机制"></a>5. ClassLoader及双亲委派机制</h3><p>ClassLoader.loadClass()的标准流程:</p>
+<ul>
+<li>findLoadedClass() 查看类是否已加载</li>
+<li>如果不存在，则调用parent loader的loadClass()</li>
+<li>如果不存在，调用findClass() 在本ClassLoader的ClassPath里加载该类</li>
+</ul>
+<p>所谓双亲委派机制，就是先从parent loader开始查找，找不到了才用自己的findClass()函数去查找，兼顾了效率：避免重复加载，当父亲已经加载了该类的时候，就没有必要子ClassLoader再加载一次，和安全，避免子类乱加载。</p>
+<p>而OSGI或SPI或热替换方案，则需要破坏这个双亲委托，先调用自己的findClass()。</p>
+<p>findClass() 是各个ClassLoader各自实现，各显神通的地方，从各种奇葩地方载入Class二进制字节流。</p>
+<p>但最后都会调用defineClass()，传入二进制字节流，返回Class对象。留意此处，呆会AspectJ的时候会回到这里。</p>
+<p>在JDK6，loadClass()很过分的定义了方法级的synchronized ，在JDK7改成一个以Class Name作Key的 parallelLockMap，增强了并行加载不同Class的能力。</p>
+<h3 id="6-System-ClassLoader-与-Thread-Context-Classloader"><a href="#6-System-ClassLoader-与-Thread-Context-Classloader" class="headerlink" title="6. System ClassLoader 与 Thread Context Classloader"></a>6. System ClassLoader 与 Thread Context Classloader</h3><p>有时候，看到错误日志说张三不是张三，包名类名一样但instanceof 死活返回 false，唯一原因是它们由两个不同的ClassLoader加载。</p>
+<p>默认的Bootstrap(加载jdk的lib目录)，Extension(加载jdk的lib/ext目录)，Application(加载启动时定义的classpath)三层ClassLoader机制不再重复。</p>
+<p>平时用ClassLoader.getSystemClassLoader()就可以得到sun.misc.Launcher$ApplicationClassLoader 这个Application ClassLoader。</p>
+<p>在类A里加载类B，默认使用加载了类A的Loader。但，也有特殊情况，比如JDBC加载driver时的机制，需要在父ClassLoader（JDBC属于JDK一部分）里根据配置反射创建jdbc driver的数据实现类，Sun设计了一个特殊方案 －－Thread Context Class Loader。</p>
+<p>JAXB(比如要在Jar包里找xsd schema文件的时候)也使用了它，所以用到它们时就要注意Thread Context ClassLoader的设置，可以用代码随时设置current thread的loader，也可以用自定义的ThreadFactory在创建线程时设置，它默认是父线程的loader，如果都没设置就是 System ClassLoader。</p>
+<h3 id="7-Java-Agent机制与AspectJ的LoadTime-Weaving"><a href="#7-Java-Agent机制与AspectJ的LoadTime-Weaving" class="headerlink" title="7. Java Agent机制与AspectJ的LoadTime Weaving"></a>7. Java Agent机制与AspectJ的LoadTime Weaving</h3><p>在JDK5开始，在启动JVM时可增加-javaagent参数，在装载Class时对类进行动态的修改。</p>
+<p>AspectJ的Load Time Weaving机制，需要配置 -javaagent: [path to aspectj-weaver.jar] 。</p>
+<p>打开aspectj-weaver.jar，可以看到META-INF/MANIFEST里定义了 Premain-Class: org.aspectj.weaver.loadtime.Agent</p>
+<p>再打开这个Agent类，简化后的代码大概这个样子：</p>
+<p><code>ClassFileTransformer s_transformer = new ClassPreProcessorAgentAdapter(); 
+public static void premain(String options, Instrumentation instrumentation) { 
+instrumentation.addTransformer(s_transformer); }</code></p>
+<p>可见它的主要作用是将自己的类转换器注册到JDK所传入的Instrumentation。</p>
+<p>再看ClassFileTransformer的定义：ClassLoader会在前面defineClass()的过程中，在把二进制字节流转换为Class对象之前，先把二进制流和当前ClassLoader传给Transformer，由Transformer加工为另一段二进制字节流返回。</p>
+<p>AspectJ就是利用传入的ClassLoader，找出其Class Path里的META-INF/aop.xml，然后根据aop.xml里的配置进行代码植入。</p>
+<p>测试显示，加了LoadTime Weaving，类加载的速度明显变慢，如果是100ms就调用超时的服务，需要做类的预加载。</p>
+<h3 id="8-Jar包的预加载"><a href="#8-Jar包的预加载" class="headerlink" title="8. Jar包的预加载"></a>8. Jar包的预加载</h3><p>比如有个有趣的需求是加载某个Class A所在的Jar里的全部的Class （怎么好像一点都不有趣）</p>
+<figure class="highlight plain"><figcaption><span>jarUrl = ClassA.getProtectionDomain().getCodeSource().getLocation();</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">JarFile jarfile = new JarFile(jarUrl.getPath());</div><div class="line"></div><div class="line">Enumeration entries = jarfile.entries();</div></pre></td></tr></table></figure>
+<p>然后遍历JarEntry，过滤出后缀为.class的文件，按类名进行装载就可以了。</p>
+<h3 id="9-Class的二进制兼容性"><a href="#9-Class的二进制兼容性" class="headerlink" title="9.Class的二进制兼容性"></a>9.Class的二进制兼容性</h3><p>如果Class A 依赖 spring-1.0.jar编译，当spring升级到spring-2.0.jar，Class A不需要修改代码也不需要重新编译，可以直接运行的，spring-2.0.jar就满足二进制兼容性。</p>
+<p>在<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范的第13章</a>有详细的描述 ，不想直接睡着最好可以找个中文版来看，感谢那些翻译的同学。</p>
+<p>虽然规范的这章看着比较长比较吓人，但其实二进制兼容性还是很容易做到的，只要你不做把接口改为抽象类之类奇怪的事情，其他一些看起来很大的改动，比如改throws定义，其实都没有问题。</p>
+<p>真的遇到问题，设身处地想想自己是那段Class A的字节码，现在还能不能跑就行。</p>
+<p>感谢你看到这里，希望你只在工作里用到这些知识，祝工作愉快。</p>
+<p>文章持续修订，转载请保留原链接：<br><a href="http://calvin1978.blogcn.com/articles/classloader-javaagent.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/classloader-javaagent.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/03/6-mysql-useful-exp/" rel="next" title="6个有用的MySQL语句">
+                <i class="fa fa-chevron-left"></i> 6个有用的MySQL语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/03/netty/" rel="prev" title="Netty之有效规避内存泄漏">
+                Netty之有效规避内存泄漏 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-参考资料："><span class="nav-number">1.</span> <span class="nav-text">0. 参考资料：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Class装载的三个阶段"><span class="nav-number">2.</span> <span class="nav-text">1. Class装载的三个阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-载入-Load"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 载入 (Load)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-链接-Resolve"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 链接 (Resolve)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-初始化-Initniazle"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 初始化 (Initniazle)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Class装载的时机"><span class="nav-number">3.</span> <span class="nav-text">2. Class装载的时机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ClassLoader-loadClass-与-Class-forName"><span class="nav-number">4.</span> <span class="nav-text">3. ClassLoader.loadClass() 与 Class.forName()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ClassNotFoundException-和-NoClassDefFoundError"><span class="nav-number">5.</span> <span class="nav-text">4. ClassNotFoundException 和 NoClassDefFoundError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ClassLoader及双亲委派机制"><span class="nav-number">6.</span> <span class="nav-text">5. ClassLoader及双亲委派机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-System-ClassLoader-与-Thread-Context-Classloader"><span class="nav-number">7.</span> <span class="nav-text">6. System ClassLoader 与 Thread Context Classloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Java-Agent机制与AspectJ的LoadTime-Weaving"><span class="nav-number">8.</span> <span class="nav-text">7. Java Agent机制与AspectJ的LoadTime Weaving</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Jar包的预加载"><span class="nav-number">9.</span> <span class="nav-text">8. Jar包的预加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Class的二进制兼容性"><span class="nav-number">10.</span> <span class="nav-text">9.Class的二进制兼容性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

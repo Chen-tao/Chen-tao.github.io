@@ -1,0 +1,611 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="添加回文串对于一个字符串，我们想通过添加字符的方式使得新的字符串整体变成回文串，但是只能在原串的结尾添加字符，请返回在结尾添加的最短字符串。给定原字符串A及它的长度n，请返回添加的字符串。保证原串不是回文串。
+class Palindrome {
+public:
+    bool isPalindrome(const string &amp;amp;s,const int start){">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/More/C++_16真题.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="添加回文串对于一个字符串，我们想通过添加字符的方式使得新的字符串整体变成回文串，但是只能在原串的结尾添加字符，请返回在结尾添加的最短字符串。给定原字符串A及它的长度n，请返回添加的字符串。保证原串不是回文串。
+class Palindrome {
+public:
+    bool isPalindrome(const string &amp;amp;s,const int start){">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="添加回文串对于一个字符串，我们想通过添加字符的方式使得新的字符串整体变成回文串，但是只能在原串的结尾添加字符，请返回在结尾添加的最短字符串。给定原字符串A及它的长度n，请返回添加的字符串。保证原串不是回文串。
+class Palindrome {
+public:
+    bool isPalindrome(const string &amp;amp;s,const int start){">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/More/C++_16真题.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="添加回文串"><a href="#添加回文串" class="headerlink" title="添加回文串"></a><a href="http://www.nowcoder.com/practice/cfa3338372964151b19e7716e19987ac?rp=2&amp;ru=/activity/oj&amp;qru=/ta/2016test/question-ranking" target="_blank" rel="external">添加回文串</a></h1><p>对于一个字符串，我们想通过添加字符的方式使得新的字符串整体变成回文串，但是只能在原串的结尾添加字符，请返回在结尾添加的最短字符串。给定原字符串A及它的长度n，请返回添加的字符串。保证原串不是回文串。</p>
+<pre><code>class Palindrome {
+public:
+    bool isPalindrome(const string &amp;s,const int start){
+        int len = s.size();
+        for(int i=start;i&lt;(len+start)/2;i++){
+            if (s[i] != s[len-1-(i-start)]){
+                return false;
+            }
+        }
+        return true;
+    }
+    string addToPalindrome(string A, int n) {
+        // write code here
+        string answers = &quot;&quot;;
+        for(int i=0; i&lt;n;i++){
+            if (not isPalindrome(A, i)){
+                answers = A[i] + answers;
+            }
+            else{
+                break;
+            }
+        }
+        return answers;
+    }
+};
+</code></pre><h1 id="纸牌博弈"><a href="#纸牌博弈" class="headerlink" title="纸牌博弈"></a><a href="http://www.nowcoder.com/practice/7036f62c64ba4104a28deee98a6f53f6?rp=3&amp;ru=/activity/oj&amp;qru=/ta/2016test/question-ranking" target="_blank" rel="external">纸牌博弈</a></h1><p>有一个整型数组A，代表数值不同的纸牌排成一条线。玩家a和玩家b依次拿走每张纸牌，规定玩家a先拿，玩家B后拿，但是每个玩家每次只能拿走最左或最右的纸牌，玩家a和玩家b都绝顶聪明，他们总会采用最优策略。请返回最后获胜者的分数。</p>
+<p>给定纸牌序列A及序列的大小n，请返回最后分数较高者得分数(相同则返回任意一个分数)。保证A中的元素均小于等于1000。且A的大小小于等于300。</p>
+<pre><code>/**
+考虑记忆化搜索，dp[l][r]表示l..r区间内取纸牌，先手的最大收益。
+每个人要让自己收益最大，也就是让对手收益最小。
+收益是l..r区间内所有纸牌的和 - 我取了之后剩下区间对手的收益。
+*/
+class Cards {
+public:
+    const static int size = 300;
+    int sums[size] = {0};
+    int dp[size][size];
+
+    int dfs_cache(const int &amp;l, const int &amp;r, const vector&lt;int&gt; &amp;cards){
+        if(l==r){
+            dp[l][r] = cards[l];
+        }
+        if(dp[l][r]!=-1){
+            return dp[l][r];
+        }
+        int all_sum = sums[r] - (l == 0 ? 0:sums[l-1]);
+        dp[l][r] = all_sum - min(dfs_cache(l+1, r, cards), dfs_cache(l, r-1, cards));
+        return dp[l][r];
+    }
+
+    int cardGame(vector&lt;int&gt; A, int n) {
+        sums[0] = A[0];
+        for(int i=1; i&lt;n;i++){
+            sums[i] = sums[i-1] + A[i];
+        }
+        memset(dp, -1, sizeof(dp));
+        int first_profit = dfs_cache(0, n-1, A);
+        // 最后不一定先手的利益最大
+        return max(first_profit, sums[n-1]-first_profit);
+    }
+};
+</code></pre><h1 id="股票交易日"><a href="#股票交易日" class="headerlink" title="股票交易日"></a><a href="http://www.nowcoder.com/practice/3e8c66829a7949d887334edaa5952c28?rp=6&amp;ru=/activity/oj&amp;qru=/ta/2016test/question-ranking" target="_blank" rel="external">股票交易日</a></h1><p>在股市的交易日中，假设最多可进行两次买卖(即买和卖的次数均小于等于2)，规则是必须一笔成交后进行另一笔(即买-卖-买-卖的顺序进行)。给出一天中的股票变化序列，请写一个程序计算一天可以获得的最大收益。请采用实践复杂度低的方法实现。</p>
+<p>给定价格序列prices及它的长度n，请返回最大收益。保证长度小于等于500。测试样例：<br>[10,22,5,75,65,80],6<br>返回：87</p>
+<pre><code>class Stock {
+public:
+    int maxProfit(vector&lt;int&gt; prices, int n) {
+        if (n==0){
+            return 0;
+        }
+        vector&lt;int&gt; pre_profit(n,0);
+        vector&lt;int&gt; post_profit(n,0);
+
+        int min_buy = prices[0];
+        for(int i=1;i&lt;n;i++){
+            min_buy = min(prices[i], min_buy);
+            pre_profit[i] =  max(pre_profit[i-1], prices[i]-min_buy);
+        }
+
+        int max_sell = prices[n-1];
+        for(int j=n-2;j&gt;=0;j--){
+            max_sell = max(prices[j], max_sell);
+            post_profit[j] = max(post_profit[j+1], max_sell-prices[j]);
+        }
+
+        int max_profit = 0;
+        for(int i=0; i&lt;n;i++){
+            max_profit = max(max_profit, pre_profit[i] + post_profit[i]);
+        }
+        return max_profit;
+    }
+};
+</code></pre>
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

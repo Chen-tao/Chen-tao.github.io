@@ -1,0 +1,710 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++，C," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下：
+#空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C/C++ 预处理指令">
+<meta property="og:url" content="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下：
+#空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C/C++ 预处理指令">
+<meta name="twitter:description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下：
+#空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/"/>
+
+
+
+
+
+  <title> C/C++ 预处理指令 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C/C++ 预处理指令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-17T00:00:00+08:00">
+                2015-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要记录了C/C++预处理指令，常见的预处理指令如下：</p>
+<h4 id="空指令，无任何效果"><a href="#空指令，无任何效果" class="headerlink" title="#空指令，无任何效果"></a>#空指令，无任何效果</h4><h4 id="include包含一个源代码文件"><a href="#include包含一个源代码文件" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h4><h4 id="define定义宏"><a href="#define定义宏" class="headerlink" title="#define定义宏"></a>#define定义宏</h4><h4 id="undef取消已定义的宏"><a href="#undef取消已定义的宏" class="headerlink" title="#undef取消已定义的宏"></a>#undef取消已定义的宏</h4><h4 id="if如果给定条件为真，则编译下面代码"><a href="#if如果给定条件为真，则编译下面代码" class="headerlink" title="#if如果给定条件为真，则编译下面代码"></a>#if如果给定条件为真，则编译下面代码</h4><h4 id="ifdef如果宏已经定义，则编译下面代码"><a href="#ifdef如果宏已经定义，则编译下面代码" class="headerlink" title="#ifdef如果宏已经定义，则编译下面代码"></a>#ifdef如果宏已经定义，则编译下面代码</h4><h4 id="ifndef如果宏没有定义，则编译下面代码"><a href="#ifndef如果宏没有定义，则编译下面代码" class="headerlink" title="#ifndef如果宏没有定义，则编译下面代码"></a>#ifndef如果宏没有定义，则编译下面代码</h4><h4 id="elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码"><a href="#elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码" class="headerlink" title="#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码"></a>#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码</h4><h4 id="endif结束一个-if……-else条件编译块"><a href="#endif结束一个-if……-else条件编译块" class="headerlink" title="#endif结束一个#if……#else条件编译块"></a>#endif结束一个#if……#else条件编译块</h4><h4 id="error停止编译并显示错误信息"><a href="#error停止编译并显示错误信息" class="headerlink" title="#error停止编译并显示错误信息"></a>#error停止编译并显示错误信息</h4><h2 id="什么是预处理指令"><a href="#什么是预处理指令" class="headerlink" title="什么是预处理指令?"></a>什么是预处理指令?</h2><p>预处理指令是以#号开头的代码行。#号必须是该行除了任何空白字符外的第一个字符。#后是指令关键字，在关键字和#号之间允许存在任意个数的空白字符。整行语句构成了一条预处理指令，该指令将在编译器进行编译之前对源代码做某些转换。</p>
+<p>以前没有在意的学者注意了,预处理指令是在编译器进行编译之前进行的操作.预处理过程扫描源代码，对其进行初步的转换，产生新的源代码提供给编译器。可见预处理过程先于编译器对源代码进行处理。在很多编程语言中，并没有任何内在的机制来完成如下一些功能：在编译时包含其他源文件、定义宏、根据条件决定编译时是否包含某些代码(防止重复包含某些文件)。要完成这些工作，就需要使用预处理程序。尽管在目前绝大多数编译器都包含了预处理程序，但通常认为它们是独立于编译器的。预处理过程读入源代码，检查包含预处理指令的语句和宏定义，并对源代码进行响应的转换。预处理过程还会删除程序中的注释和多余的空白字符。</p>
+<h2 id="include包含一个源代码文件-1"><a href="#include包含一个源代码文件-1" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h2><p>这个预处理指令，我想是见得最多的一个，简单说一下，第一种方法是用尖括号把头文件括起来。这种格式告诉预处理程序在编译器自带的或外部库的头文件中搜索被包含的头文件。第二种方法是用双引号把头文件括起来。这种格式告诉预处理程序在当前被编译的应用程序的源代码文件中搜索被包含的头文件，如果找不到，再搜索编译器自带的头文件。采用两种不同包含格式的理由在于，编译器是安装在公共子目录下的，而被编译的应用程序是在它们自己的私有子目录下的。一个应用程序既包含编译器提供的公共头文件，也包含自定义的私有头文件。采用两种不同的包含格式使得编译器能够在很多头文件中区别出一组公共的头文件。</p>
+<h2 id="define定义宏-1"><a href="#define定义宏-1" class="headerlink" title="#define定义宏"></a>#define定义宏</h2><p>有关#define这个宏定义，在C语言中使用的很多，因为#define存在一些不足，C++强调使用const来定义常量。宏定义了一个代表特定内容的标识符。预处理过程会把源代码中出现的宏标识符替换成宏定义时的值。记住仅仅是进行标识符的替换。</p>
+<p>下面列举一些#define的使用：</p>
+<ul>
+<li><p>用#define实现求最大值和最小值的宏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define MAX(x,y) (((x)&gt;(y))?(x):(y))</div><div class="line">#define MIN(x,y) (((x)&lt;(y))?(x):(y))</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">#ifdef MAX    //判断这个宏是否被定义</div><div class="line">    printf(&quot;3 and 5 the max is:%d\n&quot;,MAX(3,5));</div><div class="line">#endif</div><div class="line">#ifdef MIN</div><div class="line">    printf(&quot;3 and 5 the min is:%d\n&quot;,MIN(3,5));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> * (1)三元运算符要比if,else效率高</div><div class="line"> * （2）宏的使用一定要细心，需要把参数小心的用括号括起来，</div><div class="line"> * 因为宏只是简单的文本替换，不注意，容易引起歧义错误。</div><div class="line">*/</div></pre></td></tr></table></figure>
+</li>
+<li><p>宏定义的错误使用</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define SQR(x) (x*x)</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    int b=3;</div><div class="line">#ifdef SQR//只需要宏名就可以了，不需要参数，有参数的话会警告</div><div class="line">    printf(&quot;a = %d\n&quot;,SQR(b+2));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> *首先说明，这个宏的定义是错误的。并没有实现程序中的B+2的平方</div><div class="line"> * 预处理的时候，替换成如下的结果：b+2*b+2</div><div class="line"> * 正确的宏定义应该是：#define SQR(x) ((x)*(x))</div><div class="line"> * 所以，尽量使用小括号，将参数括起来。</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li>宏参数的连接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define STR(s) #s</div><div class="line">#define CONS(a,b) (int)(a##e##b)</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">#ifdef STR</div><div class="line">    printf(STR(VCK));</div><div class="line">#endif</div><div class="line">#ifdef CONS</div><div class="line">    printf(&quot;\n%d\n&quot;,CONS(2,3));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* （绝大多数是使用不到这些的，使用到的话，查看手册就可以了）</div><div class="line"> * 第一个宏，用#把参数转化为一个字符串</div><div class="line"> * 第二个宏，用##把2个宏参数粘合在一起，及aeb,2e3也就是2000</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li>用宏得到一个字的高位或低位的字节</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define WORD_LO(xxx) ((byte)((word)(xxx) &amp; 255))</div><div class="line">#define WORD_HI(xxx) ((byte)((word)(xxx) &gt;&gt; 8))</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> * 一个字2个字节，获得低字节（低8位），与255（0000,0000,1111,1111）按位相与</div><div class="line"> * 获得高字节（高8位），右移8位即可。</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li>用宏定义得到一个数组所含元素的个数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define ARR_SIZE(a) (sizeof((a))/sizeof((a[0])))</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    int array[100];</div><div class="line">#ifdef ARR_SIZE</div><div class="line">    printf(&quot;array has %d items.\n&quot;,ARR_SIZE(array));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line">/*</div><div class="line"> *总的大小除以每个类型的大小</div><div class="line"> */</div></pre></td></tr></table></figure>
+<p>关于#define宏的使用，应该特别小心，尤其是含有参数计算的时候如小2示例，最保险的做法将参数用括号括起来。</p>
+<h2 id="ifdef-ifndef-endif…的使用"><a href="#ifdef-ifndef-endif…的使用" class="headerlink" title="#ifdef,#ifndef,#endif…的使用"></a>#ifdef,#ifndef,#endif…的使用</h2><p>以上这些预编译指令，都是条件编译指令，也就是说，将决定那些代码被编译，而哪些不被编译。</p>
+<ul>
+<li><p>示例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define DEBUG</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    int i = 0;</div><div class="line">    char c;</div><div class="line">    while(1)</div><div class="line">    &#123;</div><div class="line">        i++;</div><div class="line">        c = getchar();</div><div class="line">        if(&apos;\n&apos; != c)</div><div class="line">        &#123;</div><div class="line">            getchar();</div><div class="line">        &#125;</div><div class="line">        if(&apos;q&apos; == c || &apos;Q&apos; == c)</div><div class="line">        &#123;</div><div class="line">#ifdef DEBUG//判断DEBUG是否被定义了</div><div class="line">            printf(&quot;We get:%c,about to exit.\n&quot;,c);</div><div class="line">#endif</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">        &#123;</div><div class="line">            printf(&quot;i = %d&quot;,i);</div><div class="line">#ifdef DEBUG</div><div class="line">            printf(&quot;,we get:%c&quot;,c);</div><div class="line">#endif</div><div class="line">            printf(&quot;\n&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    printf(&quot;Hello World!\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*#endif用于终止#if预处理指令。*/</div></pre></td></tr></table></figure>
+</li>
+<li><p>ifdef 和 #ifndef</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define DEBUG</div><div class="line">main()</div><div class="line">&#123;</div><div class="line">#ifdef DEBUG</div><div class="line">    printf(&quot;yes &quot;);</div><div class="line">#endif</div><div class="line">#ifndef DEBUG</div><div class="line">    printf(&quot;no &quot;);</div><div class="line">#endif</div><div class="line">&#125;</div><div class="line">//#ifdefined等价于#ifdef;</div><div class="line">//#if!defined等价于#ifndef</div></pre></td></tr></table></figure>
+<ul>
+<li>其他一些指令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#error指令将使编译器显示一条错误信息，然后停止编译。</div><div class="line"></div><div class="line">#line指令可以改变编译器用来指出警告和错误信息的文件号和行号。</div><div class="line"></div><div class="line">#pragma指令没有正式的定义。编译器可以自定义其用途。典型的用法是禁止或允许某些烦人的警告信息。</div></pre></td></tr></table></figure>
+<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><p>预处理就是在进行编译的第一遍词法扫描和语法分析之前所作的工作。说白了，就是对源文件进行编译前，先对预处理部分进行处理，然后对处理后的代码进行编译。这样做的好处是，经过处理后的代码，将会变的很精短。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-，C/" rel="tag"># C++，C</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/16/macbook-shortcuts/" rel="next" title="Macbook技巧整理">
+                <i class="fa fa-chevron-left"></i> Macbook技巧整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/17/linux-swap-conf/" rel="prev" title="linux的swap扩容">
+                linux的swap扩容 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#空指令，无任何效果"><span class="nav-number">1.</span> <span class="nav-text">#空指令，无任何效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#include包含一个源代码文件"><span class="nav-number">2.</span> <span class="nav-text">#include包含一个源代码文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#define定义宏"><span class="nav-number">3.</span> <span class="nav-text">#define定义宏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undef取消已定义的宏"><span class="nav-number">4.</span> <span class="nav-text">#undef取消已定义的宏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if如果给定条件为真，则编译下面代码"><span class="nav-number">5.</span> <span class="nav-text">#if如果给定条件为真，则编译下面代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ifdef如果宏已经定义，则编译下面代码"><span class="nav-number">6.</span> <span class="nav-text">#ifdef如果宏已经定义，则编译下面代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ifndef如果宏没有定义，则编译下面代码"><span class="nav-number">7.</span> <span class="nav-text">#ifndef如果宏没有定义，则编译下面代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码"><span class="nav-number">8.</span> <span class="nav-text">#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#endif结束一个-if……-else条件编译块"><span class="nav-number">9.</span> <span class="nav-text">#endif结束一个#if……#else条件编译块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#error停止编译并显示错误信息"><span class="nav-number">10.</span> <span class="nav-text">#error停止编译并显示错误信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是预处理指令"><span class="nav-number"></span> <span class="nav-text">什么是预处理指令?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include包含一个源代码文件-1"><span class="nav-number"></span> <span class="nav-text">#include包含一个源代码文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#define定义宏-1"><span class="nav-number"></span> <span class="nav-text">#define定义宏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ifdef-ifndef-endif…的使用"><span class="nav-number"></span> <span class="nav-text">#ifdef,#ifndef,#endif…的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结："><span class="nav-number"></span> <span class="nav-text">小结：</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

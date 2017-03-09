@@ -1,0 +1,981 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="推箱子推箱子是一款经典游戏。如图所示，灰色格子代表不能通过区域，蓝色方格是箱子，黑色圆形代表玩家，含有圆点的格子代表目标点。
+
+规定以下规则：
+
+一局游戏中只会有一个箱子，一个玩家和一个目标点。
+通过方向键控制玩家移动。
+图中的灰色格子代表墙壁，玩家与箱子都不能通过。
+推到墙壁的箱子，就无法再将箱子推离墙壁，因为玩家无法到达箱子靠墙壁的一侧去推箱子。也就是说箱子只能以“被推”的方式被移动，不是以“">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/More/C++_网易游戏2016_实习.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="推箱子推箱子是一款经典游戏。如图所示，灰色格子代表不能通过区域，蓝色方格是箱子，黑色圆形代表玩家，含有圆点的格子代表目标点。
+
+规定以下规则：
+
+一局游戏中只会有一个箱子，一个玩家和一个目标点。
+通过方向键控制玩家移动。
+图中的灰色格子代表墙壁，玩家与箱子都不能通过。
+推到墙壁的箱子，就无法再将箱子推离墙壁，因为玩家无法到达箱子靠墙壁的一侧去推箱子。也就是说箱子只能以“被推”的方式被移动，不是以“">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/C++_OJ_1.png">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/C++_OJ_2.png">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/C++_OJ_3.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="推箱子推箱子是一款经典游戏。如图所示，灰色格子代表不能通过区域，蓝色方格是箱子，黑色圆形代表玩家，含有圆点的格子代表目标点。
+
+规定以下规则：
+
+一局游戏中只会有一个箱子，一个玩家和一个目标点。
+通过方向键控制玩家移动。
+图中的灰色格子代表墙壁，玩家与箱子都不能通过。
+推到墙壁的箱子，就无法再将箱子推离墙壁，因为玩家无法到达箱子靠墙壁的一侧去推箱子。也就是说箱子只能以“被推”的方式被移动，不是以“">
+<meta name="twitter:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/C++_OJ_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/More/C++_网易游戏2016_实习.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="推箱子"><a href="#推箱子" class="headerlink" title="推箱子"></a><a href="http://hihocoder.com/contest/ntest2015april/problem/1" target="_blank" rel="external">推箱子</a></h1><p>推箱子是一款经典游戏。如图所示，灰色格子代表不能通过区域，蓝色方格是箱子，黑色圆形代表玩家，含有圆点的格子代表目标点。</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/C++_OJ_1.png" alt=""></p>
+<p>规定以下规则：</p>
+<ol>
+<li>一局游戏中只会有一个箱子，一个玩家和一个目标点。</li>
+<li>通过方向键控制玩家移动。</li>
+<li>图中的灰色格子代表墙壁，玩家与箱子都不能通过。</li>
+<li>推到墙壁的箱子，就无法再将箱子推离墙壁，因为玩家无法到达箱子靠墙壁的一侧去推箱子。也就是说箱子只能以“被推”的方式被移动，不是以“被拉”的方式被移动。但如果玩家将箱子推至墙壁后，垂直墙壁的两侧没有阻碍物，则玩家可以朝这两个不同的方向推移箱子。如果箱子进入角落，就没有办法再推动这个箱子了。</li>
+<li>玩家是不能走出场景的。玩家推着箱子到达场景边缘，如果继续点击使玩家和箱子向墙壁前进的方向键，箱子和人都会保持不动。玩家的前进方向上如果有墙壁，也是不能前进的。但是这些点击都视为合理的输入。</li>
+<li>箱子一旦到达目标点，就不能再移动了。但这时，玩家仍然可以在场景内自由行动。如果继续尝试推箱子，那么玩家将会和箱子一起保持在原地不动。</li>
+</ol>
+<p>现在，给出一种方向键的点击方案，请判断，这种方案是否能使箱子最终停在目标点上。为了方便表示，我们以0代表空白格子，以4代表不能通过区域，以1代表玩家，以3代表箱子，以2代表目标点。</p>
+<h2 id="输入、输出"><a href="#输入、输出" class="headerlink" title="输入、输出"></a>输入、输出</h2><p><code>输入</code>：第一行数据包含三个整数，N，M，S。其中，N(0 \&lt; N \&lt;= 100)代表格子的宽度，M(0 \&lt; M \&lt;= 100)代表格子的高度，S(0 \&lt; S \&lt;= 200)代表测试点的个数。</p>
+<p>接下来的M行，每行都会有N个字符，描述当前的盘面。</p>
+<p>接下来的S行，每行都代表一个测试点。每行都以一个整数T(0 \&lt; T \&lt;= 10000)开头，接下来是一个空格和T个字符。这T个字符仅由d，u，l，r这四个字母组成，分别代表了敲击向下，向上，向左，向右的方向键。</p>
+<p><code>输出</code>：对于每个测试点，输出最后箱子是否在目标点上。如果是，输出YES，如果不是，则输出NO。</p>
+<p>样例输入</p>
+<pre><code>5 4 3
+00000
+13000
+00200
+00000
+4 rurd
+6 urdldr
+6 rrrurd
+</code></pre><p>样例输出</p>
+<blockquote>
+<p>YES<br>YES<br>NO<br>EmacsNormalVim</p>
+</blockquote>
+<h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+
+using namespace std;
+
+map&lt;char, vector&lt;int&gt;&gt; oper = {{'u', vector<int>{-1, 0}},
+                               {&apos;d&apos;, vector&lt;int&gt;{1, 0}},
+                               {&apos;r&apos;, vector&lt;int&gt;{0, 1}},
+                               {&apos;l&apos;, vector&lt;int&gt;{0, -1}},};
+
+char tables[100][100];
+int N, M, S;
+int target[2];
+int person[2];
+int box[2];
+
+bool can_move(const char op, const int (&amp;pos)[2]){
+    int new_pos[2];
+    new_pos[0] = pos[0] + oper[op][0];
+    new_pos[1] = pos[1] + oper[op][1];
+    if(new_pos[0] &gt;= 0 and new_pos[0] &lt; M and
+       new_pos[1] &gt;= 0 and new_pos[1] &lt; N and
+       tables[new_pos[0]][new_pos[1]] != &apos;4&apos;){
+        return true;
+    }
+    return false;
+}
+
+bool box_people(const char op, const int (&amp;p)[2], const int (&amp;b)[2]){
+    if(p[0] + oper[op][0] == b[0] and p[1] + oper[op][1]== b[1]){
+        return true;
+    }
+    return false;
+}
+
+void move_one(const char op, int (&amp;p)[2]){
+    p[0] = p[0] + oper[op][0];
+    p[1] = p[1] + oper[op][1];
+}
+
+bool people_move(const char op, int (&amp;p)[2], int (&amp;b)[2]){
+    // Can&apos;t Move edge. person, box don&apos;t change.
+    if(box_people(op, p, b)){
+        if(can_move(op, b)){
+            move_one(op, b);
+            move_one(op, p);
+        }
+    }
+    else{
+        if (can_move(op, p)){
+            move_one(op, p);
+        }
+    }
+    if(b[0] == target[0] and b[1] == target[1]){
+        return true;
+    }
+    return false;
+}
+
+int main() {
+    cin &gt;&gt; N &gt;&gt; M &gt;&gt; S;
+
+    for(int i=0;i&lt;M;i++){
+        for(int j=0;j&lt;N;j++){
+            char c;
+            cin &gt;&gt; c;
+            tables[i][j] = c;
+            if(c==&apos;2&apos;){
+                target[0] = i;
+                target[1] = j;
+            }
+            if(c==&apos;1&apos;){
+                person[0] = i;
+                person[1] = j;
+            }
+            if(c==&apos;3&apos;){
+                box[0] = i;
+                box[1] = j;
+            }
+        }
+    }
+
+    for(int i=0;i&lt;S;i++){
+        int T;
+        cin &gt;&gt; T;
+        vector&lt;char&gt; operate(T);
+        int p[2]={0, 0}, b[2]={0, 0};
+        p[0] = person[0], p[1] = person[1];
+        b[0] = box[0], b[1] = box[1];
+        for(int j=0;j&lt;T;j++){
+            cin &gt;&gt; operate[j];
+        }
+        bool ok = false;
+        for(int j=0;j&lt;T;j++){
+            if(people_move(operate[j], p, b)){
+                ok = true;
+                break;
+            }
+        }
+        if (ok){
+            cout &lt;&lt; &quot;YES&quot; &lt;&lt; endl;
+        }
+        else{
+            cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;
+        }
+    }
+
+    return 0;
+}
+</int></code></pre><h1 id="井字棋"><a href="#井字棋" class="headerlink" title="井字棋"></a><a href="http://hihocoder.com/contest/ntest2015april/problem/2" target="_blank" rel="external">井字棋</a></h1><p>小武是井字棋的忠实粉丝，井字棋，又称为井字游戏、井字过三关等，是种纸笔游戏。其具体玩法为：</p>
+<p>两个玩家，一个打圈(O)，一个打叉(X)，轮流在3乘3的格上打自己的符号，最先以横、直、斜连成一线则为胜。当9个格子画满，双方均无法取胜时，则为和局。当有玩家取胜或者下成平局后，比赛结束。</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/C++_OJ_2.png" alt=""></p>
+<p>假设每次X方均为先手，给出一个局面，请你判断这个局面是否合法，如果局面合法，则判断当前局面是否是比赛结束局面，如果是，则判断当前局面是X方胜利，O方胜利或者是平局。如果局面暂时未分胜负，则判断下一个下棋的选手下完一步后（假设采用最优策略）能否取胜。</p>
+<h2 id="输入、输出-1"><a href="#输入、输出-1" class="headerlink" title="输入、输出"></a>输入、输出</h2><p><code>输入</code>：每个输入数据包含多个测试点。第一行为测试点的个数S \&lt;= 2000。之后是S个测试点的数据。</p>
+<p>每个测试点的数据包括3行，用于描述整个棋盘。每行包含一个长度为3的字符串，取值范围为{‘<em>‘, ‘O’, ‘X’}，其中’</em>‘表示该格子为空，’X’表示该格被先手者占领，’O’表示该格被后手者占领。</p>
+<p>每个测试点之间会有一个空行相隔。</p>
+<p><code>输出</code>：对于每个测试点，对应的结果输出一行。</p>
+<p>如果局面非法，则输出”Invalid”。</p>
+<p>否则如果局面是比赛结束局面，X取胜则输出”X win”, O取胜则输出”O win”, 如果是平局则输出”Draw”。</p>
+<p>如果局面合法并且不是比赛结束的局面，则判断下一个下棋的选手下完一步后能否取胜，如果可以，则输出”Next win”, 否则输出”Next cannot win”。</p>
+<p>注意，所有的结果输出均不带引号。</p>
+<p><code>样例提示</code></p>
+<p>第一个例子，因为X先下，所以该局面不可能出现。<br>第二个例子，为结束局面，X取胜。<br>第三个例子，全部格子下完，双方均无法取胜，平局。<br>第四个例子，局面未分胜负，下一个下的是X，可以取胜。<br>第五个例子，局面未分胜负，下一个下的是O，无论下到哪一个格子均无法取胜。</p>
+<pre><code>5
+__O
+_XO
+___
+
+XXX
+___
+OO_
+
+XXO
+OOX
+XXO
+
+X_X
+OO_
+___
+
+XO_
+XX_
+__O
+</code></pre><p>样例输出</p>
+<blockquote>
+<p>Invalid<br>X win<br>Draw<br>Next win<br>Next cannot win</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;map&gt;
+using namespace std;
+
+map&lt;char, int&gt; convert{{'X', 1}, {'_', 0}, {'O', -1}};
+
+pair&lt;int, int&gt; get_state(const int tables[3][3], int (&amp;situations)[8]){
+    situations[0] = tables[0][0] + tables[0][1] + tables[0][2];
+    situations[1] = tables[1][0] + tables[1][1] + tables[1][2];
+    situations[2] = tables[2][0] + tables[2][1] + tables[2][2];
+    situations[3] = tables[0][0] + tables[1][0] + tables[2][0];
+    situations[4] = tables[0][1] + tables[1][1] + tables[2][1];
+    situations[5] = tables[0][2] + tables[1][2] + tables[2][2];
+    situations[6] = tables[0][0] + tables[1][1] + tables[2][2];
+    situations[7] = tables[2][0] + tables[1][1] + tables[0][2];
+    pair&lt;int, int&gt; count(0, 0);
+    for(int i=0; i&lt; 8;i++){
+        if(situations[i] == 3){
+            count.first += 1;
+        }
+        if(situations[i] == -3){
+            count.second += 1;
+        }
+    }
+    return count;
+}
+
+bool valid_state(const int (&amp;state)[8], const int num, pair&lt;int, int&gt; count){
+    /* Invalid
+     * ooo
+     * ___
+     * xxx
+     *
+     * xxx
+     * oox
+     * oo_
+     *
+     * ooo
+     * xx_
+     * xx_
+     */
+    if(num != 1 &amp;&amp; num != 0){
+        return false;
+    }
+    if(count.first &gt; 1 &amp;&amp; count.second &gt; 1){
+        return false;
+    }
+    if(count.first &gt;= 1 &amp;&amp; num == 0){
+        return false;
+    }
+    if(count.second &gt;= 1 &amp;&amp; num == 1){
+        return false;
+    }
+    return true;
+}
+
+bool end_state(const int (&amp;state)[8], int empty_num) {
+    if (empty_num == 0) {
+        return true;
+    }
+    for (int i = 0; i &lt; 8; i++) {
+        if (state[i] == 3 or state[i] == -3) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void print_res(const int (&amp;state)[8]){
+    for(int i=0; i&lt;8;i++){
+        if(state[i] == 3){
+            cout &lt;&lt; &quot;X win&quot; &lt;&lt; endl;
+            return;
+        }
+        if(state[i] == -3){
+            cout &lt;&lt; &quot;O win&quot; &lt;&lt; endl;
+            return;
+        }
+    }
+    cout &lt;&lt; &quot;Draw&quot; &lt;&lt; endl;
+}
+
+void print_next_win(const int (&amp;state)[8], int v_num){
+    // next: O
+    bool can_win = false;
+    if (v_num == 1){
+        for(int i=0;i&lt;8;i++){
+            if(state[i] == -2){
+                can_win = true;
+                break;
+            }
+        }
+    }
+
+    // next: X
+    else{
+        for(int i=0;i&lt;8;i++) {
+            if (state[i] == 2) {
+                can_win = true;
+                break;
+            }
+        }
+    }
+    if(can_win){
+        cout &lt;&lt; &quot;Next win&quot; &lt;&lt; endl;
+    }
+    else{
+        cout &lt;&lt; &quot;Next cannot win&quot; &lt;&lt; endl;
+    }
+    return;
+}
+
+int main()
+{
+    int S;
+    cin &gt;&gt; S;
+    for(int i=0; i&lt;S;i++)
+    {
+        int tables[3][3];
+        int valid_num = 0;
+        int empty_num = 0;
+        for(int m=0;m&lt;3;m++){
+            for(int n=0;n&lt;3;n++){
+                char c;
+                cin &gt;&gt; c;
+                if(c==&apos;_&apos;){
+                    empty_num += 1;
+                }
+                valid_num += convert[c];
+                tables[m][n] = convert[c];
+            }
+        }
+        int states[8] = {0};
+        pair&lt;int, int&gt; count_3 = get_state(tables, states);
+
+        // Valid or not.
+        if(!valid_state(states, valid_num, count_3)){
+            cout &lt;&lt; &quot;Invalid&quot; &lt;&lt; endl;
+            continue;
+        }
+
+        // end state
+        if(end_state(states, empty_num)) {
+            print_res(states);
+            continue;
+        }
+
+        // not end, determine if next can win.
+        print_next_win(states, valid_num);
+    }
+    return 0;
+}
+</code></pre><h1 id="连连看"><a href="#连连看" class="headerlink" title="连连看"></a>连连看</h1><p>小江最喜欢玩的游戏”天下3”最近推出了连连看的小玩法。玩家可以将2个相同图案的牌子连接起来，连接线不多于3根线段（即最多拐2折），就可以成功将这对牌子消除。如示意图所示，红色，黄色和蓝色的消除都是合法的，因为它们分别需要2个，0个和1个折。而黑色的消除是不合法的，因为这对牌至少需要拐3个折才能连接起来。</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/C++_OJ_3.png" alt=""></p>
+<p>但是小江并不满足于这个游戏规则，因为他觉得最多只能拐2折这个限制并不合理。好奇的小江想知道的是，给定一个连连看的状态以及某一个牌子，在K折以内可以到达的所有具有相同图案的牌子的数量是多少。</p>
+<h2 id="输入、输出-2"><a href="#输入、输出-2" class="headerlink" title="输入、输出"></a>输入、输出</h2><p>每个输入数据包含多个测试点。</p>
+<p>第一行为测试点的个数S \&lt;= 20。之后是S个测试点的数据。</p>
+<p>每个测试点的第一行为1 \&lt;= N \&lt;= 200, 1 \&lt;= M \&lt;= 200，表示连连看的大小。接下来的N行，每一行有M个整数，表示连连看该行的状态，如果为0，则表示该格为空，否则代表一种图案的牌子。</p>
+<p>然后是三个整数X \&lt;= N, Y \&lt;= M，0 \&lt;= K \&lt;= 10000，表示查询(X, Y)这个牌子在K折以内能消除的所有相同牌子总数。其中连连看左上角的格子坐标为(1, 1)，右下角为(N, M)。保证查询的格子是有图案的。</p>
+<p><code>输出</code>：对于每个测试点，输出对应的能消除的所有牌子总数。</p>
+<p>提示：样例第一个例子，第(1, 1), (2, 3)和(2, 5)为3个可以在3折内被消除的相同牌子。</p>
+<p>样例输入<br>    3<br>    4 5<br>    1 0 1 0 2<br>    0 0 1 3 1<br>    3 3 1 5 9<br>    6 1 4 8 7<br>    1 3 3<br>    4 5<br>    1 0 1 0 2<br>    0 0 1 3 1<br>    3 3 1 5 9<br>    6 1 4 8 7<br>    1 3 1<br>    2 2<br>    1 10<br>    2 3<br>    1 1 10</p>
+<p>样例输出</p>
+<blockquote>
+<p>3<br>2<br>0</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+struct State {
+    int x, y;
+    int num;
+    int cx, cy;
+    State() {}
+    State(int ox, int oy, int onum, int ocx, int ocy):x(ox), y(oy),num(onum),cx(ocx),cy(ocy) {
+    }
+};
+
+// Up, Right, Down, Left
+const int X_OFFSET[] = {0, 1, 0, -1};
+const int Y_OFFSET[] = {-1, 0, 1, 0};
+
+int tables[202][202];
+bool visited[202][202];
+int S,N,M,X,Y,K;
+
+bool is_valid(const int x, const int y){
+    return (x &gt;= 0 &amp;&amp; x &lt;= N+1 &amp;&amp; y &gt;= 0 &amp;&amp; y &lt;= M+1);
+}
+
+int main(){
+    cin &gt;&gt; S;
+    while(S--){
+        memset(tables, 0, sizeof(tables));
+        memset(visited, false, sizeof(visited));
+        cin &gt;&gt; N &gt;&gt; M;
+        for(int i=1;i&lt;=N;i++){
+            for(int j=1;j&lt;=M;j++){
+                cin &gt;&gt; tables[i][j];
+            }
+        }
+        cin &gt;&gt; X &gt;&gt; Y &gt;&gt; K;
+        visited[X][Y] = true;
+        int count = 0;
+        queue&lt;State&gt; que;
+
+        // First go along 4 directions
+        for(int i=0;i&lt;4;i++){
+            int new_x = X;
+            int new_y = Y;
+            while(true){
+                new_x += X_OFFSET[i];
+                new_y += Y_OFFSET[i];
+                if (!is_valid(new_x, new_y)){
+                    break;
+                }
+                if(tables[new_x][new_y] == 0){
+                    if(!visited[new_x][new_y]){
+                        que.push(State(new_x, new_y, 0, X_OFFSET[i], Y_OFFSET[i]));
+                        visited[new_x][new_y] = true;
+                    }
+                    continue;
+                }
+                if(!visited[new_x][new_y] &amp;&amp; tables[new_x][new_y] == tables[X][Y]){
+                    count += 1;
+                    visited[new_x][new_y] = true;
+                }
+                break;
+            }
+        }
+
+        while(!que.empty()){
+            State cur_s = que.front();
+            que.pop();
+            if(cur_s.num == K){
+                continue;
+            }
+            for(int i=0;i&lt;4;i++){
+                // 跳过相同方向,只往不同方向扩展;
+                if(cur_s.cx == X_OFFSET[i] &amp;&amp; cur_s.cy == Y_OFFSET[i]) continue;
+                if(cur_s.cx + X_OFFSET[i] == 0 &amp;&amp; cur_s.cy + Y_OFFSET[i] == 0) continue;
+
+                // 搜索不同的方向
+                int new_x = cur_s.x, new_y = cur_s.y;
+                while(true){
+                    new_x += X_OFFSET[i];
+                    new_y += Y_OFFSET[i];
+                    if(!is_valid(new_x, new_y)) break;
+                    if(tables[new_x][new_y] == 0){
+                        if(!visited[new_x][new_y]){
+                            que.push(State(new_x, new_y, cur_s.num+1, X_OFFSET[i], Y_OFFSET[i]));
+                            visited[new_x][new_y] = true;
+                        }
+                        continue;
+                    }
+                    if(!visited[new_x][new_y] &amp;&amp; tables[new_x][new_y] == tables[X][Y]){
+                        count += 1;
+                        visited[new_x][new_y] = true;
+                    }
+                    break;
+                }
+            }
+        }
+        cout &lt;&lt; count &lt;&lt; endl;
+    }
+}
+</code></pre><p>参考</p>
+<p><a href="http://blog.csdn.net/wangtaoking1/article/details/45035465" target="_blank" rel="external">连连看——网易游戏2016实习生招聘</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

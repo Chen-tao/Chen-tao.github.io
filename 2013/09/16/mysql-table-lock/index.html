@@ -1,0 +1,747 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
+
+MyISAM
+InnoDB
+NDB Cluster
+Maria
+Falcon
+Memory
+Archive
+Merge
+Federated
+
+其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL锁定机制分析--表级锁定">
+<meta property="og:url" content="http://chen-tao.github.io/2013/09/16/mysql-table-lock/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
+
+MyISAM
+InnoDB
+NDB Cluster
+Maria
+Falcon
+Memory
+Archive
+Merge
+Federated
+
+其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机">
+<meta property="og:image" content="http://chentaohome.qiniudn.com/readlock1.jpg">
+<meta property="og:image" content="http://chentaohome.qiniudn.com/readlock2.jpg">
+<meta property="og:image" content="http://chentaohome.qiniudn.com/readlock3.jpg">
+<meta property="og:image" content="http://chentaohome.qiniudn.com/readlock4.jpg">
+<meta property="og:image" content="http://chentaohome.qiniudn.com/writelock1.jpg">
+<meta property="og:image" content="http://chentaohome.qiniudn.com/writelock2.jpg">
+<meta property="og:image" content="http://chentaohome.qiniudn.com/writelock3.jpg">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL锁定机制分析--表级锁定">
+<meta name="twitter:description" content="为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
+
+MyISAM
+InnoDB
+NDB Cluster
+Maria
+Falcon
+Memory
+Archive
+Merge
+Federated
+
+其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机">
+<meta name="twitter:image" content="http://chentaohome.qiniudn.com/readlock1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2013/09/16/mysql-table-lock/"/>
+
+
+
+
+
+  <title> MySQL锁定机制分析--表级锁定 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/09/16/mysql-table-lock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySQL锁定机制分析--表级锁定
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-16T00:00:00+08:00">
+                2013-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： </p>
+<ul>
+<li>MyISAM</li>
+<li>InnoDB</li>
+<li>NDB Cluster</li>
+<li>Maria</li>
+<li>Falcon</li>
+<li>Memory</li>
+<li>Archive</li>
+<li>Merge</li>
+<li>Federated</li>
+</ul>
+<p>其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机制有3个级别： </p>
+<ul>
+<li>行级锁定(row-level)</li>
+<li>表级锁定(table-level)</li>
+<li>页级锁定(page-level)</li>
+</ul>
+<p>##行级锁定 </p>
+<p>属于最小的锁定粒度。因为锁定粒度很小，所以发生资源争用的概率也是最小的，能应对App最大的并发处理需求，提升性能。但也正是由于粒度小，使得每次获取和释放锁的时候需要的操作和消耗的资源也变得更多，也最容易发生死锁。使用这种锁定的引擎主要是MyISAM、Memory、CSV等。 </p>
+<p>##表级锁定 </p>
+<p>表级锁定是MySQL中锁定粒度最大的一种锁定。实现的逻辑最简单，系统处理锁使用的资源也最少，可以很好的避免死锁问题。当然，相对于行级锁定，并行处理的能力也由于对整个表的一次性锁定而大打折扣。使用这种锁定的引擎为InnoDB、NDB Cluster。 </p>
+<p>##页级锁定 </p>
+<p>属于MySQL中一种特殊的锁定机制。锁定某一类查询页的时候会用到(并不常用)，粒度介于以上2种锁定之间，其他特性也相对如此。这种锁定方式为BDB的锁定形式。 先简单看一下表级锁定。 一般来讲，表级锁定分为读锁和写锁。MySQL通过4个队列来维护这2种锁定的信息： </p>
+<ul>
+<li>Current read-lock queue(lock-&gt;read)</li>
+<li>Pending read-lock queue(lock-&gt;read_wait)</li>
+<li>Current write-lock queue(lock-&gt;write)</li>
+<li>Pending write-lock queue(lock-&gt;write_wait)</li>
+</ul>
+<p>很简单，从字面上就可以知道这些队列分别的公用。 </p>
+<p>##读锁 </p>
+<p>一个新的Client Requset Resources(Read读锁)，需要满足以下2个条件： </p>
+<ul>
+<li>请求锁定的资源上没有写锁。</li>
+<li>写锁等待队列(Pending write-lock queue)中没有更高优先级(high-level-priority)的写锁在等待(获取资源)。</li>
+</ul>
+<p>如果满足了以上的2个条件，那么当前Client立即获取资源，并加上读锁。 </p>
+<p>如果任一条件没有得到满足，这个请求会被迫进入等待队列(Pending read-lock queue)中等待资源的释放。 </p>
+<p>##写锁 </p>
+<p>当Client Requset Resources(Write写锁)的时候，MySQL首先会Check Current write-lock queue是否已经有锁定相同资源的信息存在。然后是检查Pending write-lock queue，如果有锁已经存在，则进入等待队列。 </p>
+<p>MyISAM引擎使用的锁机制完全是由MySQL提供的表级锁定实现的。下面以MyISAM引擎为例，对显式的加锁做一个演示： </p>
+<ol>
+<li><p>显式给qqlist表加读锁，session之间的操作未被阻塞。 <img src="http://chentaohome.qiniudn.com/readlock1.jpg" alt="readlock1"> </p>
+</li>
+<li><p>更新操作：当前拥有锁的session遇到加锁的错误，其他session的操作被阻塞。 <img src="http://chentaohome.qiniudn.com/readlock2.jpg" alt="readlock2"> </p>
+</li>
+<li><p>释放读锁。其他session获取资源，操作顺利执行。 <img src="http://chentaohome.qiniudn.com/readlock3.jpg" alt="readlock3"> </p>
+</li>
+<li><p>获取local read，其他线程的insert操作未被阻塞(Concurrent Insert特性)。 <img src="http://chentaohome.qiniudn.com/readlock4.jpg" alt="readlock4"> </p>
+</li>
+<li><p>显式给qqlist表加写锁，其他session的读操作被阻塞。 <img src="http://chentaohome.qiniudn.com/writelock1.jpg" alt="writelock1"> </p>
+</li>
+<li><p>释放写锁。其他session获取资源，操作顺利执行。 <img src="http://chentaohome.qiniudn.com/writelock2.jpg" alt="writelock2"> </p>
+</li>
+<li><p>通过DDL(Alter table)获取WRITE_ALLOW_READ类型的写锁，其他session的读操作未被阻塞。 <img src="http://chentaohome.qiniudn.com/writelock3.jpg" alt="writelock3"></p>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
+<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/09/07/legend/" rel="next" title="传奇">
+                <i class="fa fa-chevron-left"></i> 传奇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/09/17/mysql-row-lock/" rel="prev" title="MySQL锁定机制分析--行级锁定">
+                MySQL锁定机制分析--行级锁定 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

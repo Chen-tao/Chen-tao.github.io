@@ -1,0 +1,572 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="进程与线程操作系统最核心的概念是进程，它是对正在运行的程序的一个抽象。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值。
+进程
+线程作为调度和分配的基本单位，进程作为拥有资源的基本单位
+不仅进程之间可以并发执行，同一个进程的多个线程之间也可并发执行
+进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于进程的资源.
+在创建或撤消进程时，由于系统都要为之分配和回收">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/More/Linux_OS_ProcessThread.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="进程与线程操作系统最核心的概念是进程，它是对正在运行的程序的一个抽象。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值。
+进程
+线程作为调度和分配的基本单位，进程作为拥有资源的基本单位
+不仅进程之间可以并发执行，同一个进程的多个线程之间也可并发执行
+进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于进程的资源.
+在创建或撤消进程时，由于系统都要为之分配和回收">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="进程与线程操作系统最核心的概念是进程，它是对正在运行的程序的一个抽象。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值。
+进程
+线程作为调度和分配的基本单位，进程作为拥有资源的基本单位
+不仅进程之间可以并发执行，同一个进程的多个线程之间也可并发执行
+进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于进程的资源.
+在创建或撤消进程时，由于系统都要为之分配和回收">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/More/Linux_OS_ProcessThread.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><p>操作系统最核心的概念是进程，它是对正在运行的程序的一个抽象。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值。</p>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><ol>
+<li>线程作为调度和分配的基本单位，进程作为拥有资源的基本单位</li>
+<li>不仅进程之间可以并发执行，同一个进程的多个线程之间也可并发执行</li>
+<li>进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于<br>进程的资源.</li>
+<li>在创建或撤消进程时，由于系统都要为之分配和回收资源，导致系统的开销<br>明显大于创建或撤消线程时的开销。</li>
+</ol>
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><h2 id="进程间通信（IPC）"><a href="#进程间通信（IPC）" class="headerlink" title="进程间通信（IPC）"></a>进程间通信（IPC）</h2><p>Linux 下进程通信有如下的目的：</p>
+<ol>
+<li>数据传输，一个进程需要将它的数据发送给另一个进程，发送的数据量在一个字节到几M之间；</li>
+<li>共享数据，多个进程想要操作共享数据，一个进程对数据的修改，其他进程应该立刻看到；</li>
+<li>通知事件，一个进程需要向另一个或一组进程发送消息，通知它们发生了某件事情；</li>
+<li>资源共享，多个进程之间共享同样的资源。为了做到这一点，需要内核提供锁和同步机制；</li>
+<li>进程控制，有些进程希望完全控制另一个进程的执行（如Debug进程），此时控制进程希望能够拦截另一个进程的所有陷入和异常，并能够及时知道它的状态改变。</li>
+</ol>
+<p>系统进行进程间通信（IPC）的时候，可用的方式包括信号量、共享内存、消息队列、管道、信号（signal）、套接字(socket)等形式。</p>
+<h3 id="管道、命名管道"><a href="#管道、命名管道" class="headerlink" title="管道、命名管道"></a>管道、命名管道</h3><h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>Linux中，与IPC相关的命令包括：ipcs、ipcrm（释放IPC）。IPCS命令是Linux下显示进程间通信设施状态的工具。</p>
+<ul>
+<li>ipcs -m: 输出有关共享内存(shared memory)的信息</li>
+<li>ipcs -q: 输出有关信息队列(message queue)的信息</li>
+</ul>
+<h2 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h2><h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><h3 id="进程共享"><a href="#进程共享" class="headerlink" title="进程共享"></a>进程共享</h3><p>线程共享的内容包括：</p>
+<ul>
+<li>进程 代码段</li>
+<li>进程 数据段</li>
+<li>进程打开的文件描述符、</li>
+<li>信号的处理器</li>
+<li>进程的当前目录</li>
+<li>进程用户 ID 与进程组 ID    </li>
+</ul>
+<p>线程独有的内容包括：</p>
+<ul>
+<li>线程 ID</li>
+<li><code>寄存器</code>组的值</li>
+<li>线程的堆栈</li>
+<li>错误返回码</li>
+<li>线程的信号屏蔽码</li>
+</ul>
+<h3 id="Linux-线程间通信：互斥量（mutex），信号量，条件变量"><a href="#Linux-线程间通信：互斥量（mutex），信号量，条件变量" class="headerlink" title="Linux 线程间通信：互斥量（mutex），信号量，条件变量"></a>Linux 线程间通信：互斥量（mutex），信号量，条件变量</h3><h1 id="进程与线程-1"><a href="#进程与线程-1" class="headerlink" title="进程与线程"></a>进程与线程</h1><p>下面主要从调度、并发性、系统开销、拥有资源等方面来对线程与进程进行比较。</p>
+<ol>
+<li>调度：在传统的操作系统中，CPU调度分派和资源分配的基本单位都是进程。而在引入线程的操作系统中，则把线程作为 CPU 调度和分派的基本单位，而进程作为资源拥有的基本单位。这样传统进程的两个属性分开，线程基本上不拥有资源，可以轻装运行，从而显著提高了系统的并发性。在同一进程中线程的切换不会引起进程的切换，从而避免了昂贵的系统调用。但从一个进程中的线程切换到另一个进程中的线程时，依然会引起进程切换。</li>
+<li>并发性：在引入线程的操作系统中，不仅进程之间可以并发执行，而且在一个进程中的多个线程之间也可以并发执行，使得操作系统具有更好的并发性，从而能更加有效地使用系统资源和提高系统的吞吐量。  </li>
+<li>拥有资源：不论是传统的操作系统，还是引入了线程的操作系统，进程都是拥有资源的一个基本单位，它可以拥有自己的资源。一般地说，线程自己不拥有系统资源（也有一点必不可少的资源）。但它可以访问其隶属进程的资源，即一个进程的代码段、数据段及所拥有的系统资源（如已打开的文件、I/O设备等），可供该进程中的所有线程所共享。</li>
+<li>系统开销：在创建或撤销进程时，系统都要为之分配和回收进程控制块、内存空间、I/O设备等，因此操作系统所付出的开销显著地大于创建或撤销线程时的开销。类似地，在进行进程切换时，涉及到当前进程CPU环境的保存及新被调度运行进程CPU环境的设置。而线程的切换只需要保存和设置少量寄存器地内容，不涉及存储器管理方面的操作。可见，进程切换的开销也远大于线程切换的开销。此外，由于同一个进程中的多个线程具有相同的地址空间，在同步和通信的实现方面线程也比进程容易。在一些操作系统中，线程的切换、同步和通信都无须操作系统内核的干预。</li>
+</ol>
+<p>多线程和多进程的区别（重点 面试官最最关心的一个问题，必须从cpu调度，上下文切换，数据共享，多核cup利用率，资源占用，等等各方面回答）</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.ruanyifeng.com/blog/2013/04/processes_and_threads.html" target="_blank" rel="external">进程与线程的一个简单解释</a><br><a href="http://www.cnblogs.com/cocowool/archive/2012/05/22/2513027.html" target="_blank" rel="external">Linux的IPC命令</a>  </p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

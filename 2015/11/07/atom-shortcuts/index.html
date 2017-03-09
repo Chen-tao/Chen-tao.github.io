@@ -1,0 +1,805 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="atom," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="文件切换ctrl-shift-s 保存所有打开的文件
+cmd-shift-o 打开目录
+cmd-\ 显示或隐藏目录树
+ctrl-0 焦点移到目录树
+目录树下，使用a，m，delete来增加，修改和删除
+cmd-t或cmd-p 查找文件
+cmd-b 在打开的文件之间切换
+cmd-shift-b 只搜索从上次git commit后修改或者新增的文件
+导航（等价于上下左右）
+ctrl-p 前一行
+ctr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="atom shortcuts">
+<meta property="og:url" content="http://chen-tao.github.io/2015/11/07/atom-shortcuts/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="文件切换ctrl-shift-s 保存所有打开的文件
+cmd-shift-o 打开目录
+cmd-\ 显示或隐藏目录树
+ctrl-0 焦点移到目录树
+目录树下，使用a，m，delete来增加，修改和删除
+cmd-t或cmd-p 查找文件
+cmd-b 在打开的文件之间切换
+cmd-shift-b 只搜索从上次git commit后修改或者新增的文件
+导航（等价于上下左右）
+ctrl-p 前一行
+ctr">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="atom shortcuts">
+<meta name="twitter:description" content="文件切换ctrl-shift-s 保存所有打开的文件
+cmd-shift-o 打开目录
+cmd-\ 显示或隐藏目录树
+ctrl-0 焦点移到目录树
+目录树下，使用a，m，delete来增加，修改和删除
+cmd-t或cmd-p 查找文件
+cmd-b 在打开的文件之间切换
+cmd-shift-b 只搜索从上次git commit后修改或者新增的文件
+导航（等价于上下左右）
+ctrl-p 前一行
+ctr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/11/07/atom-shortcuts/"/>
+
+
+
+
+
+  <title> atom shortcuts | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/07/atom-shortcuts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                atom shortcuts
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-07T00:00:00+08:00">
+                2015-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><p><code>ctrl-shift-s</code> 保存所有打开的文件</p>
+<p><code>cmd-shift-o</code> 打开目录</p>
+<p><code>cmd-\</code> 显示或隐藏目录树</p>
+<p><code>ctrl-0</code> 焦点移到目录树</p>
+<p>目录树下，使用a，m，delete来增加，修改和删除</p>
+<p><code>cmd-t</code>或<code>cmd-p</code> 查找文件</p>
+<p><code>cmd-b</code> 在打开的文件之间切换</p>
+<p><code>cmd-shift-b</code> 只搜索从上次<code>git commit</code>后修改或者新增的文件</p>
+<h3 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h3><p>（等价于上下左右）</p>
+<p><code>ctrl-p</code> 前一行</p>
+<p><code>ctrl-n</code> 后一行</p>
+<p><code>ctrl-f</code> 前一个字符</p>
+<p><code>ctrl-b</code> 后一个字符</p>
+<p><code>alt-B</code>, <code>alt-left</code> 移动到单词开始</p>
+<p><code>alt-F</code>, <code>alt-right</code> 移动到单词末尾</p>
+<p><code>cmd-right</code>, <code>ctrl-E</code> 移动到一行结束</p>
+<p><code>cmd-left</code>, <code>ctrl-A</code> 移动到一行开始</p>
+<p><code>cmd-up</code> 移动到文件开始</p>
+<p><code>cmd-down</code> 移动到文件结束</p>
+<p><code>ctrl-g</code> 移动到指定行 <code>row:column</code> 处</p>
+<p><code>cmd-r</code> 在方法之间跳转</p>
+<h3 id="目录树操作"><a href="#目录树操作" class="headerlink" title="目录树操作"></a>目录树操作</h3><p><code>cmd-\</code>或者 <code>cmd-k</code> <code>cmd-b</code> 显示(隐藏)目录树</p>
+<p><code>ctrl-0</code> 焦点切换到目录树(再按一次或者Esc退出目录树)</p>
+<p><code>a</code> 添加文件</p>
+<p><code>d</code> 将当前文件另存为(duplicate)</p>
+<p><code>i</code> 显示(隐藏)版本控制忽略的文件</p>
+<p><code>alt-right</code> 和 <code>alt-left</code> 展开(隐藏)所有目录</p>
+<p><code>ctrl-al-]</code> 和 <code>ctrl-al-[</code> 同上</p>
+<p><code>ctrl-[</code> 和 <code>ctrl-]</code> 展开(隐藏)当前目录</p>
+<p><code>ctrl-f</code> 和 <code>ctrl-b</code> 同上</p>
+<p><code>cmd-k h</code> 或者 <code>cmd-k left</code> 在左半视图中打开文件</p>
+<p><code>cmd-k j</code>或者<code>cmd-k down</code>在下半视图中打开文件</p>
+<p><code>cmd-k k</code> 或者<code>cmd-k up</code> 在上半视图中打开文件</p>
+<p><code>cmd-k l</code> 或者 <code>cmd-k right</code> 在右半视图中打开文件</p>
+<p><code>ctrl-shift-C</code> 复制当前文件绝对路径</p>
+<h3 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h3><p><code>cmd-F2</code> 在本行增加书签<br><code>F2</code> 跳到当前文件的下一条书签<br><code>shift-F2</code> 跳到当前文件的上一条书签<br><code>ctrl-F2</code> 列出当前工程所有书签</p>
+<h3 id="选取"><a href="#选取" class="headerlink" title="选取"></a>选取</h3><p>大部分和导航一致，只不过加上shift</p>
+<p><code>ctrl-shift-P</code> 选取至上一行</p>
+<p><code>ctrl-shift-N</code> 选取至下一样</p>
+<p><code>ctrl-shift-B</code> 选取至前一个字符</p>
+<p><code>ctrl-shift-F</code> 选取至后一个字符</p>
+<p><code>alt-shift-B</code>, <code>alt-shift-left</code> 选取至字符开始</p>
+<p><code>alt-shift-F</code>, <code>alt-shift-right</code> 选取至字符结束</p>
+<p><code>ctrl-shift-E</code>, <code>cmd-shift-right</code> 选取至本行结束</p>
+<p><code>ctrl-shift-A</code>, <code>cmd-shift-left</code> 选取至本行开始</p>
+<p><code>cmd-shift-up</code> 选取至文件开始</p>
+<p><code>cmd-shift-down</code> 选取至文件结尾</p>
+<p><code>cmd-A</code> 全选</p>
+<p><code>cmd-L</code> 选取一行，继续按回选取下一行</p>
+<p><code>ctrl-shift-W</code> 选取当前单词</p>
+<h3 id="编辑和删除文本"><a href="#编辑和删除文本" class="headerlink" title="编辑和删除文本"></a>编辑和删除文本</h3><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p><code>ctrl-T</code> 使光标前后字符交换</p>
+<p><code>cmd-J</code> 将下一行与当前行合并</p>
+<p><code>ctrl-cmd-up</code>, <code>ctrl-cmd-down</code> 使当前行向上或者向下移动</p>
+<p><code>cmd-shift-D</code> 复制当前行到下一行</p>
+<p><code>cmd-K</code>, <code>cmd-U</code> 使当前字符大写</p>
+<p><code>cmd-K</code>, <code>cmd-L</code> 使当前字符小写</p>
+<h3 id="删除和剪切"><a href="#删除和剪切" class="headerlink" title="删除和剪切"></a>删除和剪切</h3><p><code>ctrl-shift-K</code> 删除当前行</p>
+<p><code>cmd-backspace</code> 删除到当前行开始</p>
+<p><code>cmd-fn-backspace</code> 删除到当前行结束</p>
+<p><code>ctrl-K</code> 剪切到当前行结束</p>
+<p><code>alt-backspace</code> 或 <code>alt-H</code> 删除到当前单词开始</p>
+<p><code>alt-delete</code> 或 <code>alt-D</code> 删除到当前单词结束</p>
+<h3 id="多光标和多处选取"><a href="#多光标和多处选取" class="headerlink" title="多光标和多处选取"></a>多光标和多处选取</h3><p><code>cmd-click</code> 增加新光标</p>
+<p><code>cmd-shift-L</code> 将多行选取改为多行光标</p>
+<p><code>ctrl-shift-up</code>, <code>ctrl-shift-down</code> 增加上（下）一行光标</p>
+<p><code>cmd-D</code> 选取文档中和当前单词相同的下一处</p>
+<p><code>ctrl-cmd-G</code> 选取文档中所有和当前光标单词相同的位置</p>
+<h3 id="括号跳转"><a href="#括号跳转" class="headerlink" title="括号跳转"></a>括号跳转</h3><p><code>ctrl-m</code> 相应括号之间，<code>html tag</code>之间等跳转</p>
+<p><code>ctrl-cmd-m</code> 括号(tag)之间文本选取</p>
+<p><code>alt-cmd-.</code> 关闭当前XML/HTML tag</p>
+<h3 id="编码方式"><a href="#编码方式" class="headerlink" title="编码方式"></a>编码方式</h3><p><code>ctrl-shift-U</code> 调出切换编码选项</p>
+<h3 id="查找和替换"><a href="#查找和替换" class="headerlink" title="查找和替换"></a>查找和替换</h3><p><code>cmd-F</code> 在buffer中查找</p>
+<p><code>cmd-shift-f</code> 在整个工程中查找</p>
+<h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><p><code>alt-shift-S</code> 查看当前可用代码片段</p>
+<p>在<code>~/.atom</code>目录下<code>snippets.cson</code>文件中存放了你定制的<code>snippets</code></p>
+<p><a href="https://atom.io/docs/v1.0.0/using-atom-snippets" target="_blank" rel="external">定制说明</a></p>
+<h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p><code>ctrl-space</code> 提示补全信息</p>
+<h3 id="折叠"><a href="#折叠" class="headerlink" title="折叠"></a>折叠</h3><p><code>alt-cmd-[</code> 折叠</p>
+<p><code>alt-cmd-]</code> 展开</p>
+<p><code>alt-cmd-shift-{</code> 折叠全部</p>
+<p><code>alt-cmd-shift-}</code> 展开全部</p>
+<p><code>cmd-k</code> <code>cmd-N</code> 指定折叠层级 N为层级数</p>
+<h3 id="文件语法高亮"><a href="#文件语法高亮" class="headerlink" title="文件语法高亮"></a>文件语法高亮</h3><p><code>ctrl-shift-L</code> 选择文本类型</p>
+<h3 id="使用Atom进行写作"><a href="#使用Atom进行写作" class="headerlink" title="使用Atom进行写作"></a>使用Atom进行写作</h3><p><code>ctrl-shift-M</code> Markdown预览</p>
+<h3 id="可用代码片段"><a href="#可用代码片段" class="headerlink" title="可用代码片段"></a>可用代码片段</h3><p><code>b, legal, img, l, i, code, t, table</code></p>
+<h3 id="git操作"><a href="#git操作" class="headerlink" title="git操作"></a>git操作</h3><p><code>cmd-alt-Z</code> checkout HEAD 版本</p>
+<p><code>cmd-shift-B</code> 弹出untracked 和 modified文件列表</p>
+<p><code>alt-g down</code> <code>alt-g up</code> 在修改处跳转</p>
+<p><code>alt-G D</code> 弹出diff列表</p>
+<p><code>alt-G O</code> 在github上打开文件</p>
+<p><code>alt-G G</code> 在github上打开项目地址</p>
+<p><code>alt-G B</code> 在github上打开文件blame</p>
+<p><code>alt-G H</code> 在github上打开文件history</p>
+<p><code>alt-G I</code> 在github上打开issues</p>
+<p><code>alt-G R</code> 在github打开分支比较</p>
+<p><code>alt-G C</code> 拷贝当前文件在gihub上的网址</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><a href="https://atom.io/themes/atom-material-ui" target="_blank" rel="external">atom-material-ui</a> </p>
+<p><a href="https://atom.io/themes/atom-material-syntax" target="_blank" rel="external">atom-material-syntax</a></p>
+<h3 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h3><p><a href="https://atom.io/packages/atom-beautify" target="_blank" rel="external">atom-beautify</a></p>
+<p><a href="https://atom.io/packages/file-icons" target="_blank" rel="external">file-icons</a></p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://atom.io/packages/atomatigit" target="_blank" rel="external">atomatigit</a></p>
+<h3 id="代码提示"><a href="#代码提示" class="headerlink" title="代码提示"></a>代码提示</h3><p><a href="https://atom.io/packages/emmet" target="_blank" rel="external">emmet</a> </p>
+<p><a href="https://atom.io/packages/atom-ternjs" target="_blank" rel="external">atom-ternjs</a> js代码提示很强大，高度定制化</p>
+<p><a href="https://atom.io/packages/docblockr" target="_blank" rel="external">docblockr jsdoc</a> 给js添加注释。</p>
+<p><a href="https://atom.io/packages/autoclose-html" target="_blank" rel="external">autoclose-html</a> 闭合html标签。</p>
+<p><a href="https://atom.io/packages/color-picker" target="_blank" rel="external">color-picker</a> 取色器</p>
+<p><a href="https://atom.io/packages/pigments" target="_blank" rel="external">pigments</a> 颜色显示插件</p>
+<p><a href="https://atom.io/packages/terminal-panel" target="_blank" rel="external">terminal-panel</a> 直接在atom里面写命令</p>
+<p><a href="https://atom.io/packages/svg-preview" target="_blank" rel="external">svg-preview</a> svg预览</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/atom/" rel="tag"># atom</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/05/http2-comp/" rel="next" title="HTTP/2 头部压缩技术介绍">
+                <i class="fa fa-chevron-left"></i> HTTP/2 头部压缩技术介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/07/cmakeprotoprotobuf-cpp/" rel="prev" title="利用Cmake自动编译proto文件生成protobuf cpp代码">
+                利用Cmake自动编译proto文件生成protobuf cpp代码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件切换"><span class="nav-number">1.</span> <span class="nav-text">文件切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航"><span class="nav-number">2.</span> <span class="nav-text">导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录树操作"><span class="nav-number">3.</span> <span class="nav-text">目录树操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书签"><span class="nav-number">4.</span> <span class="nav-text">书签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选取"><span class="nav-number">5.</span> <span class="nav-text">选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑和删除文本"><span class="nav-number">6.</span> <span class="nav-text">编辑和删除文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">7.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除和剪切"><span class="nav-number">8.</span> <span class="nav-text">删除和剪切</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多光标和多处选取"><span class="nav-number">9.</span> <span class="nav-text">多光标和多处选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#括号跳转"><span class="nav-number">10.</span> <span class="nav-text">括号跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码方式"><span class="nav-number">11.</span> <span class="nav-text">编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找和替换"><span class="nav-number">12.</span> <span class="nav-text">查找和替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码片段"><span class="nav-number">13.</span> <span class="nav-text">代码片段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动补全"><span class="nav-number">14.</span> <span class="nav-text">自动补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#折叠"><span class="nav-number">15.</span> <span class="nav-text">折叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件语法高亮"><span class="nav-number">16.</span> <span class="nav-text">文件语法高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Atom进行写作"><span class="nav-number">17.</span> <span class="nav-text">使用Atom进行写作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可用代码片段"><span class="nav-number">18.</span> <span class="nav-text">可用代码片段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git操作"><span class="nav-number">19.</span> <span class="nav-text">git操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题"><span class="nav-number">20.</span> <span class="nav-text">主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#美化"><span class="nav-number">21.</span> <span class="nav-text">美化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git"><span class="nav-number">22.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码提示"><span class="nav-number">23.</span> <span class="nav-text">代码提示</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

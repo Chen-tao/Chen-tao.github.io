@@ -1,0 +1,678 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="surge,ios," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="iOS 9 有个激动人心的新特性 Network Extension 弥补了 iOS 长久以来无法定制底层网络 app 的不足。APN 代理不安全，成本高；虚拟专网速度不佳，爱掉线，阻塞问题严重…
+那么对于专业用户来说比较完美的方案必须是安全的，可低成本的，最大网络速度，无连接状态，国内外分流完美的 iOS 方案，那么现在这个堕落的愿望已经实现了，感谢苹果公司这么给(chi)力(dao)的 API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Surge, the missing tool for iOS">
+<meta property="og:url" content="http://chen-tao.github.io/2015/11/04/surge-the-missing-tool-for-ios/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="iOS 9 有个激动人心的新特性 Network Extension 弥补了 iOS 长久以来无法定制底层网络 app 的不足。APN 代理不安全，成本高；虚拟专网速度不佳，爱掉线，阻塞问题严重…
+那么对于专业用户来说比较完美的方案必须是安全的，可低成本的，最大网络速度，无连接状态，国内外分流完美的 iOS 方案，那么现在这个堕落的愿望已经实现了，感谢苹果公司这么给(chi)力(dao)的 API">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934359/5acd3ae6-831a-11e5-9ea7-fcc22256bb56.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934377/7496d1ee-831a-11e5-91e2-9764531c3f76.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934390/8d341a54-831a-11e5-9f46-6eafd545ab35.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934448/f1627e4e-831a-11e5-9e23-a20e7c4c6601.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934456/0370d266-831b-11e5-8ac6-5b0e44f39ba6.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934468/19979bb0-831b-11e5-96c5-549492298c52.png">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10934512/534d6eac-831b-11e5-95ed-abaf450df081.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Surge, the missing tool for iOS">
+<meta name="twitter:description" content="iOS 9 有个激动人心的新特性 Network Extension 弥补了 iOS 长久以来无法定制底层网络 app 的不足。APN 代理不安全，成本高；虚拟专网速度不佳，爱掉线，阻塞问题严重…
+那么对于专业用户来说比较完美的方案必须是安全的，可低成本的，最大网络速度，无连接状态，国内外分流完美的 iOS 方案，那么现在这个堕落的愿望已经实现了，感谢苹果公司这么给(chi)力(dao)的 API">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/1845119/10934359/5acd3ae6-831a-11e5-9ea7-fcc22256bb56.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/11/04/surge-the-missing-tool-for-ios/"/>
+
+
+
+
+
+  <title> Surge, the missing tool for iOS | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/surge-the-missing-tool-for-ios/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Surge, the missing tool for iOS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-04T00:00:00+08:00">
+                2015-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>iOS 9 有个激动人心的新特性 <a href="https://developer.apple.com/videos/play/wwdc2015-717/" target="_blank" rel="external">Network Extension</a> 弥补了 iOS 长久以来无法定制底层网络 app 的不足。APN 代理不安全，成本高；虚拟专网速度不佳，爱掉线，阻塞问题严重…</p>
+<p>那么对于专业用户来说比较完美的方案必须是安全的，可低成本的，最大网络速度，无连接状态，国内外分流完美的 iOS 方案，那么现在这个堕落的愿望已经实现了，感谢苹果公司这么给(chi)力(dao)的 API 和 app 开发大牛。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934359/5acd3ae6-831a-11e5-9ea7-fcc22256bb56.png" alt="image"></p>
+<p>Surge.app （App Store）是一款给专业用户使用的网络调试工具，使用比较复杂。它的工作原理是使用 packet tunnel provider，然后给系统套上一个代理，后端转发支持 http 代理，SSL 代理，和 Socks 代理。如果 app 尊重系统代理，就会走这个代理，如果不尊重，我们也可以通过规则强制流量走系统 tun 设备达到支持全部 app 的目的。用代理的好处是可以跟踪和调试网络，容易分流，ACL 功能更多，弹性更大更方便。感觉安卓上都没有这么好用的 app 呐。。</p>
+<p>简单的开始可以直接导入一份 conf 文件（URL 或者 iTunes），例如这里的，对于不求甚解的用户来说你可以直接使用完事（但是你还是要改改服务器地址用户名什么的。。或者直接从供应商处获取导入 URL）。</p>
+<p>配置的结构大概是这样，对于专业用户来说，理解应该不难(Surge 还处于不断开发阶段，下面的配置已经过时。请关注 Surge 官方的消息和手册，或者 Surge.tips 网站)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">[General]</div><div class="line"># warning, notify, info, verbose</div><div class="line">loglevel = notify</div><div class="line"></div><div class="line">[Proxy]</div><div class="line"># http, https, socks5</div><div class="line"># SSLedge 使用 https，老式 APNp 用 http</div><div class="line">Proxy = https, server, port, username, password, ciphers </div><div class="line"></div><div class="line">[Rule]</div><div class="line"># 域名关键字，干掉不想要的请求</div><div class="line">DOMAIN-KEYWORD,umeng.co,REJECT  </div><div class="line">...</div><div class="line"></div><div class="line"># 常用网站优先匹配，加快速度。使用代理转发，完全没有 CDN 被干扰的问题~</div><div class="line">DOMAIN-SUFFIX,cn,DIRECT  </div><div class="line">DOMAIN-SUFFIX,qq.com,DIRECT  </div><div class="line">DOMAIN-SUFFIX,ls.apple.com,DIRECT  </div><div class="line">DOMAIN-SUFFIX,apple.com,Proxy  </div><div class="line">...</div><div class="line"></div><div class="line"># 强制这些不尊重系统代理的请求走 packet-tunnel-provider，解决 Twitter.app 和 Mail.app 收发邮件问题</div><div class="line">DOMAIN-KEYWORD,twitter,Proxy,force-remote-dns  </div><div class="line">DOMAIN-KEYWORD,gmail,Proxy,force-remote-dns  </div><div class="line"># instagram.app 也没问题</div><div class="line">DOMAIN-KEYWORD,instagram,Proxy,force-remote-dns  </div><div class="line"># Telegram.app 也没问题</div><div class="line">IP-CIDR,91.108.56.0/22,Proxy,force-remote-dns  </div><div class="line">...</div><div class="line"></div><div class="line"># LAN</div><div class="line">IP-CIDR,192.168.0.0/16,DIRECT  </div><div class="line">...</div><div class="line"></div><div class="line"># 其余的请求使用 GEOIP 判断服务器所在地，如果是国内的，走直连，搞定</div><div class="line">GEOIP,CN,DIRECT</div><div class="line"></div><div class="line"># 最后 Matchall，丢给代理</div><div class="line">FINAL,Proxy</div></pre></td></tr></table></figure>
+<p>通过规则定义和组合，必然可以满足专业用户的需求，非常强大。配置可以使用 app 自带的 GUI，当然也有文本编辑方式。</p>
+<p>由于 Surge 的核心和是个 http proxy，有些处理不了的请求我们可以强制 bypass(proxy-skip/tun-bypass) 掉，走系统接口，这个可以在代理设置-高级处设置，如果你不太懂，请不要随意设置。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934377/7496d1ee-831a-11e5-91e2-9764531c3f76.png" alt="image"></p>
+<p>方便查看调试记录当然得靠很骚的 3D touch 菜单了。。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934390/8d341a54-831a-11e5-9f46-6eafd545ab35.png" alt="image"></p>
+<p>Log 显示，看到了吗，IMAP 也可以走代理 XD 对已迫切想知道系统访问历史的同学来说是不是很赞。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934448/f1627e4e-831a-11e5-9e23-a20e7c4c6601.png" alt="image"></p>
+<p>还可以更改规则，干掉不想要的访问，专治流氓 app。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934456/0370d266-831b-11e5-8ac6-5b0e44f39ba6.png" alt="image"></p>
+<p>再看看这位开心的同学。。神器吧。。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934468/19979bb0-831b-11e5-96c5-549492298c52.png" alt="image"></p>
+<p>简单的流量统计，现在版本已经有 widget 显示速率。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934512/534d6eac-831b-11e5-95ed-abaf450df081.png" alt="image"></p>
+<p>搭配加速的 SSLedge 速度还算不错。</p>
+<p>由于目前 iOS 系统对内存限制较严格，SSLedge 代理推荐使用 TLS_RSA_WITH_AES_128_GCM_SHA256 ciphers，使用这个后 Surge 的崩溃问题就比较少了(1.0.1后不需要)。</p>
+<p>自从有了 Surge，微信、煎蛋刷起来不卡了，看油条速度杠杠的，下载 app 更新没有压力，妈妈和库克再也不用操心了…更主要的是，你可以随时切换线路，不用担心国内中转质量变坏…</p>
+<p>更多的使用技巧和高级功能请关注 Twitter 或者 Surge.tips 网站。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/surge/" rel="tag"># surge</a>
+          
+            <a href="/tags/ios/" rel="tag"># ios</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/04/surge-new-user/" rel="next" title="Surge 新手使用指南">
+                <i class="fa fa-chevron-left"></i> Surge 新手使用指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/05/http2-comp/" rel="prev" title="HTTP/2 头部压缩技术介绍">
+                HTTP/2 头部压缩技术介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

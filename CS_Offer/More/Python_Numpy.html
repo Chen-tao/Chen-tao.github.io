@@ -1,0 +1,631 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="数组属性Numpy是Python的一个科学计算的库，提供了矩阵运算的功能，其一般与Scipy、matplotlib一起使用。
+NumPy 的主要对象是同种元素的多维数组（numpy.ndarray）。在NumPy中维度(dimensions)叫做轴(axes)，轴的个数叫做秩(rank)。
+ndarray对象属性有：
+
+ndarray.ndim：数组的维数（即数组轴的个数），等于秩。最常见的为二维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/More/Python_Numpy.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="数组属性Numpy是Python的一个科学计算的库，提供了矩阵运算的功能，其一般与Scipy、matplotlib一起使用。
+NumPy 的主要对象是同种元素的多维数组（numpy.ndarray）。在NumPy中维度(dimensions)叫做轴(axes)，轴的个数叫做秩(rank)。
+ndarray对象属性有：
+
+ndarray.ndim：数组的维数（即数组轴的个数），等于秩。最常见的为二维">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="数组属性Numpy是Python的一个科学计算的库，提供了矩阵运算的功能，其一般与Scipy、matplotlib一起使用。
+NumPy 的主要对象是同种元素的多维数组（numpy.ndarray）。在NumPy中维度(dimensions)叫做轴(axes)，轴的个数叫做秩(rank)。
+ndarray对象属性有：
+
+ndarray.ndim：数组的维数（即数组轴的个数），等于秩。最常见的为二维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/More/Python_Numpy.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h2 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h2><p>Numpy是Python的一个科学计算的库，提供了矩阵运算的功能，其一般与Scipy、matplotlib一起使用。</p>
+<p>NumPy 的主要对象是同种元素的多维数组（numpy.ndarray）。在NumPy中维度(dimensions)叫做轴(axes)，轴的个数叫做秩(rank)。</p>
+<p>ndarray对象属性有：</p>
+<ul>
+<li>ndarray.ndim：数组的维数（即数组轴的个数），等于秩。最常见的为二维数组（矩阵）。</li>
+<li>ndarray.shape：指示数组在每个维度上大小的整数元组（这个元组的长度就是维度的数目，即ndim属性）。例如一个n排m列的矩阵，它的shape属性将是(n,m)。</li>
+<li>ndarray.size：数组元素的总个数，等于shape属性中元组元素的乘积。</li>
+<li>ndarray.dtype：一个用来描述数组中元素类型的对象，可以通过创造或指定dtype使用标准Python类型。另外NumPy提供它自己的数据类型。</li>
+<li>ndarray.itemsize：数组中每个元素的字节大小。例如，一个元素类型为float64的数组itemsiz属性值为8(float64占用64个bits，每个字节长度为8，所以64/8，占用8个字节）。</li>
+</ul>
+<h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><p>可以使用array函数从常规的Python列表和元组创造数组。所创建的数组类型由原序列中的元素类型推导而来。</p>
+<pre><code>&gt;&gt;&gt; from numpy import *  
+&gt;&gt;&gt; a = array( [2,3,4] )　　　  
+&gt;&gt;&gt; a  
+    array([2, 3, 4])  
+&gt;&gt;&gt; a.dtype  
+    dtype(&apos;int32&apos;)  
+</code></pre><p>可使用双重序列来表示二维的数组，三重序列表示三维数组，以此类推。</p>
+<pre><code>&gt;&gt;&gt; b = array( [ (1.5,2,3), (4,5,6) ] )
+&gt;&gt;&gt; b.ndim
+2
+&gt;&gt;&gt; b
+array([[ 1.5,  2. ,  3. ],
+       [ 4. ,  5. ,  6. ]])  
+</code></pre><p>通常，刚开始时数组的元素未知，而数组的大小已知。因此，NumPy提供了一些使用占位符创建数组的函数。这些函数有助于满足除了数组扩展的需要，同时降低了高昂的运算开销。</p>
+<p>用函数<code>zeros</code>可创建一个全是0的数组，用函数ones可创建一个全为1的数组，函数empty创建一个内容随机并且依赖与内存状态的数组。默认创建的数组类型(dtype)都是float64。</p>
+<pre><code>&gt;&gt;&gt; d = zeros((3,4))
+&gt;&gt;&gt; d.dtype
+dtype(&apos;float64&apos;)
+&gt;&gt;&gt; d
+array([[ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.]])
+&gt;&gt;&gt; d.itemsize
+8
+</code></pre><p>也可以制定数组中的元素类型：</p>
+<pre><code>ones( (2,3,4), dtype=int16 )  #手动指定数组中元素类型 
+</code></pre><p>NumPy 还提供一个类似range的函数（arange）返回一个数列形式的数组:</p>
+<pre><code>&gt;&gt;&gt; arange(10,40,5)
+array([10, 15, 20, 25, 30, 35])
+&gt;&gt;&gt; arange(40.1,40.3,0.05)
+array([ 40.1 ,  40.15,  40.2 ,  40.25])
+</code></pre><p>当arange使用浮点数参数时，由于浮点数精度有限，通常无法预测获得的元素个数。因此，最好使用函数<code>linspace</code>去接收我们想要的元素个数来代替用range来指定步长。</p>
+<pre><code>&gt;&gt;&gt; linspace(-1, 0, 7)
+array([-1.        , -0.83333333, -0.66666667, -0.5       , -0.33333333,
+       -0.16666667,  0.        ])
+</code></pre><h2 id="输出数组"><a href="#输出数组" class="headerlink" title="输出数组"></a>输出数组</h2><p>当输出一个数组时，NumPy以特定的布局用类似嵌套列表的形式显示： </p>
+<ul>
+<li>第一行从左到右输出 </li>
+<li>每行依次自上而下输出 </li>
+<li>每个切片通过一个空行与下一个隔开 </li>
+</ul>
+<p>一维数组被打印成行，二维数组成矩阵，三维数组成矩阵列表。 </p>
+<pre><code>&gt;&gt;&gt; a = arange(6)          
+&gt;&gt;&gt; print a  
+    [0 1 2 3 4 5]  
+&gt;&gt;&gt; b = arange(12).reshape(4,3)  
+&gt;&gt;&gt; print b  
+    [[ 0  1  2]  
+    [ 3  4  5]  
+    [ 6  7  8]  
+    [ 9 10 11]]　　　  
+</code></pre><h2 id="数组运算"><a href="#数组运算" class="headerlink" title="数组运算"></a>数组运算</h2><p>数组的算术运算是按元素逐个运算。数组运算后将创建包含运算结果的新数组(有些操作符如+=和*=用来更改已存在数组而不创建一个新的数组)。</p>
+<pre><code>&gt;&gt;&gt; a = array([20,30,40,50])
+&gt;&gt;&gt; b = arange(4)
+&gt;&gt;&gt; a-b
+array([20, 29, 38, 47])
+&gt;&gt;&gt; b ** 2
+array([0, 1, 4, 9])
+&gt;&gt;&gt; 10*sin(a)
+array([ 9.12945251, -9.88031624,  7.4511316 , -2.62374854])
+&gt;&gt;&gt; a &lt; 35
+array([ True,  True, False, False], dtype=bool)  
+</code></pre><p>与其他矩阵语言不同，NumPy中的乘法运算符*按元素逐个计算，矩阵乘法可以使用<code>dot函数</code>或创建矩阵对象实现。</p>
+<pre><code>&gt;&gt;&gt; a = arange(10).reshape(2,5)
+&gt;&gt;&gt; b = arange(10).reshape(5,2)
+&gt;&gt;&gt; dot(a,b)
+array([[ 60,  70],
+       [160, 195]])
+</code></pre><h2 id="索引，切片和迭代"><a href="#索引，切片和迭代" class="headerlink" title="索引，切片和迭代"></a>索引，切片和迭代</h2><p>和Python中列表一样，一维数组可以进行索引、切片和迭代操作。多维数组可以每个轴有一个索引，这些索引由一个逗号分割的元组给出。当少于提供的索引数目少于轴数时，已给出的数值按秩的顺序复制，确失的索引则默认为是整个切片：</p>
+<pre><code>&gt;&gt;&gt; d = arange(12).reshape(2,2,3)
+&gt;&gt;&gt; d
+array([[[ 0,  1,  2],
+        [ 3,  4,  5]],
+
+       [[ 6,  7,  8],
+        [ 9, 10, 11]]])
+&gt;&gt;&gt; d[:,:,1]
+array([[ 1,  4],
+       [ 7, 10]])
+&gt;&gt;&gt; d[:,1,:]
+array([[ 3,  4,  5],
+       [ 9, 10, 11]])
+&gt;&gt;&gt; d[:,1]
+array([[ 3,  4,  5],
+       [ 9, 10, 11]])
+</code></pre><h2 id="矩阵操作"><a href="#矩阵操作" class="headerlink" title="矩阵操作"></a>矩阵操作</h2><pre><code>&gt;&gt;&gt; m_a = np.matrix(&apos;1 2 3; 4 5 6&apos;)
+&gt;&gt;&gt; m_b = np.matrix(&apos;1 2; 3 4; 5 6&apos;)
+&gt;&gt;&gt; m_a * m_b
+matrix([[22, 28],
+        [49, 64]])
+&gt;&gt;&gt; m_a
+matrix([[1, 2, 3],
+        [4, 5, 6]])
+&gt;&gt;&gt; m_a.T
+matrix([[1, 4],
+        [2, 5],
+        [3, 6]])
+</code></pre><p>参考：<br><a href="https://www.zybuluo.com/tankle/note/51606" target="_blank" rel="external">Numpy 学习</a><br><a href="http://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.matrix.html" target="_blank" rel="external">DOC: numpy.matrix</a>  </p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

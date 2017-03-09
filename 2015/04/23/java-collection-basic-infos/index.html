@@ -1,0 +1,806 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,数据结构," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1. List1.1 ArrayList以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。
+按数组下标访问元素－get（i）、set（i,e） 的性能很高，这是数组的基本优势。
+如果按下标插入元素、删除元素－add（i,e）、 remove（i）、rem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java集合小抄">
+<meta property="og:url" content="http://chen-tao.github.io/2015/04/23/java-collection-basic-infos/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="1. List1.1 ArrayList以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。
+按数组下标访问元素－get（i）、set（i,e） 的性能很高，这是数组的基本优势。
+如果按下标插入元素、删除元素－add（i,e）、 remove（i）、rem">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java集合小抄">
+<meta name="twitter:description" content="1. List1.1 ArrayList以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。
+按数组下标访问元素－get（i）、set（i,e） 的性能很高，这是数组的基本优势。
+如果按下标插入元素、删除元素－add（i,e）、 remove（i）、rem">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/04/23/java-collection-basic-infos/"/>
+
+
+
+
+
+  <title> java集合小抄 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/java-collection-basic-infos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java集合小抄
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-23T00:00:00+08:00">
+                2015-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-List"><a href="#1-List" class="headerlink" title="1. List"></a>1. List</h1><h2 id="1-1-ArrayList"><a href="#1-1-ArrayList" class="headerlink" title="1.1 ArrayList"></a>1.1 ArrayList</h2><p>以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。</p>
+<p>按数组下标访问元素－get（i）、set（i,e） 的性能很高，这是数组的基本优势。</p>
+<p>如果按下标插入元素、删除元素－add（i,e）、 remove（i）、remove（e），则要用System.arraycopy（）来复制移动部分受影响的元素，性能就变差了。</p>
+<p>越是前面的元素，修改时要移动的元素越多。直接在数组末尾加入元素－常用的add（e），删除最后一个元素则无影响。</p>
+<h2 id="1-2-LinkedList"><a href="#1-2-LinkedList" class="headerlink" title="1.2 LinkedList"></a>1.2 LinkedList</h2><p>以双向链表实现。链表无容量限制，但双向链表本身使用了更多空间，每插入一个元素都要构造一个额外的Node对象，也需要额外的链表指针操作。</p>
+<p>按下标访问元素－get（i）、set（i,e） 要悲剧的部分遍历链表将指针移动到位 （如果i&gt;数组大小的一半，会从末尾移起）。</p>
+<p>插入、删除元素时修改前后节点的指针即可，不再需要复制移动。但还是要部分遍历链表的指针才能移动到下标所指的位置。</p>
+<p>只有在链表两头的操作－add（）、addFirst（）、removeLast（）或用iterator（）上的remove（）倒能省掉指针的移动。</p>
+<p>Apache Commons 有个TreeNodeList，里面是棵二叉树，可以快速移动指针到位。</p>
+<h2 id="1-3-CopyOnWriteArrayList"><a href="#1-3-CopyOnWriteArrayList" class="headerlink" title="1.3 CopyOnWriteArrayList"></a>1.3 CopyOnWriteArrayList</h2><p>并发优化的ArrayList。基于不可变对象策略，在修改时先复制出一个数组快照来修改，改好了，再让内部指针指向新数组。</p>
+<p>因为对快照的修改对读操作来说不可见，所以读读之间不互斥，读写之间也不互斥，只有写写之间要加锁互斥。但复制快照的成本昂贵，典型的适合读多写少的场景。</p>
+<p>虽然增加了addIfAbsent（e）方法，会遍历数组来检查元素是否已存在，性能可想像的不会太好。</p>
+<h2 id="1-4-遗憾"><a href="#1-4-遗憾" class="headerlink" title="1.4 遗憾"></a>1.4 遗憾</h2><p>无论哪种实现，按值返回下标contains（e）, indexOf（e）, remove（e） 都需遍历所有元素进行比较，性能可想像的不会太好。</p>
+<p>没有按元素值排序的SortedList。</p>
+<p>除了CopyOnWriteArrayList，再没有其他线程安全又并发优化的实现如ConcurrentLinkedList。凑合着用Set与Queue中的等价类时，会缺少一些List特有的方法如get（i）。如果更新频率较高，或数组较大时，还是得用Collections.synchronizedList（list），对所有操作用同一把锁来保证线程安全。</p>
+<h1 id="2-Map"><a href="#2-Map" class="headerlink" title="2.Map"></a>2.Map</h1><h2 id="2-1-HashMap"><a href="#2-1-HashMap" class="headerlink" title="2.1 HashMap"></a>2.1 HashMap</h2><p>以Entry[]数组实现的哈希桶数组，用Key的哈希值取模桶数组的大小可得到数组下标。</p>
+<p>插入元素时，如果两条Key落在同一个桶（比如哈希值1和17取模16后都属于第一个哈希桶），我们称之为哈希冲突。</p>
+<p>JDK的做法是链表法，Entry用一个next属性实现多个Entry以单向链表存放。查找哈希值为17的key时，先定位到哈希桶，然后链表遍历桶里所有元素，逐个比较其Hash值然后key值。</p>
+<p>在JDK8里，新增默认为8的阈值，当一个桶里的Entry超过閥值，就不以单向链表而以红黑树来存放以加快Key的查找速度。</p>
+<p>当然，最好还是桶里只有一个元素，不用去比较。所以默认当Entry数量达到桶数量的75%时，哈希冲突已比较严重，就会成倍扩容桶数组，并重新分配所有原来的Entry。扩容成本不低，所以也最好有个预估值。</p>
+<p>取模用与操作（hash &amp; （arrayLength-1））会比较快，所以数组的大小永远是2的N次方， 你随便给一个初始值比如17会转为32。默认第一次放入元素时的初始值是16。</p>
+<p>iterator（）时顺着哈希桶数组来遍历，看起来是个乱序。</p>
+<h2 id="2-2-LinkedHashMap"><a href="#2-2-LinkedHashMap" class="headerlink" title="2.2 LinkedHashMap"></a>2.2 LinkedHashMap</h2><p>扩展HashMap，每个Entry增加双向链表，号称是最占内存的数据结构。</p>
+<p>支持iterator（）时按Entry的插入顺序来排序（如果设置accessOrder属性为true，则所有读写访问都排序）。</p>
+<p>插入时，Entry把自己加到Header Entry的前面去。如果所有读写访问都要排序，还要把前后Entry的before/after拼接起来以在链表中删除掉自己，所以此时读操作也是线程不安全的了。</p>
+<h2 id="2-3-TreeMap"><a href="#2-3-TreeMap" class="headerlink" title="2.3 TreeMap"></a>2.3 TreeMap</h2><p>以红黑树实现，红黑树又叫自平衡二叉树：</p>
+<p>对于任一节点而言，其到叶节点的每一条路径都包含相同数目的黑结点。</p>
+<p>上面的规定，使得树的层数不会差的太远，使得所有操作的复杂度不超过 O（lgn），但也使得插入，修改时要复杂的左旋右旋来保持树的平衡。</p>
+<p>支持iterator（）时按Key值排序，可按实现了Comparable接口的Key的升序排序，或由传入的Comparator控制。可想象的，在树上插入/删除元素的代价一定比HashMap的大。</p>
+<p>支持SortedMap接口，如firstKey（），lastKey（）取得最大最小的key，或sub（fromKey, toKey）, tailMap（fromKey）剪取Map的某一段。</p>
+<h2 id="2-4-EnumMap"><a href="#2-4-EnumMap" class="headerlink" title="2.4 EnumMap"></a>2.4 EnumMap</h2><p>EnumMap的原理是，在构造函数里要传入枚举类，那它就构建一个与枚举的所有值等大的数组，按Enum. ordinal（）下标来访问数组。性能与内存占用俱佳。</p>
+<p>美中不足的是，因为要实现Map接口，而 V get（Object key）中key是Object而不是泛型K，所以安全起见，EnumMap每次访问都要先对Key进行类型判断，在JMC里录得不低的采样命中频率。</p>
+<h2 id="2-5-ConcurrentHashMap"><a href="#2-5-ConcurrentHashMap" class="headerlink" title="2.5 ConcurrentHashMap"></a>2.5 ConcurrentHashMap</h2><p>并发优化的HashMap。</p>
+<p>在JDK5里的经典设计，默认16把写锁（可以设置更多），有效分散了阻塞的概率。数据结构为Segment[]，每个Segment一把锁。Segment里面才是哈希桶数组。Key先算出它在哪个Segment里，再去算它在哪个哈希桶里。</p>
+<p>也没有读锁，因为put/remove动作是个原子动作（比如put的整个过程是一个对数组元素/Entry 指针的赋值操作），读操作不会看到一个更新动作的中间状态。</p>
+<p>但在JDK8里，Segment[]的设计被抛弃了，改为精心设计的，只在需要锁的时候加锁。</p>
+<p>支持ConcurrentMap接口，如putIfAbsent（key，value）与相反的replace（key，value）与以及实现CAS的replace（key, oldValue, newValue）。</p>
+<h2 id="2-6-ConcurrentSkipListMap"><a href="#2-6-ConcurrentSkipListMap" class="headerlink" title="2.6 ConcurrentSkipListMap"></a>2.6 ConcurrentSkipListMap</h2><p>JDK6新增的并发优化的SortedMap，以SkipList结构实现。Concurrent包选用它是因为它支持基于CAS的无锁算法，而红黑树则没有好的无锁算法。</p>
+<p>原理上，可以想象为多个链表组成的N层楼，其中的元素从稀疏到密集，每个元素有往右与往下的指针。从第一层楼开始遍历，如果右端的值比期望的大，那就往下走一层，继续往前走。</p>
+<p>典型的空间换时间。每次插入，都要决定在哪几层插入，同时，要决定要不要多盖一层楼。</p>
+<p>它的size（）同样不能随便调，会遍历来统计。</p>
+<h1 id="3-Set"><a href="#3-Set" class="headerlink" title="3.Set"></a>3.Set</h1><p>所有Set几乎都是内部用一个Map来实现, 因为Map里的KeySet就是一个Set，而value是假值，全部使用同一个Object即可。</p>
+<p>Set的特征也继承了那些内部的Map实现的特征。</p>
+<p><strong>HashSet</strong>：内部是HashMap。</p>
+<p><strong>LinkedHashSet</strong>：内部是LinkedHashMap。</p>
+<p><strong>TreeSet</strong>：内部是TreeMap的SortedSet。</p>
+<p><strong>ConcurrentSkipListSet</strong>：内部是ConcurrentSkipListMap的并发优化的SortedSet。</p>
+<p><strong>CopyOnWriteArraySet</strong>：内部是CopyOnWriteArrayList的并发优化的Set，利用其addIfAbsent（）方法实现元素去重，如前所述该方法的性能很一般。</p>
+<p>好像少了个<strong>ConcurrentHashSet</strong>，本来也该有一个内部用ConcurrentHashMap的简单实现，但JDK偏偏没提供。Jetty就自己简单封了一个，Guava则直接用java.util.Collections.newSetFromMap（new ConcurrentHashMap（）） 实现。</p>
+<h1 id="4-Queue"><a href="#4-Queue" class="headerlink" title="4.Queue"></a>4.Queue</h1><p>Queue是在两端出入的List，所以也可以用数组或链表来实现。</p>
+<h2 id="4-1-普通队列"><a href="#4-1-普通队列" class="headerlink" title="4.1 普通队列"></a>4.1 普通队列</h2><h3 id="4-1-1-LinkedList"><a href="#4-1-1-LinkedList" class="headerlink" title="4.1.1 LinkedList"></a>4.1.1 LinkedList</h3><p>是的，以双向链表实现的LinkedList既是List，也是Queue。</p>
+<h3 id="4-1-2-ArrayDeque"><a href="#4-1-2-ArrayDeque" class="headerlink" title="4.1.2 ArrayDeque"></a>4.1.2 ArrayDeque</h3><p>以循环数组实现的双向Queue。大小是2的倍数，默认是16。</p>
+<p>为了支持FIFO，即从数组尾压入元素（快），从数组头取出元素（超慢），就不能再使用普通ArrayList的实现了，改为使用循环数组。</p>
+<p>有队头队尾两个下标：弹出元素时，队头下标递增；加入元素时，队尾下标递增。如果加入元素时已到数组空间的末尾，则将元素赋值到数组[0]，同时队尾下标指向0，再插入下一个元素则赋值到数组[1]，队尾下标指向1。如果队尾的下标追上队头，说明数组所有空间已用完，进行双倍的数组扩容。</p>
+<h3 id="4-1-3-PriorityQueue"><a href="#4-1-3-PriorityQueue" class="headerlink" title="4.1.3 PriorityQueue"></a>4.1.3 PriorityQueue</h3><p>用平衡二叉最小堆实现的优先级队列，不再是FIFO，而是按元素实现的Comparable接口或传入Comparator的比较结果来出队，数值越小，优先级越高，越先出队。但是注意其iterator（）的返回不会排序。</p>
+<p>平衡最小二叉堆，用一个简单的数组即可表达，可以快速寻址，没有指针什么的。最小的在queue[0] ，比如queue[4]的两个孩子，会在queue[2<em>4+1] 和 queue[2</em>（4+1）]，即queue[9]和queue[10]。</p>
+<p>入队时，插入queue[size]，然后二叉地往上比较调整堆。</p>
+<p>出队时，弹出queue[0]，然后把queque[size]拿出来二叉地往下比较调整堆。</p>
+<p>初始大小为11，空间不够时自动50%扩容。</p>
+<h2 id="4-2-线程安全的队列"><a href="#4-2-线程安全的队列" class="headerlink" title="4.2 线程安全的队列"></a><strong>4.2 线程安全的队列</strong></h2><h3 id="4-2-1-ConcurrentLinkedQueue-Deque"><a href="#4-2-1-ConcurrentLinkedQueue-Deque" class="headerlink" title="4.2.1 ConcurrentLinkedQueue/Deque"></a>4.2.1 ConcurrentLinkedQueue/Deque</h3><p>无界的并发优化的Queue，基于链表，实现了依赖于CAS的无锁算法。</p>
+<p>ConcurrentLinkedQueue的结构是单向链表和head/tail两个指针，因为入队时需要修改队尾元素的next指针，以及修改tail指向新入队的元素两个CAS动作无法原子，所以需要的特殊的算法。</p>
+<h2 id="4-3-线程安全的阻塞队列"><a href="#4-3-线程安全的阻塞队列" class="headerlink" title="4.3 线程安全的阻塞队列"></a><strong>4.3 线程安全的阻塞队列</strong></h2><p>BlockingQueue，一来如果队列已空不用重复的查看是否有新数据而会阻塞在那里，二来队列的长度受限，用以保证生产者与消费者的速度不会相差太远。当入队时队列已满，或出队时队列已空，不同函数的效果见下表：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>立刻报异常</th>
+<th>立刻返回布尔</th>
+<th>阻塞等待</th>
+<th>可设定等待时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入队</td>
+<td>add（e）</td>
+<td>offer（e）</td>
+<td>put（e）</td>
+<td>offer（e, timeout, unit）</td>
+</tr>
+<tr>
+<td>出队</td>
+<td>remove（）</td>
+<td>poll（）</td>
+<td>take（）</td>
+<td>poll（timeout, unit）</td>
+</tr>
+<tr>
+<td>查看</td>
+<td>element（）</td>
+<td>peek（）</td>
+<td>无</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-3-1-ArrayBlockingQueue"><a href="#4-3-1-ArrayBlockingQueue" class="headerlink" title="4.3.1 ArrayBlockingQueue"></a>4.3.1 ArrayBlockingQueue</h3><p>定长的并发优化的BlockingQueue，也是基于循环数组实现。有一把公共的锁与notFull、notEmpty两个Condition管理队列满或空时的阻塞状态。</p>
+<h3 id="4-3-2-LinkedBlockingQueue-Deque"><a href="#4-3-2-LinkedBlockingQueue-Deque" class="headerlink" title="4.3.2 LinkedBlockingQueue/Deque"></a>4.3.2 LinkedBlockingQueue/Deque</h3><p>可选定长的并发优化的BlockingQueue，基于链表实现，所以可以把长度设为Integer.MAX_VALUE成为无界无等待的。</p>
+<p>利用链表的特征，分离了takeLock与putLock两把锁，继续用notEmpty、notFull管理队列满或空时的阻塞状态。</p>
+<h3 id="4-3-3-PriorityBlockingQueue"><a href="#4-3-3-PriorityBlockingQueue" class="headerlink" title="4.3.3 PriorityBlockingQueue"></a>4.3.3 PriorityBlockingQueue</h3><p>无界的PriorityQueue，也是基于数组存储的二叉堆（见前）。一把公共的锁实现线程安全。因为无界，空间不够时会自动扩容，所以入列时不会锁，出列为空时才会锁。</p>
+<h3 id="4-3-4-DelayQueue"><a href="#4-3-4-DelayQueue" class="headerlink" title="4.3.4 DelayQueue"></a>4.3.4 DelayQueue</h3><p>内部包含一个PriorityQueue，同样是无界的，同样是出列时才会锁。一把公共的锁实现线程安全。元素需实现Delayed接口，每次调用时需返回当前离触发时间还有多久，小于0表示该触发了。</p>
+<p>pull（）时会用peek（）查看队头的元素，检查是否到达触发时间。ScheduledThreadPoolExecutor用了类似的结构。</p>
+<h2 id="4-4-同步队列"><a href="#4-4-同步队列" class="headerlink" title="4.4 同步队列"></a><strong>4.4 同步队列</strong></h2><p>SynchronousQueue同步队列本身无容量，放入元素时，比如等待元素被另一条线程的消费者取走再返回。JDK线程池里用它。</p>
+<p>JDK7还有个LinkedTransferQueue，在普通线程安全的BlockingQueue的基础上，增加一个transfer（e） 函数，效果与SynchronousQueue一样。</p>
+<h2 id="5-参考文档"><a href="#5-参考文档" class="headerlink" title="5.参考文档"></a>5.参考文档</h2><ul>
+<li><strong>红黑树：</strong> <a href="https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md" target="_blank" rel="external">https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md</a></li>
+<li><strong>跳表：</strong><a href="http://blog.sina.com.cn/s/blog_72995dcc01017w1t.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_72995dcc01017w1t.html</a></li>
+<li><strong>二叉堆：</strong><a href="http://blog.csdn.net/lcore/article/details/9100073" target="_blank" rel="external">http://blog.csdn.net/lcore/article/details/9100073</a></li>
+<li><strong>ConcurrentLinkedQueue</strong>：<a href="http://www.ibm.com/developerworks/cn/java/j-jtp04186/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-jtp04186/</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/21/linux-find-words-in-files/" rel="next" title="Linux 批量查找文件内容">
+                <i class="fa fa-chevron-left"></i> Linux 批量查找文件内容
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/23/some-new-of-jdk8/" rel="prev" title="JDK7-8 进步点">
+                JDK7-8 进步点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-List"><span class="nav-number">1.</span> <span class="nav-text">1. List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-ArrayList"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 ArrayList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-LinkedList"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 LinkedList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-CopyOnWriteArrayList"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 CopyOnWriteArrayList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-遗憾"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 遗憾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Map"><span class="nav-number">2.</span> <span class="nav-text">2.Map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-HashMap"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 HashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-LinkedHashMap"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 LinkedHashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-TreeMap"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 TreeMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-EnumMap"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 EnumMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-ConcurrentHashMap"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 ConcurrentHashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-ConcurrentSkipListMap"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 ConcurrentSkipListMap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Set"><span class="nav-number">3.</span> <span class="nav-text">3.Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Queue"><span class="nav-number">4.</span> <span class="nav-text">4.Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-普通队列"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 普通队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-LinkedList"><span class="nav-number">4.1.1.</span> <span class="nav-text">4.1.1 LinkedList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-2-ArrayDeque"><span class="nav-number">4.1.2.</span> <span class="nav-text">4.1.2 ArrayDeque</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-3-PriorityQueue"><span class="nav-number">4.1.3.</span> <span class="nav-text">4.1.3 PriorityQueue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-线程安全的队列"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 线程安全的队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-1-ConcurrentLinkedQueue-Deque"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 ConcurrentLinkedQueue/Deque</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-线程安全的阻塞队列"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 线程安全的阻塞队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-ArrayBlockingQueue"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1 ArrayBlockingQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-LinkedBlockingQueue-Deque"><span class="nav-number">4.3.2.</span> <span class="nav-text">4.3.2 LinkedBlockingQueue/Deque</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-3-PriorityBlockingQueue"><span class="nav-number">4.3.3.</span> <span class="nav-text">4.3.3 PriorityBlockingQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-4-DelayQueue"><span class="nav-number">4.3.4.</span> <span class="nav-text">4.3.4 DelayQueue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-同步队列"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 同步队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-参考文档"><span class="nav-number">4.5.</span> <span class="nav-text">5.参考文档</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

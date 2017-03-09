@@ -1,0 +1,647 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="JVMJava运行时数据区
+要理解JVM的内存管理策略，首先就要熟悉Java的运行时数据区，如上图所示，在执行Java程序的时候，虚拟机会把它所管理的内存划分为多个不同的数据区，称为运行时数据区。在程序执行过程中对内存的分配、垃圾的回收都在运行时数据区中进行。对于Java程序员来说，其中最重要的就是堆区和JVM栈区了。注意图中的图形面积比例并不代表实际的内存比例。
+
+方法区是各个线程共享的内存区域">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/Java.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="JVMJava运行时数据区
+要理解JVM的内存管理策略，首先就要熟悉Java的运行时数据区，如上图所示，在执行Java程序的时候，虚拟机会把它所管理的内存划分为多个不同的数据区，称为运行时数据区。在程序执行过程中对内存的分配、垃圾的回收都在运行时数据区中进行。对于Java程序员来说，其中最重要的就是堆区和JVM栈区了。注意图中的图形面积比例并不代表实际的内存比例。
+
+方法区是各个线程共享的内存区域">
+<meta property="og:image" content="http://wjd1218.qiniudn.com/JVM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="JVMJava运行时数据区
+要理解JVM的内存管理策略，首先就要熟悉Java的运行时数据区，如上图所示，在执行Java程序的时候，虚拟机会把它所管理的内存划分为多个不同的数据区，称为运行时数据区。在程序执行过程中对内存的分配、垃圾的回收都在运行时数据区中进行。对于Java程序员来说，其中最重要的就是堆区和JVM栈区了。注意图中的图形面积比例并不代表实际的内存比例。
+
+方法区是各个线程共享的内存区域">
+<meta name="twitter:image" content="http://wjd1218.qiniudn.com/JVM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/Java.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="Java运行时数据区"><a href="#Java运行时数据区" class="headerlink" title="Java运行时数据区"></a>Java运行时数据区</h2><p><img src="http://wjd1218.qiniudn.com/JVM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png" alt="Java运行时数据区"></p>
+<p>要理解JVM的内存管理策略，首先就要熟悉Java的运行时数据区，如上图所示，在执行Java程序的时候，虚拟机会把它所管理的内存划分为多个不同的数据区，称为运行时数据区。在程序执行过程中对内存的分配、垃圾的回收都在运行时数据区中进行。对于Java程序员来说，其中最重要的就是堆区和JVM栈区了。注意图中的图形面积比例并不代表实际的内存比例。</p>
+<ul>
+<li>方法区是各个线程共享的内存区域，用于存储虚拟机加载进来的类信息、常量、静态变量和即时编译器编译后的代码等数据。相信大家也都听过<strong>运行时常量池</strong>的概念，这个常量池也是方法区的一部分，主要用于存放编译期生成的各种字面量和符号引用。</li>
+<li>堆区是JVM所管理的内存中最大的一块，这个区域是被所有线程共享的。主要用于存放对象实例，而所谓的垃圾回收也主要是在堆区进行。</li>
+<li>栈区则主要存放一些对象的引用和编译期可知的基本数据类型，这个区域是线程私有的，即每个线程都有自己的栈。</li>
+<li>程序计数器则是用来记录程序运行到什么位置的，显然它应该是线程私有的，相信这个学过微机原理与接口课程的同学都应该能够理解的。</li>
+</ul>
+<h2 id="内存的分配"><a href="#内存的分配" class="headerlink" title="内存的分配"></a>内存的分配</h2><h3 id="在连续剩余空间中分配内存——指针碰撞"><a href="#在连续剩余空间中分配内存——指针碰撞" class="headerlink" title="在连续剩余空间中分配内存——指针碰撞"></a>在连续剩余空间中分配内存——指针碰撞</h3><p>用一个指针指向内存已用区和空闲区的分界点，需要分配新的内存时候，只需要将指针向空闲区移动相应的距离即可。</p>
+<h3 id="在不规整的剩余空间中分配内存——空闲列表"><a href="#在不规整的剩余空间中分配内存——空闲列表" class="headerlink" title="在不规整的剩余空间中分配内存——空闲列表"></a>在不规整的剩余空间中分配内存——空闲列表</h3><p>如果剩余内存是不规整的，就需要用一个列表记录下哪些内存块是可用的，当需要分配内存的时候就需要在这个列表中查找，找到一个足够大的空间进行分配，然后在更新这个列表。</p>
+<h3 id="分配方式的选择"><a href="#分配方式的选择" class="headerlink" title="分配方式的选择"></a>分配方式的选择</h3><p>指针碰撞的分配方式明显要优于空闲列表的方式，但是使用哪种方式取决于堆内存是否规整，而堆内存是否规整则由使用的垃圾收集算法决定。如果堆内存是规整的，则采用指针碰撞的方式分配内存，而如果堆是不规整的，就会采用空闲列表的方式。</p>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>上文已经提到，JVM的垃圾回收主要运行于堆区。下面我就来具体讲一下垃圾回收的原理。</p>
+<h3 id="找到需要回收的对象"><a href="#找到需要回收的对象" class="headerlink" title="找到需要回收的对象"></a>找到需要回收的对象</h3><p>要对对象进行回收，首先需要找到哪些对象是垃圾，需要回收。有两种方法可以找到需要回收的对象，第一种叫做<strong>引用计数法</strong>。具体方法就是给对象添加一个引用计数器，计数器的值代表着这个对象被引用的次数，当计数器的值为0的时候，就代表没有引用指向这个对象，那么这个对象就是不可用的，所以就可以对它进行回收。但是有一个问题就是当对象之间循环引用时，其中每个对象的引用计数器的值都不为0，但是这些对象又是作为一个孤立的整体在内存中存在，其他的对象不持有这些对象的引用，这种情况下这些对象就无法被回收，这也是主流的Java虚拟机没有选用这种方法的原因。另一种方法就是把堆中的对象和对象之间的引用分别看作<strong>有向图</strong>的顶点和有向边。这样只需要从一些顶点开始，对有向图中的每个顶点进行可达性分析（深度优先遍历是有向图可达性算法的基础），这样就可以把不可达的对象找出来，这些不可达的对象还要再进行一次筛选，因为如果对象需要执行finalize()方法，那么它完全可以在finalize()方法中让自己变的可达。这个方法解决了对象之间循环引用的问题。上面提到了“从一些对象开始”进行可达性分析，这些起始对象被称为<strong>GC Roots</strong>，可以作为GC Roots的对象有：</p>
+<ol>
+<li>栈区中引用的对象</li>
+<li>方法区中静态属性或常量引用的对象</li>
+</ol>
+<p>上文中提到的引用均是<strong>强引用</strong>，Java中还存在其他三种引用，分别是，<strong>软引用</strong>、<strong>弱引用</strong>和<strong>虚引用</strong>，当系统即将发生内存溢出时，才会对软引用所引用的对象进行回收；而被弱引用所引用的对象会在下一次触发GC时被回收；虚引用则仅仅是为了在对象被回收时能够收到系统通知。</p>
+<h3 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h3><p>已经找到了需要回收的对象，那么具体采用什么样的方式进行回收呢？下面就介绍几种算法。</p>
+<h4 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h4><p>通过可达性分析算法找到可以回收的对象后，要对这些对象进行标记，代表它可以被回收了。标记完成之后就统一回收所有被标记的对象。这就完成了回收，但是这种方式会产生大量的内存碎片，就导致了可用内存不规整，于是分配新的内存时就需要采用空闲列表的方法，如果没有找到足够大的空间，那么就要提前触发下一次垃圾收集。</p>
+<h4 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h4><p>标记的过程和标记-清除算法一样，但是标记完成之后，让所有存活的对象都向堆内存的一端移动，最后直接清除掉边界以外的内存。这样对内存进行回收之后，内存是规整的，于是可以使用指针碰撞的方式分配新的内存。</p>
+<h4 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h4><p>上面所讲的两种算法都使用了先标记的方式，其实当对象数量很多时，这种算法的效率并不高。于是就产生了这种复制算法。它将可用内存分成两个部分，每次只使用其中的一部分，当其中一块用完时，就将仍然存活的对象复制到另外一块上，再把原来的那一块内存清理掉。这样回收的结果同样能得到规整的剩余空间，但是会浪费一部分内存。根据目前通过概率统计方面的研究，新生代中的对象的回收率能够达到90%以上，因此，便可以将新生代划分为三个部分，分别为Eden、Survivor from、Survivor to，大小比例为8：1：1。每次只使用Eden和其中的一块Survivor，回收时将存活的对象复制到另一块Survivor中，这样就只有10%的内存被浪费，但是如果存活的对象总大小超过了Survivor的大小，那么就把多出的对象放入老年代中。</p>
+<h4 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h4><p>把Java堆分成新生代和老年代，新生代使用复制算法，老年代使用标记-清理或标记-整理算法。这样可以根据各个代自己的特点，选用合适的收集算法，提高内存收集的效率。在新生代中长期存活的对象会逐渐向老年代过渡，新生代中的对象每经历一次GC，年龄就增加一岁，当年龄超过一定值时，就会被移动到老年代。</p>
+<h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><p>上文讲了JVM垃圾回收的原理和使用的算法，接下来就该讲JVM使用的具体的垃圾回收器了。垃圾回收器在JVM中作为一个守护线程运行，它不能过多的占用系统资源，否则将会极大的影响用户体验。在从GC Roots开始对对象进行可达性分析时，需要STOP THE WORLD，因为如果不这么做，程序一边修改引用，GC收集器一边进行标记，那么标记的结果肯定是有问题的，所以收集器应当采取适当的措施减少这个停顿的时间。</p>
+<ul>
+<li>Serial收集器：新生代使用复制算法，老年代使用标记-整理算法，单线程运行</li>
+<li>Concurrent Mark Sweep(CMS)收集器：它的工作过程为初始标记->并发标记->重新标记->并发清除，初始标记和重新标记阶段都需要Stop The World，但是这两个阶段速度都很快，在耗时最长的并发标记阶段可以和用户线程并行工作。该收集器缺点就是内存回收的结果不是规整的可用空间，但是可以通过开关参数来设置对回收后的内存进行碎片整理。</li>
+</ul>
+<p>垃圾收集器还有很多，比如ParNew收集器，最前沿的成果之一Garbage-First收集器等等这里就不一一介绍了，每种收集器都有自己的优点和不足，开发者应该选择适用于当前需求的收集器。</p>
+<h1 id="JMM"><a href="#JMM" class="headerlink" title="JMM"></a>JMM</h1><h2 id="Java内存模型（Java-Memory-Model）"><a href="#Java内存模型（Java-Memory-Model）" class="headerlink" title="Java内存模型（Java Memory Model）"></a>Java内存模型（Java Memory Model）</h2><p>Java内存模型（JMM），不同于Java运行时数据区，JMM的主要目标是定义程序中各个变量的访问规则，即在虚拟机中将变量存储到内存和从内存中读取数据这样的底层细节。JMM规定了所有的变量都存储在<strong>主内存</strong>中，但每个线程还有自己的<strong>工作内存</strong>，线程的工作内存中保存了被该线程使用到的变量的主内存副本拷贝。线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存中的变量，工作内存是线程之间独立的，线程之间变量值的传递均需要通过主内存来完成。</p>
+<h2 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h2><p>平时在阅读jdk源码的时候，经常看到源码中有写变量被volatile关键字修饰，但是却不是十分清除这个关键字到底有什么用处，现在终于弄清楚了，那么我就来讲讲这个volatile到底有什么用吧。</p>
+<p>当一个变量被定义为volatile之后，就可以保证此变量对所有线程的可见性，即当一个线程修改了此变量的值的时候，变量新的值对于其他线程来说是可以立即得知的。可以理解成：<strong>对volatile变量所有的写操作都能立刻被其他线程得知</strong>。但是这并不代表基于volatile变量的运算在并发下是安全的，因为volatile只能保证内存可见性，却没有保证对变量操作的原子性。比如下面的代码：</p>
+<p>```java<br>/**</p>
+<ul>
+<li>发起20个线程，每个线程对race变量进行10000次自增操作，如果代码能够正确并发，</li>
+<li><p>则最终race的结果应为200000，但实际的运行结果却小于200000。<br>*/<br>public class VolatileTest {<br> public static volatile int race = 0;</p>
+<p> public static void increase() {</p>
+<pre><code>race++;
+</code></pre><p> }</p>
+<p> private static final int THREADS_COUNT = 20;</p>
+<p> public static void main(String[] args) {</p>
+<pre><code>Thread[] threads = new Thread[THREADS_COUNT];
+
+for (int i = 0; i &lt; THREADS_COUNT; i++) {
+    threads[i] = new Thread(new Runnable() {
+
+        @Override
+        public void run() {
+            for (int i = 0; i &lt; 10000; i++) {
+                increase();
+            }
+        }
+    });
+    threads[i].start();
+}
+
+while (Thread.activeCount() &gt; 1)
+    Thread.yield();
+
+System.out.println(race);
+</code></pre><p> }<br>}<br>```</p>
+</li>
+</ul>
+<p>这便是因为race++操作不是一个原子操作，导致一些线程对变量race的修改丢失。若要使用volatale变量，一般要符合以下两种场景：</p>
+<ol>
+<li>变量的运算结果并不依赖于变量的当前值，或能够保证只有单一的线程修改变量的值。</li>
+<li>变量不需要与其他的状态变量共同参与不变约束。</li>
+</ol>
+<p>使用volatile变量还可以禁止JIT编译器进行指令重排序优化，这里使用单例模式来举个例子：</p>
+<p>```java<br>public class Singleton_1 {</p>
+<pre><code>private static Singleton_1 instance = null;
+
+private Singleton_1() {
+}
+
+public static Singleton_1 getInstacne() {
+    /*
+     * 这种实现进行了两次instance==null的判断，这便是单例模式的双检锁。
+     * 第一次检查是说如果对象实例已经被创建了，则直接返回，不需要再进入同步代码。
+     * 否则就开始同步线程，进入临界区后，进行的第二次检查是说：
+     * 如果被同步的线程有一个创建了对象实例， 其它的线程就不必再创建实例了。
+     */
+    if (instance == null) {
+        synchronized (Singleton_1.class) {
+            if (instance == null) {
+                /*
+                 * 仍然存在的问题：下面这句代码并不是一个原子操作，JVM在执行这行代码时，会分解成如下的操作：
+                 * 1.给instance分配内存，在栈中分配并初始化为null
+                 * 2.调用Singleton_1的构造函数，生成对象实例，在堆中分配 
+                 * 3.把instance指向在堆中分配的对象
+                 * 由于指令重排序优化，执行顺序可能会变成1，3，2，
+                 * 那么当一个线程执行完1，3之后，被另一个线程抢占，
+                 * 这时instance已经不是null了，就会直接返回。
+                 * 然而2还没有执行过，也就是说这个对象实例还没有初始化过。
+                 */
+                instance = new Singleton_1();
+            }
+        }
+    }
+    return instance;
+}
+</code></pre><p>}<br>```<br>```java<br>public class Singleton_2 {</p>
+<pre><code>/*
+ * 为了避免JIT编译器对代码的指令重排序优化，可以使用volatile关键字，
+ * 通过这个关键字还可以使该变量不会在多个线程中存在副本，
+ * 变量可以看作是直接从主内存中读取，相当于实现了一个轻量级的锁。
+ */
+private volatile static Singleton_2 instance = null;
+
+private Singleton_2() {
+}
+
+public static Singleton_2 getInstacne() {
+    if (instance == null) {
+        synchronized (Singleton_2.class) {
+            if (instance == null) {
+                instance = new Singleton_2();
+            }
+        }
+    }
+    return instance;
+}
+</code></pre><p>}<br>```</p>
+<blockquote>
+<p>变量在有了volatile修饰之后，对变量的修改会有一个内存屏障的保护，使得后面的指令不能被重排序到内存屏障之前的位置。volalite变量的读性能与普通变量类似，但是写性能要低一些，因为它需要插入内存屏障指令来保证处理器不会发生乱序执行。即便如此，大多数场景下volatile的总开销仍然要比锁低，所以volatile的语义能满足需求时候，选择volatile要优于使用锁。</p>
+</blockquote>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

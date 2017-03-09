@@ -1,0 +1,660 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Socket 套接字Socket 起源于 Unix，而Unix基本哲学之一就是一切皆文件，都可以用“打开open –&amp;gt; 读写write/read –&amp;gt; 关闭close”模式来操作。Socket就是该模式的一个实现，网络的Socket数据传输是一种特殊的I/O，Socket也是一种文件描述符。Socket也具有一个类似于打开文件的函数调用：Socket()，该函数返回一个整型的Socke">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/More/Network_Socket.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Socket 套接字Socket 起源于 Unix，而Unix基本哲学之一就是一切皆文件，都可以用“打开open –&amp;gt; 读写write/read –&amp;gt; 关闭close”模式来操作。Socket就是该模式的一个实现，网络的Socket数据传输是一种特殊的I/O，Socket也是一种文件描述符。Socket也具有一个类似于打开文件的函数调用：Socket()，该函数返回一个整型的Socke">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_Socket_1.png">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_Socket_2.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Socket 套接字Socket 起源于 Unix，而Unix基本哲学之一就是一切皆文件，都可以用“打开open –&amp;gt; 读写write/read –&amp;gt; 关闭close”模式来操作。Socket就是该模式的一个实现，网络的Socket数据传输是一种特殊的I/O，Socket也是一种文件描述符。Socket也具有一个类似于打开文件的函数调用：Socket()，该函数返回一个整型的Socke">
+<meta name="twitter:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_Socket_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/More/Network_Socket.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="Socket-套接字"><a href="#Socket-套接字" class="headerlink" title="Socket 套接字"></a>Socket 套接字</h1><p>Socket 起源于 Unix，而Unix基本哲学之一就是<code>一切皆文件</code>，都可以用“<code>打开open –&gt; 读写write/read –&gt; 关闭close</code>”模式来操作。Socket就是该模式的一个实现，网络的Socket数据传输是一种特殊的I/O，Socket也是一种文件描述符。Socket也具有一个类似于打开文件的函数调用：Socket()，该函数返回一个整型的Socket描述符，随后的连接建立、数据传输等操作都是通过该Socket实现的。</p>
+<p>使用TCP/IP协议的应用程序通常采用应用编程接口：UNIX BSD的套接字（socket）和UNIX System V的TLI（已经被淘汰），来实现网络进程之间的通信。</p>
+<p>常用的Socket类型有两种：流式Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。流式是一种面向连接的Socket，针对于面向连接的TCP服务应用；数据报式Socket是一种无连接的Socket，对应于无连接的UDP服务应用。（socket的类型有哪些？）</p>
+<h1 id="Socket-接口函数"><a href="#Socket-接口函数" class="headerlink" title="Socket 接口函数"></a>Socket 接口函数</h1><p>既然socket是“open—write/read—close”模式的一种实现，那么socket就提供了这些操作对应的函数接口。下面以TCP为例，介绍几个基本的socket接口函数。</p>
+<p><code>socket函数</code>：<strong>使用给定的地址族、套接字类型、协议编号（默认为0）来创建套接字</strong>。</p>
+<p>socket函数对应于普通文件的打开操作。普通文件的打开操作返回一个文件描述字，而socket()用于创建一个socket描述符（socket descriptor），它唯一标识一个socket。这个socket描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。</p>
+<pre><code>int socket(int domain, int type, int protocol);
+</code></pre><p>socket函数的三个参数分别为：</p>
+<ul>
+<li>domain：<code>协议域</code>。常用的协议族有AF_INET、AF_INET6等。协议族决定了socket的地址类型，在通信中必须采用对应的地址，如AF_INET决定了要用ipv4地址（32位的）与端口号（16位的）的组合。</li>
+<li>type：<code>socket类型</code>。常用的socket类型有，SOCK_STREAM、SOCK_DGRAM、SOCK_RAW、SOCK_PACKET、SOCK_SEQPACKET等等。</li>
+<li>protocol：<code>指定协议</code>。常用的协议有，IPPROTO_TCP、IPPTOTO_UDP等，它们分别对应TCP传输协议、UDP传输协议。</li>
+</ul>
+<p>注意：type和protocol不可以随意组合的，如SOCK_STREAM不可以跟IPPROTO_UDP组合。当protocol为0时，会自动选择type类型对应的默认协议。</p>
+<p>我们调用socket创建一个socket后，返回的socket描述符存在于协议族空间中，但没有一个具体的地址。如果想要给它赋值一个地址，就必须调用bind()函数，否则就当调用connect()、listen()时系统会自动随机分配一个端口。</p>
+<h2 id="服务器端函数"><a href="#服务器端函数" class="headerlink" title="服务器端函数"></a>服务器端函数</h2><p><code>bind函数</code>：<strong>将套接字绑定到地址。</strong></p>
+<pre><code>int bind(int sockfd, struct sockaddr * my_addr, int addrlen);
+</code></pre><p>三个参数分别为：</p>
+<ul>
+<li>sockfd : 即socket描述字，通过socket()函数创建，唯一标识一个socket。</li>
+<li>my_addr : 结构体指针变量，指向要绑定给sockfd的协议地址。这个地址结构根据地址创建socket时的地址协议族的不同而不同。</li>
+<li>addrlen : 对应的是地址的长度。</li>
+</ul>
+<p>通常服务器在启动的时候都会绑定一个地址（如ip地址+端口号），用于提供服务，客户就可以通过它来接连服务器；而客户端就不用指定，系统自动分配一个端口号和自身的ip地址组合。这就是为什么通常服务器端在listen之前会调用bind()，而客户端就不会调用，而是在connect()时由系统随机生成一个。</p>
+<p><code>listen函数</code>：使服务器的这个端口和IP处于监听状态，等待网络中某一客户机的连接请求。如果客户端有连接请求，端口就会接受这个连接。</p>
+<pre><code>int listen(int sockfd, int backlog);
+</code></pre><p>两个参数分别为：</p>
+<ul>
+<li>sockfd: socket描述字。</li>
+<li>backlog: 指定同时能处理的最大连接要求，通常为10或者5。最大值可设至128。</li>
+</ul>
+<p><code>accept函数</code>：接受远程计算机的连接请求，建立起与客户机之间的通信连接。服务器处于监听状态时，如果某时刻获得客户机的连接请求，此时并不是立即处理这个请求，而是将这个请求放在等待队列中，当系统空闲时再处理客户机的连接请求。</p>
+<pre><code>int accept(int sockfd, struct sockaddr * addr,int * addrlen);
+</code></pre><p>三个参数分别为：</p>
+<ul>
+<li>sockfd : socket描述字。</li>
+<li>addr: 为结构体指针变量，和bind的结构体是同种类型的，系统会把远程主机的信息（远程主机的地址和端口号信息）保存到这个指针所指的结构体中。</li>
+<li>addrlen : 表示结构体的长度</li>
+</ul>
+<p>accept的第一个参数为服务器的socket描述字，是服务器开始调用socket()函数生成的，称为<code>监听socket描述字</code>；而accept函数返回的是<code>已连接的socket描述字</code>。一个服务器通常通常仅仅只创建一个监听socket描述字，它在该服务器的生命周期内一直存在。内核为每个由服务器进程接受的客户连接创建了一个已连接socket描述字，当服务器完成了对某个客户的服务，相应的已连接socket描述字就被关闭。</p>
+<h2 id="客户端函数"><a href="#客户端函数" class="headerlink" title="客户端函数"></a>客户端函数</h2><p><code>connect函数</code>用来请求连接远程服务器.</p>
+<pre><code>int connect (int sockfd,struct sockaddr * serv_addr,int addrlen);
+</code></pre><p>三个参数分别为：</p>
+<ul>
+<li>sockfd : socket描述字，前面socket的返回值；</li>
+<li>serv_addr : 存储着远程服务器的IP与端口号信息；</li>
+<li>addrlen : 表示结构体变量的长度。</li>
+</ul>
+<h2 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h2><p><code>recv函数</code>：负责从缓冲区中读取内容。当读成功时，read返回实际所读的字节数，如果返回的值是0表示已经读到文件的结束了，小于0表示出现了错误。</p>
+<pre><code>int recv(int sockfd,void *buf,int len,unsigned int flags);
+</code></pre><p>四个参数分别为：</p>
+<ul>
+<li>sockfd : 为前面accept的返回值.也就是新的套接字。</li>
+<li>buf : 表示缓冲区</li>
+<li>len : 表示缓冲区的长度</li>
+<li>flags : 通常为0</li>
+</ul>
+<p><code>send函数</code>：将buf中的nbytes字节内容写入socket描述字。成功时返回写的字节数。失败时返回-1，并设置errno变量。</p>
+<pre><code>int send(int sockfd,const void * msg,int len,unsigned int flags);
+</code></pre><ul>
+<li>sockfd : 为前面socket的返回值.</li>
+<li>msg : 一般为常量字符串</li>
+<li>len : 表示长度</li>
+<li>flags : 通常为0</li>
+</ul>
+<p><code>close函数</code>：关闭套接字。若顺利关闭则返回0，发生错误时返回-1。</p>
+<pre><code>int close(int sockfd);
+</code></pre><h1 id="TCP-通信"><a href="#TCP-通信" class="headerlink" title="TCP 通信"></a>TCP 通信</h1><p>TCP中 Socket 通信的基本步骤如下：</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Network_Socket_1.png" alt=""></p>
+<p>一个简单的 C/S 程序如下（客户端发出的数据, 服务器会回显到客户端的终端上。只是一个简单的模型, 没考虑错误处理等问题。）</p>
+<p>服务器端如下：</p>
+<pre><code>import socket   # socket模块
+
+BUF_SIZE = 1024  # 设置缓冲区大小
+server_addr = (&apos;127.0.0.1&apos;, 8888)  # IP和端口构成表示地址
+
+server = socket.socket(socket.AF_INET,
+                       socket.SOCK_STREAM)   # 生成一个新的socket对象
+server.setsockopt(socket.SOL_SOCKET,
+                  socket.SO_REUSEADDR, 1)    # 设置地址复用
+server.bind(server_addr)  # 绑定地址
+server.listen(5)          # 监听, 最大监听数为5
+while True:
+    client, client_addr = server.accept()  # 接收TCP连接, 并返回新的套接字和地址
+    print &apos;Connected by&apos;, client_addr
+    while True:
+        data = client.recv(BUF_SIZE)       # 从客户端接收数据
+        print data
+        client.sendall(data)               # 发送数据到客户端
+server.close()
+</code></pre><p>客户端如下：</p>
+<pre><code>import socket
+
+BUF_SIZE = 1024
+server_addr = (&apos;127.0.0.1&apos;, 8888)
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(server_addr)
+while True:
+    data = raw_input(&quot;Please input some string &gt; &quot;)
+    client.sendall(data)
+    data = client.recv(BUF_SIZE)
+    print data
+client.close()
+</code></pre><p>不过真实的网络编程环境中，一定要使用大量的错误处理，可以尽量的发现错误，也能够使代码显得更加严谨。</p>
+<p>三次握手<br>SYN_SENT    connect() 阻塞 — accept() 阻塞 SYS_RCV<br>ESTABLISHED connect() 返回 — accept() 返回 ESTABLISHED</p>
+<p>四次挥手<br>FIN_WAIT1 close() 阻塞 — read() 读 0 字节 LAST_ACK<br>FIN_WAIT2 close()</p>
+<h1 id="UDP-Socket函数"><a href="#UDP-Socket函数" class="headerlink" title="UDP Socket函数"></a>UDP Socket函数</h1><p><code>sendto()</code>函数：发送UDP数据，将数据发送到套接字。返回实际发送的数据字节长度或在出现发送错误时返回-1。</p>
+<pre><code>int sendto(int sockfd, const void *msg,int len,unsigned int flags,const struct sockaddr *to, int tolen);
+</code></pre><p><code>recvfrom()</code>函数：接受UDP套接字的数据, 与recv()类似。返回接收到的字节数或当出现错误时返回-1，并置相应的errno。</p>
+<pre><code>int recvfrom(int sockfd,void *buf,int len,unsigned int flags,struct sockaddr *from,int *fromlen);
+</code></pre><p>UDP通信流程图如下：</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Network_Socket_2.png" alt=""></p>
+<p>简单的客户端服务器UDP连接，服务器端：</p>
+<pre><code>#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+import socket
+
+BUF_SIZE = 1024                     # 设置缓冲区大小
+server_addr = (&apos;127.0.0.1&apos;, 8888)   # IP和端口构成表示地址
+
+# 生成新的套接字对象
+server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+server.bind(server_addr)        # 套接字绑定IP和端口
+
+while True:
+  print &quot;waitting for data&quot;
+  # 从客户端接收数据
+  data, client_addr = server.recvfrom(BUF_SIZE)
+  print &apos;Connected by&apos;, client_addr, &apos; Receive Data : &apos;, data
+  # 发送数据给客户端
+  server.sendto(data, client_addr)
+server.close()
+</code></pre><p>客户端如下：</p>
+<pre><code>import socket
+
+BUF_SIZE = 1024                     # 设置缓冲区
+    server_addr = (&apos;127.0.0.1&apos;, 8888)   # IP和端口构成表示地址
+
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+while True:
+  data = raw_input(&apos;Please Input data &gt; &apos;)
+  client.sendto(data, server_addr)  # 向服务器发送数据
+  data, addr = client.recvfrom(BUF_SIZE)  # 从服务器接收数据
+  print &quot;Data : &quot;, data
+client.close()
+</code></pre><p>参考：<br><a href="http://www.jianshu.com/p/e062b3dd110c" target="_blank" rel="external">Python爬虫(三)-Socket网络编程</a><br><a href="http://www.cnblogs.com/skynet/archive/2010/12/12/1903949.html" target="_blank" rel="external">Linux Socket编程（不限Linux）</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

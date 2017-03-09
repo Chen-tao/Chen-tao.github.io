@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mac," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="There are good chances that, at a point, your app is connected and talk to a backend. Having best network performances is crucial, maybe as important as the responsiveness of the UI. Instruments provi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Analysing iOS App Network Performances on Cellular/Wi Fi">
+<meta property="og:url" content="http://chen-tao.github.io/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="There are good chances that, at a point, your app is connected and talk to a backend. Having best network performances is crucial, maybe as important as the responsiveness of the UI. Instruments provi">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Analysing iOS App Network Performances on Cellular/Wi Fi">
+<meta name="twitter:description" content="There are good chances that, at a point, your app is connected and talk to a backend. Having best network performances is crucial, maybe as important as the responsiveness of the UI. Instruments provi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/"/>
+
+
+
+
+
+  <title> Analysing iOS App Network Performances on Cellular/Wi Fi | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Analysing iOS App Network Performances on Cellular/Wi Fi
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-05T00:00:00+08:00">
+                2015-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>There are good chances that, at a point, your app is connected and talk to a backend. Having best network performances is crucial, maybe as important as the responsiveness of the UI. Instruments provides good built-in tools for analysing memory, cpu, leaks, fps but analysing an app network performances is not easy.<br>There are a lot of different methods here and here for instance to inspect how behave your app, and for the most part the presented solution is to enable a HTTP proxy on the iPhone Wi-Fi interface and capture Wi-Fi packets. There is also an Apple Technical Q&amp;A here that describes in details how to capture packets, but I’m going to present a method that can also works when you want to analyse your app on a 3G/Edge connection, or if you can’t have a proxy on the Wi-Fi connection.<br>Create a remote virtual interface (RVI) on your iPhone<br>Capture packets using tcpdump in a .pcap file<br>Using HAR (HTTP Archive) file format<br>Instruments network profiling</p>
+<ol>
+<li>Create a remote virtual interface (RVI) on your iPhone</li>
+</ol>
+<p>Really easy, just plug your iPhone to your Mac via USB and type in a terminal</p>
+<p><code>rvictl -s abcdef01234563e91f1f2f8a8cb0841d2dafeebbc</code></p>
+<p>where abcdef01234563e91f1f2f8a8cb0841d2dafeebbc is the UDID of your iPhone. You whould see</p>
+<p><code>$ Starting device abcdef01234563e91f1f2f8a8cb0841d2dafeebbc [SUCCEEDED]</code></p>
+<p>You can check that you have a new network interface</p>
+<p><code>ifconfig -l</code></p>
+<p>will give you</p>
+<p><code>$ lo0 gif0 stf0 en0 en1 p2p0 fw0 rvi0</code></p>
+<p>where rvi0 is the new remote virtual interface. When you’ll be done, you will be able to delete the RVI</p>
+<p><code>rvictl -x abcdef01234563e91f1f2f8a8cb0841d2dafeebbc</code></p>
+<p>will ouput</p>
+<p><code>$ Stopping device 74bd53c647548234ddcef0ee3abee616005051ed [SUCCEEDED]</code></p>
+<ol>
+<li>Capture packets using tcpdump in a .pcap file</li>
+</ol>
+<p>After having instanciate a RVI, type in a terminal</p>
+<p><code>sudo tcpdump -i rv0 -n -s 0 -w dumpFile.pcap tcp</code></p>
+<p>This will start the capture of TCP packets on the remote interface</p>
+<p><code>-i rv0 causes tcpdump to capture on the RVI</code><br><code>-n option means that addresses are not converted to domain names (which is faster)</code><br><code>-s 0 option causes tcpdump to capture the entire packet and not just the first bytes</code><br><code>-w dumpFile.pcp option specifies the output file, in libpcap file format.</code></p>
+<p>tcp option to capture only TCP packets.</p>
+<p>On the device, launch your app, play with it and once you’ve finished, quit tcpdump. At this point, you can also close your remove virtual interface</p>
+<p><code>rvictl -x abcdef01234563e91f1f2f8a8cb0841d2dafeebbc</code></p>
+<p>Once we have this pcap file, there is still some work in order to load this file in our favorite analyser tool. The TCP packets have been captured in RAW format and most of the tools work only on Ethernet captured packed. To convert this pcap file, you will need to install tcpreplay (with Homebrew for instance)</p>
+<p><code>brew install tcpreplay</code></p>
+<p>tcprewrite is a part of tcpreplay suite and can be used to convert your raw packets capture to Ethernet packets capture</p>
+<p><code>tcprewrite --dlt=enet --enet-dmac=00:11:22:33:44:55 --enet-smac=66:77:88:99:AA:BB --infile=dumpFile.pcap --outfile=dumpFileFinal.pcap</code></p>
+<p>Now, your packet is ready to be analysed via your favorite tool, like Charles HTTP Proxy or Wireshark.</p>
+<ol>
+<li>Using HAR (HTTP Archive) file format</li>
+</ol>
+<p>HTTP Archive (HAR) is an open file format for archiving HTTP packets. The really good news is that there is a lot of tools (often free) available to analyse, visualize HAR files. For instance, provided you have a HAR captured file, you can preview it online with the HAR Viewer<br>HAR viewer result</p>
+<p>You can convert the .pcap captured file to HAR with a Python script, pcap2har. pcap2har depends on the dpkt packet-parsing library (<a href="http://code.google.com/p/dpkt/" target="_blank" rel="external">http://code.google.com/p/dpkt/</a>) so we need to install it first. Download the dpkt latest version tar.gz, untar it on your disk, go to the dpkt-1.7 directory and type</p>
+<p><code>sudo python setup.py install</code></p>
+<p>to install dpkt in your Python 2 package library.</p>
+<p>Now, clone the lastest pcap2har version at <a href="https://github.com/andrewf/pcap2har" target="_blank" rel="external">https://github.com/andrewf/pcap2har</a> on your disk. Then, to convert your .pcap file to HAR</p>
+<p><code>./main.py dumpFileFinal.cap dumpFileFinal.har</code></p>
+<p>Be sure to convert the .pcap file that has been rewrite with tcprewrite, otherwise the conversion will fail.</p>
+<ol>
+<li>Instruments network profiling</li>
+</ol>
+<p>If you have the source code of the application, you can try to profile it with Instruments ( Xcode &gt; Product &gt; Profile then choose Network template).</p>
+<p>Instrument network template</p>
+<p>I’ve played a little with the network activities, but I find it hard to extract useful informations for analysing. Let’s hope Apple will improve the tool to profile network activities and bring it to the same level as the Instrument OpenGL template for instance.</p>
+<p><a href="http://blog.manbolo.com/2013/02/22/analysing-ios-app-network-performances-on-cellularwifi" target="_blank" rel="external">http://blog.manbolo.com/2013/02/22/analysing-ios-app-network-performances-on-cellularwifi</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mac/" rel="tag"># Mac</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/05/use-mac-to-catch-web-pkg-on-iphone/" rel="next" title="Use Mac to Catch Web Pkg on iPhone">
+                <i class="fa fa-chevron-left"></i> Use Mac to Catch Web Pkg on iPhone
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/05/wireshark-crash-on-mac-osx/" rel="prev" title="wireshark crash on Mac OSX">
+                wireshark crash on Mac OSX <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

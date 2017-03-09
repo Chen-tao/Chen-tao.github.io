@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Kafka," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="kafka 应用场景
+日志收集
+消息系统 解耦生产者和消费者、缓存消息。
+用户活动跟踪: 就是我们在做的。
+运营指标：生产各种操作的集中反馈。
+流式处理：比如spark steaming
+
+kafka的发布对象是topic。每类数据我们可以归为一个topic。向topic发送消息的我们称为生产者、从topic订阅消息的称为consumer。producer 和 consumer 可以同时读写数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka 设计与原理详解">
+<meta property="og:url" content="http://chen-tao.github.io/2015/10/29/kafka-design/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="kafka 应用场景
+日志收集
+消息系统 解耦生产者和消费者、缓存消息。
+用户活动跟踪: 就是我们在做的。
+运营指标：生产各种操作的集中反馈。
+流式处理：比如spark steaming
+
+kafka的发布对象是topic。每类数据我们可以归为一个topic。向topic发送消息的我们称为生产者、从topic订阅消息的称为consumer。producer 和 consumer 可以同时读写数据。">
+<meta property="og:updated_time" content="2017-03-09T05:33:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kafka 设计与原理详解">
+<meta name="twitter:description" content="kafka 应用场景
+日志收集
+消息系统 解耦生产者和消费者、缓存消息。
+用户活动跟踪: 就是我们在做的。
+运营指标：生产各种操作的集中反馈。
+流式处理：比如spark steaming
+
+kafka的发布对象是topic。每类数据我们可以归为一个topic。向topic发送消息的我们称为生产者、从topic订阅消息的称为consumer。producer 和 consumer 可以同时读写数据。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/10/29/kafka-design/"/>
+
+
+
+
+
+  <title> Kafka 设计与原理详解 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/29/kafka-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Kafka 设计与原理详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-29T00:00:00+08:00">
+                2015-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="kafka-应用场景"><a href="#kafka-应用场景" class="headerlink" title="kafka 应用场景"></a>kafka 应用场景</h3><ul>
+<li>日志收集</li>
+<li>消息系统 解耦生产者和消费者、缓存消息。</li>
+<li>用户活动跟踪: 就是我们在做的。</li>
+<li>运营指标：生产各种操作的集中反馈。</li>
+<li>流式处理：比如spark steaming</li>
+</ul>
+<p>kafka的发布对象是topic。每类数据我们可以归为一个topic。向topic发送消息的我们称为生产者、从topic订阅消息的称为consumer。producer 和 consumer 可以同时读写数据。</p>
+<ul>
+<li>topic: 消息主题。</li>
+<li>producer: 生产者到topic的一方。</li>
+<li>consumer: 订阅topic消费消息的一方。</li>
+<li>broker</li>
+</ul>
+<h3 id="kafka-topic-amp-partition"><a href="#kafka-topic-amp-partition" class="headerlink" title="kafka topic &amp; partition"></a>kafka topic &amp; partition</h3><p>kafka 集群会保存所有消息，不管消息有没有被消费；通过设置消息过期时间，可以来定制的删除消息。比如我们设置过期时间为2天。</p>
+<p>一个消息被生产出来，写入到多个partition。消息就是以partition作为存储单位，每个partition可以通过调整以适应它所在的机器，而一个topic对应多个partition，这样整个集群就可以适应各个大小的数据了。第二，也可以提高并发，因为可以以partition 为单位来读写了。</p>
+<h3 id="Kafka-核心组件"><a href="#Kafka-核心组件" class="headerlink" title="Kafka 核心组件"></a>Kafka 核心组件</h3><h4 id="replications-partitions-and-leaders"><a href="#replications-partitions-and-leaders" class="headerlink" title="replications partitions and leaders"></a>replications partitions and leaders</h4><h5 id="怎么实现持久化？"><a href="#怎么实现持久化？" class="headerlink" title="怎么实现持久化？"></a>怎么实现持久化？</h5><p>kafka能够做数据持久化。可以为每个topic设置副本容量。 如果副本容量设为3，那么一份数据就会被放在3台不同的机器上。一般设为2.</p>
+<h5 id="关于partition。"><a href="#关于partition。" class="headerlink" title="关于partition。"></a>关于partition。</h5><p>topic的存放形式是partition。每一个topic都可以设置partition数量。partition的数量决定了log的数量。producer 在生产消息时，会把消息发布到topic的各个partition中。上面说的副本都是以partition为单位的，不过只有一个partition的副本会被选为leader作为读写用。</p>
+<p>kafka从0.8开始提供partition级别的replication，replication的数量可在$KAFKA_HOME/config/server.properties中配置。</p>
+<p><code>default.replication.factor = 1</code></p>
+<h5 id="如何设置partition值要考虑的因素？"><a href="#如何设置partition值要考虑的因素？" class="headerlink" title="如何设置partition值要考虑的因素？"></a>如何设置partition值要考虑的因素？</h5><p>一个partition只能被一个消费者消费(但是一个消费者可以同时消费多个partition。)，所以，运行的partition的数量要大于运行的comsumer的数量，否则就会有消费者消费不到数据。另一方面，建议partition的数量大于broker 的数量。这样leader partition 的数据就能均匀的分布在各个broker中，最终使得集群负载均衡。</p>
+<p>(如果小于会怎样样，会造成比较集中的存储在单个broker之中吗。)。注意：kafka需要为每个partition分配一些内存来缓存消息数据，如果parttion数量越大，分配更大的heap space。</p>
+<p>partition每一个都会保存作为一个repilca么？ 不是的。partition的概念是根据partition 方法来将数据分布存储。</p>
+<h4 id="producers"><a href="#producers" class="headerlink" title="producers"></a>producers</h4><p>producer发送消息。</p>
+<p>producer 可以直接发送到broker对应的leader partition中，不需要经历任何一个中介的转发。为实现这个特性，每个broker都可以响应producer的请求，并返回topic的一些元信息，这些元信息包括哪些机器是存活的，topic的你leader partition都在哪。现阶段哪些leader partition 是可以直接访问的？</p>
+<p>如果访问的不是leader partition 怎么搞？ 而且我看是可以指定多个进行访问的。</p>
+<h4 id="producer-和-partition"><a href="#producer-和-partition" class="headerlink" title="producer 和 partition"></a>producer 和 partition</h4><p>producer 可以控制以什么样的将消息推送到客户端。实现方法包括随机，实现一类随机负载均衡的算法，或者指定一些分区算法。kafka 提供了用户自定义分区的方法，用户可以为每一个消息指定一个partitionkey，通过这个key来实现一些hash 分区算法。</p>
+<h4 id="效率。"><a href="#效率。" class="headerlink" title="效率。"></a>效率。</h4><p>batch的方式将有效的提高效率，减少网络和磁盘io的占用。这里batch的大小，可以再producer来设置，比如焕春100s，缓存1000条，或者数据的大小。</p>
+<h4 id="关于消息的完整性。"><a href="#关于消息的完整性。" class="headerlink" title="关于消息的完整性。"></a>关于消息的完整性。</h4><p>producer 可以异步的并行的向kafka发送消息，但是通常你producer在发送完消息之后会得到一个future的响应，返回的是offset或者发送过程遇到的错误。这里，acks 这参数很重要，这个参数决定了producer要求leader partition收到的确认副本数。如果acks设置数量为0，表示producer不会等待broker的响应，所以，producer无法知道消息是否发送成功，这有可能会导致数据丢失，但这也是吞吐量最大的方式。</p>
+<p>如果acks设置为1，表示producer 和laeder partition收到消息的时得到的broker的一个确认，这样会有更好的可靠性。如果设置为-1，则组要等待所有partition收到消息。这样能保持最高的可靠性。</p>
+<h4 id="kafka-消息。"><a href="#kafka-消息。" class="headerlink" title="kafka 消息。"></a>kafka 消息。</h4><p>kafka消息有一个定长的header和变长的字节组成。kafka没有限定单个消息的大小，但一般不超过一mb，通常控制在1-10kb之间。</p>
+<h4 id="Consumers"><a href="#Consumers" class="headerlink" title="Consumers"></a>Consumers</h4><p>kafka 提供了两套api。sample api 。是一套无状态的api。每次请求都需要指定offset。所以也是最灵活的。</p>
+<p>在kafka中，当前消息的offset是由consumer来维护的。consumer可以自己决定读哪些数据。比如，consumer 可以重新消费已经消费国的数据。这些数据有一个过期限制。这个限制是可配置的。</p>
+<p>high-level api 封装了对集群的访问。可以透明的消费一个topic。自己本身维持了一个消费队列，每次消费下一个。</p>
+<p>这里consumer 用组来模拟了广播和订阅两个功能。组是嫁接topic和consumer 的桥梁。 组对topic是来说是组内的成员都可以接受到消息，相当于广播，组对成员来说，是订阅，即你在这个组里才能接受到这个消息。所以都在一个组，就相当于一个大广播。</p>
+<h3 id="kafka-的核心特性"><a href="#kafka-的核心特性" class="headerlink" title="kafka 的核心特性"></a>kafka 的核心特性</h3><h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>kafka 支持以batch的方式来发送消息。在此之上，还支持对消息的压缩。 producer端进行压缩之后，在consumer端进行解压。这么做的好处是，往往大数据的瓶颈在于网络，而不是cpu(所以会损耗一定的cpu。)<br>消息压缩的信息，存储在消息头部的描述压缩属性字节。这个字节的后两位表示消息的压缩采用的编码，若后两位为0，则表示消息未被压缩。</p>
+<h4 id="消息可靠性"><a href="#消息可靠性" class="headerlink" title="消息可靠性"></a>消息可靠性</h4><p>在消息系统中，保证消息的可靠性是很重要的。在实际消息的传递过程中，会出现如下3种情况：</p>
+<ul>
+<li>一个消息传递失败</li>
+<li>一个消息被发送多次</li>
+<li>exactly once，一个消息发送成功并且仅发送了一次。</li>
+</ul>
+<p>有许多系统声称它们实现了exactly-once，但一般没有考虑生产者或消费者在生产和消费过程中有可能失败的情况。比如虽然一个producer成功发送一个消息，但消息丢失，或者成功发送到broker，也被consumer成功取走，但是这个consumer在处理消息时失败了。</p>
+<p>这里从两个角度来分析这个。</p>
+<p>从producer的角度：在发送端，看producer会等待broker成功接收到消息的反馈，如果没有接到broker的反馈信息，producer 会重新发送，(我们知道kafka有备份机制，可以通过参数设置是否等待所有节点都收到消息，而本身的消息也有缓存)</p>
+<p>从consumer的角度：因为consumer 可以调整offset，所以可以重复消费消息。也保证了，一条消息被发送一次就ok。</p>
+<h4 id="备份机制"><a href="#备份机制" class="headerlink" title="备份机制"></a>备份机制</h4><p>备份机制是Kafka0.8版本的新特性，备份机制的出现大大提高了Kafka集群的可靠性、稳定性。有了备份机制后，Kafka允许集群中的节点挂掉后而不影响整个集群工作。一个备份数量为n的集群允许n-1个节点失败。在所有备份节点中，有一个节点作为lead节点，这个节点保存了其它备份节点列表，并维持各个备份间的状体同步。</p>
+<h3 id="kafka-高效性相关设计"><a href="#kafka-高效性相关设计" class="headerlink" title="kafka 高效性相关设计"></a>kafka 高效性相关设计</h3><h4 id="消息持久化"><a href="#消息持久化" class="headerlink" title="消息持久化"></a>消息持久化</h4><p>首先这里，kafka是高度依赖文件系统和缓存的。</p>
+<p>文件系统的速度。文件系统的速度并不是想象中的慢或者快。对于，顺序写入和随机写入两者有很大速度差。一个7200的硬盘顺序写入有600m/s的速度，随机写入有100k/s的速度。</p>
+<p>缓存思路。所以，基本的数据写入思路是，先拿内存缓存数据再刷新到磁盘。但是，众所周知，内存的垃圾回收的代价很大，尤其当数据量过大的时候，垃圾回收会非常昂贵。</p>
+<p>感觉这块理解的不是很好<br>基于以上，得到的一个结论就是利用文件系统并且依靠页缓存比维护一个内存缓存或者其他结构要好。而事实上，数据被传输到内核页，稍后会被刷新。这里加上了一个配置项来控制让系统的用户来控制数据在什么时候被刷新到物理硬盘上。</p>
+<h4 id="常数时间性能保证"><a href="#常数时间性能保证" class="headerlink" title="常数时间性能保证"></a>常数时间性能保证</h4><p>没太理解<br>消息系统中持久化数据结构的设计通常是维护者一个和消费队列有关的B树或者其它能够随机存取结构的元数据信息。B树是一个很好的结构，可以用在事务型与非事务型的语义中。但是它需要一个很高的花费，尽管B树的操作需要O(logN)。通常情况下，这被认为与常数时间等价，但这对磁盘操作来说是不对的。磁盘寻道一次需要10ms，并且一次只能寻一个，因此并行化是受限的。 直觉上来讲，一个持久化的队列可以构建在对一个文件的读和追加上，就像一般情况下的日志解决方案。尽管和B树相比，这种结构不能支持丰富的语义，但是它有一个优点，所有的操作都是常数时间，并且读写之间不会相互阻塞。这种设计具有极大的性能优势：最终系统性能和数据大小完全无关，服务器可以充分利用廉价的硬盘来提供高效的消息服务。<br>事实上还有一点，磁盘空间的无限增大而不影响性能这点，意味着我们可以提供一般消息系统无法提供的特性。比如说，消息被消费后不是立马被删除，我们可以将这些消息保留一段相对比较长的时间（比如一个星期）。</p>
+<h4 id="进一步提高效率"><a href="#进一步提高效率" class="headerlink" title="进一步提高效率"></a>进一步提高效率</h4><p>在web开发中，每次一条log都会产生一次写操作，这些小的写操作的量非常大，另外这些log也要至少被一个或以上consumer消费。<br>所以，这里出现了两个比较低效的场景。</p>
+<ul>
+<li>太多小的io操作。</li>
+<li>过多的字节拷贝。<br>太多小的io操作。可以通过发送messageset来搞定。所以对消息的处理，这里没有分开的序列化和反序列化的上步骤，消息的字段可以按需反序列化（如果没有需要，可以不用反序列化）。</li>
+</ul>
+<p>过多的字节拷贝。 为了解决这个问题，kafka设计了一个标准字节消息。producer，broker，consumer共享这一种消息格式。kafka的message log 在broker端就是一些目录文件。这些文件都是按照message set 来存的。</p>
+<p>而这种通用的方式，非常重要： 持久化log块的网络传输。这传输通过一钟非常搞笑的途径来实现页面缓存和socket之间的数据传递。 叫sendfile</p>
+<p>这里解释下sendfile的作用，先声明下一般的数据从文件到socket的路径:</p>
+<ol>
+<li>操作系统将数据从磁盘读到内核空间的页缓存中。</li>
+<li>应用将数据从内核空间读到用户空间的页缓存中。</li>
+<li>应用将数据从用户空间写到内核空间的socket缓存。</li>
+<li>操作系统将数据从socket缓存写入到网卡缓存中。</li>
+</ol>
+<p>这钟方式非常低效，因为这里有四次拷贝，两次系统调用。如果使用sendfile，就可以避免两次拷贝：操作系统将数据直接从页缓存发送到网络上。所以这个过程，只有第一步和最后一步是需要的。利用上述zero copy，数据只需要拷贝到页缓存一次，就可以重复被consumer利用。这样通过页缓存和sendfile的结合，下游有很多consumers，也不会对整个集群服务造成压力。</p>
+<h3 id="kafka-集群部署"><a href="#kafka-集群部署" class="headerlink" title="kafka 集群部署"></a>kafka 集群部署</h3><p>为了提高性能，尽量与hadoop的集群分开部署。如果共享节点的话，会影响其使用页面缓存的性能。</p>
+<p>kafka的性能主要在磁盘上。</p>
+<p>kafka依赖于zookper，一般使用专用服务器来管理。zookeeper集群的节点采用偶数个。注意，zookeeper集群越大其读写性能越慢，因为zookeeper 要在节点之间同步数据。一个3节点的zookeeper集群允许一个节点失败，一个5节点的集群允许2个节点失败。</p>
+<h4 id="集群大小"><a href="#集群大小" class="headerlink" title="集群大小"></a>集群大小</h4><p>衡量kafka集群所需的大小，最好是用模拟负载来测算一下。如果不想用模拟实验，最好的方法是根据磁盘。</p>
+<h3 id="kafka-主要配置"><a href="#kafka-主要配置" class="headerlink" title="kafka 主要配置"></a>kafka 主要配置</h3><h4 id="broker-config"><a href="#broker-config" class="headerlink" title="broker config"></a>broker config</h4><p>log.dirs /tmp/kafka-logs Kafka数据存放的目录。可以指定多个目录，中间用逗号分隔，当新partition被创建的时会被存放到当前存放partition最少的目录。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.csdn.net/suifeng3051/article/details/48053965" target="_blank" rel="external">http://blog.csdn.net/suifeng3051/article/details/48053965</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/10/mac-install-notebook/" rel="next" title="Mac 安装 ipyhton Notebook 全记录">
+                <i class="fa fa-chevron-left"></i> Mac 安装 ipyhton Notebook 全记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/29/welcome-to-jekyll/" rel="prev" title="升级jekyll 3.0">
+                升级jekyll 3.0 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka-应用场景"><span class="nav-number">1.</span> <span class="nav-text">kafka 应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka-topic-amp-partition"><span class="nav-number">2.</span> <span class="nav-text">kafka topic & partition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka-核心组件"><span class="nav-number">3.</span> <span class="nav-text">Kafka 核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#replications-partitions-and-leaders"><span class="nav-number">3.1.</span> <span class="nav-text">replications partitions and leaders</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#怎么实现持久化？"><span class="nav-number">3.1.1.</span> <span class="nav-text">怎么实现持久化？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于partition。"><span class="nav-number">3.1.2.</span> <span class="nav-text">关于partition。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何设置partition值要考虑的因素？"><span class="nav-number">3.1.3.</span> <span class="nav-text">如何设置partition值要考虑的因素？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#producers"><span class="nav-number">3.2.</span> <span class="nav-text">producers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#producer-和-partition"><span class="nav-number">3.3.</span> <span class="nav-text">producer 和 partition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效率。"><span class="nav-number">3.4.</span> <span class="nav-text">效率。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于消息的完整性。"><span class="nav-number">3.5.</span> <span class="nav-text">关于消息的完整性。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kafka-消息。"><span class="nav-number">3.6.</span> <span class="nav-text">kafka 消息。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Consumers"><span class="nav-number">3.7.</span> <span class="nav-text">Consumers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka-的核心特性"><span class="nav-number">4.</span> <span class="nav-text">kafka 的核心特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩"><span class="nav-number">4.1.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息可靠性"><span class="nav-number">4.2.</span> <span class="nav-text">消息可靠性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备份机制"><span class="nav-number">4.3.</span> <span class="nav-text">备份机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka-高效性相关设计"><span class="nav-number">5.</span> <span class="nav-text">kafka 高效性相关设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息持久化"><span class="nav-number">5.1.</span> <span class="nav-text">消息持久化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常数时间性能保证"><span class="nav-number">5.2.</span> <span class="nav-text">常数时间性能保证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进一步提高效率"><span class="nav-number">5.3.</span> <span class="nav-text">进一步提高效率</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka-集群部署"><span class="nav-number">6.</span> <span class="nav-text">kafka 集群部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集群大小"><span class="nav-number">6.1.</span> <span class="nav-text">集群大小</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kafka-主要配置"><span class="nav-number">7.</span> <span class="nav-text">kafka 主要配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#broker-config"><span class="nav-number">7.1.</span> <span class="nav-text">broker config</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

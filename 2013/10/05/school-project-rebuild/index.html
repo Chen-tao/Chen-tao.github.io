@@ -1,0 +1,689 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="feeling," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在校的时间基本上是越来越少，这个时间基本没有项目在做了（应该只剩一个毕设——已被安排貌似还不错就是比较简单）。反观之前做的很多项目，理想跟现实总是大相径庭——这也是客观事实，不过从项目里还是得到了很多东西，再加上实习期间自己的学习感触，如果很多校内项目重新来过，我们有很多方面可以改进，不仅仅是跳过那些不必要的过程或者更高效的完成项目中的某些阶段，更重要的是清晰的知道自己要怎么做和如何做得更好。
+目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如果重来，我如何做校内项目">
+<meta property="og:url" content="http://chen-tao.github.io/2013/10/05/school-project-rebuild/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="在校的时间基本上是越来越少，这个时间基本没有项目在做了（应该只剩一个毕设——已被安排貌似还不错就是比较简单）。反观之前做的很多项目，理想跟现实总是大相径庭——这也是客观事实，不过从项目里还是得到了很多东西，再加上实习期间自己的学习感触，如果很多校内项目重新来过，我们有很多方面可以改进，不仅仅是跳过那些不必要的过程或者更高效的完成项目中的某些阶段，更重要的是清晰的知道自己要怎么做和如何做得更好。
+目">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如果重来，我如何做校内项目">
+<meta name="twitter:description" content="在校的时间基本上是越来越少，这个时间基本没有项目在做了（应该只剩一个毕设——已被安排貌似还不错就是比较简单）。反观之前做的很多项目，理想跟现实总是大相径庭——这也是客观事实，不过从项目里还是得到了很多东西，再加上实习期间自己的学习感触，如果很多校内项目重新来过，我们有很多方面可以改进，不仅仅是跳过那些不必要的过程或者更高效的完成项目中的某些阶段，更重要的是清晰的知道自己要怎么做和如何做得更好。
+目">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2013/10/05/school-project-rebuild/"/>
+
+
+
+
+
+  <title> 如果重来，我如何做校内项目 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/10/05/school-project-rebuild/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如果重来，我如何做校内项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-05T00:00:00+08:00">
+                2013-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在校的时间基本上是越来越少，这个时间基本没有项目在做了（应该只剩一个毕设——已被安排貌似还不错就是比较简单）。反观之前做的很多项目，理想跟现实总是大相径庭——这也是客观事实，不过从项目里还是得到了很多东西，再加上实习期间自己的学习感触，如果很多校内项目重新来过，我们有很多方面可以改进，不仅仅是跳过那些不必要的过程或者更高效的完成项目中的某些阶段，更重要的是清晰的知道自己要怎么做和如何做得更好。</p>
+<h2 id="目标与计划齐飞"><a href="#目标与计划齐飞" class="headerlink" title="目标与计划齐飞"></a>目标与计划齐飞</h2><p>一句废话。然而事实是说到做不到的人太多了，废话也要不停说。</p>
+<p>不管是“自发性”的还是“委托性”的项目，都需要一个相对规范的Plan，成员的空余时间决定了团队的进度安排和整体走向，很多项目就是在漫无目的的敲敲打打中晃过去了大部分的时间，过了很久才发现只做了一点点东西或者距离目标相去甚远。</p>
+<p>学过《软件项目管理》的同学应该了解其中的奥妙，没看过也没关系，只要懂目标，分步规划就好了，这样总是没错的。从计划的角度看，很多人在项目中学到的不单单是如何编程和解决问题，更重要的是知道了如何对项目的状况进行管理。</p>
+<p>管理，这个词就这样轻松的进入了你的世界，不知不觉。</p>
+<p>如果重新做这些项目，把目标和工作计划制定的井井有条，效率的提升可能是难以想象的，不仅仅是今天的总结和明天的Issue，更重要的是每个成员都对项目有一个整体的把我和对自我功能性的明确，这是校内项目跟商业项目最为不同的一点。</p>
+<h2 id="不靠谱的用户才是好用户"><a href="#不靠谱的用户才是好用户" class="headerlink" title="不靠谱的用户才是好用户"></a>不靠谱的用户才是好用户</h2><p>以前犯过这样的错误：想要一个非常确定的需求。后来渐渐发现这是不现实的。有Idea的人不见得就想的清楚Detail。</p>
+<p>很多同学的状况是：“好啦，你给我一个需求文档吧，详详细细，我只要知道实现什么功能嘛”，“你给的不全要我怎么办，这样我没办法做啊”，“这个怎么是BUG呢，我是按照需求来做的啊”，“那个BUG我改了，如果还不行，就没办法了”……</p>
+<p>很难说孰是孰非，如果站在一个码农的角度，你可能合格了（当然不排除这里面的消极情绪，很可能这是一个“冗余”的开发过程或者干脆就是一个“被动受制”的项目）；如果把自己提升到开发者或者更高的层次，这样的做法显然有问题。</p>
+<p>“唯一不变的就是需求不停的改变。”绝大多数用户是不知道自己真正想要什么的，他们心里只有模糊的概念，这时候的需求分析就是从用户的角度和实际的角度来综合分析出需要实现的目标（这样说也许简单了，如果是商业项目的话需要考虑的方面会更多），然后去同用户进行确认，然后迭代基本就不会出现大的问题了。细节因项目而异，自己感知吧。</p>
+<h2 id="部署什么的Bullshit"><a href="#部署什么的Bullshit" class="headerlink" title="部署什么的Bullshit"></a>部署什么的Bullshit</h2><pre><code>做一个成品的项目，最终需要生成很多的东西：源码包，文档（Manual，Demand，Design），可运行包（或者是线上），DB，其他Data……一开始我们的项目，一到最后需要Test的阶段基本上可以用惨不忍睹来形容——每一步都需要不停的重复一些繁琐的配置或者运行脚本机制等等，究其缘由，其实是部署的问题。
+
+部署包括了：新版本的部署，版本回退，数据恢复，应急响应等等方案。当时我们做得东西，由于一些连接语句是hard code的，导致部署需要大量的人工干预，成本很高。但是反观实习单位和目前行业的状况，很大的产品，在azure和sql环境配置好的情况下，可以快速实现本地部署。而且现在每周可以实现小改动的发布，每月发布新的feature。这之间的差异是何等巨大。
+
+如果周期性的迭代发布，当人员增多的时候，可能互相并不了解彼此之间的改动，可能形成冲突。另外，当测试覆盖率不够高或者其他因素导致新部署的版本有一些灾难性的问题，需要把在线版本回退到以前版本，该如何去做。为了避免一些开发当中导致的数据问题，我们也应该将开发数据库和真实数据库分离。
+
+做在线服务，总会遇到这样或者那样的问题，如何快速响应，如何trouble shooting，怎么快速的发布hot fix；做离线服务，如何做到流程精化；做分布式服务，如何做到CAP，又需要根据情况舍弃哪一种特性，等等。
+
+如果我重新做在校项目，我会先集中精力把这些基本的问题解决掉。考虑到实验室的情况，我可能会用一台性能好的机器做产品的服务器。然后用另外一台机器，当成内部服务器。每周定时把所有新的改动发布到内部服务器，每两周或者每个月发布一次到正式版本。而每个人都是基于自己的机器上的local的系统和DB进行开发。
+</code></pre><h2 id="开发？你挑水来我浇园"><a href="#开发？你挑水来我浇园" class="headerlink" title="开发？你挑水来我浇园"></a>开发？你挑水来我浇园</h2><pre><code>在我看来，敏捷开发和瀑布模型并没有本质上的不可调和。理想的开发模式是，在更短的周期里面完成设计、开发、测试、发布的流程。因为周期更短，所以每一次迭代的成本更低，犯错的代价更小。所以不用等到万事俱备再去开发（这是我以前常犯的一个错误，总是希望自己能把一切准备都做好，殊不知这样不仅不现实而且无形中浪费着自己已有的资源），可以更大胆的尝试。因为开发周期变得更短，所以测试和开发可能更加需要并行，甚至基于产品测试(TIP, test in production)。
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/feeling/" rel="tag"># feeling</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/09/21/python-pdb/" rel="next" title="Python程序调试">
+                <i class="fa fa-chevron-left"></i> Python程序调试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/10/31/linux-get-process-return-value/" rel="prev" title="Linux获取进程返回值">
+                Linux获取进程返回值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标与计划齐飞"><span class="nav-number">1.</span> <span class="nav-text">目标与计划齐飞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不靠谱的用户才是好用户"><span class="nav-number">2.</span> <span class="nav-text">不靠谱的用户才是好用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署什么的Bullshit"><span class="nav-number">3.</span> <span class="nav-text">部署什么的Bullshit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发？你挑水来我浇园"><span class="nav-number">4.</span> <span class="nav-text">开发？你挑水来我浇园</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

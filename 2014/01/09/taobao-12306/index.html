@@ -1,0 +1,706 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="feeling," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="淘宝代替12306的可行性分析这又是一个秀智商的时刻。
+当知乎被五毛党入侵以后，我就一阵恶心。忍不住这里说一下。
+实际上，撇开铁道部是否约谈百度阿里IBM的可能性，就是约谈了，我相信绝对不是“只是钱的问题”和“钱不是问题”这两个问题。
+单纯从技术的角度理解这个问题，五毛党你们草鸡了，可以改名叫无脑党了。我来一条一条说一下。
+（以下谬论均是原文）
+谬论1. 放淘宝做依旧会卡死，不过是以不同的方式，比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="淘宝代替12306的可行性分析">
+<meta property="og:url" content="http://chen-tao.github.io/2014/01/09/taobao-12306/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="淘宝代替12306的可行性分析这又是一个秀智商的时刻。
+当知乎被五毛党入侵以后，我就一阵恶心。忍不住这里说一下。
+实际上，撇开铁道部是否约谈百度阿里IBM的可能性，就是约谈了，我相信绝对不是“只是钱的问题”和“钱不是问题”这两个问题。
+单纯从技术的角度理解这个问题，五毛党你们草鸡了，可以改名叫无脑党了。我来一条一条说一下。
+（以下谬论均是原文）
+谬论1. 放淘宝做依旧会卡死，不过是以不同的方式，比">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="淘宝代替12306的可行性分析">
+<meta name="twitter:description" content="淘宝代替12306的可行性分析这又是一个秀智商的时刻。
+当知乎被五毛党入侵以后，我就一阵恶心。忍不住这里说一下。
+实际上，撇开铁道部是否约谈百度阿里IBM的可能性，就是约谈了，我相信绝对不是“只是钱的问题”和“钱不是问题”这两个问题。
+单纯从技术的角度理解这个问题，五毛党你们草鸡了，可以改名叫无脑党了。我来一条一条说一下。
+（以下谬论均是原文）
+谬论1. 放淘宝做依旧会卡死，不过是以不同的方式，比">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2014/01/09/taobao-12306/"/>
+
+
+
+
+
+  <title> 淘宝代替12306的可行性分析 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/01/09/taobao-12306/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                淘宝代替12306的可行性分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-01-09T00:00:00+08:00">
+                2014-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="淘宝代替12306的可行性分析"><a href="#淘宝代替12306的可行性分析" class="headerlink" title="淘宝代替12306的可行性分析"></a>淘宝代替12306的可行性分析</h1><p>这又是一个秀智商的时刻。</p>
+<p>当知乎被五毛党入侵以后，我就一阵恶心。忍不住这里说一下。</p>
+<p>实际上，撇开铁道部是否约谈百度阿里IBM的可能性，就是约谈了，我相信绝对不是“只是钱的问题”和“钱不是问题”这两个问题。</p>
+<p>单纯从技术的角度理解这个问题，五毛党你们草鸡了，可以改名叫无脑党了。我来一条一条说一下。</p>
+<p>（以下谬论均是原文）</p>
+<p>谬论1. 放淘宝做依旧会卡死，不过是以不同的方式，比如说界面更好看，等待的时候给你玩玩Flash游戏。</p>
+<pre><code>负载均衡之类的优化不想讲，对五毛讲了也是白讲，我们就看今天的新闻吧，看看黄牛们的“壮举”，为什么黄牛可以这样的刷票？还说系统做的好？再次笑尿。
+
+Flash游戏……你是双11双12刷红包刷太多了吧亲，这个级别PV/UV的网站，为了响应请求是一定不要Flash这类东西的，技术渣啊。拖累展现又问题多多。
+
+是不是会卡死，我借用你们的话吧，这是一个“钱能解决的问题”。
+</code></pre><p>谬论2. 运力不增加，票不增加，买不到票的还是会有很多。</p>
+<pre><code>说到社会压力和经济发展上的地域不平衡，是了，那你是不是要再说一下体质问题，是不是再来个资本主义好呢？如果淘宝来做，买不到票的固然会有，但一定不是以现在这种方式产生，在购票中加入有效的保障机制，在搞“平等经济”之前先在能力范围内“差异化”，我替你说吧。
+</code></pre><p>谬论3. 购买者个人隐私问题。</p>
+<pre><code>话说，你哪里有真正意义上的“隐私”了？提出身份信息，实际上还是在保护消费者，这条，水。
+</code></pre><p>谬论4. 防止支付宝淘宝一家独大。</p>
+<pre><code>市场经济仍然有背后上层建筑的调控与掣肘，你想太多，水。
+</code></pre><p>谬论5. 黄牛的日子会更好。</p>
+<pre><code>如果淘宝想把自己搞臭的话，呵呵，依然水。
+
+…………
+</code></pre><p>不再说了，很容易看到这些所谓一条一条的无知。切正题。假如真有约谈这件事，为啥大家都拒绝了？</p>
+<p>不能说企事业单位确实缺乏效率，然而事实是，如果有上司公司来做这件事，一定会被甲方“纠缠致死”，费力不讨好是肯定的——一旦有任何问题，一旦出现任何的投诉，一旦有任何买票的同学对这个东西有一点不满，这个事情就会因为牵扯到“公共设施”而被无限的放大，而淘宝这样的公司都要拿着辛苦经营的口碑、投资者各位董事对公司的期望来去抵消这样的负面效应，且不说对股价的影响，至少在公司内部就会产生“怨声载道”的情况，对整体的发展乃至这样的项目都是非常不利的——这个时候，你说“钱不是问题”，可你不能有点问题就要我大铁道部（甲方）加钱吧？那不成啊，得按合同办啊！接这个东西，是不是作死呢？因为没有大公司接，我们暂时不得而知……（呵呵）</p>
+<p>所以呢，与其说我淘宝百度IBM不想做，不如干脆就说“哎呦我做不了”，这不是很明白的事情吗？从事IT行业的人虽然多，然而在那个Level公司也就那么多，圈子也就那么大，人也就那么几个，马云不趟这摊子浑水，你当我别的公司也不明白吗？恐怕只有维护铁道部的五毛党和12306方面的水军自以为是了吧。</p>
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#543" title="2014-08-19 15:42:35">石灰竖窑</a>:</strong> 不错，谢谢楼主分享………..么么哒</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/feeling/" rel="tag"># feeling</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/07/xx-feel/" rel="next" title="XX認知記錄">
+                <i class="fa fa-chevron-left"></i> XX認知記錄
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/10/legal-high-2-episode09/" rel="prev" title="LEGAL HIGH 2 Episode09">
+                LEGAL HIGH 2 Episode09 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#淘宝代替12306的可行性分析"><span class="nav-number">1.</span> <span class="nav-text">淘宝代替12306的可行性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comments"><span class="nav-number">1.1.</span> <span class="nav-text">Comments</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

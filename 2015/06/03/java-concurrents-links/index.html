@@ -1,0 +1,916 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="并发
+
+为什么要并发？ 比如因为IO操作遇到了阻塞，CPU可以转去执行其他线程，这时并发的优点就显示出来了：更高效的利用CPU，提高程序的响应速度。
+
+Java的线程机制是抢占式的，会为每个线程分配时间片。
+
+线程中断与上下文切换
+
+并发编程 - 多线程的代价及上下文切换 上下文切换与多处理器
+
+Java本身还有另外一个“线程中断”
+
+详细分析Java中断机制  
+
+基本的线程机制
+
+使用Runn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java并发资源汇总">
+<meta property="og:url" content="http://chen-tao.github.io/2015/06/03/java-concurrents-links/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="并发
+
+为什么要并发？ 比如因为IO操作遇到了阻塞，CPU可以转去执行其他线程，这时并发的优点就显示出来了：更高效的利用CPU，提高程序的响应速度。
+
+Java的线程机制是抢占式的，会为每个线程分配时间片。
+
+线程中断与上下文切换
+
+并发编程 - 多线程的代价及上下文切换 上下文切换与多处理器
+
+Java本身还有另外一个“线程中断”
+
+详细分析Java中断机制  
+
+基本的线程机制
+
+使用Runn">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java并发资源汇总">
+<meta name="twitter:description" content="并发
+
+为什么要并发？ 比如因为IO操作遇到了阻塞，CPU可以转去执行其他线程，这时并发的优点就显示出来了：更高效的利用CPU，提高程序的响应速度。
+
+Java的线程机制是抢占式的，会为每个线程分配时间片。
+
+线程中断与上下文切换
+
+并发编程 - 多线程的代价及上下文切换 上下文切换与多处理器
+
+Java本身还有另外一个“线程中断”
+
+详细分析Java中断机制  
+
+基本的线程机制
+
+使用Runn">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/06/03/java-concurrents-links/"/>
+
+
+
+
+
+  <title> java并发资源汇总 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/06/03/java-concurrents-links/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java并发资源汇总
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-03T00:00:00+08:00">
+                2015-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="">并发</h2>
+
+<p>为什么要并发？ 比如因为IO操作遇到了阻塞，CPU可以转去执行其他线程，这时并发的优点就显示出来了：更高效的利用CPU，提高程序的响应速度。</p>
+
+<p>Java的线程机制是抢占式的，会为每个线程分配时间片。</p>
+
+<h3 id="">线程中断与上下文切换</h3>
+
+<p><a href="http://www.cnblogs.com/ktgu/p/3529144.html" target="_blank" rel="external">并发编程 - 多线程的代价及上下文切换</a> <br><br><a href="http://ifeve.com/context-switching-and-multi-processor/" target="_blank" rel="external">上下文切换与多处理器</a></p>
+
+<h3 id="java">Java本身还有另外一个“线程中断”</h3>
+
+<p><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism" target="_blank" rel="external">详细分析Java中断机制</a>  </p>
+
+<h2 id="">基本的线程机制</h2>
+
+<h3 id="runnablethread">使用Runnable和Thread创建线程：</h3>
+
+<p><a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html" target="_blank" rel="external">Defining and Starting a Thread</a> <br><br><a href="http://stackoverflow.com/questions/541487/implements-runnable-vs-extends-thread" target="_blank" rel="external">“implements Runnable” vs. “extends Thread”</a></p>
+
+<h3 id="executor">使用执行器Executor执行线程：</h3>
+
+<p><a href="http://blog.csdn.net/ns_code/article/details/17465497" target="_blank" rel="external">并发新特性—Executor框架与线程池（含代码）</a> <br><br><a href="http://blog.csdn.net/ghsau/article/details/7443324" target="_blank" rel="external">Java线程(六)：线程池</a> <br><br><a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html" target="_blank" rel="external">Interface Executor</a></p>
+
+<h3 id="callable">让线程中的任务返回值：Callable</h3>
+
+<p><a href="http://blog.csdn.net/ghsau/article/details/7451464" target="_blank" rel="external">Java线程(七)：Callable和Future</a> <br><br><a href="http://www.journaldev.com/1090/java-callable-future-example" target="_blank" rel="external">Java Callable Future Example</a></p>
+
+<h3 id="sleepyield">休眠sleep()、让步yield()</h3>
+
+<p>休眠（sleep）和让步(yield)会导致线程阻塞，CPU转而执行其他线程。对调用yield时，是在建议具有相同优先级的其他线程运行。</p>
+
+<p><a href="http://dylanxu.iteye.com/blog/1322066" target="_blank" rel="external">java之yield(),sleep(),wait()区别详解</a>  </p>
+
+<h3 id="">线程优先级、后台线程</h3>
+
+<p><a href="http://www.cnblogs.com/ChrisWang/archive/2009/11/28/1612815.html" target="_blank" rel="external">关于Java的Daemon线程的理解</a> <br><br><a href="http://www.cnblogs.com/luochengor/archive/2011/08/11/2134818.html" target="_blank" rel="external">JAVA并发编程——守护线程(Daemon Thread)</a> <br><br><a href="http://www.cnblogs.com/skywang12345/p/3479982.html" target="_blank" rel="external">Java多线程系列–“基础篇”10之 线程优先级和守护线程</a> <br><br><a href="http://blog.sina.com.cn/s/blog_5c5bc9070100yty5.html" target="_blank" rel="external">java 线程的优先级Priority</a>  </p>
+
+<h3 id="join">join()</h3>
+
+<p><a href="http://www.cnblogs.com/techyc/p/3286678.html" target="_blank" rel="external">简谈Java的join()方法</a> <br><br><a href="http://uule.iteye.com/blog/1101994" target="_blank" rel="external">Java多线程中join方法的理解</a>  </p>
+
+<h3 id="">捕获线程的异常</h3>
+
+<p><a href="http://www.cnblogs.com/chenfei0801/archive/2013/04/23/3039286.html" target="_blank" rel="external">JAVA 线程中的异常捕获</a>  </p>
+
+<h2 id="">共享受限资源</h2>
+
+<p><a href="http://blog.csdn.net/xiao__gui/article/details/8934832" target="_blank" rel="external">Java线程安全和非线程安全</a>  </p>
+
+<h3 id="synchronized">synchronized</h3>
+
+<p><a href="http://blog.csdn.net/ghsau/article/details/7424694" target="_blank" rel="external">Java线程(二)：线程同步synchronized和volatile</a> <br><br><a href="http://stackoverflow.com/questions/1085709/what-does-synchronized-mean" target="_blank" rel="external">What does ‘synchronized’ mean?</a></p>
+
+<h3 id="reentrantlock">重入锁ReentrantLock</h3>
+
+<p><a href="http://blog.csdn.net/ghsau/article/details/7461369" target="_blank" rel="external">Java线程(八)：锁对象Lock-同步问题更完美的处理方式</a> <br><br><a href="https://www.ibm.com/developerworks/cn/java/j-jtp10264/" target="_blank" rel="external">Java 理论与实践: JDK 5.0 中更灵活、更具可伸缩性的锁定机制</a>  </p>
+
+<h3 id="">锁</h3>
+
+<p><a href="http://ifeve.com/java_lock_see1/" target="_blank" rel="external">java锁的种类以及辨析（一）：自旋锁</a> <br><br><a href="http://ifeve.com/java_lock_see2/" target="_blank" rel="external">Java锁的种类以及辨析（二）：自旋锁的其他种类</a> <br><br><a href="http://ifeve.com/java_lock_see3/" target="_blank" rel="external">Java锁的种类以及辨析（三）：阻塞锁</a> <br><br><a href="http://ifeve.com/java_lock_see4/" target="_blank" rel="external">Java锁的种类以及辨析（四）：可重入锁</a>  </p>
+
+<h3 id="volatile">Volatile变量</h3>
+
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-jtp06197.html" target="_blank" rel="external">Java 理论与实践: 正确使用 Volatile 变量</a> <br><br><a href="http://www.infoq.com/cn/articles/ftf-java-volatile" target="_blank" rel="external">聊聊并发（一）——深入分析Volatile的实现原理</a>  </p>
+
+<h3 id="cas">CAS</h3>
+
+<p><a href="http://zl198751.iteye.com/blog/1848575" target="_blank" rel="external">JAVA CAS原理深度分析</a>  </p>
+
+<h3 id="">原子类</h3>
+
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-jtp11234/" target="_blank" rel="external">Java 理论与实践: 流行的原子</a> <br><br><a href="http://blog.csdn.net/vernonzheng/article/details/8206349" target="_blank" rel="external">Java多线程（二）之Atomic：原子变量与原子类</a> </p>
+
+<h3 id="criticalsection">临界区(critical section)</h3>
+
+<p><a href="http://ifeve.com/race-conditions-and-critical-sections/" target="_blank" rel="external">竞态条件与临界区</a>  </p>
+
+<h3 id="threadlocal">线程本地存储ThreadLocal</h3>
+
+<p><a href="http://blog.csdn.net/ghsau/article/details/15732053" target="_blank" rel="external">Java线程(篇外篇)：线程本地变量ThreadLocal</a> <br><br><a href="http://my.oschina.net/lichhao/blog/111362" target="_blank" rel="external">彻底理解ThreadLocal</a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/lang/ThreadLocal.html" target="_blank" rel="external">Class ThreadLocal<t></t></a> <br><br><a href="http://tutorials.jenkov.com/java-concurrency/threadlocal.html" target="_blank" rel="external">Java ThreadLocal</a> <br><br><a href="http://stackoverflow.com/questions/817856/when-and-how-should-i-use-a-threadlocal-variable" target="_blank" rel="external">When and how should I use a ThreadLocal variable?</a>  </p>
+
+<h2 id="">终结任务</h2>
+
+<h3 id="">线程状态</h3>
+
+<p><a href="http://my.oschina.net/mingdongcheng/blog/139263" target="_blank" rel="external">一张图让你看懂JAVA线程间的状态转换</a> <br><br><a href="http://www.journaldev.com/1044/life-cycle-of-thread-understanding-thread-states-in-java" target="_blank" rel="external">Life Cycle of Thread – Understanding Thread States in Java</a> <br><br><a href="http://www.uml-diagrams.org/examples/java-6-thread-state-machine-diagram-example.html" target="_blank" rel="external">Java 6 Thread States and Life Cycle</a>  </p>
+
+<h3 id="">中断线程</h3>
+
+<p><a href="http://www.infoq.com/cn/articles/java-interrupt-mechanism" target="_blank" rel="external">详细分析Java中断机制</a> <br><br><a href="http://stackoverflow.com/questions/3590000/what-does-java-lang-thread-interrupt-do" target="_blank" rel="external">What does java.lang.Thread.interrupt() do?</a>  </p>
+
+<h3 id="">如何停止线程</h3>
+
+<p>stop()方法已经被废弃了。</p>
+
+<p><a href="http://ibruce.info/2013/12/19/how-to-stop-a-java-thread/" target="_blank" rel="external">如何停止一个正在运行的java线程</a> <br><br><a href="http://stackoverflow.com/questions/3194545/how-to-stop-a-java-thread-gracefully" target="_blank" rel="external">How to stop a java thread gracefully?</a>  </p>
+
+<h2 id="">线程协作</h2>
+
+<h3 id="waitnotifynotifyall">wait()、notify()、notifyAll()</h3>
+
+<blockquote><br>  <p>阻塞是进程在等待某种资源,但是不能马上得到，必须等待别的进程释放资源才能继续，属于被动无法得到时间片，内核就切换其它进程运行 <br><br>  休眠一般为主动式的放弃一段CPU时间。 <br><br>  挂起是运行时间片到了,内核要调度其它进程运行,被动式的失去CPU。（挂起可以被别的进程给抢占导致挂起，也可以自己主动挂起自己。）</p><br></blockquote>
+
+<p>wait()会在等待时将当前任务挂起，等到notify()/notifyAll()发生时，任务才被唤醒。</p>
+
+<p>调用sleep()、yield()时不会释放锁；调用wait()时线程被挂起，对象上的锁也会被释放。</p>
+
+<p>wait()、notify()、notifyAll()属于类Object，不属于Thread。</p>
+
+<p>只能在同步控制方法或者同步控制块（synchronized）中调用wait()、notify()、notifyAll()。而sleep()、yield()可以在非同步控制方法里使用。</p>
+
+<p>notifyAll()比notify()更安全一些。使用notify()时，众多等待同一个锁的任务中只有一个会被唤醒。</p>
+
+<p><a href="http://www.journaldev.com/1037/java-thread-wait-notify-and-notifyall-example" target="_blank" rel="external">Java Thread wait, notify and notifyAll Example</a>  </p>
+
+<h3 id="lockcondition">Lock和Condition</h3>
+
+<p><a href="http://blog.csdn.net/ghsau/article/details/7481142" target="_blank" rel="external">Java线程(九)：Condition-线程通信更高效的方式</a>  </p>
+
+<h2 id="">死锁</h2>
+
+<p><a href="http://www.cnblogs.com/vettel/p/3438257.html" target="_blank" rel="external">哲学家就餐问题</a> <br><br><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-deadlock/" target="_blank" rel="external">一个 Linux 上分析死锁的简单方法、死锁的4个必要条件</a> <br><br><a href="http://magustest.com/blog/computer/deadlock-condition-and-how-to-prevent/" target="_blank" rel="external">什么是死锁，死锁的四个必要条件以及处理死锁的策略</a> <br><br><a href="http://ifeve.com/deadlock-prevention/" target="_blank" rel="external">如何避免死锁</a>  </p>
+
+<h2 id="">类库中的其他构件</h2>
+
+<h3 id="countdownlatch">CountDownLatch</h3>
+
+<p>CountDownLatch，闭锁。</p>
+
+<p>首先给该对象一个初始计数值，每个在该该对象上调用await()的任务会阻塞。当计数值到0时，所有因为await()而阻塞的任务都继续执行。</p>
+
+<p><a href="http://zapldy.iteye.com/blog/746458" target="_blank" rel="external">Java CountDownLatch应用</a> <br><br><a href="http://tutorials.jenkov.com/java-util-concurrent/countdownlatch.html" target="_blank" rel="external">CountDownLatch</a> <br><br><a href="http://www.cnblogs.com/skywang12345/p/3533887.html" target="_blank" rel="external">Java多线程系列–“JUC锁”09之 CountDownLatch原理和示例</a>  </p>
+
+<h3 id="cyclicbarrier">CyclicBarrier</h3>
+
+<p>CyclicBarrier，关卡，栅栏。</p>
+
+<blockquote><br>  <p>CountDownLatch和CyclicBarrier的区别<br>  (01) CountDownLatch的作用是允许1或N个线程等待其他线程完成执行；而CyclicBarrier则是允许N个线程相互等待。<br>  (02) CountDownLatch的计数器无法被重置；CyclicBarrier的计数器可以被重置后使用，因此它被称为是循环的barrier。</p><br></blockquote>
+
+<p><a href="http://www.cnblogs.com/skywang12345/p/3533995.html" target="_blank" rel="external">Java多线程系列–“JUC锁”10之 CyclicBarrier原理和示例</a> <br><br><a href="http://tutorials.jenkov.com/java-util-concurrent/cyclicbarrier.html" target="_blank" rel="external">CyclicBarrier</a>  </p>
+
+<h3 id="blockingqueue">BlockingQueue</h3>
+
+<p><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html" target="_blank" rel="external">Interface BlockingQueue<e></e></a> <br><br><a href="http://www.infoq.com/cn/articles/java-blocking-queue" target="_blank" rel="external">聊聊并发（七）——Java中的阻塞队列</a>  </p>
+
+<h3 id="delayqueue">DelayQueue</h3>
+
+<p><a href="http://www.concretepage.com/java/example_delayqueue_java" target="_blank" rel="external">Examples of DelayQueue in Java</a> <br><br><a href="http://www.cnblogs.com/jobs/archive/2007/04/27/730255.html" target="_blank" rel="external">精巧好用的DelayQueue</a>  </p>
+
+<h3 id="timertimertask">Timer和TimerTask</h3>
+
+<p>这两个在<code>java.util</code>这个包下面。</p>
+
+<blockquote><br>  <p>Timer和TimerTask可以做为实现线程的第三种方式，前两种方式分别是继承自Thread类和实现Runnable接口。</p><br></blockquote>
+
+<p><a href="http://blog.csdn.net/ghsau/article/details/7436458" target="_blank" rel="external">Java线程(五)：Timer和TimerTask</a>  </p>
+
+<h3 id="scheduledthreadpoolexecutor">ScheduledThreadPoolExecutor</h3>
+
+<p><a href="http://www.importnew.com/7276.html" target="_blank" rel="external">Java ScheduledThreadPoolExecutor延迟或周期性执行任务</a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ScheduledThreadPoolExecutor.html" target="_blank" rel="external">Class ScheduledThreadPoolExecutor</a>  </p>
+
+<h3 id="semaphore">信号量Semaphore</h3>
+
+<p><a href="http://www.cnblogs.com/whgw/archive/2011/09/29/2195555.html" target="_blank" rel="external">Java 信号量 Semaphore 介绍</a> <br><br><a href="http://www.javacodegeeks.com/2011/09/java-concurrency-tutorial-semaphores.html" target="_blank" rel="external">Java Concurrency Tutorial – Semaphores</a>  </p>
+
+<h3 id="exchanger">Exchanger</h3>
+
+<p>用于两个线程之间交换数据。</p>
+
+<p><a href="http://blog.csdn.net/andycpp/article/details/8854593" target="_blank" rel="external">Java线程之Exchanger</a>  </p>
+
+<h2 id="">性能调优</h2>
+
+<blockquote><br>  <p>使用Lock通常比sychronized高效，sychronized的开销看起来变化范围很大，Lock相对一致。synchronized产生的代码，与Lock所需要的“加锁-try/finally-解锁”相比，可读性更高。</p><br></blockquote>
+
+<h3 id="copyonwritearraylistcopyonwritearrayset">CopyOnWriteArrayList、CopyOnWriteArraySet</h3>
+
+<p>在该类的对象中，写入将导致创建整个底层数组的副本，而原数组保留在原地，使得复制的数组在被修改时，读取操作可以安全的执行。当对副本的修改完成时，会发生一个原子性的操作：用副本替换源数组，使得新的读取操作可以看到这个新的修改。</p>
+
+<p><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CopyOnWriteArrayList.html" target="_blank" rel="external">Class CopyOnWriteArrayList<e></e></a> <br><br><a href="http://www.javamex.com/tutorials/synchronization_concurrency_8_copy_on_write.shtml" target="_blank" rel="external">Java copy-on-write collections</a> <br><br><a href="http://www.cnblogs.com/skywang12345/p/3498497.html" target="_blank" rel="external">Java多线程系列–“JUC集合”03之 CopyOnWriteArraySet</a>  </p>
+
+<h3 id="concurrenthashmapconcurrentlinkedqueue">ConcurrentHashMap、ConcurrentLinkedQueue</h3>
+
+<p><a href="http://www.infoq.com/cn/articles/ConcurrentHashMap" target="_blank" rel="external">聊聊并发（四）——深入分析ConcurrentHashMap</a> <br><br><a href="http://www.infoq.com/cn/articles/ConcurrentLinkedQueue" target="_blank" rel="external">聊聊并发（六）——ConcurrentLinkedQueue的实现原理分析</a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentHashMap.html" target="_blank" rel="external">Class ConcurrentHashMap<k,v></k,v></a> <br><br><a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentLinkedQueue.html" target="_blank" rel="external">Class ConcurrentLinkedQueue<e></e></a>  </p>
+
+<h3 id="">乐观锁</h3>
+
+<p><a href="http://my.oschina.net/u/1445731/blog/420263" target="_blank" rel="external">悲观锁与乐观锁</a> <br><br><a href="http://zh.wikipedia.org/zh/%E4%B9%90%E8%A7%82%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6" target="_blank" rel="external">乐观并发控制</a> <br><br><a href="http://en.wikipedia.org/wiki/Concurrency_control" target="_blank" rel="external">Concurrency control</a> <br><br><a href="http://en.wikipedia.org/wiki/Optimistic_concurrency_control" target="_blank" rel="external">Optimistic concurrency control</a></p>
+
+<h3 id="readwritelock">读写锁ReadWriteLock</h3>
+
+<p>适合读多写少的场景。</p>
+
+<p><a href="http://ifeve.com/read-write-locks/" target="_blank" rel="external">Java中的读/写锁</a> <br><br><a href="http://examples.javacodegeeks.com/core-java/util/concurrent/locks-concurrent/readwritelock/java-readwritelock-example/" target="_blank" rel="external">Java ReadWriteLock Example</a> <br><br><a href="http://tutorials.jenkov.com/java-util-concurrent/readwritelock.html" target="_blank" rel="external">ReadWriteLock</a>  </p>
+
+<h2 id="">生产者消费者问题</h2>
+
+<p><a href="http://blog.csdn.net/ghsau/article/details/7433673" target="_blank" rel="external">Java线程(三)：线程协作-生产者/消费者问题</a>  </p>
+
+<h2 id="">其他</h2>
+
+<p><a href="http://www.importnew.com/14506.html" target="_blank" rel="external">Java并发的四种风味：Thread、Executor、ForkJoin和Actor</a> <br><br><a href="http://www.journaldev.com/1079/java-thread-tutorial" target="_blank" rel="external">Java Thread and Multithreading Tutorial</a> <br><br><a href="http://segmentfault.com/a/1190000000389806" target="_blank" rel="external">JAVA 多线程和并发基础面试问答</a> <br><br><a href="http://www.journaldev.com/1162/java-multi-threading-concurrency-interview-questions-with-answers" target="_blank" rel="external">Java Multi-Threading and Concurrency Interview Questions with Answers</a> <br><br><a href="http://en.wikipedia.org/wiki/Monitor_%28synchronization%29" target="_blank" rel="external">Monitor (synchronization)</a><br><a href="http://ifeve.com/talk-concurrency/" target="_blank" rel="external">聊聊并发</a>  </p>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/30/mu-xin-some/" rel="next" title="遗狂篇">
+                <i class="fa fa-chevron-left"></i> 遗狂篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/06/linux-curl-explain/" rel="prev" title="linux curl explain">
+                linux curl explain <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">线程中断与上下文切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java"><span class="nav-number">1.2.</span> <span class="nav-text">Java本身还有另外一个“线程中断”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">基本的线程机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#runnablethread"><span class="nav-number">2.1.</span> <span class="nav-text">使用Runnable和Thread创建线程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor"><span class="nav-number">2.2.</span> <span class="nav-text">使用执行器Executor执行线程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#callable"><span class="nav-number">2.3.</span> <span class="nav-text">让线程中的任务返回值：Callable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleepyield"><span class="nav-number">2.4.</span> <span class="nav-text">休眠sleep()、让步yield()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.5.</span> <span class="nav-text">线程优先级、后台线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">2.6.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.7.</span> <span class="nav-text">捕获线程的异常</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">共享受限资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized"><span class="nav-number">3.1.</span> <span class="nav-text">synchronized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reentrantlock"><span class="nav-number">3.2.</span> <span class="nav-text">重入锁ReentrantLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.3.</span> <span class="nav-text">锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number">3.4.</span> <span class="nav-text">Volatile变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas"><span class="nav-number">3.5.</span> <span class="nav-text">CAS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.6.</span> <span class="nav-text">原子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#criticalsection"><span class="nav-number">3.7.</span> <span class="nav-text">临界区(critical section)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threadlocal"><span class="nav-number">3.8.</span> <span class="nav-text">线程本地存储ThreadLocal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">终结任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">4.2.</span> <span class="nav-text">中断线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">4.3.</span> <span class="nav-text">如何停止线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">5.</span> <span class="nav-text">线程协作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#waitnotifynotifyall"><span class="nav-number">5.1.</span> <span class="nav-text">wait()、notify()、notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lockcondition"><span class="nav-number">5.2.</span> <span class="nav-text">Lock和Condition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">7.</span> <span class="nav-text">类库中的其他构件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#countdownlatch"><span class="nav-number">7.1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cyclicbarrier"><span class="nav-number">7.2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#blockingqueue"><span class="nav-number">7.3.</span> <span class="nav-text">BlockingQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delayqueue"><span class="nav-number">7.4.</span> <span class="nav-text">DelayQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timertimertask"><span class="nav-number">7.5.</span> <span class="nav-text">Timer和TimerTask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduledthreadpoolexecutor"><span class="nav-number">7.6.</span> <span class="nav-text">ScheduledThreadPoolExecutor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#semaphore"><span class="nav-number">7.7.</span> <span class="nav-text">信号量Semaphore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exchanger"><span class="nav-number">7.8.</span> <span class="nav-text">Exchanger</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">8.</span> <span class="nav-text">性能调优</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#copyonwritearraylistcopyonwritearrayset"><span class="nav-number">8.1.</span> <span class="nav-text">CopyOnWriteArrayList、CopyOnWriteArraySet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concurrenthashmapconcurrentlinkedqueue"><span class="nav-number">8.2.</span> <span class="nav-text">ConcurrentHashMap、ConcurrentLinkedQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">8.3.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readwritelock"><span class="nav-number">8.4.</span> <span class="nav-text">读写锁ReadWriteLock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">9.</span> <span class="nav-text">生产者消费者问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">10.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

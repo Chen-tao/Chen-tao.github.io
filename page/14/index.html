@@ -1,0 +1,1851 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/page/14/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/page/14/"/>
+
+
+
+
+
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/05/08/internet-door/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/05/08/internet-door/" itemprop="url">
+                  从互联网入口说起
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-08T00:00:00+08:00">
+                2014-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://mmbiz.qpic.cn/mmbiz/pAs67Mdlw1yqYlAbwjABPNJr8xl3H0iaApicaGhkjwJtnVdnNa1P5icbIjmH8xXf2Uz25ahBmpiaGQ7yQ4DmoVxWNw/0" alt=""></p>
+<p>今天看到一篇说互联网入口的文章，我觉得有见地。对于社交来说，谁掌握了通讯录，谁就掌握了入口，谁就掌握了用户和流量。 对我个人来说，很深切的感受是：在没有智能机的日子（= =），我在外想要联系一个人，通讯录成了唯一的方式，而且我还只能忍受电话或者短信（彩信那个速度。。。），SNS类型的App几乎是要替代通讯录的趋势，以前+QQ，现在扫一扫，可能不太商务或者高端，然而这可能是变革的必由阶段，拭目以待的同时也可以大胆猜测一下，未来人与人之间将如何互联。 关于入口。微信，微博，QQ，等等，对这些新的媒介，我感受很深的一点是：以前微博把信息碎片化了，140字成了很多人的“极限”，写多了就蛮不知自我了；但微信公众号提供的往往又是相对有料有深度的干货，所以，“长文”在回归。但公众号给人的感觉又总是“亦真亦幻”的游离在“线下”，这可能是移动互联的一个特点吧——信息传播的快，消逝的也更快，长文的影响力又比不上博客这种类型。那么，我们是否可以认为，文字和知识在爆炸的同时，被过度的稀释掉了？这是一个很严肃的话题。 公众号对于很多人来说，降低了成为写作者的门槛，同时又搭上了移动互联的顺风车，活脱像是一种“依托型”的“自媒体”了。我认为微信可能需要思考的问题是：不再做“产品”，而是在公众号的角度衍生出“亚文化”或者干脆就是“文化现象”，脱胎于产品周期，不拘泥于互联网的精神，融进社会，去创造“新文艺复兴”的可能，探索一点无人触及的想象力荒原。 </p>
+<p>-————————– 文章是我先发表在微信公众号的，所以图片带有水印，这样一个好处是~公众号成了我的免费图床~哈哈，节约了我的网站空间，所以如果有条件同时又不是太专业的文章，我都会采用这种形式，真不错。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/05/06/best-friend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/05/06/best-friend/" itemprop="url">
+                  最佳损友
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-06T00:00:00+08:00">
+                2014-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://mmbiz.qpic.cn/mmbiz/pAs67Mdlw1w5SCSicxVibQhw0s49KicZbXmq9Glg5DHqJYf3FFfZ81acOE0wNicnSKyhuInfLlriceIyCAQUNwg9LBg/0" alt=""> 很多人往往突破不了自己的瓶颈。自知本身就有弱项，急于知道解决办法，但若你告诉他，他又会说其实这些我也知道，以掩饰自己的不知。其实他是因为面子怯于承认自己的短板的。他怕自己的短板太多，被你瞧不起，与你相差太多。而给与建议之人自然明白他的心思，下次便不再说话，日久便与他生疏，因为在短板之人眼里面子重于短板。所以短板之人是因为软弱不敢承认自己短板而短板的，而不是不知自己的短板之处。纵使一辈为井蛙，也断断不能被人小瞧了去。日久，便为自己设置了一道道瓶颈。 </p>
+<p>国人素来崇尚内敛。对于那些素来有博爱之心无法忍住说话欲望的人来说，尤其要谨记。有时你只是委婉地道破了一个真相，便被人疏远了。别人不敢与你说太多，展示太多自己的内心，因为你总会道破他的柔软，让他觉得自己的逊色。</p>
+<p>说白了，短板的人缺的是勇气，而不是能力。一旦别人道破真相，便恼怒不已，阴阳怪气，贬损别人。其实，他是以自己的暴戾之气来掩饰自己的无知。</p>
+<p>他们往往希望你如同菩萨，不言不语，不作为。当他需要时你出现，不需要时你消失。就像打110，有事一个电话你就能来，没事最好坐以待命。如此，你便是他的朋友。在他眼里，作为他的朋友，你要懂得内敛，既可让他从你处获得许多，又可让他不失面子。如此，你才算聪明的朋友。所以，不太聪明之人往往朋友不多，甚至连现有的朋友可能不知什么时候就跑了。</p>
+<p>一个人若病致残喘，便会丢弃面子和里子，战战兢兢爬上手术台，让医生马上动刀，巴不得他马上剜去自己身体的毒瘤。如果医生不理，便焦急万分，翻便医书，如奴仆一般问医生自己是不是要别人世。医生如果推延不给手术，便差使家人送金银细软。因为此刻他想重生。</p>
+<p>所以，一个人想改变，非得觉得自己是心里生了毒瘤，非动刀不可才可改变。而动刀的人还得他自己。</p>
+<p>所以，朋友是不适合给朋友动刀的。因为大多数时间，他只想让你成为他的菩萨，不言不语，该出现时出现，该说时再说，不触碰他的面子。对于我们这种泛泛之辈来说，拿捏好这些好难，也好累。你不是我的父母或者孩子，我真的没有那么多时间与你相处，不知道你的具体喜好，不知道说什么话你高兴，什么话你不高兴。就算我问你，你可能也不会告诉我。因为，你总想让我猜。那样对你来说，是最简单、最省事的方式。</p>
+<p>我不语，并不是我有多宽容，而是我用理智说服了自己，保持了克制。而这一切你悄然未知。我又怎能说于你？日后，我唯有少做不语，才能不让自己动气。这样，你也不会觉得我让你失去了面子。</p>
+<p>所以，大多数人都做不了朋友，因为管不住自己的腿和嘴，而很多人是很敏感的。剩下来的朋友，真的不多。</p>
+<p>很多人怎么努力也立不起来，并非不自知，而是怯于自知，怕自己被别人戳破。</p>
+<p>剩下来仅有的几个，我好爱你们，允许我胡说八道，允许我肆意妄为，允许我无底线地捶打你们。而我回报你们的仅仅是把你家的调料瓶擦一擦，或者一个傻乎乎的表情。</p>
+<p>WP更新了，这次更新妙在我可以抛去很多以前蛋疼的插件了，访问速度也一定会有所提升~真是普天同庆的一件事~这次把单独发在微信公众号的一篇文章拿过来作为试验，想看一下新版编辑器的成效，我想是极好的~</p>
+<p>顺便，我的微信公众号：</p>
+<p><img src="/wp-content/uploads/2014/05/ct.jpg" alt="ct"></p>
+<p>或者直接搜索：吹笳明月夜  or chentaonight</p>
+<p>以上。</p>
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#542" title="2014-08-19 14:55:05">石灰窑设备</a>:</strong> 这个小站的经营者很温柔啊真心让人喜欢</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/30/jvm-overview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/30/jvm-overview/" itemprop="url">
+                  JVM调优--概述
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-30T00:00:00+08:00">
+                2014-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JVM调优总结</p>
+<p>HotSpot Heap结构</p>
+<p> <img src="/wp-content/uploads/2014/04/heap.jpg" alt=""></p>
+<p>JVM调优绕不过的人</p>
+<p><a href="https://blogs.oracle.com/jonthecollector/" target="_blank" rel="external">Jon Masamitsu</a></p>
+<p><a href="https://blogs.oracle.com/jonthecollector" target="_blank" rel="external">https://blogs.oracle.com/jonthecollector</a></p>
+<p>【1】is NewRatio or it’s equivalent. Number 1 would be the total heap size. And just so the guys down the hall don’t start throwing rocks at me, the 0-th most important GC tuning knob is the choice of the type of garbage collector itself. But let’s talk about number 2.</p>
+<p>GC 最重要三个选项</p>
+<p>Ø  选择合适的GC Collector</p>
+<p>Ø  JVM Heap大小</p>
+<p>Ø  Young generation占JVM Heap的比重</p>
+<p>GC Collectors</p>
+<p> <img src="/wp-content/uploads/2014/04/gccollector.jpg" alt=""></p>
+<p>注意：上图中有连线的gc collector 才可以配合使用（上图的6类GC Collector 开启详见 附录1）</p>
+<p>Serial:最简单的collector，只有一个thread负责GC，并且，在执行GC的时候，会暂停整个程序（所谓的“stop-the-world”）</p>
+<p> <img src="/wp-content/uploads/2014/04/serial.jpg" alt=""></p>
+<p>Parallel Scavenge: 和Serial相比，它的特点在于使用multi-thread来处理GC，当然，在执行的时候，仍然会“stop-the-world”，好处在于，暂停的时间也许更短</p>
+<p> <img src="/wp-content/uploads/2014/04/parallel.jpg" alt=""></p>
+<p>ParNew: 它基本上和Parallel Scavenge非常相似，唯一的区别，在于它做了强化能够和CMS一起使用</p>
+<p>Serial Old:单线程，采用的是mark-sweep-compact回收方法，与Serial类似</p>
+<p>Parallel Old:多线程的GC collector</p>
+<p>CMS: 全称“concurrent-mark-sweep”，它是最并发，暂停时间最低的collector，之所以称为concurrent，是因为它在执行GC任务的时候，GC thread是和application thread一起工作的，基本上不需要暂停application thread</p>
+<p><img src="/wp-content/uploads/2014/04/cms.jpg" alt=""></p>
+<p>GC触发时机</p>
+<p>YGC：eden空间不足</p>
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#425" title="2014-06-19 18:46:37">gavin</a>:</strong> 你还搞java？</p>
+<p><strong><a href="#446" title="2014-07-17 16:39:59">CT</a>:</strong> 那是LOL</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/24/unxutils/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/24/unxutils/" itemprop="url">
+                  Windows下Liunx Shell环境模拟--UnxUtils
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-24T00:00:00+08:00">
+                2014-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>  因为系统实在是慢的要死。。。装个虚拟机也好怕怕，就想找一个在Win下面运行Shell命令的东西，开始想直接在Browser里面用（哈哈，这个最好了），但是不能用Tab而且很多命令居然都不支持，我顶你个肺啊！皇天不负有心人！终于我找到了它——UnxUtils。</p>
+<p>  UnxUtils就是用于解决这个为问题的工具集合，它将常用的Linux/Unix命令(包括sed awk)在windows下编译，只需要下载一个压缩包，解压配置环境变量，就可以在Windows使用了Linux/Unix的常用命令了。</p>
+<p>  这个注意的是还有一套类似的工具集合UnxUpdates，但对比后发现，基本只是UnxUtils的子集，大家可以忽略不计。</p>
+<p>使用步骤：<br>1.下载UnxUtils，自由世界的用户请直接官网<a href="http://softlayer-dal.dl.sourceforge.net/project/unxutils/unxutils/current/UnxUtils.zip" target="_blank" rel="external">UnxUtils</a>，墙内用户使用<a href="http://softlayer-dal.dl.sourceforge.net/project/unxutils/unxutils/current/UnxUtils.zip" target="_blank" rel="external">http://softlayer-dal.dl.sourceforge.net/project/unxutils/unxutils/current/UnxUtils.zip</a>。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/15/developer-or-googler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/15/developer-or-googler/" itemprop="url">
+                  Am I really a developer or just a good googler?
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-15T00:00:00+08:00">
+                2014-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>来自<a href="http://www.hanselman.com/blog/AmIReallyADeveloperOrJustAGoodGoogler.aspx" target="_blank" rel="external">http://www.hanselman.com/blog/AmIReallyADeveloperOrJustAGoodGoogler.aspx</a></p>
+<p>值得省思的一个问题。 </p>
+<p>This is a really profound question that deserved an answer. Since I only have so many keystrokes left in my life, I am blogging my thoughts and emailing a link. </p>
+<p>I’ve felt the same way sometimes when playing a video game. It’ll get hard as I progress through the levels, but not crushingly hard. Each level I squeak by I’ll find myself asking, “did I deserve to pass that level? I’m not sure I could do it again.” </p>
+<p>You get that feeling like you’re in over your head, but just a bit. Just enough that you can feel the water getting into your nose but you’re not drowning yet. </p>
+<p>First, remember you are not alone. I think that we grow when we are outside our comfort zone. If it’s not breaking you down, it’s not building you up. </p>
+<p>Second, anything that you want to be good at is worth practicing. Do Code Katas. Do a Project Euler problem every few weeks, if not weekly. </p>
+<p>Third, try programming for a day without Googling. Then two days, maybe a week. See how it feels. Remember that there was a time we programmed without copying our work. </p>
+<p>Fourth, think about the problem, deeply. Read about algorithms, read Programming Pearls, read about Design Patterns. Rather than copying code from Stack Overflow, copy patterns from the greats. </p>
+<p>Fifth, get involved. Go to User Groups, Nerd Dinners, meet with others who feel the same way you do about technology. Stretch. </p>
+<p>What do you think?</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/14/full-cloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/14/full-cloud/" itemprop="url">
+                  Hadoop搭建完整云平台？你还需要更多。
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-14T00:00:00+08:00">
+                2014-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>知乎上的一个问题，<a href="http://www.zhihu.com/question/22031121" target="_blank" rel="external">Hadoop实现了云计算中的哪些构件，又有哪些构件是没有实现的，用Hadoop可以搭建一个完整的云计算平台么？</a></strong></p>
+<p><strong>Hadoop并不完全代表云计算</strong>，所以，<strong>要用Hadoop搭建完整的云计算平台，答案是不够</strong>。我们常说云计算，实际上还是通过计算机的大规模或者说海量处理来为生活中各式各样的人和各行各业服务——所以，核心在“服务”。（当然这是我的理解），关于服务，展开来就是常用的那3种（也是事实上的标准）：SaaS,PaaS,IaaS。对云计算来说，公有和私有，虚拟和存储，这其实是相对讨论的核心。  </p>
+<p>回头说Hadoop。在Google三大论文的直接刺激下，Hadoop社区兴起，而在众多的开源实现中，Hadoop（主项目）可以说是所有已知云计算方面开源项目的一个Top项目。  </p>
+<p>云计算中有哪些构件？发展到目前的技术与规模，并没有一个确切的定论，今天的说的话明天可能就不一样了。但对Hadoop来说，实现了的部分，就是大部分企业在不断发展中所遇到的大部分问题。直接上图：</p>
+<p><img src="/wp-content/uploads/2014/04/m.jpg" alt=""><br>从整体生态系统的角度，从底层存储，到中间的计算模型和框架，再到上层的逻辑处理和流、显示，都有相应开源的实现。这就是你说的构件了。  </p>
+<p>包括我们看到的Hadoop2.0中，引入的新的处理框架，Spark，Storm，YARN（取代MR），都是Hadoop生态系统的完善与实现。  </p>
+<p><strong>Hadoop实现的是在简易硬件的基础上进行尽量高可用性海量计算与处理的中上层模型。Hadoop处理了存储（也只是一部分），虚拟化是没有涉及的，而底层硬件Hadoop也是不涉及的，不管是Hadoop还是其他的项目，只是在软件的层面想通过纵向或者横向的拓展解决所有的问题是不现实的。</strong>Hadoop在硬件这方面，只是在实现中预留或者接入硬件特性，也就是在虚拟化这方面Hadoop只是个“APP”，不是“始作俑者”（用词不当了）。  </p>
+<p>那么，完整的云计算平台呢？  </p>
+<p>按照企业级来说，是要看具体的企业方向和企业类型的，包括IBM和VMware都有提供不同的解决方案。大致上一定是由<strong>单点–&gt;集群–&gt;多层(准分布式)–&gt;硬件–&gt;分布式(地域分布)</strong>来解决的。具体到Hadoop体系的技术，直接去对应上图就好了。  </p>
+<p>从云计算这个概念出现到今天，资料可以说“浩如烟海”了，但很多资料只是互相复制黏贴，并没有说到云计算的核心。我想提出的一个观点是，<strong>完整的云计算平台，依赖的是业务，提供的是存储与支持。</strong>  </p>
+<p>没有业务需求而是照搬网上的资料或者自认为“活用”了某些技术，都可能只是“娱人娱己”。我们看一下互联网负载均衡技术是如何发展的就就更容易理解云计算：  </p>
+<p><strong>客户端缓存–&gt;CDN缓存–&gt;Apache&amp;Nginx静态页面缓存–&gt;PHP和Java动态内存–&gt;Memcache&amp;Other Nosql–&gt;Mysql&amp;Oracle–&gt;HDFS&amp;Other Big Table</strong>  </p>
+<p>从技术的角度看，所有问题解决起来都是层次化的（大家肯定都有写Demo吧），都是根据不同的需求引入不同的技术，在单层单点乃至集群都无法解决问题的时候，新的计算框架，云计算与网格计算乃至动画需要的大规模渲染都在需要的时候顺理成章的引入。总之，完整的云计算平台，对于不同的公司业务都是不同的，拿腾讯来说，平台的组件多如牛毛，“平台”只是提供最基础的服务：存储与支持，其他的都需要业务根据自身的特点在其上进行构建（相信大公司都是有自己的完整方案的，这里我就不能再说了……），至于提高什么样级别的这种“服务”，就要看公司的业务规模，需要支撑的体系，乃至公司的决策战略了等等。  </p>
+<p>建议去了解IBM与VMware的“云”，了解SkyDirve，Amazon与icloud的“服务”，就会有更明确的认识。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/11/java-get-web-pic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/11/java-get-web-pic/" itemprop="url">
+                  Java实现抓取网页图片
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-11T00:00:00+08:00">
+                2014-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>场景如下： </p>
+<p>业务需要，有一批返回图片列表，存放在文本文档中，分行URL </p>
+<p>通过Java程序将数据读取到本地磁盘（更进一步可以考虑不抛出异常，而是判断返回码） </p>
+<pre><code>import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class ReadFileFromTxt {
+
+    public void readFile(String filePath) {
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(filePath));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readFile2(String filePath) {
+
+        BufferedReader br;
+        String read = &quot;&quot;;
+        try {
+            File file = new File(filePath);
+            FileReader fileread = new FileReader(file);
+            br = new BufferedReader(fileread);
+            while ((read = br.readLine()) != null) {
+                read = read.substring(1);
+                String[] reads = read.split(&quot;    &quot;);
+                read = reads[0].trim();
+                read = read + &quot;0&quot;;
+                makeImg(read);
+                System.out.print(read + &quot;\t\n&quot;);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void makeImg(String url) {
+        try {
+            BufferedInputStream in = new BufferedInputStream(
+                    new URL(url).openStream());
+            int index = url.lastIndexOf(&quot;/&quot;);
+            String sName = url.substring(index, url.length())
+                    + url.substring(50, 65);
+            System.out.println(&quot;sName = &quot; + sName);
+            File img = new File(&quot;E:\\pic\\&quot; + sName + &quot;.jpg&quot;);
+            BufferedOutputStream out = new BufferedOutputStream(
+                    new FileOutputStream(img));
+            byte[] buf = new byte[2048];
+            int length = in.read(buf);
+            while (length != -1) {
+                out.write(buf, 0, length);
+                length = in.read(buf);
+            }
+            in.close();
+            out.close();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        String filePath = &quot;E:\\picurl2.txt&quot;;
+        // new ReadFileFromTxt().readFile(filePath);
+        new ReadFileFromTxt().readFile2(filePath);
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/11/guava-common-object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/11/guava-common-object/" itemprop="url">
+                  Guava学习之复写Object方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-11T00:00:00+08:00">
+                2014-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Java中Object类是所有类的父类，其中有几个需要override的方法比如equals,hashCode和toString等方法。每次写这几个方法都要做很多重复性的判断, 很多类库提供了覆写这几个方法的工具类, Guava也提供了类似的方式。下面我们来看看Guava中这几个方法简单使用。</p>
+<p><strong>equals方法：</strong></p>
+<p><strong> </strong>equals是一个经常需要覆写的方法， 可以查看Object的equals方法注释， 对equals有几个性质的要求：<br><strong> 1. 自反性reflexive：</strong>任何非空引用x，x.equals(x)返回为true；<br><strong>2. 对称性symmetric：</strong>任何非空引用x和y，x.equals(y)返回true当且仅当y.equals(x)返回true；<br><strong>3. 传递性transitive：</strong>任何非空引用x和y，如果x.equals(y)返回true，并且y.equals(z)返回true，那么x.equals(z)返回true；<br><strong>4. 一致性consistent：</strong>两个非空引用x和y，x.equals(y)的多次调用应该保持一致的结果，（前提条件是在多次比较之间没有修改x和y用于比较的相关信息）；<br><strong>5. 对于所有非null的值x， x.equals(null)都要返回false</strong>。 (如果你要用null.equals(x)也可以，会报NullPointerException)。</p>
+<p>当我们要覆写的类中某些值可能为null的时候，就需要对null做很多判断和分支处理。 使用Guava的Objects.equal方法可以避免这个问题， 使得equals的方法的覆写变得更加容易， 而且可读性强，简洁优雅。</p>
+<p><strong>hashCode方法：</strong></p>
+<p><strong> </strong>当覆写（override）了equals()方法之后，必须也覆写hashCode()方法，反之亦然。这个方法返回一个整型值（hash code value），如果两个对象被equals()方法判断为相等，那么它们就应该拥有同样的hash code。Object类的hashCode()方法为不同的对象返回不同的值，Object类的hashCode值表示的是对象的地址。<br>hashCode的一般性契约（需要满足的条件）如下：<br>1.在Java应用的一次执行过程中，如果对象用于equals比较的信息没有被修改，那么同一个对象多次调用hashCode()方法应该返回同一个整型值。应用的多次执行中，这个值不需要保持一致，即每次执行都是保持着各自不同的值。<br>2.如果equals()判断两个对象相等，那么它们的hashCode()方法应该返回同样的值。<br>3.并没有强制要求如果equals()判断两个对象不相等，那么它们的hashCode()方法就应该返回不同的值。即，两个对象用equals()方法比较返回false，它们的hashCode可以相同也可以不同。但是，应该意识到，为两个不相等的对象产生两个不同的hashCode可以改善哈希表的性能。<br>写一个hashCode本来也不是很难，但是Guava提供给我们了一个更加简单的方法--Objects.hashCode(Object …)， 这是个可变参数的方法，参数列表可以是任意数量，所以可以像这样使用Objects.hashCode(field1， field2， …， fieldn)。非常方便和简洁。</p>
+<p><strong>toString()方法：</strong></p>
+<p>因为每个类都直接或间接地继承自Object，因此每个类都有toString()方法。这个方法是用得最多的, 覆写得最多, 一个好的toString方法对于调试来说是非常重要的, 但是写起来确实很不爽。Guava也提供了toString（）方法。</p>
+<p>compare/compareTo方法：</p>
+<p><strong>CompareTo：</strong>compareTo(Object o)方法是java.lang.Comparable<t>接口中的方法，当需要对某个类的对象进行排序时，该类需要实现 Comparable<t>接口的，必须重写public int compareTo(T o)方法。java规定，若a，b是两个对象，当a.compareTo(b)&gt;0时，则a大于b，a.compareTo(b)<0时，a<b，即规定对象的比较大小的规则； **compare：**="" compare(object="" o1,object="" o2)方法是java.util.comparator<t="">接口的方法，compare方法内主要靠定义的compareTo规定的对象大小关系规则来确定对象的大小。</0时，a<b，即规定对象的比较大小的规则；></t></t></p>
+<p>compareTo方法的通用约定与equals类似：将本对象与指定的对象停止比拟，如果本对象小于、等于、或大于指定对象，则分离返回正数、零、或正数。如果指定的对象类型无法与本对象停止比拟，则跑出ClassCastException。<br><strong>对称性：</strong>实现者必须保证对全部的x和y都有sgn(x.compareTo(y)) == -sgn(y.compareTo(x))。这也暗示当且仅当y.compareTo(x)抛出异常时，x.compareTo(y)才抛出异常。<br><strong>传递性：</strong>实现者必须保证比拟关系是可传递的，如果x.compareTo(y) &gt; 0且y.compareTo(z) &gt; 0，则x.compareTo(z) &gt; 0。实现者必须保证x.compareTo(y)==0暗示着全部的z都有(x.compareTo(z)) == (y.compareTo(z))。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-preconditions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/10/guava-preconditions/" itemprop="url">
+                  Guava学习之Preconditions
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-10T00:00:00+08:00">
+                2014-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在日常开发中，我们经常会对方法的输入参数做一些数据格式上的验证，以便保证方法能够按照正常流程执行下去。对于可预知的一些数据上的错误，我们一定要做事前检测和判断，来避免程序流程出错，而不是完全通过错误处理来保证流程正确执行，毕竟错误处理是比较消耗资源的方式。在平常情况下我们对参数的判断都需要自己来逐个写方法判断，代码量不少并且复用性不高。</p>
+<p>Preconditions提供的就是测试时使用的验证逻辑，它可以简化我们代码中对于参数的预判断和处理，让我们对方法输入参数的验证实现起来更加简单优雅。</p>
+<p>官方强烈建议在代码中使用这个类，而且在Preconditions类中的所有函数都是static修饰的，这意味着你不需要声明（你不可以申请一个Preconditions对象，因为Preconditions的构造函数用private修饰的）一个Preconditions类对象，而可以直接使用这个类提供的方法。</p>
+<h2 id="Preconditions里面常用的方法："><a href="#Preconditions里面常用的方法：" class="headerlink" title="Preconditions里面常用的方法："></a>Preconditions里面常用的方法：</h2><p><strong>1 .checkArgument(boolean) **</strong>：**<br>功能描述：检查boolean是否为真。 用作方法中检查参数<br>失败时抛出的异常类型: IllegalArgumentException</p>
+<p><strong>2.checkNotNull(T)**</strong>：<strong>**   </strong><br>功能描述：检查value不为null， 直接返回value；<br>失败时抛出的异常类型：NullPointerException  </p>
+<p><strong> **</strong>3.checkState(boolean)<strong>**：</strong><br>功能描述：检查对象的一些状态，不依赖方法参数。 例如， Iterator可以用来next是否在remove之前被调用。<br>失败时抛出的异常类型：IllegalStateException  </p>
+<p><strong> **</strong>4.checkElementIndex(int index, int size)<strong>**：</strong><br>功能描述：检查index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0, size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+<p><strong>5.checkPositionIndex(int index, int size)**</strong>：**<br>功能描述：检查位置index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0， size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
+<p><strong>6.checkPositionIndexes(int start, int end, int size)**</strong>：**</p>
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#535" title="2014-08-18 14:15:48">智能化石灰立窑</a>:</strong> 必须给一个赞</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">
+                  Guava学习之避免Null的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-10T00:00:00+08:00">
+                2014-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>Null Sucks.__    Doug Lea</em></p>
+<p><em>I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人</em></p>
+<p>编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的colletions中都不应该有null（空值）存在；对于开发者来说，如果null可以直接报错，会比默默地接收更加有益。</p>
+<p>此外，null让人讨厌的一点在于它的表义模糊不清。当null作为一个返回值时，很难判断它的具体含义——比如，Map.get(key)返回null时，既可以表示Map中的值为空，又可以表示这个值不在Map中。Null可以表示失败，可以表示成功，可以表示几乎所有的状态。用别的东西来取代null会让你的代码更为清晰。</p>
+<p>当然，很多时候用null也是正确的选择。从时间和空间的角度看，null都是廉价的，并且在Object array中是不可避免的。但相对于官方的library，在实际的Application代码中，null仍然是导致混淆，怪异bug和含糊不清的主要源头之一——比如，当Map.get返回null，可能说明不存在对应的值，也可能说明值存在且为null。最大的问题在于，null无法提示这个null值表示什么意思。</p>
+<p>因此，很多Guava utility设计为对null值直接报错；只要有不用null的代替方案，就不允许null值。另外，Guava提供了一些工具来帮你避免使用null，同时在你不得不用时让使用null更容易。</p>
+<h2 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h2><p>不要惊讶，即便是有特殊操作情况存在，你仍然不应该在Set中使用null或者在Map中把null作为参数传入。</p>
+<p>如果你想在不考虑entry的情况下，将null作为一个参数传入Map，那你就需要保证含non-null key的Set与含null的Set分离（就是2个Set集啦）。当Map中包含key的entry的值为null，或者Map中的key没有entry，这两种情况是非常容易混淆的。更好的办法是直接将key进行分离，这样就很容易分辨实际应用中key为null时的含义了。</p>
+<p>使用Map<integer,?>可能会比在一个稀疏的List中使用null效率更高，而且很可能前者更适合你实际应用中的需要。</integer,?></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

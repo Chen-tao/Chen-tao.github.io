@@ -1,0 +1,666 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,netty," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="原文出处：http://netty.io/wiki/reference-counted-objects.html原文地址可能有变，且内容可能发生变化。如果转载请注明出处，谢谢合作^_^。 自从Netty 4开始，对象的生命周期由它们的引用计数（reference counts）管理，而不是由垃圾收集器（garbage collector）管理了。ByteBuf是最值得注意的，它使用了引用计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Netty官方文档翻译】引用计数对象（reference counted objects）">
+<meta property="og:url" content="http://chen-tao.github.io/2015/10/03/nettyreference-counted-objects/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="原文出处：http://netty.io/wiki/reference-counted-objects.html原文地址可能有变，且内容可能发生变化。如果转载请注明出处，谢谢合作^_^。 自从Netty 4开始，对象的生命周期由它们的引用计数（reference counts）管理，而不是由垃圾收集器（garbage collector）管理了。ByteBuf是最值得注意的，它使用了引用计">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Netty官方文档翻译】引用计数对象（reference counted objects）">
+<meta name="twitter:description" content="原文出处：http://netty.io/wiki/reference-counted-objects.html原文地址可能有变，且内容可能发生变化。如果转载请注明出处，谢谢合作^_^。 自从Netty 4开始，对象的生命周期由它们的引用计数（reference counts）管理，而不是由垃圾收集器（garbage collector）管理了。ByteBuf是最值得注意的，它使用了引用计">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/10/03/nettyreference-counted-objects/"/>
+
+
+
+
+
+  <title> 【Netty官方文档翻译】引用计数对象（reference counted objects） | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettyreference-counted-objects/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【Netty官方文档翻译】引用计数对象（reference counted objects）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div id="blog_content" class="blog_content"><br>    <div style="font-size: 14px;" class="iteye-blog-content-contain"><br><p><strong>原文出处：<a href="http://netty.io/wiki/reference-counted-objects.html" target="_blank" rel="external">http://netty.io/wiki/reference-counted-objects.html</a></strong></p><br><p><strong>原文地址可能有变，且内容可能发生变化。</strong></p><br><p><strong>如果转载请注明出处，谢谢合作^_^。</strong></p><br><p> </p><br><p>自从Netty 4开始，对象的生命周期由它们的引用计数（reference counts）管理，而不是由垃圾收集器（garbage collector）管理了。ByteBuf是最值得注意的，它使用了引用计数来改进分配内存和释放内存的性能。</p><br><p> </p><br><p><strong>基本的引用计数</strong></p><br><p> </p><br><p>每个对象的初始计数为1：</p><br><p> </p><br><pre name="code" class="java">ByteBuf buf = ctx.alloc().directBuffer();<br>assert buf.refCnt() == 1;</pre><br><p> </p><br><p> </p><br><p>当你释放（release）引用计数对象时，它的引用计数减1.如果引用计数为0，这个引用计数对象会被释放（deallocate），并返回对象池。</p><br><p> </p><br><pre name="code" class="java">assert buf.refCnt() == 1;<br>// release() returns true only if the reference count becomes 0.<br>boolean destroyed = buf.release();<br>assert destroyed;<br>assert buf.refCnt() == 0;</pre><br><p> </p><br><p> </p><br><p><strong> 悬垂（dangling）引用</strong></p><br><p> </p><br><p>尝试访问引用计数为0的引用计数对象会抛出IllegalReferenceCountException异常：</p><br><p> </p><br><pre name="code" class="java">assert buf.refCnt() == 0;<br>try {<br>  buf.writeLong(0xdeadbeef);<br>  throw new Error(“should not reach here”);<br>} catch (IllegalReferenceCountExeception e) {<br>  // Expected<br>}</pre><br><p> </p><br><p> </p><br><p><strong>增加引用计数</strong></p><br><p> </p><br><p>可通过retain()操作来增加引用计数，前提是此引用计数对象未被销毁：</p><br><p>（译者注：跟未使用ARC的objective-c好像）</p><br><p> </p><br><pre name="code" class="java">ByteBuf buf = ctx.alloc().directBuffer();<br>assert buf.refCnt() == 1;<br><br>buf.retain();<br>assert buf.refCnt() == 2;<br><br>boolean destroyed = buf.release();<br>assert !destroyed;<br>assert buf.refCnt() == 1;</pre><br><p> </p><br><p><strong>谁来销毁（destroy）</strong></p><br><p> </p><br><p>通常的经验法则是谁最后访问（access）了引用计数对象，谁就负责销毁（destruction）它。具体来说是以下两点：</p><br><ul><br><li>如果组件（component）A把一个引用计数对象传给另一个组件B，那么组件A通常不需要销毁对象，而是把决定权交给组件B。</li><br><li>如果一个组件不再访问一个引用计数对象了，那么这个组件负责销毁它。</li><br></ul><br><p> </p><br><p>下面是一个简单的例子：</p><br><p> </p><br><pre name="code" class="java">public ByteBuf a(ByteBuf input) {<br>    input.writeByte(42);<br>    return input;<br>}<br><br>public ByteBuf b(ByteBuf input) {<br>    try {<br>        output = input.alloc().directBuffer(input.readableBytes() + 1);<br>        output.writeBytes(input);<br>        output.writeByte(42);<br>        return output;<br>    } finally {<br>        input.release();<br>    }<br>}<br><br>public void c(ByteBuf input) {<br>    System.out.println(input);<br>    input.release();<br>}<br><br>public void main() {<br>    …<br>    ByteBuf buf = …;<br>    // This will print buf to System.out and destroy it.<br>    c(b(a(buf)));<br>    assert buf.refCnt() == 0;<br>}</pre><br><p> </p><br><p> </p><br><p>行为（Action）                          谁来释放（Who should release）?   谁释放了（Who released）?</p><br><p>1. main()创建了buf                    buf→main()</p><br><p>2. buf由main()传给了a()            buf→a()</p><br><p>3. a()仅仅返回了buf                   buf→main()</p><br><p>4. buf由main()传给了b()            buf→b()</p><br><p>5. b()返回了buf的拷贝               buf→b(), copy→main()                       b()释放了buf</p><br><p>6. 拷贝由main()传给了c()          copy→c()</p><br><p>7. c()消耗（swallow）了拷贝     copy→c()                                           c()释放了拷贝 </p><br><p> </p><br><p><strong>子缓冲（Derived buffers）</strong></p><br><p> </p><br><p>ByteBuf.duplicate(), ByteBuf.slice()和ByteBuf.order(ByteOrder)创建了子缓冲，这些缓存共享了它们的父缓冲（parent buffer）的一部分内存。子缓冲没有自己的引用计数，而是共享父缓冲的引用计数。</p><br><pre name="code" class="java">ByteBuf parent = ctx.alloc().directBuffer();<br>ByteBuf derived = parent.duplicate();<br><br>// Creating a derived buffer does not increase the reference count.<br>assert parent.refCnt() == 1;<br>assert derived.refCnt() == 1;</pre><br><p> </p><br><p>注意父缓冲和它的子缓冲共享同样的引用计数，当创建子缓冲时并不会增加对象的引用计数。因此，如果你要传递（pass）一个子缓冲给你的程序中的其他组件的话，你得先调用retain()。</p><br><p> </p><br><pre name="code" class="java">ByteBuf parent = ctx.alloc().directBuffer(512);<br>parent.writeBytes(…);<br><br>try {<br>    while (parent.isReadable(16)) {<br>        ByteBuf derived = parent.readSlice(16);<br>        derived.retain();<br>        process(derived);<br>    }<br>} finally {<br>    parent.release();<br>}<br>…<br><br>public void process(ByteBuf buf) {<br>    …<br>    buf.release();<br>}</pre><br><p> </p><br><p><strong>ByteBufHolder接口</strong></p><br><p> </p><br><p>有时候，一个ByteBuf被一个buffer holder持有，诸如DatagramPacket, HttpContent,和WebSocketframe。它们都扩展了一个公共接口，ByteBufHolder。</p><br><p> </p><br><p>一个buffer holder共享它所持有的引用计数，如同子缓冲一样。</p><br><p> </p><br><p><strong>ChannelHandler中的引用计数</strong></p><br><p> </p><br><p><strong>Inbound消息（messages）</strong></p><br><p> </p><br><p>当一个事件循环（event loop）读入了数据，用读入的数据创建了ByteBuf，并用这个ByteBuf触发了一个channelRead()事件时，那么管道（pipeline）中相应的ChannelHandler就负责释放这个buffer。因此，处理接收到的数据的handler应该在它的channelRead()中调用buffer的release()。</p><br><pre name="code" class="java">public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    ByteBuf buf = (ByteBuf) msg;<br>    try {<br>        …<br>    } finally {<br>        buf.release();<br>    }<br>}</pre><br><p> </p><br><p>如同在本文档中的“谁来销毁”一节所解释的那样，如果你的handler传递了缓存（或任何引用计数对象）到下一个handler，你就不需要释放它：</p><br><pre name="code" class="java">public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    ByteBuf buf = (ByteBuf) msg;<br>    …<br>    ctx.fireChannelRead(buf);<br>}</pre><br><p> </p><br><p>注意ByteBuf不是Netty中唯一一种引用计数对象。由解码器（decoder）生成的消息（messages）对象，这些对象很可能也是引用计数对象：</p><br><pre name="code" class="java">// Assuming your handler is placed next to <code>HttpRequestDecoder</code><br>public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    if (msg instanceof HttpRequest) {<br>        HttpRequest req = (HttpRequest) msg;<br>        …<br>    }<br>    if (msg instanceof HttpContent) {<br>        HttpContent content = (HttpContent) msg;<br>        try {<br>            …<br>        } finally {<br>            content.release();<br>        }<br>    }<br>}</pre><br><p> </p><br><p>如果你抱有疑问，或者你想简化这些释放消息的工作，你可以使用ReferenceCountUtil.release()：</p><br><pre name="code" class="java">public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    try {<br>        …<br>    } finally {<br>        ReferenceCountUtil.release(msg);<br>    }<br>}</pre><br><p> </p><br><p>还有一种选择，你可以考虑继承SimpleChannelHandler，它在所有接收消息的地方都调用了ReferenceCountUtil.release(msg)。</p><br><p> </p><br><p><strong>Outbound消息（messages）</strong></p><br><p> </p><br><p>与inbound消息不同，你的程序所创建的消息对象，由Netty负责释放，释放的时机是在这些消息被发送到网络之后。但是，在发送消息的过程中，如果有handler截获（intercept）了你的发送请求，并创建了一些中间对象，则这些handler要确保正确释放这些中间对象。比如编码器（encoder）。</p><br><p> </p><br><pre name="code" class="java">// Simple-pass through<br>public void write(ChannelHandlerContext ctx, Object message, ChannelPromise promise) {<br>    System.err.println(“Writing: “ + message);<br>    ctx.write(message, promise);<br>}<br><br>// Transformation<br>public void write(ChannelHandlerContext ctx, Object message, ChannelPromise promise) {<br>    if (message instanceof HttpContent) {<br>        // Transform HttpContent to ByteBuf.<br>        HttpContent content = (HttpContent) message;<br>        try {<br>            ByteBuf transformed = ctx.alloc().buffer();<br>            ….<br>            ctx.write(transformed, promise);<br>        } finally {<br>            content.release();<br>        }<br>    } else {<br>        // Pass non-HttpContent through.<br>        ctx.write(message, promise);<br>    }<br>}</pre><br><p> </p><br><p><strong>解决（troubleshooting）buffer泄露</strong></p><br><p> </p><br><p>引用计数的缺点是容易发生泄露。因为JVM并不知道Netty实现的引用计数的存在，一旦某些对象不可达（unreachable）就会被自动GC掉，即使这些对象的引用计数不为0。被GC掉的对象就不可用了，因此这些对象也就不能回到对象池中，或者产生内存泄露。</p><br><p> </p><br><p> </p><br><p>幸运的是，尽管要找到泄露很困难，但Netty提供了一种方案来帮助发现泄露，此方案默认在你的程序中的已分配的缓冲中取样（sample）大约1%的缓存，来检查是否存在泄露。如果存在泄露，你会发现如下日志：</p><br><pre name="code" class="plain text">LEAK: ByteBuf.release() was not called before it’s garbage-collected. Enable advanced leak reporting to find out where the leak occurred. To enable advanced leak reporting, specify the JVM option ‘-Dio.netty.leakDetectionLevel=advanced’ or call ResourceLeakDetector.setLevel()</pre><br><p> </p><br><p>上述日志中提到的JVM选项（option）重新启动你的程序，你可以看到在你的程序中最近访问已泄露的内存的位置（location）。下列输出展示了来自单元测试的一个泄露问题(XmlFrameDecoderTest.testDecodeWithXml())：</p><br><pre name="code" class="java">Running io.netty.handler.codec.xml.XmlFrameDecoderTest<br>15:03:36.886 [main] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it’s garbage-collected.<br>Recent access records: 1<br>#1:<br>    io.netty.buffer.AdvancedLeakAwareByteBuf.toString(AdvancedLeakAwareByteBuf.java:697)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithXml(XmlFrameDecoderTest.java:157)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithTwoMessages(XmlFrameDecoderTest.java:133)<br>    …<br><br>Created at:<br>    io.netty.buffer.UnpooledByteBufAllocator.newDirectBuffer(UnpooledByteBufAllocator.java:55)<br>    io.netty.buffer.AbstractByteBufAllocator.directBuffer(AbstractByteBufAllocator.java:155)<br>    io.netty.buffer.UnpooledUnsafeDirectByteBuf.copy(UnpooledUnsafeDirectByteBuf.java:465)<br>    io.netty.buffer.WrappedByteBuf.copy(WrappedByteBuf.java:697)<br>    io.netty.buffer.AdvancedLeakAwareByteBuf.copy(AdvancedLeakAwareByteBuf.java:656)<br>    io.netty.handler.codec.xml.XmlFrameDecoder.extractFrame(XmlFrameDecoder.java:198)<br>    io.netty.handler.codec.xml.XmlFrameDecoder.decode(XmlFrameDecoder.java:174)<br>    io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:227)<br>    io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:140)<br>    io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)<br>    io.netty.channel.embedded.EmbeddedEventLoop.invokeChannelRead(EmbeddedEventLoop.java:142)<br>    io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:317)<br>    io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)<br>    io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:176)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithXml(XmlFrameDecoderTest.java:147)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithTwoMessages(XmlFrameDecoderTest.java:133)<br>    …</pre><br><p> </p><br><p>如果你使用Netty 5或以上的版本，还提供了一个额外的信息，帮助我们找到最后操作了（handle）泄露缓冲的handler。下面的例子展示了名为EchoServerHandler#0的handler操作了已泄露的缓冲，并且缓冲已被GC了，这意味着EchoServerHandler#0忘记释放了这个buffer：</p><br><p> </p><br><pre name="code" class="java">12:05:24.374 [nioEventLoop-1-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it’s garbage-collected.<br>Recent access records: 2<br>#2:<br>    Hint: ‘EchoServerHandler#0’ will handle the message from this point.<br>    io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:329)<br>    io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)<br>    io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:133)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)<br>    io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)<br>    io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)<br>    java.lang.Thread.run(Thread.java:744)<br>#1:<br>    io.netty.buffer.AdvancedLeakAwareByteBuf.writeBytes(AdvancedLeakAwareByteBuf.java:589)<br>    io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:208)<br>    io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:125)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)<br>    io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)<br>    io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)<br>    java.lang.Thread.run(Thread.java:744)<br>Created at:<br>    io.netty.buffer.UnpooledByteBufAllocator.newDirectBuffer(UnpooledByteBufAllocator.java:55)<br>    io.netty.buffer.AbstractByteBufAllocator.directBuffer(AbstractByteBufAllocator.java:155)<br>    io.netty.buffer.AbstractByteBufAllocator.directBuffer(AbstractByteBufAllocator.java:146)<br>    io.netty.buffer.AbstractByteBufAllocator.ioBuffer(AbstractByteBufAllocator.java:107)<br>    io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:123)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)<br>    io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)<br>    io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)<br>    java.lang.Thread.run(Thread.java:744)</pre><br><p> </p><br><p><strong>泄露检测级别</strong></p><br><p> </p><br><p>当前有4个泄露检测级别：</p><br><ul><br><li>禁用（DISABLED）   - 完全禁止泄露检测。不推荐。</li><br><li>简单（SIMPLE）       - 告诉我们取样的1%的缓冲是否发生了泄露。默认。</li><br><li>高级（ADVANCED） - 告诉我们取样的1%的缓冲发生泄露的地方</li><br><li>偏执（PARANOID）  - 跟高级选项类似，但此选项检测所有缓冲，而不仅仅是取样的那1%。此选项在自动测试阶段很有用。如果构建（build）输出包含了LEAK，可认为构建失败。</li><br></ul><br><p>你可以使用JVM的-Dio.netty.leakDetectionLevel选项来指定泄漏检测级别。</p><br><pre name="code" class="bash">java -Dio.netty.leakDetectionLevel=advanced …</pre><br><p> </p><br><p><strong>避免泄露的最佳实践</strong></p><br><p> </p><br><ul><br><li>在简单级别和偏执级别上运行你的单元测试和集成测试（integration tests）。</li><br><li>在rolling out到整个集群之前，使用简单级别，以一个合理的、足够长的时间canary（金丝雀？不明所以。。）你的程序，来发现是否存在泄露。</li><br><li>如果存在泄露，再用高级级别来canary以获得一些关于泄露的提示。</li><br><li>不要部署存在泄露的程序到整个集群。</li><br></ul><br><p><strong>在单元测试中修复泄露问题</strong></p><br><p> </p><br><p>在单元测试中很容易忘记释放缓冲。这会产生一个泄露的警告，但并不是说就肯定存在泄露。你可以使用ReferenceCountUtil.releaseLater()工具方法，放弃用try-finally来包裹你的单元测试代码以释放所有的缓冲：</p><br><pre name="code" class="java">import static io.netty.util.ReferenceCountUtil.*;<br><br>@Test<br>public void testSomething() throws Exception {<br>    // ReferenceCountUtil.releaseLater() will keep the reference of buf,<br>    // and then release it when the test thread is terminated.<br>    ByteBuf buf = releaseLater(Unpooled.directBuffer(512));<br>    …<br>}</pre><br></div><br>  </div>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/netty/" rel="tag"># netty</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/03/nettytcp/" rel="next" title="高性能网络框架Netty的TCP拆包、粘包解决方案">
+                <i class="fa fa-chevron-left"></i> 高性能网络框架Netty的TCP拆包、粘包解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/03/nettyjava/" rel="prev" title="Netty之Java堆外内存扫盲贴">
+                Netty之Java堆外内存扫盲贴 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

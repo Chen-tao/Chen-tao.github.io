@@ -1,0 +1,641 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="system," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="系统架构是一个工程和研究相结合的领域，既注重实践又依赖理论指导，入门容易但精通很难，有时候还要讲点悟性，很具有“伪科学”的特征。要在此领域进阶，除了要不断设计并搭建实际系统，也要注意方法论和设计理念的学习和提炼。经常有同学询问如何学习，特贴一篇学习材料，供大家参考。09年时写的，在系统领域浩如烟海的文献中提取了一些我认为值得研究和学习的项目，没包括近几年出现的一些工作，也不够全面。不过，其实也足够">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统架构领域的一些学习材料">
+<meta property="og:url" content="http://chen-tao.github.io/2015/05/28/system-arch-learning/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="系统架构是一个工程和研究相结合的领域，既注重实践又依赖理论指导，入门容易但精通很难，有时候还要讲点悟性，很具有“伪科学”的特征。要在此领域进阶，除了要不断设计并搭建实际系统，也要注意方法论和设计理念的学习和提炼。经常有同学询问如何学习，特贴一篇学习材料，供大家参考。09年时写的，在系统领域浩如烟海的文献中提取了一些我认为值得研究和学习的项目，没包括近几年出现的一些工作，也不够全面。不过，其实也足够">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统架构领域的一些学习材料">
+<meta name="twitter:description" content="系统架构是一个工程和研究相结合的领域，既注重实践又依赖理论指导，入门容易但精通很难，有时候还要讲点悟性，很具有“伪科学”的特征。要在此领域进阶，除了要不断设计并搭建实际系统，也要注意方法论和设计理念的学习和提炼。经常有同学询问如何学习，特贴一篇学习材料，供大家参考。09年时写的，在系统领域浩如烟海的文献中提取了一些我认为值得研究和学习的项目，没包括近几年出现的一些工作，也不够全面。不过，其实也足够">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/05/28/system-arch-learning/"/>
+
+
+
+
+
+  <title> 系统架构领域的一些学习材料 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/28/system-arch-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                系统架构领域的一些学习材料
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-28T00:00:00+08:00">
+                2015-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p></p><p style="">系统架构是一个工程和研究相结合的领域，既注重实践又依赖理论指导，入门容易但精通很难，有时候还要讲点悟性，很具有“伪科学”的特征。要在此领域进阶，除了要不断设计并搭建实际系统，也要注意方法论和设计理念的学习和提炼。</p><br><p style="">经常有同学询问如何学习，特贴一篇学习材料，供大家参考。09年时写的，在系统领域浩如烟海的文献中提取了一些我认为值得研究和学习的项目，没包括近几年出现的一些工作，也不够全面。不过，其实也足够了，看paper是一个从少到多再到少的过程。对问题本质、背景和发展历史有大致了解，再辅以hands-on的实践（长期的真正的实践），足以摸到本领域的门径。</p><br><p style="">此文在网上转载不少，但多数没有说明出处。今天在这里重发，也顺便向315致敬。</p><br><p style="">—</p><br><p style="">对于工程师来说，到一定阶段后往往会遇到成长瓶颈。要突破此瓶颈，需要在所属技术领域更深入学习，了解本领域的问题本质、方法论与设计理念、发展历史等。以下提供一些架构相关领域的学习材料，附上简单点评，供有兴趣的工程师参考。希望大家能通过对这些领域的了解和学习，掌握更多system design principles，在自己的工作中得心应手，步入自由王国。</p><br><strong style="">1. Operating Systems</strong><br><p style=""><strong style="">Mach</strong> [Intro: <a href="http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/mach.html" target="_blank" rel="external">http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/mach.html</a>,Paper: <a href="http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/doc/publications.html" target="_blank" rel="external">http://www-2.cs.cmu.edu/afs/cs/project/mach/public/www/doc/publications.html</a>]</p><br><p style="">传统的kernel实现中，对中断的响应是在一个“大函数”里实现的。称为大函数的原因是从中断的入口到出口都是同一个控制流，当有中断重入发生的时候，实现逻辑将变得非常复杂。大多数的OS，如UNIX，都采用这种monolithic kernel architecture。</p><br><p style="">1985年开始的Mach项目，提出了一种全新的microkernel结构，使得由于70年代UNIX的发展到了极致而觉得后续无枝可依的学术界顿时找到了兴奋点，也开始了沸沸扬扬的monokernel与microkernel的争论。</p><br><p style="">插播一个花絮：Mach的主导者Richard Rashid，彼时是CMU的教授，受BillGates之托去游说JimGray加盟MS。结果把自己也被绕了进来，组建了Microsoft Research。他到中国来做过几次21Century Computing的keynotes。</p><br><p style=""><strong style="">Exokernel</strong> [Intro:<a href="http://pdos.csail.mit.edu/exo/" target="_blank" rel="external">http://pdos.csail.mit.edu/exo/</a>，Paper:<a href="http://pdos.csail.mit.edu/PDOS-papers.html#Exokernels" target="_blank" rel="external">http://pdos.csail.mit.edu/PDOS-papers.html#Exokernels</a>]</p><br><p style="">虽然microkernel的结构很好，但实际中并没有广泛应用，因为performance太差，而且大家逐渐发现OS的问题并不在于实现的复杂性，而更多在于如何提高application使用资源的灵活性。这也就是在kernel extension（例如loadable module in Linux）出现后，有关OS kernel architecture的争论就慢慢淡出人们视线的原因。</p><br><p style="">Exokernel正是在这样的背景中出现的，它并不提供传统OS的abstraction（process,virtual memory等），而是专注于资源隔离与复用（resource isolation and multiplexing），由MIT提出。在exokernel之上，提供了一套库，著名的libOS，用于实现各种OS的interface。这样的结构为application提供了最大的灵活度，使不同的application可以或专注于调度公平性或响应实时性，或专注于提高资源使用效率以优化性能。以今天的眼光来看，exokernel更像是一个virtual machine monitor。</p><br><p style=""><strong style="">Singularity</strong> [Intro:<a href="http://research.microsoft.com/os/Singularity/" target="_blank" rel="external">http://research.microsoft.com/os/Singularity/</a>,Paper: <a href="http://www.research.microsoft.com/os/singularity/publications/HotOS2005_BroadNewResearch.pdf" target="_blank" rel="external">http://www.<br><br>research.microsoft.com/os/singularity/publications/HotOS2005_BroadNewResearch.pdf</a>]</p><br><p style="">Singularity出现在virus，spyware取之不尽、杀之不绝的21世纪初期，由Microsoft Research提出。学术界和工业界都在讨论如何提供一个trust-worthy computing环境，如何使计算机系统更具有manage-ability。Singularity认为要解决这些问题，底层系统必须提供hardisolation，而以前人们都依赖的硬件virtual memory机制并无法提供高灵活性和良好性能。在.Net和Java等runtime出现之后，一个软件级的解决方案成为可能。</p><br><p style="">Singularity在microkernel的基础上，通过.Net构建了一套type-safed assembly作为ABI，同时规定了数据交换的message passing机制，从根本上防止了修改隔离数据的可能。再加上对application的安全性检查，从而提供一个可控、可管理的操作系统。由于.NetCLR的持续优化以及硬件的发展，加了这些检查后的Singularity在性能上的损失相对于它提供的这些良好特性，仍是可以接受的。</p><br><p style="">这种设计目前还处于实验室阶段，是否能最终胜出，还需要有当年UNIX的机遇。</p><br><strong style="">2. Virtual Machines</strong><br><p style=""><strong style="">VMWare</strong> [“<a href="http://www.usenix.org/events/osdi02/tech/waldspurger/waldspurger.pdf" target="_blank" rel="external">MemoryResource Management in VMware ESX Server</a>“，OSDI’02,Best paper award]</p><br><p style="">耳熟能详的vmware，无需多说。</p><br><p style=""><strong style="">XEN</strong> [“<a href="http://www.cl.cam.ac.uk/research/srg/netos/papers/2003-xensosp.pdf" target="_blank" rel="external">Xen and the Art of Virtualization</a>”, OSDI’04]</p><br><p style="">性能极好的VMM，来自Cambridge。</p><br><p style=""><strong style="">Denali</strong> [“<a href="http://denali.cs.washington.edu/pubs/distpubs/papers/denali_osdi.pdf" target="_blank" rel="external">Scaleand Performance in the Denali Isolation Kernel</a>”, OSDI’02, UW]</p><br><p style="">为internetservices而设计的application level virtual machine，在普通机器上可运行数千个VMs。其VMM基于isolation kernel，提供隔离，但并不要求资源分配绝对公平，以此减少性能消耗。</p><br><p style=""><strong style="">Entropia</strong> [“<a href="http://www-csag.ucsd.edu/papers/Entropia-VM.pdf" target="_blank" rel="external">The Entropia VirtualMachine for Desktop Grids</a>”, VEE’05]</p><br><p style="">要统一利用公司内桌面机器资源来进行计算，需要对计算任务进行良好的包装，以保证不影响机器正常使用并与用户数据隔离。Entropia就提供了这样的一个计算环境，基于windows实现了一个application level virtual machine。其基本做法就是对计算任务所调用的syscall进行重定向以保证隔离。类似的工作还有FVM：“<a href="http://www.usenix.org/events/vee06/full_papers/p24-yu.pdf" target="_blank" rel="external">AFeather-weight Virtual Machine for Windows Applications</a>”。</p><br><strong style="">3. Design Revisited</strong><br><p style="">&nbsp;“<a href="http://www.usenix.org/event/hotos05/final_papers/full_papers/hand/hand.pdf" target="_blank" rel="external">Are Virtual Machine Monitors Microkernels Done Right?</a>”，HotOS’05</p><br><p style="">这个题目乍听起来，十分费解，其意思是VMMs其实就是Microkernel的正确实现方法。里面详细讨论了VMM和Microkernel，是了解这两个概念的极好参考。</p><br><p style="">“<a href="http://www.usenix.org/events/hotos05/final_papers/full_papers/brewer/brewer.pdf" target="_blank" rel="external">Thirty Years Is Long Enough: Getting Beyond C</a>”, HotOS’05</p><br><p style="">C可能是这个世界上最成功的编程语言，但其缺点也十分明显。比如不支持thread，在今天高度并行的硬件结构中显得有点力不从心，而这方面则是functional programming language的长处，如何结合二者的优点，是一个很promising的领域。</p><br><strong style="">4. Programming Model</strong><br><p style="">“<a href="http://www.stanford.edu/class/cs240/readings/threads-bad-usenix96.pdf" target="_blank" rel="external">Why Threads Are a Bad Idea</a>”</p><br><p style="">单使用thread结构的server是很难真正做到高性能的，原因在于内存使用、切换开销、同步开销和保证锁正确性带来的编程复杂度等。</p><br><p style="">“<a href="http://www.eecs.harvard.edu/~mdw/papers/seda-sosp01.pdf" target="_blank" rel="external">SEDA: An Architecture for Well-Conditioned, Scalable Internet Services</a>”，OSDI’01</p><br><p style="">Thread不好，但event也没法解决所有问题，于是我们寻找一个结合的方法。SEDA将应用拆分为多个stage，不同stage通过queue相连接，同一个stage内可以启动多个thread来执行queue中的event，并且可通过反馈来自动调整thread数量。</p><br><p style=""><strong style="">Software Transactional Memory</strong></p><br><p style="">如果内存可以提供transaction语义，那么我们面对的世界将完全两样，language, compiler, OS, runtime都将发生根本变化。虽然intel现在正在做hardware transactional memory，但估计可预见的将来不会商用，所以人们转而寻求软件解决方案。可想而知，这个方案无法base在native assembly上，目前有C#,haskell等语言的实现版本。资料比较多，参见<a href="http://en.wikipedia.org/wiki/Software_transactional_memory" target="_blank" rel="external">Wikipedia</a>。</p><br><strong style="">5. Distributed Algorithms</strong><br><p style=""><strong style="">Logical clock</strong>, [“<a href="http://portal.acm.org/ft_gateway.cfm?id=359563&amp;type=pdf&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744388&amp;CFTOKEN=15273596" target="_blank" rel="external">Time,clocks, and the ordering of events in a distributed system</a>”, Leslie Lamport, 1978]</p><br><p style="">这是一篇关于Logic clock, time stamp, distributed synchronization的经典paper。</p><br><p style=""><strong style="">Byzantine</strong> [“<a href="http://research.microsoft.com/users/lamport/pubs/byz.pdf" target="_blank" rel="external">The ByzantineGenerals Problem</a>”, Leslie Lamport, 1982]</p><br><p style="">分布式系统中的错误各种各样，有出错就能停机的，有出错了拖后腿的，更严重的是出错了会做出恶意行为的。最后的这种malicious behavior，就好像出征将军的叛变，将会对系统造成严重影响。对于这类问题，Lamport提出了Byzantine failure model，对于一个由3f+1个replica组成的statemachine，只要叛变的replica数量小于等于f，整个state machine还能正常工作。</p><br><p style=""><strong style="">Paxos</strong> [“<a href="http://portal.acm.org/ft_gateway.cfm?id=279229&amp;type=pdf&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744388&amp;CFTOKEN=15273596" target="_blank" rel="external">The part-time parliament</a>”, Leslie Lamport, 1998]</p><br><p style="">如何在一个异步的分布式环境中达成consensus，这是分布式算法研究的最根本问题。Paxos是这类算法的顶峰。不过这篇paper太难了，据说全世界就3.5人能看懂，所以Lamport后来又写了一篇普及版paper：“<a href="http://research.microsoft.com/users/lamport/pubs/paxos-simple.pdf" target="_blank" rel="external">Paxos Made Simple</a>” ，不过还是很难懂。另外，也可参看Butler Lampson写的“<a href="http://portal.acm.org/citation.cfm?id=383962.383969&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744978&amp;CFTOKEN=60475496" target="_blank" rel="external">The ABCD’s of Paxos</a>”（PODC’01），其中关于replicated state machine的描述会严重启发你对并行世界本质的认识，图灵奖的实力可不是盖的。</p><br><p style="">这上面反复出现了一个名字：<a href="http://research.microsoft.com/users/lamport/" target="_blank" rel="external">Leslie Lamport</a>，他在distributed computing这个领域挖坑不辍，终成一代宗师。关于他，也有几则轶事。记得以前他在MSR的主页是这么写的，“当我在研究logicalclock的时候，BillGates还穿着开裆裤(in diaper)…”（大意如此，原文现在找不到了）。另外，他在写paper的时候，很喜欢把其他牛人的名字变换一下编排进去。这可能也是他还没拿到图灵奖的原因。[注1]</p><br><p style="">关于Lamport的其他成就，还可以参见这篇向他60岁生日献礼的paper：“<a href="http://portal.acm.org/ft_gateway.cfm?id=383967&amp;type=pdf&amp;coll=GUIDE&amp;dl=GUIDE&amp;CFID=12744388&amp;CFTOKEN=15273596" target="_blank" rel="external">Lamport on mutual exclusion: 27 years of planting seeds</a>”, PODC’01。</p><br><strong style="">6. Overlay Networking, and P2P DHT</strong><br><p style=""><strong style="">RON</strong> [“<a href="http://nms.lcs.mit.edu/papers/ron-sosp2001.html" target="_blank" rel="external">Resilient Overlay Networks</a>”, SOSP’01]</p><br><p style="">RON描述了如何在应用层搭建一个overlay，以提供秒级广域网网络层故障恢复速度，而现有的通过路由协议来恢复通信的时间至少在几十分钟。这种快速恢复特性和灵活性使得overlay networking现在被广泛应用。</p><br><p style=""><strong style="">Application Level Multicast</strong></p><br><p style="">“<a href="http://www.cs.cmu.edu/~hzhang/papers/sigmetrics-2000.ps.gz" target="_blank" rel="external">End System Multicast</a>”, SigMetrics’00</p><br><p style="">“<a href="http://pages.cs.wisc.edu/~suman/pubs/sigcomm02.pdf" target="_blank" rel="external">Scalable Application Layer Multicast</a>”, SigComm’02</p><br><p style="">关于ALM的paper很多，基本上都是描述如何搭建一个mesh network用以鲁棒的传输控制信息，另外再搭建一个multicast tree用以高效传输数据，然后再根据多媒体数据的特点做一些layered delivery。前几年出现的coolstream, pplive等系统都是这类系统的商业化产品。</p><br><p style=""><strong style="">P2P</strong></p><br><p style="">P2P的出现改变了网络。按照各种P2P网络的结构，可以分为三种。</p><br><p style="">1.&nbsp;&nbsp;&nbsp;&nbsp;Napster式，集中式目录服务，数据传输Peer to peer。</p><br><p style="">2.&nbsp;&nbsp;&nbsp;&nbsp;Gnutella式，通过在邻居间gossip来查询，也被称为unstructured P2P。</p><br><p style="">3.&nbsp;&nbsp;&nbsp;&nbsp;DHT，与unstructured P2P不同的是，DHT进行的查询有保证，如果数据存在，可在一定的hop数内返回。这个hop数通常为logN，N为系统节点数。</p><br><p style="">典型的DHT有<a href="http://berkeley.intel-research.net/sylvia/cans.pdf" target="_blank" rel="external">CAN</a>, <a href="http://pdos.csail.mit.edu/papers/chord:sigcomm01/chord_sigcomm.pdf" target="_blank" rel="external">Chord</a>,<a href="http://research.microsoft.com/~antr/PAST/pastry.pdf" target="_blank" rel="external">Pastry</a>, <a href="http://oceanstore.cs.berkeley.edu/publications/papers/pdf/tapestry_sigcomm_tr.pdf" target="_blank" rel="external">Tapestry</a>等四种。这些研究主要在算法层面，系统方面的工作主要是在其上建立广域网存储系统。还有一些人在机制层面进行研究，例如如何激励用户共享、防止作弊等。</p><br><strong style="">7. Distributed Systems</strong><br><p style=""><strong style="">GFS/MapReduce/BigTable/Chubby/Sawzall</strong></p><br><p style="">Google的系列paper，大家比较熟悉，不再多说。在<a href="http://research.google.com/pubs/papers.html" target="_blank" rel="external">此</a>可查。</p><br><p style=""><strong style="">Storage</strong></p><br><p style="">Distributed storage system的paper太多了。下面列出几篇最相关的。</p><br><p style="">“<a href="http://www.cs.cornell.edu/fbs/publications/chainreplicosdi.pdf" target="_blank" rel="external">Chain Replication for Supporting High Throughput and Availability</a>”, OSDI’04。</p><br><p style="">“<a href="http://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf" target="_blank" rel="external">Dynamo: Amazon’s Highly Available Key-value Store</a>”，SOSP’07。</p><br><p style="">“<a href="http://research.microsoft.com/asia/dload_files/group/system/2007/BitVault-SigOpsOSR0704.pdf" target="_blank" rel="external">BitVault: a Highly Reliable Distributed Data Retention Platform</a>”, SIGOPS OSR’07。</p><br><p style="">“<a>PacificA: Replication inLog-Based Distributed Storage Systems</a>”, MSR-TR。</p><br><p style=""><strong style="">Distributed Simulation</strong></p><br><p style="">“<a href="http://research.microsoft.com/asia/dload_files/group/system/wids-mascots.pdf" target="_blank" rel="external">Simulating Large-Scale P2P Systems with the WiDS Toolkit</a>”, MASCOTS’05。Distributed simulation有意思的地方是simulated protocol是distributed的，而这个simulation engine本身也是distributed的。Logical和physical的time和event交杂在系统中，需要仔细处理。</p><br><strong style="">8. Controversial Computing Models</strong><br><p style="">现在的软件系统已经复杂到了人已经无法掌握的程度，很多系统在发布时都仍然带着许多确定性(deterministic)或非确定性(non-deterministic)的bugs，只能不断的patch。既然作为人类，不够精细的特性决定了我们无法把系统的bug fix干净，我们只能从其他角度入手研究一种让系统在这令人沮丧的环境中仍能工作的方法。这就像一个分布式系统，故障无法避免，我们选择让系统作为整体来提供高可靠性。</p><br><p style="">以下3个便是典型代表。基本上，主要研究内容都集中于1) 如何正确保存状态；2)如何捕捉错误并恢复状态；3)在进行单元级恢复时，如何做到不影响整体。</p><br><p style=""><a href="http://roc.cs.berkeley.edu/" target="_blank" rel="external">Recovery Oriented Computing</a></p><br><p style=""><a href="http://www.cag.lcs.mit.edu/~rinard/paper/osdi04.pdf" target="_blank" rel="external">Failure oblivious computing</a>, OSDI’04</p><br><p style=""><a href="http://opera.cs.uiuc.edu/paper/Rx-SOSP05.pdf" target="_blank" rel="external">Treating Bugs as Allergies</a>, SOSP’05</p><br><strong style="">9. Debugging</strong><br><p style="">系统很复杂，人类无法从逻辑上直接分析，只能通过data mining的方法在宏观上进行观察。</p><br><p style="">Black box debugging[“<a href="http://pdos.csail.mit.edu/~athicha/papers/blackboxes:sosp03.pdf" target="_blank" rel="external">Performance debugging for distributed systems of black boxes</a>”, SOSP’03]</p><br><p style="">对大型系统的performance debugging非常困难，因为里面的问题很多都是非确定性的，而且无法重现。只能通过对log的挖掘，找出配对的调用/消息以定位问题。</p><br><p style="">CP-miner [“A Tool for Finding Copy-paste and Related Bugs in Operating System Code”, OSDI’04]</p><br><p style="">很多人在重用代码的时候，都使用copy-paste。但有时候简单的CP会带来严重的问题，例如局部变量的重名等。CP-miner通过分析代码，建立语法树结构，然后mine出这类错误。</p><br><p style="">—</p><br><p style="">注1：2014年3月19日，Lamport获得2013年度图灵奖，也是Microsoft Research的第5位图灵奖获得者。一代宗师，实至名归，功德圆满，可喜可贺。</p> <p></p>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/system/" rel="tag"># system</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/28/some-mysql-optimize/" rel="next" title="比较全面的MySQL优化参考">
+                <i class="fa fa-chevron-left"></i> 比较全面的MySQL优化参考
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/30/mu-xin-some/" rel="prev" title="遗狂篇">
+                遗狂篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

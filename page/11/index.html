@@ -1,0 +1,2297 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/page/11/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/page/11/"/>
+
+
+
+
+
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/28/some-shell-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/28/some-shell-tips/" itemprop="url">
+                  常用Shell复合命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-28T00:00:00+08:00">
+                2014-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、列出当前目录的文件、文件夹完整路径<br>   ls -1 |awk ‘{print i$0}’ i=<code>pwd</code>‘/‘</p>
+<p>2、列出当前目录及子目录的文件、文件夹完整路径<br>   ls -R |awk ‘{print i$0}’ i=<code>pwd</code>‘/‘</p>
+<p>2b） 列出当前目录及子目录下的文件夹完整路径<br>    ls -FR | grep /$ | sed “s:^:<code>pwd</code>/:” </p>
+<p>3、用find实现，好像运行要慢些<br>   find / -name “<em>.</em>“ -exec ls {} \;</p>
+<p>4、递归列出当前目录及子目录名称<br>    ls -FR | grep /$</p>
+<p>5、递归列出当前目录及子目录名称，包括相关属性<br>    ls -lR | grep “^d”</p>
+<pre><code># drwxr-xr-x 3 idea idea  4096 Aug  2  2009 images
+</code></pre><p>6、只列出当前目录下的子目录<br>    用ls只列出子目录<br>    ls -d */</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-81-chinese/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/27/postgresql-81-chinese/" itemprop="url">
+                  PostgreSQL 8.1 中文文档
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T00:00:00+08:00">
+                2014-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##PostgreSQL 8.1 中文文档</p>
+<p>###psql</p>
+<p>Name</p>
+<p>psql –  PostgreSQL 交互终端<br>Synopsis</p>
+<p>psql [option…] [dbname [username]]</p>
+<p>###描述</p>
+<p>psql 是一个以终端为基础的 PostgreSQL 前端。它允许你交互地键入查询，把它们发出给 PostgreSQL， 然后看看查询的结果。另外，输入可以来自一个文件。还有， 它提供了一些元命令和多种类 shell 地特性来实现书写脚本以及对大量任务的自动化。</p>
+<p>###选项</p>
+<p>-a<br>–echo-all</p>
+<p>在读取行时向标准输出打印所有内容。 这个选项在脚本处理时比交互模式时更有用。这个选项等效于设置变量 ECHO 为 all。</p>
+<p>-A<br>–no-align</p>
+<p>切换为非对齐输出模式。（缺省输出模式是对齐的。）</p>
+<p>-c command<br>–command command</p>
+<p>声明 psql 将执行一条查询字串， command，然后退出。这一点在 shell 脚本里很有用。</p>
+<p>command 必须是一条完全可以被服务器分析的查询字串（也就是说，它不包含 psql特有的特性）， 或者是一个反斜杠命令。这样你就不会混合 SQL 和 psql 元命令。要想混合使用，你可以把字串定向到 psql里，象这样： echo “\x \ select * from foo;” | psql。</p>
+<p>如果命令字串包含多个 SQL 命令，那么他们在一个事务里处理， 除非在字串里包含了明确的 BEGIN/COMMIT 命令把他们分成多个事务。 这个和从 psql 的标准输入里给它填充相同字串不同。</p>
+<p>-d dbname<br>–dbname dbname</p>
+<p>声明想要联接的数据库名称。等效于在命令行行上把 dbname 声明为第一个非选项参数。</p>
+<p>-e<br>–echo-queries</p>
+<p>把所有发送给服务器的查询同时也拷贝到标准输出。 等效于把变量 ECHO 设置为 queries。</p>
+<p>-E<br>–echo-hidden</p>
+<p>回显由\d和其他反斜杠命令生成的实际查询。 你可以使用这个命令学习 psql 的内部操作。 这等效于在psql里设置变量ECHO_HIDDEN。</p>
+<p>-f filename<br>–file filename</p>
+<p>使用 filename作为命令的语句源而不是交互式读入查询。 在处理完文件后，psql 结束。这个选项在很多方面等效于内部命令 \i。</p>
+<p>如果 filename 是 -（连字符），则从标准输入读取。</p>
+<p>使用这个选项与用 psql &lt; filename 有微小的区别。通常，两者都回按照你预期那样运行，但是使用 -f打开了一些很好的特性， 比如带行号的错误信息。而且，使用这个选项还有可能有减小启动负荷的机会。 另一方面，如果你把所有内容手工输入， 使用 shell 输入定向的方式（理论上）能保证生成和你已经得到的完全一样的输出（译注：重复运行命令）。</p>
+<p>-F separator<br>–field-separator separator</p>
+<p>使用 separator 作为未对齐输出的域分隔符。等效于 \pset fieldsep 或 \f。</p>
+<p>-h hostname<br>–host hostname</p>
+<p>声明正在运行服务器的主机名。 如果主机名以斜杠开头，则它被用做到 Unix 域套接字的路径。</p>
+<p>-H<br>–html</p>
+<p>打开HTML格式输出。等效于 \pset format html或 \H 命令。</p>
+<p>-l<br>–list</p>
+<p>列出所有可用的数据库，然后退出。其他非联接选项将被忽略。类似于内部命令 \list。</p>
+<p>-L filename<br>–log filename</p>
+<p>除了正常的输出源之外，把所有查询输出记录到文件 filename。</p>
+<p>-o filename<br>–output filename</p>
+<p>将所有查询输出定向到文件 filename。这个选项等效于命令 \o。</p>
+<p>-p port<br>–port port</p>
+<p>声明被服务器侦听的 TCP 端口或使用的缺省本地 Unix 主控套接字文件句柄。 缺省的是环境变量PGPORT的值，如果没有设置的话是编译是声明的端口，通常是 5432。</p>
+<p>-P assignment<br>–pset assignment</p>
+<p>允许你在命令行上以 \pset的风格设置打印选项。 要注意的是你在这里用等号分割名称和值，而不能用空格。 因此要把输出格式设置为 LaTeX，你可以敲入 -P format=latex。</p>
+<p>-q<br>–quiet</p>
+<p>声明 psql 将安静地执行处理任务。 缺省时psql将打印欢迎和许多其他输出信息。 如果使用了此选项，这些都不出现。这在和 -c 选项一起使用时很有效。在 psql 里，你可以通过设置 QUIET 变量实现同样效果。</p>
+<p>-R separator<br>–record-separator separator</p>
+<p>使用 separator 做为非对齐输出的记录分隔符。 等效于\pset recordsep命令。</p>
+<p>-s<br>–single-step</p>
+<p>进入单步模式运行。意味着每个查询在发往服务器之前都要提示用户， 用这个选项也可以取消执行。此选项主要用于调试脚本。</p>
+<p>-S<br>–single-line</p>
+<p>进入单行运行模式，这时每个命令都将由换行符结束，象分号那样。</p>
+<p>注意: 注意这个模式是给那些坚持要这个特性的人的，我们不鼓励你这么用。 实际上，如果你在一行里混合使用 SQL 和元命令，执行的顺序对不熟练的用户而言不总是清晰的。</p>
+<p>-t<br>–tuples-only</p>
+<p>关闭打印列名称和结果行计数脚注等信息。等效于 \t 命令。</p>
+<p>-T table_options<br>–table-attr table_options</p>
+<p>允许你声明放在 HTML table 标记里的选项。 参阅 \pset 获取细节。</p>
+<p>-u</p>
+<p>强制 psql 在和数据库联接之提示输入用户的用户名和口令。</p>
+<p>这个选项已经废弃了，因为它在概念上有漏洞。 （提示输入非缺省用户名和提示输入服务器要求的口令是完全两码事。）我们鼓励你用 -U 和 -W 选项取代。</p>
+<p>-U username<br>–username username</p>
+<p>以用户 username 代替缺省用户与数据库联接。（当然，你必须有这么做的权限。）</p>
+<p>-v assignment<br>–set assignment<br>–variable assignment</p>
+<p>进行一次变量分配，象内部命令 \set 那样。 注意，如果有变量名和值的话，你必须在命令行上用等号分隔它们。要重置一个变量， 去掉等号。这个分配是在启动的很早的阶段进行的，所以为内部使用保留的变量可能被再次覆盖。</p>
+<p>-V<br>–version</p>
+<p>打印 psql 版本然后退出。</p>
+<p>-W<br>–password</p>
+<p>强制 psql 在与一个数据库联接前提示输入口令。</p>
+<p>如果服务器要求口令认证，psql 自动提出一个口令提示符。不过，目前是否需要输入口令的判断并不完全可靠， 因此用这个选项强制一个提示符。 如果没有发出口令提示符而服务器要求口令认证，那么联接企图将失败。</p>
+<p>这个选项将在整个会话过程中有效，即使你用元命令 \connect 改变了所联接的数据库。</p>
+<p>-x<br>–expanded</p>
+<p>打开扩展表格式模式。等效于命令 \x。</p>
+<p>-X,<br>–no-psqlrc</p>
+<p>不读取启动文件（系统的 psqlrc 或者你的 ~/.psqlrc 都不读取）。</p>
+<p>-?<br>–help</p>
+<p>显示关于psql命令行参数的帮助然后退出。</p>
+<p>退出状态</p>
+<p>如果正常结束，那么 psql 向 shell 返回 0， 如果自身发生致命错误，则返回 1（内存用尽，未找到文件等）， 如果和数据库的连接失效而且会话不再活跃则返回 2， 如果脚本中发生错误并且设置了 ON_ERROR_STOP 则返回 3。</p>
+<p>用法</p>
+<p>与一个数据库联接</p>
+<p>psql 是一个普通的 PostgreSQL 客户端应用。为了与一个数据库联接，你需要知道你的目标数据库， 服务器的主机名和端口号以及你希望以哪个用户的身份进行联接等信息。 我们可以通过命令行参数告诉 psql 这些信息，分别是 -d， -h，-p，和 -U。 如果有个参数不属于任何选项开关， 那么它会被解释成数据库名（或者是用户名——如果数据库名称已经给出了。）。 不是所有这些选项都是必须的，有缺省存在。 如果你省略主机名， psql 将通过 Unix 域套接字与本地主机的服务器相联， 或者在没有 unix 域套接字的机器上，通过 TCP/IP 与 localhost 连接。 缺省的端口号是编译时确定的。因为数据库服务器使用同样的缺省值， 所以在大多数设置下，你可能不需要声明端口号。缺省的用户名是你的 Unix 用户名，与数据库同名。 要注意的是你不能用任意用户名与任何数据库相联。你的数据库管理员应该告诉你你的访问权限。</p>
+<p>如果缺省不太正确，那么你可以通过设置几个环境变量 PGDATABASE， PGHOST，PGPORT 和/或 PGUSER 为对应的值的方法节约几次敲击。 （其它的环境变量的信息，参阅 Section 28.11。） 另外，用一个 ~/.pgpass 文件来避免输入密码也是很方便的。 参阅 Section 28.12 获取更多信息。</p>
+<p>如果因为任何原因而无法与数据库相联（例如，权限不够，服务器没有运行等）， psql 将返回一个错误并退出。</p>
+<p>输入 SQL 命令</p>
+<p>通常状况下，psql 提供一个带有 psql 正在与之联接的接数据库名的，后缀 =&gt;的提示符。例如，</p>
+<p>$ psql testdb<br>Welcome to psql 8.1, the PostgreSQL interactive terminal.</p>
+<p>Type:  \copyright for distribution terms<br>       \h for help with SQL commands<br>       \? for help with psql commands<br>       \g or terminate with semicolon to execute query<br>       \q to quit</p>
+<p>testdb=&gt;</p>
+<p>用户可以在这个提示符下键入SQL 查询。 通常，输入的行将在命令终止分号出现时送到服务器。 一行的终止并不结束命令！因此命令可以因清晰起见跨越好几行。如果命令发送出去而且执行没有错误， 命令结果会显示在屏幕上。</p>
+<p>当命令正在进行时，psql 同样还轮询由 LISTEN 和 NOTIFY. 生成的异步通知信号。</p>
+<p>元命令</p>
+<p>你在 psql 里输入的任何以不带引号的反斜杠（’\’）开头的东西都是 psql 元命令，这些命令是由 psql 自己处理的。这些命令也是令 psql 更可用于管理或书写脚本的原因。 元命令更常见的叫法是斜杠或反斜杠命令。</p>
+<p>一个 psql 命令的格式是反斜杠后面紧跟一个命令动词，然后是任意参数。 参数与命令动词和其他参数以任意个空白字符间隔。</p>
+<p>要在参数里面包含空白，你必须用单引号把它包围起来。 要在这样的参数里包含单引号，前面加一个反斜杠。 任何包含在单引号里的东西会被进一步进行类 C 的替换，把 \n （新行），\t （tab），\digits（八进制）， \0xdigits（十六进制）。</p>
+<p>如果一个不带引号的参数以冒号（:）开头， 它会被当作一个psql 变量，并且该变量的值会最终成为真正的参数值。 （译注：类似 ecpg 和 pl/pgsql 的变量用法。）</p>
+<p>用“反勾号” （”backticks” `） 包围的内容被当作一个命令行传入 shell。 该命令的输出（删除了结尾的新行）被当作参数值。上面描述的逃逸（字符）序列在反勾号里也生效。</p>
+<p>有些命令以一个 SQL 标识的名称（如，一个表名）为参数。 这些参数遵循 SQL 语法关于双引号的规则： 不带双引号的标识强制成小写， 而双引号保护字母不受大小写转换，并且允许在标识符中使用空白。 在双引号中，成对的双引号在结果名字中分析成一个双引号。比如， FOO”BAR”BAZ 解析成 fooBARbaz，而 “A weird”” name” 变成 A weird” name。</p>
+<p>对参数的分析在碰到另一个不带引号的反斜杠时停止。 这里会认为是一个新的元命令的开始。特殊序列 \（双反斜杠）标识参数的结尾并将继续分析后面的 SQL 命令（如果存在的话）。这样 SQL 和 psql命令可以自由的在一行里面混合。 但是在任何情况下，一条元命令的参数不能延续超过行尾。</p>
+<p>下列元命令是已定义的：</p>
+<p>\a<br>如果目前的表输出格式是不对齐的，切换成对齐的。 如果是对齐的，切换成不对齐。这条命令是为了向后兼容。参阅 \pset 获取一个更通用的解决方法。</p>
+<p>\cd [ directory ]<br>把当前工作目录改变到 directory。 没有参数是则改变到当前用户的家目录。</p>
+<p>提示: 要打印出你的当前工作目录，使用 !pwd。</p>
+<p>\C [ title ]<br>把正在打印的表的标题设置为一个查询的结果或者取消这样的设置。 这条命令等效于 \pset title title. （这条命令的名称源于 “caption”，因为以前只是用于在一个 HTML 表里面设置标题。）</p>
+<p>\connect （或者 \c）[ dbname [ username ] ]<br>与一个新的数据库建立一个联接，使用/不用一个用户名。 前面的联接将关闭。如果 dbname 是 -，那么就假设是当前数据库名称。</p>
+<p>如果省略 username，则假设是当前用户名。</p>
+<p>作为一条特殊规则，不带任何参数运行\connect 将以缺省用户身份与缺省数据库连接（正如你不带任何参数运行 psql 一样。）</p>
+<p>如果联接失败（用户名错，访问拒绝等），那么将保留前面的联接–当且仅当在 psql 处于交互模式下如此。 如果运行的是非交互的脚本，处理会马上停止，并返回一个错误。 选择这样的区别是一方面为用户使用方便考虑，另一方面为保证脚本不会碰巧操作了错误的数据库的安全机制考虑的。</p>
+<p>\copy table [ ( column_list ) ] { from | to } { filename | stdin | stdout | pstdin | pstdout } [ with ] [ oids ] [ delimiter [ as ] ‘character’ ] [ null [ as ] ‘string’ ] [ csv [ quote [ as ] ‘character’ ] [ escape [ as ] ‘character’ ] [ force quote column_list ] [ force not null column_list ] ]<br>执行前端（客户端）拷贝。这是一个运行 SQL COPY 命令的操作， 不同的是 SQL COPY 是服务器在读写指明的文件，而 psql 读写文件并作为本地的文件系统和服务器之间的路由取出或写入数据。 这意味着文件访问性和权限都是本地用户的，而不是服务器的，因此不需要 SQL 超级用户权限。</p>
+<p>这条命令的语法是模拟 SQL COPY 命令的。 要注意的是由此而来，有一些特殊的分析规则应用于 \copy 命令。 尤其是变量替换规则和反斜杠代换规则不起作用。</p>
+<p>\copy table from stdin | stdout 分别基于命令输入和输出读/写。所有行都从发出命令的同一个源读取，直到读到了 . 或者流达到 EOF。 输出发送到和命令输出相同的位置。要从 psql 的标准输入或者输出读/写， 使用 pstdin 或者 pstdout。这个选项用于把和 SQL 脚本嵌在一起的文件填充表很有用。</p>
+<p>提示: 此操作不象 SQL COPY 命令这样高效， 因为所有数据必须通过客户端/服务器联接。对于大数据量的操作，另一种方法更可行。</p>
+<p>\copyright<br>显示 PostgreSQL 的版权和版本信息。</p>
+<p>\d [ pattern ]<br>\d+ [ pattern ]<br>对于每个匹配pattern的关系（表，视图，索引或者序列）， 显示所有列，它们的类型，表空间（如果不是缺省的）和任何特殊属性，象NOT NULL或缺省等－－只要存在。 如果实际上这个关系是一个表，任何已定义的索引，主键，唯一约束相关的索引，规则，约束，和触发器也同样显示出来， 如果关系是一个视图，还显示视图的定义。 （”匹配模式”在下面定义。）</p>
+<p>从 \d+ 来的命令也是一样的，只不过显示更多信息：任何与表的列关联的注解也都会显示， 还有就是表中出现的 OID。</p>
+<p>注意: 如果如果不带任何pattern调用 \d， 等效于 \dtvs，将显示一个所有表，视图和序列的列表。 这完全是出于方便的考虑。</p>
+<p>\da [ pattern ]<br>列出所有可用聚集函数，以及它们操作的数据类型。如果声明了 pattern，那么只显示匹配（正则表达式）的聚集函数。</p>
+<p>\db [ pattern ]<br>\db+ [ pattern ]<br>列出所有可用的表空间。如果声明了 pattern， 那么只显示那些匹配模式的表空间。如果在命令名上附加了 +，那么每个对象都和与之相关的权限一起列出。</p>
+<p>\dc [ pattern ]<br>列出所有字符集之间的可用转换。如果声明了 pattern， 则只列出那些匹配模式的转换。</p>
+<p>\dC<br>列出所有类型转换。</p>
+<p>\dd [ pattern ]<br>显示所有匹配 pattern 的描述，如果没有给出参数，显示所有可视对象。 但是不管怎样，只有那些有描述内容的对象才显示出来。 （”对象”包括聚集，函数，操作符，类型， 关系（表，视图，索引，序列，大对象），规则和触发器。）例如：</p>
+<p>=&gt; \dd version<br>                     Object descriptions<br>   Schema   |  Name   |  Object  |      Description<br>————+———+———-+—————————<br> pg_catalog | version | function | PostgreSQL version string<br>(1 row)<br>可以用 COMMENT SQL 命令生成对对象的描述。</p>
+<p>\dD [ pattern ]<br>列出所有可用域。如果声明了 pattern，那么只显示匹配的域。</p>
+<p>\df [ pattern ]<br>\df+ [ pattern ]<br>列出所有可用函数，以及它们的参数和返回的数据类型。如果声明了 pattern，那么只显示匹配（正则表达式）的函数。如果使用了 \df+ 的形式，每个函数的附加信息，包括语言和描述也会显示出来。</p>
+<p>注意: 要查找接受或者返回特定类型的函数，使用你的分页器的搜索功能来滚动 \df 的输出。</p>
+<p>为了减少混乱，\df 并不显示数据类型的 I/O 函数。 这样是通过忽略那些接受或者返回类型 cstring 的函数实现的。</p>
+<p>\dg [ pattern ]<br>列出所有数据库组。如果声明了 pattern， 只显示那些匹配模式的名字。</p>
+<p>\distvS [ pattern ]<br>这不是实际的命令名称：字母 i，s， t，v，S 分别代表索引（index）， 序列（sequence），表（table），视图（view）和系统表（system table）。 你可以以任意顺序声明任意或者所有这些字母获得这些对象的一个列表。 字幕 S 把列表限制于系统对象；如果没有 S，则只显示非系统对象。 如果在命令名上附加了 +，那么还会列出和每个对象相关联的描述，如果有的话。</p>
+<p>如果声明了 pattern，那么只列出匹配模式的对象。</p>
+<p>\dl<br>这是 \lo_list的别名，显示一个大对象的列表。</p>
+<p>\dn [ pattern ]<br>\dn+ [ pattern ]<br>列出所有可用模式（名字空间）。如果声明了 pattern （一个正则表达式），那么只列出匹配模式的模式名。不显示非本地的临时模式。 如果在命令名上附加了 +，那么每个对象都和与之相关的权限和注释一起列出（如果有的话）。</p>
+<p>\do [ pattern ]<br>列出所有可用操作符，以及它们的操作数和返回的数据类型。 如果声明了 pattern，那么只显示匹配模式的操作符。</p>
+<p>\dp [ pattern ]<br>生成一列可用的表和它们相关的权限。 如果声明了 pattern， 那么只列出名字可以匹配模式的表。</p>
+<p>命令 GRANT 和 REVOKE 用于设置访问权限。 参阅 GRANT 获取更多信息。</p>
+<p>\dT [ pattern ]<br>\dT+ [ pattern ]<br>列出所有数据类型或只显示那些匹配 pattern的。这条命令的 \dT+ 形式显示更多信息。</p>
+<p>\du [ pattern ]<br>列出所有已配置用户或者只列出那些匹配 pattern 的用户。</p>
+<p>\edit (or \e) [ filename ]<br>如果声明了 filename， 则编辑此文件并且在编辑器退出后将其内容拷贝回查询缓冲区。 如果没有给出参数，则把当前查询缓冲区内容拷贝到一个临时文件然后以相同方式编辑。</p>
+<p>然后根据一般的psql规则重新分析查询缓冲区， 这时整个缓冲区当作一个单行。（因此你无法用这个方法制作“脚本”，用 \i 做脚本。） 这还意味着如果该查询以分号结尾（或者包含分号），它就会马上被执行。否则它只是在查询缓冲区里等待。</p>
+<p>提示: psql 搜索环境变量 PSQL_EDITOR，EDITOR 和 VISUAL（以此顺序）查找要用到哪个编辑器。如果上面的都没有设置，那么在 Unix 系统上使用 vi，在 Windows 系统上用 notepad.exe。</p>
+<p>\echo text [ … ]<br>向标准输出打印参数，用一个空格分隔并且最后跟着一个新行。 这个特性在显示脚本的输出时会有用。例如：</p>
+<p>=&gt; \echo <code>date</code><br>Tue Oct 26 21:40:57 CEST 1999<br>果第一个参数是一个无引号的 -n，那么不会写出结尾的新行。</p>
+<p>提示: 如果你使用 \o 命令重定向你的查询的输出，你可能会用 \qecho取代这条命令。</p>
+<p>\encoding [ encoding ]<br>设置客户端字符编码方式。不带参数时，这条命令显示当前的编码方式。</p>
+<p>\f [ string ]<br>为不对齐的查询输出设置域分隔符。缺省时是竖条（|）。 参阅 \pset 获取设置输出选项的通用方法。</p>
+<p>\g [ { filename | |command } ]<br>把当前的查询输入缓冲区的内容发送给服务器并且把查询的输出存储到可选的 filename 或者把输出定向到一个独立的在执行 command 的 Unix shell。 单独一个 \g 实际上等效于一个分号。一个带有参数的\g 是”一次性”的 \o命令的代用品。</p>
+<p>\help （或者 \h） [ command ]<br>给出指定 SQL 命令的语法帮助。如果没有给出 command ，那么 psql 将列出可获得语法帮助的所有命令。如果 command 是一个星号（”*”），则显示所有 SQL 命令的语法帮助。</p>
+<p>注意: 为简化敲击，包含多个单字的命令不需要引起。因此键入 \help alter table 是正确的。</p>
+<p>\H<br>打开 HTML 查询输出格式。如果 HTML 格式已经打开，则切换回缺省的对齐的文本格式。 这个命令是为了兼容和方便，参阅 \pset 获取设置其他输出选项的内容。</p>
+<p>\i filename<br>从文件filename中读取并把其内容当作从键盘输入的那样执行查询。</p>
+<p>注意: 如果你想在屏幕上看到读入的行，你必须对所有行设置变量 ECHO 为 all。</p>
+<p>\l （或 \list）<br>\l+ （或 \list+）<br>列出服务器上所有数据库的名字和它们的所有者以及字符集编码。在命令名称后面加一个 “+” 还可以看到对数据库的描述。</p>
+<p>\lo_export loid filename<br>从数据库里读取 OID 为 loid 的大对象并把她写到 filename里。 注意这个功能与服务器函数 lo_export 有些微小的区别， lo_export 运行时带着运行数据库服务器的用户权限， 而且是在服务器的文件系统上。</p>
+<p>提示: 使用 \lo_list 查看大对象的 OID。</p>
+<p>\lo_import filename [ comment ]<br>把文件存储为一个 PostgreSQL 大对象。可以带着一个该对象的注解选项。例如：</p>
+<p>foo=&gt; \lo_import ‘/home/peter/pictures/photo.xcf’ ‘a picture of me’<br>lo_import 152801<br>响应表明此大对象得到一个对象标识 152801，如果你还想访问该对象，就应该把这个对象标识记住。 因此，我们建议总是给每个对象关联一个人类可读的注解。 那样就可以用 \lo_list 命令看到这些注解。</p>
+<p>注意这条命令与服务器端的 lo_import 有一些区别， 因为这条命令是本地用户在本地文件系统上操作， 而不是以服务器用户在服务器文件系统上操作。</p>
+<p>\lo_list<br>显示一个目前存储在该数据库里的所有 PostgreSQL 大对象和它们的所有者的列表。</p>
+<p>\lo_unlink loid<br>从数据库里删除OID为 loid 的大对象。</p>
+<p>提示: 使用 \lo_list 查找大对象的 OID。</p>
+<p>\o [ {filename | |command} ]<br>把后面的查询结果保存到文件 filename 里或者把后面的查询结果定向到一个独立的 Unix shell 执行 command。 如果没有声明参数，查询输出重置为标准输出。</p>
+<p>“查询结果”包括所有表，命令响应和从数据库服务器来的提示， 同样还有各种各样查询数据库的反斜杠命令的输出（如 \d），但是没有错误信息。</p>
+<p>提示: 要用文本分散查询结果之间的输出，用 \qecho。</p>
+<p>\p<br>打印当前查询缓冲区到标准输出。</p>
+<p>\pset parameter [ value ]<br>这条命令设置影响查询结果表输出的选项。parameter 描述要设置的选项是哪一个。value 的语意也取决于它。</p>
+<p>可调节的打印选项有：</p>
+<p>format<br>设置输出格式为 unaligned，aligned，html， latex 或 troff-ms 之一。允许使用唯一的缩写。 （这也意味着一个字母就够了。）</p>
+<p>“Unaligned” （不对齐）把一条记录的所有字段都输出到一行， 用当前有效的域分隔符分隔。这主要用于生成那些要被其他程序读取的输出（tab分隔，逗号分隔）。 “Aligned” （对齐）模式是标准的，人类可读的，格式化好了的文本输出，也是缺省。 “HTML” 和 “LaTeX” 模式把表输出为可用于文档里的对应标记语言。它们还不是完整的文档！ （可能对于 HTML 变化还不是太大， 但是在 LaTeX 里，你必须有一个完整的文档包装器。）</p>
+<p>border<br>第二个参数必须是一个数字。通常，数字越大，表就有越宽的边界和越多的线， 但是这个参数取决于实际的格式。在HTML模式里， 这个参数会直接翻译成border=…属性，在其他的模式里， 只有值 0 （无边界），1 （内部分隔线）和 2 （表框架）有意义。</p>
+<p>expanded ）（或者 x）<br>在正常和扩展格式之间切换。当打开扩展格式时，查询结果用两列显示， 字段名称在左，数据在右。这个选项只影响正常查询结果的显示方式； psql 元命令的输出总是使用正常的格式。 这个模式在数据无法放进通常的”水平”模式的屏幕时很有用。</p>
+<p>所有四种输出模式都支持扩展格式。</p>
+<p>null<br>第二个参数是一个字串，用以代表字段的值为 null 时的打印输出。 缺省是什么都不打，这样很容易和类似一个空字串混淆。 因此，我们可能选择 \pset null ‘(null)’。</p>
+<p>fieldsep<br>声明在非对齐模式时的域分隔符。 这样我们就可以创建其他程序希望的tab或逗号分隔的输出。要设置 tab 域分隔符， 键入 \pset fieldsep ‘\t’。缺省域分隔符是 ‘|’ （一个竖条符号）。</p>
+<p>footer<br>切换缺省脚注 (x rows)。</p>
+<p>recordsep<br>声明在非对齐模式时的记录分隔符。缺省是换行符。</p>
+<p>tuples_only （或者 t）<br>在完全显示和只显示记录之间切换。 完全显示将显示象列头，标题和各种脚注等信息。 在这个模式下，只显示记录模式将只显示实际的表数据。</p>
+<p>title [ text ]<br>为任何随后打印的表设置标题。 这个参数可以用于给你的输出一个描述性标记。 如果不带参数，重置标题。</p>
+<p>tableattr （或者 T）[ text ]<br>允许你声明放在 HTML table 标记里的任何属性。例如，可以是 cellpadding 或 bgcolor。注意你可能不需要在这里声明 border ，因为已经在 \pset border 里用过了。</p>
+<p>pager<br>控制查询和psql帮助输出的分页器。如果设置了环境变量 PAGER， 输出被定向到指定程序，否则使用系统缺省（比如 more）。</p>
+<p>如果关闭了分页器，则不使用它，如果打开了，程序只在需要的时候使用分页器，也就是说， 输出是到终端，而且那个表很可能无法与屏幕匹配。 （psql 在决定何时分页时不是很完美。） \pset pager 开关分页器。我们也可以把分页器设置为 always，导致我们在任何情况下都使用分页器。</p>
+<p>可以在 例子 节看到这些不同格式输出的示例。</p>
+<p>提示: 有很多用于\pset的快速命令。参阅 \a，\C，\H， \t，\T，和 \x。</p>
+<p>注意: 无参数运行 \pset是错误的。 以后这样调用将显示当前打印选项状态。</p>
+<p>\q<br>退出psql程序。</p>
+<p>\qecho text [ … ]<br>这条命令等效于 \echo ，区别是所有输出将写入由 \o设置的输出通道。</p>
+<p>\r<br>重置（清空）查询缓冲区。</p>
+<p>\s [ filename ]<br>将命令行历史打印出或是存放到 filename。 如果省略 filename， 历史将输出到标准输出。这个选项只有在 psql 配置成使用 GNU Readline 库后才生效。</p>
+<p>注意: 在当前版本里，这个（ GNU 历史库）不再是必须的了， 实际上，在程序结束时自动保存命令行历史。每次 psql 启动都会装载命令行历史。</p>
+<p>\set [ name [ value [ … ] ] ]<br>设置内部变量 name 为 value 或着如果给出了多于一个值， 设置为所有这些值的联接结果。如果没有给出第二个参数，只设变量不设值。要重置一个变量，使用 \unset 命令。</p>
+<p>有效的变量名可以包含字符，数字和下划线。 参阅下面的 变量 获取细节。</p>
+<p>尽管你可以设置任何变量为任意值， psql对一些变量特殊对待。它们在关于变量的节里面有文档。</p>
+<p>注意: 这条命令是完全和 SQL 命令 SET 不一样的。</p>
+<p>\t<br>切换输出的列/字段名的信息头和行记数脚注。 这条命令等效于 \pset tuples_only，提供主要为了方便。</p>
+<p>\T table_options<br>允许你在使用HTML输出模式时声明放在 table 标记里的属性。 这条命令等效于 \pset tableattr table_options。</p>
+<p>\w {filename | |command}<br>将当前查询缓冲区输出到文件 filename 或者定向到 Unix 命令 command。</p>
+<p>\x<br>切换扩展行格式。等效于 \pset expanded。</p>
+<p>\z [ pattern ]<br>生成一个带有访问权限列表的数据库中所有表，视图和序列的列表。 如果给出任何pattern，则被当成一个规则表达式， 只显示匹配的表，视图和序列。</p>
+<p>命令 GRANT 和 REVOKE 用于设置访问权限。 参阅 GRANT 获取更多信息。</p>
+<p>这是 \dp（”显示权限”）的别名。</p>
+<p>! [ command ]<br>返回到一个独立的 Unix shell 或者执行 Unix 命令 command。 参数不会被进一步解释，shell 将看到全部参数。</p>
+<p>\?<br>获得关于反斜杠命令的帮助信息。</p>
+<p>各种 \d 命令都接受一个 pattern 参数，声明要显示的对象名字。* 表示”任何字符序列”， 而 ? 表示”任何单个字符”。（这个表示法和 Unix 的 shell 文件名模式兼容。） 高级用户也可以使用正则表达式表示法，比如字符表，[0-9] 这样的东西来匹配”任意数字”。 要让任何这些模式匹配字符可以安字面方式解析，那就应该用双引号包围它们。</p>
+<p>一个包含（无引号的）句点的模式会被解析承一个模式名的模式后面跟着一个对象名的模式。 比如， \dt foo<em>.bar</em> 显示所有以foo 开头的模式里的以 bar 开头的表名字。 如果没有出现句点，那么这个模式只匹配在当前模式搜索路径中可见的对象。</p>
+<p>如果完全省略 pattern 参数， 那么 \d 命令显示所有在当前模式搜索路径中可见的对象。 要查阅在数据库中的所有对象，使用模式 <em>.</em>。</p>
+<p>高级特性</p>
+<p>变量</p>
+<p>psql 提供类似通常 Unix 命令 shell 那样的变量替换特性。 变量只是简单的名称/数值对， 这里的值可以是任何长度的任何值。要设置一个变量，使用 psql 元命令 \set：</p>
+<p>testdb=&gt; \set foo bar<br>把变量”foo” 设置为值 “bar”。 要检索变量的内容，在变量名前面放上冒号然后把它用在任意斜杠命令里：</p>
+<p>testdb=&gt; \echo :foo<br>bar<br>注意: \set 的参数服从和其他命令一样的替换规则。 因此你可以构造有趣的引用，象 \set :foo ‘something’ 这样， 获得分别象Perl或 PHP那样有名的”软连接（soft links）”或”变量 变量”。 不幸的是（或者 万幸的？），用这些构造不能做任何有用的事情。另一方面， \set bar :foo 是一个非常有效的拷贝变量的方法。</p>
+<p>如果你不带第二个参数调用\set， 那么只是设置这个变量而没有值。 要重置（或删除）一个变量，使用命令 \unset。</p>
+<p>psql的内部变量可以包括任意顺序， 任意数量的字母，数字和下划线。 有一些常用变量被 psql 另眼相待。它们是一些选项设置， 这些选项在运行时可以通过改变变量的值或者改变一些应用的表现状态而改变。 尽管你可以把这些变量用于其他用途，但是我们不鼓励这么做，因为程序的特性可能会很快变得非常奇怪。 通常，所有特殊对待的变量都是由大写字母组成（可能还有数字和下划线）。 为了保证和未来的最大限度的兼容性，请避免使用这样的变量。 下面是一个所有特殊对待的变量列表。</p>
+<p>AUTOCOMMIT<br>如果是 on（缺省），那么每个 SQL 命令都在成功完成后自动提交。 要推迟这种模式下的提交，你必须输入一个 BEGIN 或者 START TRANSACTION SQL 命令。 如果是 off 或者未设置，SQL 命令不会提交，知道你明确地发出 COMMIT 或者 END。 关闭自动提交的模式是通过为你明确发出一个 BEGIN 实现的， 它是放在任何尚未在一个事务块中并且自己不是 BEGIN 或者其它事务控制命令也不是那些不能在事务块里执行的命令 （比如 VACUUM）的前面。</p>
+<p>注意: 在关闭自动提交的模式下，你必须明确放弃任何失败的事务，方法是执行 ABORT 或者 ROLLBACK。 还要注意如果你不提交就退出会话，你的工作会丢失。</p>
+<p>注意: 自动提交打开方式是 PostgreSQL 传统的行为， 但是关闭自动提交更接近 SQL 规范。如果你喜欢关闭自动提交，你应该在你的 .psqlrc 文件里设置它。</p>
+<p>DBNAME<br>你正在联接着的数据库名称。 每次你与一个数据库联结都会设置这个值（包括程序启动），但是可以删除。</p>
+<p>ECHO<br>如果置为 all， 输入的或者来自键盘或者一个脚本的所有行在分析或执行前都写到标准输出。 要在程序启动时声明这些，使用 -a如果设置为 queries， psql 只是在查询发送给服务器之前打印出来。 实现这个功能的命令行选项是 -e。</p>
+<p>ECHO_HIDDEN<br>当设置了这个变量并且一个反斜杠命令查询数据库时，首先显示查询。 这样你可以学习 PostgreSQL 内部的东西并且在你自己的程序里提供类似功能。如果你设置该变量的值为 “noexec”，查询只是显示出来但是实际上不发送到服务器和执行。</p>
+<p>ENCODING<br>当前的客户端字符集编码。</p>
+<p>HISTCONTROL<br>如果这个变量设置为 ignorespace， 以空格开始的行将不会进入历史列表。 如果设置为变量 ignoredups， 与以前历史记录里匹配的行也不会进入历史记录。值 ignoreboth是上面两个的结合。 如果删除此变量或者其值为任何与上面的值不同的东西， 所有交互模式读入的行都被保存入历史列表。</p>
+<p>注意: 这个特性是无耻地从 Bash 里剽窃来的。</p>
+<p>HISTFILE<br>此文件将用于存储历史列表。缺省值是 ~/.psql_history。 比如，在 ~/.psqlrc 里使用：</p>
+<p>\set HISTFILE ~/.psql_history- :DBNAME<br>将令 psql 为每个数据库维护一个独立的历史。</p>
+<p>注意: 这个特性是从 Bash 里偷学来的。</p>
+<p>HISTSIZE<br>存在命令历史里的命令的个数。缺省值是 500。</p>
+<p>Note: 这个特性是无耻地从 Bash里剽窃来的。</p>
+<p>HOST<br>当前你正联接的数据库服务器主机。 这是在每次你与数据库联接时（包括程序启动）设置的，但是可以删除。</p>
+<p>IGNOREEOF<br>如果删除此变量，向一个交互的 psql会话发送一个 EOF （通常是 Control-D）将终止应用。如果设置为一个数字值，那么在应用终止前该数值的 EOF 字符将被忽略。 如果设置了此变量但是没有数字值，缺省是 10。</p>
+<p>注意: 这个特性是无耻地从 Bash 里剽窃来的。</p>
+<p>LASTOID<br>最后影响的oid值，即为从一条 INSERT 或 lo_insert 命令返回的值。 此变量只保证在下一条 SQL 命令的结果显示之前有效。</p>
+<p>ON_ERROR_ROLLBACK<br>如果是 on，如果一个事务块里的语句产生一个错误， 那么这个错误被忽略而事务讲继续。如果是 interactive， 那么这样的错误只是在交互的会话里忽略，而不是在从读取脚本文件的时候。 如果是 off（缺省），事务块里一个语句生成的错误将会回滚整个事务。 on_error_rollback-on 的模式是通过在一个事务块的每个命令前为你隐含地发出一个 SAVEPONT 的方式工作的，在发生错误的时候回滚到该事务块。</p>
+<p>ON_ERROR_STOP<br>缺省时，如果非交互的脚本碰到一个错误，象一条错误的 SQL 命令或者内部元命令，处理会继续进行。 这是 psql 的传统特性， 但是有时候我们不太希望这样。如果设置了这个变量，脚本处理将马上停止。 如果该脚本是从另外一个脚本调用的，那个脚本也会按同样的方式停止。 如果最外层的脚本不是从一次交互的 psql 会话中调用的而是用 -f 选项调用的，psql 将返回错误代码 3，以示这个情况与致命错误条件的区别（错误代码 1）。</p>
+<p>PORT<br>当前你正在联接的数据库服务器的端口。 这是在每次你与数据库联接时（包括程序启动）设置的，但是可以删除。</p>
+<p>PROMPT1<br>PROMPT2<br>PROMPT3<br>这些指明psql 显示的提示符看上去象什么。 参阅下面的 提示符。</p>
+<p>QUIET<br>这个变量等效于命令行选项 -q。 可能在交互模式下没有什么用。</p>
+<p>SINGLELINE<br>这个变量等效于设置命令行选项 -S。你可以在运行时删除或设置它。</p>
+<p>SINGLESTEP<br>这个变量等效于命令行选项 -s。</p>
+<p>USER<br>当前你正用于联接的数据库用户。 这是在每次你与数据库联接时（包括程序启动）设置的，但是可以删除/重置。</p>
+<p>VERBOSITY<br>这个选项可以设置为值 default，verbose，或者 terse 以控制错误报告的冗余行。</p>
+<p>SQL 代换</p>
+<p>一个附加的 psql 变量的有用特性是你可以把它们替换（”代换”）成正规的 SQL 语句。这样做的语法同样还是变量名前面加一个冒号（:）。</p>
+<p>testdb=&gt; \set foo ‘my_table’<br>testdb=&gt; SELECT * FROM :foo;<br>将会查询表my_table。变量的值是逐字拷贝的， 所以它甚至可以包含不对称的引号或反斜杠命令。你必须保证你输入的东西是有意义的。 变量替换将不会在引号引起来的 SQL 语句里面发生。</p>
+<p>利用这个功能的一个时髦的应用是通过使用一个随后的语句中最后插入的 OID 建立一个外键仿真场景。 另一个可能用到这个机制的地方是把一个文件的内容拷贝到一个字段里面去。 首先把文件装载到一个变量然后象上面那样处理。</p>
+<p>testdb=&gt; \set content ‘\’’ <code>cat my_file.txt</code> ‘\’’<br>testdb=&gt; INSERT INTO my_table VALUES (:content);<br>这样处理的一个可能问题是 my_file.txt 可能包含单引号。这些需要被逃逸以免在处理第三行时不会导致语法错误。 可以使用程序 sed来做这个处理：</p>
+<p>testdb=&gt; \set content ‘\’’ <code>sed -e &quot;s/&#39;/\\\\\\&#39;/g&quot; &lt; my_file.txt</code> ‘\’’<br>观察正确数量的反斜杠（6）！你可以这样解释它：在 psql 分析完这行后，它把 sed -e “s/‘/\\’/g” &lt; my_file.txt 传递给shell。 shell 将对双引号里的东西做其处理然后用参数 -e 和 s/‘/\‘/g执行 sed。当 sed分析这些时， 它将把双反斜杠替换为单个反斜杠然后进行替换。 可能有时候你认为所有 Unix 命令使用同一个逃逸字符是个好事。 但具有讽刺意味的事实是你可能不得不逃逸所有反斜杠，因为 SQL 文本常量同样也惨遭这种解释。 这种情况下你可能最好在外部准备文件。</p>
+<p>因为冒号也可以合法的出现在 SQL 命令里，便有下面规则的应用： 如果没有设置变量，字符序列 “冒号+名称” 不会被改变。 在任何情况下你都可以用反斜杠逃逸冒号以保护它免于被解释。 （变量的冒号语法是 SQL 用于嵌入查询语言的标准，如 ECPG。用于数组片段和类型转换的冒号语法是 PostgreSQL 扩展，因此有冲突。）</p>
+<p>提示符</p>
+<p>psql使用的提示符可以根据你的喜好客户化。三个变量 PROMPT1，PROMPT2，和 PROMPT3 包含描述提示符的外观的字串和特殊逃逸序列。Prompt 1 是 psql 请求一个新命令时的使用的正常提示符。 Prompt 2 是在一个命令输入期待更多输入时（因为查询没有用一个分号结束或者引号没有关闭）显示的提示符。 Prompt 3 在你运行一个 SQL COPY 命令和等待你在终端上键入记录时使用。</p>
+<p>相应的提示符变量的值是按字面打印的，除非碰到一个百分号（%）。这时某些其他的文本被替换， 替换为何物取决于下一个字符。已定义的替换是：</p>
+<p>%M<br>数据库服务器主机名全名（带着域名），如果联接是通过 Unix 域套接字进行的就是 [local]， 或者如果 Unix 域套接字不是编译的缺省位置，就是 [local:/dir/name]。</p>
+<p>%m<br>数据库服务器的主机名删去第一个点后面的部分剩下的东西。 或者如果联接是通过 Unix 域套接字，就是 [local]。</p>
+<p>%&gt;<br>数据库服务器正在侦听的端口号。</p>
+<p>%n<br>数据库会话的用户名。 （这个值的扩展可能在一个数据库会话过程中因为 SET SESSION AUTHORIZATION 命令而改变。）</p>
+<p>%/<br>当前数据库名称。</p>
+<p>%~<br>类似 %/， 但如果数据库是你的缺省数据库输出是”~” （波浪线（tilde））。</p>
+<p>%#<br>如果会话用户是数据库超级用户，使用 “#”，否则用”&gt;”。 （这个值的扩展可能在一个数据库会话过程中因为 SET SESSION AUTHORIZATION 命令而改变。）</p>
+<p>%R<br>对于 prompt 1 通常是 =，但是如果是单行模式则是 ^，而如果会话与数据库断开（如果 \connect 失败可能发生）是 !。对于 prompt 2 该序列被 -，<em>，一个单引号，一个双引号或者一个美元符代替，这取决于 psql是否等待更多的输入（因为查询没有终止，或着正在一个 /</em> … */注释里面，或者因为你在引号或者美元符扩展里面）。对于 prompt 3 该序列不解释成任何东西。</p>
+<p>%x<br>事务状态：如果不在事务块里，是一个空字串，如果在事务块里，是 *， 如果在一个失败的事务块里是 !，或者无法判断事务状态时为 ? （比如，因为没有连接）。</p>
+<p>%digits<br>指定字节值的字符被替换到该位置。</p>
+<p>%:name:<br>psql变量name的值。参阅 变量 节获取细节。</p>
+<p>%<code>command</code><br>command的输出， 类似于通常的”反勾号（back-tick）” 替换。</p>
+<p>%[ … %]<br>提示可以包含终端控制字符，这些字符可以改变颜色，北京，或者提示文本的风格， 或者改变终端窗口的标题。为了让 Readline 的行编辑特性正确运行， 这些不可打印的控制字符必须设计成不可见的，方法是用 %[ 和 %] 包围它们。 在提示符里可能出现这些东西的多个配对。</p>
+<p>testdb=&gt; \set PROMPT1 ‘%[%033[1;33;40m%]%n@%/%R%[%033[0m%#%] ‘<br>这样的结果是在 VT100 兼容的可显示彩色的终端上的一个宽体（1;）黑底黄字（33;40）。</p>
+<p>要在提示符里插入百分号，键入%%。缺省提示符等效于 ‘%/%R%# ‘ 用于 prompts 1 和 2，以及’&gt;&gt; ‘ 用于 prompt 3。</p>
+<p>注意: 这个特性是无耻地从tcsh 里剽窃来的。</p>
+<p>命令行编辑</p>
+<p>psql 为了编辑和检索命令行的方便支持 Readline 和历史库。 命令历史在 psql 退出的时候自动保存，在 psql 启动的时候装载。 还支持 Tab 补齐，尽管该补齐逻辑并不是一个 SQL 分析器必备的。 如果因某些原因你不喜欢 tab 补齐，你可以把下面几行放在你的家目录的一个叫 .inputrc 的文件里关闭这个特性：</p>
+<p>$if psql<br>set disable-completion on<br>$endif<br>（这不是psql 的特性， 是 Readline 的。参考它的文档获取更多细节。）</p>
+<p>环境</p>
+<p>PAGER<br>如果查询结果在一页里放不下，那么它们被定向到这个命令。 典型的值是 more 或者 less。 缺省的是平台相关的。我们可以用 \pset 命令关闭分页器。</p>
+<p>PGDATABASE<br>缺省数据库</p>
+<p>PGHOST<br>PGPORT<br>PGUSER<br>缺省连接参数</p>
+<p>PSQL_EDITOR<br>EDITOR<br>VISUAL<br>\e 命令使用的编辑器。这些变量是按照上面的顺序检查的；设置最早的最先使用。</p>
+<p>SHELL<br>! 命令执行的命令。</p>
+<p>TMPDIR<br>存储临时文件的目录。缺省是 /tmp。</p>
+<p>文件</p>
+<p>在启动之前，psql 视图读取系统的 psqlrc 文件和执行来自用户家目录的文件 ~/.psqlrc 里面的命令。 （在 Windows 里，用户的启动文件名字叫 %APPDATA%\postgresql\psqlrc.conf。） 参阅 PREFIX/share/psqlrc.sample 获取如何设置全系统的文件的信息。 可将它用于设置客户端或者服务器的风格（使用 \set和SET命令）。</p>
+<p>系统的 psqlrc 和用户自己的 ~/.psqlrc 都可以通过在后面附着一个划线和 PostgreSQL 版本号的方法变得与版本相关， 比如 ~/.psqlrc-8.1。 匹配版本相关的文件比无版本的文件优先读取。</p>
+<p>命令行历史存储在 ~/.psql_history，或者在 Windows 里是 %APPDATA%\postgresql\psql_history。</p>
+<p>注意</p>
+<p>一些 psql的早期版本允许一个单字母的反斜杠命令（元命令）的第一个参数直接跟在命令后面， 而不用空白间隔。出于兼容性原因，这个特性仍然在某些程度上被支持，但是我不准备在这里详细解释，因为我不鼓励这样使用。 不过如果你收到莫名其妙的信息，想想这个用法。例如</p>
+<p>testdb=&gt; \foo<br>Field separator is “oo”.<br>可能不是你想要的东西。</p>
+<p>psql 只能与同版本的服务器平稳地工作。 这不意味着其他组合会完全失败，但是可能有微小的或者不那么微小的问题。 如果服务器的版本不同，反斜杠命令是特别容易失效的。</p>
+<p>Windows 用户需要注意的地方</p>
+<p>psql 是以一种”控制台应用”的方式制作的。 因为 Windows 控制台窗口和系统其它部分使用不同的编码， 所以在 psql 里使用 8 位字符的时候必须采取特殊的注意措施。 如果 psql 检测到一个有问题的控制台代码页， 那么它在启动的时候会警告你。要修改控制台代码页，有两件事是必须做的：</p>
+<p>通过输入 cmd.exe /c chcp 1252 设置代码页。（1252 是适用于德语的代码页；换成合适你的数值。译注：中文 GB2312 的代码页是 936。） 如果你使用 Cygwin，你可以在 /etc/profile 里面输入这条命令。</p>
+<p>把控制台字体设置为 “Lucida Console”，因为光栅字体（点阵字体）不能在 ANSI 代码页下工作。</p>
+<p>例子</p>
+<p>第一个例子演示了如何把一个查询分成多个行进行输入。注意提示符的变化：</p>
+<p>testdb=&gt; CREATE TABLE my_table (<br>testdb(&gt;  first integer not null default 0,<br>testdb(&gt;  second text)<br>testdb-&gt; ;<br>CREATE TABLE<br>现在再看看表定义：</p>
+<p>testdb=&gt; \d my_table<br>             Table “my_table”<br> Attribute |  Type   |      Modifier<br>———–+———+——————–<br> first     | integer | not null default 0<br> second    | text    |<br>把提示符变成更有趣的东西：</p>
+<p>testdb=&gt; \set PROMPT1 ‘%n@%m %~%R%# ‘<br>peter@localhost testdb=&gt;<br>假设你用数据填充了表并且想看一眼：</p>
+<p>peter@localhost testdb=&gt; SELECT * FROM my_table;<br> first | second<br>——-+——–<br>     1 | one<br>     2 | two<br>     3 | three<br>     4 | four<br>(4 rows)<br>你可以用 \pset 命令用不同的方法显示表：</p>
+<p>peter@localhost testdb=&gt; \pset border 2<br>Border style is 2.<br>peter@localhost testdb=&gt; SELECT * FROM my_table;<br>+——-+——–+<br>| first | second |<br>+——-+——–+<br>|     1 | one    |<br>|     2 | two    |<br>|     3 | three  |<br>|     4 | four   |<br>+——-+——–+<br>(4 rows)</p>
+<p>peter@localhost testdb=&gt; \pset border 0<br>Border style is 0.<br>peter@localhost testdb=&gt; SELECT * FROM my_table;<br>first second</p>
+<hr>
+<pre><code>1 one
+2 two
+3 three
+4 four
+</code></pre><p>(4 rows)</p>
+<p>peter@localhost testdb=&gt; \pset border 1<br>Border style is 1.<br>peter@localhost testdb=&gt; \pset format unaligned<br>Output format is unaligned.<br>peter@localhost testdb=&gt; \pset fieldsep “,”<br>Field separator is “,”.<br>peter@localhost testdb=&gt; \pset tuples_only<br>Showing only tuples.<br>peter@localhost testdb=&gt; SELECT second, first FROM my_table;<br>one,1<br>two,2<br>three,3<br>four,4<br>还可以用短（缩写）命令：</p>
+<p>peter@localhost testdb=&gt; \a \t \x<br>Output format is aligned.<br>Tuples only is off.<br>Expanded display is on.<br>peter@localhost testdb=&gt; SELECT * FROM my_table;<br>-[ RECORD 1 ]-<br>first  | 1<br>second | one<br>-[ RECORD 2 ]-<br>first  | 2<br>second | two<br>-[ RECORD 3 ]-<br>first  | 3<br>second | three<br>-[ RECORD 4 ]-<br>first  | 4<br>second | four<br>又见</p>
+<p>环境变量（Section 28.11）<br>Prev    Home    Next<br>pg_restore    Up    vacuumdb</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-on-mac-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/27/postgresql-on-mac-tips/" itemprop="url">
+                  PostgreSQL on Mac Tips
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T00:00:00+08:00">
+                2014-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>install</p>
+<p> <code>brew install postgresql</code></p>
+</li>
+<li><p>satrt</p>
+<p> <code>pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</code></p>
+</li>
+<li><p>open</p>
+<p> <code>psql basename</code></p>
+</li>
+<li><p>stop</p>
+<p> <code>pg_ctl -D /usr/local/var/postgres stop -s -m fast</code></p>
+</li>
+<li><p>exit</p>
+<p> <code>\q</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/mac-install-mysql-use-brew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/27/mac-install-mysql-use-brew/" itemprop="url">
+                  Mac Install Mysql use Brew
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T00:00:00+08:00">
+                2014-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>执行：</p>
+<p> <code>$ brew install mysql</code></p>
+</li>
+<li><p>在 <code>/usr/local/etc/</code> 下创建或修改 <code>my.cnf</code>，示例：</p>
+<p> [client]</p>
+<p> port = 3306</p>
+<p> socket = /tmp/mysql.sock</p>
+<p> default-character-set = utf8</p>
+<p> [mysqld]</p>
+<p> collation-server = utf8_unicode_ci</p>
+<p> character-set-server = utf8</p>
+<p> init-connect =’SET NAMES utf8’</p>
+<p> max_allowed_packet = 64M</p>
+<p> bind-address = 127.0.0.1</p>
+<p> port = 3306</p>
+<p> socket = /tmp/mysql.sock</p>
+<p> innodb_file_per_table=1</p>
+<p> [mysqld_safe]</p>
+<p> timezone = ‘+0:00’</p>
+</li>
+<li><p>安装完 mysql 后，他会提示你 init database，并提供下面这两句让你执行，很可能你没执行这两句</p>
+<p> <code>$ unset TMPDIR</code></p>
+<p> <code>$ mysql_install_db --verbose --user=</code>whoami<code>--basedir=&quot;$(brew --prefix mysql)&quot; --datadir=/usr/local/var/mysql --tmpdir=/tmp</code></p>
+</li>
+<li><p>然后就可以指向 <code>mysql.server start</code> 来启动了，为了安全，你还可以执行安全设置向导，根据提示一步一步配置</p>
+<p> <code>$ mysql_secure_installation</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/25/eulers-totient-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/25/eulers-totient-function/" itemprop="url">
+                  Euler's totient function
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-25T00:00:00+08:00">
+                2014-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>欧拉函数的定义:E(k)=([1,n-1]中与n互质的整数个数).</p>
+<pre><code> 因为任意正整数都可以唯一表示成如下形式:
+                 k=p1^a1*p2^a2*……*pi^ai;(即分解质因数形式)
+可以推出:E(k)=(p1-1)(p2-1)……(pi-1)*(p1^(a1-1))(p2^(a2-1))……(pi^(ai-1))
+           =k*(p1-1)(p2-1)……(pi-1)/(p1*p2*……pi);
+           =k*(1-1/p1)*(1-1/p2)....(1-1/pk)
+ ps：在程序中利用欧拉函数如下性质，可以快速求出欧拉函数的值(a为N的质因素)
+</code></pre><p>若(N%a==0 &amp;&amp; (N/a)%a==0) 则有:E(N)=E(N/a)<em>a;<br>若(N%a==0 &amp;&amp; (N/a)%a!=0) 则有:E(N)=E(N/a)</em>(a-1);<br>第一次写欧拉函数的题，琢磨的半天，最后还是只能按照最开始的想法写……<br>欧拉函数PHI(n)表示的是比n小，并且与n互质的正整数的个数(包括1)。比如：<br>PHI(1) = 1; PHI(2) = 1; PHI(3) = 2; PHI(4) = 2; … PHI(9) = 6; …</p>
+<p>要计算一个正整数n的欧拉函数的方法如下：</p>
+<ol>
+<li>将n表示成素数的乘积: n = p1 ^ k1 <em> p2 ^ k2 </em> … * pn ^ kn（这里p1, p2, …, pn是素数）</li>
+<li>PHI(n) = (p1 ^ k1 - p1 ^ (k1 - 1)) <em> (p2 ^ k2 - p2 ^ (k2 - 1)) </em> … *(pn ^ kn - pn ^ (kn - 1))<pre><code>= Mult { pi ^ ki - pi ^ (ki -1) }
+</code></pre></li>
+</ol>
+<p>证明过程如下：</p>
+<ol>
+<li>容易想到：当n为素数时，PHI(n) = n - 1。因为每个比n小的正整数都和n互素。当n为素数p的k次方时，PHI(n) = p ^ k - p ^ (k - 1)。因为在1到n之间的正整数只有p的倍数和n不互素，这样的数有(p ^ k / p)个。</li>
+<li>如果m和n互素，即GCD(m, n) = 1，那么PHI(m <em> n) = PHI(m) </em> PHI(n)。用中国剩余定理可以证明，证明的思路是建立这样一种一一对应的关系(a, b) &lt;-&gt; x，其中正整数a小于m并且gcd(a, m) = 1，正整数b小于n并且gcd(b, n) = 1，正整数x小于m<em>n并且gcd(m</em>n, x) = 1。证明过程如下：<br> 1)根据中国剩余定理，如果m和n互素，那么关于未知量x的方程组x % m = a, x % n = b(0 &lt;= a &lt; m, 0 &lt;= b &lt; n)，当0 &lt;= x &lt; m <em> n时存在并且仅存在一个解。容易证明，如果两个这样的方程组有相同的m, n但是a, b不同，那么他们的解x一定不同。<br> 2)首先用反正法证明：gcd(m, a) = 1且gcd(n, b) = 1是gcd(m</em>n, x) = 1的必要条件：假设gcd(a, m) = k &gt; 1，由此可得：a = a’ <em> k; m = m’ </em> k =&gt; x = k’ <em> m + a = k’ </em> k <em> m’ + k </em> a’ = k <em> (k’ </em> m’ + a’); 所以gcd(x, m) = k &gt; 1。同理可证，如果gcd(b, n) &gt; 1， 那么gcd(x, n) &gt; 1。所以x和m <em> n互素的必要条件是a和m互诉且b和n互素。<br> 3)接下来我们证明充分性：由x % m = a 可以得到x = k </em> m + a；由欧几里德算法求最大公约数的过程（就不证明了，呵呵，还得想）可以知道gcd(x, m) = gcd(m, a) = 1；同理可得，如果gcd(n, b) = 1那么gcd(x, n) = 1。接下来很容易得到：gcd(m*n, x) = 1。从而证明了充分性。<br> 4)上面三步的结论表明，数对(a, b)是可以和x建立起一一对应的关系的，所以有多少个不同的(a, b)，就有多少个不同的x。<br>3.将n分解成素数乘积后，显然对于任意的i, j(i != j)都满足 pi ^ ki和pj ^ kj是互素的，于是可以的到上面的公式。</li>
+</ol>
+<p>跟据上面的公式，可以得到关于欧拉函数的递推关系：<br>假设素数p能整除n，那么<br>如果p还能整除n / p, PHI(n) = PHI(n / p) <em> p;<br>如果p不能整除n / p, PHI(n) = PHI(n / p) </em> (p - 1);</p>
+<p>下面是两种求欧拉函数的不同编程方法：<br>/<em>==================================================</em>\<br>|递推求欧拉函数phi(i)<br>*==================================================<em>/<br>for (i = 1; i &lt;= maxn; i++) phi[i] = i;<br>for (i = 2; i &lt;= maxn; i += 2) phi[i] /= 2;<br>for (i = 3; i &lt;= maxn; i += 2) if(phi[i] == i) {<br>for (j = i; j &lt;= maxn; j += i)<br>phi[j] = phi[j] / i </em> (i - 1);</p>
+<p>/<em>==================================================</em>\<br>|单独求欧拉函数phi(x)<br>*==================================================<em>/<br>unsigned euler(unsigned x)<br>{// 就是公式<br>unsigned i, res=x;<br>for (i = 2; i &lt; (int)sqrt(x </em> 1.0) + 1; i++)<br>if(x%i==0) {<br>res = res / i <em> (i - 1);<br>while (x % i == 0) x /= i; // 保证i一定是素数<br>}<br>if (x &gt; 1) res = res / x </em> (x - 1);<br>return res;<br>}</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/24/newton-al/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/24/newton-al/" itemprop="url">
+                  牛顿二项式定理开方与牛顿切线法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-24T00:00:00+08:00">
+                2014-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>开方的反馈方法或者叫做自动调节开方。公式：<br>     <code>X_(n+1)={X_n+【A/(X^（k-1）-X_n】1/k}</code></p>
+<pre><code>&quot;_&quot;表示下角标，“^”表示上角标。例如，X^2,表示x的平方；X_1表示第一个X。
+例如，A=5，k=3.
+公式：X(n+1）=Xn+（A/Xn^2-Xn）1/3
+  5介于1^3至2^3之间（1的3次方=1，2的3次方=8）
+X_0可以取1.1，1.2，1.3，1.4，1.5，1.6，1.7，1.8，1.9，2.0都可以。例如我们取2.0.按照公式：
+第一步：X_1={2.0+[5/(2.0^2-2.0]1/3=1.7.}。即5/2×2=1.25，1.25-2=-0.75，0.75×1/3=0.25，
+2-0.25=1.75，取2位数值,即1.7。
+第二步：X_2={1.7+[5/(1.7^2-1.7]1/3=1.71}.。即5/1.7×1.7=1.73010，1.73-1.7=0.03，0.03×1/3=0.01，
+1.7+0.01=1.71。取3位数，比前面多取一位数。
+第三步：X_3={1.71+[5/(1.71^2-1.71]1/3=1.709}
+第四步：X_4={1.709+[5/(1.709^2-1.709]1/3=1.7099}.
+这种方法可以自动调节，第一步与第三步取值偏大，但是计算出来以后输出值会自动转小；第二步，第四步输入值偏小，输出值自动转大。X_4=1.7099.
+当然也可以取1.1，1.2，1.3，。。。1.8，1.9中的任何一个。
+
+开平方公式
+X（n + 1） = Xn + (A / Xn − Xn)1 / 2.。（n，n+1与是下角标）
+例如，A=5：
+5介于2的平方至3的平方;之间。我们取初始值2.1，2.2，2.3，2.4，2.5，2.6，2.7，2.8，2.9都可以，我们最好取 中间值2.5。
+第一步：2.5+（5/2.5-2.5)1/2=2.2；
+即5/2.5=2，2-2.5=-0.5，-0.5×1/2=-0.25，2.5+(-0.25)=2.25，取2位数2.2。
+第二步：2.2+(5/2.2-2.2)1/2=2.23；
+即5/2.2=2.27272，2.27272-2.2=-0.07272，-0.07272×1/2=-0.03636，2.2+0.03636=2.23。取3位数2.23。
+第三步：2.23+(5/2.23-2.23)1/2=2.236。
+即5/2.23=2.2421525，,2.2421525-2.23=0.0121525，,0.0121525×1/2=0.00607，,2.23+0.006=2.236.，取4位数。
+每一步多取一位数。这个方法又叫反馈开方，即使你输入一个错误的数值，也没有关系，输出值会自动调节，接近准确值。
+例如A=200.
+200介如10的平方---20的平方之间。初始值可以取11，12，13，14，15，16，17，18，19。我们去15.
+15+（200/15-15)1/2=14。取19也一样得出14.。：19+（200/19-19)1/2=14.。
+14+(200/14-14)1/2=14.1。
+14.1+（200/14.1-14.1)1/2=14.14.
+关于这个方法的说明;1980年王晓明利用牛顿二项式推出这个公式，找到江西师范大学，一位教授觉得面熟，当场又推演一遍，与牛顿切线法一样。辽宁鞍山的傅钟鹏在他的《数学雅典娜》一书中介绍，天津新蕾出版社。由于是牛顿的公式，作者王晓明不敢贪天之功。所以傅钟鹏老师在文章介绍也明确说明是由牛顿切线法推出。
+中间值，即1.5。 1.5+（5/1.5^2;-1.5）1/3=1.7。
+顺便介绍开5次方公式：
+X(n+1)=Xn+(A/X^4-Xn)1/5 . (n，n+1是下角标）
+例如：A=5;
+5介入1的5次方至2的5次方之间。2的5次方是32，5靠近1的5次方。初始值可以取1.1，1.2，1.3，1.4，1.5，1.6，1.7，1.8，1.9.例如我们取中间值1.4；
+1.4+（5/1.4^4-1.4)1/5=1.38
+1.38+（5/1.38^4-1.38)1/5=1.379.
+1.379+(5/1.379^4-1.379)1/5=1.3797.
+计算次数与精确度成为正比。即5=1.3797^5.。
+这个方法的依据是根据牛顿切线法得来。也可以通过牛顿二项式定理推出。
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/22/文学回忆录-木心的心/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/22/文学回忆录-木心的心/" itemprop="url">
+                  文学回忆录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-22T00:00:00+08:00">
+                2014-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>年轻人无私无畏，其实私得厉害，畏的厉害，只有那点东西，拿掉就没有了。年轻人谈人生，谈世界，其实说的是自己。</p>
+</li>
+<li><p>拜伦自称不读书，死后发现其藏书里满是注解，真是天纵英才。</p>
+</li>
+<li><p>无知的人总是薄情的。无知的本质，就是薄情。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/21/git-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/21/git-tips/" itemprop="url">
+                  Git Tips
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-21T00:00:00+08:00">
+                2014-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p><code>git checkout -b &lt;branch&gt;</code> create new branch &amp; switch</p>
+</li>
+<li><p><code>git add &lt;filename&gt;</code> add new file/chenge to index</p>
+</li>
+<li><p><code>git commit -m &quot;something&quot;</code> add desc for the new add</p>
+</li>
+<li><p>merge branch to master:</p>
+<p>  <code>git checkout master</code></p>
+<p>  <code>git merge &lt;branch&gt;</code></p>
+<p>if the master is not changed during branch commit, the merge is <em>“fast-forward”</em></p>
+</li>
+<li><p><code>git branch -d &lt;branchname&gt;</code> delete the branch</p>
+<p>you can also use <code>git branch</code> to check this operation</p>
+</li>
+<li><p><code>git reset -hard HEAD~</code> cancel the last merge operation</p>
+</li>
+<li><p>use rebase</p>
+<p>  <strong>about merge :</strong></p>
+<p>  <em>Merge和rebase都是合并历史记录，但是各自的特征不同。</em></p>
+</li>
+</ul>
+<blockquote>
+<p>merge</p>
+<p>保持修改内容的历史记录，但是历史记录会很复杂。</p>
+<p>rebase</p>
+<p>历史记录简单，是在原有提交的基础上将差异内容反映进去。<br>因此，可能导致原本的提交内容无法正常运行。</p>
+<p>您可以根据开发团队的需要分别使用merge和rebase。</p>
+<p>例如，想简化历史记录，在topic分支中更新merge分支的最新代码，请使用rebase。</p>
+<p>向merge分支导入topic分支的话，先使用rebase，再使用merge。</p>
+</blockquote>
+<ul>
+<li><p><code>git rebase master</code> rebase master</p>
+<p>if contains conflicts, fix &amp; use <code>git rebase --continue</code></p>
+</li>
+<li><p>remote database</p>
+<ul>
+<li><p>pull</p>
+<p>  just merge remote to local</p>
+</li>
+<li><p>fatch</p>
+<p>  check &amp; do not merge</p>
+</li>
+<li><p>push</p>
+<p>  local to remote</p>
+</li>
+</ul>
+</li>
+<li><p>add light tag</p>
+<ul>
+<li><code>git tag &lt;tagname&gt;</code></li>
+<li>show tags <code>git tag</code></li>
+<li>show commit history with tags <code>git log --decorate</code></li>
+</ul>
+</li>
+<li><p>add declier tag</p>
+<ul>
+<li><code>git tag -a &lt;tagname&gt;</code></li>
+<li><code>$ git tag -am &quot;something&quot; &lt;tagname&gt;</code></li>
+<li>show declier tag <code>git tag -n</code></li>
+</ul>
+</li>
+<li><p>delete tag <code>git tag -d &lt;tagname&gt;</code></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/21/git-change-commit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/21/git-change-commit/" itemprop="url">
+                  Git Change Commit
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-21T00:00:00+08:00">
+                2014-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p><code>git commit --amend</code> change least commit</p>
+</li>
+<li><p><code>git revert HEAD</code> cancel the least commit</p>
+</li>
+<li><p><code>git reset --hard HEAD~~</code> delete 2 commit in master least</p>
+<p>  if your operation is error, you can rollback this with</p>
+<p>  <code>git reset --hard ORIG_HEAD</code></p>
+</li>
+</ul>
+<p>:blush:</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/20/about-kilims-ifaq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/11/20/about-kilims-ifaq/" itemprop="url">
+                  Kilim IFAQ: Infrequently Asked Questions.
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-20T00:00:00+08:00">
+                2014-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>(Copyright 2006 Sriram Srinivasan)</p>
+<p>Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0<br>– sriram srinivasan (Kilim <em>at</em> malhar.net)</p>
+<p>======================================================================</p>
+<p><strong>Why is multi-threaded programming considered so hard? //为什么多线程编程如此困难呢？</strong></p>
+<p>======================================================================</p>
+<p>It is relatively easy to get thread programming correct (to a first<br>approximation) by synchronizing all your shared data structures and<br>taking locks in the right order. </p>
+<p>You could have one giant lock and just do things one at a time (like<br>the current python interpreter with its Global Interpreter Lock).<br>Clearly, this is not efficient.  Increasing concurrent access of a<br>data structure (by using finer-grained locks) is what makes it<br>error-prone and hard to debug. </p>
+<p>======================================================================</p>
+<p><strong>Kilim uses kernel threads. Where do tasks and threads meet? //Kilim使用内核进程，那么Task和Thread如何交互？</strong></p>
+<p>======================================================================</p>
+<p>Kilim’s tasks are cooperatively scheduled on a kernel thread pool. </p>
+<p>Tasks are needed when you want to split up your workflow into small<br>stages and write code as if it is blocking (instead of writing a<br>callback and having to jump to that function when it gets called).<br>Tasks should not ideally make thread-blocking calls, although if you<br><em>have</em> to call one, it is not the end of the world. That’s what other<br>threads are for .. they’ll take care of the other tasks meanwhile.</p>
+<p>A Kilim task is owned and managed by a scheduler, which manages the<br>thread pool. When a task needs to pause, it removes itself from the<br>thread by popping its call stack, remembering enough about each<br>activation frame in order to help rebuild the stack and resume, at a<br>later point). The scheduler then reuses that thread for some other<br>task.</p>
+<p>You can have more than one scheduler (read: thread pool) and assign<br>each task to a particular scheduler. See the bench directory for<br>examples.</p>
+<p>======================================================================</p>
+<p><strong>How lightweight is “lightweight”? //什么是轻量级线程？</strong></p>
+<p>======================================================================</p>
+<p>The amount of memory occupied by a task is:</p>
+<ol>
+<li><p>The java object that represents the task class</p>
+</li>
+<li><p>If paused, an array of activation frames is stored. The Kilim<br>weaver performs data flow and live variable and constant analysis<br>(intra-procedurally) to ensure that it capture only as<br>much as is needed to resume.</p>
+</li>
+<li><p>The contents of all mailboxes that the task is receiving on.</p>
+</li>
+</ol>
+<p>Clearly, all these depend on your application. </p>
+<p>The depth of the task stack is limited only by the thread’s stack; no<br>memory is preallocated. Note that when written in the message passing<br>style, stacks tend not to be too deep because each task is like a<br>stage in a workflow, with its own stack.</p>
+<p>======================================================================</p>
+<p><strong>What’s the difference between channels in Ada, CSP/Occam, Newsqueak,Alef etc. and Kilim’s mailboxes? //Kilim的MailBox与其他一些支持协程的语言特性有什么区别？</strong></p>
+<p>======================================================================</p>
+<p>Most of these languages use synchronous channels as their basic<br>construct, where a sending task can proceed only after the receiver<br>has received (or vice-versa). </p>
+<ol>
+<li><p>Synchronous channels are easier to reason about because there is<br>automatic flow control; the sender does not proceed unless the<br>recipient drains the channel. Tony Hoare, Robin Milner, Rob Pike<br>and John Reppy have all written extensively about synchronous<br>programming, so I will take their word for it. However, I still<br>find asynchronous programming (through buffering) a better default<br>choice for practical reasons:</p>
+</li>
+<li><p>Context switching has a cost, however inexpensive Kilim’s tasks are<br>to create and context-switch (unlike the Occam/transputer world<br>with its hardware-assisted switching).  Although Kilim’s mailboxes<br>can be configured to be synchronous, it is not the default.  There<br>are many cases where you want to send messages to multiple<br>recipients before waiting to collect replies. I find tedious the<br>CSP approach of spawning a task to avoid blocking while sending.</p>
+</li>
+<li><p>I like the same interface for both concurrent and distributed<br>programming (although support for distributed programming is yet to<br>be bundled with Kilim).  Synchronous <em>distributed</em> programming is<br>horribly inefficient .. every put has to be acked when a<br>corresponding <em>get</em> is done.</p>
+</li>
+</ol>
+<p>This is why I have followed Erlang’s example to prefer buffered<br>channels (called mailboxes) as the default choice.</p>
+<p>======================================================================</p>
+<p><strong>Erlang vs. Kilim</strong></p>
+<p>======================================================================</p>
+<p>Kilim is an ode to Erlang (www.erlang.org), and strives to bring<br>some of its features into the more familiar Java world.</p>
+<p>The term “Erlang”, like Perl, refers to both the language and the sole<br>available implementation. Comparisons have to be made on these two<br>axes separately.</p>
+<p>The Erlang language is a soft-typed, purely functional language and<br>has many of the goodies of a functional setting: higher-order<br>functions, beautifully simple syntax and pattern matching on terms,<br>features that I’d love to see in Java.  However, programming in a purely<br>functional style is not everyone’s cup of tea and there is no reason<br>that higher order functions and pattern matching can’t be made<br>available in an imperative setting (See Scala, JMatch, Tom(from INRIA)<br>etc). If you have to have types, it is better to have Ocaml-style<br>types (or even Smalltalk); but compared to Java-style types, I prefer<br>the simplicity of Erlang’s soft types.</p>
+<p>The argument for Java lies not in the language, but in the incredible<br>JIT compilers, JDK, enormous open code base and community, excellent<br>IDEs, good network, database, GUI and systems support. Why throw away<br>all that?</p>
+<p>The Erlang <em>environment</em> (not the language) offers lightweight<br>processes, fast messaging, uniform abstraction for concurrency and<br>distribution and many, many systemic features (process monitoring,<br>automatic restart), process isolation, failure isolation etc. These can be<br>built atop Kilim as well. </p>
+<p>The idea behind Kilim is that one can have all the features of the<br>Erlang environment without having to move to the Erlang<br><em>language</em>. </p>
+<p>======================================================================</p>
+<p><strong>Kilim vs. Transactional Memory</strong></p>
+<p>======================================================================</p>
+<p>Hardware/Software Transactional Memory is currently the new hope and<br>an alternative for concurrent programing in the shared memory<br>world. It is appropriate in a mostly functional setting where most<br>objects are immutable and side-effects are rare or contained. In an<br>imperative setting, I have my doubts about TM’s scalability; hotspots<br>are expensive. Atomic sections can’t be too big, otherwise they risk<br>getting retried all over again.  And the part of code that retries had<br>better not have any side effects that doesn’t know about or is not<br>controlled by the TM, such as sending messages on the network.</p>
+<p>I think the task and mailbox approach is a more understandable model,<br>has nice run-to-completion semantics, has convenient graphical<br>representations (dataflow diagrams, workflow diagrams, Petri nets). It<br>brings the interaction with other processes out in the open. It allows<br>batched and efficient communication.</p>
+<p>That said, there is absolutely no reason not to use the TM facilities<br>internally inside Kilim. I intend to use non-blocking data structures<br>when they perform well (currently, Java’s data structures aren’t<br>as fast as I’d like them to be)</p>
+<p>======================================================================</p>
+<p><strong>What’s the relation between CCS/pi-calculus and Kilim</strong></p>
+<p>======================================================================<br>The notion that the Mailbox itself is a first class message datatype<br>and can be sent as part of a message is inspired by Prof. Robin<br>Milner’s pi-calculus. This allows the topology to change with time.<br>A can send a mailbox in a message to B, B can forward that message to C<br>and C and D can shared that mailbox.</p>
+<p>Beyond that, CCS, like CSP is a modeling and specification language,<br>and uses synchronous interaction between processes. At a practical<br>level, this is terribly inefficient (esp. in Java).</p>
+<p>======================================================================</p>
+<p><strong>RMI vs. Kilim</strong></p>
+<p>======================================================================</p>
+<p>We need to distinguish between RMI implementations and the concept. </p>
+<p>RMI implementations block the java thread. That’s a no-no for<br>scalability.  They themselves are incredibly heavyweight – I/O<br>serialization is always used, even in a concurrent setting, for<br>ensuring isolation. The request response paradigm doesn’t allow many<br>other patterns of communication: fork/join, flow control, rate<br>control, timeouts, streaming etc.</p>
+<p>Kilim, in a concurrent (local) setting, is at least 100x faster than<br>Java RMI on even the simplest benchmarks. In a distributed setting,<br>the Kilim approach is better because asynchronous messaging is much<br>more scalable. Combine this with automatic stack management and you<br>get a far easier programming model</p>
+<p>======================================================================</p>
+<p><strong>What are Continuations and what is Continuation Passing Style(CPS)? //CPS是什么？</strong></p>
+<p>======================================================================</p>
+<p>There is so much doubt and misinformation on the topic that a few<br>words are in order.</p>
+<p>Simply put, a CPS style of programming is where a “return” keyword is<br>not needed.</p>
+<p>The notions of procedures calling procedures by building up a stack<br>has been burnt into our collective programming consciousness.  If a()<br>calls b() calls c(), we think, the stack must be three deep.</p>
+<p>Suppose a() has nothing more to do after calling b(). It (that is, a()) really<br>doesn’t need b() to return to it, so there is no use pushing a return<br>address on the stack. In other words, the flow of control <em>continues</em><br>from a to b, never to return.  Most respectable code generators<br>recognize this special case and prevent the stack from building up<br>(“tail call optimization”). It is a pity this isn’t available under<br>the standard JVMs. Even GCC doesn’t do it all the time.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Now consider,</div><div class="line">   a() &#123;</div><div class="line">      do stuff</div><div class="line">      b()</div><div class="line">      do more stuff</div><div class="line">   &#125;</div><div class="line">   b() &#123; </div><div class="line">      ...</div><div class="line">      return</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>Now you need a stack and you want b() to return in order to “do more<br>stuff”. However, this bit of code can be transformed to ensure that b<br>doesn’t return; instead it continues on to another procedure that<br>performs the “do more stuff” bit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">a() &#123;</div><div class="line">   do stuff</div><div class="line">   b(&quot;c&quot;) // pass a reference to c()</div><div class="line">&#125;</div><div class="line"></div><div class="line">b(nextProc) &#123;</div><div class="line">   ...</div><div class="line">   call nextProc</div><div class="line">&#125;</div><div class="line"></div><div class="line">c() &#123;</div><div class="line">  do more stuff</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The “do more stuff” part has now been separated out into c().  Now,<br>a() chains on to b, supplying it the name of the next call to<br>make. For its part, b <em>continues</em> to the procedure referred to by its<br>nextProc parameter, instead of returning.</p>
+<p>This transformation ensures that you never need the “return” keyword<br>… you always continue onwards to the parameter supplied.</p>
+<p>What if “do more stuff” needed to refer to local variables in a()’s<br>stack frame? Well, the transformation ensures that a() packages the<br>values of those variables along with a reference to the next proc to<br>call. Now, instead of “nextProc”, we have an <em>object</em> (with state and<br>a procedure) called a continuation.</p>
+<p>The obvious question is, why bother? The stack worked well, didn’t it?<br>Why dispense with it? Yes, the stack works incredibly well, which is<br>why CPUs and compilers have special support for it. However, the<br>continuation passing style allows for other forms of transfer of<br>control very simply. C++ and Java provide two forms of “return”, one<br>normal and another using exceptions. If we had CPS, we wouldn’t need<br>these special cases.</p>
+<p>Instead of a() installing an exception handler, it would pass in two<br>continuation objects to b() that know what to do under normal and<br>under exceptional conditions. b() simply chains on to the appropriate<br>object as its last move.</p>
+<p>As another example, you can have tasks that pass control to a<br>scheduler that in turn passes control to another task, all without<br>having to return to whoever called it. </p>
+<p>In a programming language with explicit support for continuations (ML,<br>Lisp, Haskell), one can have the “return” keyword merely as a<br>syntactic sugar (like a macro). Internally, the compiler CPS<br>transforms the entire code, so no procedure returns to its caller.</p>
+<p>Are there any disadvantages of continuations? Oh yes. Machines are<br>so well optimized for stack usage and no tail calls that the<br>system is biased against continuations, performance-wise. The<br>continuation object has to be allocated from the heap and depends<br>on garbage collection. This is one reason why OCaml doesn’t use CPS.</p>
+<p>That said, the current crop of garbage collectors and the amortized<br>cost of garbage collection often matches that of stack-based<br>allocation, and continuations are simply too powerful a feature to<br>ignore.</p>
+<p>Where does Kilim fit into all this?</p>
+<p>Kilim’s transformation is similar to CPS, but it needs to live within<br>a JVM that does not even support tail calls. It also needs to live<br>with the Java verifier that doesn’t allow random gotos to be inserted<br>in the code willy-nilly. More details in the paper “A Thread of One’s<br>Own” (included in the docs directory)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

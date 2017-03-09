@@ -1,0 +1,572 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="现代系统都是多任务系统，而我们的进程是在内存中运行的，内存是有限的，我们如何保证可以安全而又高效的在有限的内存中运行多个程序呢？
+物理地址直接暴露给进程会带来一些问题： 
+
+进程可能会访问禁止访问的空间，如操作系统的地址 
+运行多个进程是困难的
+
+于是系统给每个进程抽象出一个地址空间。地址空间为程序创造了一种抽象的内存。地址空间是一个进程可用于寻址内存的一套地址集合。每个进程都有一个自己的地址空间">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/More/Linux_OS_MemoryManage.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="现代系统都是多任务系统，而我们的进程是在内存中运行的，内存是有限的，我们如何保证可以安全而又高效的在有限的内存中运行多个程序呢？
+物理地址直接暴露给进程会带来一些问题： 
+
+进程可能会访问禁止访问的空间，如操作系统的地址 
+运行多个进程是困难的
+
+于是系统给每个进程抽象出一个地址空间。地址空间为程序创造了一种抽象的内存。地址空间是一个进程可用于寻址内存的一套地址集合。每个进程都有一个自己的地址空间">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_MemoryManage_1.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="现代系统都是多任务系统，而我们的进程是在内存中运行的，内存是有限的，我们如何保证可以安全而又高效的在有限的内存中运行多个程序呢？
+物理地址直接暴露给进程会带来一些问题： 
+
+进程可能会访问禁止访问的空间，如操作系统的地址 
+运行多个进程是困难的
+
+于是系统给每个进程抽象出一个地址空间。地址空间为程序创造了一种抽象的内存。地址空间是一个进程可用于寻址内存的一套地址集合。每个进程都有一个自己的地址空间">
+<meta name="twitter:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_MemoryManage_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/More/Linux_OS_MemoryManage.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <p>现代系统都是多任务系统，而我们的进程是在内存中运行的，内存是有限的，我们如何保证可以安全而又高效的在有限的内存中运行多个程序呢？</p>
+<p>物理地址直接暴露给进程会带来一些问题： </p>
+<ol>
+<li>进程可能会访问禁止访问的空间，如操作系统的地址 </li>
+<li>运行多个进程是困难的</li>
+</ol>
+<p>于是系统给每个进程抽象出一个<code>地址空间</code>。地址空间为程序创造了一种抽象的内存。地址空间是一个进程可用于寻址内存的一套地址集合。每个进程都有一个自己的地址空间，并且这个地址空间独立于其他进程的地址空间。</p>
+<h3 id="地址重定位"><a href="#地址重定位" class="headerlink" title="地址重定位"></a>地址重定位</h3><p>在用户空间中，是不能直接操作物理地址，其所能看到的是逻辑地址，通过地址重定位，来达到逻辑地址和物理地址之间的映射。形式化为：</p>
+<pre><code>p=f(l,Pi)
+</code></pre><p>其中 l 为逻辑地址，p为物理地址，Pi 表示某个进程。f 为映射算法。</p>
+<h1 id="物理内存"><a href="#物理内存" class="headerlink" title="物理内存"></a>物理内存</h1><p>物理内存其实就是我们机器的实际内存大小，比如我的笔记本电脑内存是8G。程序是要加载到内存中才能执行，那么一个或多个进程进入内存如何给它划分大小呢，一般来说有两种技术，一个是将内存等长划分，然后选择一部分分给进程；另一个是不等长划分，进程需要多少给它划分多少。</p>
+<p>等长划分一般使用位图来管理，不等长划分一般使用<code>空闲区表</code>来管理。</p>
+<p>内存的分配算法一共有下面几种：</p>
+<ol>
+<li>首次适配算法：在空闲区链表中从头开始查找符合申请内存大小的块，直到找到满足条件的为止，该算法不断的从头开始试验申请，所以大部分使用的都是低地址空间的内容，从而流出了高地址空间来满足大的申请需求，但是缺点是会在较低的地址空间中频繁的申请和释放导致低地址空间中的内存碎片，而且每次都查找都从头开始，查找效率比较低。</li>
+<li>下次适配算法：它是首次适配算法的一个改进，它每次从上一次适配的地方开始向下查找，不需要每次都从头开始，此算法使得内存使用均匀，但是不会有大的内存块来满足内存分配。</li>
+<li>最佳适配算法：先按照内存块的空闲区大小从小到大进行排序，排序后，每次从头开始匹配，这样匹配出来的结果肯定是最优的，但实际因为比较符合申请内存的大小，会出现很多较小的内存碎片无法使用，并且每次分配后都要重新排序，开销比较大。</li>
+<li>最差适配算法：按照内存块的空闲区从大到小进程排序，排序后，有进程申请内存时，将表头最大的内存块分配给它，这样如果不能分配则所有不能分配，且将大内存分配给它，若只占用一小部分还可以进行二次分配。</li>
+</ol>
+<h1 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h1><p>现代系统为了更好地管理存储器并且保证安全，提供了一种对主存的抽象概念，叫做虚拟存储器。虚拟存储器提供了三个重要的能力： </p>
+<ol>
+<li>它将内存看为是磁盘的高速缓存，在内存中只保存活跃的区域，并根据需要在内存和磁盘中来回传送数据，使得主存的使用更加高效。 </li>
+<li>它为每个进程抽象出了一致的内存空间，使得多进程可以更加简单的运行，简化了存储器的管理。 </li>
+<li>它保护了每个进程可以单独、高效的运行，每个进程的地址空间不会被其他进程破坏。</li>
+</ol>
+<p>虚拟存储的工作原理如下：</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_MemoryManage_1.png" alt=""></p>
+<p>每个进程都有一个抽象的地址空间，进程1访问物理内存中的数据时，它获得的地址是抽象的虚拟地址，需要将虚拟地址转化为物理地址。那么就需要硬件<strong>MMU(Memory Management Unit)</strong>来进行地址转换从而得到物理内存的地址。然而物理内存是有限的，如果每个进程都要全部加载到内存中内存肯定不够。</p>
+<p>后来先辈们就发现我为什么要把进程全部内容加载到内存中去呢，根据二八定理，百分之百的内容常用的也就百分之二十，所以我只需要将每个进程常用的加载到内存中，不用的我先暂存到磁盘，如果需要它时在从磁盘中将它加载出来。这就是上图中内存和磁盘的连线关系，装过系统的朋友都知道无论是linux还是windows分区时我们都要给它分交换分区，交换分区其实就是暂存物理内存中不用的内容。这时如果物理内存中有数据就传送给cpu，如果没有就产生异常，然后内存和磁盘进程数据交换后在由内存将数据传送给cpu。 </p>
+<h2 id="分页存储管理"><a href="#分页存储管理" class="headerlink" title="分页存储管理"></a>分页存储管理</h2><p>页式管理，简单的来讲就是将内存分为固定大小的内存页，x86下页大小为4k。抽象出的虚拟内存也是按页大小分配的，而物理内存的页一般称为<strong>页框</strong>（页帧或内存块），磁盘上的交换分区也是按页大小来组织的，这样我们能发现虚拟内存->物理内存->磁盘都是相同大小的结构来组织数据。</p>
+<p>页表：</p>
+<p>页表项（页描述子)中各个位的作用：</p>
+<ol>
+<li>页号</li>
+<li>块号（页框号）</li>
+<li>中断位: 用于判断该页是不是在内存中，如果是0，表示该页不在内存中，会引起一个缺页中断。</li>
+<li>保护位(存取控制位): 用于指出该页允许什么类型的访问，如果用一位来标识的话，1表示只读，0表示读写</li>
+<li>修改位(脏位): 用于页面的换出，如果某个页面被修改过(即为脏),在淘汰该页面时，必须将其返回写回磁盘，反之，可以直接丢弃该页面</li>
+<li>访问位：不管是读还是写(read or set),系统都会设置该页面的访问位。他的值会帮助操作系统在发生缺页中断时，选择要被淘汰的页，即用于页面置换</li>
+<li>高速缓存禁止位（辅存地址位):对于映射到设备寄存器而不是常规内存的页面来说，这个位很重要； 例如： 操作系统正在循环等待着某个I/O设备对他的指令做出响应，保证硬件是不断的从设备中读取数据而不是访问一个旧的被高速缓存的副本是非常重要的，通过这一位就可以禁止高速缓存。</li>
+</ol>
+<h2 id="分段存储管理"><a href="#分段存储管理" class="headerlink" title="分段存储管理"></a>分段存储管理</h2><h2 id="段页式存储"><a href="#段页式存储" class="headerlink" title="段页式存储"></a>段页式存储</h2><p>参考<br><a href="http://blog.csdn.net/wwh578867817/article/details/48985335" target="_blank" rel="external">浅谈计算机中的存储模型（一）存储体系</a><br><a href="http://blog.csdn.net/wwh578867817/article/details/48986097" target="_blank" rel="external">浅谈计算机中的存储模型（二）物理内存</a><br><a href="http://blog.csdn.net/wwh578867817/article/details/48998213" target="_blank" rel="external">浅谈计算机中的存储模型（三）虚拟存储器</a><br><a href="http://blog.csdn.net/zephyr_be_brave/article/details/8944967" target="_blank" rel="external">分段，分页与段页式存储管理</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

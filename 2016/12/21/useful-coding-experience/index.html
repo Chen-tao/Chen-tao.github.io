@@ -1,0 +1,736 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="感悟,经验," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="编程老鸟的经验，一坑一进步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="老鸟经验谈">
+<meta property="og:url" content="http://chen-tao.github.io/2016/12/21/useful-coding-experience/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="编程老鸟的经验，一坑一进步">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="老鸟经验谈">
+<meta name="twitter:description" content="编程老鸟的经验，一坑一进步">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2016/12/21/useful-coding-experience/"/>
+
+
+
+
+
+  <title> 老鸟经验谈 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/12/21/useful-coding-experience/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                老鸟经验谈
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-21T00:00:00+08:00">
+                2016-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  编程老鸟的经验，一坑一进步
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="重构是程序员的主力技能。"><a href="#重构是程序员的主力技能。" class="headerlink" title="重构是程序员的主力技能。"></a>重构是程序员的主力技能。</h3><h3 id="工作日志能提升脑容量。"><a href="#工作日志能提升脑容量。" class="headerlink" title="工作日志能提升脑容量。"></a>工作日志能提升脑容量。</h3><h3 id="先用profiler调查，才有脸谈优化。"><a href="#先用profiler调查，才有脸谈优化。" class="headerlink" title="先用profiler调查，才有脸谈优化。"></a>先用profiler调查，才有脸谈优化。</h3><p>贵精不贵多。杜绝大姨妈般的“例注”。漫山遍野的碎碎念注释，实际就是背景噪音。</p>
+<p>普通程序员+google=超级程序员。</p>
+<p>单元测试总是合算的。</p>
+<p>不要先写框架再写实现。最好反过来，从原型中提炼框架。</p>
+<p>代码结构清晰，其它问题都不算事儿。</p>
+<h3 id="好的项目作风硬派，一键测试，一键发布，一键部署-烂的项目生性猥琐，口口相传，不立文字，神神秘秘。"><a href="#好的项目作风硬派，一键测试，一键发布，一键部署-烂的项目生性猥琐，口口相传，不立文字，神神秘秘。" class="headerlink" title="好的项目作风硬派，一键测试，一键发布，一键部署; 烂的项目生性猥琐，口口相传，不立文字，神神秘秘。"></a>好的项目作风硬派，一键测试，一键发布，一键部署; 烂的项目生性猥琐，口口相传，不立文字，神神秘秘。</h3><h3 id="编码不要畏惧变化，要拥抱变化。"><a href="#编码不要畏惧变化，要拥抱变化。" class="headerlink" title="编码不要畏惧变化，要拥抱变化。"></a>编码不要畏惧变化，要拥抱变化。</h3><h3 id="常充电。程序员只有一种死法：土死的。"><a href="#常充电。程序员只有一种死法：土死的。" class="headerlink" title="常充电。程序员只有一种死法：土死的。"></a>常充电。程序员只有一种死法：土死的。</h3><p>编程之事，隔离是方向，起名是关键，测试是主角，调试是补充，版本控制是后悔药。</p>
+<p>一行代码一个兵。形成建制才能有战斗力。单位规模不宜过大，千人班，万人排易成万人坑。</p>
+<p>重构/优化/修复Bug，同时只能作一件。</p>
+<p>简单模块注意封装，复杂模块注意分层。</p>
+<p>人脑性能有限，整洁胜于杂乱。读不懂的代码，尝试整理下格式; 不好用的接口，尝试重新封装下。</p>
+<p>迭代速度决定工作强度。想多快好省，就从简化开发流程，加快迭代速度开始。</p>
+<p>忘掉优化写代码。过早优化等同恶意破坏；忘掉代码作优化。优化要基于性能测试，而不是纠结于字里行间。</p>
+<p>最好的工具是纸笔;其次好的是markdown。</p>
+<p>leader问任务时间，若答不上来，可能是任务拆分还不够细。</p>
+<p>宁可多算一周，不可少估一天。过于“乐观”容易让boss受惊吓。</p>
+<p>最有用的语言是English。其次的可能是Python。</p>
+<p>百闻不如一见。画出结果，一目了然。调试耗时将大大缩短。</p>
+<p>资源、代码应一道受版本管理。资源匹配错误远比代码匹配错误更难排查。</p>
+<p>不要基于想象开发， 要基于原型开发。原型的价值是快速验证想法，帮大家节省时间。</p>
+<p>序列化首选明文文本 。诸如二进制、混淆、加密、压缩等等有需要时再加。</p>
+<p>编译器永远比你懂微观优化。只能向它不擅长的方向努力。</p>
+<p>不要定过大、过远、过细的计划。即使定了也没有用。</p>
+<p>至少半数时间将花在集成上。时间，时间，时间总是不够。</p>
+<p>与主流意见/方法/风格/习惯相悖时，先检讨自己最可靠。</p>
+<h3 id="出现bug主动查，不管是不是你的。这能让你业务能力猛涨、个人形象飙升"><a href="#出现bug主动查，不管是不是你的。这能让你业务能力猛涨、个人形象飙升" class="headerlink" title="出现bug主动查，不管是不是你的。这能让你业务能力猛涨、个人形象飙升"></a>出现bug主动查，不管是不是你的。这能让你业务能力猛涨、个人形象飙升</h3><p>不知怎么选技术书时就挑薄的。起码不会太贵，且你能看完。</p>
+<p>git是最棒的。简单，可靠，免费。</p>
+<p>仅对“可预测的非理性”抛断言。</p>
+<h3 id="Log要写时间与分类。并且要能重定向输出。"><a href="#Log要写时间与分类。并且要能重定向输出。" class="headerlink" title="Log要写时间与分类。并且要能重定向输出。"></a>Log要写时间与分类。并且要能重定向输出。</h3><h3 id="注释是稍差的文档。更好的是清晰的命名。让代码讲自己的故事。"><a href="#注释是稍差的文档。更好的是清晰的命名。让代码讲自己的故事。" class="headerlink" title="注释是稍差的文档。更好的是清晰的命名。让代码讲自己的故事。"></a>注释是稍差的文档。更好的是清晰的命名。让代码讲自己的故事。</h3><h3 id="造轮子是很好的锻炼方法。前提是你见过别的轮子。"><a href="#造轮子是很好的锻炼方法。前提是你见过别的轮子。" class="headerlink" title="造轮子是很好的锻炼方法。前提是你见过别的轮子。"></a>造轮子是很好的锻炼方法。前提是你见过别的轮子。</h3><p>code review最好以小组/结对的形式。对业务有一定了解，建议会更有价值（但不绝对）。而且不会成为负担。管理员个人review则很容易成team的瓶颈。</p>
+<p>提问前先做调研。问不到点上既被鄙视，又浪费自己的时间。</p>
+<p>函数不要超过50行。</p>
+<p>不要一次性写太多来不及测的代码，而是要写一段调试一段。</p>
+<p>UT和编码要同步做。</p>
+<p>多写注释方便的往往是自己。</p>
+<p>碰到一堆问题时，一次只尝试解决一个问题。</p>
+<p>没把握一眼看出问题症结的时候，老老实实单步调试。</p>
+<p>设计模式是个好东西，但不要强行使用。</p>
+<p>没造成可观的损失前不要尝试做性能优化。</p>
+<p>没事别重复造轮子。(那么有闲功夫的时候呢）</p>
+<p>大多数情况下Boss不关心技术含量，而且往往简单的解决方案更快更有效果。</p>
+<p>不要害怕接触新知识，因为害怕也没用，不管你愿意不愿意，你现在会的东西5年后就会过时。</p>
+<p>老鸟和新手的一个很大区别来自于debug的能力。其中最主要又可以从两方面看出来：</p>
+<blockquote>
+<p>从高层往底层找错。</p>
+<p>科学方法。</p>
+<p>很多新手遇到程序执行结果不对（尤其是图形程序员），先认为是机器毛病（浮点精度、硬件故障），然后认为是驱动有错，再认为是系统有错，最后才开始排查自己的程序。其实99%的情况下是自己程序有错，然后那1%里面的99%是系统有bug，再接着那1%里的99%是驱动有bug，最后到硬件问题，已经微乎其微了。应该从高层往底层查，而不是反过来。</p>
+<p>debug一般来说是知道现象，但原因未知。这一点和很多自然科学的情况一样，所以完全也可以用科学的方法来：提假说-&gt;根据假说做出预言-&gt;做实验肯定或否定预言。对应于debug，那就是假设是某个地方有问题，那么推断它一定会导致除了你看到的现象之外的其他现象，运行程序看你的推断是否成立。掌握这个方法后debug不在变成瞎找瞎试，而是有迹可循有系统可依赖的方法。</p>
+</blockquote>
+<p>我有一个学习的小技巧，就是学习新技术的时候，多看看“官方文档”。</p>
+<blockquote>
+<p>多年来的学习和工作经历，让我比较深刻认识到一点：看“官方文档”非常重要。</p>
+<p>我们很多的问题和技术细节，其实，只要我们认真将官方文档过一遍，会发觉大部分的问题和认识模糊的地方都消失了。甚至，你还能发现自己之前通过搜索获得的到一些资料，可能是不准确或者已经过时的。官方文档是真正的好东西，因为编写文档的人群，通常就是这些技术或者软件的开发者，他们才是对这些东西最了解的人，因此，他们写的文档质量是很高的，通常也是最新的。</p>
+<p>官方文档的不足的地方，大概是中文版本不多，看起来可能会比较吃力。不过，请相信我，下载一个翻译辅助软件，慢慢看还是可以的。另一方面，就是这些文档编写者，通常是技术界大牛，他们编写文档有时候是基于他们自己的技术认知水平，跳过了很多基础概念，也增加了阅读难度。不过，这个我们也可以通过多查资料，慢慢看来解决，并且通常会带来额外的学习收获。</p>
+</blockquote>
+<p>越难找到的bug往往越好解决。</p>
+<p>预估工期（至少）乘以二差不多等于实际工期</p>
+<p>你所需要的大多数功能都已经有人实现了，上github上多半能找到。</p>
+<p>很多做H5游戏的公司既不懂什么是HTML5，也不懂什么是游戏</p>
+<p>HTML5是一项标准，不是一项技术，招聘“H5工程师”的公司如果不是专门做广告营销（因为约定俗成的语境<br>），多半是没有靠谱前端的。</p>
+<p>市面上的手机有超过30种不同的分辨率。</p>
+<p>人的精力是有限的，单位时间效率比时长重要，熬夜写代码常常会对着屏幕什么都写不出来，不如好好睡觉。(然而白天的时间往往不是你自己的 = =)</p>
+<p>为了快，不写文档，往往会陷入泥潭。磨刀不误砍柴工</p>
+<p>比起鼓励师，不如给程序员找一个靠谱的PM</p>
+<p>（对于新手来说）你觉得大的数据其实一点都不大。</p>
+<p>“十大xxxx技术推荐”，“十佳xxx类库”，多半是编辑凑数抄来给萌新看，加点击率的，真正高质的技术推荐文章往往只写一个。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/感悟/" rel="tag"># 感悟</a>
+          
+            <a href="/tags/经验/" rel="tag"># 经验</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/linux-system-oom/" rel="next" title="理解和配置Linux OOM killer">
+                <i class="fa fa-chevron-left"></i> 理解和配置Linux OOM killer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/23/best-tips-of-vim/" rel="prev" title="vim奇技淫巧--向大师冲刺">
+                vim奇技淫巧--向大师冲刺 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#重构是程序员的主力技能。"><span class="nav-number">1.</span> <span class="nav-text">重构是程序员的主力技能。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作日志能提升脑容量。"><span class="nav-number">2.</span> <span class="nav-text">工作日志能提升脑容量。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先用profiler调查，才有脸谈优化。"><span class="nav-number">3.</span> <span class="nav-text">先用profiler调查，才有脸谈优化。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#好的项目作风硬派，一键测试，一键发布，一键部署-烂的项目生性猥琐，口口相传，不立文字，神神秘秘。"><span class="nav-number">4.</span> <span class="nav-text">好的项目作风硬派，一键测试，一键发布，一键部署; 烂的项目生性猥琐，口口相传，不立文字，神神秘秘。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码不要畏惧变化，要拥抱变化。"><span class="nav-number">5.</span> <span class="nav-text">编码不要畏惧变化，要拥抱变化。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常充电。程序员只有一种死法：土死的。"><span class="nav-number">6.</span> <span class="nav-text">常充电。程序员只有一种死法：土死的。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#出现bug主动查，不管是不是你的。这能让你业务能力猛涨、个人形象飙升"><span class="nav-number">7.</span> <span class="nav-text">出现bug主动查，不管是不是你的。这能让你业务能力猛涨、个人形象飙升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Log要写时间与分类。并且要能重定向输出。"><span class="nav-number">8.</span> <span class="nav-text">Log要写时间与分类。并且要能重定向输出。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释是稍差的文档。更好的是清晰的命名。让代码讲自己的故事。"><span class="nav-number">9.</span> <span class="nav-text">注释是稍差的文档。更好的是清晰的命名。让代码讲自己的故事。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#造轮子是很好的锻炼方法。前提是你见过别的轮子。"><span class="nav-number">10.</span> <span class="nav-text">造轮子是很好的锻炼方法。前提是你见过别的轮子。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

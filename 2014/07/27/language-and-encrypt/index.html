@@ -1,0 +1,654 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="feeling," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="二战时期的密码学发展到了一个空前的程度。一方面，德军使用的多替换（多码）恩尼格码密码在海陆军作战中广泛使用；另一方面，盟军的破译密码专家阿兰·图灵（英）与信息论之父克劳德·香农（美）则在密码学的两端做着不同的工作，试图得到完美密码的破解与证明并用于实践。
+简单的加密也就是替换，但由于拉丁语系语言的冗余特点，很容易被语言中的模式匹配。在香农看来，模式就等同于冗余，并且他大胆预测：英语的冗余度是百分之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语言与加密">
+<meta property="og:url" content="http://chen-tao.github.io/2014/07/27/language-and-encrypt/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="二战时期的密码学发展到了一个空前的程度。一方面，德军使用的多替换（多码）恩尼格码密码在海陆军作战中广泛使用；另一方面，盟军的破译密码专家阿兰·图灵（英）与信息论之父克劳德·香农（美）则在密码学的两端做着不同的工作，试图得到完美密码的破解与证明并用于实践。
+简单的加密也就是替换，但由于拉丁语系语言的冗余特点，很容易被语言中的模式匹配。在香农看来，模式就等同于冗余，并且他大胆预测：英语的冗余度是百分之">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="语言与加密">
+<meta name="twitter:description" content="二战时期的密码学发展到了一个空前的程度。一方面，德军使用的多替换（多码）恩尼格码密码在海陆军作战中广泛使用；另一方面，盟军的破译密码专家阿兰·图灵（英）与信息论之父克劳德·香农（美）则在密码学的两端做着不同的工作，试图得到完美密码的破解与证明并用于实践。
+简单的加密也就是替换，但由于拉丁语系语言的冗余特点，很容易被语言中的模式匹配。在香农看来，模式就等同于冗余，并且他大胆预测：英语的冗余度是百分之">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2014/07/27/language-and-encrypt/"/>
+
+
+
+
+
+  <title> 语言与加密 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/07/27/language-and-encrypt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                语言与加密
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-27T00:00:00+08:00">
+                2014-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>二战时期的密码学发展到了一个空前的程度。一方面，德军使用的多替换（多码）恩尼格码密码在海陆军作战中广泛使用；另一方面，盟军的破译密码专家阿兰·图灵（英）与信息论之父克劳德·香农（美）则在密码学的两端做着不同的工作，试图得到完美密码的破解与证明并用于实践。</p>
+<pre><code>简单的加密也就是替换，但由于拉丁语系语言的冗余特点，很容易被语言中的模式匹配。在香农看来，模式就等同于冗余，并且他大胆预测：英语的冗余度是百分之五十。后来证明这一推断的科学性非常之高之接近。
+
+拿开那些艰深的数学论据和公式推导，在数学科学日益发展中我们发现，纯粹（传统）语言学在解决一些语言编码问题和一些大规模的论断中已经越来越力不从心了。在数学家们一天天的唱衰中，语言学逐渐在退到时代的幕后，“伺机而动”。
+
+“语言学在这些前沿的方向不是没有用”，这样的论点很多，但缺乏有力的支持。J·J·托尔金在《指环王》中创造了精灵族、霍比特人以及矮人族在内的数种不同的语言，当然他本人在语言学方面的造诣登峰造极，而这可能正是一种相对“反抗”统计学和数学破译的加密方法——通过系统的构造，在纯语言的角度创造新的语言去加密，这样的密文相对于那些“已证明”的无法破解的繁复密码可能更符合人类的学习习惯。想象一下，如果MI6和克格勃早先就开始研究自己的几种语言，如果德军使用几种不是“德语”的德语，再如果丘吉尔和罗斯福没有依靠香农的信息论而是跟着托尔金的咕噜姆“咕噜咕噜”的交谈，二战的结局可能还未可知。当然这只是想象。相对于机械化来说，人的能动性恐怕还没有达到这个程度，有朝一日兵临城下，这些也恐怕来不及了。方言也可能是一个方向。民国时期的语言学大家赵元任，精通数十种方言土语，游历世界到哪里都被认为是“老乡”，如果将方言的某些特殊化的表达方式与密码相糅合，也许会有奇效吧。也有一些将数学统计与语言特点结合的案例。小说《暗算》的瞎子阿炳，一方面用统计学模式来判断敌人，另一方面用语言学的法则来定义密文，但他的得天独厚，仅仅是没有视觉导致的听觉感知灵敏；然而，一切总是有规律可循，不管是语法，还是模式，有特例，而这些特定领域的瑕疵在大环境下几乎影响不到正常的交流。所以我们说信息学是极其伟大的战争科学，当然也不只是战争科学。
+
+J·J·托尔金的语言自然有其语法，但可以确认的是它仍然比那些多码密码更难以破解，或者说，就是翻译。打乱的模式之间共通的可能性已经很小，再加上不明确的表示方式，使得单独自成语言的密码“熵”更高。“信息是不确定性，是出人意料，是困难程度，是熵”。由于人类记忆的特点，人类需要不停反复的去那些他们赖以生存的事情，直到他们的潜意识接收这些重复的信号并做出下意识的反应，这就是“熟能生巧”，这也是为什么“带有模式（语法语义）”的语言会成为人类的交流方式，这里也包括肢体语言和其他可能的通信，“万物皆比特”。那么，一种语言在长期发展使用的过程中，总可以用一些模式来表述，一方面是人们的使用与总结——人总是希望减少自己的工作量，希望对一切事物都找到一种“通性通法”；另一方面则是传播所导致的膨胀，由之衍生出的文化、贸易锁带来的“学习”的潮流，这结果是，语言的熵随着传播而下降，或者是那些不为人所揣摩的特点被逐渐挖掘了出来，而新语言则又总是艰深的，回想拿破仑从埃及带回的那块罗塞塔石碑，上面的象形文字虽然在数十年后被破译，但那无疑是一种极其伟大的“加密”方法，只是这并非当年埃及人的本意，而又正是由着这样的意义，这块石碑至今仍然是大英博物馆的镇馆之宝。
+
+加密为了保证信息的安全，而从根源上讲，就是翻译，那么将明文变成密文实际上就是更换了一种表述的“语言”。无论是数字信号也好，模拟信号也好，还是肢体之间的沟通也罢，都是在传递信息，促进人类的进步发展。
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/feeling/" rel="tag"># feeling</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/07/25/guava-cache/" rel="next" title="Guava学习之Guava cache">
+                <i class="fa fa-chevron-left"></i> Guava学习之Guava cache
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/07/30/linux-ip-config/" rel="prev" title="Linux IP网络配置">
+                Linux IP网络配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,netty," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Java的堆外内存本来是高贵而神秘的东西，只在一些缓存方案的收费企业版里出现。但自从用了Netty，就变成了天天打交道的事情，毕竟堆外内存能减少IO时的内存复制，不需要堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中；而且也没了烦人的GC。
+好在，Netty所用的堆外内存只是Java NIO的 DirectByteBuffer类，通读一次很快。还有一些sun.misc.*的类木有源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty之Java堆外内存扫盲贴">
+<meta property="og:url" content="http://chen-tao.github.io/2015/10/03/nettyjava/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Java的堆外内存本来是高贵而神秘的东西，只在一些缓存方案的收费企业版里出现。但自从用了Netty，就变成了天天打交道的事情，毕竟堆外内存能减少IO时的内存复制，不需要堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中；而且也没了烦人的GC。
+好在，Netty所用的堆外内存只是Java NIO的 DirectByteBuffer类，通读一次很快。还有一些sun.misc.*的类木有源">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Netty之Java堆外内存扫盲贴">
+<meta name="twitter:description" content="Java的堆外内存本来是高贵而神秘的东西，只在一些缓存方案的收费企业版里出现。但自从用了Netty，就变成了天天打交道的事情，毕竟堆外内存能减少IO时的内存复制，不需要堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中；而且也没了烦人的GC。
+好在，Netty所用的堆外内存只是Java NIO的 DirectByteBuffer类，通读一次很快。还有一些sun.misc.*的类木有源">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/10/03/nettyjava/"/>
+
+
+
+
+
+  <title> Netty之Java堆外内存扫盲贴 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettyjava/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Netty之Java堆外内存扫盲贴
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java的堆外内存本来是高贵而神秘的东西，只在一些缓存方案的收费企业版里出现。但自从用了Netty，就变成了天天打交道的事情，毕竟堆外内存能减少IO时的内存复制，不需要堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中；而且也没了烦人的GC。</p>
+<p>好在，Netty所用的堆外内存只是Java NIO的 DirectByteBuffer类，通读一次很快。还有一些<code>sun.misc.*</code>的类木有源码，要自己跑去<a href="http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/sun/misc" target="_blank" rel="external">OpenJDK</a>那看个明白。</p>
+<h3 id="1-堆外内存的创建"><a href="#1-堆外内存的创建" class="headerlink" title="1. 堆外内存的创建"></a>1. 堆外内存的创建</h3><p>在DirectByteBuffer中，首先向Bits类申请额度，Bits类有一个全局的 totalCapacity变量，记录着全部DirectByteBuffer的总大小，每次申请，都先看看是否超限 – 堆外内存的限额默认与堆内内存(由-XMX 设定)相仿，可用 -XX:MaxDirectMemorySize 重新设定。</p>
+<p>如果已经超限，会主动执行Sytem.gc()，期待能主动回收一点堆外内存。然后休眠一百毫秒，看看totalCapacity降下来没有，如果内存还是不足，就抛出大家最头痛的OOM异常。</p>
+<p>如果额度被批准，就调用大名鼎鼎的sun.misc.Unsafe去分配内存，返回内存基地址，Unsafe的C++实现在此，标准的malloc。然后再调一次Unsafe把这段内存给清零。跑个题，Unsafe的名字是提醒大家这个类只给Sun自家用的，你们别用，不然哪天Sun把它藏起来了你们就哭死。果然，JDK9里就Oracle可能动手哦。</p>
+<p>JDK7开始，DirectByteBuffer分配内存时默认已不做分页对齐，不会再每次分配并清零 实际需要＋分页大小(4k)的内存，这对性能应有较大提升，所以Oracle专门写在了Enhancements in Java I/O里。</p>
+<p>最后，创建一个Cleaner，并把代表清理动作的Deallocator类绑定 – 降低Bits里的totalCapacity，并调用Unsafe调free去释放内存。Cleaner的触发机制后面再说。</p>
+<h3 id="2-堆外内存基于GC的回收"><a href="#2-堆外内存基于GC的回收" class="headerlink" title="2. 堆外内存基于GC的回收"></a>2. 堆外内存基于GC的回收</h3><p>存在于堆内的DirectByteBuffer对象很小，只存着基地址和大小等几个属性，和一个Cleaner，但它代表着后面所分配的一大段内存，是所谓的<strong>冰山对象</strong>。通过前面说的Cleaner，堆内的DirectByteBuffer对象被GC时，它背后的堆外内存也会被回收。</p>
+<p>快速回顾一下堆内的GC机制，<strong>当新生代满了，就会发生young gc；如果此时对象还没失效，就不会被回收；撑过几次young gc后，对象被迁移到老生代；当老生代也满了，就会发生full gc</strong>。</p>
+<p>这里可以看到一种尴尬的情况，因为DirectByteBuffer本身的个头很小，只要熬过了young gc，即使已经失效了也能在老生代里舒服的呆着，不容易把老生代撑爆触发full gc，如果没有别的大块头进入老生代触发full gc，就一直在那耗着，占着一大片堆外内存不释放。</p>
+<p>这时，就只能靠前面提到的申请额度超限时触发的system.gc()来救场了。但这道最后的保险其实也不很好，首先它会中断整个进程，然后它让当前线程睡了整整一百毫秒，而且如果gc没在一百毫秒内完成，它仍然会无情的抛出OOM异常。还有，万一，万一大家迷信某个调优指南设置了-DisableExplicitGC禁止了system.gc()，那就不好玩了。</p>
+<p>所以，堆外内存还是自己主动点回收更好，比如Netty就是这么做的。</p>
+<h3 id="3-堆外内存的主动回收"><a href="#3-堆外内存的主动回收" class="headerlink" title="3. 堆外内存的主动回收"></a>3. 堆外内存的主动回收</h3><p>对于Sun的JDK这其实很简单，只要从DirectByteBuffer里取出那个sun.misc.Cleaner，然后调用它的clean()就行。</p>
+<p>前面说的，clean()执行时实际调用的是被绑定的Deallocator类，这个类可被重复执行，释放过了就不再释放。所以GC时再被动执行一次clean()也没所谓。</p>
+<p>在Netty里，因为不确定跑在Sun的JDK里(比如安卓)，所以多废了些功夫来确定Cleaner的存在。</p>
+<h3 id="4-Cleaner如何与GC相关联？"><a href="#4-Cleaner如何与GC相关联？" class="headerlink" title="4. Cleaner如何与GC相关联？"></a>4. Cleaner如何与GC相关联？</h3><p>涨知识的时间到了，原来JDK除了StrongReference，SoftReference 和 WeakReference之外，还有一种PhantomReference，Phantom是幻影的意思，Cleaner就是PhantomReference的子类。</p>
+<p>当GC时发现它除了PhantomReference外已不可达（持有它的DirectByteBuffer失效了），就会把它放进 Reference类pending list静态变量里。然后另有一条ReferenceHandler线程，名字叫 “Reference Handler”的，关注着这个pending list，如果看到有对象类型是Cleaner，就会执行它的clean()，其他类型就放入应用构造Reference时传入的ReferenceQueue中，这样应用的代码可以从Queue里拖出这些理论上已死的对象，做爱做的事情——这是一种比finalizer更轻量更好的机制。</p>
+<h3 id="5-其实"><a href="#5-其实" class="headerlink" title="5. 其实"></a>5. 其实</h3><p>专家们说，OpenJDK没有接受jemalloc(redis们在用)的补丁，直接用malloc在OS里申请一段内存，比在已申请好的JVM堆内内存里划一块出来要慢，所以我们在Netty一般用池化的 PooledDirectByteBuf 对DirectByteBuffer进行重用 ，《Netty权威指南》说性能提升了23倍，所以基本不需要头痛堆外内存的释放，顺便还告别了大数据流量下的频繁GC。</p>
+<p>文章持续修订，转载请保留原链接： <a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/directbytebuffer.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/netty/" rel="tag"># netty</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/03/nettyreference-counted-objects/" rel="next" title="【Netty官方文档翻译】引用计数对象（reference counted objects）">
+                <i class="fa fa-chevron-left"></i> 【Netty官方文档翻译】引用计数对象（reference counted objects）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/10/mac-install-notebook/" rel="prev" title="Mac 安装 ipyhton Notebook 全记录">
+                Mac 安装 ipyhton Notebook 全记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-堆外内存的创建"><span class="nav-number">1.</span> <span class="nav-text">1. 堆外内存的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-堆外内存基于GC的回收"><span class="nav-number">2.</span> <span class="nav-text">2. 堆外内存基于GC的回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-堆外内存的主动回收"><span class="nav-number">3.</span> <span class="nav-text">3. 堆外内存的主动回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Cleaner如何与GC相关联？"><span class="nav-number">4.</span> <span class="nav-text">4. Cleaner如何与GC相关联？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-其实"><span class="nav-number">5.</span> <span class="nav-text">5. 其实</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1993 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/page/16/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/page/16/"/>
+
+
+
+
+
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/01/09/taobao-12306/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/01/09/taobao-12306/" itemprop="url">
+                  淘宝代替12306的可行性分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-01-09T00:00:00+08:00">
+                2014-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="淘宝代替12306的可行性分析"><a href="#淘宝代替12306的可行性分析" class="headerlink" title="淘宝代替12306的可行性分析"></a>淘宝代替12306的可行性分析</h1><p>这又是一个秀智商的时刻。</p>
+<p>当知乎被五毛党入侵以后，我就一阵恶心。忍不住这里说一下。</p>
+<p>实际上，撇开铁道部是否约谈百度阿里IBM的可能性，就是约谈了，我相信绝对不是“只是钱的问题”和“钱不是问题”这两个问题。</p>
+<p>单纯从技术的角度理解这个问题，五毛党你们草鸡了，可以改名叫无脑党了。我来一条一条说一下。</p>
+<p>（以下谬论均是原文）</p>
+<p>谬论1. 放淘宝做依旧会卡死，不过是以不同的方式，比如说界面更好看，等待的时候给你玩玩Flash游戏。</p>
+<pre><code>负载均衡之类的优化不想讲，对五毛讲了也是白讲，我们就看今天的新闻吧，看看黄牛们的“壮举”，为什么黄牛可以这样的刷票？还说系统做的好？再次笑尿。
+
+Flash游戏……你是双11双12刷红包刷太多了吧亲，这个级别PV/UV的网站，为了响应请求是一定不要Flash这类东西的，技术渣啊。拖累展现又问题多多。
+
+是不是会卡死，我借用你们的话吧，这是一个“钱能解决的问题”。
+</code></pre><p>谬论2. 运力不增加，票不增加，买不到票的还是会有很多。</p>
+<pre><code>说到社会压力和经济发展上的地域不平衡，是了，那你是不是要再说一下体质问题，是不是再来个资本主义好呢？如果淘宝来做，买不到票的固然会有，但一定不是以现在这种方式产生，在购票中加入有效的保障机制，在搞“平等经济”之前先在能力范围内“差异化”，我替你说吧。
+</code></pre><p>谬论3. 购买者个人隐私问题。</p>
+<pre><code>话说，你哪里有真正意义上的“隐私”了？提出身份信息，实际上还是在保护消费者，这条，水。
+</code></pre><p>谬论4. 防止支付宝淘宝一家独大。</p>
+<pre><code>市场经济仍然有背后上层建筑的调控与掣肘，你想太多，水。
+</code></pre><p>谬论5. 黄牛的日子会更好。</p>
+<pre><code>如果淘宝想把自己搞臭的话，呵呵，依然水。
+
+…………
+</code></pre><p>不再说了，很容易看到这些所谓一条一条的无知。切正题。假如真有约谈这件事，为啥大家都拒绝了？</p>
+<p>不能说企事业单位确实缺乏效率，然而事实是，如果有上司公司来做这件事，一定会被甲方“纠缠致死”，费力不讨好是肯定的——一旦有任何问题，一旦出现任何的投诉，一旦有任何买票的同学对这个东西有一点不满，这个事情就会因为牵扯到“公共设施”而被无限的放大，而淘宝这样的公司都要拿着辛苦经营的口碑、投资者各位董事对公司的期望来去抵消这样的负面效应，且不说对股价的影响，至少在公司内部就会产生“怨声载道”的情况，对整体的发展乃至这样的项目都是非常不利的——这个时候，你说“钱不是问题”，可你不能有点问题就要我大铁道部（甲方）加钱吧？那不成啊，得按合同办啊！接这个东西，是不是作死呢？因为没有大公司接，我们暂时不得而知……（呵呵）</p>
+<p>所以呢，与其说我淘宝百度IBM不想做，不如干脆就说“哎呦我做不了”，这不是很明白的事情吗？从事IT行业的人虽然多，然而在那个Level公司也就那么多，圈子也就那么大，人也就那么几个，马云不趟这摊子浑水，你当我别的公司也不明白吗？恐怕只有维护铁道部的五毛党和12306方面的水军自以为是了吧。</p>
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#543" title="2014-08-19 15:42:35">石灰竖窑</a>:</strong> 不错，谢谢楼主分享………..么么哒</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/01/07/xx-feel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/01/07/xx-feel/" itemprop="url">
+                  XX認知記錄
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-01-07T00:00:00+08:00">
+                2014-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>零</p>
+<p>不記得以前寫過沒有，現在是想一出是一出。</p>
+<p>   一</p>
+<p>早幾年的時候，《讀著》出過幾本小冊子，講“圍城”的。看的實在是一種獵奇的心理。網絡不發達，翻牆之類的概念應該是還沒有普及。後來就是《夾邊溝記事》了。《陸犯焉識》算是特例。章詒和的幾本內外之別，有點意思；後來發現跟賀衛方有聯繫；原來正是同道。</p>
+<p>   二</p>
+<p>《七十年代》把讓很多事情撥雲見日，因為真的記不清了，就有感發一發。由此重新認識了北島一幹人，也更加懂了詩歌的那種神聖。</p>
+<p>   三</p>
+<p>人固淺薄，人怕淺薄。《紅太陽》是這樣的書。名字實在是妙極了————陽光下，陰暗處，是受了誰的隱射，又是得了哪裡的靈感，或者是“學”到了什麼。冠冕的文明就要和茹毛飲血的禽獸劃等號呢。</p>
+<p>   四</p>
+<p>知人知己不易，何況知事知秋。</p>
+<p>“我有明珠一顆，</p>
+<p>久被塵勞關鎖；</p>
+<p>今朝塵盡光生，</p>
+<p>照破山河萬朵。”</p>
+<p>   五</p>
+<p>這一年互聯網的風起雲湧，科學是僅剩的淨土了？除了現實中的蠅營狗苟，我的心中還住著星辰大海，與遠方的地平線。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/12/29/about-semantic-web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/12/29/about-semantic-web/" itemprop="url">
+                  语义的博弈
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-29T00:00:00+08:00">
+                2013-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>NLP（Natural Language Processing）方面，语义一直是一个（不太）重要的组成部分——经过证实，大部分语言文字的处理模式都是由以统计为核心的解决方案生效的。而语义又是在处理中不可回避的一个话题，基于语义的搜索也是搜索技术未来的一个重要指导方向。</p>
+<p>   对语言处理稍有研究的人都明白一个问题：对结果集（Recall Results）的精度要求越高，所需要的语料就要越丰富，语料库（Corpus）的指向性也就要越高（Specific Areas）。对语料库的要求使得在通常情况下希望获得显著结果的项目或者理论无法达到预期的效果——使用现成的语料可能不具备领域方面的优势；使用自建的语料库耗时耗力的同时又存在诸如噪声（Noise）、不平滑（Smooth）、量级（Order of Magnitude）等方面的问题使得结果无法令人满意。将这个问题扩展到搜索方向，那就是整个Internet。</p>
+<p>   如何构建一个包含所有互联网信息的语料库（或者就是知识库），使得能够在搜索中根据关键词（Key Word）获知所有“相关的”信息的同时，随着互联网信息的不断发布产生，语料库能够自动化学习，并不断完善精确，这是一个非常有趣的问题。标签化（Tag）是一个非常好的思路，这也是现在语义网（Semantic Web）探索的方向。</p>
+<p>   到目前为止，互联网的基本信息载体依然是HTML，虽然诸如Markdown、XML之类的东西希望能做一些突破，然而用于搜索方面则显然无力。HTML的Tag在语义方面有先天的不足——标签系统（Tag System）不具有实际意义，如一个table标签，表示的是网页中结构的形式，而不代表其内容的属性；假设在服务器端的数据库中，某列数据代表用户的姓名，但放在网页中，这种标记的属性就消失的无影无踪了。这样的结果是——几乎每个网页都用了一种不同的内容属性结构，除了内容制造者，其他人无法使用泛化的方式理解其内容的意义，这里就等同于对小型的领域进行语义上的上下文探究一样无迹可寻，甚至只能不停的使用人力来做这种“鸡吃米山，狗舔面山”的工作。而对于整个互联网来说，这就是无数个“小领域”，相信集合Google百度Bing也无法完成这种宇宙大爆炸类型的工作吧。</p>
+<p>   基于这个思路，语义网的出现顺理成章。它希望使用一种更精确的标签化语言，替代HTML或者在HTML上做改Change和Extension。</p>
+<pre><code>W3C: &lt;http://www.w3.org/standards/semanticweb/&gt; 
+
+
+Google，微软，Yahoo: &lt;http://schema.org/&gt;
+</code></pre><p>W3C已经提出了Semantic Web的一个标准，同时几个搜索引擎巨头也一起制定了自身的标记规范。希望可以通过新的标准，把互联网的信息从字符串变成结构化的数据。</p>
+<p>比如：</p>
+<pre><code>html:
+&lt;div&gt;
+&lt;h1&gt;Avatar&lt;/h1&gt;
+&lt;span&gt;Director:JamesCameron(bornAugust16，1954)&lt;/span&gt;
+&lt;span&gt;Sciencefiction&lt;/span&gt;
+&lt;ahref=&quot;../movies/avatar-theatrical-trailer.html&quot;&gt;Trailer&lt;/a&gt;
+&lt;/div&gt;
+
+SemanticWeb:
+&lt; div itemscope itemtype =&quot;http://schema.org/Movie&quot; &gt;
+&lt; h1 itemprop=&quot;name&quot; &gt; Avatar &lt; /h1 &gt;
+&lt; span &gt; Director: &lt; span itemprop=&quot;director&quot; &gt; James Cameron &lt; /span &gt; (born August 16, 1954) &lt; /span &gt;
+&lt; span itemprop=&quot;genre&quot; &gt; Science fiction &lt; /span &gt;
+&lt; a href=&quot;../movies/avatar-theatrical-trailer.html&quot; itemprop=&quot;trailer&quot; &gt; Trailer &lt; /a &gt;
+&lt; /div &gt;
+</code></pre><p>对比相同内容的两种表述方式，新的方法可以让搜索引擎通过标签，把孤立的字符串，用属性串联起来。通过Avatar，搜索引擎知道了JamesCameron是阿凡达的导演，也知道了它属于科幻类型的电影。</p>
+<p>然而，这种机制的推广依赖与全体互联网人员的参与，虽然是大势所趋，但受限于复杂性和工作量，相关信息的建立不仅是一个漫长的过程，也是一个需要广泛合作的“全民运动”，新标签的类型关联、领域的模型、算法设计……如果没有好的激励方式，未来仍难以预期，甚至你我的有生之年都是无法寄以希望的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/11/17/sleep-sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/17/sleep-sort/" itemprop="url">
+                  Sleep Sort：多线程排序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-11-17T00:00:00+08:00">
+                2013-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>排序算法很多，不过下面这个不太一样，看好了~这是以时间控制的正儿八经的多线程排序~~</p>
+<p>输入一个数组：A1,A2,A3,…Ai…,An，然后新建n个线程，每个线程Sleep(Ai)，然后输出Ai，排序就完成了。(感觉比 猴子排序 还NB~笑)</p>
+<p>废话少说，先上代码：(Python实现)</p>
+<pre><code>from time import sleep
+from threading import Timer
+
+def sleepsort(values):
+    sleepsort.result = []
+    def add1(x):
+        sleepsort.result.append(x)
+    mx = values[0]
+    for v in values:
+        if mx &lt; v: mx = v
+        Timer(v, add1, [v]).start()
+    sleep(mx+1)
+    return sleepsort.result
+
+if __name__ == &apos;__main__&apos;:
+    x = [3,2,4,7,3,6,9,1]
+    if sleepsort(x) == sorted(x):
+        print(&apos;sleep sort worked for:&apos;,x)
+    else:
+        print(&apos;sleep sort FAILED)
+</code></pre><p>(Java实现)</p>
+<pre><code>import java.util.concurrent.CountDownLatch;
+
+public class SleepSort {
+
+    public static void sleepSortAndPrint(int[] nums) {
+        final CountDownLatch doneSignal = new CountDownLatch(nums.length);
+        for (final int num : nums) {
+            new Thread(new Runnable() {
+                public void run() {
+                    doneSignal.countDown();
+                    try {
+                        doneSignal.await();
+                        Thread.sleep(num);
+                        System.out.print(num+&quot;    &quot;);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[args.length];
+        for (int i = 0; i &lt; args.length; i++)
+            nums[i] = Integer.parseInt(args[i]);
+        //int[] nums = new int[]{1,33,34,12,45,78};
+        sleepSortAndPrint(nums);
+    }
+}
+</code></pre><p>解释一下Java实现的部分内容。这里用到了CountDownLatch。</p>
+<p>官方(JDK 6)的解释是“一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。”简单理解，它是一个倒计时的锁。</p>
+<p>使用给定的数字初始化 CountDownLatch。</p>
+<p>主要方法有2个：countDown() &amp; await()。</p>
+<p>由于调用了 countDown() 方法，所以在当前计数到达零之前，await 方法会一直受阻塞。之后，会释放所有等待的线程，await 的所有后续调用都将立即返回。这种现象只出现一次——计数无法被重置。如果需要重置计数，需要使用CyclicBarrier。</p>
+<p>CountDownLatch 是一个通用同步工具，它有很多用途。将计数 1 初始化的 CountDownLatch 用作一个简单的开/关锁存器，或入口：在通过调用countDown() 的线程打开入口前，所有调用 await 的线程都一直在入口处等待。用 <em>N</em> 初始化的 CountDownLatch 可以使一个线程在 <em>N</em> 个线程完成某项操作之前一直等待，或者使其在某项操作完成 N 次之前一直等待。</p>
+<p>CountDownLatch 的一个有用特性是，它不要求调用 countDown 方法的线程等到计数到达零时才继续，而在所有线程都能通过之前，它只是阻止任何线程继续通过一个 await。</p>
+<p>Sleep Sort思路很简单，但这里有几个问题：</p>
+<ol>
+<li><p>Python的Sleep函数精度是秒为单位的，那么如果我输入一个100000，这个排序就不得了了……可以想象会运行很久。同样在其他语言运行的情况下，数据与睡眠时间需要做平衡，否则算法失去意义。</p>
+</li>
+<li><p>还是输入的问题，如果是负数呢？或者是 浮点数呢？如果是更高精度的话就需要做特殊的处理。</p>
+</li>
+<li><p>另外，多线程算法还跟处理器的具体情况有关系。简单说，如果两个数非常接近的话(e.g. 1.0000000001 &amp; 1.0000000002)，那么在多处理器环境下有不准确的可能。这里可以考虑OpenMPI的实现。</p>
+</li>
+</ol>
+<p>改进的话，Java会比较简单，其实就是对输出的数据做处理，对负数做偏移量的加法，对浮点数做乘数因子的扩大就可以了，当然这样做势必导致算法效率的下降，所以这个算法~不是任何时候都好用，算是提供一种思路吧。</p>
+<p>算法最早出自4Chan BBS。</p>
+<hr>
+<p><em>这个BBS现在恐怕是很出名了吧～</em> </p>
+<blockquote>
+<p>October 28, 2014 updated</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/11/10/first-step/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/10/first-step/" itemprop="url">
+                  风波恶
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-11-10T00:00:00+08:00">
+                2013-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>终于告一段落。</p>
+<p>9月中回来，心情是极好的。起初的想法是带着一沓Paper到蓝杰去啃一下。对校招产生紧张感应该是从错过华为开始的。</p>
+<p>第一次去宣讲应该是 美团网。玩的心态大。正常的结果就是没有电话没有面试这样过去了。“瞄的就是BAT3这样的企业吧”，我对自己，同学对我，都是这样说。</p>
+<p>心知这是骗人的。</p>
+<p>那个时候还是希望回到金山云的。直到现在，我仍然觉得没有再回去非常遗憾。老盘是我的伯乐。上半年契机也好，缘分也罢，让我很早的确定了暑期的实习，一方面自己有时间沉静下来继续学一点东西，另一方面也是对自己前一个半年时间努力的肯定。</p>
+<p>前面的基本都很简略，因为本身我也不那么重视，直到后来发现小伙伴都安定下来了我就开始不淡定。我开始大概2天1次的频率在中南本部那边游走，到后来帮小蔡的一个同学做点东西(惭愧没有帮上啥实质性的忙)，这段确实比较疲劳。</p>
+<p>校招的面试还是从阿里开始的。这里感谢一下之前推荐我的各位学长外加亮仔，包括@晓宇哥，@小易哥，@东东哥~~</p>
+<p>在金山做数据分析觉得自己去尝试一下吧，所以就投了数据分析岗，后来发现阿里只在杭州，南京，武汉这3个点安排数据分析的面试，果断奔到武汉去参加了笔试，当晚就回来了，之后接到面试我说在长沙去不了，而且其实笔试题目就告诉我——你不适合这个岗位——全部都是统计学和运筹学的题目，可想而知，当时做的苦不堪言啊。之后就重新投递了简历准备再参加长沙线路的研发。</p>
+<p>之后是百度。</p>
+<p>笔试我觉得自己属于超常发挥，把自己一起搞不清楚的几个点在笔试考场上搞清楚了，心里非常爽，这样的度过了十一假期。面试头天就有人接到通知，我没有在第一时间接到，还是有点郁闷的。后来是睡午觉的时候来的电话。第二天跟宇静周熠一起的，我属于带着小伙伴霸面~~面试官话说跟我一个体形(不要笑，谢谢)，问的问题都比较简单：堆排序，平衡二叉树，还有一个 HashMap的优化，前面2个基础的数据结构都是手写的代码，后面一个大概属于罗列思路，时间比较久忘记了。开放性题目问到了实时用户的统计，我感觉自己回答的也很好，至少他没有在暗示我可以再想想或者这个不对，不过有几个小问题我没回答好，就是关于ISO模型里面各种协议的匹配，这个他认为比较基础吧，我按照自己的逻辑(学的都忘干净了)喷了一遍。这样的结果是，百度顺利被刷掉没有下文了。</p>
+<p>百度是上午，阿里是下午。中午我们吃过饭之后就又去了阿里那边霸面了。</p>
+<p>后来得知我是有面试通知的，不过我去的早了一点就早安排了。还是略欣慰的，之后发现基本没有不过的笔试，这个自信还是需要广泛的积累起来的。</p>
+<p>阿里这边等了大概1个多小时，面我的是一个花名 雷震 的同学~这个我印象很深，因为，这边足足面了有近3小时。一开始跟百度一样，写代码的问题，那就写吧，写过之后他问我优化的问题，我就略有点窘迫，我的代码本身写的就不那么好，但那时我觉得这是极限了(别笑，ACM队的同学)，我就把这个情况大概说了一下，他也觉得可以，就问我一些其他的问题，1小时左右的时候就开始准备评价我了(阿里校招是当场要出评价的，当然是你在等待区的时候会有人通知)，这个时候我问他说对我的印象怎么样，他说我还是很有优势的，我淡觉不妙，赶紧说我在XX方面还是很擅长的，他说哦？然后就可以继续问，问了一下觉得还可以，就开始跟我闲聊了，天南海北吧不过还是有技术上的东西，记得之后了问了一个开放性的：百度地图是如何在两个点之间建立最优的路线联系的，步行，驾车，公交的最佳路线分别都是怎么实现的。这个当时就把我问住了，我心说这是图论嘛，胡扯了一下，对方显然不满意，我觉得没有再聊技术的必要了，就继续问了一些他在阿里的信息和现在阿里的一些状况，恍然间就差不多3小时过去了<del>出门就接到通知说面试结束了</del>都挂在一面很不甘心啊，后来知道这2家都是带了很少人去了，觉得可能研究生更加有优势吧。</p>
+<p>之后就淡了一段吧，接着就是腾讯了。</p>
+<p>开始还没有出长沙线路(小伙伴们管这叫备胎线路，哈哈)，大家又集体奔到武汉去。想起上半年车上玩U-Know，感慨。</p>
+<p>笔试其实是差不多的，我们都认识路了……华科西十二教。这时候我汲取了之前的经验，把最能体现编码能力的附加题非常仔细的做了，并且做了一点自己的推敲，后来接到面试通知，我觉得是这道题加分的功劳。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/11/09/chrome-extensions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/09/chrome-extensions/" itemprop="url">
+                  提升效率：Chrome 插件(Extensions)推荐
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-11-09T00:00:00+08:00">
+                2013-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Chrome是目前最流行的浏览器，它的插件(Extensions)也非常多，这里介绍一下我常用的一些插件，个人感觉提高效率非常明显。</p>
+<p>先给一张我的Chrome截图：</p>
+<p><img src="/wp-content/uploads/2013/11/1.png" alt="1">  </p>
+<p>下面我来依次介绍一下：</p>
+<ol>
+<li>花瓣</li>
+</ol>
+<p><a href="https://chrome.google.com/webstore/detail/imamemhokkdleoelohnmkimbmpfglcil" target="_blank" rel="external">https://chrome.google.com/webstore/detail/imamemhokkdleoelohnmkimbmpfglcil</a></p>
+<p>Huaban Collector,主要就是将网页的图片采集起来，可以支持发到博客和保存到花瓣的收集，很实用的收集利器。</p>
+<ol>
+<li>有道网页翻译</li>
+</ol>
+<p><a href="https://chrome.google.com/webstore/detail/fcihnniakiicgonogcieldhhjbgpnjpj" target="_blank" rel="external">https://chrome.google.com/webstore/detail/fcihnniakiicgonogcieldhhjbgpnjpj</a></p>
+<p>经常浏览英文网站的同学肯定知道这个插件了~基本上我每次浏览都要点一下，比起桌面App的划词取义来的实在是快速太多了。</p>
+<ol>
+<li>Vimium</li>
+</ol>
+<p><a href="https://chrome.google.com/webstore/detail/dbepggeogbaibhgnhhndojpepiihcmeb" target="_blank" rel="external">https://chrome.google.com/webstore/detail/dbepggeogbaibhgnhhndojpepiihcmeb</a></p>
+<p>Vimium是我从Maxthon倒向Chrome的最大原因。使用它你可以像操作Vi/Vim一样操作你的网页，彻底的解放你的鼠标~</p>
+<p>我常用的有：</p>
+<p>j 下滚</p>
+<p>k 上滚</p>
+<p>o 历史搜索</p>
+<p>O 历史(包括书签)搜索</p>
+<p>x 关闭当前页</p>
+<p>X 恢复上一次关闭的页面</p>
+<p>Shift+H 左边Tab</p>
+<p>Shift+L 右边Tab</p>
+<p>还有很多可以自己设置和发掘。</p>
+<ol>
+<li>Tabs Outliner</li>
+</ol>
+<p><a href="https://chrome.google.com/webstore/detail/eggkanocgddhmamlbiijnphhppkpkmkl" target="_blank" rel="external">https://chrome.google.com/webstore/detail/eggkanocgddhmamlbiijnphhppkpkmkl</a></p>
+<p>非常方便的在多个Chrome Session之间进行管理，强大到无以复加。贴心的崩溃机制，让你任何一次操作都会被完好的保存下来，强烈推荐。</p>
+<ol>
+<li>TextMode</li>
+</ol>
+<p><a href="https://chrome.google.com/webstore/detail/adelhekhakakocomdfejiipdnaadiiib" target="_blank" rel="external">https://chrome.google.com/webstore/detail/adelhekhakakocomdfejiipdnaadiiib</a></p>
+<p>之前有朋友问我如何在3G网络下节约流量，于是我就推荐了这一款插件，顾名思义就是文字模式的网页，在冲浪时，它会自动过滤掉图片的显示，同时会以条文状的黑白模块来替代，以此来保持网页的布局，非常好的省流量利器，同时也是看小说文章时候的一个可选插件。</p>
+<ol>
+<li>Holmes</li>
+</ol>
+<p><a href="https://chrome.google.com/webstore/detail/gokficnebmomagijbakglkcmhdbchbhn" target="_blank" rel="external">https://chrome.google.com/webstore/detail/gokficnebmomagijbakglkcmhdbchbhn</a></p>
+<p>快速搜索你收藏的内容，相比之下，原生的Chrome搜索顿时成废渣~</p>
+<ol>
+<li>GNotes</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/11/04/wechat-web-login/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/04/wechat-web-login/" itemprop="url">
+                  微信网页版 二维码登录 原理剖析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-11-04T00:00:00+08:00">
+                2013-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用过微信的同学，大部分应该都知道这个功能，看起来挺神奇的~被问到了，就稍微研究了一下（过程大概是先自己描述，然后综合各方面的解读，尽量做最靠谱的还原）。</p>
+<h3 id="二维码登录"><a href="#二维码登录" class="headerlink" title="二维码登录"></a>二维码登录</h3><ol>
+<li>在PC端，打开登录页<a href="https://web.wechat.com/" target="_blank" rel="external">https://web.wechat.com/</a>。</li>
+</ol>
+<p><img src="/wp-content/uploads/2013/11/20131104192635_49612.jpg" alt="">  </p>
+<p>这一步，经过我多次实验，每次的二维码全都是不相同的（之前我就是这一点没想到，啊呀）</p>
+<p>那么就有合理的解释了：</p>
+<p>打开网页的时候，PC端向Server发出这样一个请求：“有人想要使用网页版微信了~”，Server就把一个类似于UIID的东西发过来（我们看到的就是这个编码生成的二维码），UIID是一个唯一的编码，在请求到网页-&gt;扫面的这段时间里，这个页面一直在监听服务器端的登录请求。</p>
+<ol>
+<li>使用移动端扫描二维码。</li>
+</ol>
+<p>扫描其实是一个获取UIID的过程，之后会出现“请在移动端点击 确认”的页面，然后在移动端点击确认，由于移动端本身是已经登录的（有access_token），那么移动端将UIID+Token（组合编码）发送给Server。</p>
+<p><img src="/wp-content/uploads/2013/11/20131104192728_59473.jpg" alt="">  </p>
+<ol>
+<li>PC端页面显示登录成功。</li>
+</ol>
+<p>Server接收到移动端的编码，解析之后，服务端生成登录的授权码，通知给正在监听的PC端页面，页面显示登录成功，并显示相应信息。</p>
+<p><img src="/wp-content/uploads/2013/11/3-300x166.jpg" alt="3">  </p>
+<ol>
+<li>移动端显示登录成功。</li>
+</ol>
+<p>PC端登录成功后发回给Server一个携带了UIID的类似200（OK）的确认信息，Server将此信息解析后发给移动端，移动端得到确认，显示确认界面。</p>
+<p>这样，之后包括File Transfer的功能就很类似了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这样实际上就是C-S-C模式：</p>
+<p>PC web端 --&gt; Server &lt;-- 移动端</p>
+<p>图解如下：</p>
+<p><img src="/wp-content/uploads/2013/11/20131104192452_62230.jpg" alt="">  </p>
+<p>类似的摇一摇传图的实现原理其实也是一样的，登录之后同样类似于File Transfer的原理，不过是动作不一样（一个是拖拽 触发，一个是摇晃 触发）。</p>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
+<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/11/03/classic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/11/03/classic/" itemprop="url">
+                  迈入古典
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-11-03T00:00:00+08:00">
+                2013-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近听得乱七八糟，日常列表里面的歌曲有很多都听不下去了，转向古典。 </p>
+<p>前段时间听Calias非常多，对歌剧来说，可能更注重于传达氛围，古典音乐我觉得是一种态度和感觉。重新整理一下诸多推荐和收藏，深夜送福利(一般是先作者再曲名，不排除犯2的情况)。 </p>
+<p><strong>儒勒·马斯奈（Jules Massenet )<em>**</em></strong></p>
+<pre><code>描述不贴了，自己选中去Google吧。首推的是**Meditation Thais**。 
+</code></pre><p><strong>Rimsky-Korsakov Scheherazade<em>**</em></strong></p>
+<p><strong>    天方夜谭，</strong>PS：这是组曲，我最喜欢的是里面的<strong>大海与辛巴达的船。</strong></p>
+<p><strong>圣桑（Camille Saint-Saens）</strong></p>
+<p><strong>    动物狂想曲，</strong>PS：很久前听过的《梦的延长线》，虽然非古典，但一样的意境，不一样的韵味，这里一并推荐。 </p>
+<p><strong>Gustav Holst<em>**</em></strong></p>
+<p><strong>    行星组曲 The Planets，</strong>PS：这个组曲最经典是 水星（翼信之神）、木星（快乐之神）、海王星（神秘之神），从副名也能看出不同吧。 </p>
+<p><strong>Georges Bizet<em>**</em></strong></p>
+<p><strong>    卡门组曲，</strong>PS：斗牛士进场是最经典的一段，另推荐 小步舞曲。 </p>
+<p><strong>德彪西</strong></p>
+<p><strong>    亚麻色头发的女孩，梦-钢琴鸣奏曲<em>**</em></strong></p>
+<p>PS：德彪西的曲子非常适合不清醒的时候听……额。 </p>
+<p><strong>约翰 施特劳斯</strong></p>
+<p><strong>    蓝色多瑙河，春之声</strong></p>
+<p>这就是大家熟悉的了（有几个同学能对上号我还是表示怀疑），曲调摆脱了很多作曲固有的方式，体现着很多“正能量”，经常出现是肯定的。 </p>
+<p><strong>穆索尔斯基</strong></p>
+<p><strong>    荒山之夜</strong></p>
+<p><strong>罗尼西</strong></p>
+<p><strong>    威廉泰尔 序曲<em>**</em></strong></p>
+<p>很多推荐给出的那些XX号XX组X调第XX乐章这种类型的曲子，非常多；我按照我的心情，总结一下： </p>
+<ul>
+<li>巴赫、莫扎特    这两位的，就别挑了，一曲曲听下去就好，一方面质量非常之高，基本上秒杀大多数组曲章节；另一方面每个人兴趣在这样的大师作品面前，一定不是完全相同的——别人喜欢的不见得你就觉得非常耐听。 </li>
+<li>柴可夫斯基、门德尔松    这两位，主要听小提琴的就好，别的不是非常好（不是没有好的，说占比） </li>
+<li>贝多芬    这个不要我介绍，常见啊常见，对于贝来说，奏鸣曲和重奏比较多，但最好的固然还是交响曲，这里再推荐一个 爱格蒙序曲</li>
+<li>舒伯特、罗德里格    前者，魔王、鳟鱼，后者，Concierto de Aranjuez(吉他组曲)，单独列出来是觉得前者怕小众，后者怕不小众</li>
+</ul>
+<p>现在正在听的是：G小调 Symphony No.40 (550),1778,Mozart </p>
+<p>好蛋疼的编号。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/10/31/linux-get-process-return-value/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/10/31/linux-get-process-return-value/" itemprop="url">
+                  Linux获取进程返回值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-31T00:00:00+08:00">
+                2013-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>受人之托写一个Linux小Demo，大致意思是这样的： </p>
+<blockquote>
+<p>创建进程，并等待进程结束，获取进程返回值。 </p>
+</blockquote>
+<p>创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。 </p>
+<p>等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒（顺便说一下，我把第一个进程写成了Father，第二个写成了Son，虽然没有父子关系，不过Son是Father负责启动的，哈哈） </p>
+<p>最后一步是获取进程返回值，这里需要用到WEXITSTATUS。 </p>
+<p>WIFEXITED(status) 用来指出子进程是否为正常退出的，如果是，它会返回一个非零值。 </p>
+<p>当WIFEXITED返回非零值时，我们可以用这个宏来提取子进程的返回值，如果子进程调用exit(5)退出，WEXITSTATUS(status)就会返回5；如果子进程调用exit(7)，WEXITSTATUS(status)就会返回7。请注意，如果进程不是正常退出的，也就是说，WIFEXITED返回0，这个值就毫无意义。</p>
+<p>这里模拟的时候，直接令程序返回一个int值。</p>
+<p>以下是程序代码： </p>
+<p>Father.c </p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char* argv)
+{
+    printf(&quot;Father run\n&quot;);
+    int n = system(&quot;./Son&quot;);
+    printf(&quot;Son return value = %d\n&quot;, WEXITSTATUS(n));
+    return 0;
+}
+</code></pre><p>Son.c </p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main(int argc, char* argv)
+{
+    printf(&quot;Son run\n&quot;);
+    sleep(10);
+    return 5;
+}
+</code></pre><p>编译运行： </p>
+<pre><code>gcc Father.c -o Father
+gcc Son.c -o Son
+</code></pre><p>结果如图： </p>
+<p>[caption id=”attachment_206” align=”alignnone” width=”203”]<img src="/wp-content/uploads/2013/10/return.jpg" alt="程序执行结果"> 程序执行结果[/caption]</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/10/05/school-project-rebuild/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/10/05/school-project-rebuild/" itemprop="url">
+                  如果重来，我如何做校内项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-05T00:00:00+08:00">
+                2013-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在校的时间基本上是越来越少，这个时间基本没有项目在做了（应该只剩一个毕设——已被安排貌似还不错就是比较简单）。反观之前做的很多项目，理想跟现实总是大相径庭——这也是客观事实，不过从项目里还是得到了很多东西，再加上实习期间自己的学习感触，如果很多校内项目重新来过，我们有很多方面可以改进，不仅仅是跳过那些不必要的过程或者更高效的完成项目中的某些阶段，更重要的是清晰的知道自己要怎么做和如何做得更好。</p>
+<h2 id="目标与计划齐飞"><a href="#目标与计划齐飞" class="headerlink" title="目标与计划齐飞"></a>目标与计划齐飞</h2><p>一句废话。然而事实是说到做不到的人太多了，废话也要不停说。</p>
+<p>不管是“自发性”的还是“委托性”的项目，都需要一个相对规范的Plan，成员的空余时间决定了团队的进度安排和整体走向，很多项目就是在漫无目的的敲敲打打中晃过去了大部分的时间，过了很久才发现只做了一点点东西或者距离目标相去甚远。</p>
+<p>学过《软件项目管理》的同学应该了解其中的奥妙，没看过也没关系，只要懂目标，分步规划就好了，这样总是没错的。从计划的角度看，很多人在项目中学到的不单单是如何编程和解决问题，更重要的是知道了如何对项目的状况进行管理。</p>
+<p>管理，这个词就这样轻松的进入了你的世界，不知不觉。</p>
+<p>如果重新做这些项目，把目标和工作计划制定的井井有条，效率的提升可能是难以想象的，不仅仅是今天的总结和明天的Issue，更重要的是每个成员都对项目有一个整体的把我和对自我功能性的明确，这是校内项目跟商业项目最为不同的一点。</p>
+<h2 id="不靠谱的用户才是好用户"><a href="#不靠谱的用户才是好用户" class="headerlink" title="不靠谱的用户才是好用户"></a>不靠谱的用户才是好用户</h2><p>以前犯过这样的错误：想要一个非常确定的需求。后来渐渐发现这是不现实的。有Idea的人不见得就想的清楚Detail。</p>
+<p>很多同学的状况是：“好啦，你给我一个需求文档吧，详详细细，我只要知道实现什么功能嘛”，“你给的不全要我怎么办，这样我没办法做啊”，“这个怎么是BUG呢，我是按照需求来做的啊”，“那个BUG我改了，如果还不行，就没办法了”……</p>
+<p>很难说孰是孰非，如果站在一个码农的角度，你可能合格了（当然不排除这里面的消极情绪，很可能这是一个“冗余”的开发过程或者干脆就是一个“被动受制”的项目）；如果把自己提升到开发者或者更高的层次，这样的做法显然有问题。</p>
+<p>“唯一不变的就是需求不停的改变。”绝大多数用户是不知道自己真正想要什么的，他们心里只有模糊的概念，这时候的需求分析就是从用户的角度和实际的角度来综合分析出需要实现的目标（这样说也许简单了，如果是商业项目的话需要考虑的方面会更多），然后去同用户进行确认，然后迭代基本就不会出现大的问题了。细节因项目而异，自己感知吧。</p>
+<h2 id="部署什么的Bullshit"><a href="#部署什么的Bullshit" class="headerlink" title="部署什么的Bullshit"></a>部署什么的Bullshit</h2><pre><code>做一个成品的项目，最终需要生成很多的东西：源码包，文档（Manual，Demand，Design），可运行包（或者是线上），DB，其他Data……一开始我们的项目，一到最后需要Test的阶段基本上可以用惨不忍睹来形容——每一步都需要不停的重复一些繁琐的配置或者运行脚本机制等等，究其缘由，其实是部署的问题。
+
+部署包括了：新版本的部署，版本回退，数据恢复，应急响应等等方案。当时我们做得东西，由于一些连接语句是hard code的，导致部署需要大量的人工干预，成本很高。但是反观实习单位和目前行业的状况，很大的产品，在azure和sql环境配置好的情况下，可以快速实现本地部署。而且现在每周可以实现小改动的发布，每月发布新的feature。这之间的差异是何等巨大。
+
+如果周期性的迭代发布，当人员增多的时候，可能互相并不了解彼此之间的改动，可能形成冲突。另外，当测试覆盖率不够高或者其他因素导致新部署的版本有一些灾难性的问题，需要把在线版本回退到以前版本，该如何去做。为了避免一些开发当中导致的数据问题，我们也应该将开发数据库和真实数据库分离。
+
+做在线服务，总会遇到这样或者那样的问题，如何快速响应，如何trouble shooting，怎么快速的发布hot fix；做离线服务，如何做到流程精化；做分布式服务，如何做到CAP，又需要根据情况舍弃哪一种特性，等等。
+
+如果我重新做在校项目，我会先集中精力把这些基本的问题解决掉。考虑到实验室的情况，我可能会用一台性能好的机器做产品的服务器。然后用另外一台机器，当成内部服务器。每周定时把所有新的改动发布到内部服务器，每两周或者每个月发布一次到正式版本。而每个人都是基于自己的机器上的local的系统和DB进行开发。
+</code></pre><h2 id="开发？你挑水来我浇园"><a href="#开发？你挑水来我浇园" class="headerlink" title="开发？你挑水来我浇园"></a>开发？你挑水来我浇园</h2><pre><code>在我看来，敏捷开发和瀑布模型并没有本质上的不可调和。理想的开发模式是，在更短的周期里面完成设计、开发、测试、发布的流程。因为周期更短，所以每一次迭代的成本更低，犯错的代价更小。所以不用等到万事俱备再去开发（这是我以前常犯的一个错误，总是希望自己能把一切准备都做好，殊不知这样不仅不现实而且无形中浪费着自己已有的资源），可以更大胆的尝试。因为开发周期变得更短，所以测试和开发可能更加需要并行，甚至基于产品测试(TIP, test in production)。
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

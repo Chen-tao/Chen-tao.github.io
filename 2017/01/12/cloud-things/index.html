@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="感悟,云计算," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="来自知乎专栏的一篇文章，信息量很大，也有不少很风趣的逸事。很多甚至是我见过错过的人生。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云计算那点事">
+<meta property="og:url" content="http://chen-tao.github.io/2017/01/12/cloud-things/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="来自知乎专栏的一篇文章，信息量很大，也有不少很风趣的逸事。很多甚至是我见过错过的人生。">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="云计算那点事">
+<meta name="twitter:description" content="来自知乎专栏的一篇文章，信息量很大，也有不少很风趣的逸事。很多甚至是我见过错过的人生。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2017/01/12/cloud-things/"/>
+
+
+
+
+
+  <title> 云计算那点事 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/12/cloud-things/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                云计算那点事
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-12T00:00:00+08:00">
+                2017-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  来自知乎专栏的一篇文章，信息量很大，也有不少很风趣的逸事。很多甚至是我见过错过的人生。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h6 id="FROM-知乎专栏"><a href="#FROM-知乎专栏" class="headerlink" title="FROM 知乎专栏"></a>FROM <a href="https://zhuanlan.zhihu.com/p/22445510?refer=mintshow" target="_blank" rel="external">知乎专栏</a></h6><blockquote>
+<p>来自知乎专栏的一篇文章，信息量真的很大，也有不少很风趣的逸事。</p>
+<p>其实我也浅短的接触过一些云计算：13年金山云起步，有幸参与其中，那时候和斌神被老盘带进公司，他搞SDK(就是直接拿S3的转换)，我在另一侧搞运维和Hadoop生态相关的东西，每周一都会在上地桥东见到雷老板来开会，虎虎生风的，那时候也是小米上升期，真的是恍若隔世。</p>
+<p>如文中所述，金山云确实当时很依赖小米，刚总可能觉得这样的状态他不喜欢，然而雷老板似乎又没给他多大的活动空间(参照下傅盛)，于是，约莫一年刚总出走，金山云又被迅雷吞吃，这一段历史，也算基本告一段落。</p>
+</blockquote>
+<h2 id="（一）"><a href="#（一）" class="headerlink" title="（一）"></a><strong>（一）</strong></h2><ol>
+<li>高升科技（000971）的老大于平十年前跟我是同行，在东北做声讯电话业务。后来有人欠他钱，就抄家伙喊帮手去要钱，借钱的没办法说你把我砍了也没钱，我有个机房，要不抵给你吧。老于想想也没办法只好接管了机房，拿下来后就找关系卖IDC，卖着卖着发现，100万的欠款换来的机房，竟然卖了130万，敢情这东西有利润啊。 于是下血本进入IDC市场，9年后公司上市，市值100多亿。 有些做地产的主动找老于要给地，说这地租出去租不了几个钱，还不如给你拿去盖机房赚的更多。</li>
+<li>Openstack是个坑，谁用谁知道，国内一些订制openstack的企业能搞出一些私有云的项目，然而其实做起来都是苦不堪言。想想也是的，rackspace和NASA能搞出什么东西呢？ 主流云计算服务商都不用openstack， 小米运维那边的几个好友也说试了openstack感觉不行。</li>
+<li>360在openstack出来之前内部搞过一套类似的东西，有点作用，后来openstack出来之后就全面拥抱openstack，这下好了完美入坑，360云事业部后来裁掉了，不过老周倒也直爽，尽管自己的兴趣点都在智能硬件和花椒直播上，但也给云那边烧过几个亿，后来拆VIE业绩有些压力就动手砍掉了，360云当时的老大是惠普过来的，业务能力超强，以前把惠普走下坡路的服务器业务从上一年的8个亿做到20多个亿，这人脾气很好，老周说分手就同意分手了，后来跳槽去了乐视云。</li>
+<li>黄允松在IBM就负责云，从18摸出来后，有点担心老东家找麻烦，于是自学python，换了门语言吭哧吭哧写出了青云， 这下你没法告我了吧，你吹得我涨不？ 不过Qingcloud的发展也挺坎坷，一度认为互联网公司会成为云计算的忠实客户，后来发现客户都在深圳，那些金融大土豪才是最喜欢给云计算付费的。于是黄云松搬去深圳住了大半年，把业务撑起来了。</li>
+<li>13年的时候研究过SDN，那时候SDN太火了，饭桌上不提两下openflow都没法在圈子里混了。只有钱伯斯敢站出来说openflow是个垃圾， 于是很自然地，钱伯斯被骂成猪头，大家觉得他廉颇老矣。 后来事实证明钱伯斯是正确的，技术细节就不多说了，说一个小问题：某银行某年采购了15亿的网络设备，第二年有人提议说咱们上SDN，用openflow，然后发现老设备不兼容全部处理掉把，上SDN差不多需要再投入18亿……   后面的结果可想而知。</li>
+<li>UCloud刚成立的时候，冲着季昕华那名头很多投资人都追上去想投资，一问融资金额就犹豫了，再细问一下发现云计算挺烧钱，烧服务器烧带宽，在IDC上的投入简直堪比炒房，那时候阿里云还备受质疑，云计算市场很不明朗， 于是各种认怂了说季总威武霸气，小的我看不懂不敢投祝你幸福之类。 后来DCM和君联杀进后越做越好， 投资人聊到云计算就提自己当年如何看过以及如何错过Ucloud，说得都是绘声绘色栩栩如生。</li>
+<li>CDN市场以前是网宿蓝汛90%，帝联7%，剩下的包括BAT在内抢3%，可惜蓝汛在美国上市，市值惨不忍睹。蓝汛催钱也挺辛苦，经常要拉横幅鼓励员工开催款动员大会。 后来霍涛景楠等人离开蓝汛，出去搞了个白山云，蓝汛昔日的地位不复存在了。</li>
+<li><strong>金山云靠小米渠道去圈游戏客户是真的，你用金山云小米就帮你推，为此还从其他云平台撬过几个耳熟能详的大客户。 雷军玩生态是下血本的，不像某些企业内部要资源还难如上青天。</strong></li>
+<li><strong>阿里云每年双十一的时候全国各地都是通宵值守的，尽管这样也扛不住，各种问题层出不穷， 后来甚至把事务逻辑都拿掉了，于是就造成了超卖，超卖得赔钱啊，每年为超卖要补很多钱。</strong></li>
+<li>再说个阿里云的，阿里云处理的一些问题确实是世界级的，前所未有的，包括被黑客攻击也1是，光DDOS的量级就屡屡破世界纪录。几年前没怎么上SSD的时候和阿里云和AWS一样存在I/O问题，后来好了很多。</li>
+<li>七牛是做网盘起家的，网盘实在不赚钱于是做企业存储把收入做起来了，再到混合云。2014年在GiTC上碰到许式伟，旁边人问他最多的就是七牛和又拍有啥区别，他说了十几遍又拍做CDN，七牛做存储。后来七牛不仅CDN做得风生水起，还基于CDN做直播云。 不过说起直播，很多直播平台的量都是刷的，CDN厂商没怎么赚到钱。</li>
+<li><strong>2013年QCon见到季昕华，问他怎么做安全的，怎么抗DDOS，他说他不抗D，业内黑客基本都认识他，如果要打的话会知会一声， 他会跟客户说有人要打你，建议你去阿里云……  后来UCloud真被打了，我们就在说时代变了，新人黑客都不认识老季了。</strong></li>
+<li>青云的服务是1000倍赔付的，有次广州机房被雷劈了， 我也是受害者，那次被劈据说赔了1000多万。网宿有一次被打也连带七牛服务挂掉，损失未知，后来七牛就不把鸡蛋放在一个笼子里了。</li>
+</ol>
+<p><strong>今日推荐： fit2cloud</strong></p>
+<p>我第一次见到fit2cloud这个产品的时候，就觉得一个技术负责人最需要的就是这个产品。</p>
+<p>试想一下技术实现最头疼的不是把需求给做出来，而是你代码写好后发现你有一刀子东西要去部署，你要面对大量的工具，多种基础设施平台，你缺乏一个好的管理工具。</p>
+<ul>
+<li>「FIT2CLOUD 混合云管理平台」帮助企业统一管理异构和异地基础设施，包括物理机(AIX)、虚拟化平台（vSphere，FusionSphere等）、私有云 （Openstack等）和公有云（亚马逊AWS、阿里云等），以服务目录形式对外统一交付IT资源，实现自服务IT。</li>
+<li>「FIT2CLOUD DevOps协作平台」帮助企业在混合云环境下落地亚马逊AWS DevOps解决方案，实现对应用全生命周期的自动化管理，打通从代码到服务的转化通道，实现云应用的持续部署、交付和自动化运维。</li>
+<li>「FIT2CLOUD 云费用管理平台」帮助企业管控云成本，实现对云费用和资源使用情况的可视化分析，优化和预测。 </li>
+</ul>
+<p>作为一个CMP云平台管理产品，Fit2Cloud目前支持主流公有云（阿里云、AWS、腾讯、青云、UCLOUD等）使用Fit2Cloud，你就不需要再繁琐地分别维护各个基础设施，管理多个独立的系统，对成长期的企业来说大大减少了投入，对技术人员来说也解决了一个刚需——懒。</p>
+<p>Fit2Cloud的团队成员普遍是具有多年经验的Devops，公司拥有10多位AWS认证架构师，其中有两位为专业级认证架构师。同时，公司也是AWS中国区域的“高级技术平台合作伙伴”。</p>
+<h2 id="（二）"><a href="#（二）" class="headerlink" title="（二）"></a><strong>（二）</strong></h2><ol>
+<li><strong>政企云跟ISV类似，区域性很强，东北就是东软，东软到了山东就不好使了，山东是浪潮，北京则是中软和软通。 再到了地级市都有更细分的运营公司，比如山东有个地方叫日照市，那里有家快上市的公司叫展望科技，垄断了日照市政企云业务，展望的董事长在我办公室里用浓重的山普说：只要一天有展望在，日照政企就只认展望。</strong></li>
+<li>两年前我刚创业时参加itech在西湖的一个高尔夫活动，当时见识了著名的华三“铁娘子”——吴敬传女士。 这位前华三CEO在过去10年间做到了百亿的年销售额，把思科打出了中国。除此之外，她还是个高尔夫80杆上下的高手。 华三那时候也是国内率先进军SDN和NFV的企业，势不可挡。 只不过没想到2015年初一场政变， 母公司惠普的CEO（也是一位女性）在她休假的时候解除了她的职务， 当时还有大量人员出走。 后来华三和惠普中国一起成为新华三，被紫光收购，成了一家校办企业的子公司。 惠普中国也怪好玩的，一帮满嘴洋文的港台东南亚高管现在成了校企人士了，那画面不敢直视。  政变期出走的一批老兵出来跟阿里合作做了数梦工厂，专做私有云， 吴敬传卸下兵权后休息了一年半，最后出任数梦工厂的CEO，政变结束。</li>
+<li>安全圈几家竞争公司很容易大打出手，但码头工人组织（docker圈）还是很团结的，有时会聚聚一起合个影啥的，毕竟市场还在成长阶段，谈竞争还早。 Daocloud的喻勇自称为胖子，但是论吨位还是灵雀云的左钥更胜一筹。</li>
+<li>云计算好赚钱吗？我找些参照物吧，citrix是卖虚拟桌面的，单子都是几千万的，销售提成据说有10%…… VMware比citrix公司更有名更大，也是出了名的简单粗暴而暴利。 国外卖VPS的比卖独立服务器的更富得流油。 国内各种复杂原因很不好说， 我记得盛大云一个哥们跟我说：<strong>看ROI无非就是看我怎么虚，给得起钱我自然有更好的性能，一个核虚20个核和一个核虚5个核是不一样的。 厉哥你要追求性能的话，我大不了两个核给你虚成一个核……</strong></li>
+<li>云计算公司加班都很辛苦， 尽管在上海，Daocloud 也要996赶产品。 Qingcloud有这么一句话，在非工作日如果你不在工作的话，你得没有愧疚感才行。所以来炜在小米996的环境下竟然可以折腾出Openfalcon这样的开源产品，让我对他不由地肃然起敬。 <strong>来炜在北京的活动半径不超过西二旗，从百度到小米级别一直不高，后来能成为滴滴五大技术台柱之一完全非人般的努力下的结果。</strong></li>
+<li>季昕华在圈内的评价极高，但他的普通话有一种浓浓的非洲土语的感觉，需要配同声翻译，所幸圈子里的朋友们都比较有耐心，积极主动地跟他交流，在朋友们的支持和他自己的努力下，如今交流越来越顺畅了。这里希望蔡文胜也能早日战胜口音障碍。</li>
+<li>互联网就算大公司很多时候也很苦逼，技术这边压榨硬件性能很常见， 很好，单节点并发再多一点，对，单节点吞吐再高一点。 土豪金融公司就不一样了，那个采购清单华丽啊，有的技术人员做了十几年技术，给客户实施的时候望着那些装备都会流口水。 青藤云安全最大的客户是借贷宝，有6000多个节点。</li>
+<li>极光推送用户超10亿了，最早是做IM的，后来发现没法跟微信竞争就把技术开放出来做长连接，立马to B，单台服务器可以支持400万长连接。极光的创始人是开宾利的，找IDG融资的那一轮自己也投了融资金额的20%。 </li>
+<li>Leancloud原来叫AVOS，创始人里有youtube的创始人陈士骏，明星团队，也得到了李开复的大力推荐。但是那个时候PaaS的概念真心不好讲，江宏博士后来完全独立出来成了Leancloud，SDK做的非常好，用起来很舒服，但叫好不叫座。他们的存储、推送等都是自己做的，这一点也被我吐槽过还因此差点结下了梁子。</li>
+<li><strong>云计算的销售往往都是原来卖IDC的，套用一个蓝汛妹子的话：反正都是出来卖的，卖什么不是卖？ 但是市场一般都是互联网公司背景的。如果你在活动上看到美团云的展台上有美女，不要以为那是他们请来的showgirl，那是他们员工。美团云试用下来感觉还可以，价格不错， 有个做用大数据算命的朋友用了不少美团云的服务，反馈说真心不错。 京东云也有一些特色，不要小看二线云产品，外部用户数量都不少，说明这个大市场还远未成熟。</strong></li>
+<li>秋野是运维界郭德纲，名震天下。从世纪佳缘出来的时候，看到刘惠璞去了聚美，于是就去了乐蜂，一度把乐蜂的技术全部接管了下来，可惜乐蜂这个庙越来越破留不住神仙，后来去了民生电商，也不只限于运维了，管一大片技术业务。 但凡技术大会上只要有秋野出现，必然是全场爆满，我有几次想进去瞅两眼结果都挤不进去。 类似的情况我只见过陈浩（左耳朵耗子，前阿里云的）有过。 运维界撒贝宁是匡萃彪，51到安居客到途牛再到自己创业，以往人们不太意识到运维人员的存在，现在娱乐化了之后这个圈子有活力多了，是好事。</li>
+<li>试用了sumo logic，折腾两天未果，然后果断弃，后来sumo logic就反复给我电话，我到了国内也不被放过，一直无力吐槽。直到有一天红杉的人跟我说他们投了sumo logic，有一种如释重负的感觉，就像捂着肚子转了三圈终于找到一个厕所一样，当天吐槽到红杉的人脸色跟吃了大便一样难看。 不知道现在产品如何，但是当时的我很难想象怎么会有一家公司的产品部署体验如此反人类的，仿佛就是为增加你部署难度而生的。</li>
+<li>戴尔曾经以call center黄埔军校著称，时代不一样了，日子也越来越不好过。上次去崇明岛戴尔大会上听一位金博士用纯正的台湾腔讲硬件，说硬件也就这样了都是上面的软件贵，一台8000美金的服务器，你们猜上面的Oracle多少钱？ 台下有人说有8000吗？ 金博士： 8000？ 一个核就要8000，怎么也得要近5万美金。  台下顿时鸦雀无声，大家垂头丧气地，感觉自己都入错行了。</li>
+<li>云公司的CEO一般以业务能力为先，七牛是个特例，七牛已经快上市了但许式伟还在写代码。《docker源代码分析》的作者，Daocloud初创成员孙宏亮单身，有相亲节目看中了他，三顾茅庐请他上节目，人都没见到就被该厂市场老大霍太太按住了，霍太太的老公不是霍元甲的后代，是瑞典人，姓Hall。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/感悟/" rel="tag"># 感悟</a>
+          
+            <a href="/tags/云计算/" rel="tag"># 云计算</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/10/jvm-param-rcmd-2016/" rel="next" title="关键业务系统jvm参数推荐">
+                <i class="fa fa-chevron-left"></i> 关键业务系统jvm参数推荐
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/18/japanese-shou-shou-rela/" rel="prev" title="日语授受关系总结">
+                日语授受关系总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#FROM-知乎专栏"><span class="nav-number">1.</span> <span class="nav-text">FROM 知乎专栏</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）"><span class="nav-number"></span> <span class="nav-text">（一）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）"><span class="nav-number"></span> <span class="nav-text">（二）</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,kilim," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Kilim工作原理1. Kilim中的Task，即用户线程如何调度和切换？相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU在多任务的调度上操作系统采取抢占式和协作式两种方式。
+2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？Kilim通过代码编译期识别抛出的Pauseable异常注解，来判断识别方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kilim工作原理">
+<meta property="og:url" content="http://chen-tao.github.io/2015/10/02/kilim-work-way/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Kilim工作原理1. Kilim中的Task，即用户线程如何调度和切换？相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU在多任务的调度上操作系统采取抢占式和协作式两种方式。
+2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？Kilim通过代码编译期识别抛出的Pauseable异常注解，来判断识别方">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kilim工作原理">
+<meta name="twitter:description" content="Kilim工作原理1. Kilim中的Task，即用户线程如何调度和切换？相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU在多任务的调度上操作系统采取抢占式和协作式两种方式。
+2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？Kilim通过代码编译期识别抛出的Pauseable异常注解，来判断识别方">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/10/02/kilim-work-way/"/>
+
+
+
+
+
+  <title> Kilim工作原理 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/kilim-work-way/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Kilim工作原理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
+                2015-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Kilim工作原理"><a href="#Kilim工作原理" class="headerlink" title="Kilim工作原理"></a>Kilim工作原理</h1><h2 id="1-Kilim中的Task，即用户线程如何调度和切换？"><a href="#1-Kilim中的Task，即用户线程如何调度和切换？" class="headerlink" title="1. Kilim中的Task，即用户线程如何调度和切换？"></a>1. Kilim中的Task，即用户线程如何调度和切换？</h2><p>相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU<br>在多任务的调度上操作系统采取抢占式和协作式两种方式。</p>
+<h2 id="2-Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？"><a href="#2-Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？" class="headerlink" title="2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？"></a>2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？</h2><p>Kilim通过代码编译期识别抛出的Pauseable异常注解，来判断识别方法可暂停</p>
+<h2 id="3-Kilim是如何实现线程执行过程中当前方法的暂停和恢复？"><a href="#3-Kilim是如何实现线程执行过程中当前方法的暂停和恢复？" class="headerlink" title="3.Kilim是如何实现线程执行过程中当前方法的暂停和恢复？"></a>3.Kilim是如何实现线程执行过程中当前方法的暂停和恢复？</h2><p>Kilim通过编译期字节码编织，对每一个可暂停的方法进行字节码处理，在方法执行前和执行后加上相关的执行上下文的处理，暂停时会保存整个线程堆栈，包括完整栈帧，程序计数器等等，然后通过特定的字节码跳转指令jsr跳转到另外一个Task的执行方法中，恢复时将复原整个线程堆栈，包括完整栈帧，程序计数器等等，回到上次暂停时的指令地址处继续执行。</p>
+<h2 id="4-Kilim中的Weaver工具是如何针对编译的代码实现织入的？"><a href="#4-Kilim中的Weaver工具是如何针对编译的代码实现织入的？" class="headerlink" title="4.Kilim中的Weaver工具是如何针对编译的代码实现织入的？"></a>4.Kilim中的Weaver工具是如何针对编译的代码实现织入的？</h2><p>字节码技术，具体来说通过ASM字节码框架实现对class文件的重写</p>
+<h2 id="5-如何将一个传统的线程执行方法改造成Kilim的Task模型？"><a href="#5-如何将一个传统的线程执行方法改造成Kilim的Task模型？" class="headerlink" title="5.如何将一个传统的线程执行方法改造成Kilim的Task模型？"></a>5.如何将一个传统的线程执行方法改造成Kilim的Task模型？</h2><p>首先，需要实现一个类继承Task，实现Task的execute方法，该execute中调用的方法必须声明抛出Pauseable异常，其次，线程间的通信全部通过Mailbox来传递消息，put和get时注意三种版本，包括阻塞线程，阻塞Task但不阻塞线程，无阻塞。<br>最后，针对这些Task和抛出Pauseable的方法编译时，使用Weaver工具进行编织处理</p>
+<h2 id="6-Kilim中什么样的方法在执行过程中是可暂停的？"><a href="#6-Kilim中什么样的方法在执行过程中是可暂停的？" class="headerlink" title="6.Kilim中什么样的方法在执行过程中是可暂停的？"></a>6.Kilim中什么样的方法在执行过程中是可暂停的？</h2><p>整个方法调用链中方法必须声明抛出Pauseable异常，This annotation is used by the Kilim weaver to rewrite the bytecode of all pausable methods to incorporate the voluntary yielding logic. One important property of this scheme is that a pausable method can only be called by another pausable method.</p>
+<h2 id="7-Kilim中哪些操作可以使得Task暂停或者恢复运行？"><a href="#7-Kilim中哪些操作可以使得Task暂停或者恢复运行？" class="headerlink" title="7.Kilim中哪些操作可以使得Task暂停或者恢复运行？"></a>7.Kilim中哪些操作可以使得Task暂停或者恢复运行？</h2><p>Task.sleep() is a pausable method that pauses a task for a give time. Another example is Mailbox.get(), which pauses a task until a mailbox is non-empty.</p>
+<p>##8.Kilim中Task和Thread之间是如何调度的?</p>
+<p>Kilim’s tasks are cooperatively scheduled on a kernel thread pool.<br>A Kilim task is owned and managed by a scheduler, which manages the<br>thread pool. When a task needs to pause, it removes itself from the<br>thread by popping its call stack, remembering enough about each<br>activation frame in order to help rebuild the stack and resume, at a<br>later point). The scheduler then reuses that thread for some other<br>task.<br>You can have more than one scheduler and assign<br>each task to a particular scheduler. </p>
+<h2 id="9-Kilim中Task占用的内存大小？"><a href="#9-Kilim中Task占用的内存大小？" class="headerlink" title="9.Kilim中Task占用的内存大小？"></a>9.Kilim中Task占用的内存大小？</h2><p>The amount of memory occupied by a task is:</p>
+<ol>
+<li>The java object that represents the task class</li>
+<li>If paused, an array of activation frames is stored. The Kilim<br>weaver performs data flow and live variable and constant analysis<br>(intra-procedurally) to ensure that it capture only as<br>much as is needed to resume.</li>
+<li>The contents of all mailboxes that the task is receiving on.</li>
+</ol>
+<h2 id="10-什么场景下适合做Kilim协程？"><a href="#10-什么场景下适合做Kilim协程？" class="headerlink" title="10.什么场景下适合做Kilim协程？"></a>10.什么场景下适合做Kilim协程？</h2><p><strong>IO密集型的应用比较适合使用协程</strong>，比如应用中存在较多的与后端的网络交互，存在较多的时间在等待后端响应</p>
+<h2 id="11-Kilim中Task的工作机制？"><a href="#11-Kilim中Task的工作机制？" class="headerlink" title="11.Kilim中Task的工作机制？"></a>11.Kilim中Task的工作机制？</h2><p>Actor采取的这种类似消息机制的方式，实际在守护线程和外部线程之间有一个队列，俗称信箱，外部线程只要把请求放入，守护线程就读取进行处理。这种异步高效方式是Actor基本原理。Task 是轻量型的线程，它们通过 Kilim 的 Mailbox 类型与其他 Task 通信。</p>
+<h2 id="12-Kilim框架做了什么？"><a href="#12-Kilim框架做了什么？" class="headerlink" title="12.Kilim框架做了什么？"></a>12.Kilim框架做了什么？</h2><ol>
+<li>利用字节码增强(基于ASM字节码框架)，将普通代码转化为支持协程的代码；</li>
+<li>调用pausable的时候，如果pause了就保存当前方法栈的State，停止执行，将控制权交给调度器；</li>
+<li>调度器负责协调就绪的协程；</li>
+<li>协程resume的时候，自动恢复State，回复到上次执行的位置继续执行</li>
+</ol>
+<h1 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h1><p>Java等语言的基本编程模型是基于线程的。<br>​<br>要自己实现fiber，主要是保存线程上下文。注意要保存的信息有：各个寄存器，栈顶和栈底，异常信息，浮点寄存器。</p>
+<p>window Fiber的默认堆栈是1M</p>
+<p>协程虽然如此之好，看是很长时间以来，因为受到基于堆栈的子例程实现的限制，并没有多少语言在其实语言或库中支持协程</p>
+<p>子例程容易实现于堆栈之上，因为子例程将调用的其他子例程作为下级。相反地，协程对等地调用其他协程</p>
+<p>类似于C这样的语言全都要依赖于基于栈的结构，因此在函数间传递控制时，必须要有一个调用函数和一个被调函数。</p>
+<p><strong>我们必须接受这个现实：在C语言中，必须要有调用函数和被调函数。</strong></p>
+<p>有见过几种协程的实现，因为没有 C/C++ 的原生支持，所以多数的库使用了汇编代码，还有些库利用了 C 语言的 setjmp 和 longjmp 但是要求函数里面使用 static local 的变量来保存协程内部的数据。</p>
+<p>用 C/C++ 实现协程的最大困难就是创建，保存和恢复程序的上下文。因为这涉及到了程序栈的管理，以及 CPU 寄存器的访问，但是这两项内容在 C/C++ 标准里面都没有严格的定义，所以我们是不可能有一个完全跨平台的 C/C++ 实现的。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/kilim/" rel="tag"># kilim</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/02/gc/" rel="next" title="垃圾回收（GC）的三种基本方式">
+                <i class="fa fa-chevron-left"></i> 垃圾回收（GC）的三种基本方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/03/6-mysql-useful-exp/" rel="prev" title="6个有用的MySQL语句">
+                6个有用的MySQL语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kilim工作原理"><span class="nav-number">1.</span> <span class="nav-text">Kilim工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Kilim中的Task，即用户线程如何调度和切换？"><span class="nav-number">1.1.</span> <span class="nav-text">1. Kilim中的Task，即用户线程如何调度和切换？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？"><span class="nav-number">1.2.</span> <span class="nav-text">2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Kilim是如何实现线程执行过程中当前方法的暂停和恢复？"><span class="nav-number">1.3.</span> <span class="nav-text">3.Kilim是如何实现线程执行过程中当前方法的暂停和恢复？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Kilim中的Weaver工具是如何针对编译的代码实现织入的？"><span class="nav-number">1.4.</span> <span class="nav-text">4.Kilim中的Weaver工具是如何针对编译的代码实现织入的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-如何将一个传统的线程执行方法改造成Kilim的Task模型？"><span class="nav-number">1.5.</span> <span class="nav-text">5.如何将一个传统的线程执行方法改造成Kilim的Task模型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Kilim中什么样的方法在执行过程中是可暂停的？"><span class="nav-number">1.6.</span> <span class="nav-text">6.Kilim中什么样的方法在执行过程中是可暂停的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Kilim中哪些操作可以使得Task暂停或者恢复运行？"><span class="nav-number">1.7.</span> <span class="nav-text">7.Kilim中哪些操作可以使得Task暂停或者恢复运行？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Kilim中Task占用的内存大小？"><span class="nav-number">1.8.</span> <span class="nav-text">9.Kilim中Task占用的内存大小？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-什么场景下适合做Kilim协程？"><span class="nav-number">1.9.</span> <span class="nav-text">10.什么场景下适合做Kilim协程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Kilim中Task的工作机制？"><span class="nav-number">1.10.</span> <span class="nav-text">11.Kilim中Task的工作机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Kilim框架做了什么？"><span class="nav-number">1.11.</span> <span class="nav-text">12.Kilim框架做了什么？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小记"><span class="nav-number">2.</span> <span class="nav-text">小记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

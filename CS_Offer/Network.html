@@ -1,0 +1,658 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="TCP/IP 参考模型OSI(Open System Interconnect)，即开放式系统互联。 一般都叫 OSI 参考模型，是 ISO （国际标准化组织）组织在 1985 年研究的网络互联模型。该体系结构标准定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层和应用层），即 ISO 开放系统互连参考模型。在这一框架下进一步详细规定了每一层的功能，以实现开放系统环境中的">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/Network.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="TCP/IP 参考模型OSI(Open System Interconnect)，即开放式系统互联。 一般都叫 OSI 参考模型，是 ISO （国际标准化组织）组织在 1985 年研究的网络互联模型。该体系结构标准定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层和应用层），即 ISO 开放系统互连参考模型。在这一框架下进一步详细规定了每一层的功能，以实现开放系统环境中的">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_3.png">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_1.png">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_2.jpg">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="TCP/IP 参考模型OSI(Open System Interconnect)，即开放式系统互联。 一般都叫 OSI 参考模型，是 ISO （国际标准化组织）组织在 1985 年研究的网络互联模型。该体系结构标准定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层和应用层），即 ISO 开放系统互连参考模型。在这一框架下进一步详细规定了每一层的功能，以实现开放系统环境中的">
+<meta name="twitter:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/Network.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h2 id="TCP-IP-参考模型"><a href="#TCP-IP-参考模型" class="headerlink" title="TCP/IP 参考模型"></a>TCP/IP 参考模型</h2><p>OSI(Open System Interconnect)，即开放式系统互联。 一般都叫 OSI 参考模型，是 ISO （国际标准化组织）组织在 1985 年研究的网络互联模型。该体系结构标准定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层和应用层），即 ISO 开放系统互连参考模型。在这一框架下进一步详细规定了每一层的功能，以实现开放系统环境中的互连性、互操作性和应用的可移植性。</p>
+<p>根据分而治之的原则， ISO 将整个通信功能划分为七个层次，划分原则是：</p>
+<ul>
+<li>网路中各节点都有相同的层次；</li>
+<li>不同节点的同等层具有相同的功能；</li>
+<li>同一节点内相邻层之间通过接口通信；</li>
+<li>每一层使用下层提供的服务，并向其上层提供服务；</li>
+<li>不同节点的同等层按照协议实现对等层之间的通信。<br>分层的好处是利用层次结构可以把开放系统的信息交换问题分解到一系列容易控制的软硬件模块－层中，而各层可以根据需要独立进行修改或扩充功能，同时，有利于个不同制造厂家的设备互连，也有利于大家学习、理解数据通讯网络。</li>
+</ul>
+<p>各层功能详述如下：</p>
+<ol>
+<li>物理层 (Physical Layer)：物理层是 OSI 参考模型的最低层，它利用传输介质为数据链路层提供物理连接。它主要关心的是通过物理链路从一个节点向另一个节点传送<code>比特流</code>，物理链路可能是铜线、卫星、微波或其他的通讯媒介。它关心的问题有：多少伏电压代表 1 ？多少伏电压代表 0 ？时钟速率是多少？采用全双工还是半双工传输？总的来说物理层关心的是链路的机械、电气、功能和规程特性。</li>
+<li>数据链路层 (Data Link Layer)：数据链路层是为网络层提供服务的，解决两个相邻结点之间的通信问题，传送的协议数据单元称为<code>数据帧</code>。数据帧中包含物理地址（又称 MAC 地址）、控制码、数据及校验码等信息。该层的主要作用是通过校验、确认和反馈重发等手段，将不可靠的物理链路转换成对网络层来说无差错的数据链路。此外，数据链路层还要协调收发双方的数据传输速率，即进行流量控制，以防止接收方因来不及处理发送方来的高速数据而导致缓冲器溢出及线路阻塞。</li>
+<li>网络层 (Network Layer)：网络层是为传输层提供服务的，传送的协议数据单元称为<code>数据包（分组）</code>。该层的主要作用是解决如何使数据包通过各结点传送的问题，即通过路径选择算法（路由）将数据包送到目的地。另外，为避免通信子网中出现过多的数据包而造成网络阻塞，需要对流入的数据包数量进行控制（拥塞控制）。当数据包要跨越多个通信子网才能到达目的地时，还要解决网际互连的问题。</li>
+<li>传输层 (Transport Layer)：传输层的作用是为上层协议提供端到端的可靠和透明的数据传输服务，包括处理差错控制和流量控制等问题，传输层传送的协议数据单元称为<code>数据段（报文）</code>。该层向高层屏蔽了下层数据通信的细节，使高层用户看到的只是在两个传输实体间的一条主机到主机的、可由用户控制和设定的、可靠的数据通路。</li>
+<li>会话层 (Session Layer)：会话层主要功能是管理和协调不同主机上各种进程之间的通信（对话），即负责建立、管理和终止应用程序之间的会话。会话层得名的原因是它很类似于两个实体间的会话概念。例如，一个交互的用户会话以登录到计算机开始，以注销结束。</li>
+<li>表示层 (Presentation Layer)：表示层处理流经结点的数据编码的表示方式问题，以保证一个系统应用层发出的信息可被另一系统的应用层读出。如果必要，该层可提供一种标准表示形式，用于将计算机内部的多种数据表示格式转换成网络通信中采用的标准表示形式。数据压缩和加密也是表示层可提供的转换功能之一。</li>
+<li>应用层 (Application Layer)：应用层是 OSI 参考模型的最高层，是用户与网络的接口。该层通过应用程序来完成网络用户的应用需求，如文件传输、收发电子邮件等。 </li>
+</ol>
+<p>各层包含的协议大致如下图所示：<br><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Network_3.png" alt=""></p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/4d87fe456e39498c995011813be0230b" target="_blank" rel="external">网络层含有的协议</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/b79339e956ac4330937b01af14b3102b" target="_blank" rel="external">网络层功能</a>］</p>
+<p>参考：<br><a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F" target="_blank" rel="external">TCP/IP协议族</a></p>
+<h2 id="IP-地址"><a href="#IP-地址" class="headerlink" title="IP 地址"></a>IP 地址</h2><p>每个 32 位的 IP 地址由高位的可变长网络和低位的主机两部分组成。同一网络的所有主机，其地址的网络值是相同的。这意味着一个网络对应一块连续的 IP 地址空间，这块地址空间就称为<code>地址的前缀</code>。如果前缀包含 2^8 个地址，那么就留下了 24 位用于网络部分，可以写成 <code>*.*.*.*/24</code>。<code>子网掩码</code>用来与一个 IP 地址进行 AND 操作，提取出该 IP 地址的网络部分。</p>
+<p><code>子网划分</code>：在内部将一个网络块分成几个部分供多个内部网络使用，但对外部世界仍像单个网络一样。<br><code>路由聚合</code>：把多个小前缀的地址块合并成一个大前缀的地址块。（解决路由表过大的问题）。</p>
+<p>1953年，IP 地址被分为 5 个类别：</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Network_1.png" alt=""></p>
+<p>注意全零（0.0.0.0）地址对应于当前主机。全1的IP地址（255.255.255.255）是当前子网的广播地址。</p>
+<p>还有三个范围的 IP地址被声明为私有化，任何网络可以在内部随意地使用这些地址，但是不允许包含这些地址的数据包出现在 Internet 上。</p>
+<ul>
+<li>1  个A类地址：10.0.0.0~10.255.255.255/8      (2^24 个地址) </li>
+<li>16 个B类地址：172.16.0.0~172.31.255.255/16   (16 * 2^16 个地址)</li>
+<li>256个C类地址：192.168.0.0~192.168.255.255/24 (256*2^8 个地址)</li>
+</ul>
+<p>保留IP地址不会在internet网上出现，用于企业网络，A企业可以用,B企业也可以使用！</p>
+<h1 id="NAT-网络地址转换"><a href="#NAT-网络地址转换" class="headerlink" title="NAT 网络地址转换"></a>NAT 网络地址转换</h1><h2 id="网络套接字-socket"><a href="#网络套接字-socket" class="headerlink" title="网络套接字 socket"></a>网络套接字 socket</h2><p>网络上不同的计算机之间进行 TCP、UDP通信需要使用网络套接字（socket）。socket是在不同计算机之间进行通信的一个抽象。他工作于TCP/IP协议中应用层和传输层之间的一个抽象。</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Network_2.jpg" alt=""></p>
+<p>socket起源于UNIX，在Unix<code>一切皆文件</code>哲学的思想下，socket是一种”打开—读/写—关闭”模式的实现，服务器和客户端各自维护一个”文件”，在建立连接打开后，可以向自己文件写入内容供对方读取或者读取对方内容，通讯结束时关闭文件。</p>
+<p>详细内容参见 <a href="more/Network_Socket.md">Network_Socket</a></p>
+<p>参考：<br><a href="http://www.jianshu.com/p/90348ef3f41e" target="_blank" rel="external">Socket通信原理简介</a><br><a href="http://www.cnblogs.com/dolphinX/p/3460545.html" target="_blank" rel="external">简单理解Socket</a></p>
+<h1 id="TCP-协议"><a href="#TCP-协议" class="headerlink" title="TCP 协议"></a>TCP 协议</h1><p>TCP(Transmission Control Protocol)为应用程序之间提供面向连接的可靠的字节流服务。TCP为全双工协议，提供流控制机制，即允许接收方控制发送方的发送速度，此外还提供拥塞控制功能。</p>
+<p>［<a href="http://www.nowcoder.com/questionTerminal/7aa912d4886e45759698dd074521c726" target="_blank" rel="external">TCP 协议细节</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/3d9d35cc024840d2ae21929bcf868d53" target="_blank" rel="external">滑动窗口协议</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/787f0b432012420cb2918b7e1ca37ab2" target="_blank" rel="external">nagle算法</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/a2b95450f85c4855877a0c4f06c91a72" target="_blank" rel="external">拥塞控制算法</a>］<br>［<a href="http://www.nowcoder.com/questionTerminal/246945f0e26541b89f4735c79e3f16a2" target="_blank" rel="external">状态转换流程</a>］  </p>
+<p>详细内容参见 <a href="more/Network_TCP.md">Network_TCP</a></p>
+<h3 id="TCP，UDP区别"><a href="#TCP，UDP区别" class="headerlink" title="TCP，UDP区别"></a>TCP，UDP区别</h3><p>TCP协议和UDP协议特性区别，主要从连接性、可靠性、有序性、拥塞控制、传输速度、头部大小(Header size)等6个方面来讲。</p>
+<ol>
+<li>TCP是面向连接的协议，UDP是无连接协议。TCP用三次握手建立连接，UDP发送数据前不需要建立连接；</li>
+<li>TCP可靠，UDP不可靠。TCP丢包会重传，并且有确认机制，UDP不会；</li>
+<li>TCP有序，UDP无序。消息在传输过程中可能会乱序，后发送的消息可能会先到达，TCP会对其进行重排序，UDP不会；</li>
+<li>TCP 必须对数据进行校验，而UDP的校验是可选的；</li>
+<li>TCP有流量控制（滑动窗口）和拥塞控制，UDP没有；</li>
+<li>TCP传输慢，UDP传输快。因为TCP需要建立连接、保证可靠性和有序性，所以比较耗时。</li>
+<li>TCP要建立连接、保证可靠性和有序性，就会传输更多的信息，包头比较大（TCP头部至少需要20字节，UDP头部只要8个字节）。</li>
+</ol>
+<p>基于TCP的协议有：HTTP/HTTPS，Telnet，FTP，SMTP。<br>基于UDP的协议有：DHCP，DNS，SNMP，TFTP，BOOTP。</p>
+<p>参考： <a href="http://liangjiabin.com/blog/2015/03/difference-between-tcp-vs-udp-protocol.html" target="_blank" rel="external">TCP和UDP的区别</a></p>
+<h1 id="HTTP-协议"><a href="#HTTP-协议" class="headerlink" title="HTTP 协议"></a>HTTP 协议</h1><p>操作方式 | 数据位置 | 明文密文 | 数据安全 | 长度限制 | 应用场景<br>-——-|———|——–|———|———|——-<br>GET     | HTTP包头 |  明文  |  不安全  |  长度较小 | 查询数据<br>POST    | HTTP正文 | 可明可密|  安全   | 支持较大数据传输 |修改数据</p>
+<p>详细内容参见 <a href="More/Network_HTTP.md">Network_HTTP</a></p>
+<h2 id="访问网页过程"><a href="#访问网页过程" class="headerlink" title="访问网页过程"></a>访问网页过程</h2><p>从网络模型的角度来分析，主要涉及</p>
+<ul>
+<li>应用层：DNS、HTTP；</li>
+<li>传输层：TCP</li>
+<li>网络层：IP，路由选择协议RIP，OSPF(内部网关协议),BGP(外部网关协议）</li>
+<li>数据链路层：ARP</li>
+</ul>
+<p><code>应用层</code>：客户端浏览器发起一个HTTP会话到服务器。客户端浏览器通过 DNS 解析到 www.baidu.com 的IP地址，通过这个IP地址找到客户端到服务器的路径。</p>
+<p><code>传输层</code>：在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口（服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000），和服务器建立 TCP 连接后进行通信。</p>
+<p><code>网络层</code>：客户端的网络层不关心应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器。其中可能用到的路由选择协议有 RIP协议、OSPF协议、EGP协议。</p>
+<p><code>链路层</code>：包从路由器到达服务器的局域网后，通过 ARP 协议查找服务器IP地址对应的MAC地址，然后将数据帧传到服务器。</p>
+<p>参考：<a href="http://www.nowcoder.com/discuss/3853" target="_blank" rel="external">在浏览器中输入URL后执行的全部过程的个人总结</a></p>
+<h2 id="Ping-过程"><a href="#Ping-过程" class="headerlink" title="Ping 过程"></a>Ping 过程</h2><h2 id="路由器与交换机区别。"><a href="#路由器与交换机区别。" class="headerlink" title="路由器与交换机区别。"></a>路由器与交换机区别。</h2><h2 id="网络端口"><a href="#网络端口" class="headerlink" title="网络端口"></a>网络端口</h2><p>TCP 服务器由发送端和接收端创建一种称为<code>套接字</code>的端点来获得，每个套接字有一个套接字编号（地址），该编号由主机的 IP 地址以及一个本地的16位数值组成的。这个16位数值称为端口，所以一共有2^16 ＝ 65535个端口可用。</p>
+<p>1024以下的（不0包括1024）的端口被保留，只能用作由特权用户（比如UNIX系统的 root）启动的标准服务，这些端口称为<code>知名端口</code>。一些知名的端口如下：</p>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>协议</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20，21</td>
+<td>FTP</td>
+<td>文件传输协议</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td>远程登录，Telnet的替代</td>
+</tr>
+<tr>
+<td>25</td>
+<td>SMTP</td>
+<td>简单邮件传输协议</td>
+</tr>
+<tr>
+<td>80</td>
+<td>HTTP</td>
+<td>万维网</td>
+</tr>
+<tr>
+<td>443</td>
+<td>HTTPS</td>
+<td>完全的 Web</td>
+</tr>
+</tbody>
+</table>
+<p>1024～49151 之间的的其它端口可以通过 IANA 注册，由非特权用户使用，但是应用程序可以选择自己的端口号。</p>
+<h2 id="网络延迟"><a href="#网络延迟" class="headerlink" title="网络延迟"></a>网络延迟</h2><p>在传输介质中传输所用的时间，即从报文开始进入网络到它开始离开网络之间的时间。(网络延迟PING值越低速度越快)</p>
+<ul>
+<li>1~30ms:极快，几乎察觉不出有延迟，玩任何游戏速度都特别顺畅</li>
+<li>31~50ms:良好，可以正常游戏，没有明显的延迟情况</li>
+<li>51~100ms:普通，对抗类游戏能感觉出明显延迟，稍有停顿<blockquote>
+<ul>
+<li>100ms:差，无法正常游戏，有卡顿，丢包并掉线现象</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h1 id="IP-报文"><a href="#IP-报文" class="headerlink" title="IP 报文"></a>IP 报文</h1><p>TTL 字段：</p>
+<ol>
+<li>TTL长度8 bit，最大值是255，TTL的一个推荐值是64。</li>
+<li>虽然从字面上翻译，TTL是IP数据包在计算机网络中的存在的最长时间。但实际上TTL是IP数据包在网络中可以转发的最大跳数。</li>
+<li>TTL字段由IP数据包的发送者设置，在IP数据包从源到目的的整个转发路径上，每经过一个路由器，把该TTL的值减1，然后再将IP包转发出去。</li>
+<li>如果在IP包到达目的IP之前，TTL减少为0，路由器将会丢弃收到的TTL=0的IP包并向发送者发送 ICMP time exceeded消息。</li>
+<li>TTL的主要作用是避免IP包在网络中的无限循环和收发，节省了网络带宽，并能使IP包的发送者能收到告警消息。</li>
+</ol>
+<h2 id="路由权"><a href="#路由权" class="headerlink" title="路由权"></a>路由权</h2><p>路由权是衡量路由好坏的标准。路由算法修改路由表的基本目的是将最好路由信息添加到路由表中，路由的好坏是由路由算法根据自己获得的路由信息计算出来的。</p>
+<p>对于每一条路由，路由算法产生一种权值来表示路由的好坏。通常情况下，这种权值越小，该路径越好。路由权的计算可能基于路径某单一特性计算，也可能基于路径多种属性进行计算。有几种路径特性经常被用于权值计算，如下：</p>
+<ul>
+<li>带宽 – 链路的数据容量。例如，通常情况下10M 以太网链路比 64K 出租线路要更好。</li>
+<li>时延 – 报文到达目标网络所需要的时间。</li>
+<li>负载 – 处于活跃状态的网络资源数量。</li>
+<li>可靠性 – 每条数据链路的出错率。</li>
+<li>跳数 – 报文到目的地需要经过的网络数。</li>
+<li>开销 – 一种人为设定的值，通常由网络管理员根据带宽、线路价格或其他一些因素综合得出。</li>
+</ul>
+<h1 id="ARP-地址解析协议"><a href="#ARP-地址解析协议" class="headerlink" title="ARP(地址解析协议)"></a>ARP(地址解析协议)</h1><h2 id="以太网工作模式"><a href="#以太网工作模式" class="headerlink" title="以太网工作模式"></a>以太网工作模式</h2><p>常用的以太网卡支持以下工作模式：广播模式、多播模式、直接模式和混杂模式。</p>
+<ol>
+<li>广播模式（Broad Cast Model）:物理地址（MAC）地址是 0Xffffff 的帧为广播帧，工作在广播模式的网卡接收广播帧。它将会接收所有目的地址为广播地址的数据包，一般所有的网卡都会设置为这个模式。</li>
+<li>多播模式（MultiCast Model）：多播传送地址作为目的物理地址的帧可以被组内的其它主机同时接收，而组外主机却接收不到。但是，如果将网卡设置为多播传送模式，它可以接收所有的多播传送帧，而不论它是不是组内成员。</li>
+<li>直接模式（Direct Model）：工作在直接模式下的网卡只接收目地址是自己Mac地址的帧。只有当数据包的目的地址为网卡自己的地址时，网卡才接收它。</li>
+<li>混杂模式（Promiscuous Model）：工作在混杂模式下的网卡接收所有的流过网卡的帧，信包捕获程序就是在这种模式下运行的。网卡的缺省工作模式包含广播模式和直接模式，即它只接收广播帧和发给自己的帧。如果采用混杂模式，一个站点的网卡将接受同一网络内所有站点所发送的数据包这样就可以到达对于网络信息监视捕获的目的。它将接收所有经过的数据包，这个特性是编写网络监听程序的关键。</li>
+</ol>
+<h2 id="ADSL"><a href="#ADSL" class="headerlink" title="ADSL"></a>ADSL</h2><p>ADSL 是非对称数字用户线路（Asymmetric Digital Subscriber Line）的缩写，亦可称作非对称数字用户环路。ADSL技术提供的上行和下行带宽不对称，因此称为非对称数字用户线路，是一种异步传输模式（ATM）。</p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

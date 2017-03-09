@@ -1,0 +1,823 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Python 类讲解Python 类方法Python 类其实有3个方法，即静态方法(staticmethod)，类方法(classmethod)和实例方法，如下:
+def foo(x):
+    print &amp;quot;executing foo(%s)&amp;quot;%(x)
+
+class A(object):
+    def foo(self,x):
+        print &amp;quot;exe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/Python.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Python 类讲解Python 类方法Python 类其实有3个方法，即静态方法(staticmethod)，类方法(classmethod)和实例方法，如下:
+def foo(x):
+    print &amp;quot;executing foo(%s)&amp;quot;%(x)
+
+class A(object):
+    def foo(self,x):
+        print &amp;quot;exe">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Python 类讲解Python 类方法Python 类其实有3个方法，即静态方法(staticmethod)，类方法(classmethod)和实例方法，如下:
+def foo(x):
+    print &amp;quot;executing foo(%s)&amp;quot;%(x)
+
+class A(object):
+    def foo(self,x):
+        print &amp;quot;exe">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/Python.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h1 id="Python-类讲解"><a href="#Python-类讲解" class="headerlink" title="Python 类讲解"></a>Python 类讲解</h1><h2 id="Python-类方法"><a href="#Python-类方法" class="headerlink" title="Python 类方法"></a>Python 类方法</h2><p>Python 类其实有3个方法，即静态方法(staticmethod)，类方法(classmethod)和实例方法，如下:</p>
+<pre><code>def foo(x):
+    print &quot;executing foo(%s)&quot;%(x)
+
+class A(object):
+    def foo(self,x):
+        print &quot;executing foo(%s,%s)&quot;%(self,x)
+
+    @classmethod
+    def class_foo(cls,x):
+        print &quot;executing class_foo(%s,%s)&quot;%(cls,x)
+
+    @staticmethod
+    def static_foo(x):
+        print &quot;executing static_foo(%s)&quot;%x
+
+a=A()
+print(a.static_foo)
+# &lt;function static_foo at 0xb7d479cc&gt;
+</code></pre><p>这个self和cls是对类或者实例的绑定，对于一般的函数来说我们可以这么调用foo(x)，这个函数就是最常用的，它的工作跟任何东西(类，实例)无关。</p>
+<p>对于实例方法，我们知道在类里每次定义方法的时候都需要绑定这个实例，就是foo(self, x)。为什么要这么做呢？因为实例方法的调用离不开实例，我们需要把实例自己传给函数，调用的时候是这样的a.foo(x)(其实是foo(a, x))。类方法一样，只不过它传递的是类而不是实例，A.class_foo(x)。注意这里的self和cls可以替换别的参，但是python的约定是这俩，还是不要改的好。</p>
+<p>对于静态方法其实和普通的方法一样，不需要对谁进行绑定，唯一的区别是调用的时候需要使用a.static_foo(x) 或者 A.static_foo(x)来调用。（Staticmethods are used to group functions which have some logical connection with a class to the class.）</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>实例方法</th>
+<th>类方法</th>
+<th>静态方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a = A()</td>
+<td>a.foo(x)</td>
+<td>a.class_foo(x)</td>
+<td>a.static_foo(x)</td>
+</tr>
+<tr>
+<td>A</td>
+<td>不可用</td>
+<td>A.class_foo(x)</td>
+<td>A.static_foo(x)</td>
+</tr>
+</tbody>
+</table>
+<p>参考：<br><a href="http://stackoverflow.com/questions/136097/what-is-the-difference-between-staticmethod-and-classmethod-in-python" target="_blank" rel="external">What is the difference between @staticmethod and @classmethod in Python?</a></p>
+<h2 id="Python-类变量"><a href="#Python-类变量" class="headerlink" title="Python 类变量"></a>Python 类变量</h2><pre><code>class Person:
+    name=&quot;aaa&quot;
+
+p1=Person()
+p2=Person()
+p1.name=&quot;bbb&quot;
+print p1.name  # bbb
+print p2.name  # aaa
+print Person.name  # aaa
+</code></pre><p>类变量就是供类使用的变量，实例变量就是供实例使用的。</p>
+<p>这里p1.name=”bbb”是实例调用了类变量，p1.name一开始是指向的类变量name=”aaa”，但是在实例的作用域里把类变量的引用改变了，就变成了一个实例变量。self.name不再引用Person的类变量name了。</p>
+<pre><code>class Person:
+    name=[]
+
+p1=Person()
+p2=Person()
+p1.name.append(1)
+print p1.name  # [1]
+print p2.name  # [1]
+print Person.name  # [1]
+</code></pre><h2 id="元类"><a href="#元类" class="headerlink" title="元类"></a>元类</h2><p><code>Python 中类也是一种对象</code>。只要你使用关键字class，Python解释器在执行的时候就会创建一个对象。于是乎你可以对它做如下的操作：</p>
+<ol>
+<li>你可以将它赋值给一个变量</li>
+<li>你可以拷贝它</li>
+<li>你可以为它增加属性</li>
+<li>你可以将它作为函数参数进行传递</li>
+</ol>
+<p><strong>元类就是用来创建类的“东西”</strong>。你创建类就是为了创建类的实例对象，但是我们已经学习到了Python中的类也是对象。好吧，元类就是用来创建这些类（对象）的，元类就是类的类。</p>
+<p>更多详细内容见 <a href="More/Python_Metaclass.md">Python_Metaclass.md</a></p>
+<h1 id="python-性能优化的方法"><a href="#python-性能优化的方法" class="headerlink" title="python 性能优化的方法"></a>python 性能优化的方法</h1><ol>
+<li><p>选择合适的数据结构。</p>
+<p> <code>字典 (dictionary) 与列表 (list)</code>：Python 字典中使用了 hash table，因此查找操作的复杂度为 O(1)，而 list 实际是个数组，在 list 中，查找需要遍历整个 list，其复杂度为 O(n)，因此对成员的查找访问等操作字典要比 list 更快。<br> <code>集合 (set) 与列表 (list)</code>：set 的 union， intersection，difference 操作要比 list 的迭代要快。因此如果涉及到求 list 交集，并集或者差的问题可以转换为 set 来操作。</p>
+<ul>
+<li>set(list1) | set(list2)：包含 list1 和 list2 所有数据的新集合</li>
+<li>set(list1) &amp; set(list2)：包含 list1 和 list2 中共同元素的新集合</li>
+<li>set(list1) - set(list2)：在 list1 中出现但不在 list2 中出现的元素的集合</li>
+</ul>
+</li>
+<li><p>使用列表解析（list comprehension）</p>
+<p> 列表解析要比在循环中重新构建一个新的 list 更为高效。</p>
+<pre><code>a = [w for w in list]
+</code></pre><p> 比下面的循环高效：</p>
+<pre><code>a = []
+for w in list: 
+    a.append(w) 
+</code></pre></li>
+<li><p>使用生成器表达式（generator expression）<br> 使用 xrange 可以节省大量的系统内存，因为 xrange() 在序列中每次调用只产生一个整数元素。而 range() 將直接返回完整的元素列表，用于循环时会有不必要的开销。在 python3 中 xrange 不再存在，里面 range 提供一个可以遍历任意长度的范围的 iterator。</p>
+</li>
+<li><p>字符串的优化</p>
+<p> python 中的字符串对象是不可改变的，因此对任何字符串的操作如拼接，修改等都将产生一个新的字符串对象，而不是基于原字符串，因此这种持续的 copy 会在一定程度上影响 python 的性能。</p>
+<p> <code>使用 join 而不是 + 连接字符串</code></p>
+<p> 避免类似下面的代码片段：</p>
+<pre><code>s = &quot;&quot;
+for x in list: 
+    s += func(x)
+</code></pre><p> 而是要使用下面这种：</p>
+<pre><code>slist = [func(elt) for elt in somelist] 
+s = &quot;&quot;.join(slist)
+</code></pre><p> 当对字符串可以使用正则表达式或者内置函数来处理的时候，选择<code>内置函数</code>。如 str.isalpha()，str.isdigit()，str.startswith((‘x’, ‘yz’))，str.endswith((‘x’, ‘yz’)) 等。</p>
+<p> 对字符进行<code>格式化</code>比直接串联读取要快，因此要使用</p>
+<pre><code>out = &quot;&lt;html&gt;%s%s%s%s&lt;/html&gt;&quot; % (head, prologue, query, tail)
+</code></pre><p> 而不是</p>
+<pre><code>out = &quot;&lt;html&gt;&quot; + head + prologue + query + tail + &quot;&lt;/html&gt;&quot;
+</code></pre></li>
+<li><p>适当地函数式编程</p>
+<p> 用 map, reduce 代替循环迭代。</p>
+<pre><code>def toUpper(item):
+      return item.upper()
+upper_name = map(toUpper, [&quot;hao&quot;, &quot;chen&quot;, &quot;coolshell&quot;])
+print upper_name
+# 输出 [&apos;HAO&apos;, &apos;CHEN&apos;, &apos;COOLSHELL&apos;]
+</code></pre><p> 对于map别忘了lambda表达式：可以简单地理解为这是一个inline的匿名函数。下面的lambda表达式相当于：<code>def func(x): return x*x</code></p>
+<pre><code>squares = map(lambda x: x * x, range(9))
+print squares
+# 输出 [0, 1, 4, 9, 16, 25, 36, 49, 64]
+</code></pre><p> 下面的lambda表达式中有两个参数，也就是说每次从列表中取两个值，计算结果后把这个值再放回去，下面的表达式相当于：((((1+2)+3)+4)+5) ）</p>
+<pre><code>print reduce(lambda x, y: x+y, [1, 2, 3, 4, 5])
+# 输出 15
+</code></pre><p> Python中的除了map和reduce外，还有一些别的如filter, find, all, any的函数做辅助，可以让代码更简洁，更易读，更高效。（没有了循环体，于是就可以少了些临时变量，以及变量倒来倒去的逻辑。）<br>参考：<br><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-python-optim/" target="_blank" rel="external">Python 代码性能优化技巧</a><br><a href="http://coolshell.cn/articles/10822.html" target="_blank" rel="external">函数式编程</a></p>
+</li>
+</ol>
+<h2 id="生成器-与-yeild"><a href="#生成器-与-yeild" class="headerlink" title="生成器 与 yeild"></a>生成器 与 yeild</h2><p>当你建立了一个列表，你可以逐项地读取这个列表，这叫做一个可迭代对象。所有可以使用 for .. in .. 的对象都可以看作是一个<code>迭代器</code>。链表，字符串，文件都是迭代器，访问迭代器时首先把所有数据读进内存，然后用一个一个读取。</p>
+<pre><code>&gt;&gt;&gt; mylist = [x*x for x in range(3)]
+&gt;&gt;&gt; for i in mylist:
+...     print i
+...
+0
+1
+4
+</code></pre><p>如果数据量太大，并且只需要一次迭代一次的话，这样做并不合适，因此引入了<code>生成器</code>。生成器是可以迭代的，但是<code>只可以读取它一次</code>，因为它并不把所有的值放在内存中，它是实时地生成数据。</p>
+<pre><code>&gt;&gt;&gt; mygenerator = (x*x for x in range(3))
+&gt;&gt;&gt; for i in mygenerator:
+...     print i
+...
+0
+1
+4
+&gt;&gt;&gt; for i in mygenerator:
+...     print i
+...
+</code></pre><p>看起来除了把 [] 换成 () 外没什么不同。但是，你不可以再次使用 for i in mygenerator , 因为生成器只能被迭代一次。</p>
+<p>除了生成器表达式，还可以定义<code>生成器函数</code>，它的定义很像一个普通的函数，除了当它要生成一个值的时候，使用yield关键字而不是return。</p>
+<p>当一个生成器函数调用yield，生成器函数的“状态”会被冻结，所有的变量的值会被保留下来，下一行要执行的代码的位置也会被记录，直到再次调用next()。一旦next()再次被调用，生成器函数会从它上次离开的地方开始。</p>
+<p>参考：<br><a href="http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python" target="_blank" rel="external">What does the yield keyword do in Python?</a></p>
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>python中一切都是对象，这里需要强调函数是对象，那么</p>
+<ul>
+<li>可以被赋给另一个变量</li>
+<li>可以被定义在另一个函数里</li>
+<li>一个函数可以返回另一个函数</li>
+<li>函数作为参数传递</li>
+</ul>
+<p>当你在用某个@decorator来修饰某个函数func时，如下所示:</p>
+<pre><code>@decorator
+def func():
+    pass
+</code></pre><p>其解释器会解释成下面这样的语句：</p>
+<pre><code>func = decorator(func)
+</code></pre><p>用装饰器实现缓存机制，避免斐波那契数列递归实现中的重复调用，代码如下：</p>
+<pre><code>def cache(func):
+    caches = {}
+
+    @wraps(func)
+    def wrap(*args):
+        if args not in caches:
+            caches[args] = func(*args)
+
+        return caches[args]
+    return wrap
+
+@cache
+def fib_cache(n):
+    assert n &gt; 0, &apos;invalid n&apos;
+    if n &lt; 3:
+        return 1
+    else:
+        return fib_cache(n - 1) + fib_cache(n - 2)
+</code></pre><p>参考：<br><a href="http://selfboot.cn/2014/08/10/python_decorator/" target="_blank" rel="external">python装饰器详解</a><br><a href="http://coolshell.cn/articles/11265.html" target="_blank" rel="external">Python修饰器的函数式编程</a></p>
+<h2 id="排序函数"><a href="#排序函数" class="headerlink" title="排序函数"></a>排序函数</h2><p><code>s.sort</code>：sort the items of s(mutable sequence types) in place.</p>
+<pre><code>sort([cmp[, key[, reverse]]])
+</code></pre><p>其中：</p>
+<ul>
+<li>cmp：比较两个对象x和y，如果x > y返回正数，x \&lt; y 返回负数；x == y，返回0；比较什么由key决定。只适用于 python 2.x;</li>
+<li>key：用列表元素的某个属性和函数进行作为关键字，有默认值，迭代集合中的一项;</li>
+<li>reverse：排序规则, reverse = True(降序) 或者 reverse = False(升序，默认)</li>
+</ul>
+<p>例如有一个数组，它的每一个成员是一个字典，然后根据字典中的属性来排序，如下：</p>
+<pre><code>&gt;&gt;&gt; persons=[{&apos;name&apos;:&apos;zhang3&apos;,&apos;age&apos;:15},{&apos;name&apos;:&apos;li4&apos;,&apos;age&apos;:12}]
+&gt;&gt;&gt; persons.sort(lambda a,b: a[&apos;age&apos;]-b[&apos;age&apos;])
+&gt;&gt;&gt; persons
+[{&apos;age&apos;: 12, &apos;name&apos;: &apos;li4&apos;}, {&apos;age&apos;: 15, &apos;name&apos;: &apos;zhang3&apos;}]
+</code></pre><p><code>sorted</code>：Return a new sorted list from the items in iterable。</p>
+<pre><code>sorted(iterable[, cmp[, key[, reverse]]])
+</code></pre><p>sorted 中cmp, key, reverse 和 sort 的用法一样，不过它返回一个排序后的可迭代对象。例如给一个字典按照value值进行排序，如下：</p>
+<pre><code>&gt;&gt;&gt; d = {&quot;a&quot;:1, &quot;c&quot;:3, &quot;d&quot;:4, &quot;b&quot;:2, &quot;e&quot;: 5}
+&gt;&gt;&gt; sorted_d = sorted(d.items(), key=lambda i: i[1])
+&gt;&gt;&gt; sorted_d
+[(&apos;a&apos;, 1), (&apos;b&apos;, 2), (&apos;c&apos;, 3), (&apos;d&apos;, 4), (&apos;e&apos;, 5)]
+</code></pre><p>参考：<br><a href="https://segmentfault.com/q/1010000000405289" target="_blank" rel="external">python里方法sort()中cmp参数的用法</a></p>
+<h2 id="lambda-匿名函数"><a href="#lambda-匿名函数" class="headerlink" title="lambda 匿名函数"></a>lambda 匿名函数</h2><p>Python使用lambda关键字创造匿名函数。所谓匿名，意即不再使用def语句这样标准的形式定义一个函数。这种语句在调用时绕过函数的栈分配，可以提高效率。其语法是：</p>
+<pre><code>lambda [arg1[, arg2, ... argN]]: expression
+</code></pre><p>其中，参数是可选的，如果使用参数的话，参数通常也会在表达式之中出现。</p>
+<pre><code># 调用lambda函数
+&gt;&gt;&gt; a = lambda x, y: x + y
+&gt;&gt;&gt; a( 1, 3 )
+4
+&gt;&gt;&gt; b = lambda x, y = 2: x + y
+&gt;&gt;&gt; b( 1 )
+3
+&gt;&gt;&gt; b( 1, 3 )
+4
+&gt;&gt;&gt; c = lambda *z: z
+&gt;&gt;&gt; c( 10, &apos;test&apos;)
+(10, &apos;test&apos;)
+</code></pre><h2 id="Python-垃圾回收机制"><a href="#Python-垃圾回收机制" class="headerlink" title="Python 垃圾回收机制"></a>Python 垃圾回收机制</h2><p>Python GC主要使用<code>引用计数（reference counting）</code>来跟踪和回收垃圾。在引用计数的基础上，通过“标记-清除”（mark and sweep）解决容器对象可能产生的循环引用问题，通过“分代回收”（generation collection）以空间换时间的方法提高垃圾回收效率。</p>
+<ol>
+<li><p>引用计数</p>
+<p> PyObject是每个对象必有的内容，其中ob_refcnt就是作为引用计数。当一个对象有新的引用时，它的ob_refcnt就会增加，当引用它的对象被删除，它的ob_refcnt就会减少。引用计数为0时，该对象生命就结束了。</p>
+<p> 优点：简单、实时性<br> 缺点：维护引用计数消耗资源、循环引用</p>
+</li>
+<li><p>标记-清除机制</p>
+<p> 基本思路是先按需分配，等到没有空闲内存的时候从<strong>寄存器和程序栈上的引用</strong>出发，遍历以对象为节点、以引用为边构成的图，把所有可以访问到的对象打上标记，然后清扫一遍内存空间，把所有没标记的对象释放。</p>
+</li>
+<li><p>分代技术</p>
+<p> 分代回收的整体思想是：将系统中的所有内存块根据其存活时间划分为不同的集合，每个集合就成为一个“代”，垃圾收集频率随着“代”的存活时间的增大而减小，存活时间通常利用经过几次垃圾回收来度量。Python默认定义了三代对象集合，索引数越大，对象存活时间越长。</p>
+<p> 当某些内存块M经过了3次垃圾收集的清洗之后还存活时，我们就将内存块M划到一个集合A中去，而新分配的内存都划分到集合B中去。当垃圾收集开始工作时，大多数情况都只对集合B进行垃圾回收，而对集合A进行垃圾回收要隔相当长一段时间后才进行，这就使得垃圾收集机制需要处理的内存少了，效率自然就提高了。在这个过程中，集合B中的某些内存块由于存活时间长而会被转移到集合A中，当然，集合A中实际上也存在一些垃圾，这些垃圾的回收会因为这种分代的机制而被延迟。</p>
+</li>
+</ol>
+<h2 id="浅拷贝、深拷贝"><a href="#浅拷贝、深拷贝" class="headerlink" title="浅拷贝、深拷贝"></a>浅拷贝、深拷贝</h2><p>首先需要搞清楚两个概念：赋值和引用，对于操作 target = source:</p>
+<ul>
+<li>赋值操作：程序先新建对象target，然后将source的值拷贝到target中。这里，target和source值相同，但是它们是两个完全不同的对象。</li>
+<li>引用操作：程序直接将target指向source，也就是说target和source是同一个对象，target只不过是source的一个别名。</li>
+</ul>
+<p><code>python中没有赋值，只有引用</code>。如果我们想拷贝一个对象，而不仅仅是创建一个引用，那么该如何操作呢？万能的python提供了两种拷贝机制<code>浅拷贝(shallow copy)、深拷贝(deep copy)</code>供我们选择，浅拷贝和深拷贝的唯一区别在于对嵌套对象的拷贝处理上。</p>
+<p>对于嵌套对象比如说source = [1, 2, [3, 4]]，浅拷贝创建新的列表对象target，target中的所有元素均是source中元素的引用，也就是说target中的元素只是source中元素的别名。切片操作[start:end]属于浅拷贝。</p>
+<p>深拷贝，其实就是递归拷贝。也就是说对于嵌套对象比如说source = [1, 2, [3, 4]]，深拷贝时创建新的列表对象target，然后递归地将source中的所有对象均拷贝到target中。即如果source中的元素是列表、字典等，那么python将拷贝这些列表、字典中的对象到target中去，就这样迭代下去，直到不存在嵌套结构。</p>
+<p>参考：<br><a href="http://selfboot.cn/2014/08/08/python_copy/" target="_blank" rel="external">操作之灵魂——拷贝</a></p>
+<h2 id="字典推导"><a href="#字典推导" class="headerlink" title="字典推导"></a>字典推导</h2><pre><code>d = {key: value for (key, value) in iterable}
+</code></pre><h2 id="list的实现"><a href="#list的实现" class="headerlink" title="list的实现"></a>list的实现</h2><p>类似于 C++ STL中 vector 的实现。在需要的时候扩容，但又不允许过度的浪费，适当地进行内存回收。</p>
+<p>空间不够，或者利用率小于 50% 时，用下面计算方式重新分配空间：</p>
+<pre><code>new_allocated = (newsize // 8) + (newsize &lt; 9 and 3 or 6)
+# 调整后大小 (new_allocated) = 新元素数量 (newsize) + 预留空间 (new_allocated)
+</code></pre><ol>
+<li>当 newsize >= allocated，自然按照这个新的长度 “扩容” 内存。</li>
+<li><p>如果 newsize \&lt; allocated，且利用率低于一半：</p>
+<p> | allocated  | newsize  | new_size + new_allocated|<br> |————|———-|————————-|<br> |10          |  4       | 4 + 3       |<br> |20          |  9       | 9 + 7       |</p>
+</li>
+</ol>
+<p>参考：<br><a href="http://www.jianshu.com/p/J4U6rR" target="_blank" rel="external">Python中list的实现</a></p>
+<h2 id="Python-常用库"><a href="#Python-常用库" class="headerlink" title="Python 常用库"></a>Python 常用库</h2><p><code>Requests</code> 是一个 HTTP 库，用 Python 编写，真正的为人类着想。Python 标准库中的 urllib2 模块提供了你所需要的大多数 HTTP 功能，但是它的 API 太渣了。它需要巨量的工作，甚至包括各种方法覆盖，来完成最简单的任务。</p>
+<pre><code>&gt;&gt;&gt; r = requests.get(&apos;https://api.github.com/user&apos;, auth=(&apos;user&apos;, &apos;pass&apos;))
+&gt;&gt;&gt; r.status_code
+200
+&gt;&gt;&gt; r.headers[&apos;content-type&apos;]
+&apos;application/json; charset=utf8&apos;
+&gt;&gt;&gt; r.encoding
+&apos;utf-8&apos;
+&gt;&gt;&gt; r.text
+u&apos;{&quot;type&quot;:&quot;User&quot;...&apos;
+</code></pre><p>爬过豆瓣的音乐库，还有Coursera的课程下载脚本，还有V2EX的自动登录脚本。</p>
+<p><code>Beautiful Soup</code> 是一个可以从 HTML 或 XML 文件中提取数据的Python库。它能够通过你喜欢的转换器实现惯用的文档导航，查找，修改文档的方式。</p>
+<p>使用BeautifulSoup解析一段 HTML 代码，得到一个 BeautifulSoup 的对象，然后就可以浏览结构化数据。</p>
+<h2 id="matplotlib-库："><a href="#matplotlib-库：" class="headerlink" title="matplotlib 库："></a>matplotlib 库：</h2><p>Matplotlib 是Python最流行的绘图库之一，使用起来非常方便，可以高度定制绘图模型，允许用户绘制点线图、条线图/直方图、3D图形，甚至是更复杂的图表。</p>
+<p>pylab 是 matplotlib 面向对象绘图库的一个接口，考虑用默认配置在同一张图上绘制正弦和余弦函数图像，如下：</p>
+<pre><code>from pylab import *
+
+X = np.linspace(-np.pi, np.pi, 256,endpoint=True)
+C,S = np.cos(X), np.sin(X)
+
+plot(X,C)
+plot(X,S)
+
+show()
+</code></pre><h2 id="Numpy-库"><a href="#Numpy-库" class="headerlink" title="Numpy 库"></a>Numpy 库</h2><p>Numpy 是一个用python实现的科学计算包。包括：</p>
+<ul>
+<li>一个强大的N维数组对象Array；</li>
+<li>比较成熟的函数库；</li>
+<li>用于整合C/C++和Fortran代码的工具包；</li>
+<li>实用的线性代数、傅里叶变换和随机数生成函数。</li>
+</ul>
+<h2 id="SciPy-库"><a href="#SciPy-库" class="headerlink" title="SciPy 库"></a>SciPy 库</h2><p>Scipy 是一个开源的Python算法库和数学工具包，SciPy包含的模块有最优化、线性代数、积分、插值、快速傅里叶变换其他科学与工程中常用的计算。</p>
+<h2 id="Python-中的函数式编程"><a href="#Python-中的函数式编程" class="headerlink" title="Python 中的函数式编程"></a>Python 中的函数式编程</h2><p>函数式编程：不依赖于外部的数据，而且也不改变外部数据的值，而是返回一个新的值给你。<br>函数式编程的三大特性：</p>
+<ul>
+<li>immutable data 不可变数据：默认上变量是不可变的，如果你要改变变量，你需要把变量copy出去修改。这样一来，可以让你的程序少很多Bug。因为，程序中的状态不好维护，在并发的时候更不好维护。</li>
+<li>first class functions：这个技术可以让你的函数就像变量一样来使用。也就是说，你的函数可以像变量一样被创建，修改，并当成变量一样传递，返回或是在函数中嵌套函数。</li>
+<li>尾递归优化：我们知道递归的害处，那就是如果递归很深的话，stack受不了，并会导致性能大幅度下降。所以，我们使用尾递归优化技术——每次递归时都会重用stack，这样一来能够提升性能，当然，这需要语言或编译器的支持。Python就不支持。  </li>
+</ul>
+<p>参考</p>
+<p><a href="http://gold.xitu.io/entry/56010de260b27db45a4f845f" target="_blank" rel="external">关于 Python 的最全面试题</a><br><a href="http://stackoverflow.com/questions/986006/how-do-i-pass-a-variable-by-reference" target="_blank" rel="external">How do I pass a variable by reference?</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

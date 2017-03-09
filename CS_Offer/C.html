@@ -1,0 +1,585 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="宏定义宏仅仅是在C预处理阶段的一种文本替换工具，编译完之后对二进制代码不可见。
+标示符别名：
+#define BUFFER_SIZE 1024
+预处理阶段    foo = (char *) malloc (BUFFER_SIZE)；
+会被替换成    foo = (char *) malloc (1024)。
+宏名之后带括号的宏被认为是宏函数。用法和普通函数一样，只不过在预处理阶段，宏函数会被展">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/C.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="宏定义宏仅仅是在C预处理阶段的一种文本替换工具，编译完之后对二进制代码不可见。
+标示符别名：
+#define BUFFER_SIZE 1024
+预处理阶段    foo = (char *) malloc (BUFFER_SIZE)；
+会被替换成    foo = (char *) malloc (1024)。
+宏名之后带括号的宏被认为是宏函数。用法和普通函数一样，只不过在预处理阶段，宏函数会被展">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="宏定义宏仅仅是在C预处理阶段的一种文本替换工具，编译完之后对二进制代码不可见。
+标示符别名：
+#define BUFFER_SIZE 1024
+预处理阶段    foo = (char *) malloc (BUFFER_SIZE)；
+会被替换成    foo = (char *) malloc (1024)。
+宏名之后带括号的宏被认为是宏函数。用法和普通函数一样，只不过在预处理阶段，宏函数会被展">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/C.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><p>宏仅仅是在C预处理阶段的一种文本替换工具，编译完之后对二进制代码不可见。</p>
+<p><code>标示符别名</code>：</p>
+<pre><code>#define BUFFER_SIZE 1024
+</code></pre><p>预处理阶段<br>    foo = (char *) malloc (BUFFER_SIZE)；</p>
+<p>会被替换成<br>    foo = (char *) malloc (1024)。</p>
+<p>宏名之后带括号的宏被认为是<code>宏函数</code>。用法和普通函数一样，只不过在预处理阶段，宏函数会被展开。优点是没有普通函数保存寄存器和参数传递的开销，展开后的代码有利于CPU cache的利用和指令预测，速度快。缺点是可执行代码体积大。</p>
+<pre><code>#define min(X, Y)  ((X) &lt; (Y) ? (X) : (Y))
+y = min(1, 2);
+</code></pre><p>会被扩展成<br>    y = ((1) &lt; (2) ? (1) : (2));</p>
+<p>需要注意的问题：</p>
+<ol>
+<li>语法问题：由于是纯文本替换，C预处理器不对宏体做任何语法检查，像缺个括号、少个分号神马的预处理器是不管的。</li>
+<li><p>算符优先级问题：不仅宏体是纯文本替换，<strong>宏参数也是纯文本替换</strong>。有以下一段简单的宏，实现乘法： </p>
+<pre><code>#define MULTIPLY(x, y) x * y
+</code></pre><p> MULTIPLY(1, 2)没问题，会正常展开成1 * 2。有问题的是这种表达式MULTIPLY(1+2, 3)，展开后成了1+2 * 3，显然优先级错了。在宏体中，给引用的参数加个括号就能避免这问题。</p>
+<pre><code>#define MULTIPLY(x, y) (x) * (y)
+</code></pre></li>
+<li><p>宏参数重复调用</p>
+<p> 有如下宏定义：</p>
+<pre><code>#define min(X, Y)  ((X) &lt; (Y) ? (X) : (Y))
+</code></pre><p> 当有如下调用时 next = min (x + y, foo (z)); 宏体被展开成next = ((x + y) \&lt; (foo (z)) ? (x + y) : (foo (z))); 可以看到，foo(z)被重复调用了两次，做了重复计算。更严重的是，如果foo是不可重入的(foo内修改了全局或静态变量)，程序会产生逻辑错误。所以，<strong>尽量不要在宏参数中传入函数调用</strong>。</p>
+</li>
+</ol>
+<p>［<a href="http://www.nowcoder.com/question/next?pid=1227362&amp;qid=15947&amp;tid=2494453" target="_blank" rel="external">对应题目</a>］</p>
+<p>参考： <a href="http://hbprotoss.github.io/posts/cyu-yan-hong-de-te-shu-yong-fa-he-ji-ge-keng.html" target="_blank" rel="external">C语言宏的特殊用法和几个坑</a><br>《Effective C++》 条款02：尽量以const, enum, inline 代替 #define，预处理器不够安全。</p>
+<h2 id="C-风格字符串的函数"><a href="#C-风格字符串的函数" class="headerlink" title="C 风格字符串的函数"></a>C 风格字符串的函数</h2><p>C风格字符串不是一种类型，而是为了表达和使用字符串而形成的一种约定俗成的写法。按此习惯写的字符串存放在<code>字符数组中并以空字符（&#39;\0&#39;）结束</code>，一般利用指针来操作这些字符串。</p>
+<p>C 语言标准库提供了一组函数用于操作 C 风格字符串，定义在 cstring 头文件中。</p>
+<ol>
+<li>strcat(p1, p2)：将p2附加到p1之后，且会覆盖null字符，最后返回p1；［<a href="http://www.nowcoder.com/test/question/done?tid=2494453&amp;qid=25523#summary" target="_blank" rel="external">对应题目</a>］</li>
+<li>strlen(p)：返回p的长度，<strong>遇到空字符’\0’结束</strong>，空字符不计算在内； ［<a href="http://www.nowcoder.com/questionTerminal/81cc723e49fc402ca7fa62a97a121251" target="_blank" rel="external">对应题目</a>］</li>
+<li>strcmp(p1, p2)：比较 p1 和 p2 的相等性，如果 p1 == p2，返回0，p1 > p2返回一个正值；p1 \&lt; p2 返回一个负值。</li>
+<li>strcpy(p1, p2)：将p2拷贝给p1，返回p1。</li>
+</ol>
+<p>（<a href="/Users/feizhao/dropbox/实习生/C:C++ Code/c\_string\_func.cpp">示例程序</a>）</p>
+<p>［<a href="http://www.nowcoder.com/profile/509/test/2519469/22589#summary" target="_blank" rel="external">对应题目</a>］</p>
+<p>《C++ Primer》 Page109</p>
+<p>参考：<br><a href="http://stackoverflow.com/questions/1704407/what-is-the-difference-between-char-s-and-char-s-in-c" target="_blank" rel="external">What is the difference between char s[] and char *s in C?</a><br><a href="http://stackoverflow.com/questions/164194/why-do-i-get-a-segmentation-fault-when-writing-to-a-string-initialized-with-cha" target="_blank" rel="external">Why do I get a segmentation fault when writing to a string initialized with “char *s” but not “char s[]”?</a>  </p>
+<h2 id="printf-格式化字符串"><a href="#printf-格式化字符串" class="headerlink" title="printf 格式化字符串"></a>printf 格式化字符串</h2><p>printf 函数是一个标准库函数，它的函数原型在头文件“stdio.h”中。printf函数调用的一般形式为：<br>    printf(“格式控制字符串”, 输出表列)</p>
+<p>其中格式控制字符串用于指定输出格式。格式控制串可由<code>格式字符串</code>和非格式字符串两种组成。格式字符串是以%开头的字符串，在%后面跟有各种格式字符，以说明输出数据的类型、形式、长度、小数位数等。<code>printf 返回值是输出的字符个数</code>。</p>
+<p>格式字符串的一般形式为：<code>[标志][输出最小宽度][.精度][长度]类型</code>。其中方括号[]中的项为可选项。</p>
+<p><code>类型</code>字符用以表示输出数据的类型，其格式符和意义如下所示：</p>
+<ul>
+<li>d：以十进制形式输出带符号整数(正数不输出符号)</li>
+<li>o：以八进制形式输出无符号整数(不输出前缀0)</li>
+<li>x,X：以十六进制形式输出无符号整数(不输出前缀Ox)</li>
+<li>u：以十进制形式输出无符号整数</li>
+<li>f：以小数形式输出单、双精度实数</li>
+<li>e,E：以指数形式输出单、双精度实数</li>
+<li>c：输出单个字符</li>
+<li>s：输出字符串</li>
+</ul>
+<p>简单程序</p>
+<pre><code>int i=123, m=0123, n = 0x123;   //注意八进制, 十六进制
+printf(&quot;%d %d %d\n&quot;, i, m, n);  //123 83 291
+printf(&quot;%o %o %o\n&quot;, i, m, n);  //173 123 443
+</code></pre><p>［<a href="http://www.nowcoder.com/test/question/done?tid=2500235&amp;qid=26117#summary" target="_blank" rel="external">对应题目</a>］</p>
+<p>参考：<a href="http://c.biancheng.net/cpp/html/33.html" target="_blank" rel="external">C语言格式输出函数printf()详解</a></p>
+<h2 id="柔性数组"><a href="#柔性数组" class="headerlink" title="柔性数组"></a>柔性数组</h2><p><a href="http://www.nowcoder.com/questionTerminal/be5269b8c2d340c3add69510d0089747" target="_blank" rel="external">结构体柔性数组作用</a></p>
+<p>参考：<br><a href="http://coolshell.cn/articles/11377.html" target="_blank" rel="external">C语言结构体里的成员数组和指针</a><br><a href="https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html" target="_blank" rel="external">Arrays of Length Zero</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://coolshell.cn/articles/945.html" target="_blank" rel="external">C语言的谜题</a><br><a href="http://coolshell.cn/articles/830.html" target="_blank" rel="external">语言的歧义</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,835 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mac,Shell,OS X," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="OS X的终端下通用很多Unix的工具和脚本。如果从Linux迁移到OS X会发现很多熟悉的命令和脚本工具，其实并没有任何区别。
+
+但是OS X也提供了很多其他系统所没有的特别的命令行工具。我们推荐8个这类的工具，希望有助于提高在Mac的命令行环境下的效率。
+
+1. open
+
+open命令用于打开文件、目录或执行程序。就等同于在命令行模式下，重复图形界面“双击”的动作。例如这个命令与在Finde">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSX terminal tips">
+<meta property="og:url" content="http://chen-tao.github.io/2015/04/27/osx-terminal-tips/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="OS X的终端下通用很多Unix的工具和脚本。如果从Linux迁移到OS X会发现很多熟悉的命令和脚本工具，其实并没有任何区别。
+
+但是OS X也提供了很多其他系统所没有的特别的命令行工具。我们推荐8个这类的工具，希望有助于提高在Mac的命令行环境下的效率。
+
+1. open
+
+open命令用于打开文件、目录或执行程序。就等同于在命令行模式下，重复图形界面“双击”的动作。例如这个命令与在Finde">
+<meta property="og:image" content="http://segmentfault.com/img/bVciJb">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OSX terminal tips">
+<meta name="twitter:description" content="OS X的终端下通用很多Unix的工具和脚本。如果从Linux迁移到OS X会发现很多熟悉的命令和脚本工具，其实并没有任何区别。
+
+但是OS X也提供了很多其他系统所没有的特别的命令行工具。我们推荐8个这类的工具，希望有助于提高在Mac的命令行环境下的效率。
+
+1. open
+
+open命令用于打开文件、目录或执行程序。就等同于在命令行模式下，重复图形界面“双击”的动作。例如这个命令与在Finde">
+<meta name="twitter:image" content="http://segmentfault.com/img/bVciJb">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/04/27/osx-terminal-tips/"/>
+
+
+
+
+
+  <title> OSX terminal tips | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/27/osx-terminal-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OSX terminal tips
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-27T00:00:00+08:00">
+                2015-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>OS X的终端下通用很多Unix的工具和脚本。如果从Linux迁移到OS X会发现很多熟悉的命令和脚本工具，其实并没有任何区别。</p>
+
+<p>但是OS X也提供了很多其他系统所没有的特别的命令行工具。我们推荐8个这类的工具，希望有助于提高在Mac的命令行环境下的效率。</p>
+
+<h2>1. open</h2>
+
+<p><code>open</code>命令用于打开文件、目录或执行程序。就等同于在命令行模式下，重复图形界面“双击”的动作。例如这个命令与在Finder中双击Safari是一样的：</p>
+
+<pre><code>$ open /Applications/Safari.app/
+</code></pre>
+
+<p>如果<code>open</code>一个文件，则会使用关联的程序打开之。例如<code>open screenshot.png</code>会在Preview中查看图片。</p>
+
+<p>可以使用<code>-a</code>选项要求自行选择打开的程序，或使用<code>-e</code>强制在TextEdit中编辑此文件。</p>
+
+<p><code>open</code>一个目录会在Finder窗口中打开此目录。一个很有用的技巧是<code>open .</code>打开当前目录。</p>
+
+<p>Finder和终端的交互是双向的——把文件从Finder中拖入终端，就等同于把文件的完整路径粘贴到命令行中。</p>
+
+<h2>2. pbcopy 和 pbpaste</h2>
+
+<p>这两个工具可以打通命令行和剪贴板。当然用鼠标操作复制粘贴也可以——但这两个工具的真正威力，发挥在将其用作Unix工具的时候。意思就是说：可以将这两个工具用作管道、IO重定向以及和其他命令的整合。例如：</p>
+
+<pre><code>$ ls ~ | pbcopy
+</code></pre>
+
+<p>可以将主目录的文件列表复制到剪贴板。</p>
+
+<p>也可以把任意文件的内容读入剪贴板：</p>
+
+<pre><code>$ pbcopy &lt; blogpost.txt
+</code></pre>
+
+<p>做点更疯狂的尝试：获取最新Google纪念徽标（doodle）的URL并复制到剪贴板：</p>
+
+<pre><code>$ curl http://www.google.com/doodles#oodles/archive | grep -A5 'latest-doodle on' | grep 'img src' | sed s/.*'&lt;img src="\/\/'/''/ | sed s/'" alt=".*'/''/ | pbcopy
+</code></pre>
+
+<p>使用管道语法配合<code>pbcopy</code>工具可以简单的抓取命令的输出，而不必向上滚动翻阅终端窗口。可以用于和他人分享命令行的标准和错误输出。<code>pbcopy</code>和<code>pbpaste</code>也可以用于自动化或加速执行一些事情。例如把一些邮件的主题存为任务列表，就可以先从Mail.app中复制主题，再运行：</p>
+
+<pre><code>$ pbpaste &gt;&gt; tasklist.txt
+</code></pre>
+
+<h2>3. mdfind</h2>
+
+<p>许多Linux用户都发现Linux下查找文件的方法在OS X上不好用。当然经典的Unix <code>find</code>命令总是可以，但既然OS X有杀手级搜索工具Spotlight，为什么不在命令行上也使用一下呢？</p>
+
+<p>这就是<code>mdfind</code>命令了。Spotlight能做的查找，<code>mdfind</code>也能做。包括搜索文件的内容和元数据（metadata）。</p>
+
+<p><code>mdfind</code>还提供更多的搜索选项。例如<code>-onlyin</code>选项可以约束搜索范围为一个目录：</p>
+
+<pre><code>$ mdfind -onlyin ~/Documents essay
+</code></pre>
+
+<p><code>mdfind</code>的索引数据库在后台自动更新，不过你也可以使用<code>mdutil</code>工具诊断数据库的问题，诊断<code>mdfind</code>的问题也等同于诊断Spotlight。如果Spotlight的工作不正确，<code>mdutil -E</code>命令可以强制重建索引数据库。也可以用<code>mdutil -i</code>彻底关闭文件索引。</p>
+
+<h2>4. screencapture</h2>
+
+<p><code>screencapture</code>命令可以截图。和<code>Grab.app</code>与<code>cmd + shift + 3</code>或<code>cmd + shift + 4</code>热键相似，但更加的灵活。</p>
+
+<p>抓取包含鼠标光标的全屏幕，并以<code>image.png</code>插入到新邮件的附件中：</p>
+
+<pre><code>$ screencapture -C -M image.png 
+</code></pre>
+
+<p>用鼠标选择抓取窗口（及阴影）并复制到剪贴板：</p>
+
+<pre><code>$ screencapture -c -W
+</code></pre>
+
+<p>延时10秒后抓屏，并在Preview中打开之：</p>
+
+<pre><code>$ screencapture -T 10 -P image.png
+</code></pre>
+
+<p>用鼠标截取一个矩形区域，抓取后存为pdf文件：</p>
+
+<pre><code>$ screencapture -s -t pdf image.pdf
+</code></pre>
+
+<p>更多用法请参阅<code>screencapture –help</code>。</p>
+
+<h2>5. launchctl</h2>
+
+<p><code>launchctl</code>管理OS X的启动脚本，控制启动计算机时需要开启的服务。也可以设置定时执行特定任务的脚本，就像Linux cron一样。</p>
+
+<p>例如，开机时自动启动Apache服务器：</p>
+
+<pre><code>$ sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+</code></pre>
+
+<p>运行<code>launchctl list</code>显示当前的启动脚本。<code>sudo launchctl unload [path/to/script]</code>停止正在运行的启动脚本，再加上<code>-w</code>选项即可去除开机启动。用这个方法可以一次去除Adobe或Microsoft Office所附带的所有“自动更新”后台程序。</p>
+
+<p>Launchd脚本存储在以下位置：</p>
+
+<pre><code>~/Library/LaunchAgents    
+/Library/LaunchAgents          
+/Library/LaunchDaemons
+/System/Library/LaunchAgents
+/System/Library/LaunchDaemons
+</code></pre>
+
+<p>启动脚本的格式可以参考<a rel="external" href="http://paul.annesley.cc/2012/09/mac-os-x-launchd-is-cool/" target="_blank">这篇blog</a>，或苹果开发者中心的<a rel="external" href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html" target="_blank">文章</a>。你也可以使用<a rel="external" href="http://www.peterborgapps.com/lingon/" target="_blank">Lingon</a>应用来完全取代命令行。</p>
+
+<h2>6. say</h2>
+
+<p><code>say</code>是一个文本转语音（TTS）的有趣的工具，引擎和OS X使用的一样也是VoiceOver。如果不加其他选项，则会简单的语音朗读你给定的字符串：</p>
+
+<pre><code>$ say "Never trust a computer you can't lift."
+</code></pre>
+
+<p>用<code>-f</code>选项朗读特定文本文件，<code>-o</code>选项将朗读结果存为音频文件而不是播放：</p>
+
+<pre><code>$ say -f mynovel.txt -o myaudiobook.aiff
+</code></pre>
+
+<p><code>say</code>命令可以用于在脚本中播放警告或提示。例如你可以设置Automator或Hazel脚本处理文件，并在任务完成时用<code>say</code>命令语音提示。</p>
+
+<p>最好玩（不过也负罪感十足）的用法是：通过SSH连接到朋友或同事的计算机，然后用<code>say</code>命令给他们一个大大大惊喜……</p>
+
+<p>可以在系统设置（System Preferences）的字典和语音（Dictation &amp; Speech）选项中调整系统的语音选项甚至是语音的语言。</p>
+
+<h2>7. diskutil</h2>
+
+<p><code>diskutil</code>是OS X磁盘工具应用的命令行版。既可以完成图形界面应用的所有任务，也可以做一些全盘填0、全盘填随机数等额外的任务。先使用<code>diskutil list</code>查看所有磁盘的列表和所在路径，然后对特定的磁盘执行命令。</p>
+
+<p>警告：不正确使用<code>diskutil</code>可能意外的破坏磁盘数据。请小心。</p>
+
+<h2>8. brew</h2>
+
+<p>Homebrew程序提供的<code>brew</code>，严格来讲不是一个OS X的原生命令，但任何一个OS X的专业用户都不会错过它。“OS X缺少的包管理器”这个评价是恰如其分的。如果你曾经在Linux上使用过<code>apt-get</code>（或其他包管理器——译者注），你就会发现Homebrew基本上是一样的。</p>
+
+<p>使用<code>brew</code>可以简单的获取数千种开源工具和函数库。例如<code>brew install imagemagick</code>就可以安装ImageMagick（几乎可以处理任何图像问题，转换任何格式的图像工具），<code>brew install node</code>可以安装Node.js（当前大热的服务器端JavaScript编程工具）。</p>
+
+<p>也可以通过Homebrew做有趣的事情：<code>brew install archey</code>会安装Archey（在启动命令行时显示苹果LOGO和计算机硬件参数的小工具）。</p>
+
+<p><img src="http://segmentfault.com/img/bVciJb" alt="请输入图片描述"></p>
+
+<p>Homebrew能安装的工具数量庞大，并且一直保持更新。Homebrew最棒的一点是：所有的文件都被约束在<code>/usr/local/</code>一个位置之下。也就是说可以通过Homebrew安装新版软件的同时，保持系统内置的依赖库或其他软件不变。同时如果想彻底删除Homebrew，也变得非常简单。</p>
+
+<p>（注：删除Homebrew最好还是不要直接删除<code>/usr/local/</code>。应当用这个<a rel="external" href="https://gist.github.com/mxcl/1173223" target="_blank">卸载脚本</a>。）</p>
+
+<p>最后，这里还有一篇OS X所有命令的<a rel="external" href="http://ss64.com/osx/" target="_blank">完整列表</a>。</p>
+
+<p><hr></p>
+<p><a rel="external" href="http://segmentfault.com/a/1190000000509514" target="_blank">8个不可不知的Mac OS X专用命令行工具</a><br><br>原文：<a rel="external" href="http://www.mitchchn.me/2014/os-x-terminal/" target="_blank">Eight Terminal Utilities Every OS X Command Line User Should Know</a><br><br>编译：<a rel="external" href="http://segmentfault.com/" target="_blank">SegmentFault</a><br><br>责任：沙渺</p>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mac/" rel="tag"># Mac</a>
+          
+            <a href="/tags/Shell/" rel="tag"># Shell</a>
+          
+            <a href="/tags/OS-X/" rel="tag"># OS X</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/23/some-tcpip/" rel="next" title="some tcpip">
+                <i class="fa fa-chevron-left"></i> some tcpip
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/06/every-programmer-should-know-these-latency-numbers/" rel="prev" title="Every Programmer Should Know These Latency Numbers">
+                Every Programmer Should Know These Latency Numbers <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">1. open</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">2. pbcopy 和 pbpaste</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">3. mdfind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">4. screencapture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">5. launchctl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">6. say</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">7. diskutil</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">8. brew</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

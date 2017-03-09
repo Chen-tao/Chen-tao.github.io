@@ -1,0 +1,2316 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/page/6/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/page/6/"/>
+
+
+
+
+
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
+                  垃圾回收（GC）的三种基本方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
+                2015-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。</p>
+<p>其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃圾回收统一理论」一文阐述了一个理论：任何垃圾回收的思路，无非以上两种的组合，其中一种的改善和进步，必然伴随着另一种的改善和进步。</p>
+<p>##跟踪回收</p>
+<p>跟踪回收的方式独立于程序，定期运行来检查垃圾，需要较长时间的中断。</p>
+<p>##标记清除</p>
+<p>标记清除的方式需要对程序的对象进行两次扫描，第一次从根（Root）开始扫描，被根引用了的对象标记为不是垃圾，不是垃圾的对象引用的对象同样标记为不是垃圾，以此递归。所有不是垃圾的对象的引用都扫描完了之后。就进行第二次扫描，第一次扫描中没有得到标记的对象就是垃圾了，对此进行回收。</p>
+<p>##复制收集</p>
+<p>复制收集的方式只需要对对象进行一次扫描。准备一个「新的空间」，从根开始，对对象进行扫，如果存在对这个对象的引用，就把它复制到「新空间中」。一次扫描结束之后，所有存在于「新空间」的对象就是所有的非垃圾对象。</p>
+<p>这两种方式各有千秋，标记清除的方式节省内存但是两次扫描需要更多的时间，对于垃圾比例较小的情况占优势。复制收集更快速但是需要额外开辟一块用来复制的内存，对垃圾比例较大的情况占优势。特别的，复制收集有「局部性」的优点。</p>
+<p>在复制收集的过程中，会按照对象被引用的顺序将对象复制到新空间中。于是，关系较近的对象被放在距离较近的内存空间的可能性会提高，这叫做局部性。局部性高的情况下，内存缓存会更有效地运作，程序的性能会提高。</p>
+<p>对于标记清除，有一种标记-压缩算法的衍生算法：</p>
+<p>对于压缩阶段，它的工作就是移动所有的可达对象到堆内存的同一个区域中，使他们紧凑的排列在一起，从而将所有非可达对象释放出来的空闲内存都集中在一起，通过这样的方式来达到减少内存碎片的目的。</p>
+<p>##引用计数</p>
+<p>引用计数是指，针对每一个对象，保存一个对该对象的引用计数，该对象的引用增加，则相应的引用计数增加。如果对象的引用计数为零，则回收该对象。</p>
+<p>优点：引用计数最大的优点就是容易实现，C++程序员应该都实现过类似的机制。二是成本小，基本上引用计数为0的时候垃圾会被立即回收，而其他方法难以预测对象的生命周期，垃圾存在的时间都会比这个方法高。另，这种垃圾回收方式产生的中断时间最短。</p>
+<p>缺点：最著名的缺点就是如果对象中存在循环引用，就无法被回收。例如，下面三个对象互相引用，但是不存在从根（Root）指向的引用，所以已经是垃圾了。但是引用计数不为0.</p>
+<p>还有一个缺点就是，引用计数不适合在并行中使用，多个线程同时操作引用计数，会引起数值不一样的问题从而导致内存错误。所以引用计数必须采用独占方式，如果引用操作频繁，那么加锁等并发控制机制的开销是相当大的。</p>
+<p>Perl和Python采用了这种GC机制。</p>
+<p>它们的衍生算法</p>
+<p>##分代回收</p>
+<p>这种回收方式用了程序的一种特性：大部分对象会从产生开始在很短的时间内变成垃圾，而存在的很长时间的对象往往都有较长的生命周期。高频对新生成的对象进行回收，称为「小回收」，低频对所有对象回收，称为「大回收」。每一次「小回收」过后，就把存活下来的对象归为「老生代」，「小回收」的时候，遇到老生代直接跳过。大多数分代回收算法都采用的「复制收集」方法，因为小回收中垃圾的比例较大。</p>
+<p>这种方式存在一个问题：如果在某个新生代的对象中，存在「老生代」的对象对它的引用，它就不是垃圾了，那么怎么制止「小回收」对其回收呢？这里用到了一中叫做写屏障的方式。</p>
+<p>程序对所有涉及修改对象内容的地方进行保护，被称为「写屏障」（Write Barrier）。写屏障不仅用于分代回收，也用于其他GC算法中。</p>
+<p>在此算法的表现是，用一个记录集来记录从新生代到老生代的引用。如果有两个对象A和B，当对A的对象内容进行修改并加入B的引用时，如果①A是「老生代」②B是「新生代」。则将这个引用加入到记录集中。「小回收」的时候，因为记录集中有对B的引用，所以B不再是垃圾。</p>
+<p>##增量回收</p>
+<p>上面的算法缩短了「GC平均中断时间」，但是在对实时性要求很高的程序中，对「GC最高中断时间」的要求更高。比如，自动驾驶软件，如果某次GC中断了0.1s，那么损失可能是致命的。</p>
+<p>增量回收就是将GC分成几部分来执行。设置「GC最多中断10ms」这样的条件限制来使GC的终端时间视作可预测的。</p>
+<p>但是，在两段的GC程序之间，引用关系可能发生了变化。所以，这种GC算法也要写屏障，来记录引用关系的变化。虽然这种方式控制了中断最高时间，但是由于中断次数增加，GC总时间是增加的。</p>
+<p>##并行回收</p>
+<p>基本原理是，在程序运行的同时进行GC工作，最大化CPU的性能。但是这种方式也要面对增量回收的问题，所以也要进行写屏障操作。</p>
+<p>然而这种方式也并未做到完全不暂停原程序的运行，在某些特定的GC阶段还是要暂停原程序。多核化迅速发展的今天，这种算法也在不断优化。不间断原程序实现并行回收这个领域是相当值得期待的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">
+                  El Capitan & Homebrew
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
+                2015-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="El-Capitan-amp-Homebrew"><a href="#El-Capitan-amp-Homebrew" class="headerlink" title="El Capitan &amp; Homebrew"></a>El Capitan &amp; Homebrew</h1><p>Part of the OS X 10.11/El Capitan changes is something called <a href="https://en.wikipedia.org/wiki/System_Integrity_Protection" target="_blank" rel="external">System Integrity Protection</a> or “SIP”.</p>
+<p>SIP prevents you from writing to many system directories such as <code>/usr</code>, <code>/System</code> &amp; <code>/bin</code>, regardless of whether or not you are root. The Apple keynote is <a href="https://developer.apple.com/videos/wwdc/2015/?id=706" target="_blank" rel="external">here</a> if you’d like to learn more.</p>
+<p>One of the implications of SIP is that you cannot simply create <code>/usr/local</code> if it is removed or doesn’t exist for another reason. However, as noted in the keynote, Apple is leaving <code>/usr/local</code> open for developers to use, so Homebrew can still be used as expected.</p>
+<p>Apple documentation <em>hints</em> that <code>/usr/local</code> will be returned to <code>root:wheel restricted</code> permissions on <a href="https://developer.apple.com/library/mac/releasenotes/General/rn-osx-10.11/index.html" target="_blank" rel="external">every OS X update</a>. There is a <code>brew doctor</code> check in place to advise if permissions have slipped for whatever reason.</p>
+<p><strong>If you haven’t installed Homebrew in <code>/usr/local</code> or another system-protected directory, this document does not apply to you.</strong></p>
+<p>This is how to fix Homebrew on El Capitan if you see permission issues:</p>
+<h2 id="If-usr-local-exists-already"><a href="#If-usr-local-exists-already" class="headerlink" title="If /usr/local exists already:"></a>If <code>/usr/local</code> exists already:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
+<h2 id="If-usr-local-does-not-exist"><a href="#If-usr-local-does-not-exist" class="headerlink" title="If /usr/local does not exist:"></a>If <code>/usr/local</code> does not exist:</h2><ul>
+<li>Reboot into Recovery mode (Hold Cmd+R on boot) &amp; access the Terminal.</li>
+<li>In that terminal run:<br>  <code>csrutil disable</code></li>
+<li>Reboot back into OS X</li>
+<li>Open your Terminal application and execute:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /usr/<span class="built_in">local</span> &amp;&amp; sudo chflags norestricted /usr/<span class="built_in">local</span> &amp;&amp; sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Reboot back into Recovery Mode &amp; access the Terminal again.</li>
+<li>In that terminal execute:<br><code>csrutil enable</code></li>
+<li>Reboot back into OS X &amp; you’ll be able to write to <code>/usr/local</code> &amp; install Homebrew.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/10/neil-gaiman-keynote-address-2012/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/10/neil-gaiman-keynote-address-2012/" itemprop="url">
+                  Neil Gaiman: Keynote Address 2012
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-10T00:00:00+08:00">
+                2015-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>May 17, 2012</p>
+<p>I never really expected to find myself giving advice to people graduating from an establishment of higher education.  I never graduated from any such establishment. I never even started at one. I escaped from school as soon as I could, when the prospect of four more years of enforced learning before I’d become the writer I wanted to be was stifling.</p>
+<p>I got out into the world, I wrote, and I became a better writer the more I wrote, and I wrote some more, and nobody ever seemed to mind that I was making it up as I went along, they just read what I wrote and they paid for it, or they didn’t, and often they commissioned me to write something else for them.</p>
+<p>Which has left me with a healthy respect and fondness for higher education that those of my friends and family, who attended Universities, were cured of long ago.</p>
+<p>Looking back, I’ve had a remarkable ride. I’m not sure I can call it a career, because a career implies that I had some kind of career plan, and I never did. The nearest thing I had was a list I made when I was 15 of everything I wanted to do: to write an adult novel, a children’s book, a comic, a movie, record an audiobook, write an episode of Doctor Who… and so on. I didn’t have a career. I just did the next thing on the list.</p>
+<p>So I thought I’d tell you everything I wish I’d known starting out, and a few things that, looking back on it, I suppose that I did know. And that I would also give you the best piece of advice I’d ever got, which I completely failed to follow.</p>
+<p>First of all: When you start out on a career in the arts you have no idea what you are doing.</p>
+<p>This is great. People who know what they are doing know the rules, and know what is possible and impossible. You do not. And you should not. The rules on what is possible and impossible in the arts were made by people who had not tested the bounds of the possible by going beyond them. And you can.</p>
+<p>If you don’t know it’s impossible it’s easier to do. And because nobody’s done it before, they haven’t made up rules to stop anyone doing that again, yet.</p>
+<p>Secondly, If you have an idea of what you want to make, what you were put here to do, then just go and do that.</p>
+<p>And that’s much harder than it sounds and, sometimes in the end, so much easier than you might imagine. Because normally, there are things you have to do before you can get to the place you want to be. I wanted to write comics and novels and stories and films, so I became a journalist, because journalists are allowed to ask questions, and to simply go and find out how the world works, and besides, to do those things I needed to write and to write well, and I was being paid to learn how to write economically,  crisply, sometimes under adverse conditions, and on time.</p>
+<p>Sometimes the way to do what you hope to do will be clear cut, and sometimes  it will be almost impossible to decide whether or not you are doing the correct thing, because you’ll have to balance your goals and hopes with feeding yourself, paying debts, finding work, settling for what you can get.</p>
+<p>Something that worked for me was imagining that where I wanted to be – an author, primarily of fiction, making good books, making good comics and supporting myself through my words – was a mountain. A distant mountain. My goal.</p>
+<p>And I knew that as long as I kept walking towards the mountain I would be all right. And when I truly was not sure what to do, I could stop, and think about whether it was taking me towards or away from the mountain. I said no to editorial jobs on magazines, proper jobs that would have paid proper money because I knew that, attractive though they were, for me they would have been walking away from the mountain. And if those job offers had come along earlier I might have taken them, because they still would have been closer to the mountain than I was at the time.</p>
+<p>I learned to write by writing. I tended to do anything as long as it felt like an adventure, and to stop when it felt like work, which meant that life did not feel like work.</p>
+<p>Thirdly, When you start off, you have to deal with the problems of failure. You need to be thickskinned, to learn that not every project will survive. A freelance life, a life in the arts, is sometimes like putting messages in bottles, on a desert island, and hoping that someone will find one of your bottles and open it and read it, and put something in a bottle that will wash its way back to you: appreciation, or a commission, or money, or love. And you have to accept that you may put out a hundred things for every bottle that winds up coming back.</p>
+<p>The problems of failure are problems of discouragement, of hopelessness, of hunger. You want everything to happen and you want it now, and things go wrong. My first book – a piece of journalism I had done for the money, and which had already bought me an electric typewriter  from the advance – should have been a bestseller. It should have paid me a lot of money. If the publisher hadn’t gone into involuntary liquidation between the first print run selling out and the second printing, and before any royalties could be paid, it would have done.</p>
+<p>And I shrugged, and I still had my electric typewriter and enough money to pay the rent for a couple of months, and I decided that I would do my best in future not to write books just for the money. If you didn’t get the money, then you didn’t have anything. If I did work I was proud of, and I didn’t get the money, at least I’d have the work.</p>
+<p>Every now and again, I forget that rule, and whenever I do, the universe kicks me hard and reminds me. I don’t know that it’s an issue for anybody but me, but it’s true that nothing I did where the only reason for doing it was the money was ever worth it, except as bitter experience. Usually I didn’t wind up getting the money, either.  The things I did because I was excited, and wanted to see them exist in reality have never let me down, and I’ve never regretted the time I spent on any of them.</p>
+<p>The problems of failure are hard.</p>
+<p>The problems of success can be harder, because nobody warns you about them.</p>
+<p>The first problem of any kind of even limited success is the unshakable conviction that you are getting away with something, and that any moment now they will discover you. It’s Imposter Syndrome, something my wife Amanda christened the Fraud Police.</p>
+<p>In my case, I was convinced that there would be a knock on the door, and a man with a clipboard (I don’t know why he carried a clipboard, in my head, but he did) would be there, to tell me it was all over, and they had caught up with me, and now I would have to go and get a real job, one that didn’t consist of making things up and writing them down, and reading books I wanted to read. And then I would go away quietly and get the kind of job where you don’t have to make things up any more.</p>
+<p>The problems of success. They’re real, and with luck you’ll experience them. The point where you stop saying yes to everything, because now the bottles you threw in the ocean are all coming back, and have to learn to say no.</p>
+<p>I watched my peers, and my friends, and the ones who were older than me and watch how miserable some of them were: I’d listen to them telling me that they couldn’t envisage a world where they did what they had always wanted to do any more, because now they had to earn a certain amount every month just to keep where they were. They couldn’t go and do the things that mattered, and that they had really wanted to do; and that seemed as a big a tragedy as any problem of failure.</p>
+<p>And after that, the biggest problem of success is that the world conspires to stop you doing the thing that you do, because you are successful. There was a day when I looked up and realised that I had become someone who professionally replied to email, and who wrote as a hobby.  I started answering fewer emails, and was relieved to find I was writing much more.</p>
+<p>Fourthly, I hope you’ll make mistakes. If you’re making mistakes, it means you’re out there doing something. And the mistakes in themselves can be useful. I once misspelled Caroline, in a letter, transposing the A and the O, and I thought, “Coraline looks like a real name…”</p>
+<p>And remember that whatever discipline you are in, whether you are a musician or a photographer, a fine artist or a cartoonist, a writer, a dancer, a designer, whatever you do you have one thing that’s unique. You have the ability to make art.</p>
+<p>And for me, and for so many of the people I have known, that’s been a lifesaver. The ultimate lifesaver. It gets you through good times and it gets you through the other ones.</p>
+<p>Life is sometimes hard. Things go wrong, in life and in love and in business and in friendship and in health and in all the other ways that life can go wrong. And when things get tough, this is what you should do.</p>
+<p>Make good art.</p>
+<p>I’m serious. Husband runs off with a politician? Make good art. Leg crushed and then eaten by mutated boa constrictor? Make good art. IRS on your trail? Make good art. Cat exploded? Make good art. Somebody on the Internet thinks what you do is stupid or evil or it’s all been done before? Make good art. Probably things will work out somehow, and eventually time will take the sting away, but that doesn’t matter. Do what only you do best. Make good art.</p>
+<p>Make it on the good days too.</p>
+<p>And Fifthly, while you are at it, make your art. Do the stuff that only you can do.</p>
+<p>The urge, starting out, is to copy. And that’s not a bad thing. Most of us only find our own voices after we’ve sounded like a lot of other people. But the one thing that you have that nobody else has is you. Your voice, your mind, your story, your vision. So write and draw and build and play and dance and live as only you can.</p>
+<p>The moment that you feel that, just possibly, you’re walking down the street naked, exposing too much of your heart and your mind and what exists on the inside, showing too much of yourself. That’s the moment you may be starting to get it right.</p>
+<p>The things I’ve done that worked the best were the things I was the least certain about, the stories where I was sure they would either work, or more likely be the kinds of embarrassing failures people would gather together and talk about  until the end of time. They always had that in common: looking back at them, people explain why they were inevitable successes. While I was doing them, I had no idea.</p>
+<p>I still don’t. And where would be the fun in making something you knew was going to work?</p>
+<p>And sometimes the things I did really didn’t work. There are stories of mine that have never been reprinted. Some of them never even left the house. But I learned as much from them as I did from the things that worked.</p>
+<p>Sixthly. I will pass on some secret freelancer knowledge. Secret knowledge is always good. And it is useful for anyone who ever plans to create art for other people, to enter a freelance world of any kind. I learned it in comics, but it applies to other fields too. And it’s this:</p>
+<p>People get hired because, somehow, they get hired. In my case I did something which these days would be easy to check, and would get me into trouble, and when I started out, in those pre-internet days, seemed like a sensible career strategy: when I was asked by editors who I’d worked for, I lied. I listed a handful of magazines that sounded likely, and I sounded confident, and I got jobs. I then made it a point of honour to have written something for each of the magazines I’d listed to get that first job, so that I hadn’t actually lied, I’d just been chronologically challenged… You get work however you get work.</p>
+<p>People keep working, in a freelance world, and more and more of today’s world is freelance, because their work is good, and because they are easy to get along with, and because they deliver the work on time. And you don’t even need all three. Two out of three is fine. People will tolerate how unpleasant you are if your work is good and you deliver it on time. They’ll forgive the lateness of the work if it’s good, and if they like you. And you don’t have to be as good as the others if you’re on time and it’s always a pleasure to hear from you.</p>
+<p>When I agreed to give this address, I started trying to think what the best advice I’d been given over the years was.</p>
+<p>And it came from Stephen King twenty years ago, at the height of the success of Sandman. I was writing a comic that people loved and were taking seriously. King had liked Sandman and my novel with Terry Pratchett, Good Omens, and he saw the madness, the long signing lines, all that, and his advice was this:</p>
+<p>“This is really great. You should enjoy it.”</p>
+<p>And I didn’t. Best advice I got that I ignored.Instead I worried about it. I worried about the next deadline, the next idea, the next story. There wasn’t a moment for the next fourteen or fifteen years that I wasn’t writing something in my head, or wondering about it. And I didn’t stop and look around and go, this is really fun. I wish I’d enjoyed it more. It’s been an amazing ride. But there were parts of the ride I missed, because I was too worried about things going wrong, about what came next, to enjoy the bit I was on.</p>
+<p>That was the hardest lesson for me, I think: to let go and enjoy the ride, because the ride takes you to some remarkable and unexpected places.</p>
+<p>And here, on this platform, today, is one of those places. (I am enjoying myself immensely.)</p>
+<p>To all today’s graduates: I wish you luck. Luck is useful. Often you will discover that the harder you work, and the more wisely you work, the luckier you get. But there is luck, and it helps.</p>
+<p>We’re in a transitional world right now, if you’re in any kind of artistic field, because the nature of distribution is changing, the models by which creators got their work out into the world, and got to keep a roof over their heads and buy sandwiches while they did that, are all changing. I’ve talked to people at the top of the food chain in publishing, in bookselling, in all those areas, and nobody knows what the landscape will look like two years from now, let alone a decade away. The distribution channels that people had built over the last century or so are in flux for print, for visual artists, for musicians, for creative people of all kinds.</p>
+<p>Which is, on the one hand, intimidating, and on the other, immensely liberating. The rules, the assumptions, the now-we’re supposed to’s of how you get your work seen, and what you do then, are breaking down. The gatekeepers are leaving their gates. You can be as creative as you need to be to get your work seen. YouTube and the web (and whatever comes after YouTube and the web) can give you more people watching than television ever did. The old rules are crumbling and nobody knows what the new rules are.</p>
+<p>So make up your own rules.</p>
+<p>Someone asked me recently how to do something she thought was going to be difficult, in this case recording an audio book, and I suggested she pretend that she was someone who could do it. Not pretend to do it, but pretend she was someone who could. She put up a notice to this effect on the studio wall, and she said it helped.</p>
+<p>So be wise, because the world needs more wisdom, and if you cannot be wise, pretend to be someone who is wise, and then just behave like they would.</p>
+<p>And now go, and make interesting mistakes, make amazing mistakes, make glorious and fantastic mistakes. Break rules. Leave the world more interesting for your being here. Make good art.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/07/gcjava/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/07/gcjava/" itemprop="url">
+                  面向GC的Java编程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-07T00:00:00+08:00">
+                2015-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Java程序员在编码过程中通常不需要考虑内存问题，JVM经过高度优化的GC机制大部分情况下都能够很好地处理堆(Heap)的清理问题。以至于许多Java程序员认为，我只需要关心何时创建对象，而回收对象，就交给GC来做吧！甚至有人说，如果在编程过程中频繁考虑内存问题，是一种退化，这些事情应该交给编译器，交给虚拟机来解决。</p>
+<p>这话其实也没有太大问题，的确，大部分场景下关心内存、GC的问题，显得有点“杞人忧天”了，高老爷说过：</p>
+<p><em>过早优化是万恶之源。</em></p>
+<p>但另一方面，什么才是“过早优化”？</p>
+<p>If we could do things right for the first time, why not?</p>
+<p>事实上JVM的内存模型( JMM )理应是Java程序员的基础知识，处理过几次JVM线上内存问题之后就会很明显感受到，很多系统问题，都是内存问题。</p>
+<p>对JVM内存结构感兴趣的同学可以看下 浅析Java虚拟机结构与机制 这篇文章，本文就不再赘述了，本文也并不关注具体的GC算法，相关的文章汗牛充栋，随时可查。</p>
+<p>另外，不要指望GC优化的这些技巧，可以对应用性能有成倍的提高，特别是对I/O密集型的应用，或是实际落在YoungGC上的优化，可能效果只是帮你减少那么一点YoungGC的频率。</p>
+<p>但我认为，优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著，就像前面说的，如果我们可以一次把事情做对，并且做好，在允许的范围内尽可能追求卓越，为什么不去做呢？</p>
+<p>##GC分代的基本假设##</p>
+<p>大部分GC算法，都将堆内存做分代(Generation)处理，但是为什么要分代呢，又为什么不叫内存分区、分段，而要用面向时间、年龄的“代”来表示不同的内存区域？</p>
+<p><strong>GC分代的基本假设是：</strong></p>
+<p>绝大部分对象的生命周期都非常短暂，存活时间短。</p>
+<p>而这些短命的对象，恰恰是GC算法需要首先关注的。所以在大部分的GC中，YoungGC（也称作MinorGC）占了绝大部分，对于负载不高的应用，可能跑了数个月都不会发生FullGC。</p>
+<p>基于这个前提，在编码过程中，我们应该尽可能地缩短对象的生命周期。在过去，分配对象是一个比较重的操作，所以有些程序员会尽可能地减少new对象的次数，尝试减小堆的分配开销，减少内存碎片。</p>
+<p>但是，短命对象的创建在JVM中比我们想象的性能更好，所以，不要吝啬new关键字，大胆地去new吧。</p>
+<p>当然前提是不做无谓的创建，对象创建的速率越高，那么GC也会越快被触发。</p>
+<p><strong>结论：</strong></p>
+<p><strong>分配小对象的开销分享小，不要吝啬去创建。</strong></p>
+<p>GC最喜欢这种小而短命的对象。</p>
+<p>让对象的生命周期尽可能短，例如在方法体内创建，使其能尽快地在YoungGC中被回收，不会晋升(romote)到年老代(Old Generation)。</p>
+<p>##对象分配的优化##</p>
+<p>基于大部分对象都是小而短命，并且不存在多线程的数据竞争。这些小对象的分配，会优先在线程私有的 TLAB 中分配，TLAB中创建的对象，不存在锁甚至是CAS的开销。</p>
+<p>TLAB占用的空间在Eden Generation。</p>
+<p>当对象比较大，TLAB的空间不足以放下，而JVM又认为当前线程占用的TLAB剩余空间还足够时，就会直接在Eden Generation上分配，此时是存在并发竞争的，所以会有CAS的开销，但也还好。</p>
+<p>当对象大到Eden Generation放不下时，JVM只能尝试去Old Generation分配，这种情况需要尽可能避免，因为一旦在Old Generation分配，这个对象就只能被Old Generation的GC或是FullGC回收了。</p>
+<p>##不可变对象的好处##</p>
+<p>GC算法在扫描存活对象时通常需要从ROOT节点开始，扫描所有存活对象的引用，构建出对象图。</p>
+<p>不可变对象对GC的优化，主要体现在Old Generation中。</p>
+<p>可以想象一下，如果存在Old Generation的对象引用了Young Generation的对象，那么在每次YoungGC的过程中，就必须考虑到这种情况。</p>
+<p>Hotspot JVM为了提高YoungGC的性能，避免每次YoungGC都扫描Old Generation中的对象引用，采用了 卡表(Card Table) 的方式。</p>
+<p>简单来说，当Old Generation中的对象发生对Young Generation中的对象产生新的引用关系或释放引用时，都会在卡表中响应的标记上标记为脏(dirty)，而YoungGC时，只需要扫描这些dirty的项就可以了。</p>
+<p>可变对象对其它对象的引用关系可能会频繁变化，并且有可能在运行过程中持有越来越多的引用，特别是容器。这些都会导致对应的卡表项被频繁标记为dirty。</p>
+<p>而不可变对象的引用关系非常稳定，在扫描卡表时就不会扫到它们对应的项了。</p>
+<p>注意，这里的不可变对象，不是指仅仅自身引用不可变的final对象，而是真正的Immutable Objects。</p>
+<p>##引用置为null的传说##</p>
+<p>早期的很多Java资料中都会提到在方法体中将一个变量置为null能够优化GC的性能，类似下面的代码：</p>
+<p>List<string> list = new ArrayList<string>();<br>// some code<br>list = null; // help GC<br>事实上这种做法对GC的帮助微乎其微，有时候反而会导致代码混乱。</string></string></p>
+<p>我记得几年前 @rednaxelafx 在HLL VM小组中详细论述过这个问题，原帖我没找到，结论基本就是：</p>
+<p>在一个非常大的方法体内，对一个较大的对象，将其引用置为null，某种程度上可以帮助GC。</p>
+<p>大部分情况下，这种行为都没有任何好处。</p>
+<p>所以，还是早点放弃这种“优化”方式吧。</p>
+<p>GC比我们想象的更聪明。</p>
+<p>##手动档的GC##</p>
+<p>在很多Java资料上都有下面两个奇技淫巧：</p>
+<p>通过Thread.yield()让出CPU资源给其它线程。</p>
+<p>通过System.gc()触发GC。</p>
+<p>事实上JVM从不保证这两件事，而System.gc()在JVM启动参数中如果允许显式GC，则会触发FullGC，对于响应敏感的应用来说，几乎等同于自杀。</p>
+<p>So，让我们牢记两点：</p>
+<hr>
+<p>Never use Thread.yield()。</p>
+<p>Never use System.gc()。除非你真的需要回收Native Memory。</p>
+<hr>
+<p>第二点有个Native Memory的例外，如果你在以下场景：</p>
+<p>· 使用了NIO或者NIO框架（Mina/Netty）</p>
+<p>· 使用了DirectByteBuffer分配字节缓冲区</p>
+<p>· 使用了MappedByteBuffer做内存映射</p>
+<p>由于Native Memory只能通过FullGC（或是CMS GC）回收，所以除非你非常清楚这时真的有必要，否则不要轻易调用System.gc()，且行且珍惜。</p>
+<p>另外为了防止某些框架中的System.gc调用（例如NIO框架、Java RMI），建议在启动参数中加上-XX:+DisableExplicitGC来禁用显式GC。</p>
+<p>这个参数有个巨大的坑，如果你禁用了System.gc()，那么上面的3种场景下的内存就无法回收，可能造成OOM，如果你使用了CMS GC，那么可以用这个参数替代：-XX:+ExplicitGCInvokesConcurrent。</p>
+<p>关于System.gc()，可以参考 @bluedavy 的几篇文章：</p>
+<p>· CMS GC会不会回收Direct ByteBuffer的内存</p>
+<p>· 说说在Java启动参数上我犯的错</p>
+<p>· java.lang.OutOfMemoryError:Map failed</p>
+<p>##指定容器初始化大小##</p>
+<p>Java容器的一个特点就是可以动态扩展，所以通常我们都不会去考虑初始大小的设置，不够了反正会自动扩容呗。</p>
+<p>但是扩容不意味着没有代价，甚至是很高的代价。</p>
+<p>例如一些基于数组的数据结构，例如StringBuilder、StringBuffer、ArrayList、HashMap等等，在扩容的时候都需要做ArrayCopy，对于不断增长的结构来说，经过若干次扩容，会存在大量无用的老数组，而回收这些数组的压力，全都会加在GC身上。</p>
+<p>这些容器的构造函数中通常都有一个可以指定大小的参数，如果对于某些大小可以预估的容器，建议加上这个参数。</p>
+<p>可是因为容器的扩容并不是等到容器满了才扩容，而是有一定的比例，例如HashMap的扩容阈值和负载因子(loadFactor)相关。</p>
+<p>Google Guava框架对于容器的初始容量提供了非常便捷的工具方法，例如：</p>
+<p>Lists.newArrayListWithCapacity(initialArraySize);  </p>
+<p>Lists.newArrayListWithExpectedSize(estimatedSize);  </p>
+<p>Sets.newHashSetWithExpectedSize(expectedSize);  </p>
+<p>Maps.newHashMapWithExpectedSize(expectedSize);<br>这样我们只要传入预估的大小即可，容量的计算就交给Guava来做吧。</p>
+<p>反例：</p>
+<p>如果采用默认无参构造函数，创建一个ArrayList，不断增加元素直到OOM，那么在此过程中会导致：</p>
+<p>多次数组扩容，重新分配更大空间的数组</p>
+<p>多次数组拷贝</p>
+<p>内存碎片</p>
+<p>##对象池##</p>
+<p>为了减少对象分配开销，提高性能，可能有人会采取对象池的方式来缓存对象集合，作为复用的手段。</p>
+<p>但是对象池中的对象由于在运行期长期存活，大部分会晋升到Old Generation，因此无法通过YoungGC回收。</p>
+<p>并且通常……没有什么效果。</p>
+<p>对于对象本身：</p>
+<p>如果对象很小，那么分配的开销本来就小，对象池只会增加代码复杂度。</p>
+<p>如果对象比较大，那么晋升到Old Generation后，对GC的压力就更大了。</p>
+<p>从线程安全的角度考虑，通常池都是会被并发访问的，那么你就需要处理好同步的问题，这又是一个大坑，并且同步带来的开销，未必比你重新创建一个对象小。</p>
+<p>对于对象池，唯一合适的场景就是当池中的每个对象的创建开销很大时，缓存复用才有意义，例如每次new都会创建一个连接，或是依赖一次RPC。</p>
+<p>比如说：</p>
+<p>· 线程池</p>
+<p>· 数据库连接池</p>
+<p>· TCP连接池</p>
+<p>即使你真的需要实现一个对象池，也请使用成熟的开源框架，例如Apache Commons Pool。</p>
+<p>另外，使用JDK的ThreadPoolExecutor作为线程池，不要重复造轮子，除非当你看过AQS的源码后认为你可以写得比Doug Lea更好。</p>
+<p>##对象作用域##</p>
+<p>尽可能缩小对象的作用域，即生命周期。</p>
+<p>如果可以在方法内声明的局部变量，就不要声明为实例变量。</p>
+<p>除非你的对象是单例的或不变的，否则尽可能少地声明static变量。</p>
+<p>##各类引用##</p>
+<p>java.lang.ref.Reference有几个子类，用于处理和GC相关的引用。JVM的引用类型简单来说有几种：</p>
+<p>· Strong Reference，最常见的引用</p>
+<p>· Weak Reference，当没有指向它的强引用时会被GC回收</p>
+<p>· Soft Reference，只当临近OOM时才会被GC回收</p>
+<p>· Phantom Reference，主要用于识别对象被GC的时机，通常用于做一些清理工作</p>
+<p>当你需要实现一个缓存时，可以考虑优先使用WeakHashMap，而不是HashMap，当然，更好的选择是使用框架，例如Guava Cache。</p>
+<p>最后，再次提醒，以上的这些未必可以对代码有多少性能上的提升，但是熟悉这些方法，是为了帮助我们写出更卓越的代码，和GC更好地合作。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/02/jvm/" itemprop="url">
+                  JVM的相关知识整理和学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
+                2015-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JVM是虚拟机，也是一种规范，他遵循着冯·诺依曼体系结构的设计原理。冯·诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。从dos到window8，从unix到ubuntu和CentOS，还有MAC OS等等，不同的操作系统指令集以及数据结构都有着差异，而JVM通过在操作系统上建立虚拟机，自己定义出来的一套统一的数据结构和操作指令，把同一套语言翻译给各大主流的操作系统，实现了跨平台运行，可以说JVM是java的核心，是java可以一次编译到处运行的本质所在。</p>
+<p>我研究学习了JVM的组成和运行原理，JVM的统一数据格式规范、字节码文件结构，JVM关于内存的管理。</p>
+<p><strong>一、JVM的组成和运行原理</strong>。</p>
+<p>JVM的毕竟是个虚拟机，是一种规范，虽说符合冯诺依曼的计算机设计理念，但是他并不是实体计算机，所以他的组成也不是什么存储器，控制器，运算器，输入输出设备。在我看来，JVM放在运行在真实的操作系统中表现的更像应用或者说是进程，他的组成可以理解为JVM这个进程有哪些功能模块，而这些功能模块的运作可以看做是JVM的运行原理。JVM有多种实现，例如Oracle的JVM，HP的JVM和IBM的JVM等，而在本文中研究学习的则是使用最广泛的Oracle的HotSpot JVM。</p>
+<p><strong>1.JVM在JDK中的位置</strong>。</p>
+<p>JDK是java开发的必备工具箱，JDK其中有一部分是JRE，JRE是JAVA运行环境，JVM则是JRE最核心的部分。我从oracle.com截取了一张关于JDK Standard Edtion的组成图，</p>
+<p>从最底层的位置可以看出来JVM有多重要，而实际项目中JAVA应用的性能优化，OOM等异常的处理最终都得从JVM这儿来解决。HotSpot是Oracle关于JVM的商标，区别于IBM，HP等厂商开发的JVM。Java HotSpot Client VM和Java HotSpot Server VM是JDK关于JVM的两种不同的实现，前者可以减少启动时间和内存占用，而后者则提供更加优秀的程序运行速度（参考自：<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/vm/index.html" target="_blank" rel="external">http://docs.oracle.com/javase/8/docs/technotes/guides/vm/index.html</a> ，该文档有关于各个版本的JVM的介绍）。在命令行，通过java -version可以查看关于当前机器JVM的信息，下面是我在Win8系统上执行命令的截图，</p>
+<p>可以看出我装的是build 20.13-b02版本，HotSpot 类型Server模式的JVM。</p>
+<p><strong>2.JVM的组成</strong></p>
+<p>JVM由4大部分组成：ClassLoader，Runtime Data Area，Execution Engine，Native Interface。</p>
+<p>我从CSDN找了一张描述JVM大致结构的图：</p>
+<p><strong>2.1.ClassLoader</strong>是负责加载class文件，class文件在文件开头有特定的文件标示，并且ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine决定。</p>
+<p><strong>2.2.Native Interface</strong>是负责调用本地接口的。他的作用是调用不同语言的接口给JAVA用，他会在Native Method Stack中记录对应的本地方法，然后调用该方法时就通过Execution Engine加载对应的本地lib。原本多于用一些专业领域，如JAVA驱动，地图制作引擎等，现在关于这种本地方法接口的调用已经被类似于Socket通信，WebService等方式取代。</p>
+<p><strong>2.3.Execution Engine</strong>是执行引擎，也叫Interpreter。Class文件被加载后，会把指令和数据信息放入内存中，Execution Engine则负责把这些命令解释给操作系统。</p>
+<p><strong>2.4.Runtime Data Area</strong>则是存放数据的，分为五部分：Stack，Heap，Method Area，PC Register，Native Method Stack。几乎所有的关于java内存方面的问题，都是集中在这块。下图是javapapers.com上关于Run-time Data Areas的描述：</p>
+<p>可以看出它把Method Area化为了Heap的一部分，javapapers.com中认为Method Area是Heap的逻辑区域，但这取决于JVM的实现者，而HotSpot JVM中把Method Area划分为非堆内存，显然是不包含在Heap中的。下图是javacodegeeks.com中，2014年9月刊出的一片博文中关于Runtime Data Area的划分，其中指出，NonHeap包含PermGen和Code Cache，PermGen包含Method Area,而且PermGen在JAVA SE 8中已经不再用了。查阅资料（<a href="https://abhirockzz.wordpress.com/2014/03/18/java-se-8-is-knocking-are-you-there/" target="_blank" rel="external">https://abhirockzz.wordpress.com/2014/03/18/java-se-8-is-knocking-are-you-there/</a>）得知，java8中PermGen已经从JVM中移除并被MetaSpace取代，java8中也不会见到OOM:PermGen Space的异常。目前Runtime Data Area可以用下图描述它的组成：</p>
+<p><strong>2.4.1.**</strong>Stack**是java栈内存，它等价于C语言中的栈，栈的内存地址是不连续的，每个线程都拥有自己的栈。栈里面存储着的是StackFrame，在《JVM Specification》中文版中被译作java虚拟机框架，也叫做栈帧。StackFrame包含三类信息：局部变量，执行环境，操作数栈。局部变量用来存储一个类的方法中所用到的局部变量。执行环境用于保存解析器对于java字节码进行解释过程中需要的信息，包括：上次调用的方法、局部变量指针和操作数栈的栈顶和栈底指针。操作数栈用于存储运算所需要的操作数和结果。StackFrame在方法被调用时创建，在某个线程中，某个时间点上，只有一个框架是活跃的，该框架被称为Current Frame，而框架中的方法被称为Current Method，其中定义的类为Current Class。局部变量和操作数栈上的操作总是引用当前框架。当Stack Frame中方法被执行完之后，或者调用别的StackFrame中的方法时，则当前栈变为另外一个StackFrame。Stack的大小是由两种类型，固定和动态的，动态类型的栈可以按照线程的需要分配。 下面两张图是关于栈之间关系以及栈和非堆内存的关系基本描述（来自<a href="http://www.programering.com/a/MzM3QzNwATA.html" target="_blank" rel="external">http://www.programering.com/a/MzM3QzNwATA.html</a>）：</p>
+<p><strong>2.4.2.Heap</strong>是用来存放对象信息的，和Stack不同，Stack代表着一种运行时的状态。换句话说，栈是运行时单位，解决程序该如何执行的问题，而堆是存储的单位，解决数据存储的问题。Heap是伴随着JVM的启动而创建，负责存储所有对象实例和数组的。堆的存储空间和栈一样是不需要连续的，它分为Young Generation和Old Generation（也叫Tenured Generation）两大部分。Young Generation分为Eden和Survivor，Survivor又分为From Space和 ToSpace。</p>
+<p>和Heap经常一起提及的概念是PermanentSpace，它是用来加载类对象的专门的内存区，是非堆内存，和Heap一起组成JAVA内存，它包含MethodArea区（在没有CodeCache的HotSpotJVM实现里，则MethodArea就相当于GenerationSpace）。在JVM初始化的时候，我们可以通过参数来分别指定，PermanentSpace的大小、堆的大小、以及Young Generation和Old Generation的比值、Eden区和From Space的比值，从而来细粒度的适应不同JAVA应用的内存需求。</p>
+<p><strong>2.4.3.PC Register</strong>是程序计数寄存器，每个JAVA线程都有一个单独的PC Register，他是一个指针，由Execution Engine读取下一条指令。如果该线程正在执行java方法，则PC Register存储的是 正在被执行的指令的地址，如果是本地方法，PC Register的值没有定义。PC寄存器非常小，只占用一个字宽，可以持有一个returnAdress或者特定平台的一个指针。</p>
+<p><strong>2.4.4.Method Area</strong>在HotSpot JVM的实现中属于非堆区，非堆区包括两部分：Permanet Generation和Code Cache，而Method Area属于Permanert Generation的一部分。Permanent Generation用来存储类信息，比如说：class definitions，structures，methods， field， method (data and code) 和 constants。Code Cache用来存储Compiled Code，即编译好的本地代码，在HotSpot JVM中通过JIT(Just In Time) Compiler生成，JIT是即时编译器，他是为了提高指令的执行效率，把字节码文件编译成本地机器代码，如下图：</p>
+<p>引用一个经典的案例来理解Stack，Heap和Method Area的划分，就是Sring a=”xx”；Stirng b=”xx”，问是否a==b? 首先==符号是用来判断两个对象的引用地址是否相同，而在上面的题目中，a和b按理来说申请的是Stack中不同的地址，但是他们指向Method Area中Runtime Constant Pool的同一个地址，按照网上的解释，在a赋值为“xx”时，会在Runtime Contant Pool中生成一个String Constant，当b也赋值为“xx”时，那么会在常量池中查看是否存在值为“xx”的常量，存在的话，则把b的指针也指向“xx”的地址，而不是新生成一个String Constant。我查阅了网络上大家关于String Constant的存储的说说法，存在略微差别的是，它存储在哪里，有人说Heap中会分配出一个常量池，用来存储常量，所有线程共享它。而有人说常量池是Method Area的一部分，而Method Area属于非堆内存，那怎么能说常量池存在于堆中？</p>
+<p>我认为，其实两种理解都没错。Method Area的确从逻辑上讲可以是Heap的一部分，在某些JVM实现里从堆上开辟一块存储空间来记录常量是符合JVM常量池设计目的的，所以前一种说法没问题。对于后一种说法，HotSpot JVM的实现中的确是把方法区划分为了非堆内存，意思就是它不在堆上。我在HotSpot JVM做了个简单的实验，定义多个常量之后，程序抛出OOM：PermGen Space异常，印证了JVM实现中常量池是在Permanent Space中的说法。但是，我的JDK版本是1.6的。查阅资料，JDK1.7中InternedStrings已经不再存储在PermanentSpace中，而是放到了Heap中；JDK8中PermanentSpace已经被完全移除，InternedStrings也被放到了MetaSpace中（如果出现内存溢出，会报OOM:MetaSpace，这里有个关于两者性能对比的文章：<a href="http://blog.csdn.net/zhyhang/article/details/17246223" target="_blank" rel="external">http://blog.csdn.net/zhyhang/article/details/17246223</a>）。所以，仁者见仁，智者见智，一个馒头足以引发血案，就算是同一个商家的JVM，毕竟JDK版本在更新，或许正如StackOverFlow上大神们所说，对于理解JVM Runtime Data Area这一部分的划分逻辑，还是去看对应版本的JDK源码比较靠谱，或者是参考不同的版本JVM Specification（<a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="external">http://docs.oracle.com/javase/specs/</a>）。</p>
+<p><strong>2.4.5.Native Method Stack</strong>是供本地方法（非java）使用的栈。每个线程持有一个Native Method Stack。</p>
+<p><strong>3.JVM的运行原理简介</strong></p>
+<p>Java程序被javac工具编译为.class字节码文件之后，我们执行java命令，该class文件便被JVM的Class Loader加载，可以看出JVM的启动是通过JAVA Path下的java.exe或者java进行的。JVM的初始化、运行到结束大概包括这么几步：</p>
+<p>调用操作系统API判断系统的CPU架构，根据对应CPU类型寻找位于JRE目录下的/lib/jvm.cfg文件，然后通过该配置文件找到对应的jvm.dll文件（如果我们参数中有-server或者-client， 则加载对应参数所指定的jvm.dll，启动指定类型的JVM），初始化jvm.dll并且挂接到JNIENV结构的实例上，之后就可以通过JNIENV实例装载并且处理class文件了。class文件是字节码文件，它按照JVM的规范，定义了变量，方法等的详细信息，JVM管理并且分配对应的内存来执行程序，同时管理垃圾回收。直到程序结束，一种情况是JVM的所有非守护线程停止，一种情况是程序调用System.exit()，JVM的生命周期也结束。</p>
+<p>关于JVM如何管理分配内存，我通过class文件和垃圾回收两部分进行了学习。</p>
+<p><strong>二、JVM的内存管理和垃圾回收</strong></p>
+<p>JVM中的内存管理主要是指JVM对于Heap的管理，这是因为Stack，PC Register和Native Method Stack都是和线程一样的生命周期，在线程结束时自然可以被再次使用。虽然说，Stack的管理不是重点，但是也不是完全不讲究的。</p>
+<p><strong>1.栈的管理</strong></p>
+<p>JVM允许栈的大小是固定的或者是动态变化的。在Oracle的关于参数设置的官方文档中有关于Stack的设置（<a href="http://docs.oracle.com/cd/E13150_01/jrockit_jvm/jrockit/jrdocs/refman/optionX.html#wp1024112" target="_blank" rel="external">http://docs.oracle.com/cd/E13150_01/jrockit_jvm/jrockit/jrdocs/refman/optionX.html#wp1024112</a>），是通过-Xss来设置其大小。关于Stack的默认大小对于不同机器有不同的大小，并且不同厂商或者版本号的jvm的实现其大小也不同，如下表是HotSpot的默认大小：</p>
+<table>
+<thead>
+<tr>
+<th><strong>Platform</strong></th>
+<th><strong>Default</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows IA32</td>
+<td>64 KB</td>
+</tr>
+<tr>
+<td>Linux IA32</td>
+<td>128 KB</td>
+</tr>
+<tr>
+<td>Windows x86_64</td>
+<td>128 KB</td>
+</tr>
+<tr>
+<td>Linux x86_64</td>
+<td>256 KB</td>
+</tr>
+<tr>
+<td>Windows IA64</td>
+<td>320 KB</td>
+</tr>
+<tr>
+<td>Linux IA64</td>
+<td>1024 KB (1 MB)</td>
+</tr>
+<tr>
+<td>Solaris Sparc</td>
+<td>512 KB</td>
+</tr>
+</tbody>
+</table>
+<p>我们一般通过减少常量，参数的个数来减少栈的增长，在程序设计时，我们把一些常量定义到一个对象中，然后来引用他们可以体现这一点。另外，少用递归调用也可以减少栈的占用。</p>
+<p>栈是不需要垃圾回收的，尽管说垃圾回收是java内存管理的一个很热的话题，栈中的对象如果用垃圾回收的观点来看，他永远是live状态，是可以reachable的，所以也不需要回收，他占有的空间随着Thread的结束而释放。（参考自：<a href="http://stackoverflow.com/questions/20030120/java-default-stack-size" target="_blank" rel="external">http://stackoverflow.com/questions/20030120/java-default-stack-size</a>）</p>
+<p>关于栈一般会发生以下两种异常：</p>
+<p>1.当线程中的计算所需要的栈超过所允许大小时，会抛出StackOverflowError。</p>
+<p>2.当Java栈试图扩展时，没有足够的存储器来实现扩展，JVM会报OutOfMemoryError。</p>
+<p>我针对栈进行了实验，由于递归的调用可以致使栈的引用增加，导致溢出，所以设计代码如下：</p>
+<p>我的机器是x86_64系统，所以Stack的默认大小是128KB，上述程序在运行时会报错：</p>
+<p>而当我在eclipse中调整了-Xss参数到3M之后，该异常消失。</p>
+<p>。</p>
+<p>另外栈上有一点得注意的是，对于本地代码调用，可能会在栈中申请内存，比如C调用malloc()，而这种情况下，GC是管不着的，需要我们在程序中，手动管理栈内存，使用free()方法释放内存。</p>
+<p><strong>2.堆的管理</strong></p>
+<p>堆的管理要比栈管理复杂的多，我通过堆的各部分的作用、设置，以及各部分可能发生的异常，以及如何避免各部分异常进行了学习。</p>
+<p>上图是 Heap和PermanentSapce的组合图，其中Eden区里面存着是新生的对象，From Space和To Space中存放着是每次垃圾回收后存活下来的对象 ，所以每次垃圾回收后，Eden区会被清空。存活下来的对象先是放到From Space，当From Space满了之后移动到To Space。当To Space满了之后移动到Old Space。Survivor的两个区是对称的，没先后关系，所以同一个区中可能同时存在从Eden复制过来 对象，和从前一个Survivor复制过来的对象，而复制到年老区的只有从第一个Survivor复制过来的对象。而且，Survivor区总有一个是空的。同时，根据程序需要，Survivor区是可以配置为多个的（多于两个），这样可以增加对象在年轻代中的存在时间，减少被放到年老代的可能。</p>
+<p>Old Space中则存放生命周期比较长的对象，而且有些比较大的新生对象也放在Old Space中。</p>
+<p>堆的大小通过-Xms和-Xmx来指定最小值和最大值，通过-Xmn来指定Young Generation的大小（一些老版本也用-XX:NewSize指定）， 即上图中的Eden加FromSpace和ToSpace的总大小。然后通过-XX:NewRatio来指定Eden区的大小，在Xms和Xmx相等的情况下，该参数不需要设置。通过-XX：SurvivorRatio来设置Eden和一个Survivor区的比值。（参考自博文：<a href="http://www.cnblogs.com/redcreen/archive/2011/05/04/2037057.html" target="_blank" rel="external">http://www.cnblogs.com/redcreen/archive/2011/05/04/2037057.html</a>）</p>
+<p>堆异常分为两种，一种是Out of Memory(OOM)，一种是Memory Leak(ML)。Memory Leak最终将导致OOM。实际应用中表现为：从Console看，内存监控曲线一直在顶部，程序响应慢，从线程看，大部分的线程在进行GC，占用比较多的CPU，最终程序异常终止，报OOM。OOM发生的时间不定，有短的一个小时，有长的10天一个月的。关于异常的处理，确定OOM/ML异常后，一定要注意保护现场，可以dump heap，如果没有现场则开启GCFlag收集垃圾回收日志，然后进行分析，确定问题所在。如果问题不是ML的话，一般通过增加Heap，增加物理内存来解决问题，是的话，就修改程序逻辑。</p>
+<p><strong>3.垃圾回收</strong></p>
+<p>JVM中会在以下情况触发回收：对象没有被引用，作用域发生未捕捉异常，程序正常执行完毕，程序执行了System.exit()，程序发生意外终止。</p>
+<p>JVM中标记垃圾使用的算法是一种根搜索算法。简单的说，就是从一个叫GC Roots的对象开始，向下搜索，如果一个对象不能达到GC Roots对象的时候，说明它可以被回收了。这种算法比一种叫做引用计数法的垃圾标记算法要好，因为它避免了当两个对象啊互相引用时无法被回收的现象。</p>
+<p>JVM中对于被标记为垃圾的对象进行回收时又分为了一下3种算法：</p>
+<p><strong>1.标记清除算法</strong>，该算法是从根集合扫描整个空间，标记存活的对象，然后在扫描整个空间对没有被标记的对象进行回收，这种算法在存活对象较多时比较高效，但会产生内存碎片。</p>
+<p><strong>2.复制算法</strong>，该算法是从根集合扫描，并将存活的对象复制到新的空间，这种算法在存活对象少时比较高效。</p>
+<p><strong>3.标记整理算法</strong>，标记整理算法和标记清除算法一样都会扫描并标记存活对象，在回收未标记对象的同时会整理被标记的对象，解决了内存碎片的问题。</p>
+<p>JVM中，不同的 内存区域作用和性质不一样，使用的垃圾回收算法也不一样，所以JVM中又定义了几种不同的垃圾回收器（图中连线代表两个回收器可以同时使用）：</p>
+<p><strong>1.Serial GC</strong>。从名字上看，串行GC意味着是一种单线程的，所以它要求收集的时候所有的线程暂停。这对于高性能的应用是不合理的，所以串行GC一般用于Client模式的JVM中。</p>
+<p><strong>2.ParNew GC</strong>。是在SerialGC的基础上，增加了多线程机制。但是如果机器是单CPU的，这种收集器是比SerialGC效率低的。</p>
+<p><strong>3.Parrallel Scavenge GC</strong>。这种收集器又叫吞吐量优先收集器，而吞吐量=程序运行时间/(JVM执行回收的时间+程序运行时间),假设程序运行了100分钟，JVM的垃圾回收占用1分钟，那么吞吐量就是99%。Parallel Scavenge GC由于可以提供比较不错的吞吐量，所以被作为了server模式JVM的默认配置。</p>
+<p><strong>4.ParallelOld</strong>是老生代并行收集器的一种，使用了标记整理算法，是JDK1.6中引进的，在之前老生代只能使用串行回收收集器。</p>
+<p><strong>5.Serial Old</strong>是老生代client模式下的默认收集器，单线程执行，同时也作为CMS收集器失败后的备用收集器。</p>
+<p><strong>6.CMS</strong>又称响应时间优先回收器，使用标记清除算法。他的回收线程数为(CPU核心数+3)/4，所以当CPU核心数为2时比较高效些。CMS分为4个过程：初始标记、并发标记、重新标记、并发清除。</p>
+<p><strong>7.GarbageFirst（G1）</strong>。比较特殊的是G1回收器既可以回收Young Generation，也可以回收Tenured Generation。它是在JDK6的某个版本中才引入的，性能比较高，同时注意了吞吐量和响应时间。</p>
+<p>对于垃圾收集器的组合使用可以通过下表中的参数指定：</p>
+<p>（MarsYOungNote:图中第三个写错了。UseConeMarkSweepGC）</p>
+<p>默认的GC种类可以通过jvm.cfg或者通过jmap dump出heap来查看，一般我们通过jstat -gcutil [pid] 1000可以查看每秒gc的大体情况，或者可以在启动参数中加入：-verbose:gc -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -Xloggc:./gc.log来记录GC日志。</p>
+<p>GC中有一种情况叫做Full GC，以下几种情况会触发Full GC也叫MajorGC：</p>
+<p>1.Tenured Space空间不足以创建打的对象或者数组，会执行FullGC，并且当FullGC之后空间如果还不够，那么会OOM:java heap space。</p>
+<p>2.Permanet Generation的大小不足，存放了太多的类信息，在非CMS情况下回触发FullGC。如果之后空间还不够，会OOM:PermGen space。</p>
+<p>3.CMS GC时出现<strong>promotion failed和concurrent mode failure</strong>时，也会触发FullGC。promotion failed是在进行Minor GC时，survivor space放不下、对象只能放入旧生代，而此时旧生代也放不下造成的；concurrent mode failure是在执行CMS GC的过程中同时有对象要放入旧生代，而此时旧生代空间不足造成的。</p>
+<p>4.判断MinorGC后，要晋升到TenuredSpace的对象大小大于TenuredSpace的大小，也会触发FullGC。</p>
+<p>可以看出，当FullGC频繁发生时，一定是内存出问题了。</p>
+<p><strong>三、JVM的数据格式规范和Class文件</strong></p>
+<p><strong>1.数据类型规范</strong></p>
+<p>依据冯诺依曼的计算机理论，计算机最后处理的都是二进制的数，而JVM是怎么把java文件最后转化成了各个平台都可以识别的二进制呢？JVM自己定义了一个抽象的存储数据单位，叫做Word。一个字足够大以持有byte、char、short、int、float、reference或者returnAdress的一个值，两个字则足够持有更大的类型long、double。它通常是主机平台一个指针的大小，如32位的平台上，字是32位。</p>
+<p>同时JVM中定义了它所支持的基本数据类型，包括两部分：数值类型和returnAddress类型。数值类型分为整形和浮点型。</p>
+<p>整形：</p>
+<table>
+<thead>
+<tr>
+<th>byte</th>
+<th>值是8位的有符号二进制补码整数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>short</td>
+<td>值是16位的有符号二进制补码整数</td>
+</tr>
+<tr>
+<td>int</td>
+<td>值是32位的有符号二进制补码整数</td>
+</tr>
+<tr>
+<td>long</td>
+<td>值是64位的有符号二进制补码整数</td>
+</tr>
+<tr>
+<td>char</td>
+<td>值是表示Unicode字符的16位无符号整数</td>
+</tr>
+</tbody>
+</table>
+<p>浮点：</p>
+<table>
+<thead>
+<tr>
+<th>float</th>
+<th>值是32位IEEE754浮点数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>double</td>
+<td>值是64位IEEE754浮点数</td>
+</tr>
+</tbody>
+</table>
+<p>returnAddress类型的值是Java虚拟机指令的操作码的指针。</p>
+<p>对比java的基本数据类型，jvm的规范中没有boolean类型。这是因为jvm中堆boolean的操作是通过int类型来进行处理的，而boolean数组则是通过byte数组来进行处理。</p>
+<p>至于String，我们知道它存储在常量池中，但他不是基本数据类型，之所以可以存在常量池中，是因为这是JVM的一种规定。如果查看String源码，我们就会发现，String其实就是一个基于基本数据类型char的数组。如图：</p>
+<p>。</p>
+<p><strong>2.字节码文件</strong></p>
+<p>通过字节码文件的格式我们可以看出jvm是如何规范数据类型的。下面是ClassFile的结构：</p>
+<p>关于各个字段的定义（参考自JVM Specification 和 博文：<a href="http://www.cnblogs.com/zhuYears/archive/2012/02/07/2340347.html" target="_blank" rel="external">http://www.cnblogs.com/zhuYears/archive/2012/02/07/2340347.html</a>），</p>
+<p><strong>magic：</strong></p>
+<p>魔数，魔数的唯一作用是确定这个文件是否为一个能被虚拟机所接受的Class文件。魔数值固定为0xCAFEBABE，不会改变。</p>
+<p><strong>minor_version、major_version：</strong></p>
+<p>分别为Class文件的副版本和主版本。它们共同构成了Class文件的格式版本号。不同版本的虚拟机实现支持的Class文件版本号也相应不同，高版本号的虚拟机可以支持低版本的Class文件，反之则不成立。</p>
+<p><strong>constant_pool_count：</strong></p>
+<p>常量池计数器，constant_pool_count的值等于constant_pool表中的成员数加1。</p>
+<p><strong>constant_pool[]：</strong></p>
+<p>常量池，constant_pool是一种表结构，它包含Class文件结构及其子结构中引用的所有字符串常量、类或接口名、字段名和其它常量。常量池不同于其他，索引从1开始到constant_pool_count -1。</p>
+<p><strong>access_flags：</strong></p>
+<p>访问标志，access_flags是一种掩码标志，用于表示某个类或者接口的访问权限及基础属性。access_flags的取值范围和相应含义见下表：</p>
+<p><strong>this_class：</strong></p>
+<p>类索引，this_class的值必须是对constant_pool表中项目的一个有效索引值。constant_pool表在这个索引处的项必须为CONSTANT_Class_info类型常量，表示这个Class文件所定义的类或接口。</p>
+<p><strong>super_class：</strong></p>
+<p>父类索引，对于类来说，super_class的值必须为0或者是对constant_pool表中项目的一个有效索引值。如果它的值不为0，那constant_pool表在这个索引处的项必须为CONSTANT_Class_info类型常量，表示这个Class文件所定义的类的直接父类。当然，如果某个类super_class的值是0，那么它必定是java.lang.Object类，因为只有它是没有父类的。</p>
+<p><strong>interfaces_count：</strong></p>
+<p>接口计数器，interfaces_count的值表示当前类或接口的直接父接口数量。</p>
+<p><strong>interfaces[]：</strong></p>
+<p>接口表，interfaces[]数组中的每个成员的值必须是一个对constant_pool表中项目的一个有效索引值，它的长度为interfaces_count。每个成员interfaces[i] 必须为CONSTANT_Class_info类型常量。</p>
+<p><strong>fields_count：</strong></p>
+<p>字段计数器，fields_count的值表示当前Class文件fields[]数组的成员个数。</p>
+<p><strong>fields[]：</strong></p>
+<p>字段表，fields[]数组中的每个成员都必须是一个fields_info结构的数据项，用于表示当前类或接口中某个字段的完整描述。</p>
+<p><strong>methods_count：</strong></p>
+<p>方法计数器，methods_count的值表示当前Class文件methods[]数组的成员个数。</p>
+<p><strong>methods[]：</strong></p>
+<p>方法表，methods[]数组中的每个成员都必须是一个method_info结构的数据项，用于表示当前类或接口中某个方法的完整描述。</p>
+<p><strong>attributes_count：</strong></p>
+<p>属性计数器，attributes_count的值表示当前Class文件attributes表的成员个数。</p>
+<p><strong>attributes[]：</strong></p>
+<p>属性表，attributes表的每个项的值必须是attribute_info结构。</p>
+<p><strong>四、一个java类的实例分析</strong></p>
+<p>为了了解JVM的数据类型规范和内存分配的大体情况，我新建了MemeryTest.java：</p>
+<p>编译为MemeryTest.class后，通过WinHex查看该文件，对应字节码文件各个部分不同的定义，我了解了下面16进制数值的具体含义，尽管不清楚ClassLoader的具体实现逻辑，但是可以想象这样一个严谨格式的文件给JVM对于内存管理和执行程序提供了多大的帮助。</p>
+<p>运行程序后，我在windows资源管理器中找到对应的进程ID.</p>
+<p>并且在控制台通过jmap -heap 10016查看堆内存的使用情况：</p>
+<p>输出结果中表示当前java进程启动的JVM是通过4个线程进行Parallel GC，堆的最小FreeRatio是40%，堆的最大FreeRatio是70%，堆的大小是4090M，新对象占用1.5M，Young Generation可以扩展到最大是1363M， Tenured Generation的大小是254.5M，以及NewRadio和SurvivorRadio中，下面更是具体给出了目前Young Generation中1.5M的划分情况，Eden占用1.0M，使用了5.4%，Space占了0.5M,使用了93%，To Space占了0.5M,使用了0%。</p>
+<p>下面我们通过jmap dump把heap的内容打印打文件中：</p>
+<p>使用Eclipse的MAT插件打开对应的文件：</p>
+<p>选择第一项内存泄露分析报告打开test.bin文件，展示出来的是MAT关于内存可能泄露的分析。</p>
+<p>从结果来看，有3个地方可能存在内存泄露，他们占据了Heap的22.10%，13.78%，14.69%，如果内存泄露，这里一般会有一个比值非常高的对象。打开第一个Probem Suspect，结果如下：</p>
+<p>ShallowHeap是对象本身占用的堆大小，不包含引用，RetainedHeap是对象所持有的Shallowheap的大小，包括自己ShallowHeap和可以引用的对象的ShallowHeap。垃圾回收的时候，如果一个对象不再引用后被回收，那么他的RetainedHeap是能回收的内存总和。通过上图可以看出程序中并没有什么内存泄露，可以放心了。如果还有什么不太确定的对象，则可以通过多个时间点的HeapDumpFile来研究某个对象的变化情况。</p>
+<p><strong>五、小结</strong></p>
+<p>以上便是我最近几天对JVM相关资料的整理，主要围绕他的基本组成和运行原理等，内存管理，基本数据类型和字节码文件。JVM是一个非常优秀的JAVA程序，也是个不错的规范，这次整理学习让我对他有了更加清晰的认知，对Java语言的理解也更加加深。</p>
+<p>这次学习过程，坚定了我对程序员发展的认知。知识一定要精，下一步我将边工作边仔细阅读Oracle的3个版本的《JVM Specification》，并且结合实践让自己的Java基础素养更上一个层次。(<a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="external">http://docs.oracle.com/javase/specs/</a>)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/how-to-support-full-unicode-in-mysql-databases/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/02/how-to-support-full-unicode-in-mysql-databases/" itemprop="url">
+                  How to support full Unicode in MySQL databases
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
+                2015-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####Alternative title: The things we do to store U+1F4A9 PILE OF POO (💩) correctly.####</p>
+<p>Are you using MySQL’s utf8 charset in your databases? In this write-up I’ll explain why you should switch to utf8mb4 instead, and how to do it.</p>
+<p>##UTF-8</p>
+<p>The UTF-8 encoding can represent every symbol in the Unicode character set, which ranges from U+000000 to U+10FFFF. That’s 1,114,112 possible symbols. (Not all of these Unicode code points have been assigned characters yet, but that doesn’t stop UTF-8 from being able to encode them.)</p>
+<p>UTF-8 is a variable-width encoding; it encodes each symbol using one to four 8-bit bytes. Symbols with lower numerical code point values are encoded using fewer bytes. This way, UTF-8 is optimized for the common case where ASCII characters and other BMP symbols (whose code points range from U+000000 to U+00FFFF) are used — while still allowing astral symbols (whose code points range from U+010000 to U+10FFFF) to be stored.</p>
+<p>##MySQL’s utf8<br>For a long time, I was using MySQL’s utf8 charset for databases, tables, and columns, assuming it mapped to the UTF-8 encoding described above. By using utf8, I’d be able to store any symbol I want in my database — or so I thought.</p>
+<p>While writing about JavaScript’s internal character encoding, I noticed that there was no way to insert the U+1D306 TETRAGRAM FOR CENTRE (𝌆) symbol into the MySQL database behind this site. The column I was trying to update had the utf8_unicode_ci collation, and the connection charset was set to utf8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET NAMES utf8; # just to emphasize that the connection charset is set to `utf8`</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; UPDATE database_name.table_name SET column_name = &apos;foo𝌆bar&apos; WHERE id = 9001;</div><div class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</div><div class="line">Rows matched: 1  Changed: 1  Warnings: 1</div><div class="line"></div><div class="line">mysql&gt; SELECT column_name FROM database_name.table_name WHERE id = 9001;</div><div class="line">+-------------+</div><div class="line">| column_name |</div><div class="line">+-------------+</div><div class="line">| foo         |</div><div class="line">+-------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>The content got truncated at the first astral Unicode symbol, in this case 𝌆 — so, attempting to insert foo𝌆bar actually inserted foo instead, resulting in data loss (and possibly introducing security risks). MySQL returned a warning message, too:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW WARNINGS;</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Level   | Code | Message                                                                      |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Warning | 1366 | Incorrect string value: &apos;\xF0\x9D\x8C\x86&apos; for column &apos;column_name&apos; at row 1 |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>Turns out MySQL’s utf8 charset only partially implements proper UTF-8 encoding. It can only store UTF-8-encoded symbols that consist of one to three bytes; encoded symbols that take up four bytes aren’t supported.</p>
+<p>Since astral symbols (whose code points range from U+010000 to U+10FFFF) each consist of four bytes in UTF-8, you cannot store them using MySQL’s utf8 implementation.</p>
+<p>This doesn’t just affect the 𝌆 character, but more important symbols like U+01F4A9 PILE OF POO (💩) as well. In total, that’s 1,048,575 possible code points you can’t use. In fact, MySQL’s utf8 only allows you to store 5.88% ((0x00FFFF + 1) / (0x10FFFF + 1)) of all possible Unicode code points. Proper UTF-8 can encode 100% of all Unicode code points.</p>
+<p>TL;DR MySQL’s utf8 encoding is awkwardly named, as it’s different from proper UTF-8 encoding. It doesn’t offer full Unicode support.</p>
+<p>##MySQL’s utf8mb4<br>Luckily, MySQL 5.5.3 (released in early 2010) introduced a new encoding called utf8mb4 which maps to proper UTF-8 and thus fully supports Unicode, including astral symbols.</p>
+<p>##Switching from MySQL’s utf8 to utf8mb4</p>
+<p>###Step 1: Create a backup</p>
+<p>Create a backup of all the databases on the server you want to upgrade. Safety first!</p>
+<p>###Step 2: Upgrade the MySQL server</p>
+<p>Upgrade the MySQL server to v5.5.3+, or ask your server administrator to do it for you.</p>
+<p>###Step 3: Modify databases, tables, and columns</p>
+<p>Change the character set and collation properties of the databases, tables, and columns to use utf8mb4 instead of utf8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">*For each database:*</div><div class="line">ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;</div><div class="line">*For each table:*</div><div class="line">ALTER TABLE table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*For each column:*</div><div class="line">ALTER TABLE table_name CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*(Don’t blindly copy-paste this! The exact statement depends on the column type, maximum length, and other properties. The above line is just an example for a `VARCHAR` column.)*</div></pre></td></tr></table></figure>
+<p>Since utf8mb4 is fully backwards compatible with utf8, no mojibake or other forms of data loss should occur. (But you have a backup, right?)</p>
+<p>###Step 4: Check the maximum length of columns and index keys</p>
+<p>This is probably the most tedious part of the whole upgrading process.</p>
+<p>When converting from utf8 to utf8mb4, the maximum length of a column or index key is unchanged in terms of bytes. Therefore, it is smaller in terms of characters, because the maximum length of a character is now four bytes instead of three.</p>
+<p>For example, a TINYTEXT column can hold up to 255 bytes, which correlates to 85 three-byte or 63 four-byte characters. Let’s say you have a TINYTEXT column that uses utf8 but must be able to contain more than 63 characters. Given this requirement, you can’t convert this column to utf8mb4 unless you also change the data type to a longer type such as TEXT — because if you’d try to fill it with four-byte characters, you’d only be able to enter 63 characters, but not more.</p>
+<p>The same goes for index keys. The InnoDB storage engine has a maximum index length of 767 bytes, so for utf8 or utf8mb4 columns, you can index a maximum of 255 or 191 characters, respectively. If you currently have utf8 columns with indexes longer than 191 characters, you will need to index a smaller number of characters when using utf8mb4. (Because of this, I had to change some indexed VARCHAR(255) columns to VARCHAR(191).)</p>
+<p>Section 10.1.11 of the MySQL 5.5 Reference Manual has some more information on this.</p>
+<p>###Step 5: Modify connection, client, and server character sets</p>
+<p>In your application code, set the connection character set to utf8mb4. This can be done by simply replacing any variants of SET NAMES utf8 with SET NAMES utf8mb4. If your old SET NAMES statement specified the collation, make sure to change that as well, e.g. SET NAMES utf8 COLLATE utf8_unicode_ci becomes SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci.</p>
+<p>Make sure to set the client and server character set as well. I have the following in my MySQL configuration file (/etc/my.cnf):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysql]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">character-set-client-handshake = FALSE</div><div class="line">character-set-server = utf8mb4</div><div class="line">collation-server = utf8mb4_unicode_ci</div></pre></td></tr></table></figure>
+<p>You can easily confirm these settings work correctly:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; OR Variable_name LIKE &apos;collation%&apos;;</div><div class="line">+--------------------------+--------------------+</div><div class="line">| Variable_name            | Value              |</div><div class="line">+--------------------------+--------------------+</div><div class="line">| character_set_client     | utf8mb4            |</div><div class="line">| character_set_connection | utf8mb4            |</div><div class="line">| character_set_database   | utf8mb4            |</div><div class="line">| character_set_filesystem | binary             |</div><div class="line">| character_set_results    | utf8mb4            |</div><div class="line">| character_set_server     | utf8mb4            |</div><div class="line">| character_set_system     | utf8               |</div><div class="line">| collation_connection     | utf8mb4_unicode_ci |</div><div class="line">| collation_database       | utf8mb4_unicode_ci |</div><div class="line">| collation_server         | utf8mb4_unicode_ci |</div><div class="line">+--------------------------+--------------------+</div><div class="line">10 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>As you can see, all the relevant options are set to utf8mb4, except for character_set_filesystem which should be binary unless you’re on a file system that supports multi-byte UTF-8-encoded characters in file names, and character_set_system which is always utf8 and can’t be overridden.</p>
+<p><em>Note: The default character set and collation can be configured at some other levels as well.</em></p>
+<p>###Step 6: Repair and optimize all tables</p>
+<p>After upgrading the MySQL server and making the necessary changes explained above, make sure to repair and optimize all databases and tables. I didn’t do this right away after upgrading (I didn’t think it was necessary, as everything seemed to work fine at first glance), and ran into some weird bugs where UPDATE statements didn’t have any effect, even though no errors were thrown.</p>
+<p>You could run the following MySQL queries for each table you want to repair and optimize:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">*For each table*</div><div class="line">REPAIR TABLE table_name;</div><div class="line">OPTIMIZE TABLE table_name;</div></pre></td></tr></table></figure>
+<p>Luckily, this can easily be done in one go using the command-line mysqlcheck utility:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysqlcheck -u root -p --auto-repair --optimize --all-databases</div></pre></td></tr></table></figure>
+<p>This will prompt for the root user’s password, after which all tables in all databases will be repaired and optimized.</p>
+<p>##Summary<br>Never use utf8 in MySQL — always use utf8mb4 instead. Updating your databases and code might take some time, but it’s definitely worth the effort. Why would you arbitrarily limit the set of symbols that can be used in your database? Why would you lose data every time a user enters an astral symbol as part of a comment or message or whatever it is you store in your database? There’s no reason not to strive for full Unicode support everywhere. Do the right thing, and use utf8mb4. 🍻</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/18/ios-developer-infos-coll/" itemprop="url">
+                  iOS developer infos coll
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
+                2015-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> </p><h2 id="介绍">介绍</h2><p>工欲善其事，必先利其器。这篇博文，主要是总结自己在开发iOS过程中使用到的一些可以提高效率的方法和工具。</p><p></p>
+<p></p><h3 id="开发工具，当然还是首选Xcode。">开发工具，当然还是首选Xcode。</h3><ul><p></p>
+<p><li><a href="http://www.cocoachina.com/ios/20141224/10752.html" target="_blank" rel="external">常用快捷键</a></li><br></p></ul><p></p>
+<p></p><h3 id="木说我不告诉你常用片段">木说我不告诉你常用片段</h3><ul><p></p>
+<p><li><a href="https://github.com/Xcode-Snippets/Objective-C" target="_blank" rel="external">Objective-C常用片段</a></li></p>
+<p><li><a href="https://github.com/burczyk/XcodeSwiftSnippets" target="_blank" rel="external">Swift常用片段</a></li><br></p></ul><p></p>
+<p></p><h3 id="我自己常用的Xcode插件">我自己常用的Xcode插件</h3><ul><p></p>
+<p><li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">cocoapods管理-cocoapods-xcode-plugin</a></li></p>
+<p><li><a href="https://github.com/supermarin/Alcatraz" target="_blank" rel="external">Xcode插件管理-Alcatraz</a></li></p>
+<p><li><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="external">选择图片时的智能提示-KSImageNamed-Xcode</a></li></p>
+<p><li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">UIColor可以弹出Xcode的颜色选择框-ColorSense-for-Xcode</a></li></p>
+<p><li><a href="https://github.com/markohlebar/Peckham" target="_blank" rel="external">快捷 add #import-Peckham</a></li></p>
+<p><li><a href="https://github.com/stefanceriu/SCXcodeMiniMap" target="_blank" rel="external">Xcode迷你小地图-SCXcodeMiniMap</a></li></p>
+<p><li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">文档注释-VVDocumenter-Xcode</a></li></p>
+<p><li><a href="https://github.com/trawor/XToDo" target="_blank" rel="external">快捷查看ToDo-XToDo</a> </li><br></p></ul><p></p>
+<p></p><p>如果Xcode插件不能满足自己的需求，怎么办？请看<a href="http://zixun.github.io/blog/2015/05/04/xcode6cha-jian-kai-fa-ru-men/" target="_blank" rel="external">自己动手丰衣足食-Xcode插件开发</a></p><p></p>
+<p></p><p>另外推荐学习一下LLDB调试</p><p></p>
+<ul><br><li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="external">LLDB调试命令初探</a></li><br><li><a href="http://objccn.io/issue-19-2/" target="_blank" rel="external">与调试器共舞 - LLDB 的华尔兹</a></li><br><li><a href="https://github.com/facebook/chisel" target="_blank" rel="external">LLDB命令库扩展</a></li><br></ul><br><h3 id="我自己常用的网络数据相关工具">我自己常用的网络数据相关工具</h3><ul><br><li><a href="https://www.sprintapi.com/dhcs.html" target="_blank" rel="external">DHC</a></li><br><li><a href="https://www.getpostman.com/" target="_blank" rel="external">POSTMAN</a></li><br><li><a href="http://www.runoob.com/tool/json/index.html" target="_blank" rel="external">JSON格式化工具</a></li><br><li><a href="https://chrome.google.com/webstore/detail/xml-tree/gbammbheopgpmaagmckhpjbfgdfkpadb" target="_blank" rel="external">XML TREE</a></li><br></ul><br><h3 id="我自己常用的其他工具">我自己常用的其他工具</h3><p>要是设计师太较真，那么测量像素的工具是你的好帮手</p><br><ul><br><li><a href="http://www.ricciadams.com/projects/pixel-winch" target="_blank" rel="external">Pixel Winch</a></li><br></ul><br><p>收集亦是灵感的来源，36¥</p><br><ul><br><li><a href="http://zrey.com/app/pincap" target="_blank" rel="external">PinCap</a></li><br></ul><br><p>模拟器文件目录太深，怎么办？用SimPholders2吧</p><br><ul><br><li><a href="http://simpholders.com/" target="_blank" rel="external">SimPholders2</a></li><br></ul><br><p>png图片可以压缩质量</p><br><ul><br><li><a href="https://tinypng.com/" target="_blank" rel="external">tinypng</a></li><br></ul><br><p>设计工具，（做为一个不懂设计的人用这个也很容易）198¥</p><br><ul><br><li><a href="http://www.pixelmator.com/support/" target="_blank" rel="external">Pixelmator</a></li><br></ul><br><p>自动生成icon，只需要上传一张1024*1024图片，在线和Mac客户端要求一样</p><br><ul><br><li><a href="http://makeappicon.com/" target="_blank" rel="external">makeappicon在线的</a></li><br><li><a href="http://wearemothership.com/" target="_blank" rel="external">Mac 客户端的</a></li><br></ul><br><p>搜索免费的图标icon，而且是全套哦，亲（iOS Android Windows）</p><br><ul><br><li><a href="https://icons8.com/" target="_blank" rel="external">icons8</a></li><br></ul><br><p>搜索素材，而且已经署名了版权免费，审核时再也不怕因为版权问题被拒了</p><br><ul><br><li><a href="https://pixabay.com/" target="_blank" rel="external">pixabay</a></li><br></ul><br><p>提交AppStore的截图工具（4s-6p全套）</p><br><ul><br><li><a href="https://appscreens.io/" target="_blank" rel="external">appscreens</a></li><br></ul><br><p>把用户提交到的评论发送到邮件，及时看见反馈</p><br><ul><br><li><a href="https://launchkit.io/reviews/" target="_blank" rel="external">launchkit</a></li><br></ul><br><p>高效的利用Github的star来管理比较好的开源项目，建议还是可以入手的68¥</p><br><ul><br><li><a href="http://www.ohmystarapp.com/" target="_blank" rel="external">ohmystar</a></li><br></ul><br><p>另外也可以利用Github Search</p><br><ul><br><li><a href="https://github.com/search/advanced" target="_blank" rel="external">advanced</a></li><br></ul><br><h3 id="开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来">开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来</h3><ul><br><li><a href="https://github.com/iamdaiyuan/ios_top_1000" target="_blank" rel="external">感觉真的史上最全的了 1000+ 大部分是Objective-C</a> </li><br><li><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">Swift比较全的开源项目</a></li><br></ul><br><h3 id="绝对没给VPN打广告，代理不得不用">绝对没给VPN打广告，代理不得不用</h3><p>我自己用云梯，感觉还可以—<a href="https://www.cloudtizi.com/" target="_blank" rel="external">云梯</a></p><br><h3 id="感觉还可以但没舍得买的工具，真的真的好贵">感觉还可以但没舍得买的工具，真的真的好贵</h3><ul><br><li><a href="http://www.coreanimator.com/#keyframing" target="_blank" rel="external">CoreAnimator</a></li><br><li><a href="http://www.quartzcodeapp.com/" target="_blank" rel="external">QuartzCode</a></li><br></ul>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/some-blogs-i-see/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/18/some-blogs-i-see/" itemprop="url">
+                  常刷的博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
+                2015-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/常用/" itemprop="url" rel="index">
+                    <span itemprop="name">常用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>算法</p>
+<p><a href="http://x-wei.github.io/" target="_blank" rel="external">http://x-wei.github.io/</a></p>
+<p><a href="http://wangkuiwu.github.io/" target="_blank" rel="external">http://wangkuiwu.github.io/</a></p>
+</li>
+<li><p>基础</p>
+<p>  <a href="http://www.cnblogs.com/LeftNotEasy/" target="_blank" rel="external">LeftNotEasy</a></p>
+<p>  <a href="http://www.raychase.net/" target="_blank" rel="external">四火的唠叨</a></p>
+<p>  <a href="http://redis.cn/" target="_blank" rel="external">redisCN</a></p>
+<p>  <a href="http://redis.io/topics/introduction" target="_blank" rel="external">redis</a></p>
+<p>  <a href="http://www.the5fire.com" target="_blank" rel="external">the5fire</a></p>
+<p>  <a href="http://golang-china.github.io/gopl-zh/index.html" target="_blank" rel="external">GO</a></p>
+<p>  <a href="http://0xfe.blogspot.com/" target="_blank" rel="external">0xfe</a></p>
+<p>  <a href="http://www.iecc.com/linker/" target="_blank" rel="external">编译器</a></p>
+<p>  <a href="http://www.lurklurk.org/" target="_blank" rel="external">底层大神</a></p>
+<p>  <a href="http://blog.csdn.net/astrotycoon/article/details/8839521" target="_blank" rel="external">Dev OS</a></p>
+<p>  <a href="http://colobu.com/" target="_blank" rel="external">鸟窝</a></p>
+<p>  <a href="http://zhiqiang.org/blog/" target="_blank" rel="external">阅微堂</a></p>
+<p><a href="http://www.cnblogs.com/AnnieKim/" target="_blank" rel="external">AnnieKim</a></p>
+<p><a href="http://mindhacks.cn/" target="_blank" rel="external">刘未鹏</a></p>
+<p><a href="http://www.matrix67.com/blog/" target="_blank" rel="external">matrix67</a></p>
+<p><a href="http://jjyy.guru/" target="_blank" rel="external">jjyy</a></p>
+</li>
+</ul>
+<ul>
+<li><p>也有产品狗</p>
+<p>  <a href="http://laob.me/" target="_blank" rel="external">毕扬</a></p>
+<p>  <a href="https://blog.jamespan.me/" target="_blank" rel="external">https://blog.jamespan.me/</a></p>
+</li>
+<li><p>安全</p>
+<p>  <a href="http://html5sec.org/" target="_blank" rel="external">HTML5 Security Cheatsheet</a></p>
+<p>  <a href="https://s.how/" target="_blank" rel="external">s.how</a></p>
+<p>  <a href="https://blog.wilddog.com/" target="_blank" rel="external">野狗</a></p>
+</li>
+</ul>
+<ul>
+<li><p>Apple</p>
+<p>  <a href="http://www.diguage.com/" target="_blank" rel="external">地瓜哥</a></p>
+<p>  <a href="https://collection.macworks.com.cn/" target="_blank" rel="external">macworks</a></p>
+<p>  <a href="http://www.molotang.com/" target="_blank" rel="external">三石·道</a></p>
+</li>
+<li><p>Linux</p>
+<p>  <a href="http://roclinux.cn/" target="_blank" rel="external">http://roclinux.cn/</a></p>
+<p>  <a href="http://feihu.me/blog/2014/intro-to-vim/" target="_blank" rel="external">http://feihu.me/blog/2014/intro-to-vim/</a></p>
+<p>  <a href="http://cpp.sh" target="_blank" rel="external">cpp.sh</a></p>
+<p>  <a href="http://easwy.com" target="_blank" rel="external">易水</a></p>
+<p>  <a href="http://linux-wiki.cn" target="_blank" rel="external">linux wiki</a></p>
+<p>  <a href="https://blog.linuxeye.com/" target="_blank" rel="external">Linux运维</a></p>
+<p>  <a href="http://nvie.com/" target="_blank" rel="external">nvie</a></p>
+<p>  <a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="external">redis教程</a></p>
+</li>
+</ul>
+<ul>
+<li><p>Java</p>
+<p>  <a href="http://java-performance.com/" target="_blank" rel="external">java-performance</a></p>
+<p>  <a href="http://java-performance.info/" target="_blank" rel="external">java.performance.info</a></p>
+<p>  <a href="http://hellojava.info/" target="_blank" rel="external">hellojava.info</a></p>
+<p>  <a href="http://droidyue.com/" target="_blank" rel="external">技术小黑屋</a></p>
+<p>  <a href="http://blog.jamesdbloom.com/" target="_blank" rel="external">jamesdbloom JVM</a></p>
+<p>  <a href="http://javarevisited.blogspot.com/" target="_blank" rel="external">Java 底层与细节研究</a></p>
+<p>  <a href="http://ifeve.com/" target="_blank" rel="external">并发编程网</a></p>
+<p>  <a href="http://www.bysocket.com/" target="_blank" rel="external">http://www.bysocket.com/</a></p>
+<p>  <a href="http://calvin1978.blogcn.com/" target="_blank" rel="external">http://calvin1978.blogcn.com/</a></p>
+<p>  <a href="http://it.deepinmind.com/index.html" target="_blank" rel="external">http://it.deepinmind.com/index.html</a></p>
+<p>  <a href="http://www.importnew.com/" target="_blank" rel="external">importnew</a></p>
+<p>  <a href="http://kevinwebber.ca/" target="_blank" rel="external">reactor</a></p>
+<p>  <a href="http://www.hollischuang.com/" target="_blank" rel="external">java干货</a></p>
+<p>  <a href="https://www.cs.umd.edu/users/pugh/java/memoryModel/" target="_blank" rel="external">Java Memory Model</a></p>
+<p>  <a href="http://arthinking.github.io/" target="_blank" rel="external">arthinking</a></p>
+</li>
+<li><p>通用</p>
+<p>  <a href="http://toutiao.io/" target="_blank" rel="external">http://toutiao.io/</a></p>
+<p>  <a href="https://encoding.spec.whatwg.org/" target="_blank" rel="external">https://encoding.spec.whatwg.org/</a></p>
+<p>  <a href="http://www.davenkin.me/" target="_blank" rel="external">http://www.davenkin.me/</a></p>
+<p>  <a href="http://blog.2baxb.me/" target="_blank" rel="external">http://blog.2baxb.me/</a></p>
+<p>  <a href="http://www.tanktong.com/" target="_blank" rel="external">http://www.tanktong.com/</a></p>
+<p>  <a href="https://imququ.com/" target="_blank" rel="external">Jerry Qu 专注前端开发</a></p>
+<p>  <a href="http://ffffound.sinaapp.com/" target="_blank" rel="external">狗</a></p>
+<p>  <a href="http://bbear.me/" target="_blank" rel="external">http://bbear.me/</a></p>
+<p>  <a href="http://farseerfc.me/zhs/" target="_blank" rel="external">http://farseerfc.me/zhs/</a></p>
+</li>
+<li><p>知道创宇</p>
+<p>  <a href="http://evilcos.me/" target="_blank" rel="external">http://evilcos.me/</a></p>
+<p>  <a href="http://kcon.knownsec.com/" target="_blank" rel="external">http://kcon.knownsec.com/</a></p>
+<p>  <a href="http://blog.knownsec.com/" target="_blank" rel="external">http://blog.knownsec.com/</a></p>
+</li>
+<li><p>Netty</p>
+<p>  <a href="http://dirlt.com/netty.html" target="_blank" rel="external">http://dirlt.com/netty.html</a></p>
+<p>  <a href="http://www.coderli.com/" target="_blank" rel="external">http://www.coderli.com/</a></p>
+<p>  <a href="http://netty.io/" target="_blank" rel="external">http://netty.io/</a></p>
+<p>  <a href="https://github.com/netty/netty" target="_blank" rel="external">https://github.com/netty/netty</a></p>
+</li>
+<li><p>LOL</p>
+<p>  <a href="http://grrm.livejournal.com/" target="_blank" rel="external">http://grrm.livejournal.com/</a></p>
+</li>
+<li><p>Android</p>
+<p>  <a href="http://android-developers.blogspot.com/" target="_blank" rel="external">android-developer</a></p>
+</li>
+<li><p>PICART</p>
+<p>  <a href="https://unsplash.com/" target="_blank" rel="external">https://unsplash.com/</a></p>
+</li>
+<li><p>Reading</p>
+<p>  <a href="http://asoiaf.huiji.wiki/" target="_blank" rel="external">冰与火之歌中文wiki</a></p>
+<p>  <a href="http://oldblog.antirez.com/" target="_blank" rel="external">http://oldblog.antirez.com/</a></p>
+<p>  <a href="http://nicklee.tw/" target="_blank" rel="external">http://nicklee.tw/</a></p>
+</li>
+<li><p>基础组件</p>
+<p>  <a href="http://async-io.org" target="_blank" rel="external">http://async-io.org</a></p>
+<p>  <a href="https://grizzly.java.net" target="_blank" rel="external">https://grizzly.java.net</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/arch-collections/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/17/arch-collections/" itemprop="url">
+                  架构资料集合
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T00:00:00+08:00">
+                2015-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p></p><h4>简介</h4><p></p>
+<p></p><p>以前见过零零散散地介绍一些知名网站架构的分析文章。最近D瓜哥也想研究一下各大知名网站的架构。所以，就搜集了一下这方面资料。限于时间问题，这篇文章分享的文章并没有都看完，所以不保证所有文章的质量。另外，如果有朋友发现更好的文章，欢迎留言告知。再补充进来。</p><p></p>
+<p></p><h4>知名网站架构分析</h4><p></p>
+<ol><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch.html">探索Google App Engine背后的奥秘(1)–Google的核心技术</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch_guess.html">探索Google App Engine背后的奥秘(2)–Google的整体架构猜想</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-intro.html">探索Google App Engine背后的奥秘(3)- Google App Engine的简介</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-arch_intro.html">探索Google App Engine背后的奥秘(4)- Google App Engine的架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-datastore.html">探索Google App Engine背后的奥秘(5)- Datastore的设计</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-summary.html">探索Google App Engine背后的奥秘(6)-<span id="more-41"></span> 总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://dbanotes.net/tech-memo/amazon_dynamo.html">Amazon 的 Dynamo 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/ebay_application_server.html">eBay 的应用服务器规模</a></li><br><li><a target="_blank" href="http://dbanotes.net/database/ebay_storage.html">eBay 的数据量</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/taobao_arch.html">来自淘宝的架构经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/yahoo_arch.html">Yahoo！社区架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part1">基于Facebook和Flash平台的应用架构解析（一）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part2">基于Facebook和Flash平台的应用架构解析（二）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-final">基于Facebook和Flash平台的应用架构解析（三）</a></li><br><li><a target="_blank" href="http://www.biaodianfu.com/facebook-efficient-storage-of-billions-of-photos.html">Facebook图片存储架构的学习</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/200905/123565.htm">facebook图片存储架构技术全解析</a></li><br><li><a target="_blank" href="http://www.csdn.net/article/2011-04-29/296900">Facebook数据仓库揭秘：RCFile高效存储结构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/renren-mobile-arch">人人网移动开发架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/qzone-architecture">QQ空间技术架构之深刻揭密</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/twitter_arch.html">Twitter 的架构扩展: 100 倍性能提升</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/14/the-architecture-of-twitter.html">Twitter网站架构学习笔记</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/201009/226825.htm">国内外大型SNS网站后台架构对比</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/13/the-architecture-of-youku.html">优酷网架构学习笔记</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/youku_arch.html">优酷网(Youku.com)架构经验</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/6/634350416046298451.html">YouTube架构学习体会</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/youtube_web_arch.html">YouTube 的架构扩展</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/27/the-architecture-of-digg.html">Digg网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/digg_arch_cache_and_shard.html">Digg 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/wikipedia_arch.html">WikiPedia技术架构学习笔记</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-yupoo.html">Yupoo网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351294385186067.html">Flickr 网站架构分析</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/flickr_lamp_capacity_planning.html">学习 Flickr 的 基于 LAMP 的容量规划经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/myspace_arch_2008.html">MySpace 系统架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351257301504864.html">回顾MySpace架构的坎坷之路</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/hj-yihaodian-b2c-evolution-road">挑战空中加油——1号店B2C电商系统演进之路</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/5/634349627089221280.html">PlentyOfFish.com .NET网站的又一传奇</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/douban_arch.html">学习豆瓣好榜样–网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/37signals_arch.html">37Signals 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/review/tailrank_arch.html">Tailrank 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/smugmug_arch.html">SmugMug 的架构介绍</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/26/poppende-architecture.html">高并发PHP网站Poppen.de架构学习</a></li><br><li><a target="_blank" href="https://groups.drupal.org/node/194308">Drupal与大型网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/imobile_web_arch_gaochunhui.html">手机之家网站架构–对话高春辉</a></li><br><li><a target="_blank" href="http://www.cnblogs.com/realviv/articles/1883563.html">手机之家的网站架构设计和演化</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/heroku_architecture.html">学习 HeroKu 的架构设计</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/17/634359701352994625.html">各大网站架构总结笔记</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/presentations/petals-network-architecture-introduced">花瓣网的架构介绍</a></li><br><li><a target="_blank" href="http://developer.51cto.com/developer/webarc/">大型网站架构技术专家谈</a></li><br></ol><br><h4>架构分析与设计</h4><br><ol><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/the-network-infrastructure-in-an-open-environment">架构之美–开放环境下的网络架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/message-based-distributed-architecture">案例分析：基于消息的分布式架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/ieee-pattern-based-architecture-reviews">基于模式的架构评审</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/next-generation-massively-multithreaded-architectures">为不规则应用设计新一代超大型多线程架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/rails-voip-system-architecture-and-development">从简单到复杂：大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/it-architecture-inside-out-perspectives">专家视角看IT与架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/cjz-architecture-corruption">架构腐化之谜</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/xw-cloud-in-my-view">我眼中的云端架构</a></li><br><li><a target="_blank" href="http://www.yejun.cn/?p=1154">从100PV到1亿级PV网站架构演变</a></li><br><li><a target="_blank" href="http://open.taobao.com/doc/detail.htm?id=1011">网站架构设计方案</a></li><br><li><a target="_blank" href="http://hi.baidu.com/injava/item/e62923e88a713ff7e1a5d44b">浅谈大型网站动态应用系统架构</a>——鉴于某度有胡乱改系统，而且不自动保留原来数据的恶习，建议大家手动备份下来。</li><br><li><a target="_blank" href="http://blog.sina.com.cn/s/blog_46d0a3930100euxb.html">做大的艺术 &#8211; 大型网站的架构设计</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1960.html">平台网站架构设计之我所见</a></li><br><li><a target="_blank" href="https://speakerdeck.com/shiningray/diao-si-cheng-xu-yuan-ru-he-da-zao-ri-pvbai-mo-de-wang-zhan-jia-gou">屌丝程序员如何打造日PV百万的网站架构</a></li><br><li><a target="_blank" href="http://www.ibm.com/developerworks/cn/java/j-lo-restmvc/">设计 REST 风格的 MVC 框架</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/24/memcached-in-cluster-structure.html">集群架构实践 &#8211; 初试Memcached</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/7/634404076902160236.html">BigPipe，加速你的页面加载</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/4/28/634395931511515337.html">一步步构建大型网站架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/2/18/image-storage-cache-1.html">图片存储架构学习：缓存，架构师的美丽小三</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/news/2008/06/extremescaling">要快速伸缩？重新架构吧！</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/12/2/big-cluster-rails-voip-experience.html">大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1908.html">LAMP网站架构方案分析</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html">大型网站架构演变和知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2009/04/28/267970.html">网站架构相关PPT、文章整理</a></li><br><li><a target="_blank" href="http://www.toplee.com/blog/71.html">说说大型高并发高负载网站的系统架构</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/09/25/14035.html">软件架构设计思考之一</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/video-service-arch">视频流服务架构解析</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/7.html">Rails架构简介</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-1">自建CDN防御DDoS（1）：知己知彼，建设持久防线</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-2">自建CDN防御DDoS（2）：架构设计、成本与部署细节</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-3">自建CDN防御DDoS（3）：架构的后续改进</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/ppt">系统技术非业余研究-资料下载</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/29/11503.html">中小型应用系统知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/23/10824.html">中小型应用系统架构体系</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/architect/">《架构师》月刊</a>——InfoQ推出来的电子杂志。貌似还不错。</li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/13/6037.html">系统设计说明书(架构、概要、详细)目录结构</a>——D瓜哥不太擅长写文档，所以插播个文档模板。</li><br></ol><br><h4>架构背后的技术</h4><br><ol><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/11/15/cdn-introduction.html">CDN（内容分发网络）技术原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/34.html">高性能网站的十四条黄金法则</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6647024">大型网站后台架构的web server与缓存</a></li><br><li><a target="_blank" href="http://blog.csdn.net/21aspnet/article/details/5295572">Facebook性能大提升的秘密：HipHop</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/3/10/squid-usage.html">浅谈Squid在图片存储架构中的应用</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/tao-tfs">揭秘淘宝自主研发的文件系统——TFS</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/lzy-million-visits-site-technical-preparations">百万级访问量网站的技术准备工作</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6665670">谈谈大型网站的负载均衡器、db proxy和db</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/design-motivation-and-introduction-of-Pomelo-framework">深入浅出node.js游戏服务器开发——Pomelo框架的设计动机与架构介绍</a></li><br><li><a target="_blank" href="http://os.51cto.com/art/201111/301143.htm">架构师不可不知的十大可扩展架构</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4322953">Memcached FAQ(1) 一般性的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4336035">Memcached FAQ(2) 集群架构方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4341819">Memcached FAQ(3) 性能和客户端库方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4345501">Memcached FAQ(4) 选项、Item过期和命名空间方面的问题</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/6.html">分享一些资料（侧重Linux）</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/75.html">用JavaScript阐述MapReduce原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/67.html">分享一些D瓜哥攒的比较好的Web开发资料</a></li><br></ol><br><h4>数据库架构</h4><br><ol><br><li><a target="_blank" href="http://blog.csdn.net/zhangzhaokun/article/details/4711693">大型高并发高负载web应用系统架构-数据库架构策略</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/yupoo-partition-database">又拍网架构中的分库设计</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/Architecture-Datomic">Datomic的架构</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/archives/2349">低成本和高性能MySQL云数据的架构探索</a></li><br></ol><br><h4>插件架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/05/25/5187.html">关于Plugin Framework的关键因素</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/30/6925.html">Plugin Architecture简述</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/07/03/7069.html">Eclipse(3.1) Plugin Framework(基于OSGI的Plugin Architecture)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/06/18491.html">OSGI与Plugin Architecture</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/15/19820.html">思考插件架构体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/03/12/34930.html">基于Equinox开发系统的总结</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/07/39880.html">Declarative Services――Service-Oriented Component Model</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/15/41268.html">Service-Oriented Component Model(SOCM)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/05/28/48593.html">插件开发框架的思考</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/08/18/64440.html">基于Eclipse Equinox的插件框架：TPF</a></li><br></ol><br><h5>问题</h5><br><ol><br><li>WordPress的插件架构是怎么样的？</li><br></ol><br><h4>权限架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/05/14846.html">漫谈权限系统 I</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/08/15004.html">漫谈权限系统系列之概述、目的和需求</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/09/15091.html">漫谈权限系统之技术策略以及基于RBAC的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/13/15438.html">漫谈权限系统之基于ACL的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/14/15545.html">漫谈权限系统之结尾篇(开源产品、个人观点、知识体系)</a></li><br></ol>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/java-monitor-and-analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/17/java-monitor-and-analysis/" itemprop="url">
+                  Java垃圾回收的监控和分析工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T00:00:00+08:00">
+                2015-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###Java垃圾回收的监控和分析工具</p>
+<p>下面是几个可用的工具。每一个可用的工具都有自己的优点和不足。使用恰当的工具，以正确的方式开展分析，可以帮助我们提高应用的性能。在本文，我们主要使用Java VisualVM。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Java VisualVM</div><div class="line">Naarad</div><div class="line">GCViewer</div><div class="line">IBM Pattern Modeling and Analysis Tool for Java Garbage Collector</div><div class="line">HPjmeter</div><div class="line">IBM Monitoring and Diagnostic Tools for Java – Garbage Collection and Memory</div><div class="line">Visualizer</div><div class="line">Verbose GC Analyzer</div><div class="line">Java VisualVM</div></pre></td></tr></table></figure>
+<p>Java VisualVM在Java SE SDK安装之后，它就可以，它是和Java SE JDK一起免费安装。你可以看一下Java JDK安装目录下的bin文件夹。路径一般是\Java\jdk1.8.0\bin。除java和javac之外，这里还有很多其他的可用工具。jvisualvm就是其中之一。</p>
+<p>Java VisualVM使用图形用户界面将Java应用运行时的信息展示处理。它还集成了很多很多工具，例如JConsole、jstat、jinfo、jstack和jmap都是Java VisualVM中的一部分了。</p>
+<p>Java VisualVM可用于：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">生成和分析堆内存转储（heap memory dump）；</div><div class="line">查看和操作MBean；</div><div class="line">监控垃圾回收；</div><div class="line">内存和CPU分析。</div></pre></td></tr></table></figure></p>
+<ol>
+<li>打开VisualVM</li>
+</ol>
+<p>jvisualvm可以在JDK的bin目录下找到。</p>
+<p><img src="http://chentaohome.qiniudn.com/cf67bea30649647d09355303789b60ec.png" alt=""></p>
+<p><img src="http://chentaohome.qiniudn.com/98bd2257e4ee59ca2785bcd9a28e4263.png" alt=""></p>
+<ol>
+<li>安装Visual GC插件</li>
+</ol>
+<p>我们需要安装一个Visual GC插件，这样可以更直观地查看Java垃圾回收过程。</p>
+<p><img src="http://chentaohome.qiniudn.com/9a84d5f9fe69230c8ef3a867182bc0b0.png" alt=""></p>
+<ol>
+<li>监控垃圾回收</li>
+</ol>
+<p>现在到了监控垃圾回收过程的时候了。启动你的Java引用，它将自动被检测和被展示在Java VisualVM的界面上。在左侧的“Application”测看下，有个“Local”节点，所有本地正在运行的Java应用都将罗列在这里。</p>
+<p>Java VisualVM是一个Java应用。所以，它将自己也列在这里。为了方便学习，我们将监控Java VisualVM自身的垃圾回收过程。</p>
+<p>双击“Local”节点下的VisualVM图标。</p>
+<p><img src="http://chentaohome.qiniudn.com/7344c49b38261627ed702a04e83e42eb.png" alt=""></p>
+<p>现在，应用监视窗口在右侧打开。这里有很多不通的标签页（Tap）用于显示应用性能相关的每一方面。现在，我们关注的是“Visual GC”，点击它。</p>
+<p><img src="http://chentaohome.qiniudn.com/44cc8bd61f15e892164f3cfeae1199ab.png" alt=""></p>
+<p>上面这张图展示了Old、Eden、S0和S1的内存使用情况。下面这张图，每段显示了内存分配与回收的详细情况。它以一个设定的时间间隔保持不断刷新。</p>
+<p><img src="http://chentaohome.qiniudn.com/bdec8f575a3480a26cbc7a0172f3512b.png" alt=""></p>
+<p>上面这张图展示了正常的垃圾回收的过程。当存在内存泄露或者任何异常行为时，从这张图上就可以很明显地看出来。至少，我们可以了解到这里有关于对象内存分配与垃圾回收的展示。再配合其他的标签页，例如“Threads”以及线程转储你，我们就可以深入详细地了解这方面的内容。</p>
+<p>在“Monitor”标签页，我们可以监控整个堆内存的使用情况。点击“Perform GC”来启动垃圾回收过程。</p>
+<p><img src="http://chentaohome.qiniudn.com/f86cb571cae5aef04e9206b202898966.png" alt=""></p>
+<p>在“Sampler”标签页，我们可以启动内存和CPU分析。它将展示每一个实例的生存状态。它用于帮助我们定位性能问题。</p>
+<p><img src="http://chentaohome.qiniudn.com/db32c5a99c5ef23e9b622459d3a4843c.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

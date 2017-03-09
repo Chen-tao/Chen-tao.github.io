@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="surge,shadowsocks," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="文章来自Surge作者YaChen Liu
+为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。
+
+从 Surge 的几大核心组件分别说起吧：
+1. Surge Proxy Server这是 Surge 最核心的部分，用于处理所有的 HTTP/HTTPS 请求。
+用 Proxy 去处理请">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Surge 原理与实现">
+<meta property="og:url" content="http://chen-tao.github.io/2015/11/02/surge-explain/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="文章来自Surge作者YaChen Liu
+为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。
+
+从 Surge 的几大核心组件分别说起吧：
+1. Surge Proxy Server这是 Surge 最核心的部分，用于处理所有的 HTTP/HTTPS 请求。
+用 Proxy 去处理请">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/1845119/10875352/8dddf128-816c-11e5-8831-834e5b9d575e.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Surge 原理与实现">
+<meta name="twitter:description" content="文章来自Surge作者YaChen Liu
+为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。
+
+从 Surge 的几大核心组件分别说起吧：
+1. Surge Proxy Server这是 Surge 最核心的部分，用于处理所有的 HTTP/HTTPS 请求。
+用 Proxy 去处理请">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/1845119/10875352/8dddf128-816c-11e5-8831-834e5b9d575e.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2015/11/02/surge-explain/"/>
+
+
+
+
+
+  <title> Surge 原理与实现 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/surge-explain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Surge 原理与实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-02T00:00:00+08:00">
+                2015-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>文章来自Surge作者<a href="https://medium.com/@Blankwonder/surge-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0-8aa3304fb3bb#.tyf8rgwvj" target="_blank" rel="external">YaChen Liu</a></p>
+<p>为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10875352/8dddf128-816c-11e5-8831-834e5b9d575e.png" alt="image"></p>
+<p>从 Surge 的几大核心组件分别说起吧：</p>
+<h3 id="1-Surge-Proxy-Server"><a href="#1-Surge-Proxy-Server" class="headerlink" title="1. Surge Proxy Server"></a>1. Surge Proxy Server</h3><p>这是 Surge 最核心的部分，用于处理所有的 HTTP/HTTPS 请求。</p>
+<p>用 Proxy 去处理请求而不是用 TUN，有很多原因，主要是因为 TUN 是工作在 IP Layer 的：</p>
+<ul>
+<li>Proxy 可以直接收到包含域名 / URL 的请求，从而使基于域名的规则过滤成为可能（甚至 URL，之后版本可能考虑加入支持）</li>
+<li>Proxy 可以省略不必要的 DNS 请求，对首次访问的速度提升相当明显</li>
+<li>Surge 的 Proxy 支持全局的 HTTP Connection Keep Alive 机制，极大的减少了 TCP 握手产生的开销（跨应用间也能共享一个 TCP Connection，但由于内存限制在 iOS 版本上超时时间很短，之后 Mac 版本上的效果会明显一些）</li>
+<li>准确的记录下每个请求的 header 和 body（从 TCP 层面直接抓，可能会有误）</li>
+<li>使得之后的高级功能（如修改 header，rewrite URL）成为可能</li>
+<li>减少了不必要的 IP Packet 相关开销</li>
+<li>这样 Surge iOS 版本与 Mac 版本可以共享核心代码</li>
+</ul>
+<p>这是 Surge 中最复杂的组件，基本上等同于一个不带 cache 的 squid，其中的难点一方面是调度问题，另一方面是怎么样去判断一个 HTTP 请求是否完成(比如 chunked transfer encoding)，本身 HTTP RFC 在这方面就有非常多的细节问题，再加上很多自制的 HTTP Server 不是特别的遵守规范，所以只能通过大量的时间去积累经验完成。</p>
+<h3 id="2-DNS-Client"><a href="#2-DNS-Client" class="headerlink" title="2. DNS Client"></a>2. DNS Client</h3><p>最早的版本中，Surge 也是使用 getaddrinfo 这类的系统调用去进行 DNS 解析的，但是后来越来越不能满足需求，所以就又造了个轮子，有这些好处：</p>
+<ul>
+<li>可以完全自定义 upstream DNS 服务器地址，无视系统设置</li>
+<li>可以并发的向多个 DNS 服务器发出 question</li>
+<li>可以自定义超时和重发的策略</li>
+<li>getaddrinfo 等方法本身不支持 cache</li>
+<li>为之后的 Local DNS Map 功能提供了基础</li>
+</ul>
+<p>这部分的功能差不多是个 mini 版本的 dnsmasq 吧。由于是自己实现的，以后要做 TCP DNS 或者非 53 端口的支持都是很简单的事。</p>
+<h3 id="3-Surge-TUN-Interface"><a href="#3-Surge-TUN-Interface" class="headerlink" title="3. Surge TUN Interface"></a>3. Surge TUN Interface</h3><p>最早的版本没有这个组件，但有部分应用使用的是 HTTP/HTTPS 以外的 TCP 协议 (如 SPDY、IMAP)，没有遵从代理设置，因此无法被 Surge 接管流量。为了解决这个问题，才加入了这个组件。</p>
+<p>核心原理就是通过一个 Surge 内部的 TCP stack，将 IP Packet 中的 TCP 数据提取出来，再重新用 Proxy 进行请求（或者直接连接对应的服务器），再将返回的数据重新封装成 IP Packet。</p>
+<p>正如前面提到的，用 TUN 处理请求会有一些问题，最大的问题是，由 TUN Interface 处理的流量，DOMAIN 相关的 Rule 会无效，除非使用了 force-remote-dns 选项。</p>
+<p>这是由 TCP/IP 协议的特性所决定的，App 会先发出一个 DNS question，获取要连接的服务器的 IP 地址，然后直接向这个 IP 地址发起连接，所以有了第 4 个组件。</p>
+<h3 id="4-IP-Layer-DNS-Forwarder"><a href="#4-IP-Layer-DNS-Forwarder" class="headerlink" title="4. IP Layer DNS Forwarder"></a>4. IP Layer DNS Forwarder</h3><p>这个组件配合 TUN Interface 使用，会将收到 DNS 的 IP Packet，进行简单改动后直接转发给 upstream DNS。</p>
+<p>但是在转发前，该组件会检查需要解析的域名，是否匹配上了带有 force-remote-dns 选项的规则，如果是，不进行转发，直接返回一个 240.1.x.x 的 fake IP。当 TUN Interface 收到一个发往 240.1.x.x 的包的时候，反向查出真正的域名是什么，然后直接以域名的形式转交给 Proxy，避免本地的 DNS 查询动作。</p>
+<p>force-remote-dns 选项主要是为了解决有些域名在本地查询会有障碍的问题（如公司内网域名），然而因为返回了一个 fake IP，且 Surge 没有权限去强制清除系统或者应用的 DNS cache，所以在 Surge 关闭后可能导致一些问题，所以请谨慎的只给确实需要的域名开启这个选项。</p>
+<p>其余还有一系列的 homemade 小组件（如各个协议的 client），就不一一描述了，之后想到什么再补充。</p>
+<p>所以，看起来 $9.99 超值吧（大雾）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/surge/" rel="tag"># surge</a>
+          
+            <a href="/tags/shadowsocks/" rel="tag"># shadowsocks</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/02/postman-expat/" rel="next" title="Postman expat">
+                <i class="fa fa-chevron-left"></i> Postman expat
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/03/http2--web-/" rel="prev" title="HTTP/2 与 WEB 性能优化">
+                HTTP/2 与 WEB 性能优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Surge-Proxy-Server"><span class="nav-number">1.</span> <span class="nav-text">1. Surge Proxy Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-DNS-Client"><span class="nav-number">2.</span> <span class="nav-text">2. DNS Client</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Surge-TUN-Interface"><span class="nav-number">3.</span> <span class="nav-text">3. Surge TUN Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-IP-Layer-DNS-Forwarder"><span class="nav-number">4.</span> <span class="nav-text">4. IP Layer DNS Forwarder</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

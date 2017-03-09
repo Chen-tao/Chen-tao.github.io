@@ -1,0 +1,628 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="二叉查找树，也称排序二叉树，是指一棵空树或者具备下列性质的二叉树(每个结点都不能有多于两个儿子的树)：
+
+若任意结点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
+若任意结点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；
+任意结点的左、右子树也分别为二叉查找树；
+没有键值相等的结点。
+
+从其性质可知，定义排序二叉树树的一种自然的方式是递归的方法，其算法的核心为递归过程，由于">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen-Tao">
+<meta property="og:url" content="http://chen-tao.github.io/CS_Offer/More/DataStructure_BST.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="二叉查找树，也称排序二叉树，是指一棵空树或者具备下列性质的二叉树(每个结点都不能有多于两个儿子的树)：
+
+若任意结点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
+若任意结点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；
+任意结点的左、右子树也分别为二叉查找树；
+没有键值相等的结点。
+
+从其性质可知，定义排序二叉树树的一种自然的方式是递归的方法，其算法的核心为递归过程，由于">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_BST_1.png">
+<meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_BST_2.png">
+<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen-Tao">
+<meta name="twitter:description" content="二叉查找树，也称排序二叉树，是指一棵空树或者具备下列性质的二叉树(每个结点都不能有多于两个儿子的树)：
+
+若任意结点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
+若任意结点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；
+任意结点的左、右子树也分别为二叉查找树；
+没有键值相等的结点。
+
+从其性质可知，定义排序二叉树树的一种自然的方式是递归的方法，其算法的核心为递归过程，由于">
+<meta name="twitter:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_BST_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/CS_Offer/More/DataStructure_BST.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <p>二叉查找树，也称排序二叉树，是指一棵空树或者具备下列性质的二叉树(每个结点都不能有多于两个儿子的树)：</p>
+<ol>
+<li>若任意结点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；</li>
+<li>若任意结点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；</li>
+<li>任意结点的左、右子树也分别为二叉查找树；</li>
+<li><strong>没有键值相等的结点</strong>。</li>
+</ol>
+<p>从其性质可知，定义排序二叉树树的一种自然的方式是递归的方法，其算法的核心为递归过程，由于它的平均深度为O(logN)，所以递归的操作树，一般不必担心栈空间被耗尽。</p>
+<p>BST 的结点结构体定义如下，结点中除了 key 域，还包含域 left, right 和 parent，它们分别指向结点的左儿子、右儿子和父结点：</p>
+<pre><code>typedef struct Node
+{
+    int key;
+    Node* left;
+    Node* right;
+    Node* parent;
+} *BSTree;
+</code></pre><h2 id="插入结点"><a href="#插入结点" class="headerlink" title="插入结点"></a>插入结点</h2><p>由于二叉查找树是递归定义的，插入结点的过程是：若原二叉查找树为空，则直接插入；否则，若关键字 k 小于根结点关键字，则插入到左子树中，若关键字 k 大于根结点关键字，则插入到右子树中。</p>
+<pre><code>int BST_Insert(BSTree *T, int k, Node* parent=NULL)
+{
+    if(T == NULL)
+    {
+        T = (BSTree)malloc(sizeof(Node));
+        T-&gt;key = k;
+        T-&gt;left = NULL;
+        T-&gt;right = NULL;
+        T-&gt;parent = parent;
+        return 1;  // 返回1表示成功
+    }
+    else if(k == T-&gt;key)
+        return 0;  // 树中存在相同关键字
+    else if(k &lt; T-&gt;key)
+        return BST_Insert(T-&gt;left, k, T);
+    else
+        return BST_Insert(T-&gt;right, k, T);
+}
+</code></pre><h2 id="搜索结点"><a href="#搜索结点" class="headerlink" title="搜索结点"></a>搜索结点</h2><p>BST 的查找是从根结点开始，若二叉树非空，将给定值与根结点的关键字比较，若相等，则查找成功；若不等，则当给定值小于根结点关键字时，在根结点的左子树中查找，否则在根结点的右子树中查找。显然，这是一个递归的过程。</p>
+<pre><code>Node* BST_Search(BSTree *T, int k)
+{
+    if(T == NULL || k == T-&gt;key)
+        return T;
+    if(k &lt; T-&gt;key)
+        return BST_Search(T-&gt;left, k);
+    else
+        return BST_Search(T-&gt;right, k);
+}
+</code></pre><p>也可以使用非递归的实现：</p>
+<pre><code>Node* BST_Search_NonRecur(BSTree *T, int k)
+{
+    while(T != NULL &amp;&amp; k != T-&gt;key)
+    {
+        if(k &lt; T-&gt;key)
+            T = T-&gt;left;
+        else
+            T = T-&gt;right;
+    }
+    return T;
+}
+</code></pre><p>由二叉查找树的性质可知，最左下结点即为关键字最小的结点，最右下结点即为关键字最大的结点。</p>
+<h2 id="删除结点"><a href="#删除结点" class="headerlink" title="删除结点"></a>删除结点</h2><p>二叉查找树的删除操作是相对复杂一点，它要按 3 种情况来处理：</p>
+<ol>
+<li>若被删除结点 z 是叶子结点，则直接删除，不会破坏二叉排序树的性质；</li>
+<li>若结点 z 只有左子树或只有右子树，则让 z 的子树成为 z 父结点的子树，替代 z 的位置；</li>
+<li>若结点 z 既有左子树，又有右子树，则用 z 的直接前驱（或后继）代替 z，然后从二叉查找树中删除这个前驱（或后继）结点，这样就转换成了第一或第二种情况。（<strong>这里z的前驱一定为z的左子树中值最大的结点，前驱一定为叶子结点或者前驱只有左子树</strong>）。</li>
+</ol>
+<p>删除一个有左、右子树的结点的示意图（用前驱替换被删除结点）如下：</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_BST_1.png" alt=""></p>
+<p><code>前驱</code>和<code>后继</code>即为该结点在中序遍历中的前一个结点和后一个结点。如果所有的关键字均不相同，则某结点 x 的后继是：</p>
+<ul>
+<li>若结点 x 的右子树不为空，则 x 的后继就是它的右子树中值最小的结点；</li>
+<li>若结点 x 的右子树为空，为了找到其后继，从结点 x 开始向上查找，直到遇到一个祖先结点 y，它的左儿子为 x 或者为结点 x 的祖先，则结点 y 就是结点 x 的后继。如下图</li>
+</ul>
+<p>如下图：</p>
+<p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/DataStructure_BST_2.png" alt=""></p>
+<p>寻找后继结点的实现如下：</p>
+<pre><code>Node* BST_Successor(Node* node)
+{
+    if(node-&gt;right != NULL)
+        return BST_Minimum(node-&gt;right);
+    Node* p = node-&gt;parent;
+    while(p!=NULL &amp;&amp; p-&gt;right == node)
+    {
+        node = p;
+        p = p-&gt;parent;
+    }
+    return p;
+}
+</code></pre><p>其中 BST_Minimum 返回值最小的结点，即最左下方的结点，实现如下：</p>
+<pre><code>Node* BST_Minimum(BSTree *T)
+{
+    while(T-&gt;left != NULL)
+        T = T-&gt;left;
+    return T;
+}
+</code></pre><p>参考：<br><a href="http://songlee24.github.io/2015/01/13/binary-search-tree/" target="_blank" rel="external">二叉查找树（BST）</a></p>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
