@@ -396,7 +396,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-81-chinese/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-on-mac-tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -418,8 +418,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/11/27/postgresql-81-chinese/" itemprop="url">
-                  PostgreSQL 8.1 中文文档
+                <a class="post-title-link" href="/2014/11/27/postgresql-on-mac-tips/" itemprop="url">
+                  PostgreSQL on Mac Tips
                 </a>
               
             
@@ -473,17 +473,22 @@
       
         
           
-          ##PostgreSQL 8.1 中文文档
-###psql
-Name
-psql –  PostgreSQL 交互终端Synopsis
-psql [option…] [dbname [username]]
-###描述
-psql 是一个以终端为基础的 PostgreSQL 前端。它允许你交互地键入查询，
+          
+install
+ brew install postgresql
+
+satrt
+ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+open
+ psql basename
+
+stop
+ pg
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/11/27/postgresql-81-chinese/#more" rel="contents">
+            <a class="btn" href="/2014/11/27/postgresql-on-mac-tips/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -659,7 +664,7 @@ psql 是一个以终端为基础的 PostgreSQL 前端。它允许你交互地键
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-on-mac-tips/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-81-chinese/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -681,8 +686,8 @@ psql 是一个以终端为基础的 PostgreSQL 前端。它允许你交互地键
             
               
                 
-                <a class="post-title-link" href="/2014/11/27/postgresql-on-mac-tips/" itemprop="url">
-                  PostgreSQL on Mac Tips
+                <a class="post-title-link" href="/2014/11/27/postgresql-81-chinese/" itemprop="url">
+                  PostgreSQL 8.1 中文文档
                 </a>
               
             
@@ -736,22 +741,17 @@ psql 是一个以终端为基础的 PostgreSQL 前端。它允许你交互地键
       
         
           
-          
-install
- brew install postgresql
-
-satrt
- pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-
-open
- psql basename
-
-stop
- pg
+          ##PostgreSQL 8.1 中文文档
+###psql
+Name
+psql –  PostgreSQL 交互终端Synopsis
+psql [option…] [dbname [username]]
+###描述
+psql 是一个以终端为基础的 PostgreSQL 前端。它允许你交互地键入查询，
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/11/27/postgresql-on-mac-tips/#more" rel="contents">
+            <a class="btn" href="/2014/11/27/postgresql-81-chinese/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
