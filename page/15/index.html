@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -103,7 +103,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -202,6 +202,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -218,6 +228,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -250,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-ordering/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -272,8 +292,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/04/10/guava-ordering/" itemprop="url">
-                  Guava学习之Ordering
+                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">
+                  Guava学习之避免Null的使用
                 </a>
               
             
@@ -327,28 +347,16 @@
       
         
           
-            <p><strong>示例</strong></p>
-<pre><code>assertTrue(byLengthOrdering.reverse().isOrdered(list))；
-</code></pre><p>  <strong>    **</strong>概述<strong>**  
-</strong>    Ordering 是Guava的”流畅版” Comparator , 一个强大的比较器工具。它用来构建高级comparator,并把comparator应用于各种集合(collection)。<br>    本质上讲， Ordering 实例不过是一个特殊的 Comparator 实例。 Ordering 所做的就是把那些依赖于 Comparator 的方法(例如， Collections.max) 改写为成员方法。另外， Ordering 类提供一些可链式调用的方法，用来调整和增强已有的comparator.<br><strong>    **</strong>创建<strong>**Ordering  
-</strong>    Ordering对象一般由以下静态方法创建：<br><strong>    **</strong>方法<strong><strong> </strong></strong>描述<strong><strong>(</strong></strong>静态<strong>**)  
-</strong>    natural() 在Comparable类型上应用自然排序(natural ordering)。<br>    usingToString() 将对象的toString()返回值按字典序排序。<br>    想要将已有的 Comparator 转化为 Ordering ,只需使用 Ordering.from(Comparator) .<br>    但是创建 Ordering 更常规的做法是完全忽略 Comparator ,直接扩展 Ordering 抽象类：</p>
-<pre><code>Ordering&lt;String&gt; byLengthOrdering = new Ordering&lt;String&gt;(){
-         public int compare(String left,String right){
-         return Ints.compare(left.length()， right.length())；
-       }
-     };
-</code></pre><p> <strong>    **</strong>链式调用<strong>**  
-</strong>    可以通过包装 Ordering 来进行一些预处理。一些最常见的处理如下：<br><strong>    **</strong>方法<strong><strong> </strong></strong>描述<strong>**  
-</strong>    reverse() 返回逆序的Ordering.<br>    nullsFirst() 返回的 Ordering 将null元素排在非null元素前面，其余部分的排序规则与原始的 Ordering 相同。nullsLast()同理。<br>    compound(Comparator) 返回的 Ordering 对之前每组相等的元素用指定的 Comparator 再排序。<br>    lexicographical() 返回的 Ordering 对iterable的元素按字典序排序。<br>    onResultOf(Function) 返回的 Ordering 将被排序的元素传入function,对返回值用原始的 Ordering排序。<br>    举例来说，假设你希望创建下面这个类的 comparator …</p>
-<pre><code>classFoo{
-     @NullableString sortedBy;
-     int notSortedBy;
-     }
+            <p><em>Null Sucks.__    Doug Lea</em></p>
+<p><em>I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人</em></p>
+<p>编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的colletions中都不应该有null（空值）存在；对于开发者来说，如果null可以直接报错，会比默默地接收更加有益。</p>
+<p>此外，null让人讨厌的一点在于它的表义模糊不清。当null作为一个返回值时，很难判断它的具体含义——比如，Map.get(key)返回null时，既可以表示Map中的值为空，又可以表示这个值不在Map中。Null可以表示失败，可以表示成功，可以表示几乎所有的状态。用别的东西来取代null会让你的代码更为清晰。</p>
+<p>当然，很多时候用null也是正确的选择。从时间和空间的角度看，null都是廉价的，并且在Object array中是不可避免的。但相对于官方的library，在实际的Application代码中，null仍然是导致混淆，怪异bug和含糊不清的主要源头之一——比如，当Map.get返回null，可能说明不存在对应的值，也可能说明值存在且为null。最大的问题在于，null无法提示这个null值表示什么意思。</p>
+<p>因此，很多Guava utility设计为对null值直接报错；只要有不用null的代替方案，就不允许null值。另外，Guava提供了一些工具来帮你避免使用null，同时在你不得不用时让使用null更容易。</p>
+<h2 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h2><p>不要惊讶，即便是有特殊操作情况存在，你仍然不应该在Set中使用null或者在Map中把null作为参数传入。</p>
+<p>如果你想在不考虑entry的情况下，将null作为一个参数传入Map，那你就需要保证含non-null key的Set与含null的Set分离（就是2个Set集啦）。当Map中包含key的entry的值为null，或者Map中的key没有entry，这两种情况是非常容易混淆的。更好的办法是直接将key进行分离，这样就很容易分辨实际应用中key为null时的含义了。</p>
+<p>使用Map<integer,?>可能会比在一个稀疏的List中使用null效率更高，而且很可能前者更适合你实际应用中的需要。</integer,?></p>
 
-
- …并且希望它能在 sortedBy 基础上处理null值。下面是应用链式调用的解决方案：
-</code></pre>
           
         
       
@@ -1636,10 +1644,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -1657,6 +1665,44 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1690,7 +1736,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1703,7 +1749,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -103,7 +103,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -202,6 +202,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -218,6 +228,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -1028,6 +1048,134 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/11/guava-common-object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/11/guava-common-object/" itemprop="url">
+                  Guava学习之复写Object方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-11T00:00:00+08:00">
+                2014-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Java中Object类是所有类的父类，其中有几个需要override的方法比如equals,hashCode和toString等方法。每次写这几个方法都要做很多重复性的判断, 很多类库提供了覆写这几个方法的工具类, Guava也提供了类似的方式。下面我们来看看Guava中这几个方法简单使用。</p>
+<p><strong>equals方法：</strong></p>
+<p><strong> </strong>equals是一个经常需要覆写的方法， 可以查看Object的equals方法注释， 对equals有几个性质的要求：<br><strong> 1. 自反性reflexive：</strong>任何非空引用x，x.equals(x)返回为true；<br><strong>2. 对称性symmetric：</strong>任何非空引用x和y，x.equals(y)返回true当且仅当y.equals(x)返回true；<br><strong>3. 传递性transitive：</strong>任何非空引用x和y，如果x.equals(y)返回true，并且y.equals(z)返回true，那么x.equals(z)返回true；<br><strong>4. 一致性consistent：</strong>两个非空引用x和y，x.equals(y)的多次调用应该保持一致的结果，（前提条件是在多次比较之间没有修改x和y用于比较的相关信息）；<br><strong>5. 对于所有非null的值x， x.equals(null)都要返回false</strong>。 (如果你要用null.equals(x)也可以，会报NullPointerException)。</p>
+<p>当我们要覆写的类中某些值可能为null的时候，就需要对null做很多判断和分支处理。 使用Guava的Objects.equal方法可以避免这个问题， 使得equals的方法的覆写变得更加容易， 而且可读性强，简洁优雅。</p>
+<p><strong>hashCode方法：</strong></p>
+<p><strong> </strong>当覆写（override）了equals()方法之后，必须也覆写hashCode()方法，反之亦然。这个方法返回一个整型值（hash code value），如果两个对象被equals()方法判断为相等，那么它们就应该拥有同样的hash code。Object类的hashCode()方法为不同的对象返回不同的值，Object类的hashCode值表示的是对象的地址。<br>hashCode的一般性契约（需要满足的条件）如下：<br>1.在Java应用的一次执行过程中，如果对象用于equals比较的信息没有被修改，那么同一个对象多次调用hashCode()方法应该返回同一个整型值。应用的多次执行中，这个值不需要保持一致，即每次执行都是保持着各自不同的值。<br>2.如果equals()判断两个对象相等，那么它们的hashCode()方法应该返回同样的值。<br>3.并没有强制要求如果equals()判断两个对象不相等，那么它们的hashCode()方法就应该返回不同的值。即，两个对象用equals()方法比较返回false，它们的hashCode可以相同也可以不同。但是，应该意识到，为两个不相等的对象产生两个不同的hashCode可以改善哈希表的性能。<br>写一个hashCode本来也不是很难，但是Guava提供给我们了一个更加简单的方法--Objects.hashCode(Object …)， 这是个可变参数的方法，参数列表可以是任意数量，所以可以像这样使用Objects.hashCode(field1， field2， …， fieldn)。非常方便和简洁。</p>
+<p><strong>toString()方法：</strong></p>
+<p>因为每个类都直接或间接地继承自Object，因此每个类都有toString()方法。这个方法是用得最多的, 覆写得最多, 一个好的toString方法对于调试来说是非常重要的, 但是写起来确实很不爽。Guava也提供了toString（）方法。</p>
+<p>compare/compareTo方法：</p>
+<p><strong>CompareTo：</strong>compareTo(Object o)方法是java.lang.Comparable<t>接口中的方法，当需要对某个类的对象进行排序时，该类需要实现 Comparable<t>接口的，必须重写public int compareTo(T o)方法。java规定，若a，b是两个对象，当a.compareTo(b)&gt;0时，则a大于b，a.compareTo(b)<0时，a<b，即规定对象的比较大小的规则； **compare：**="" compare(object="" o1,object="" o2)方法是java.util.comparator<t="">接口的方法，compare方法内主要靠定义的compareTo规定的对象大小关系规则来确定对象的大小。</0时，a<b，即规定对象的比较大小的规则；></t></t></p>
+<p>compareTo方法的通用约定与equals类似：将本对象与指定的对象停止比拟，如果本对象小于、等于、或大于指定对象，则分离返回正数、零、或正数。如果指定的对象类型无法与本对象停止比拟，则跑出ClassCastException。<br><strong>对称性：</strong>实现者必须保证对全部的x和y都有sgn(x.compareTo(y)) == -sgn(y.compareTo(x))。这也暗示当且仅当y.compareTo(x)抛出异常时，x.compareTo(y)才抛出异常。<br><strong>传递性：</strong>实现者必须保证比拟关系是可传递的，如果x.compareTo(y) &gt; 0且y.compareTo(z) &gt; 0，则x.compareTo(z) &gt; 0。实现者必须保证x.compareTo(y)==0暗示着全部的z都有(x.compareTo(z)) == (y.compareTo(z))。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/11/java-get-web-pic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1225,134 +1373,6 @@ public class ReadFileFromTxt {
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/11/guava-common-object/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/04/11/guava-common-object/" itemprop="url">
-                  Guava学习之复写Object方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-11T00:00:00+08:00">
-                2014-04-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在Java中Object类是所有类的父类，其中有几个需要override的方法比如equals,hashCode和toString等方法。每次写这几个方法都要做很多重复性的判断, 很多类库提供了覆写这几个方法的工具类, Guava也提供了类似的方式。下面我们来看看Guava中这几个方法简单使用。</p>
-<p><strong>equals方法：</strong></p>
-<p><strong> </strong>equals是一个经常需要覆写的方法， 可以查看Object的equals方法注释， 对equals有几个性质的要求：<br><strong> 1. 自反性reflexive：</strong>任何非空引用x，x.equals(x)返回为true；<br><strong>2. 对称性symmetric：</strong>任何非空引用x和y，x.equals(y)返回true当且仅当y.equals(x)返回true；<br><strong>3. 传递性transitive：</strong>任何非空引用x和y，如果x.equals(y)返回true，并且y.equals(z)返回true，那么x.equals(z)返回true；<br><strong>4. 一致性consistent：</strong>两个非空引用x和y，x.equals(y)的多次调用应该保持一致的结果，（前提条件是在多次比较之间没有修改x和y用于比较的相关信息）；<br><strong>5. 对于所有非null的值x， x.equals(null)都要返回false</strong>。 (如果你要用null.equals(x)也可以，会报NullPointerException)。</p>
-<p>当我们要覆写的类中某些值可能为null的时候，就需要对null做很多判断和分支处理。 使用Guava的Objects.equal方法可以避免这个问题， 使得equals的方法的覆写变得更加容易， 而且可读性强，简洁优雅。</p>
-<p><strong>hashCode方法：</strong></p>
-<p><strong> </strong>当覆写（override）了equals()方法之后，必须也覆写hashCode()方法，反之亦然。这个方法返回一个整型值（hash code value），如果两个对象被equals()方法判断为相等，那么它们就应该拥有同样的hash code。Object类的hashCode()方法为不同的对象返回不同的值，Object类的hashCode值表示的是对象的地址。<br>hashCode的一般性契约（需要满足的条件）如下：<br>1.在Java应用的一次执行过程中，如果对象用于equals比较的信息没有被修改，那么同一个对象多次调用hashCode()方法应该返回同一个整型值。应用的多次执行中，这个值不需要保持一致，即每次执行都是保持着各自不同的值。<br>2.如果equals()判断两个对象相等，那么它们的hashCode()方法应该返回同样的值。<br>3.并没有强制要求如果equals()判断两个对象不相等，那么它们的hashCode()方法就应该返回不同的值。即，两个对象用equals()方法比较返回false，它们的hashCode可以相同也可以不同。但是，应该意识到，为两个不相等的对象产生两个不同的hashCode可以改善哈希表的性能。<br>写一个hashCode本来也不是很难，但是Guava提供给我们了一个更加简单的方法--Objects.hashCode(Object …)， 这是个可变参数的方法，参数列表可以是任意数量，所以可以像这样使用Objects.hashCode(field1， field2， …， fieldn)。非常方便和简洁。</p>
-<p><strong>toString()方法：</strong></p>
-<p>因为每个类都直接或间接地继承自Object，因此每个类都有toString()方法。这个方法是用得最多的, 覆写得最多, 一个好的toString方法对于调试来说是非常重要的, 但是写起来确实很不爽。Guava也提供了toString（）方法。</p>
-<p>compare/compareTo方法：</p>
-<p><strong>CompareTo：</strong>compareTo(Object o)方法是java.lang.Comparable<t>接口中的方法，当需要对某个类的对象进行排序时，该类需要实现 Comparable<t>接口的，必须重写public int compareTo(T o)方法。java规定，若a，b是两个对象，当a.compareTo(b)&gt;0时，则a大于b，a.compareTo(b)<0时，a<b，即规定对象的比较大小的规则； **compare：**="" compare(object="" o1,object="" o2)方法是java.util.comparator<t="">接口的方法，compare方法内主要靠定义的compareTo规定的对象大小关系规则来确定对象的大小。</0时，a<b，即规定对象的比较大小的规则；></t></t></p>
-<p>compareTo方法的通用约定与equals类似：将本对象与指定的对象停止比拟，如果本对象小于、等于、或大于指定对象，则分离返回正数、零、或正数。如果指定的对象类型无法与本对象停止比拟，则跑出ClassCastException。<br><strong>对称性：</strong>实现者必须保证对全部的x和y都有sgn(x.compareTo(y)) == -sgn(y.compareTo(x))。这也暗示当且仅当y.compareTo(x)抛出异常时，x.compareTo(y)才抛出异常。<br><strong>传递性：</strong>实现者必须保证比拟关系是可传递的，如果x.compareTo(y) &gt; 0且y.compareTo(z) &gt; 0，则x.compareTo(z) &gt; 0。实现者必须保证x.compareTo(y)==0暗示着全部的z都有(x.compareTo(z)) == (y.compareTo(z))。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-preconditions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1480,7 +1500,7 @@ public class ReadFileFromTxt {
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-ordering/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1502,8 +1522,8 @@ public class ReadFileFromTxt {
             
               
                 
-                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">
-                  Guava学习之避免Null的使用
+                <a class="post-title-link" href="/2014/04/10/guava-ordering/" itemprop="url">
+                  Guava学习之Ordering
                 </a>
               
             
@@ -1557,16 +1577,28 @@ public class ReadFileFromTxt {
       
         
           
-            <p><em>Null Sucks.__    Doug Lea</em></p>
-<p><em>I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人</em></p>
-<p>编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的colletions中都不应该有null（空值）存在；对于开发者来说，如果null可以直接报错，会比默默地接收更加有益。</p>
-<p>此外，null让人讨厌的一点在于它的表义模糊不清。当null作为一个返回值时，很难判断它的具体含义——比如，Map.get(key)返回null时，既可以表示Map中的值为空，又可以表示这个值不在Map中。Null可以表示失败，可以表示成功，可以表示几乎所有的状态。用别的东西来取代null会让你的代码更为清晰。</p>
-<p>当然，很多时候用null也是正确的选择。从时间和空间的角度看，null都是廉价的，并且在Object array中是不可避免的。但相对于官方的library，在实际的Application代码中，null仍然是导致混淆，怪异bug和含糊不清的主要源头之一——比如，当Map.get返回null，可能说明不存在对应的值，也可能说明值存在且为null。最大的问题在于，null无法提示这个null值表示什么意思。</p>
-<p>因此，很多Guava utility设计为对null值直接报错；只要有不用null的代替方案，就不允许null值。另外，Guava提供了一些工具来帮你避免使用null，同时在你不得不用时让使用null更容易。</p>
-<h2 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h2><p>不要惊讶，即便是有特殊操作情况存在，你仍然不应该在Set中使用null或者在Map中把null作为参数传入。</p>
-<p>如果你想在不考虑entry的情况下，将null作为一个参数传入Map，那你就需要保证含non-null key的Set与含null的Set分离（就是2个Set集啦）。当Map中包含key的entry的值为null，或者Map中的key没有entry，这两种情况是非常容易混淆的。更好的办法是直接将key进行分离，这样就很容易分辨实际应用中key为null时的含义了。</p>
-<p>使用Map<integer,?>可能会比在一个稀疏的List中使用null效率更高，而且很可能前者更适合你实际应用中的需要。</integer,?></p>
+            <p><strong>示例</strong></p>
+<pre><code>assertTrue(byLengthOrdering.reverse().isOrdered(list))；
+</code></pre><p>  <strong>    **</strong>概述<strong>**  
+</strong>    Ordering 是Guava的”流畅版” Comparator , 一个强大的比较器工具。它用来构建高级comparator,并把comparator应用于各种集合(collection)。<br>    本质上讲， Ordering 实例不过是一个特殊的 Comparator 实例。 Ordering 所做的就是把那些依赖于 Comparator 的方法(例如， Collections.max) 改写为成员方法。另外， Ordering 类提供一些可链式调用的方法，用来调整和增强已有的comparator.<br><strong>    **</strong>创建<strong>**Ordering  
+</strong>    Ordering对象一般由以下静态方法创建：<br><strong>    **</strong>方法<strong><strong> </strong></strong>描述<strong><strong>(</strong></strong>静态<strong>**)  
+</strong>    natural() 在Comparable类型上应用自然排序(natural ordering)。<br>    usingToString() 将对象的toString()返回值按字典序排序。<br>    想要将已有的 Comparator 转化为 Ordering ,只需使用 Ordering.from(Comparator) .<br>    但是创建 Ordering 更常规的做法是完全忽略 Comparator ,直接扩展 Ordering 抽象类：</p>
+<pre><code>Ordering&lt;String&gt; byLengthOrdering = new Ordering&lt;String&gt;(){
+         public int compare(String left,String right){
+         return Ints.compare(left.length()， right.length())；
+       }
+     };
+</code></pre><p> <strong>    **</strong>链式调用<strong>**  
+</strong>    可以通过包装 Ordering 来进行一些预处理。一些最常见的处理如下：<br><strong>    **</strong>方法<strong><strong> </strong></strong>描述<strong>**  
+</strong>    reverse() 返回逆序的Ordering.<br>    nullsFirst() 返回的 Ordering 将null元素排在非null元素前面，其余部分的排序规则与原始的 Ordering 相同。nullsLast()同理。<br>    compound(Comparator) 返回的 Ordering 对之前每组相等的元素用指定的 Comparator 再排序。<br>    lexicographical() 返回的 Ordering 对iterable的元素按字典序排序。<br>    onResultOf(Function) 返回的 Ordering 将被排序的元素传入function,对返回值用原始的 Ordering排序。<br>    举例来说，假设你希望创建下面这个类的 comparator …</p>
+<pre><code>classFoo{
+     @NullableString sortedBy;
+     int notSortedBy;
+     }
 
+
+ …并且希望它能在 sortedBy 基础上处理null值。下面是应用链式调用的解决方案：
+</code></pre>
           
         
       
@@ -1654,10 +1686,10 @@ public class ReadFileFromTxt {
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -1675,6 +1707,44 @@ public class ReadFileFromTxt {
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1708,7 +1778,7 @@ public class ReadFileFromTxt {
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1721,7 +1791,7 @@ public class ReadFileFromTxt {
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 

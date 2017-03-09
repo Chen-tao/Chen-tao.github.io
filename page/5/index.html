@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -103,7 +103,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -202,6 +202,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -218,6 +228,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -1743,7 +1763,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/kilim-work-way/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1765,8 +1785,8 @@ instrumentation.addTransformer(s_transformer); }</code></p>
             
               
                 
-                <a class="post-title-link" href="/2015/10/02/kilim-work-way/" itemprop="url">
-                  Kilim工作原理
+                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
+                  垃圾回收（GC）的三种基本方式
                 </a>
               
             
@@ -1820,37 +1840,37 @@ instrumentation.addTransformer(s_transformer); }</code></p>
       
         
           
-            <h1 id="Kilim工作原理"><a href="#Kilim工作原理" class="headerlink" title="Kilim工作原理"></a>Kilim工作原理</h1><h2 id="1-Kilim中的Task，即用户线程如何调度和切换？"><a href="#1-Kilim中的Task，即用户线程如何调度和切换？" class="headerlink" title="1. Kilim中的Task，即用户线程如何调度和切换？"></a>1. Kilim中的Task，即用户线程如何调度和切换？</h2><p>相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU<br>在多任务的调度上操作系统采取抢占式和协作式两种方式。</p>
-<h2 id="2-Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？"><a href="#2-Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？" class="headerlink" title="2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？"></a>2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？</h2><p>Kilim通过代码编译期识别抛出的Pauseable异常注解，来判断识别方法可暂停</p>
-<h2 id="3-Kilim是如何实现线程执行过程中当前方法的暂停和恢复？"><a href="#3-Kilim是如何实现线程执行过程中当前方法的暂停和恢复？" class="headerlink" title="3.Kilim是如何实现线程执行过程中当前方法的暂停和恢复？"></a>3.Kilim是如何实现线程执行过程中当前方法的暂停和恢复？</h2><p>Kilim通过编译期字节码编织，对每一个可暂停的方法进行字节码处理，在方法执行前和执行后加上相关的执行上下文的处理，暂停时会保存整个线程堆栈，包括完整栈帧，程序计数器等等，然后通过特定的字节码跳转指令jsr跳转到另外一个Task的执行方法中，恢复时将复原整个线程堆栈，包括完整栈帧，程序计数器等等，回到上次暂停时的指令地址处继续执行。</p>
-<h2 id="4-Kilim中的Weaver工具是如何针对编译的代码实现织入的？"><a href="#4-Kilim中的Weaver工具是如何针对编译的代码实现织入的？" class="headerlink" title="4.Kilim中的Weaver工具是如何针对编译的代码实现织入的？"></a>4.Kilim中的Weaver工具是如何针对编译的代码实现织入的？</h2><p>字节码技术，具体来说通过ASM字节码框架实现对class文件的重写</p>
-<h2 id="5-如何将一个传统的线程执行方法改造成Kilim的Task模型？"><a href="#5-如何将一个传统的线程执行方法改造成Kilim的Task模型？" class="headerlink" title="5.如何将一个传统的线程执行方法改造成Kilim的Task模型？"></a>5.如何将一个传统的线程执行方法改造成Kilim的Task模型？</h2><p>首先，需要实现一个类继承Task，实现Task的execute方法，该execute中调用的方法必须声明抛出Pauseable异常，其次，线程间的通信全部通过Mailbox来传递消息，put和get时注意三种版本，包括阻塞线程，阻塞Task但不阻塞线程，无阻塞。<br>最后，针对这些Task和抛出Pauseable的方法编译时，使用Weaver工具进行编织处理</p>
-<h2 id="6-Kilim中什么样的方法在执行过程中是可暂停的？"><a href="#6-Kilim中什么样的方法在执行过程中是可暂停的？" class="headerlink" title="6.Kilim中什么样的方法在执行过程中是可暂停的？"></a>6.Kilim中什么样的方法在执行过程中是可暂停的？</h2><p>整个方法调用链中方法必须声明抛出Pauseable异常，This annotation is used by the Kilim weaver to rewrite the bytecode of all pausable methods to incorporate the voluntary yielding logic. One important property of this scheme is that a pausable method can only be called by another pausable method.</p>
-<h2 id="7-Kilim中哪些操作可以使得Task暂停或者恢复运行？"><a href="#7-Kilim中哪些操作可以使得Task暂停或者恢复运行？" class="headerlink" title="7.Kilim中哪些操作可以使得Task暂停或者恢复运行？"></a>7.Kilim中哪些操作可以使得Task暂停或者恢复运行？</h2><p>Task.sleep() is a pausable method that pauses a task for a give time. Another example is Mailbox.get(), which pauses a task until a mailbox is non-empty.</p>
-<p>##8.Kilim中Task和Thread之间是如何调度的?</p>
-<p>Kilim’s tasks are cooperatively scheduled on a kernel thread pool.<br>A Kilim task is owned and managed by a scheduler, which manages the<br>thread pool. When a task needs to pause, it removes itself from the<br>thread by popping its call stack, remembering enough about each<br>activation frame in order to help rebuild the stack and resume, at a<br>later point). The scheduler then reuses that thread for some other<br>task.<br>You can have more than one scheduler and assign<br>each task to a particular scheduler. </p>
-<h2 id="9-Kilim中Task占用的内存大小？"><a href="#9-Kilim中Task占用的内存大小？" class="headerlink" title="9.Kilim中Task占用的内存大小？"></a>9.Kilim中Task占用的内存大小？</h2><p>The amount of memory occupied by a task is:</p>
-<ol>
-<li>The java object that represents the task class</li>
-<li>If paused, an array of activation frames is stored. The Kilim<br>weaver performs data flow and live variable and constant analysis<br>(intra-procedurally) to ensure that it capture only as<br>much as is needed to resume.</li>
-<li>The contents of all mailboxes that the task is receiving on.</li>
-</ol>
-<h2 id="10-什么场景下适合做Kilim协程？"><a href="#10-什么场景下适合做Kilim协程？" class="headerlink" title="10.什么场景下适合做Kilim协程？"></a>10.什么场景下适合做Kilim协程？</h2><p><strong>IO密集型的应用比较适合使用协程</strong>，比如应用中存在较多的与后端的网络交互，存在较多的时间在等待后端响应</p>
-<h2 id="11-Kilim中Task的工作机制？"><a href="#11-Kilim中Task的工作机制？" class="headerlink" title="11.Kilim中Task的工作机制？"></a>11.Kilim中Task的工作机制？</h2><p>Actor采取的这种类似消息机制的方式，实际在守护线程和外部线程之间有一个队列，俗称信箱，外部线程只要把请求放入，守护线程就读取进行处理。这种异步高效方式是Actor基本原理。Task 是轻量型的线程，它们通过 Kilim 的 Mailbox 类型与其他 Task 通信。</p>
-<h2 id="12-Kilim框架做了什么？"><a href="#12-Kilim框架做了什么？" class="headerlink" title="12.Kilim框架做了什么？"></a>12.Kilim框架做了什么？</h2><ol>
-<li>利用字节码增强(基于ASM字节码框架)，将普通代码转化为支持协程的代码；</li>
-<li>调用pausable的时候，如果pause了就保存当前方法栈的State，停止执行，将控制权交给调度器；</li>
-<li>调度器负责协调就绪的协程；</li>
-<li>协程resume的时候，自动恢复State，回复到上次执行的位置继续执行</li>
-</ol>
-<h1 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h1><p>Java等语言的基本编程模型是基于线程的。<br>​<br>要自己实现fiber，主要是保存线程上下文。注意要保存的信息有：各个寄存器，栈顶和栈底，异常信息，浮点寄存器。</p>
-<p>window Fiber的默认堆栈是1M</p>
-<p>协程虽然如此之好，看是很长时间以来，因为受到基于堆栈的子例程实现的限制，并没有多少语言在其实语言或库中支持协程</p>
-<p>子例程容易实现于堆栈之上，因为子例程将调用的其他子例程作为下级。相反地，协程对等地调用其他协程</p>
-<p>类似于C这样的语言全都要依赖于基于栈的结构，因此在函数间传递控制时，必须要有一个调用函数和一个被调函数。</p>
-<p><strong>我们必须接受这个现实：在C语言中，必须要有调用函数和被调函数。</strong></p>
-<p>有见过几种协程的实现，因为没有 C/C++ 的原生支持，所以多数的库使用了汇编代码，还有些库利用了 C 语言的 setjmp 和 longjmp 但是要求函数里面使用 static local 的变量来保存协程内部的数据。</p>
-<p>用 C/C++ 实现协程的最大困难就是创建，保存和恢复程序的上下文。因为这涉及到了程序栈的管理，以及 CPU 寄存器的访问，但是这两项内容在 C/C++ 标准里面都没有严格的定义，所以我们是不可能有一个完全跨平台的 C/C++ 实现的。</p>
+            <p>垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。</p>
+<p>其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃圾回收统一理论」一文阐述了一个理论：任何垃圾回收的思路，无非以上两种的组合，其中一种的改善和进步，必然伴随着另一种的改善和进步。</p>
+<p>##跟踪回收</p>
+<p>跟踪回收的方式独立于程序，定期运行来检查垃圾，需要较长时间的中断。</p>
+<p>##标记清除</p>
+<p>标记清除的方式需要对程序的对象进行两次扫描，第一次从根（Root）开始扫描，被根引用了的对象标记为不是垃圾，不是垃圾的对象引用的对象同样标记为不是垃圾，以此递归。所有不是垃圾的对象的引用都扫描完了之后。就进行第二次扫描，第一次扫描中没有得到标记的对象就是垃圾了，对此进行回收。</p>
+<p>##复制收集</p>
+<p>复制收集的方式只需要对对象进行一次扫描。准备一个「新的空间」，从根开始，对对象进行扫，如果存在对这个对象的引用，就把它复制到「新空间中」。一次扫描结束之后，所有存在于「新空间」的对象就是所有的非垃圾对象。</p>
+<p>这两种方式各有千秋，标记清除的方式节省内存但是两次扫描需要更多的时间，对于垃圾比例较小的情况占优势。复制收集更快速但是需要额外开辟一块用来复制的内存，对垃圾比例较大的情况占优势。特别的，复制收集有「局部性」的优点。</p>
+<p>在复制收集的过程中，会按照对象被引用的顺序将对象复制到新空间中。于是，关系较近的对象被放在距离较近的内存空间的可能性会提高，这叫做局部性。局部性高的情况下，内存缓存会更有效地运作，程序的性能会提高。</p>
+<p>对于标记清除，有一种标记-压缩算法的衍生算法：</p>
+<p>对于压缩阶段，它的工作就是移动所有的可达对象到堆内存的同一个区域中，使他们紧凑的排列在一起，从而将所有非可达对象释放出来的空闲内存都集中在一起，通过这样的方式来达到减少内存碎片的目的。</p>
+<p>##引用计数</p>
+<p>引用计数是指，针对每一个对象，保存一个对该对象的引用计数，该对象的引用增加，则相应的引用计数增加。如果对象的引用计数为零，则回收该对象。</p>
+<p>优点：引用计数最大的优点就是容易实现，C++程序员应该都实现过类似的机制。二是成本小，基本上引用计数为0的时候垃圾会被立即回收，而其他方法难以预测对象的生命周期，垃圾存在的时间都会比这个方法高。另，这种垃圾回收方式产生的中断时间最短。</p>
+<p>缺点：最著名的缺点就是如果对象中存在循环引用，就无法被回收。例如，下面三个对象互相引用，但是不存在从根（Root）指向的引用，所以已经是垃圾了。但是引用计数不为0.</p>
+<p>还有一个缺点就是，引用计数不适合在并行中使用，多个线程同时操作引用计数，会引起数值不一样的问题从而导致内存错误。所以引用计数必须采用独占方式，如果引用操作频繁，那么加锁等并发控制机制的开销是相当大的。</p>
+<p>Perl和Python采用了这种GC机制。</p>
+<p>它们的衍生算法</p>
+<p>##分代回收</p>
+<p>这种回收方式用了程序的一种特性：大部分对象会从产生开始在很短的时间内变成垃圾，而存在的很长时间的对象往往都有较长的生命周期。高频对新生成的对象进行回收，称为「小回收」，低频对所有对象回收，称为「大回收」。每一次「小回收」过后，就把存活下来的对象归为「老生代」，「小回收」的时候，遇到老生代直接跳过。大多数分代回收算法都采用的「复制收集」方法，因为小回收中垃圾的比例较大。</p>
+<p>这种方式存在一个问题：如果在某个新生代的对象中，存在「老生代」的对象对它的引用，它就不是垃圾了，那么怎么制止「小回收」对其回收呢？这里用到了一中叫做写屏障的方式。</p>
+<p>程序对所有涉及修改对象内容的地方进行保护，被称为「写屏障」（Write Barrier）。写屏障不仅用于分代回收，也用于其他GC算法中。</p>
+<p>在此算法的表现是，用一个记录集来记录从新生代到老生代的引用。如果有两个对象A和B，当对A的对象内容进行修改并加入B的引用时，如果①A是「老生代」②B是「新生代」。则将这个引用加入到记录集中。「小回收」的时候，因为记录集中有对B的引用，所以B不再是垃圾。</p>
+<p>##增量回收</p>
+<p>上面的算法缩短了「GC平均中断时间」，但是在对实时性要求很高的程序中，对「GC最高中断时间」的要求更高。比如，自动驾驶软件，如果某次GC中断了0.1s，那么损失可能是致命的。</p>
+<p>增量回收就是将GC分成几部分来执行。设置「GC最多中断10ms」这样的条件限制来使GC的终端时间视作可预测的。</p>
+<p>但是，在两段的GC程序之间，引用关系可能发生了变化。所以，这种GC算法也要写屏障，来记录引用关系的变化。虽然这种方式控制了中断最高时间，但是由于中断次数增加，GC总时间是增加的。</p>
+<p>##并行回收</p>
+<p>基本原理是，在程序运行的同时进行GC工作，最大化CPU的性能。但是这种方式也要面对增量回收的问题，所以也要进行写屏障操作。</p>
+<p>然而这种方式也并未做到完全不暂停原程序的运行，在某些特定的GC阶段还是要暂停原程序。多核化迅速发展的今天，这种算法也在不断优化。不间断原程序实现并行回收这个领域是相当值得期待的。</p>
 
           
         
@@ -1939,10 +1959,10 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -1960,6 +1980,44 @@ instrumentation.addTransformer(s_transformer); }</code></p>
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1993,7 +2051,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -2006,7 +2064,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 

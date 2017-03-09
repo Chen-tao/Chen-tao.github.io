@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -103,7 +103,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -202,6 +202,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -218,6 +228,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -250,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/kilim-work-way/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -272,8 +292,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
-                  垃圾回收（GC）的三种基本方式
+                <a class="post-title-link" href="/2015/10/02/kilim-work-way/" itemprop="url">
+                  Kilim工作原理
                 </a>
               
             
@@ -327,37 +347,37 @@
       
         
           
-            <p>垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。</p>
-<p>其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃圾回收统一理论」一文阐述了一个理论：任何垃圾回收的思路，无非以上两种的组合，其中一种的改善和进步，必然伴随着另一种的改善和进步。</p>
-<p>##跟踪回收</p>
-<p>跟踪回收的方式独立于程序，定期运行来检查垃圾，需要较长时间的中断。</p>
-<p>##标记清除</p>
-<p>标记清除的方式需要对程序的对象进行两次扫描，第一次从根（Root）开始扫描，被根引用了的对象标记为不是垃圾，不是垃圾的对象引用的对象同样标记为不是垃圾，以此递归。所有不是垃圾的对象的引用都扫描完了之后。就进行第二次扫描，第一次扫描中没有得到标记的对象就是垃圾了，对此进行回收。</p>
-<p>##复制收集</p>
-<p>复制收集的方式只需要对对象进行一次扫描。准备一个「新的空间」，从根开始，对对象进行扫，如果存在对这个对象的引用，就把它复制到「新空间中」。一次扫描结束之后，所有存在于「新空间」的对象就是所有的非垃圾对象。</p>
-<p>这两种方式各有千秋，标记清除的方式节省内存但是两次扫描需要更多的时间，对于垃圾比例较小的情况占优势。复制收集更快速但是需要额外开辟一块用来复制的内存，对垃圾比例较大的情况占优势。特别的，复制收集有「局部性」的优点。</p>
-<p>在复制收集的过程中，会按照对象被引用的顺序将对象复制到新空间中。于是，关系较近的对象被放在距离较近的内存空间的可能性会提高，这叫做局部性。局部性高的情况下，内存缓存会更有效地运作，程序的性能会提高。</p>
-<p>对于标记清除，有一种标记-压缩算法的衍生算法：</p>
-<p>对于压缩阶段，它的工作就是移动所有的可达对象到堆内存的同一个区域中，使他们紧凑的排列在一起，从而将所有非可达对象释放出来的空闲内存都集中在一起，通过这样的方式来达到减少内存碎片的目的。</p>
-<p>##引用计数</p>
-<p>引用计数是指，针对每一个对象，保存一个对该对象的引用计数，该对象的引用增加，则相应的引用计数增加。如果对象的引用计数为零，则回收该对象。</p>
-<p>优点：引用计数最大的优点就是容易实现，C++程序员应该都实现过类似的机制。二是成本小，基本上引用计数为0的时候垃圾会被立即回收，而其他方法难以预测对象的生命周期，垃圾存在的时间都会比这个方法高。另，这种垃圾回收方式产生的中断时间最短。</p>
-<p>缺点：最著名的缺点就是如果对象中存在循环引用，就无法被回收。例如，下面三个对象互相引用，但是不存在从根（Root）指向的引用，所以已经是垃圾了。但是引用计数不为0.</p>
-<p>还有一个缺点就是，引用计数不适合在并行中使用，多个线程同时操作引用计数，会引起数值不一样的问题从而导致内存错误。所以引用计数必须采用独占方式，如果引用操作频繁，那么加锁等并发控制机制的开销是相当大的。</p>
-<p>Perl和Python采用了这种GC机制。</p>
-<p>它们的衍生算法</p>
-<p>##分代回收</p>
-<p>这种回收方式用了程序的一种特性：大部分对象会从产生开始在很短的时间内变成垃圾，而存在的很长时间的对象往往都有较长的生命周期。高频对新生成的对象进行回收，称为「小回收」，低频对所有对象回收，称为「大回收」。每一次「小回收」过后，就把存活下来的对象归为「老生代」，「小回收」的时候，遇到老生代直接跳过。大多数分代回收算法都采用的「复制收集」方法，因为小回收中垃圾的比例较大。</p>
-<p>这种方式存在一个问题：如果在某个新生代的对象中，存在「老生代」的对象对它的引用，它就不是垃圾了，那么怎么制止「小回收」对其回收呢？这里用到了一中叫做写屏障的方式。</p>
-<p>程序对所有涉及修改对象内容的地方进行保护，被称为「写屏障」（Write Barrier）。写屏障不仅用于分代回收，也用于其他GC算法中。</p>
-<p>在此算法的表现是，用一个记录集来记录从新生代到老生代的引用。如果有两个对象A和B，当对A的对象内容进行修改并加入B的引用时，如果①A是「老生代」②B是「新生代」。则将这个引用加入到记录集中。「小回收」的时候，因为记录集中有对B的引用，所以B不再是垃圾。</p>
-<p>##增量回收</p>
-<p>上面的算法缩短了「GC平均中断时间」，但是在对实时性要求很高的程序中，对「GC最高中断时间」的要求更高。比如，自动驾驶软件，如果某次GC中断了0.1s，那么损失可能是致命的。</p>
-<p>增量回收就是将GC分成几部分来执行。设置「GC最多中断10ms」这样的条件限制来使GC的终端时间视作可预测的。</p>
-<p>但是，在两段的GC程序之间，引用关系可能发生了变化。所以，这种GC算法也要写屏障，来记录引用关系的变化。虽然这种方式控制了中断最高时间，但是由于中断次数增加，GC总时间是增加的。</p>
-<p>##并行回收</p>
-<p>基本原理是，在程序运行的同时进行GC工作，最大化CPU的性能。但是这种方式也要面对增量回收的问题，所以也要进行写屏障操作。</p>
-<p>然而这种方式也并未做到完全不暂停原程序的运行，在某些特定的GC阶段还是要暂停原程序。多核化迅速发展的今天，这种算法也在不断优化。不间断原程序实现并行回收这个领域是相当值得期待的。</p>
+            <h1 id="Kilim工作原理"><a href="#Kilim工作原理" class="headerlink" title="Kilim工作原理"></a>Kilim工作原理</h1><h2 id="1-Kilim中的Task，即用户线程如何调度和切换？"><a href="#1-Kilim中的Task，即用户线程如何调度和切换？" class="headerlink" title="1. Kilim中的Task，即用户线程如何调度和切换？"></a>1. Kilim中的Task，即用户线程如何调度和切换？</h2><p>相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU<br>在多任务的调度上操作系统采取抢占式和协作式两种方式。</p>
+<h2 id="2-Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？"><a href="#2-Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？" class="headerlink" title="2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？"></a>2.Kilim如何识别线程堆栈中哪些方法是Pauseable，即可暂停的？</h2><p>Kilim通过代码编译期识别抛出的Pauseable异常注解，来判断识别方法可暂停</p>
+<h2 id="3-Kilim是如何实现线程执行过程中当前方法的暂停和恢复？"><a href="#3-Kilim是如何实现线程执行过程中当前方法的暂停和恢复？" class="headerlink" title="3.Kilim是如何实现线程执行过程中当前方法的暂停和恢复？"></a>3.Kilim是如何实现线程执行过程中当前方法的暂停和恢复？</h2><p>Kilim通过编译期字节码编织，对每一个可暂停的方法进行字节码处理，在方法执行前和执行后加上相关的执行上下文的处理，暂停时会保存整个线程堆栈，包括完整栈帧，程序计数器等等，然后通过特定的字节码跳转指令jsr跳转到另外一个Task的执行方法中，恢复时将复原整个线程堆栈，包括完整栈帧，程序计数器等等，回到上次暂停时的指令地址处继续执行。</p>
+<h2 id="4-Kilim中的Weaver工具是如何针对编译的代码实现织入的？"><a href="#4-Kilim中的Weaver工具是如何针对编译的代码实现织入的？" class="headerlink" title="4.Kilim中的Weaver工具是如何针对编译的代码实现织入的？"></a>4.Kilim中的Weaver工具是如何针对编译的代码实现织入的？</h2><p>字节码技术，具体来说通过ASM字节码框架实现对class文件的重写</p>
+<h2 id="5-如何将一个传统的线程执行方法改造成Kilim的Task模型？"><a href="#5-如何将一个传统的线程执行方法改造成Kilim的Task模型？" class="headerlink" title="5.如何将一个传统的线程执行方法改造成Kilim的Task模型？"></a>5.如何将一个传统的线程执行方法改造成Kilim的Task模型？</h2><p>首先，需要实现一个类继承Task，实现Task的execute方法，该execute中调用的方法必须声明抛出Pauseable异常，其次，线程间的通信全部通过Mailbox来传递消息，put和get时注意三种版本，包括阻塞线程，阻塞Task但不阻塞线程，无阻塞。<br>最后，针对这些Task和抛出Pauseable的方法编译时，使用Weaver工具进行编织处理</p>
+<h2 id="6-Kilim中什么样的方法在执行过程中是可暂停的？"><a href="#6-Kilim中什么样的方法在执行过程中是可暂停的？" class="headerlink" title="6.Kilim中什么样的方法在执行过程中是可暂停的？"></a>6.Kilim中什么样的方法在执行过程中是可暂停的？</h2><p>整个方法调用链中方法必须声明抛出Pauseable异常，This annotation is used by the Kilim weaver to rewrite the bytecode of all pausable methods to incorporate the voluntary yielding logic. One important property of this scheme is that a pausable method can only be called by another pausable method.</p>
+<h2 id="7-Kilim中哪些操作可以使得Task暂停或者恢复运行？"><a href="#7-Kilim中哪些操作可以使得Task暂停或者恢复运行？" class="headerlink" title="7.Kilim中哪些操作可以使得Task暂停或者恢复运行？"></a>7.Kilim中哪些操作可以使得Task暂停或者恢复运行？</h2><p>Task.sleep() is a pausable method that pauses a task for a give time. Another example is Mailbox.get(), which pauses a task until a mailbox is non-empty.</p>
+<p>##8.Kilim中Task和Thread之间是如何调度的?</p>
+<p>Kilim’s tasks are cooperatively scheduled on a kernel thread pool.<br>A Kilim task is owned and managed by a scheduler, which manages the<br>thread pool. When a task needs to pause, it removes itself from the<br>thread by popping its call stack, remembering enough about each<br>activation frame in order to help rebuild the stack and resume, at a<br>later point). The scheduler then reuses that thread for some other<br>task.<br>You can have more than one scheduler and assign<br>each task to a particular scheduler. </p>
+<h2 id="9-Kilim中Task占用的内存大小？"><a href="#9-Kilim中Task占用的内存大小？" class="headerlink" title="9.Kilim中Task占用的内存大小？"></a>9.Kilim中Task占用的内存大小？</h2><p>The amount of memory occupied by a task is:</p>
+<ol>
+<li>The java object that represents the task class</li>
+<li>If paused, an array of activation frames is stored. The Kilim<br>weaver performs data flow and live variable and constant analysis<br>(intra-procedurally) to ensure that it capture only as<br>much as is needed to resume.</li>
+<li>The contents of all mailboxes that the task is receiving on.</li>
+</ol>
+<h2 id="10-什么场景下适合做Kilim协程？"><a href="#10-什么场景下适合做Kilim协程？" class="headerlink" title="10.什么场景下适合做Kilim协程？"></a>10.什么场景下适合做Kilim协程？</h2><p><strong>IO密集型的应用比较适合使用协程</strong>，比如应用中存在较多的与后端的网络交互，存在较多的时间在等待后端响应</p>
+<h2 id="11-Kilim中Task的工作机制？"><a href="#11-Kilim中Task的工作机制？" class="headerlink" title="11.Kilim中Task的工作机制？"></a>11.Kilim中Task的工作机制？</h2><p>Actor采取的这种类似消息机制的方式，实际在守护线程和外部线程之间有一个队列，俗称信箱，外部线程只要把请求放入，守护线程就读取进行处理。这种异步高效方式是Actor基本原理。Task 是轻量型的线程，它们通过 Kilim 的 Mailbox 类型与其他 Task 通信。</p>
+<h2 id="12-Kilim框架做了什么？"><a href="#12-Kilim框架做了什么？" class="headerlink" title="12.Kilim框架做了什么？"></a>12.Kilim框架做了什么？</h2><ol>
+<li>利用字节码增强(基于ASM字节码框架)，将普通代码转化为支持协程的代码；</li>
+<li>调用pausable的时候，如果pause了就保存当前方法栈的State，停止执行，将控制权交给调度器；</li>
+<li>调度器负责协调就绪的协程；</li>
+<li>协程resume的时候，自动恢复State，回复到上次执行的位置继续执行</li>
+</ol>
+<h1 id="小记"><a href="#小记" class="headerlink" title="小记"></a>小记</h1><p>Java等语言的基本编程模型是基于线程的。<br>​<br>要自己实现fiber，主要是保存线程上下文。注意要保存的信息有：各个寄存器，栈顶和栈底，异常信息，浮点寄存器。</p>
+<p>window Fiber的默认堆栈是1M</p>
+<p>协程虽然如此之好，看是很长时间以来，因为受到基于堆栈的子例程实现的限制，并没有多少语言在其实语言或库中支持协程</p>
+<p>子例程容易实现于堆栈之上，因为子例程将调用的其他子例程作为下级。相反地，协程对等地调用其他协程</p>
+<p>类似于C这样的语言全都要依赖于基于栈的结构，因此在函数间传递控制时，必须要有一个调用函数和一个被调函数。</p>
+<p><strong>我们必须接受这个现实：在C语言中，必须要有调用函数和被调函数。</strong></p>
+<p>有见过几种协程的实现，因为没有 C/C++ 的原生支持，所以多数的库使用了汇编代码，还有些库利用了 C 语言的 setjmp 和 longjmp 但是要求函数里面使用 static local 的变量来保存协程内部的数据。</p>
+<p>用 C/C++ 实现协程的最大困难就是创建，保存和恢复程序的上下文。因为这涉及到了程序栈的管理，以及 CPU 寄存器的访问，但是这两项内容在 C/C++ 标准里面都没有严格的定义，所以我们是不可能有一个完全跨平台的 C/C++ 实现的。</p>
 
           
         
@@ -930,6 +950,169 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/how-to-support-full-unicode-in-mysql-databases/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/02/how-to-support-full-unicode-in-mysql-databases/" itemprop="url">
+                  How to support full Unicode in MySQL databases
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
+                2015-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####Alternative title: The things we do to store U+1F4A9 PILE OF POO (💩) correctly.####</p>
+<p>Are you using MySQL’s utf8 charset in your databases? In this write-up I’ll explain why you should switch to utf8mb4 instead, and how to do it.</p>
+<p>##UTF-8</p>
+<p>The UTF-8 encoding can represent every symbol in the Unicode character set, which ranges from U+000000 to U+10FFFF. That’s 1,114,112 possible symbols. (Not all of these Unicode code points have been assigned characters yet, but that doesn’t stop UTF-8 from being able to encode them.)</p>
+<p>UTF-8 is a variable-width encoding; it encodes each symbol using one to four 8-bit bytes. Symbols with lower numerical code point values are encoded using fewer bytes. This way, UTF-8 is optimized for the common case where ASCII characters and other BMP symbols (whose code points range from U+000000 to U+00FFFF) are used — while still allowing astral symbols (whose code points range from U+010000 to U+10FFFF) to be stored.</p>
+<p>##MySQL’s utf8<br>For a long time, I was using MySQL’s utf8 charset for databases, tables, and columns, assuming it mapped to the UTF-8 encoding described above. By using utf8, I’d be able to store any symbol I want in my database — or so I thought.</p>
+<p>While writing about JavaScript’s internal character encoding, I noticed that there was no way to insert the U+1D306 TETRAGRAM FOR CENTRE (𝌆) symbol into the MySQL database behind this site. The column I was trying to update had the utf8_unicode_ci collation, and the connection charset was set to utf8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET NAMES utf8; # just to emphasize that the connection charset is set to `utf8`</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; UPDATE database_name.table_name SET column_name = &apos;foo𝌆bar&apos; WHERE id = 9001;</div><div class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</div><div class="line">Rows matched: 1  Changed: 1  Warnings: 1</div><div class="line"></div><div class="line">mysql&gt; SELECT column_name FROM database_name.table_name WHERE id = 9001;</div><div class="line">+-------------+</div><div class="line">| column_name |</div><div class="line">+-------------+</div><div class="line">| foo         |</div><div class="line">+-------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>The content got truncated at the first astral Unicode symbol, in this case 𝌆 — so, attempting to insert foo𝌆bar actually inserted foo instead, resulting in data loss (and possibly introducing security risks). MySQL returned a warning message, too:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW WARNINGS;</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Level   | Code | Message                                                                      |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Warning | 1366 | Incorrect string value: &apos;\xF0\x9D\x8C\x86&apos; for column &apos;column_name&apos; at row 1 |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>Turns out MySQL’s utf8 charset only partially implements proper UTF-8 encoding. It can only store UTF-8-encoded symbols that consist of one to three bytes; encoded symbols that take up four bytes aren’t supported.</p>
+<p>Since astral symbols (whose code points range from U+010000 to U+10FFFF) each consist of four bytes in UTF-8, you cannot store them using MySQL’s utf8 implementation.</p>
+<p>This doesn’t just affect the 𝌆 character, but more important symbols like U+01F4A9 PILE OF POO (💩) as well. In total, that’s 1,048,575 possible code points you can’t use. In fact, MySQL’s utf8 only allows you to store 5.88% ((0x00FFFF + 1) / (0x10FFFF + 1)) of all possible Unicode code points. Proper UTF-8 can encode 100% of all Unicode code points.</p>
+<p>TL;DR MySQL’s utf8 encoding is awkwardly named, as it’s different from proper UTF-8 encoding. It doesn’t offer full Unicode support.</p>
+<p>##MySQL’s utf8mb4<br>Luckily, MySQL 5.5.3 (released in early 2010) introduced a new encoding called utf8mb4 which maps to proper UTF-8 and thus fully supports Unicode, including astral symbols.</p>
+<p>##Switching from MySQL’s utf8 to utf8mb4</p>
+<p>###Step 1: Create a backup</p>
+<p>Create a backup of all the databases on the server you want to upgrade. Safety first!</p>
+<p>###Step 2: Upgrade the MySQL server</p>
+<p>Upgrade the MySQL server to v5.5.3+, or ask your server administrator to do it for you.</p>
+<p>###Step 3: Modify databases, tables, and columns</p>
+<p>Change the character set and collation properties of the databases, tables, and columns to use utf8mb4 instead of utf8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">*For each database:*</div><div class="line">ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;</div><div class="line">*For each table:*</div><div class="line">ALTER TABLE table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*For each column:*</div><div class="line">ALTER TABLE table_name CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*(Don’t blindly copy-paste this! The exact statement depends on the column type, maximum length, and other properties. The above line is just an example for a `VARCHAR` column.)*</div></pre></td></tr></table></figure>
+<p>Since utf8mb4 is fully backwards compatible with utf8, no mojibake or other forms of data loss should occur. (But you have a backup, right?)</p>
+<p>###Step 4: Check the maximum length of columns and index keys</p>
+<p>This is probably the most tedious part of the whole upgrading process.</p>
+<p>When converting from utf8 to utf8mb4, the maximum length of a column or index key is unchanged in terms of bytes. Therefore, it is smaller in terms of characters, because the maximum length of a character is now four bytes instead of three.</p>
+<p>For example, a TINYTEXT column can hold up to 255 bytes, which correlates to 85 three-byte or 63 four-byte characters. Let’s say you have a TINYTEXT column that uses utf8 but must be able to contain more than 63 characters. Given this requirement, you can’t convert this column to utf8mb4 unless you also change the data type to a longer type such as TEXT — because if you’d try to fill it with four-byte characters, you’d only be able to enter 63 characters, but not more.</p>
+<p>The same goes for index keys. The InnoDB storage engine has a maximum index length of 767 bytes, so for utf8 or utf8mb4 columns, you can index a maximum of 255 or 191 characters, respectively. If you currently have utf8 columns with indexes longer than 191 characters, you will need to index a smaller number of characters when using utf8mb4. (Because of this, I had to change some indexed VARCHAR(255) columns to VARCHAR(191).)</p>
+<p>Section 10.1.11 of the MySQL 5.5 Reference Manual has some more information on this.</p>
+<p>###Step 5: Modify connection, client, and server character sets</p>
+<p>In your application code, set the connection character set to utf8mb4. This can be done by simply replacing any variants of SET NAMES utf8 with SET NAMES utf8mb4. If your old SET NAMES statement specified the collation, make sure to change that as well, e.g. SET NAMES utf8 COLLATE utf8_unicode_ci becomes SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci.</p>
+<p>Make sure to set the client and server character set as well. I have the following in my MySQL configuration file (/etc/my.cnf):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysql]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">character-set-client-handshake = FALSE</div><div class="line">character-set-server = utf8mb4</div><div class="line">collation-server = utf8mb4_unicode_ci</div></pre></td></tr></table></figure>
+<p>You can easily confirm these settings work correctly:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; OR Variable_name LIKE &apos;collation%&apos;;</div><div class="line">+--------------------------+--------------------+</div><div class="line">| Variable_name            | Value              |</div><div class="line">+--------------------------+--------------------+</div><div class="line">| character_set_client     | utf8mb4            |</div><div class="line">| character_set_connection | utf8mb4            |</div><div class="line">| character_set_database   | utf8mb4            |</div><div class="line">| character_set_filesystem | binary             |</div><div class="line">| character_set_results    | utf8mb4            |</div><div class="line">| character_set_server     | utf8mb4            |</div><div class="line">| character_set_system     | utf8               |</div><div class="line">| collation_connection     | utf8mb4_unicode_ci |</div><div class="line">| collation_database       | utf8mb4_unicode_ci |</div><div class="line">| collation_server         | utf8mb4_unicode_ci |</div><div class="line">+--------------------------+--------------------+</div><div class="line">10 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>As you can see, all the relevant options are set to utf8mb4, except for character_set_filesystem which should be binary unless you’re on a file system that supports multi-byte UTF-8-encoded characters in file names, and character_set_system which is always utf8 and can’t be overridden.</p>
+<p><em>Note: The default character set and collation can be configured at some other levels as well.</em></p>
+<p>###Step 6: Repair and optimize all tables</p>
+<p>After upgrading the MySQL server and making the necessary changes explained above, make sure to repair and optimize all databases and tables. I didn’t do this right away after upgrading (I didn’t think it was necessary, as everything seemed to work fine at first glance), and ran into some weird bugs where UPDATE statements didn’t have any effect, even though no errors were thrown.</p>
+<p>You could run the following MySQL queries for each table you want to repair and optimize:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">*For each table*</div><div class="line">REPAIR TABLE table_name;</div><div class="line">OPTIMIZE TABLE table_name;</div></pre></td></tr></table></figure>
+<p>Luckily, this can easily be done in one go using the command-line mysqlcheck utility:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysqlcheck -u root -p --auto-repair --optimize --all-databases</div></pre></td></tr></table></figure>
+<p>This will prompt for the root user’s password, after which all tables in all databases will be repaired and optimized.</p>
+<p>##Summary<br>Never use utf8 in MySQL — always use utf8mb4 instead. Updating your databases and code might take some time, but it’s definitely worth the effort. Why would you arbitrarily limit the set of symbols that can be used in your database? Why would you lose data every time a user enters an astral symbol as part of a comment or message or whatever it is you store in your database? There’s no reason not to strive for full Unicode support everywhere. Do the right thing, and use utf8mb4. 🍻</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1214,169 +1397,6 @@
 <p><strong>五、小结</strong></p>
 <p>以上便是我最近几天对JVM相关资料的整理，主要围绕他的基本组成和运行原理等，内存管理，基本数据类型和字节码文件。JVM是一个非常优秀的JAVA程序，也是个不错的规范，这次整理学习让我对他有了更加清晰的认知，对Java语言的理解也更加加深。</p>
 <p>这次学习过程，坚定了我对程序员发展的认知。知识一定要精，下一步我将边工作边仔细阅读Oracle的3个版本的《JVM Specification》，并且结合实践让自己的Java基础素养更上一个层次。(<a href="http://docs.oracle.com/javase/specs/" target="_blank" rel="external">http://docs.oracle.com/javase/specs/</a>)</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/how-to-support-full-unicode-in-mysql-databases/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/02/how-to-support-full-unicode-in-mysql-databases/" itemprop="url">
-                  How to support full Unicode in MySQL databases
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
-                2015-08-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>####Alternative title: The things we do to store U+1F4A9 PILE OF POO (💩) correctly.####</p>
-<p>Are you using MySQL’s utf8 charset in your databases? In this write-up I’ll explain why you should switch to utf8mb4 instead, and how to do it.</p>
-<p>##UTF-8</p>
-<p>The UTF-8 encoding can represent every symbol in the Unicode character set, which ranges from U+000000 to U+10FFFF. That’s 1,114,112 possible symbols. (Not all of these Unicode code points have been assigned characters yet, but that doesn’t stop UTF-8 from being able to encode them.)</p>
-<p>UTF-8 is a variable-width encoding; it encodes each symbol using one to four 8-bit bytes. Symbols with lower numerical code point values are encoded using fewer bytes. This way, UTF-8 is optimized for the common case where ASCII characters and other BMP symbols (whose code points range from U+000000 to U+00FFFF) are used — while still allowing astral symbols (whose code points range from U+010000 to U+10FFFF) to be stored.</p>
-<p>##MySQL’s utf8<br>For a long time, I was using MySQL’s utf8 charset for databases, tables, and columns, assuming it mapped to the UTF-8 encoding described above. By using utf8, I’d be able to store any symbol I want in my database — or so I thought.</p>
-<p>While writing about JavaScript’s internal character encoding, I noticed that there was no way to insert the U+1D306 TETRAGRAM FOR CENTRE (𝌆) symbol into the MySQL database behind this site. The column I was trying to update had the utf8_unicode_ci collation, and the connection charset was set to utf8.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET NAMES utf8; # just to emphasize that the connection charset is set to `utf8`</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; UPDATE database_name.table_name SET column_name = &apos;foo𝌆bar&apos; WHERE id = 9001;</div><div class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</div><div class="line">Rows matched: 1  Changed: 1  Warnings: 1</div><div class="line"></div><div class="line">mysql&gt; SELECT column_name FROM database_name.table_name WHERE id = 9001;</div><div class="line">+-------------+</div><div class="line">| column_name |</div><div class="line">+-------------+</div><div class="line">| foo         |</div><div class="line">+-------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
-<p>The content got truncated at the first astral Unicode symbol, in this case 𝌆 — so, attempting to insert foo𝌆bar actually inserted foo instead, resulting in data loss (and possibly introducing security risks). MySQL returned a warning message, too:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW WARNINGS;</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Level   | Code | Message                                                                      |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Warning | 1366 | Incorrect string value: &apos;\xF0\x9D\x8C\x86&apos; for column &apos;column_name&apos; at row 1 |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
-<p>Turns out MySQL’s utf8 charset only partially implements proper UTF-8 encoding. It can only store UTF-8-encoded symbols that consist of one to three bytes; encoded symbols that take up four bytes aren’t supported.</p>
-<p>Since astral symbols (whose code points range from U+010000 to U+10FFFF) each consist of four bytes in UTF-8, you cannot store them using MySQL’s utf8 implementation.</p>
-<p>This doesn’t just affect the 𝌆 character, but more important symbols like U+01F4A9 PILE OF POO (💩) as well. In total, that’s 1,048,575 possible code points you can’t use. In fact, MySQL’s utf8 only allows you to store 5.88% ((0x00FFFF + 1) / (0x10FFFF + 1)) of all possible Unicode code points. Proper UTF-8 can encode 100% of all Unicode code points.</p>
-<p>TL;DR MySQL’s utf8 encoding is awkwardly named, as it’s different from proper UTF-8 encoding. It doesn’t offer full Unicode support.</p>
-<p>##MySQL’s utf8mb4<br>Luckily, MySQL 5.5.3 (released in early 2010) introduced a new encoding called utf8mb4 which maps to proper UTF-8 and thus fully supports Unicode, including astral symbols.</p>
-<p>##Switching from MySQL’s utf8 to utf8mb4</p>
-<p>###Step 1: Create a backup</p>
-<p>Create a backup of all the databases on the server you want to upgrade. Safety first!</p>
-<p>###Step 2: Upgrade the MySQL server</p>
-<p>Upgrade the MySQL server to v5.5.3+, or ask your server administrator to do it for you.</p>
-<p>###Step 3: Modify databases, tables, and columns</p>
-<p>Change the character set and collation properties of the databases, tables, and columns to use utf8mb4 instead of utf8.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">*For each database:*</div><div class="line">ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;</div><div class="line">*For each table:*</div><div class="line">ALTER TABLE table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*For each column:*</div><div class="line">ALTER TABLE table_name CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*(Don’t blindly copy-paste this! The exact statement depends on the column type, maximum length, and other properties. The above line is just an example for a `VARCHAR` column.)*</div></pre></td></tr></table></figure>
-<p>Since utf8mb4 is fully backwards compatible with utf8, no mojibake or other forms of data loss should occur. (But you have a backup, right?)</p>
-<p>###Step 4: Check the maximum length of columns and index keys</p>
-<p>This is probably the most tedious part of the whole upgrading process.</p>
-<p>When converting from utf8 to utf8mb4, the maximum length of a column or index key is unchanged in terms of bytes. Therefore, it is smaller in terms of characters, because the maximum length of a character is now four bytes instead of three.</p>
-<p>For example, a TINYTEXT column can hold up to 255 bytes, which correlates to 85 three-byte or 63 four-byte characters. Let’s say you have a TINYTEXT column that uses utf8 but must be able to contain more than 63 characters. Given this requirement, you can’t convert this column to utf8mb4 unless you also change the data type to a longer type such as TEXT — because if you’d try to fill it with four-byte characters, you’d only be able to enter 63 characters, but not more.</p>
-<p>The same goes for index keys. The InnoDB storage engine has a maximum index length of 767 bytes, so for utf8 or utf8mb4 columns, you can index a maximum of 255 or 191 characters, respectively. If you currently have utf8 columns with indexes longer than 191 characters, you will need to index a smaller number of characters when using utf8mb4. (Because of this, I had to change some indexed VARCHAR(255) columns to VARCHAR(191).)</p>
-<p>Section 10.1.11 of the MySQL 5.5 Reference Manual has some more information on this.</p>
-<p>###Step 5: Modify connection, client, and server character sets</p>
-<p>In your application code, set the connection character set to utf8mb4. This can be done by simply replacing any variants of SET NAMES utf8 with SET NAMES utf8mb4. If your old SET NAMES statement specified the collation, make sure to change that as well, e.g. SET NAMES utf8 COLLATE utf8_unicode_ci becomes SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci.</p>
-<p>Make sure to set the client and server character set as well. I have the following in my MySQL configuration file (/etc/my.cnf):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysql]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">character-set-client-handshake = FALSE</div><div class="line">character-set-server = utf8mb4</div><div class="line">collation-server = utf8mb4_unicode_ci</div></pre></td></tr></table></figure>
-<p>You can easily confirm these settings work correctly:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; OR Variable_name LIKE &apos;collation%&apos;;</div><div class="line">+--------------------------+--------------------+</div><div class="line">| Variable_name            | Value              |</div><div class="line">+--------------------------+--------------------+</div><div class="line">| character_set_client     | utf8mb4            |</div><div class="line">| character_set_connection | utf8mb4            |</div><div class="line">| character_set_database   | utf8mb4            |</div><div class="line">| character_set_filesystem | binary             |</div><div class="line">| character_set_results    | utf8mb4            |</div><div class="line">| character_set_server     | utf8mb4            |</div><div class="line">| character_set_system     | utf8               |</div><div class="line">| collation_connection     | utf8mb4_unicode_ci |</div><div class="line">| collation_database       | utf8mb4_unicode_ci |</div><div class="line">| collation_server         | utf8mb4_unicode_ci |</div><div class="line">+--------------------------+--------------------+</div><div class="line">10 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
-<p>As you can see, all the relevant options are set to utf8mb4, except for character_set_filesystem which should be binary unless you’re on a file system that supports multi-byte UTF-8-encoded characters in file names, and character_set_system which is always utf8 and can’t be overridden.</p>
-<p><em>Note: The default character set and collation can be configured at some other levels as well.</em></p>
-<p>###Step 6: Repair and optimize all tables</p>
-<p>After upgrading the MySQL server and making the necessary changes explained above, make sure to repair and optimize all databases and tables. I didn’t do this right away after upgrading (I didn’t think it was necessary, as everything seemed to work fine at first glance), and ran into some weird bugs where UPDATE statements didn’t have any effect, even though no errors were thrown.</p>
-<p>You could run the following MySQL queries for each table you want to repair and optimize:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">*For each table*</div><div class="line">REPAIR TABLE table_name;</div><div class="line">OPTIMIZE TABLE table_name;</div></pre></td></tr></table></figure>
-<p>Luckily, this can easily be done in one go using the command-line mysqlcheck utility:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysqlcheck -u root -p --auto-repair --optimize --all-databases</div></pre></td></tr></table></figure>
-<p>This will prompt for the root user’s password, after which all tables in all databases will be repaired and optimized.</p>
-<p>##Summary<br>Never use utf8 in MySQL — always use utf8mb4 instead. Updating your databases and code might take some time, but it’s definitely worth the effort. Why would you arbitrarily limit the set of symbols that can be used in your database? Why would you lose data every time a user enters an astral symbol as part of a comment or message or whatever it is you store in your database? There’s no reason not to strive for full Unicode support everywhere. Do the right thing, and use utf8mb4. 🍻</p>
 
           
         
@@ -1801,126 +1821,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/arch-collections/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/17/arch-collections/" itemprop="url">
-                  架构资料集合
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T00:00:00+08:00">
-                2015-07-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p></p><h4>简介</h4><p></p>
-<p></p><p>以前见过零零散散地介绍一些知名网站架构的分析文章。最近D瓜哥也想研究一下各大知名网站的架构。所以，就搜集了一下这方面资料。限于时间问题，这篇文章分享的文章并没有都看完，所以不保证所有文章的质量。另外，如果有朋友发现更好的文章，欢迎留言告知。再补充进来。</p><p></p>
-<p></p><h4>知名网站架构分析</h4><p></p>
-<ol><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch.html">探索Google App Engine背后的奥秘(1)–Google的核心技术</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch_guess.html">探索Google App Engine背后的奥秘(2)–Google的整体架构猜想</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-intro.html">探索Google App Engine背后的奥秘(3)- Google App Engine的简介</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-arch_intro.html">探索Google App Engine背后的奥秘(4)- Google App Engine的架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-datastore.html">探索Google App Engine背后的奥秘(5)- Datastore的设计</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-summary.html">探索Google App Engine背后的奥秘(6)-<span id="more-41"></span> 总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://dbanotes.net/tech-memo/amazon_dynamo.html">Amazon 的 Dynamo 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/ebay_application_server.html">eBay 的应用服务器规模</a></li><br><li><a target="_blank" href="http://dbanotes.net/database/ebay_storage.html">eBay 的数据量</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/taobao_arch.html">来自淘宝的架构经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/yahoo_arch.html">Yahoo！社区架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part1">基于Facebook和Flash平台的应用架构解析（一）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part2">基于Facebook和Flash平台的应用架构解析（二）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-final">基于Facebook和Flash平台的应用架构解析（三）</a></li><br><li><a target="_blank" href="http://www.biaodianfu.com/facebook-efficient-storage-of-billions-of-photos.html">Facebook图片存储架构的学习</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/200905/123565.htm">facebook图片存储架构技术全解析</a></li><br><li><a target="_blank" href="http://www.csdn.net/article/2011-04-29/296900">Facebook数据仓库揭秘：RCFile高效存储结构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/renren-mobile-arch">人人网移动开发架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/qzone-architecture">QQ空间技术架构之深刻揭密</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/twitter_arch.html">Twitter 的架构扩展: 100 倍性能提升</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/14/the-architecture-of-twitter.html">Twitter网站架构学习笔记</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/201009/226825.htm">国内外大型SNS网站后台架构对比</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/13/the-architecture-of-youku.html">优酷网架构学习笔记</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/youku_arch.html">优酷网(Youku.com)架构经验</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/6/634350416046298451.html">YouTube架构学习体会</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/youtube_web_arch.html">YouTube 的架构扩展</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/27/the-architecture-of-digg.html">Digg网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/digg_arch_cache_and_shard.html">Digg 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/wikipedia_arch.html">WikiPedia技术架构学习笔记</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-yupoo.html">Yupoo网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351294385186067.html">Flickr 网站架构分析</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/flickr_lamp_capacity_planning.html">学习 Flickr 的 基于 LAMP 的容量规划经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/myspace_arch_2008.html">MySpace 系统架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351257301504864.html">回顾MySpace架构的坎坷之路</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/hj-yihaodian-b2c-evolution-road">挑战空中加油——1号店B2C电商系统演进之路</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/5/634349627089221280.html">PlentyOfFish.com .NET网站的又一传奇</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/douban_arch.html">学习豆瓣好榜样–网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/37signals_arch.html">37Signals 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/review/tailrank_arch.html">Tailrank 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/smugmug_arch.html">SmugMug 的架构介绍</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/26/poppende-architecture.html">高并发PHP网站Poppen.de架构学习</a></li><br><li><a target="_blank" href="https://groups.drupal.org/node/194308">Drupal与大型网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/imobile_web_arch_gaochunhui.html">手机之家网站架构–对话高春辉</a></li><br><li><a target="_blank" href="http://www.cnblogs.com/realviv/articles/1883563.html">手机之家的网站架构设计和演化</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/heroku_architecture.html">学习 HeroKu 的架构设计</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/17/634359701352994625.html">各大网站架构总结笔记</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/presentations/petals-network-architecture-introduced">花瓣网的架构介绍</a></li><br><li><a target="_blank" href="http://developer.51cto.com/developer/webarc/">大型网站架构技术专家谈</a></li><br></ol><br><h4>架构分析与设计</h4><br><ol><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/the-network-infrastructure-in-an-open-environment">架构之美–开放环境下的网络架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/message-based-distributed-architecture">案例分析：基于消息的分布式架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/ieee-pattern-based-architecture-reviews">基于模式的架构评审</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/next-generation-massively-multithreaded-architectures">为不规则应用设计新一代超大型多线程架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/rails-voip-system-architecture-and-development">从简单到复杂：大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/it-architecture-inside-out-perspectives">专家视角看IT与架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/cjz-architecture-corruption">架构腐化之谜</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/xw-cloud-in-my-view">我眼中的云端架构</a></li><br><li><a target="_blank" href="http://www.yejun.cn/?p=1154">从100PV到1亿级PV网站架构演变</a></li><br><li><a target="_blank" href="http://open.taobao.com/doc/detail.htm?id=1011">网站架构设计方案</a></li><br><li><a target="_blank" href="http://hi.baidu.com/injava/item/e62923e88a713ff7e1a5d44b">浅谈大型网站动态应用系统架构</a>——鉴于某度有胡乱改系统，而且不自动保留原来数据的恶习，建议大家手动备份下来。</li><br><li><a target="_blank" href="http://blog.sina.com.cn/s/blog_46d0a3930100euxb.html">做大的艺术 &#8211; 大型网站的架构设计</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1960.html">平台网站架构设计之我所见</a></li><br><li><a target="_blank" href="https://speakerdeck.com/shiningray/diao-si-cheng-xu-yuan-ru-he-da-zao-ri-pvbai-mo-de-wang-zhan-jia-gou">屌丝程序员如何打造日PV百万的网站架构</a></li><br><li><a target="_blank" href="http://www.ibm.com/developerworks/cn/java/j-lo-restmvc/">设计 REST 风格的 MVC 框架</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/24/memcached-in-cluster-structure.html">集群架构实践 &#8211; 初试Memcached</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/7/634404076902160236.html">BigPipe，加速你的页面加载</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/4/28/634395931511515337.html">一步步构建大型网站架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/2/18/image-storage-cache-1.html">图片存储架构学习：缓存，架构师的美丽小三</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/news/2008/06/extremescaling">要快速伸缩？重新架构吧！</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/12/2/big-cluster-rails-voip-experience.html">大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1908.html">LAMP网站架构方案分析</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html">大型网站架构演变和知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2009/04/28/267970.html">网站架构相关PPT、文章整理</a></li><br><li><a target="_blank" href="http://www.toplee.com/blog/71.html">说说大型高并发高负载网站的系统架构</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/09/25/14035.html">软件架构设计思考之一</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/video-service-arch">视频流服务架构解析</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/7.html">Rails架构简介</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-1">自建CDN防御DDoS（1）：知己知彼，建设持久防线</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-2">自建CDN防御DDoS（2）：架构设计、成本与部署细节</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-3">自建CDN防御DDoS（3）：架构的后续改进</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/ppt">系统技术非业余研究-资料下载</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/29/11503.html">中小型应用系统知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/23/10824.html">中小型应用系统架构体系</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/architect/">《架构师》月刊</a>——InfoQ推出来的电子杂志。貌似还不错。</li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/13/6037.html">系统设计说明书(架构、概要、详细)目录结构</a>——D瓜哥不太擅长写文档，所以插播个文档模板。</li><br></ol><br><h4>架构背后的技术</h4><br><ol><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/11/15/cdn-introduction.html">CDN（内容分发网络）技术原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/34.html">高性能网站的十四条黄金法则</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6647024">大型网站后台架构的web server与缓存</a></li><br><li><a target="_blank" href="http://blog.csdn.net/21aspnet/article/details/5295572">Facebook性能大提升的秘密：HipHop</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/3/10/squid-usage.html">浅谈Squid在图片存储架构中的应用</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/tao-tfs">揭秘淘宝自主研发的文件系统——TFS</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/lzy-million-visits-site-technical-preparations">百万级访问量网站的技术准备工作</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6665670">谈谈大型网站的负载均衡器、db proxy和db</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/design-motivation-and-introduction-of-Pomelo-framework">深入浅出node.js游戏服务器开发——Pomelo框架的设计动机与架构介绍</a></li><br><li><a target="_blank" href="http://os.51cto.com/art/201111/301143.htm">架构师不可不知的十大可扩展架构</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4322953">Memcached FAQ(1) 一般性的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4336035">Memcached FAQ(2) 集群架构方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4341819">Memcached FAQ(3) 性能和客户端库方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4345501">Memcached FAQ(4) 选项、Item过期和命名空间方面的问题</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/6.html">分享一些资料（侧重Linux）</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/75.html">用JavaScript阐述MapReduce原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/67.html">分享一些D瓜哥攒的比较好的Web开发资料</a></li><br></ol><br><h4>数据库架构</h4><br><ol><br><li><a target="_blank" href="http://blog.csdn.net/zhangzhaokun/article/details/4711693">大型高并发高负载web应用系统架构-数据库架构策略</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/yupoo-partition-database">又拍网架构中的分库设计</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/Architecture-Datomic">Datomic的架构</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/archives/2349">低成本和高性能MySQL云数据的架构探索</a></li><br></ol><br><h4>插件架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/05/25/5187.html">关于Plugin Framework的关键因素</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/30/6925.html">Plugin Architecture简述</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/07/03/7069.html">Eclipse(3.1) Plugin Framework(基于OSGI的Plugin Architecture)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/06/18491.html">OSGI与Plugin Architecture</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/15/19820.html">思考插件架构体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/03/12/34930.html">基于Equinox开发系统的总结</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/07/39880.html">Declarative Services――Service-Oriented Component Model</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/15/41268.html">Service-Oriented Component Model(SOCM)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/05/28/48593.html">插件开发框架的思考</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/08/18/64440.html">基于Eclipse Equinox的插件框架：TPF</a></li><br></ol><br><h5>问题</h5><br><ol><br><li>WordPress的插件架构是怎么样的？</li><br></ol><br><h4>权限架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/05/14846.html">漫谈权限系统 I</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/08/15004.html">漫谈权限系统系列之概述、目的和需求</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/09/15091.html">漫谈权限系统之技术策略以及基于RBAC的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/13/15438.html">漫谈权限系统之基于ACL的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/14/15545.html">漫谈权限系统之结尾篇(开源产品、个人观点、知识体系)</a></li><br></ol>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/java-monitor-and-analysis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2062,6 +1962,126 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/arch-collections/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/17/arch-collections/" itemprop="url">
+                  架构资料集合
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T00:00:00+08:00">
+                2015-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p></p><h4>简介</h4><p></p>
+<p></p><p>以前见过零零散散地介绍一些知名网站架构的分析文章。最近D瓜哥也想研究一下各大知名网站的架构。所以，就搜集了一下这方面资料。限于时间问题，这篇文章分享的文章并没有都看完，所以不保证所有文章的质量。另外，如果有朋友发现更好的文章，欢迎留言告知。再补充进来。</p><p></p>
+<p></p><h4>知名网站架构分析</h4><p></p>
+<ol><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch.html">探索Google App Engine背后的奥秘(1)–Google的核心技术</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch_guess.html">探索Google App Engine背后的奥秘(2)–Google的整体架构猜想</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-intro.html">探索Google App Engine背后的奥秘(3)- Google App Engine的简介</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-arch_intro.html">探索Google App Engine背后的奥秘(4)- Google App Engine的架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-datastore.html">探索Google App Engine背后的奥秘(5)- Datastore的设计</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-summary.html">探索Google App Engine背后的奥秘(6)-<span id="more-41"></span> 总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://dbanotes.net/tech-memo/amazon_dynamo.html">Amazon 的 Dynamo 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/ebay_application_server.html">eBay 的应用服务器规模</a></li><br><li><a target="_blank" href="http://dbanotes.net/database/ebay_storage.html">eBay 的数据量</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/taobao_arch.html">来自淘宝的架构经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/yahoo_arch.html">Yahoo！社区架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part1">基于Facebook和Flash平台的应用架构解析（一）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part2">基于Facebook和Flash平台的应用架构解析（二）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-final">基于Facebook和Flash平台的应用架构解析（三）</a></li><br><li><a target="_blank" href="http://www.biaodianfu.com/facebook-efficient-storage-of-billions-of-photos.html">Facebook图片存储架构的学习</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/200905/123565.htm">facebook图片存储架构技术全解析</a></li><br><li><a target="_blank" href="http://www.csdn.net/article/2011-04-29/296900">Facebook数据仓库揭秘：RCFile高效存储结构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/renren-mobile-arch">人人网移动开发架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/qzone-architecture">QQ空间技术架构之深刻揭密</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/twitter_arch.html">Twitter 的架构扩展: 100 倍性能提升</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/14/the-architecture-of-twitter.html">Twitter网站架构学习笔记</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/201009/226825.htm">国内外大型SNS网站后台架构对比</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/13/the-architecture-of-youku.html">优酷网架构学习笔记</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/youku_arch.html">优酷网(Youku.com)架构经验</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/6/634350416046298451.html">YouTube架构学习体会</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/youtube_web_arch.html">YouTube 的架构扩展</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/27/the-architecture-of-digg.html">Digg网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/digg_arch_cache_and_shard.html">Digg 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/wikipedia_arch.html">WikiPedia技术架构学习笔记</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-yupoo.html">Yupoo网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351294385186067.html">Flickr 网站架构分析</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/flickr_lamp_capacity_planning.html">学习 Flickr 的 基于 LAMP 的容量规划经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/myspace_arch_2008.html">MySpace 系统架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351257301504864.html">回顾MySpace架构的坎坷之路</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/hj-yihaodian-b2c-evolution-road">挑战空中加油——1号店B2C电商系统演进之路</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/5/634349627089221280.html">PlentyOfFish.com .NET网站的又一传奇</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/douban_arch.html">学习豆瓣好榜样–网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/37signals_arch.html">37Signals 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/review/tailrank_arch.html">Tailrank 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/smugmug_arch.html">SmugMug 的架构介绍</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/26/poppende-architecture.html">高并发PHP网站Poppen.de架构学习</a></li><br><li><a target="_blank" href="https://groups.drupal.org/node/194308">Drupal与大型网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/imobile_web_arch_gaochunhui.html">手机之家网站架构–对话高春辉</a></li><br><li><a target="_blank" href="http://www.cnblogs.com/realviv/articles/1883563.html">手机之家的网站架构设计和演化</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/heroku_architecture.html">学习 HeroKu 的架构设计</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/17/634359701352994625.html">各大网站架构总结笔记</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/presentations/petals-network-architecture-introduced">花瓣网的架构介绍</a></li><br><li><a target="_blank" href="http://developer.51cto.com/developer/webarc/">大型网站架构技术专家谈</a></li><br></ol><br><h4>架构分析与设计</h4><br><ol><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/the-network-infrastructure-in-an-open-environment">架构之美–开放环境下的网络架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/message-based-distributed-architecture">案例分析：基于消息的分布式架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/ieee-pattern-based-architecture-reviews">基于模式的架构评审</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/next-generation-massively-multithreaded-architectures">为不规则应用设计新一代超大型多线程架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/rails-voip-system-architecture-and-development">从简单到复杂：大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/it-architecture-inside-out-perspectives">专家视角看IT与架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/cjz-architecture-corruption">架构腐化之谜</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/xw-cloud-in-my-view">我眼中的云端架构</a></li><br><li><a target="_blank" href="http://www.yejun.cn/?p=1154">从100PV到1亿级PV网站架构演变</a></li><br><li><a target="_blank" href="http://open.taobao.com/doc/detail.htm?id=1011">网站架构设计方案</a></li><br><li><a target="_blank" href="http://hi.baidu.com/injava/item/e62923e88a713ff7e1a5d44b">浅谈大型网站动态应用系统架构</a>——鉴于某度有胡乱改系统，而且不自动保留原来数据的恶习，建议大家手动备份下来。</li><br><li><a target="_blank" href="http://blog.sina.com.cn/s/blog_46d0a3930100euxb.html">做大的艺术 &#8211; 大型网站的架构设计</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1960.html">平台网站架构设计之我所见</a></li><br><li><a target="_blank" href="https://speakerdeck.com/shiningray/diao-si-cheng-xu-yuan-ru-he-da-zao-ri-pvbai-mo-de-wang-zhan-jia-gou">屌丝程序员如何打造日PV百万的网站架构</a></li><br><li><a target="_blank" href="http://www.ibm.com/developerworks/cn/java/j-lo-restmvc/">设计 REST 风格的 MVC 框架</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/24/memcached-in-cluster-structure.html">集群架构实践 &#8211; 初试Memcached</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/7/634404076902160236.html">BigPipe，加速你的页面加载</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/4/28/634395931511515337.html">一步步构建大型网站架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/2/18/image-storage-cache-1.html">图片存储架构学习：缓存，架构师的美丽小三</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/news/2008/06/extremescaling">要快速伸缩？重新架构吧！</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/12/2/big-cluster-rails-voip-experience.html">大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1908.html">LAMP网站架构方案分析</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html">大型网站架构演变和知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2009/04/28/267970.html">网站架构相关PPT、文章整理</a></li><br><li><a target="_blank" href="http://www.toplee.com/blog/71.html">说说大型高并发高负载网站的系统架构</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/09/25/14035.html">软件架构设计思考之一</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/video-service-arch">视频流服务架构解析</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/7.html">Rails架构简介</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-1">自建CDN防御DDoS（1）：知己知彼，建设持久防线</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-2">自建CDN防御DDoS（2）：架构设计、成本与部署细节</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-3">自建CDN防御DDoS（3）：架构的后续改进</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/ppt">系统技术非业余研究-资料下载</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/29/11503.html">中小型应用系统知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/23/10824.html">中小型应用系统架构体系</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/architect/">《架构师》月刊</a>——InfoQ推出来的电子杂志。貌似还不错。</li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/13/6037.html">系统设计说明书(架构、概要、详细)目录结构</a>——D瓜哥不太擅长写文档，所以插播个文档模板。</li><br></ol><br><h4>架构背后的技术</h4><br><ol><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/11/15/cdn-introduction.html">CDN（内容分发网络）技术原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/34.html">高性能网站的十四条黄金法则</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6647024">大型网站后台架构的web server与缓存</a></li><br><li><a target="_blank" href="http://blog.csdn.net/21aspnet/article/details/5295572">Facebook性能大提升的秘密：HipHop</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/3/10/squid-usage.html">浅谈Squid在图片存储架构中的应用</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/tao-tfs">揭秘淘宝自主研发的文件系统——TFS</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/lzy-million-visits-site-technical-preparations">百万级访问量网站的技术准备工作</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6665670">谈谈大型网站的负载均衡器、db proxy和db</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/design-motivation-and-introduction-of-Pomelo-framework">深入浅出node.js游戏服务器开发——Pomelo框架的设计动机与架构介绍</a></li><br><li><a target="_blank" href="http://os.51cto.com/art/201111/301143.htm">架构师不可不知的十大可扩展架构</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4322953">Memcached FAQ(1) 一般性的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4336035">Memcached FAQ(2) 集群架构方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4341819">Memcached FAQ(3) 性能和客户端库方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4345501">Memcached FAQ(4) 选项、Item过期和命名空间方面的问题</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/6.html">分享一些资料（侧重Linux）</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/75.html">用JavaScript阐述MapReduce原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/67.html">分享一些D瓜哥攒的比较好的Web开发资料</a></li><br></ol><br><h4>数据库架构</h4><br><ol><br><li><a target="_blank" href="http://blog.csdn.net/zhangzhaokun/article/details/4711693">大型高并发高负载web应用系统架构-数据库架构策略</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/yupoo-partition-database">又拍网架构中的分库设计</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/Architecture-Datomic">Datomic的架构</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/archives/2349">低成本和高性能MySQL云数据的架构探索</a></li><br></ol><br><h4>插件架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/05/25/5187.html">关于Plugin Framework的关键因素</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/30/6925.html">Plugin Architecture简述</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/07/03/7069.html">Eclipse(3.1) Plugin Framework(基于OSGI的Plugin Architecture)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/06/18491.html">OSGI与Plugin Architecture</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/15/19820.html">思考插件架构体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/03/12/34930.html">基于Equinox开发系统的总结</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/07/39880.html">Declarative Services――Service-Oriented Component Model</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/15/41268.html">Service-Oriented Component Model(SOCM)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/05/28/48593.html">插件开发框架的思考</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/08/18/64440.html">基于Eclipse Equinox的插件框架：TPF</a></li><br></ol><br><h5>问题</h5><br><ol><br><li>WordPress的插件架构是怎么样的？</li><br></ol><br><h4>权限架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/05/14846.html">漫谈权限系统 I</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/08/15004.html">漫谈权限系统系列之概述、目的和需求</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/09/15091.html">漫谈权限系统之技术策略以及基于RBAC的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/13/15438.html">漫谈权限系统之基于ACL的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/14/15545.html">漫谈权限系统之结尾篇(开源产品、个人观点、知识体系)</a></li><br></ol>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -2119,10 +2139,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -2140,6 +2160,44 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -2173,7 +2231,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -2186,7 +2244,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 

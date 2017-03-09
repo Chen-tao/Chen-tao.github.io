@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -98,7 +98,7 @@ InnoDB行锁简介InnoDB的行级锁定分为">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/create_test_table.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/session2_trans.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/deadlock.jpg">
-<meta property="og:updated_time" content="2017-03-09T03:45:31.000Z">
+<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL锁定机制分析--行级锁定">
 <meta name="twitter:description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。 
@@ -111,7 +111,7 @@ InnoDB行锁简介InnoDB的行级锁定分为">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -208,6 +208,16 @@ InnoDB行锁简介InnoDB的行级锁定分为">
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -224,6 +234,16 @@ InnoDB行锁简介InnoDB的行级锁定分为">
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -530,10 +550,10 @@ InnoDB行锁简介InnoDB的行级锁定分为">
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -551,6 +571,44 @@ InnoDB行锁简介InnoDB的行级锁定分为">
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -600,7 +658,7 @@ InnoDB行锁简介InnoDB的行级锁定分为">
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -613,7 +671,7 @@ InnoDB行锁简介InnoDB的行级锁定分为">
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
