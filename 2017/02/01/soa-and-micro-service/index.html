@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://chen-tao.github.io/2017/02/01/soa-and-micro-service/index.html">
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="SOA面向服务架构的一点自我分析，同时对比一下SOA与微服务，互相借鉴，有的放失。">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-13T08:43:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SOA面向服务架构浅析">
 <meta name="twitter:description" content="SOA面向服务架构的一点自我分析，同时对比一下SOA与微服务，互相借鉴，有的放失。">
@@ -378,6 +378,7 @@
 
       
         <h2 id="SOA定义"><a href="#SOA定义" class="headerlink" title="SOA定义"></a>SOA定义</h2><p>SOA是一个组件模型，它将应用程序的不同功能单元(称为服务)通过这些服务之间定义良好的接口和契约联系起来。接口是采用中立的方式进行定义的，它应该独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在各种这样的系统中的服务可以以一种统一和通用的方式进行交互。</p>
+<a id="more"></a>
 <p>这种具有中立的接口定义(没有强制绑定到特定的实现上)的特征称为服务之间的松耦合。<strong>SOA的目的，就是要将复杂的紧耦合的系统进行解耦，划分成面向业务的，细粒度，松耦合，无状态的服务。</strong>松耦合系统的好处有两点，一点是它的灵活性，另一点是，当组成整个应用程序的每个服务的内部结构和实现逐渐地发生改变时，它能够继续存在。而另一方面，紧耦合意味着应用程序的不同组件之间的接口与其功能和结构是紧密相连的，因而当需要对部分或整个应用程序进行某种形式的更改时，它们就显得非常脆弱，变更可能会导致部分乃至整个系统的重构。</p>
 <p>对松耦合的系统的需要来源于业务应用程序需要根据业务的需要变得更加灵活，以适应不断变化的环境，比如经常改变的政策、业务级别、业务重点、合作伙伴关系、行业地位以及其他与业务有关的因素，这些因素甚至会影响业务的性质。我们称能够灵活地适应环境变化的业务为按需(On demand)业务，在按需业务中，一旦需要，就可以对完成或执行任务的方式进行必要的更改。</p>
 <p>SOA是传统的面向对象架构模型的替代模型，面向对象的模型是紧耦合的，已经存在二十多年了。虽然基于 SOA 的系统并不排除使用面向对象的设计来构建单个服务，但是其整体设计却是面向服务的。由于它考虑到了系统内的对象，所以虽然 SOA 是基于对象的，但是作为一个整体，它却不是面向对象的。不同之处在于接口本身。SOA 系统原型的一个典型例子是通用对象请求代理体系结构(Common Object Request Broker Architecture，CORBA)，它已经出现很长时间了，其定义的概念与 SOA 相似。</p>

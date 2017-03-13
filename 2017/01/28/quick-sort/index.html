@@ -87,36 +87,21 @@
 
 
 
-<meta name="description" content="今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).
-快速排序的算法可以用三句话描述:[Algo]
-
-
-选择基准项(pivot element, 一般取第一个元素为pivot)
-把数组里所有小于pivot的移动到pivot左边, 大于pivot的移动到右边 ⇒ 此时pivot">
+<meta name="description" content="今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).">
 <meta property="og:type" content="article">
 <meta property="og:title" content="quick sort快速排序算法总结 ">
 <meta property="og:url" content="http://chen-tao.github.io/2017/01/28/quick-sort/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).
-快速排序的算法可以用三句话描述:[Algo]
-
-
-选择基准项(pivot element, 一般取第一个元素为pivot)
-把数组里所有小于pivot的移动到pivot左边, 大于pivot的移动到右边 ⇒ 此时pivot">
+<meta property="og:description" content="今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7ns2lgb3j30f005p3yp.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7nsfvemtj30dm0a83yz.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwgy1fc7nsr0uuxj30dp0bidga.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fc7nt1aur7j309k03gq2v.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7nta4jkzj308704s0sr.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-13T08:43:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="quick sort快速排序算法总结 ">
-<meta name="twitter:description" content="今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).
-快速排序的算法可以用三句话描述:[Algo]
-
-
-选择基准项(pivot element, 一般取第一个元素为pivot)
-把数组里所有小于pivot的移动到pivot左边, 大于pivot的移动到右边 ⇒ 此时pivot">
+<meta name="twitter:description" content="今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7ns2lgb3j30f005p3yp.jpg">
 
 
@@ -395,6 +380,7 @@
 
       
         <p>今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).</p>
+<a id="more"></a>
 <p>快速排序的算法可以用三句话描述:<br><strong>[Algo]</strong></p>
 <blockquote>
 <ul>

@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://chen-tao.github.io/2013/08/19/log-anaysis/index.html">
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="大规模信息系统中，日志的处理其实是一个非常基础又重要的部分。对于日志Log文件的采集，一般都是分布式的集群：一方面单一的采集节点会造成流量的拥堵，另一方面，大量日志的处理与存放对于单节点来说压力巨大，这也是分布式系统常需考虑的方面。 采集的另一个重点是增量模式，对于实时系统来说，需要进行类似于流处理(Stream)的增量实时采集(类似于Flume工具的一种实现模式)；当然，采集并不是目的，只是为分">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-13T08:42:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈日志的采集与分析">
 <meta name="twitter:description" content="大规模信息系统中，日志的处理其实是一个非常基础又重要的部分。对于日志Log文件的采集，一般都是分布式的集群：一方面单一的采集节点会造成流量的拥堵，另一方面，大量日志的处理与存放对于单节点来说压力巨大，这也是分布式系统常需考虑的方面。 采集的另一个重点是增量模式，对于实时系统来说，需要进行类似于流处理(Stream)的增量实时采集(类似于Flume工具的一种实现模式)；当然，采集并不是目的，只是为分">
@@ -385,10 +385,6 @@
 <p>在对采集的日志进行处理并持久化存储入库后，接下来的工作就相当简单，即需要开发相应的日志查询和分析功能，可以根据时间段，日志类型，可以根据具体的异常编码，异常关键字内容等对日志信息进行快速的查询和定位。进一步的，可以根据系统的具体需求建立上层的数据报表平台，进行自动化的实时分析。 </p>
 <p>在ITIL里面我们经常看到一个功能即问题树和知识库，那么基于日志的分析和处理仍然可以采用该模式，对于关键的日志异常信息的处理，我们可以将实际的处理方法和结果信息直接登记入库，同时关键日常和处理方法建立对应的关联关系，那么这就不仅仅是一个日志采集分析功能，而是一个基于日志快速的解决问题的知识库。 </p>
 <p>要将该思路实现为一个产品，涉及到诸多的分布式，云计算相关技术的应用。这个选点可能比较小，但是却有实际支撑的业务场景，能够发挥我们说的在大规模分布式集群架构下的实时流处理，实时分析，半结构化数据库的使用等。任何云技术的使用都应该根据目标驱动的方式去思考问题，而不是为了技术而技术——驱动技术的，永远是商业需求；不懂商业，技术永远只是技术；不懂包装，数据就永远只是数据。 </p>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
-</ul>
 
       
     </div>

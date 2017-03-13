@@ -87,30 +87,21 @@
 
 
 
-<meta name="description" content="为什么JITJIT 是 just in time 的缩写, 也就是即时编译编译器。使用即时编译器技术，能够加速程序的执行速度。
-以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。
-这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。 
-Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Jav">
+<meta name="description" content="why JIT and JIT in java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JIT编译器解读">
 <meta property="og:url" content="http://chen-tao.github.io/2017/01/09/jit/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="为什么JITJIT 是 just in time 的缩写, 也就是即时编译编译器。使用即时编译器技术，能够加速程序的执行速度。
-以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。
-这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。 
-Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Jav">
+<meta property="og:description" content="why JIT and JIT in java">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fbldh80l07j30fh0h576f.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006y8lVagw1fbldpe8c6vj30f50gut9l.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fbldzegb7sj31380lmae5.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006y8lVagw1fbldzuain2j31360m40vp.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fble0dpvrwj31320m0q76.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-13T08:46:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JIT编译器解读">
-<meta name="twitter:description" content="为什么JITJIT 是 just in time 的缩写, 也就是即时编译编译器。使用即时编译器技术，能够加速程序的执行速度。
-以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。
-这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。 
-Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Jav">
+<meta name="twitter:description" content="why JIT and JIT in java">
 <meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fbldh80l07j30fh0h576f.jpg">
 
 
@@ -388,7 +379,9 @@ Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚
       
 
       
-        <h2 id="为什么JIT"><a href="#为什么JIT" class="headerlink" title="为什么JIT"></a>为什么JIT</h2><p><strong>JIT 是 just in time 的缩写, 也就是即时编译编译器。</strong>使用即时编译器技术，能够加速程序的执行速度。</p>
+        <p>why JIT and JIT in java</p>
+<a id="more"></a>
+<h2 id="为什么JIT"><a href="#为什么JIT" class="headerlink" title="为什么JIT"></a>为什么JIT</h2><p><strong>JIT 是 just in time 的缩写, 也就是即时编译编译器。</strong>使用即时编译器技术，能够加速程序的执行速度。</p>
 <p>以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。</p>
 <p>这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。 </p>
 <p>Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Java叫字节码，C#,NET有很多种叫法，姑且简称CIL。这些中间语言身上有很深很深的汇编指令集样式语法痕迹，这也从 另一个侧面说明虚拟机的体系结构多么像一个冯诺依曼计算机。</p>

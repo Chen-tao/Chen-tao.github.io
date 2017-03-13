@@ -102,7 +102,7 @@ master
 master 
 协调">
 <meta property="og:image" content="http://chen-tao.github.io/wp-content/uploads/2013/08/flume_ct1-300x225.png">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-13T08:42:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flume使用总结">
 <meta name="twitter:description" content="Flume使用总结Flume可能是现阶段最为优秀的开源分布式采集日志框架，高可靠性，高可用性，并且可以定制多种数据发送方，同时还可以进行简单的日志处理，满足基本的数据需求。 作为Apache基金会的顶级项目，Flume发展迅速，现在已经发布了1.4.0版本。对于开发者来说，0.x与1.x版本之间还是有相当的差别的。 
@@ -419,10 +419,6 @@ master
 <li>JDBC Channel</li>
 <li>MemoryRecoverChannel</li>
 <li>FileChannel<br>MemoryChannel可以实现高速大量吞吐，但是比较消耗内存，同时也无法保证数据的完整性。MemoryChannel在官方文档中已经建议使用FileChannel来替换。 FileChannel可以很好的保证数据的完整性与一致性。在具体配置FileChannel时，建议将传输目录和程序日志文件保存的目录设置不同的磁盘，以便提高传输效率。 Sink在设置存储数据时，可以向各类文件系统中，数据库中，hadoop中，远程服务器存储数据。在日志数据较少时，可以将数据存储在文件系统中，并且设定一定的时间间隔将数据保存到合适的文件系统。在日志数据较多时，可以将相应的日志数据进行简单清洗，然后存储到Hadoop中，便于日后进行相应的数据分析，同时也减少后期ETL的负担。 </li>
-</ul>
-<ul>
-<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
-<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
 </ul>
 
       

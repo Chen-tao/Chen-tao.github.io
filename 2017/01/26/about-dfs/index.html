@@ -87,69 +87,27 @@
 
 
 
-<meta name="description" content="Recursive DFS
-Non-Recursive DFS
-(for Tree) DFS with depth
-DFS for binary tree–PreOrder traversal
-
-
-Cycle Detection
-Topology Sort
-LeetCode DFS
-Subsets
-
-
-
-
-总结复习一下DFS算法。
+<meta name="description" content="总结复习一下DFS算法。
 深度优先算法是N种算法的基础，是算法学习中的重中之重。
-可以解">
+可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DFS深度优先搜索算法总结">
 <meta property="og:url" content="http://chen-tao.github.io/2017/01/26/about-dfs/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="Recursive DFS
-Non-Recursive DFS
-(for Tree) DFS with depth
-DFS for binary tree–PreOrder traversal
-
-
-Cycle Detection
-Topology Sort
-LeetCode DFS
-Subsets
-
-
-
-
-总结复习一下DFS算法。
+<meta property="og:description" content="总结复习一下DFS算法。
 深度优先算法是N种算法的基础，是算法学习中的重中之重。
-可以解">
+可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7glkmecsj30bl08fq3b.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwgy1fc7gowbrw3j30c409hmxs.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fc7gqb4esdj308f08y74n.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwgy1fc7gqggvlfj308f0a0gm7.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fc7i519tsrj30d6083jru.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-13T08:44:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DFS深度优先搜索算法总结">
-<meta name="twitter:description" content="Recursive DFS
-Non-Recursive DFS
-(for Tree) DFS with depth
-DFS for binary tree–PreOrder traversal
-
-
-Cycle Detection
-Topology Sort
-LeetCode DFS
-Subsets
-
-
-
-
-总结复习一下DFS算法。
+<meta name="twitter:description" content="总结复习一下DFS算法。
 深度优先算法是N种算法的基础，是算法学习中的重中之重。
-可以解">
+可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7glkmecsj30bl08fq3b.jpg">
 
 
@@ -427,25 +385,10 @@ Subsets
       
 
       
-        <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<ul>
-<li><a href="#recursive-dfs">Recursive DFS</a></li>
-<li><a href="#non-recursive-dfs">Non-Recursive DFS</a><ul>
-<li><a href="#for-tree-dfs-with-depth">(for Tree) DFS with depth</a></li>
-<li><a href="#dfs-for-binary-tree--preorder-traversal">DFS for binary tree–PreOrder traversal</a></li>
-</ul>
-</li>
-<li><a href="#cycle-detection">Cycle Detection</a></li>
-<li><a href="#topology-sort">Topology Sort</a></li>
-<li><a href="#leetcode-dfs">LeetCode DFS</a><ul>
-<li><a href="#subsets">Subsets</a></li>
-</ul>
-</li>
-</ul>
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-<p>总结复习一下DFS算法。</p>
+        <p>总结复习一下DFS算法。</p>
 <p>深度优先算法是N种算法的基础，是算法学习中的重中之重。</p>
 <p>可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。</p>
+<a id="more"></a>
 <h2 id="DFS-intro"><a href="#DFS-intro" class="headerlink" title="DFS intro"></a>DFS intro</h2><p>图的深度优先搜索(Depth First Search)，和树的先序遍历比较类似。</p>
 <p>它的思想：假设初始状态是图中所有顶点均未被访问，则从某个顶点v出发，首先访问该顶点，然后依次从它的各个未被访问的邻接点出发深度优先搜索遍历图，直至图中所有和v有路径相通的顶点都被访问到。 若此时尚有其他顶点未被访问到，则另选一个未被访问的顶点作起始点，重复上述过程，直至图中所有顶点都被访问到为止。</p>
 <p>显然，深度优先搜索是一个递归的过程。</p>

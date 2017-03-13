@@ -87,33 +87,18 @@
 
 
 
-<meta name="description" content="前言1，资料学习开源项目的启动脚本是个不错的主意，比如Cassandra家的， 附送一篇解释它的文章。
-JVM调优的”标准参数”的各种陷阱 R大的文章，在JDK6时写的，期待更新。
-偶然翻到Linkedin工程师的一篇文章。
-更偶然翻到的一份不错的参数列表。
-并发编程网上的JVM实用参数系列
-前言2， -XX:+PrintFlagsFinal打印参数值当你在网上兴冲冲找到一个可优化的参数时，先用-">
+<meta name="description" content="对一些常用jvm参数进行分析，在白衣大神的基础上，稍作改动。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关键业务系统jvm参数推荐">
 <meta property="og:url" content="http://chen-tao.github.io/2017/01/10/jvm-param-rcmd-2016/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="前言1，资料学习开源项目的启动脚本是个不错的主意，比如Cassandra家的， 附送一篇解释它的文章。
-JVM调优的”标准参数”的各种陷阱 R大的文章，在JDK6时写的，期待更新。
-偶然翻到Linkedin工程师的一篇文章。
-更偶然翻到的一份不错的参数列表。
-并发编程网上的JVM实用参数系列
-前言2， -XX:+PrintFlagsFinal打印参数值当你在网上兴冲冲找到一个可优化的参数时，先用-">
+<meta property="og:description" content="对一些常用jvm参数进行分析，在白衣大神的基础上，稍作改动。">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79gw1fblkzb6tzoj30z2080tao.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79gw1fblo4zsqbdj317k1he1kx.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-13T08:45:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关键业务系统jvm参数推荐">
-<meta name="twitter:description" content="前言1，资料学习开源项目的启动脚本是个不错的主意，比如Cassandra家的， 附送一篇解释它的文章。
-JVM调优的”标准参数”的各种陷阱 R大的文章，在JDK6时写的，期待更新。
-偶然翻到Linkedin工程师的一篇文章。
-更偶然翻到的一份不错的参数列表。
-并发编程网上的JVM实用参数系列
-前言2， -XX:+PrintFlagsFinal打印参数值当你在网上兴冲冲找到一个可优化的参数时，先用-">
+<meta name="twitter:description" content="对一些常用jvm参数进行分析，在白衣大神的基础上，稍作改动。">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNc79gw1fblkzb6tzoj30z2080tao.jpg">
 
 
@@ -391,7 +376,9 @@ JVM调优的”标准参数”的各种陷阱 R大的文章，在JDK6时写的�
       
 
       
-        <h3 id="前言1，资料"><a href="#前言1，资料" class="headerlink" title="前言1，资料"></a>前言1，资料</h3><p>学习开源项目的启动脚本是个不错的主意，比如<a href="http://github.com/apache/cassandra/blob/trunk/conf/jvm.options" target="_blank" rel="external">Cassandra家的</a>， 附送一篇<a href="http://tobert.github.io/pages/als-cassandra-21-tuning-guide.html" target="_blank" rel="external">解释它的文章</a>。</p>
+        <p>对一些常用jvm参数进行分析，在白衣大神的基础上，稍作改动。</p>
+<a id="more"></a>
+<h3 id="前言1，资料"><a href="#前言1，资料" class="headerlink" title="前言1，资料"></a>前言1，资料</h3><p>学习开源项目的启动脚本是个不错的主意，比如<a href="http://github.com/apache/cassandra/blob/trunk/conf/jvm.options" target="_blank" rel="external">Cassandra家的</a>， 附送一篇<a href="http://tobert.github.io/pages/als-cassandra-21-tuning-guide.html" target="_blank" rel="external">解释它的文章</a>。</p>
 <p><a href="http://hllvm.group.iteye.com/group/topic/27945" target="_blank" rel="external">JVM调优的”标准参数”的各种陷阱</a> R大的文章，在JDK6时写的，期待更新。</p>
 <p>偶然翻到Linkedin工程师的<a href="http://www.importnew.com/11336.html" target="_blank" rel="external">一篇文章</a>。</p>
 <p>更偶然翻到的<a href="http://www.techpaste.com/2012/02/java-command-line-options-jvm-performance-improvement/" target="_blank" rel="external">一份不错的参数列表</a>。</p>
