@@ -87,37 +87,16 @@
 
 
 
-<meta name="description" content="apue.h头文件为作者自己编写而非系统自带，故需要自行添加！
-第一：打开网站 http://www.apuebook.com/
-第二：选择合适的版本（一共有三个版本，根据书的版本选择）下载源码source code
-解压: tar -zxvf src.2e.tar.gz
-
-得到apue.2e
-
-复制apue.h 到 /usr/include/下: cp ./apue.2e/include/apu">
+<meta name="description" content="apue.h头文件为作者自己编写而非系统自带，故需要自行添加！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="unix高级编程引入apue.h">
 <meta property="og:url" content="http://chen-tao.github.io/2015/11/21/unix-into-apue/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="apue.h头文件为作者自己编写而非系统自带，故需要自行添加！
-第一：打开网站 http://www.apuebook.com/
-第二：选择合适的版本（一共有三个版本，根据书的版本选择）下载源码source code
-解压: tar -zxvf src.2e.tar.gz
-
-得到apue.2e
-
-复制apue.h 到 /usr/include/下: cp ./apue.2e/include/apu">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:description" content="apue.h头文件为作者自己编写而非系统自带，故需要自行添加！">
+<meta property="og:updated_time" content="2017-03-13T08:53:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unix高级编程引入apue.h">
-<meta name="twitter:description" content="apue.h头文件为作者自己编写而非系统自带，故需要自行添加！
-第一：打开网站 http://www.apuebook.com/
-第二：选择合适的版本（一共有三个版本，根据书的版本选择）下载源码source code
-解压: tar -zxvf src.2e.tar.gz
-
-得到apue.2e
-
-复制apue.h 到 /usr/include/下: cp ./apue.2e/include/apu">
+<meta name="twitter:description" content="apue.h头文件为作者自己编写而非系统自带，故需要自行添加！">
 
 
 
@@ -373,6 +352,7 @@
 
       
         <p>apue.h头文件为作者自己编写而非系统自带，故需要自行添加！</p>
+<a id="more"></a>
 <p><strong>第一：</strong>打开网站 <a href="http://www.apuebook.com/" target="_blank" rel="external">http://www.apuebook.com/</a></p>
 <p><strong>第二：</strong>选择合适的版本（一共有三个版本，根据书的版本选择）下载源码source code</p>
 <pre><code>解压: tar -zxvf src.2e.tar.gz
@@ -386,6 +366,7 @@
 <pre><code>在文件最后#endif前加上包含error.c代码: #include &quot;error.c&quot;
 </code></pre><p><strong>第四：</strong>测试一下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">//文件名为 ls_apue.c</div><div class="line"> </div><div class="line">#include &quot;apue.h&quot;</div><div class="line">#include &lt;dirent.h&gt;</div><div class="line"> </div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">    DIR             *dp;</div><div class="line">    struct dirent   *dirp;</div><div class="line"> </div><div class="line">    if (argc != 2)</div><div class="line">        err_quit(&quot;usage: ls directory_name&quot;);</div><div class="line"> </div><div class="line">    if ((dp = opendir(argv[1])) == NULL)</div><div class="line">        err_sys(&quot;car`t open %s&quot;, argv[1]);</div><div class="line"> </div><div class="line">    while ((dirp = readdir(dp)) != NULL)</div><div class="line">        printf (&quot;%s\n&quot;, dirp-&gt;d_name );</div><div class="line"> </div><div class="line">    closedir(dp);</div><div class="line"> </div><div class="line">    exit(0);</div><div class="line">&#125;//end main</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -519,7 +500,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">178</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

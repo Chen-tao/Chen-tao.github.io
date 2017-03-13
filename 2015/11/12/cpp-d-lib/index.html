@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。
-创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
+<meta name="description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux动态库相关知识整理">
 <meta property="og:url" content="http://chen-tao.github.io/2015/11/12/cpp-d-lib/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。
-创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。">
+<meta property="og:updated_time" content="2017-03-13T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux动态库相关知识整理">
-<meta name="twitter:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。
-创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
+<meta name="twitter:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。">
 
 
 
@@ -355,6 +352,7 @@
 
       
         <p>动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。</p>
+<a id="more"></a>
 <h2 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h2><p>这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，返回一个无符号整数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//elfhash.h</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">unsigned long  ELFhash(const char* key);</div><div class="line"></div><div class="line">//elfhash.c</div><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">unsigned long ELFhash(const char* key)  </div><div class="line">&#123;</div><div class="line">  unsigned long h = 0, g;</div><div class="line">  while( *key ) &#123;</div><div class="line">    h = ( h &lt;&lt; 4 ) + *key++;</div><div class="line">    if ( (g = h &amp; 0xF0000000) != 0 )</div><div class="line">       h ^= g &gt;&gt; 24;</div><div class="line">    h &amp;= ~g;</div><div class="line">&#125;</div><div class="line">  return h;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>接下来使用gcc编译以上代码，并用ld将编译的目标文件链接成动态库</p>
@@ -546,7 +544,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">178</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

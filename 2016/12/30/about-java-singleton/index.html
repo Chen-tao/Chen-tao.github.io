@@ -87,25 +87,16 @@
 
 
 
-<meta name="description" content="今天看到之前某同学写的单例创建异步httoclient的代码，发现了一个双重校验线程安全的问题，这里顺带回顾一下单例，重点介绍一下单例的2种经典实现–基于volatile的双重校验 和 静态内部类
-
-懒汉式，线程不安全当被问到要实现一个单例模式时，很多人的第一反应是写出如下的代码，包括教科书上也是这样教我们的。
-1234567891011public class Singleton &amp;#123">
+<meta name="description" content="今天看到之前某同学写的单例创建异步httoclient的代码，发现了一个双重校验线程安全的问题，这里顺带回顾一下单例，重点介绍一下单例的2种经典实现–基于volatile的双重校验 和 静态内部类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java单例模式与指令重排">
 <meta property="og:url" content="http://chen-tao.github.io/2016/12/30/about-java-singleton/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="今天看到之前某同学写的单例创建异步httoclient的代码，发现了一个双重校验线程安全的问题，这里顺带回顾一下单例，重点介绍一下单例的2种经典实现–基于volatile的双重校验 和 静态内部类
-
-懒汉式，线程不安全当被问到要实现一个单例模式时，很多人的第一反应是写出如下的代码，包括教科书上也是这样教我们的。
-1234567891011public class Singleton &amp;#123">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:description" content="今天看到之前某同学写的单例创建异步httoclient的代码，发现了一个双重校验线程安全的问题，这里顺带回顾一下单例，重点介绍一下单例的2种经典实现–基于volatile的双重校验 和 静态内部类">
+<meta property="og:updated_time" content="2017-03-13T08:51:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java单例模式与指令重排">
-<meta name="twitter:description" content="今天看到之前某同学写的单例创建异步httoclient的代码，发现了一个双重校验线程安全的问题，这里顺带回顾一下单例，重点介绍一下单例的2种经典实现–基于volatile的双重校验 和 静态内部类
-
-懒汉式，线程不安全当被问到要实现一个单例模式时，很多人的第一反应是写出如下的代码，包括教科书上也是这样教我们的。
-1234567891011public class Singleton &amp;#123">
+<meta name="twitter:description" content="今天看到之前某同学写的单例创建异步httoclient的代码，发现了一个双重校验线程安全的问题，这里顺带回顾一下单例，重点介绍一下单例的2种经典实现–基于volatile的双重校验 和 静态内部类">
 
 
 
@@ -363,6 +354,7 @@
         <blockquote>
 <p> 今天看到之前某同学写的单例创建异步httoclient的代码，发现了一个双重校验线程安全的问题，这里顺带回顾一下单例，重点介绍一下单例的2种经典实现–基于volatile的双重校验 和 静态内部类</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="懒汉式，线程不安全"><a href="#懒汉式，线程不安全" class="headerlink" title="懒汉式，线程不安全"></a>懒汉式，线程不安全</h2><p>当被问到要实现一个单例模式时，很多人的第一反应是写出如下的代码，包括教科书上也是这样教我们的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">     <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</div><div class="line">         instance = <span class="keyword">new</span> Singleton();</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这段代码简单明了，而且使用了懒加载模式，但是却存在致命的问题。当有多个线程并行调用 getInstance() 的时候，就会创建多个实例。也就是说在多线程下不能正常工作。</p>
@@ -543,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">178</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

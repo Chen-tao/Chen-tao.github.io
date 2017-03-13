@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下：
-#空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
+<meta name="description" content="本文主要记录了C/C++预处理指令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C/C++ 预处理指令">
 <meta property="og:url" content="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下：
-#空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:description" content="本文主要记录了C/C++预处理指令">
+<meta property="og:updated_time" content="2017-03-13T08:53:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C/C++ 预处理指令">
-<meta name="twitter:description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下：
-#空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
+<meta name="twitter:description" content="本文主要记录了C/C++预处理指令">
 
 
 
@@ -354,7 +351,9 @@
       
 
       
-        <p>本文主要记录了C/C++预处理指令，常见的预处理指令如下：</p>
+        <p>本文主要记录了C/C++预处理指令</p>
+<a id="more"></a>
+<p>常见的预处理指令如下：</p>
 <h4 id="空指令，无任何效果"><a href="#空指令，无任何效果" class="headerlink" title="#空指令，无任何效果"></a>#空指令，无任何效果</h4><h4 id="include包含一个源代码文件"><a href="#include包含一个源代码文件" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h4><h4 id="define定义宏"><a href="#define定义宏" class="headerlink" title="#define定义宏"></a>#define定义宏</h4><h4 id="undef取消已定义的宏"><a href="#undef取消已定义的宏" class="headerlink" title="#undef取消已定义的宏"></a>#undef取消已定义的宏</h4><h4 id="if如果给定条件为真，则编译下面代码"><a href="#if如果给定条件为真，则编译下面代码" class="headerlink" title="#if如果给定条件为真，则编译下面代码"></a>#if如果给定条件为真，则编译下面代码</h4><h4 id="ifdef如果宏已经定义，则编译下面代码"><a href="#ifdef如果宏已经定义，则编译下面代码" class="headerlink" title="#ifdef如果宏已经定义，则编译下面代码"></a>#ifdef如果宏已经定义，则编译下面代码</h4><h4 id="ifndef如果宏没有定义，则编译下面代码"><a href="#ifndef如果宏没有定义，则编译下面代码" class="headerlink" title="#ifndef如果宏没有定义，则编译下面代码"></a>#ifndef如果宏没有定义，则编译下面代码</h4><h4 id="elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码"><a href="#elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码" class="headerlink" title="#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码"></a>#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码</h4><h4 id="endif结束一个-if……-else条件编译块"><a href="#endif结束一个-if……-else条件编译块" class="headerlink" title="#endif结束一个#if……#else条件编译块"></a>#endif结束一个#if……#else条件编译块</h4><h4 id="error停止编译并显示错误信息"><a href="#error停止编译并显示错误信息" class="headerlink" title="#error停止编译并显示错误信息"></a>#error停止编译并显示错误信息</h4><h2 id="什么是预处理指令"><a href="#什么是预处理指令" class="headerlink" title="什么是预处理指令?"></a>什么是预处理指令?</h2><p>预处理指令是以#号开头的代码行。#号必须是该行除了任何空白字符外的第一个字符。#后是指令关键字，在关键字和#号之间允许存在任意个数的空白字符。整行语句构成了一条预处理指令，该指令将在编译器进行编译之前对源代码做某些转换。</p>
 <p>以前没有在意的学者注意了,预处理指令是在编译器进行编译之前进行的操作.预处理过程扫描源代码，对其进行初步的转换，产生新的源代码提供给编译器。可见预处理过程先于编译器对源代码进行处理。在很多编程语言中，并没有任何内在的机制来完成如下一些功能：在编译时包含其他源文件、定义宏、根据条件决定编译时是否包含某些代码(防止重复包含某些文件)。要完成这些工作，就需要使用预处理程序。尽管在目前绝大多数编译器都包含了预处理程序，但通常认为它们是独立于编译器的。预处理过程读入源代码，检查包含预处理指令的语句和宏定义，并对源代码进行响应的转换。预处理过程还会删除程序中的注释和多余的空白字符。</p>
 <h2 id="include包含一个源代码文件-1"><a href="#include包含一个源代码文件-1" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h2><p>这个预处理指令，我想是见得最多的一个，简单说一下，第一种方法是用尖括号把头文件括起来。这种格式告诉预处理程序在编译器自带的或外部库的头文件中搜索被包含的头文件。第二种方法是用双引号把头文件括起来。这种格式告诉预处理程序在当前被编译的应用程序的源代码文件中搜索被包含的头文件，如果找不到，再搜索编译器自带的头文件。采用两种不同包含格式的理由在于，编译器是安装在公共子目录下的，而被编译的应用程序是在它们自己的私有子目录下的。一个应用程序既包含编译器提供的公共头文件，也包含自定义的私有头文件。采用两种不同的包含格式使得编译器能够在很多头文件中区别出一组公共的头文件。</p>
@@ -538,7 +537,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">178</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
