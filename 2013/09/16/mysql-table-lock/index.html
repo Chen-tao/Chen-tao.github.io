@@ -87,36 +87,12 @@
 
 
 
-<meta name="description" content="为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
-
-MyISAM
-InnoDB
-NDB Cluster
-Maria
-Falcon
-Memory
-Archive
-Merge
-Federated
-
-其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机">
+<meta name="description" content="为了保证数据的一致性，任何数据库都存在锁定机制。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL锁定机制分析--表级锁定">
 <meta property="og:url" content="http://chen-tao.github.io/2013/09/16/mysql-table-lock/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
-
-MyISAM
-InnoDB
-NDB Cluster
-Maria
-Falcon
-Memory
-Archive
-Merge
-Federated
-
-其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机">
+<meta property="og:description" content="为了保证数据的一致性，任何数据库都存在锁定机制。">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/readlock1.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/readlock2.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/readlock3.jpg">
@@ -124,22 +100,10 @@ Federated
 <meta property="og:image" content="http://chentaohome.qiniudn.com/writelock1.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/writelock2.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/writelock3.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-14T09:08:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL锁定机制分析--表级锁定">
-<meta name="twitter:description" content="为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
-
-MyISAM
-InnoDB
-NDB Cluster
-Maria
-Falcon
-Memory
-Archive
-Merge
-Federated
-
-其中，使用最多最广泛的就是MyISAM和InnoDB，这里介绍锁定机制也主要探讨这2种存储引擎。 MySQL的锁定机">
+<meta name="twitter:description" content="为了保证数据的一致性，任何数据库都存在锁定机制。">
 <meta name="twitter:image" content="http://chentaohome.qiniudn.com/readlock1.jpg">
 
 
@@ -395,7 +359,9 @@ Federated
       
 
       
-        <p>为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： </p>
+        <p>为了保证数据的一致性，任何数据库都存在锁定机制。</p>
+<a id="more"></a>
+<p>MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： </p>
 <ul>
 <li>MyISAM</li>
 <li>InnoDB</li>
@@ -600,7 +566,7 @@ Federated
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

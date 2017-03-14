@@ -87,29 +87,17 @@
 
 
 
-<meta name="description" content="我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 
-SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念： 
-
-进程组(process group)一个或多个进程的集合，每个进程都有一个进程组ID，这个ID也是进程组长进程的ID 
-会话期(session)一个或多个进程组的集合，">
+<meta name="description" content="我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux会话与进程剖析">
 <meta property="og:url" content="http://chen-tao.github.io/2013/09/02/linux-session-process/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 
-SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念： 
-
-进程组(process group)一个或多个进程的集合，每个进程都有一个进程组ID，这个ID也是进程组长进程的ID 
-会话期(session)一个或多个进程组的集合，">
+<meta property="og:description" content="我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。">
 <meta property="og:image" content="http://chen-tao.github.io/wp-content/uploads/2013/09/ele-bo.png">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-14T09:04:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux会话与进程剖析">
-<meta name="twitter:description" content="我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 
-SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念： 
-
-进程组(process group)一个或多个进程的集合，每个进程都有一个进程组ID，这个ID也是进程组长进程的ID 
-会话期(session)一个或多个进程组的集合，">
+<meta name="twitter:description" content="我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。">
 <meta name="twitter:image" content="http://chen-tao.github.io/wp-content/uploads/2013/09/ele-bo.png">
 
 
@@ -366,6 +354,7 @@ SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念：
 
       
         <p>我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 </p>
+<a id="more"></a>
 <h2 id="SIGHUP信号"><a href="#SIGHUP信号" class="headerlink" title="SIGHUP信号"></a>SIGHUP信号</h2><p>在Linux系统中，关于进程与会话有这样几个概念： </p>
 <ul>
 <li>进程组(process group)<br>一个或多个进程的集合，每个进程都有一个进程组ID，这个ID也是进程组长进程的ID </li>
@@ -543,7 +532,7 @@ SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念：
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

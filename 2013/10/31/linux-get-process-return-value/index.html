@@ -87,33 +87,16 @@
 
 
 
-<meta name="description" content="受人之托写一个Linux小Demo，大致意思是这样的： 
-
-创建进程，并等待进程结束，获取进程返回值。 
-
-创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。 
-等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒（顺便说一下，我把第一个进程写成了Father，第二个写成了Son，虽然没有父子关系，不过Son是F">
+<meta name="description" content="受人之托写一个Linux小Demo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux获取进程返回值">
 <meta property="og:url" content="http://chen-tao.github.io/2013/10/31/linux-get-process-return-value/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="受人之托写一个Linux小Demo，大致意思是这样的： 
-
-创建进程，并等待进程结束，获取进程返回值。 
-
-创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。 
-等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒（顺便说一下，我把第一个进程写成了Father，第二个写成了Son，虽然没有父子关系，不过Son是F">
-<meta property="og:image" content="http://chen-tao.github.io/wp-content/uploads/2013/10/return.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:description" content="受人之托写一个Linux小Demo">
+<meta property="og:updated_time" content="2017-03-14T09:10:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux获取进程返回值">
-<meta name="twitter:description" content="受人之托写一个Linux小Demo，大致意思是这样的： 
-
-创建进程，并等待进程结束，获取进程返回值。 
-
-创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。 
-等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒（顺便说一下，我把第一个进程写成了Father，第二个写成了Son，虽然没有父子关系，不过Son是F">
-<meta name="twitter:image" content="http://chen-tao.github.io/wp-content/uploads/2013/10/return.jpg">
+<meta name="twitter:description" content="受人之托写一个Linux小Demo">
 
 
 
@@ -333,6 +316,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -368,7 +373,9 @@
       
 
       
-        <p>受人之托写一个Linux小Demo，大致意思是这样的： </p>
+        <p>受人之托写一个Linux小Demo</p>
+<a id="more"></a>
+<p>大致意思是这样的： </p>
 <blockquote>
 <p>创建进程，并等待进程结束，获取进程返回值。 </p>
 </blockquote>
@@ -402,9 +409,7 @@ int main(int argc, char* argv)
 </code></pre><p>编译运行： </p>
 <pre><code>gcc Father.c -o Father
 gcc Son.c -o Son
-</code></pre><p>结果如图： </p>
-<p>[caption id=”attachment_206” align=”alignnone” width=”203”]<img src="/wp-content/uploads/2013/10/return.jpg" alt="程序执行结果"> 程序执行结果[/caption]</p>
-
+</code></pre>
       
     </div>
 
@@ -547,7 +552,7 @@ gcc Son.c -o Son
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

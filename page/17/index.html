@@ -356,9 +356,7 @@
 
       
         
-          
-          在校的时间基本上是越来越少，这个时间基本没有项目在做了（应该只剩一个毕设——已被安排貌似还不错就是比较简单）。反观之前做的很多项目，理想跟现实总是大相径庭——这也是客观事实，不过从项目里还是得到了很多东西，再加上实习期间自己的学习感触，如果很多校内项目重新来过，我们有很多方面可以改进，不仅仅是跳过那
-          ...
+          <p>在校的时间基本上是越来越少，这个时间基本没有项目在做了（应该只剩一个毕设——已被安排貌似还不错就是比较简单）。反观之前做的很多项目，理想跟现实总是大相径庭——这也是客观事实，不过从项目里还是得到了很多东西，再加上实习期间自己的学习感触，如果很多校内项目重新来过，我们有很多方面可以改进，不仅仅是跳过那些不必要的过程或者更高效的完成项目中的某些阶段，更重要的是清晰的知道自己要怎么做和如何做得更好。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/10/05/school-project-rebuild/#more" rel="contents">
@@ -454,6 +452,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -490,13 +510,7 @@
 
       
         
-          
-          由于需要写一些解析方面的脚本，所以研究了一下Python的调试，有IDE的情况下就简单很多，但是在Server环境下还是需要掌握基本的调试模块pdb。
-pdb在python中是类似于gcc/gdb那样的调试模块，使用时只要引入即可。
-假设现在需要调试的程序如下：
-$ vim t.py
-#!/usr/
-          ...
+          <p>由于需要写一些解析方面的脚本，所以研究了一下Python的调试，有IDE的情况下就简单很多，但是在Server环境下还是需要掌握基本的调试模块pdb。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/21/python-pdb/#more" rel="contents">
@@ -628,9 +642,7 @@ $ vim t.py
 
       
         
-          
-          上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大
-          ...
+          <p>上一节我们概述了MySQL的锁机制，讲到了<a href="">MySQL锁定机制分析–表级锁定</a>，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。 </p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/17/mysql-row-lock/#more" rel="contents">
@@ -762,21 +774,7 @@ $ vim t.py
 
       
         
-          
-          为了保证数据的一致性，任何数据库都存在锁定机制。MySQL作为最常用的数据库，自然也不例外。 MySQL使用的主要存储引擎分为以下几种： 
-
-MyISAM
-InnoDB
-NDB Cluster
-Maria
-Falcon
-Memory
-Archive
-Merge
-Federated
-
-其中，使用最多最
-          ...
+          <p>为了保证数据的一致性，任何数据库都存在锁定机制。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/16/mysql-table-lock/#more" rel="contents">
@@ -908,18 +906,9 @@ Federated
 
       
         
-          
-          兰波 
-##一##
-我们并不当真，当我们年方十七。
-——一个美妙的晚上，去他的柠檬汁和啤酒，
-去他的吵闹咖啡厅灯火熠熠！
-——我们去散步的地方绿色的菩提树下悠游。
-菩提树闻起来芬芳在六月的美好夜晚！
-空气有时如此温柔，弄得我们闭上眼皮；
-带着种种声息的风，——城市并不遥远，——
-有葡萄藤的香气和啤酒
-          ...
+          <p>兰波 </p>
+<p>##一##</p>
+<p>我们并不当真，当我们年方十七。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/07/legend/#more" rel="contents">
@@ -1051,9 +1040,7 @@ Federated
 
       
         
-          
-          之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，Hadoop多用户作业调度器，CentOS下tmux,screen,byobu安装与使用，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;Telnet的问题，当我们登录了远程服务器，运行了一些
-          ...
+          <p>之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，<a href="/hadoop-job-scheduler/">Hadoop多用户作业调度器</a>，<a href="http://chen-tao.github.io/centos-tmux-screen-byobu/">CentOS下tmux,screen,byobu安装与使用</a>，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;Telnet的问题，当我们登录了远程服务器，运行了一些耗时较长的任务， 结果却由于网络的不稳定导致任务中途失败。如何让命令提交后不受本地关闭终端窗口或网络断开连接或其他意外情况的干扰呢？之前我们介绍了nohup 和 screen(参见以上2篇文章内容)，这次着重介绍一下setsid 、 &amp;  和 disown。 </p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/06/linux-process-bg/#more" rel="contents">
@@ -1149,6 +1136,28 @@ Federated
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1185,9 +1194,7 @@ Federated
 
       
         
-          
-          上次介绍了Linux下几款强大的多任务处理终端 Linux会话与进程剖析，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install *[/code] 来
-          ...
+          <p>上次介绍了Linux下几款强大的多任务处理终端 <a href="/linux-session-process/">Linux会话与进程剖析</a>，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install <em>*</em>[/code] 来解决，不过，对于RedHat系列的就没有那么简单了，下面介绍一下在RedHat/CentOS一类的发行版上安装这些软件的方法。 </p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/05/centos-tmux-screen-byobu/#more" rel="contents">
@@ -1283,6 +1290,28 @@ Federated
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1319,9 +1348,7 @@ Federated
 
       
         
-          
-          Linux下的rm命令虽然强大，但是误删的情况还是时有发生。当遇到重要文件被不小心rm –rf的时候，就欲哭无泪了，trash-cli帮助我们解决这个问题——将文件不直接删除，而是像Windows一样移动到回收站去。 trash-put命令会把我们想要删除的文件移动到 [code]~/.local/
-          ...
+          <p>Linux下的rm命令虽然强大，但是误删的情况还是时有发生。当遇到重要文件被不小心rm –rf的时候，就欲哭无泪了，trash-cli帮助我们解决这个问题——将文件不直接删除，而是像Windows一样移动到回收站去。 trash-put命令会把我们想要删除的文件移动到 [code]~/.local/share/Trash/files[/code] 相关信息记录在 [code]~/.local/share/Trash/info[/code] </p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/04/trash-cli/#more" rel="contents">
@@ -1417,6 +1444,28 @@ Federated
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1453,10 +1502,7 @@ Federated
 
       
         
-          
-          Hadoop队列管理机制用户权限管理在mapred-site.xml中配置队列，并启用权限管理功能 在mapred-queue-acls.xml中配置用户对队列操作的权限(需要自定相关的用户组) 
-系统资源管理根据不同的调度器，在其自己的配置文件中规划 如：capacity-scheduler.xm
-          ...
+          <h2 id="Hadoop队列管理机制"><a href="#Hadoop队列管理机制" class="headerlink" title="Hadoop队列管理机制"></a>Hadoop队列管理机制</h2>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/03/hadoop-job-scheduler/#more" rel="contents">
@@ -1588,12 +1634,7 @@ Federated
 
       
         
-          
-          我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 
-SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念： 
-
-进程组(process group)一个或多个进程的集合，每个进程都
-          ...
+          <p>我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 </p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2013/09/02/linux-session-process/#more" rel="contents">
@@ -1688,7 +1729,7 @@ SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念：
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

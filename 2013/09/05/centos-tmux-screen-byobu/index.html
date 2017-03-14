@@ -95,7 +95,7 @@
 <meta property="og:description" content="上次介绍了Linux下几款强大的多任务处理终端 Linux会话与进程剖析，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install *[/code] 来解决，不过，对于RedHat系列的就没有那么简单了，下面介绍一下在RedHat/CentOS一类的发">
 <meta property="og:image" content="http://chen-tao.github.io/wp-content/uploads/2013/09/byobu-conf.jpg">
 <meta property="og:image" content="http://qyappchentao.sinaapp.com/wp-content/uploads/2013/09/slipt-window.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-14T09:05:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS下tmux,screen,byobu安装与使用">
 <meta name="twitter:description" content="上次介绍了Linux下几款强大的多任务处理终端 Linux会话与进程剖析，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install *[/code] 来解决，不过，对于RedHat系列的就没有那么简单了，下面介绍一下在RedHat/CentOS一类的发">
@@ -319,6 +319,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -355,6 +377,7 @@
 
       
         <p>上次介绍了Linux下几款强大的多任务处理终端 <a href="/linux-session-process/">Linux会话与进程剖析</a>，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install <em>*</em>[/code] 来解决，不过，对于RedHat系列的就没有那么简单了，下面介绍一下在RedHat/CentOS一类的发行版上安装这些软件的方法。 </p>
+<a id="more"></a>
 <h2 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h2><p>Screen是一种用于保持终端可持续会话、可以同时进行多个会话的一个工具。而Byobu呢，则是Ubuntu开发的，在Screen的基础上进行包装，使其更加易用的一个工具。安装时，screen算是比较幸运的一种，可以直接用yum搞定 [code]yum install screen[/code] </p>
 <h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p>tmux是BSD实现的Screen替代品，相对于Screen，它更加先进：支持屏幕切分，而且具备丰富的命令行参数，使其可以灵活、动态的进行各种布局和操作。它可以做到一条命令就启动起来(强大的配置)，左侧是终端，右侧是Vim，下面来一个gdb——总之它就是一个灵活的IDE，任仍你配置。安装tmux之前需要先安装一些支持的组件 [code]yum install libevent-devel ncurses-devel[/code] 接下来就是下载源码包进行安装了，这里要说明一点：到目前为止，tmux的最新版本是1.8，但进过我测试1.8在编译的时候会出现小小的问题，所以建议选择低一点的版本，1.6/1.7均可。 [code] wget <a href="http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz" target="_blank" rel="external">http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz</a> tar zxvf tmux-1.6.tar.gz cd tmux-1.6 ./configure make make install [/code] 这样依赖，tumx就安装完毕了，具体的配置我会另作说明，其实，默认的配置就很好用了。 </p>
 <h2 id="byobu"><a href="#byobu" class="headerlink" title="byobu"></a>byobu</h2><p>上篇说过，byobu是tmux的再封装，不过有screen的存在他依然可以运行。最新的Byobu（5.9），已经是基于Tmux作为后端了。也就是说，Byobu也是支持屏幕切分，并且通过「byobu-tmux」这个命令行前端来接受各种与tmux一模一样的参数来控制它(还有更多扩展的命令大家可以去自己挖掘)。 安装byobu之前需要保证你已经安装了screen/tmux的其中一种，否则会报错(就是依赖错误) 去到byobu官网下载byobu的源码然后安装即可 [code]wget <a href="https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz" target="_blank" rel="external">https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz</a> tar -zxvf byobu_5.57.orig.tar.gz cd byobu-5.57 ./configure make &amp;&amp; make install[/code] 接下来就可以体验byobu的美好啦(Linux下装X利器之一，另一个是zsh，直接yum就OK，LOL) </p>
@@ -522,7 +545,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

@@ -87,22 +87,19 @@
 
 
 
-<meta name="description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。 
-InnoDB行锁简介InnoDB的行级锁定分为">
+<meta name="description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL锁定机制分析--行级锁定">
 <meta property="og:url" content="http://chen-tao.github.io/2013/09/17/mysql-row-lock/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。 
-InnoDB行锁简介InnoDB的行级锁定分为">
+<meta property="og:description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/create_test_table.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/session2_trans.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/deadlock.jpg">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-14T09:08:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL锁定机制分析--行级锁定">
-<meta name="twitter:description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。 
-InnoDB行锁简介InnoDB的行级锁定分为">
+<meta name="twitter:description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。">
 <meta name="twitter:image" content="http://chentaohome.qiniudn.com/create_test_table.jpg">
 
 
@@ -359,6 +356,7 @@ InnoDB行锁简介InnoDB的行级锁定分为">
 
       
         <p>上一节我们概述了MySQL的锁机制，讲到了<a href="">MySQL锁定机制分析–表级锁定</a>，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。 </p>
+<a id="more"></a>
 <h2 id="InnoDB行锁简介"><a href="#InnoDB行锁简介" class="headerlink" title="InnoDB行锁简介"></a>InnoDB行锁简介</h2><p>InnoDB的行级锁定分为2种类型： </p>
 <ul>
 <li>共享锁 shared (<em><code>S</code></em>)</li>
@@ -584,7 +582,7 @@ InnoDB行锁简介InnoDB的行级锁定分为">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

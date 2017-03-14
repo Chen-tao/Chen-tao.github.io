@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://chen-tao.github.io/2013/09/04/trash-cli/index.html">
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="Linux下的rm命令虽然强大，但是误删的情况还是时有发生。当遇到重要文件被不小心rm –rf的时候，就欲哭无泪了，trash-cli帮助我们解决这个问题——将文件不直接删除，而是像Windows一样移动到回收站去。 trash-put命令会把我们想要删除的文件移动到 [code]~/.local/share/Trash/files[/code] 相关信息记录在 [code]~/.local/sh">
-<meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
+<meta property="og:updated_time" content="2017-03-14T09:05:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="trash-cli,Linux下的回收站">
 <meta name="twitter:description" content="Linux下的rm命令虽然强大，但是误删的情况还是时有发生。当遇到重要文件被不小心rm –rf的时候，就欲哭无泪了，trash-cli帮助我们解决这个问题——将文件不直接删除，而是像Windows一样移动到回收站去。 trash-put命令会把我们想要删除的文件移动到 [code]~/.local/share/Trash/files[/code] 相关信息记录在 [code]~/.local/sh">
@@ -316,6 +316,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -352,6 +374,7 @@
 
       
         <p>Linux下的rm命令虽然强大，但是误删的情况还是时有发生。当遇到重要文件被不小心rm –rf的时候，就欲哭无泪了，trash-cli帮助我们解决这个问题——将文件不直接删除，而是像Windows一样移动到回收站去。 trash-put命令会把我们想要删除的文件移动到 [code]~/.local/share/Trash/files[/code] 相关信息记录在 [code]~/.local/share/Trash/info[/code] </p>
+<a id="more"></a>
 <h2 id="Get-amp-Install-trash-cli"><a href="#Get-amp-Install-trash-cli" class="headerlink" title="Get&amp;Install trash-cli"></a>Get&amp;Install trash-cli</h2><p>[code]git clone <a href="https://github.com/andreafrancia/trash-cli" target="_blank" rel="external">https://github.com/andreafrancia/trash-cli</a> cd trash-cli-master[/code] 如果希望给本机的所有用户都安装： [code]sudo python setup.py install[/code] 给指定用户安装： [code]python setup.py install –user[/code] </p>
 <h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>因为和 rm命令接口是兼容的，所以，可以使用 trash-put 代替 rm，trash-cli 在删除文件时会记录文件的原始路径、删除时间和文件权限，并且兼容GNOME和 KDE的 trash实现。同时也实现了 FreeDesktop.org Trash Specification。也支持除 home文件系统以外的其他文件系统和文件分区以及移动设备分区。 安装完毕之后我们可以通过一些配置，用它替代 rm命令： 在 ~/.bashrc 文件中间加入(当然这是给当前用户添加的)： [code]alias rm=”trush-put”[/code] 但这时候会出现一些问题，当希望使用rm –r 的时候就会发生错误，因为trash-cli本身不支持这种方式(很多rm的参数都是不支持的)，所以还是不建议大家使用trash-put来替换rm，直接使用这个新命令即可 </p>
 <h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><p>trash-cli提供以下命令： </p>
@@ -384,6 +407,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
       
 
       
@@ -510,7 +539,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
