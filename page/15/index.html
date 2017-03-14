@@ -270,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-ordering/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -292,8 +292,8 @@
             
               
                 
-                <a class="post-title-link" href="/2014/04/10/guava-ordering/" itemprop="url">
-                  Guava学习之Ordering
+                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">
+                  Guava学习之避免Null的使用
                 </a>
               
             
@@ -328,8 +328,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/04/10/guava-ordering/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/10/guava-ordering/" itemprop="commentCount"></span>
+                <a href="/2014/04/10/using-and-avoiding-null/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/10/using-and-avoiding-null/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,14 +357,147 @@
       
         
           
-          示例
-assertTrue(byLengthOrdering.reverse().isOrdered(list))；
-      **概述**  
-    Ordering 是Guava的”流畅版” Comparator , 一个强大的比较器工具。它用来构建高级comparator,并把compar
+          Null Sucks.__    Doug Lea
+I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人
+编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的coll
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/04/10/guava-ordering/#more" rel="contents">
+            <a class="btn" href="/2014/04/10/using-and-avoiding-null/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-preconditions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/10/guava-preconditions/" itemprop="url">
+                  Guava学习之Preconditions
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-10T00:00:00+08:00">
+                2014-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/04/10/guava-preconditions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/10/guava-preconditions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在日常开发中，我们经常会对方法的输入参数做一些数据格式上的验证，以便保证方法能够按照正常流程执行下去。对于可预知的一些数据上的错误，我们一定要做事前检测和判断，来避免程序流程出错，而不是完全通过错误处理来保证流程正确执行，毕竟错误处理是比较消耗资源的方式。在平常情况下我们对参数的判断都需要自己来逐个
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/04/10/guava-preconditions/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1487,142 +1620,6 @@ The road
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/01/10/legal-high-2-episode09/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/01/10/legal-high-2-episode09/" itemprop="url">
-                  LEGAL HIGH 2 Episode09
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-01-10T00:00:00+08:00">
-                2014-01-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/01/10/legal-high-2-episode09/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/10/legal-high-2-episode09/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          生命是每个人被赋予的权利。夺人生命者，即便是国家也等同于杀人犯。
-我并不反对死刑。以眼还眼，以牙还牙，杀人偿命，这个制度无可挑剔。我只是在说，背地里暗中处决的行径。实在是太卑鄙了。
-在晴空下，在闹市中，带她游街示众，把她绑在柱子上施以火刑，然后大家一人一刀将她捅死，枭首示众，再三呼万岁，这样更加“健
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/01/10/legal-high-2-episode09/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1672,7 +1669,7 @@ The road
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">178</span>
+                <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1681,7 +1678,7 @@ The road
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
