@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -68,19 +75,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
-
-
-
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/chentao.ico?v=5.1.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -104,13 +111,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'CT'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -130,11 +138,7 @@
 
 
 
-  <title> Chen-Tao </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Chen-Tao</title>
   
 
 
@@ -149,13 +153,17 @@
 
 
 
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -203,18 +211,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,21 +222,11 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -270,7 +258,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/20/about-kilims-ifaq/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,16 +281,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/11/20/about-kilims-ifaq/" itemprop="url">
-                  Kilim IFAQ: Infrequently Asked Questions.
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/11/20/about-kilims-ifaq/" itemprop="url">Kilim IFAQ: Infrequently Asked Questions.</a></h1>
         
 
         <div class="post-meta">
@@ -324,16 +308,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/11/20/about-kilims-ifaq/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/20/about-kilims-ifaq/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -349,7 +323,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -358,29 +334,107 @@
       
         
           
-          (Copyright 2006 Sriram Srinivasan)
-Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kilim at malhar.net)
-====================
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/11/20/about-kilims-ifaq/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>(Copyright 2006 Sriram Srinivasan)</p>
+<p>Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0<br>– sriram srinivasan (Kilim <em>at</em> malhar.net)</p>
+<p>======================================================================</p>
+<p><strong>Why is multi-threaded programming considered so hard? //为什么多线程编程如此困难呢？</strong></p>
+<p>======================================================================</p>
+<p>It is relatively easy to get thread programming correct (to a first<br>approximation) by synchronizing all your shared data structures and<br>taking locks in the right order. </p>
+<p>You could have one giant lock and just do things one at a time (like<br>the current python interpreter with its Global Interpreter Lock).<br>Clearly, this is not efficient.  Increasing concurrent access of a<br>data structure (by using finer-grained locks) is what makes it<br>error-prone and hard to debug. </p>
+<p>======================================================================</p>
+<p><strong>Kilim uses kernel threads. Where do tasks and threads meet? //Kilim使用内核进程，那么Task和Thread如何交互？</strong></p>
+<p>======================================================================</p>
+<p>Kilim’s tasks are cooperatively scheduled on a kernel thread pool. </p>
+<p>Tasks are needed when you want to split up your workflow into small<br>stages and write code as if it is blocking (instead of writing a<br>callback and having to jump to that function when it gets called).<br>Tasks should not ideally make thread-blocking calls, although if you<br><em>have</em> to call one, it is not the end of the world. That’s what other<br>threads are for .. they’ll take care of the other tasks meanwhile.</p>
+<p>A Kilim task is owned and managed by a scheduler, which manages the<br>thread pool. When a task needs to pause, it removes itself from the<br>thread by popping its call stack, remembering enough about each<br>activation frame in order to help rebuild the stack and resume, at a<br>later point). The scheduler then reuses that thread for some other<br>task.</p>
+<p>You can have more than one scheduler (read: thread pool) and assign<br>each task to a particular scheduler. See the bench directory for<br>examples.</p>
+<p>======================================================================</p>
+<p><strong>How lightweight is “lightweight”? //什么是轻量级线程？</strong></p>
+<p>======================================================================</p>
+<p>The amount of memory occupied by a task is:</p>
+<ol>
+<li><p>The java object that represents the task class</p>
+</li>
+<li><p>If paused, an array of activation frames is stored. The Kilim<br>weaver performs data flow and live variable and constant analysis<br>(intra-procedurally) to ensure that it capture only as<br>much as is needed to resume.</p>
+</li>
+<li><p>The contents of all mailboxes that the task is receiving on.</p>
+</li>
+</ol>
+<p>Clearly, all these depend on your application. </p>
+<p>The depth of the task stack is limited only by the thread’s stack; no<br>memory is preallocated. Note that when written in the message passing<br>style, stacks tend not to be too deep because each task is like a<br>stage in a workflow, with its own stack.</p>
+<p>======================================================================</p>
+<p><strong>What’s the difference between channels in Ada, CSP/Occam, Newsqueak,Alef etc. and Kilim’s mailboxes? //Kilim的MailBox与其他一些支持协程的语言特性有什么区别？</strong></p>
+<p>======================================================================</p>
+<p>Most of these languages use synchronous channels as their basic<br>construct, where a sending task can proceed only after the receiver<br>has received (or vice-versa). </p>
+<ol>
+<li><p>Synchronous channels are easier to reason about because there is<br>automatic flow control; the sender does not proceed unless the<br>recipient drains the channel. Tony Hoare, Robin Milner, Rob Pike<br>and John Reppy have all written extensively about synchronous<br>programming, so I will take their word for it. However, I still<br>find asynchronous programming (through buffering) a better default<br>choice for practical reasons:</p>
+</li>
+<li><p>Context switching has a cost, however inexpensive Kilim’s tasks are<br>to create and context-switch (unlike the Occam/transputer world<br>with its hardware-assisted switching).  Although Kilim’s mailboxes<br>can be configured to be synchronous, it is not the default.  There<br>are many cases where you want to send messages to multiple<br>recipients before waiting to collect replies. I find tedious the<br>CSP approach of spawning a task to avoid blocking while sending.</p>
+</li>
+<li><p>I like the same interface for both concurrent and distributed<br>programming (although support for distributed programming is yet to<br>be bundled with Kilim).  Synchronous <em>distributed</em> programming is<br>horribly inefficient .. every put has to be acked when a<br>corresponding <em>get</em> is done.</p>
+</li>
+</ol>
+<p>This is why I have followed Erlang’s example to prefer buffered<br>channels (called mailboxes) as the default choice.</p>
+<p>======================================================================</p>
+<p><strong>Erlang vs. Kilim</strong></p>
+<p>======================================================================</p>
+<p>Kilim is an ode to Erlang (www.erlang.org), and strives to bring<br>some of its features into the more familiar Java world.</p>
+<p>The term “Erlang”, like Perl, refers to both the language and the sole<br>available implementation. Comparisons have to be made on these two<br>axes separately.</p>
+<p>The Erlang language is a soft-typed, purely functional language and<br>has many of the goodies of a functional setting: higher-order<br>functions, beautifully simple syntax and pattern matching on terms,<br>features that I’d love to see in Java.  However, programming in a purely<br>functional style is not everyone’s cup of tea and there is no reason<br>that higher order functions and pattern matching can’t be made<br>available in an imperative setting (See Scala, JMatch, Tom(from INRIA)<br>etc). If you have to have types, it is better to have Ocaml-style<br>types (or even Smalltalk); but compared to Java-style types, I prefer<br>the simplicity of Erlang’s soft types.</p>
+<p>The argument for Java lies not in the language, but in the incredible<br>JIT compilers, JDK, enormous open code base and community, excellent<br>IDEs, good network, database, GUI and systems support. Why throw away<br>all that?</p>
+<p>The Erlang <em>environment</em> (not the language) offers lightweight<br>processes, fast messaging, uniform abstraction for concurrency and<br>distribution and many, many systemic features (process monitoring,<br>automatic restart), process isolation, failure isolation etc. These can be<br>built atop Kilim as well. </p>
+<p>The idea behind Kilim is that one can have all the features of the<br>Erlang environment without having to move to the Erlang<br><em>language</em>. </p>
+<p>======================================================================</p>
+<p><strong>Kilim vs. Transactional Memory</strong></p>
+<p>======================================================================</p>
+<p>Hardware/Software Transactional Memory is currently the new hope and<br>an alternative for concurrent programing in the shared memory<br>world. It is appropriate in a mostly functional setting where most<br>objects are immutable and side-effects are rare or contained. In an<br>imperative setting, I have my doubts about TM’s scalability; hotspots<br>are expensive. Atomic sections can’t be too big, otherwise they risk<br>getting retried all over again.  And the part of code that retries had<br>better not have any side effects that doesn’t know about or is not<br>controlled by the TM, such as sending messages on the network.</p>
+<p>I think the task and mailbox approach is a more understandable model,<br>has nice run-to-completion semantics, has convenient graphical<br>representations (dataflow diagrams, workflow diagrams, Petri nets). It<br>brings the interaction with other processes out in the open. It allows<br>batched and efficient communication.</p>
+<p>That said, there is absolutely no reason not to use the TM facilities<br>internally inside Kilim. I intend to use non-blocking data structures<br>when they perform well (currently, Java’s data structures aren’t<br>as fast as I’d like them to be)</p>
+<p>======================================================================</p>
+<p><strong>What’s the relation between CCS/pi-calculus and Kilim</strong></p>
+<p>======================================================================<br>The notion that the Mailbox itself is a first class message datatype<br>and can be sent as part of a message is inspired by Prof. Robin<br>Milner’s pi-calculus. This allows the topology to change with time.<br>A can send a mailbox in a message to B, B can forward that message to C<br>and C and D can shared that mailbox.</p>
+<p>Beyond that, CCS, like CSP is a modeling and specification language,<br>and uses synchronous interaction between processes. At a practical<br>level, this is terribly inefficient (esp. in Java).</p>
+<p>======================================================================</p>
+<p><strong>RMI vs. Kilim</strong></p>
+<p>======================================================================</p>
+<p>We need to distinguish between RMI implementations and the concept. </p>
+<p>RMI implementations block the java thread. That’s a no-no for<br>scalability.  They themselves are incredibly heavyweight – I/O<br>serialization is always used, even in a concurrent setting, for<br>ensuring isolation. The request response paradigm doesn’t allow many<br>other patterns of communication: fork/join, flow control, rate<br>control, timeouts, streaming etc.</p>
+<p>Kilim, in a concurrent (local) setting, is at least 100x faster than<br>Java RMI on even the simplest benchmarks. In a distributed setting,<br>the Kilim approach is better because asynchronous messaging is much<br>more scalable. Combine this with automatic stack management and you<br>get a far easier programming model</p>
+<p>======================================================================</p>
+<p><strong>What are Continuations and what is Continuation Passing Style(CPS)? //CPS是什么？</strong></p>
+<p>======================================================================</p>
+<p>There is so much doubt and misinformation on the topic that a few<br>words are in order.</p>
+<p>Simply put, a CPS style of programming is where a “return” keyword is<br>not needed.</p>
+<p>The notions of procedures calling procedures by building up a stack<br>has been burnt into our collective programming consciousness.  If a()<br>calls b() calls c(), we think, the stack must be three deep.</p>
+<p>Suppose a() has nothing more to do after calling b(). It (that is, a()) really<br>doesn’t need b() to return to it, so there is no use pushing a return<br>address on the stack. In other words, the flow of control <em>continues</em><br>from a to b, never to return.  Most respectable code generators<br>recognize this special case and prevent the stack from building up<br>(“tail call optimization”). It is a pity this isn’t available under<br>the standard JVMs. Even GCC doesn’t do it all the time.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Now consider,</div><div class="line">   a() &#123;</div><div class="line">      do stuff</div><div class="line">      b()</div><div class="line">      do more stuff</div><div class="line">   &#125;</div><div class="line">   b() &#123; </div><div class="line">      ...</div><div class="line">      return</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>Now you need a stack and you want b() to return in order to “do more<br>stuff”. However, this bit of code can be transformed to ensure that b<br>doesn’t return; instead it continues on to another procedure that<br>performs the “do more stuff” bit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">a() &#123;</div><div class="line">   do stuff</div><div class="line">   b(&quot;c&quot;) // pass a reference to c()</div><div class="line">&#125;</div><div class="line"></div><div class="line">b(nextProc) &#123;</div><div class="line">   ...</div><div class="line">   call nextProc</div><div class="line">&#125;</div><div class="line"></div><div class="line">c() &#123;</div><div class="line">  do more stuff</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The “do more stuff” part has now been separated out into c().  Now,<br>a() chains on to b, supplying it the name of the next call to<br>make. For its part, b <em>continues</em> to the procedure referred to by its<br>nextProc parameter, instead of returning.</p>
+<p>This transformation ensures that you never need the “return” keyword<br>… you always continue onwards to the parameter supplied.</p>
+<p>What if “do more stuff” needed to refer to local variables in a()’s<br>stack frame? Well, the transformation ensures that a() packages the<br>values of those variables along with a reference to the next proc to<br>call. Now, instead of “nextProc”, we have an <em>object</em> (with state and<br>a procedure) called a continuation.</p>
+<p>The obvious question is, why bother? The stack worked well, didn’t it?<br>Why dispense with it? Yes, the stack works incredibly well, which is<br>why CPUs and compilers have special support for it. However, the<br>continuation passing style allows for other forms of transfer of<br>control very simply. C++ and Java provide two forms of “return”, one<br>normal and another using exceptions. If we had CPS, we wouldn’t need<br>these special cases.</p>
+<p>Instead of a() installing an exception handler, it would pass in two<br>continuation objects to b() that know what to do under normal and<br>under exceptional conditions. b() simply chains on to the appropriate<br>object as its last move.</p>
+<p>As another example, you can have tasks that pass control to a<br>scheduler that in turn passes control to another task, all without<br>having to return to whoever called it. </p>
+<p>In a programming language with explicit support for continuations (ML,<br>Lisp, Haskell), one can have the “return” keyword merely as a<br>syntactic sugar (like a macro). Internally, the compiler CPS<br>transforms the entire code, so no procedure returns to its caller.</p>
+<p>Are there any disadvantages of continuations? Oh yes. Machines are<br>so well optimized for stack usage and no tail calls that the<br>system is biased against continuations, performance-wise. The<br>continuation object has to be allocated from the heap and depends<br>on garbage collection. This is one reason why OCaml doesn’t use CPS.</p>
+<p>That said, the current crop of garbage collectors and the amortized<br>cost of garbage collection often matches that of stack-based<br>allocation, and continuations are simply too powerful a feature to<br>ignore.</p>
+<p>Where does Kilim fit into all this?</p>
+<p>Kilim’s transformation is similar to CPS, but it needs to live within<br>a JVM that does not even support tail calls. It also needs to live<br>with the Java verifier that doesn’t allow random gotos to be inserted<br>in the code willy-nilly. More details in the paper “A Thread of One’s<br>Own” (included in the docs directory)</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -394,6 +448,10 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -406,7 +464,11 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/10/31/proc-on-mac-os-x/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -425,16 +487,8 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/10/31/proc-on-mac-os-x/" itemprop="url">
-                  /proc on Mac OS X
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/10/31/proc-on-mac-os-x/" itemprop="url">/proc on Mac OS X</a></h1>
         
 
         <div class="post-meta">
@@ -482,16 +536,6 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/10/31/proc-on-mac-os-x/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/31/proc-on-mac-os-x/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -507,7 +551,9 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -516,28 +562,40 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
       
         
           
-          在Uinx与Uinx-like类型的系统中，Process文件系统(/proc)是常用的系统信息目录。它提供了系统中大多数可控制或者非可控制的系统参数和性能指数的抽象，以一种直观的形式表现出来。
-在Linux的发扬下，/proc则变得更加强大，可以查询出包括进程端口信息和挂载目录等等一系列的系统运行
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/10/31/proc-on-mac-os-x/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>在Uinx与Uinx-like类型的系统中，Process文件系统(/proc)是常用的系统信息目录。它提供了系统中大多数可控制或者非可控制的系统参数和性能指数的抽象，以一种直观的形式表现出来。</p>
+<p>在Linux的发扬下，/proc则变得更加强大，可以查询出包括进程端口信息和挂载目录等等一系列的系统运行参数，是非常有用的工具目录。而在Mac上，这个目录缺失了。</p>
+<p>Mac作为实质上BSD家族的分支成员，却没有支持这个信息，确实比较费解。如果希望查询到相关的信息，当然是可以做到的，只不过，在Linux下却可以变得更加简单和详尽，同时更易读一些。</p>
+<p>比如：<br>查询内存信息，Linux下可以这样做：</p>
+<p><code>free</code></p>
+<p>或者</p>
+<p><code>cat /proc/meminfo</code></p>
+<p>当然还有其他的方式</p>
+<p>而在Mac中，你需要这样：</p>
+<p><code>memory_pressure</code></p>
+<p>当然Mac中有一个信息相对全面的命令:<code>sysctl</code></p>
+<p>再比如：</p>
+<p>获取CPU信息，Linux下可以这样做：</p>
+<p><code>/proc/cpuinfo</code></p>
+<p>在Mac中，你需要这样：</p>
+<ol>
+<li>查看”About This Mac”</li>
+<li><code>sysctl -a hw</code></li>
+</ol>
+<p>当然输出就不如Linux下那么的友好了</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -551,6 +609,10 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -563,7 +625,11 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/10/30/Blackalicious-Alphabet-Aerobics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -582,16 +648,8 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/10/30/Blackalicious-Alphabet-Aerobics/" itemprop="url">
-                  【Blackalicious-Alphabet Aerobics】
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/10/30/Blackalicious-Alphabet-Aerobics/" itemprop="url">【Blackalicious-Alphabet Aerobics】</a></h1>
         
 
         <div class="post-meta">
@@ -617,16 +675,6 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/10/30/Blackalicious-Alphabet-Aerobics/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/30/Blackalicious-Alphabet-Aerobics/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -642,7 +690,9 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -651,31 +701,75 @@ Kilim IFAQ: Infrequently Asked Questions. Kilim v 1.0– sriram srinivasan (Kili
       
         
           
-          Now it’s time for our wrap up
-Let’s give it everything we’ve got
-Ready? Begin
-Artificial amateurs, aren’t at all amazing
-Analytically, I assault, anim
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/10/30/Blackalicious-Alphabet-Aerobics/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>Now it’s time for our wrap up</p>
+<p>Let’s give it everything we’ve got</p>
+<p>Ready? Begin</p>
+<p>Artificial amateurs, aren’t at all amazing</p>
+<p>Analytically, I assault, animate things</p>
+<p>Broken barriers bounded by the bomb beat</p>
+<p>Buildings are broken, basically I’m bombarding</p>
+<p>Casually create catastrophes, casualties</p>
+<p>Cancelling cats got their canopies collapsing</p>
+<p>Detonate a dime of dank daily doin’ dough</p>
+<p>Demonstrations, Don Dada on the down low</p>
+<p>Eatin’ other editors with each and every energetic</p>
+<p>Epileptic episode, elevated etiquette</p>
+<p>Furious fat fabulous fantastic</p>
+<p>Flurries of funk felt feeding the fanatics</p>
+<p>Gift got great global goods gone glorious</p>
+<p>Gettin’ godly in his game with the goriest</p>
+<p>Hit ‘em high, hella height, historical</p>
+<p>Hey holocaust hints hear ‘em holler at your homeboy</p>
+<p>Imitators idolize, I intimidate</p>
+<p>In a instant, I’ll rise in a irate state</p>
+<p>Juiced on my jams like jheri curls jockin’ joints</p>
+<p>Justly, it’s just me, writin’ my journals</p>
+<p>Kindly I’m kindling all kinds of ink on</p>
+<p>Karate kick type Brits in my kingdom</p>
+<p>Let me live a long life, lyrically lessons is</p>
+<p>Learned lame louses just lose to my livery</p>
+<p>My mind makes marvelous moves, masses</p>
+<p>Marvel and move, many mock what I’ve mastered</p>
+<p>Niggas nap knowin’ I’m nice naturally</p>
+<p>Knack, never lack, make noise nationally</p>
+<p>Operation, opposition, off, not optional</p>
+<p>Out of sight, out of mind, wide beaming opticals</p>
+<p>Perfected poem, powerful punchlines</p>
+<p>Pummelling petty powder puffs in my prime</p>
+<p>Quite quaint quotes keep quiet it’s Quannum</p>
+<p>Quarrelers ain’t got a quarter of what we got uh</p>
+<p>Really raw raps, risin’ up rapidly</p>
+<p>Riding the rushing radioactivity</p>
+<p>Super scientifical sound search sought</p>
+<p>Silencing super fire saps that are soft</p>
+<p>Tales ten times talented, too tough</p>
+<p>Take that, challengers, get a tune up</p>
+<p>Universal, unique untouched</p>
+<p>Unadulterated, the raw uncut</p>
+<p>Verb vice lord victorious valid</p>
+<p>Violate vibes that are vain make ‘em vanished</p>
+<p>While I’m all well would a wise wordsmith just</p>
+<p>Weaving up words weeded up, I’m a work-shift</p>
+<p>Xerox, my X-ray-diation holes extra large</p>
+<p>X-height letters, and xylophone tones</p>
+<p>Yellow back, yak mouth, young ones yaws</p>
+<p>Yesterday’s lawn yards sell our yawnS</p>
+<p>Zig zag zombies, zoomin’ to the zenith</p>
+<p>Zero in zen thoughts, overzealous rhyme ZEALOTS!</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -689,6 +783,10 @@ Analytically, I assault, anim
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -701,7 +799,11 @@ Analytically, I assault, anim
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/10/27/hello/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -720,16 +822,8 @@ Analytically, I assault, anim
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/10/27/hello/" itemprop="url">
-                  Hello
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/10/27/hello/" itemprop="url">Hello</a></h1>
         
 
         <div class="post-meta">
@@ -755,16 +849,6 @@ Analytically, I assault, anim
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/10/27/hello/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/10/27/hello/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -780,7 +864,9 @@ Analytically, I assault, anim
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -789,28 +875,21 @@ Analytically, I assault, anim
       
         
           
-          
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/10/27/hello/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -824,6 +903,10 @@ Analytically, I assault, anim
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -836,7 +919,11 @@ Analytically, I assault, anim
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/15/linux-mem-al/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -855,16 +942,8 @@ Analytically, I assault, anim
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/09/15/linux-mem-al/" itemprop="url">
-                  Linux内存调度-几种页面置换算法
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/09/15/linux-mem-al/" itemprop="url">Linux内存调度-几种页面置换算法</a></h1>
         
 
         <div class="post-meta">
@@ -890,16 +969,6 @@ Analytically, I assault, anim
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/09/15/linux-mem-al/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/15/linux-mem-al/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -915,7 +984,9 @@ Analytically, I assault, anim
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -924,30 +995,52 @@ Analytically, I assault, anim
       
         
           
-          互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。
+            <p>互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。</p>
+<ul>
+<li>LRU(Least Recently Used)</li>
+</ul>
+<p>顾名思义，最近最少使用算法，这个算法的理念是：如果数据最近被访问过，那么它将来被访问的几率也很高。</p>
+<p>算法的实现有很多种，基本都是通过数据的历史访问记录来作文章。但这个算法有一个比较明显的问题，就是在某些波动的情况或者周期性的批量数据访问下，缓存的命中率会大幅下降，也就是判断某一时刻的热数据而将广域的热数据剔除掉了。 </p>
+<p>目前这个算法有很多变种，比如LRU-K(k就是最近使用过的次数)，它将LRU的最近使用一次扩展成了最近使用K次(本质上是LRU与LFU的结合)，进过验证k＝2的时候，效率可以达到一个比较均衡的高水平。</p>
+<ul>
+<li>LFU(Least Frequently Used)</li>
+</ul>
+<p>最近最少频率，每个数据块维护一个访问计数，一定时间内，按照这个计数的大小，选择计数值最小的页面进行淘汰 </p>
+<ul>
+<li>FIFO(First-In First-Out)</li>
+</ul>
+<p>最简单的先进先出淘汰方式，选择最先进入缓存的页面进行淘汰 </p>
+<ul>
+<li>MQ(Mutil Queue)</li>
+</ul>
+<p>MQ实际上是LRU的一种扩展，希望做到的是尽量的贴近实际用户最可能访问的逻辑，将访问的热点数据缓存起来。 </p>
+<p>MQ算法根据访问频率将数据划分为多个队列，不同的队列具有不同的访问优先级，其核心思想是：优先缓存访问次数多的数据。</p>
+<p>MQ算法将缓存划分为多个LRU队列，每个队列对应不同的访问优先级。访问优先级是根据访问次数计算出来的</p>
+<p>详细的算法结构图如下，Q0，Q1….Qk代表不同的优先级队列，Q-history代表从缓存中淘汰数据，但记录了数据的索引和引用次数的队列：</p>
+<p><img src="http://chentaohome.qiniudn.com/queue2.png" alt=""></p>
+<p>通过对几个队列的维护，保证： </p>
+<ol>
+<li><p>新的被多次访问的数据优先级可以提升</p>
+</li>
+<li><p>旧的访问次数减少的数据优先级被降低</p>
+</li>
+</ol>
+<p>具体的做法就是在多个不同优先级序列的队列之间切换。当然这个算法相对于LRU来说复杂了许多，并且在大量数据涌入的时候可能会造成一些由于系统本身置换而产生的效率影响。 </p>
+<p>除了MQ，还有2Q(Two Queue)等等，都是对LRU经典算法的改进，不过由于本身算法复杂度和空间占比的影响，使用率都不高。</p>
 
-LRU(Least Recently Used)
-
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/09/15/linux-mem-al/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -961,6 +1054,10 @@ LRU(Least Recently Used)
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -973,7 +1070,11 @@ LRU(Least Recently Used)
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/14/java-tcpudp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -992,16 +1093,8 @@ LRU(Least Recently Used)
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/09/14/java-tcpudp/" itemprop="url">
-                  Java TCP and UDP
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/09/14/java-tcpudp/" itemprop="url">Java TCP and UDP</a></h1>
         
 
         <div class="post-meta">
@@ -1027,16 +1120,6 @@ LRU(Least Recently Used)
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/09/14/java-tcpudp/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/14/java-tcpudp/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1052,7 +1135,9 @@ LRU(Least Recently Used)
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1061,58 +1146,61 @@ LRU(Least Recently Used)
       
         
           
+            <table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:right">UDP</th>
+<th style="text-align:right">TCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">处理方式</td>
+<td style="text-align:right">单个数据报</td>
+<td style="text-align:right">将网络视为流</td>
+</tr>
+<tr>
+<td style="text-align:right">连接</td>
+<td style="text-align:right">从多个独立主机收发数据</td>
+<td style="text-align:right">两台主机之间唯一连接</td>
+</tr>
+<tr>
+<td style="text-align:right">实现</td>
+<td style="text-align:right">DatagramPacket将数据以字节方式填充到数据报中</td>
+<td style="text-align:right">Socket</td>
+</tr>
+<tr>
+<td style="text-align:right"></td>
+<td style="text-align:right">DatagramSocket负责收发数据报</td>
+<td style="text-align:right">ServerSocket</td>
+</tr>
+<tr>
+<td style="text-align:right">首发规则</td>
+<td style="text-align:right">无序且不保证到达</td>
+<td style="text-align:right">有序且有可靠保证</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://chentaohome.qiniudn.com/tcp.png" alt=""></p>
+<p><img src="http://chentaohome.qiniudn.com/udp.jpg" alt=""></p>
+<p>UDP数据报--&gt;基于IP数据报</p>
+<p>通常，UDP的数据报大小可以支持到65507字节(理论上)，但一般的，在许多平台下，这个限制是8192字节(8k)</p>
+<p>当然，你可以自行选择数据报的大小，这里最合适的大小并不是一定的，当网络不太好的时候，就要选择更小的包，而当网络速率快而通畅的时候，更大的包是更好的选择。</p>
+
           
-
-
-
-UDP
-TCP
-
-
-
-
-处理方式
-单个数据报
-将网络视为流
-
-
-连接
-从多个独立主机收发数据
-两台主机之间唯一连接
-
-
-实现
-DatagramPacket将数据以字节方式填充到数据报中
-Socket
-
-
-
-DatagramSocket负责收发数据报
-ServerSocket
-
-
-首发规则
-无
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/09/14/java-tcpudp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1126,6 +1214,10 @@ ServerSocket
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1138,7 +1230,11 @@ ServerSocket
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/14/mac-youtube-dl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1157,16 +1253,8 @@ ServerSocket
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/09/14/mac-youtube-dl/" itemprop="url">
-                  Mac下使用 youtube-dl下载视频
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/09/14/mac-youtube-dl/" itemprop="url">Mac下使用 youtube-dl下载视频</a></h1>
         
 
         <div class="post-meta">
@@ -1192,16 +1280,6 @@ ServerSocket
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/09/14/mac-youtube-dl/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/14/mac-youtube-dl/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1217,7 +1295,9 @@ ServerSocket
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1226,32 +1306,42 @@ ServerSocket
       
         
           
-          brew果然是Mac下一大神器！今天更新又发现一个好东西，youtube-dl.
-youtube-dl 是一个基于 python 的脚本
-Mac下使用brew超级简单
-brew install youtube-dl 
-就可以了！没有安装brew的同学，请移步http://brew.sh/
-Linux
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/09/14/mac-youtube-dl/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>brew果然是Mac下一大神器！今天更新又发现一个好东西，youtube-dl.</p>
+<p>youtube-dl 是一个基于 python 的脚本</p>
+<p>Mac下使用brew超级简单</p>
+<p><code>brew install youtube-dl</code> </p>
+<p>就可以了！没有安装brew的同学，请移步<a href="http://brew.sh/" target="_blank" rel="external">http://brew.sh/</a></p>
+<p>Linux 下也用几行行命令就可以轻松下载 YouTube Vimeo Youku 等网站视频了</p>
+<p>1. 安装 python 并下载 youtube-dl</p>
+<p><code>apt-get update</code></p>
+<p><code>apt-get install python</code>  </p>
+<p><code>wget &lt;http://youtube-dl.org/latest/youtube-dl&gt;</code>  </p>
+<p><code>chmod 744 youtube-dl</code> </p>
+<p>2. 视频下载示例</p>
+<p><code>youtube-dl \--max-quality url &lt;http://www.youtube.com/watch?v=XXXXXX&gt;</code></p>
+<p><code>youtube-dl --max-quality url &lt;http://vimeo.com/XXXXXX&gt;</code></p>
+<p><code>youtube-dl --max-quality url &lt;http://v.youku.com/v_showd_XXXXXX.html&gt;</code></p>
+<p>3. 其他信息：</p>
+<p>支持网站全列表请使用如下命令查看 </p>
+<p><code>youtube-dl \--list-extractors</code> </p>
+<p>程序升级直接执行以下命令即可 </p>
+<p><code>youtube-dl -U</code></p>
+<p>更多参数选择请参考 </p>
+<p><code>youtube-dl -h</code></p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1265,6 +1355,10 @@ Linux
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1277,7 +1371,11 @@ Linux
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/13/mac-time/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1296,16 +1394,8 @@ Linux
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/09/13/mac-time/" itemprop="url">
-                  命令行查询Mac启动时间
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/09/13/mac-time/" itemprop="url">命令行查询Mac启动时间</a></h1>
         
 
         <div class="post-meta">
@@ -1331,16 +1421,6 @@ Linux
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/09/13/mac-time/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/13/mac-time/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1356,7 +1436,9 @@ Linux
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1365,32 +1447,30 @@ Linux
       
         
           
+            <p><img src="http://chentaohome.qiniudn.com/mac_time.png" alt=""></p>
+<p>使用命令行查询Mac/Linux/Uinx的启动时间，有以上3种方法，但进过我的测试，发现在Mac下，第一种并不好用。</p>
+<ol>
+<li><p>使用last reboot命令，在Mac下显示的是wtmp的时间，也就是上次登录的时间，对于Mac相当于上一次你打开盖子的时间，这是跟Linux的一点小差别。</p>
+</li>
+<li><p>使用who命令是目前最为准确的一种</p>
+</li>
+<li><p>uptime则是一个历史久远的Uinx命令，它会显示出系统已经运行了多长时间的具体信息，它依次显示下列信息：当前时间、系统已经运行了多长时间、目前有多少登陆用户、系统在过去的1分钟、5分钟和15分钟内的平均负载。</p>
+</li>
+</ol>
+
           
-使用命令行查询Mac/Linux/Uinx的启动时间，有以上3种方法，但进过我的测试，发现在Mac下，第一种并不好用。
-
-使用last reboot命令，在Mac下显示的是wtmp的时间，也就是上次登录的时间，对于Mac相当于上一次你打开盖子的时间，这是跟Linux的一点小差别。
-
-使用who命令
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/09/13/mac-time/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1404,6 +1484,10 @@ Linux
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1416,7 +1500,11 @@ Linux
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/12/jvm-params/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1435,16 +1523,8 @@ Linux
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/09/12/jvm-params/" itemprop="url">
-                  JVM调优–参数总结
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/09/12/jvm-params/" itemprop="url">JVM调优–参数总结</a></h1>
         
 
         <div class="post-meta">
@@ -1470,16 +1550,6 @@ Linux
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/09/12/jvm-params/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/12/jvm-params/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1495,7 +1565,9 @@ Linux
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1504,33 +1576,32 @@ Linux
       
         
           
-          开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：
+            <p>开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：</p>
+<p><img src="http://chentaohome.qiniudn.com/jvmp1.jpg" alt=""></p>
+<p><img src="http://chentaohome.qiniudn.com/jvmp2.jpg" alt=""></p>
+<p><img src="http://chentaohome.qiniudn.com/jvmp3.jpg" alt=""></p>
+<p><img src="http://chentaohome.qiniudn.com/jvmp4.jpg" alt=""></p>
+<p><img src="http://chentaohome.qiniudn.com/jvmp5.jpg" alt=""></p>
+<p>强制要求JVM始终抛出含堆栈的错误(<code>-XX:OmitStackTraceInFastThrow</code>)</p>
+<p>问题描述：生产环境抛异常,但却没有将堆栈信息输出到日志,可以确定的是日志输出时用的是log.error(“xx发生错误”, e)<br>问题分析：它跟JDK5的一个新特性有关,对于一些频繁抛出的异常,JDK为了性能会做一个优化,即JIT重新编译后会抛出没有堆栈的异常<br>          而在使用-server模式时,该优化选项是开启的,因此在频繁抛出某个异常一段时间后,该优化开始起作用,即只抛出没有堆栈的异常信息<br>问题解决：由于该优化是在JIT重新编译后才起作用,因此起初抛出的异常还是有堆栈的,所以可以查看较旧的日志,寻找完整的堆栈信息<br>          另一个解决办法是暂时禁用该优化,即强制要求每次都要抛出有堆栈的异常,幸好JDK提供了通过配置JVM参数的方式来关闭该优化<br>          即<code>-XX:-OmitStackTraceInFastThrow</code>,便可禁用该优化了(注意选项中的减号,加号则表示启用)  </p>
+<p>官方说明：</p>
+<blockquote>
+<p>The compiler in the server VM now provides correct stack backtraces for all “cold” built-in exceptions.<br>         For performance purposes, when such an exception is thrown a few times, the method may be recompiled.<br>         After recompilation, the compiler may choose a faster tactic using preallocated exceptions that do not provide a stack trace.<br>         To disable completely the use of preallocated exceptions, use this new flag: -XX:-OmitStackTraceInFastThrow.</p>
+</blockquote>
 
-
-
-
-
-强制要求JVM始终抛出含堆栈的错误(-XX
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/09/12/jvm-params/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1544,6 +1615,10 @@ Linux
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1556,7 +1631,11 @@ Linux
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/12/java-7-linkedtransferqueue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1575,16 +1654,8 @@ Linux
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2014/09/12/java-7-linkedtransferqueue/" itemprop="url">
-                  Java 7 LinkedTransferQueue解析
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2014/09/12/java-7-linkedtransferqueue/" itemprop="url">Java 7 LinkedTransferQueue解析</a></h1>
         
 
         <div class="post-meta">
@@ -1610,16 +1681,6 @@ Linux
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/09/12/java-7-linkedtransferqueue/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/12/java-7-linkedtransferqueue/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1635,7 +1696,9 @@ Linux
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1644,29 +1707,51 @@ Linux
       
         
           
-          Java 7 LinkedTransferQueue解析LinkedTransferQueue出身Google，现在已经被集成在JDK7中，但目前主流的JDK平台仍然是JDK6，所以很多时候我们需要这样引入：
-import com.google.code.yanf4j.util;
-她的作者依然是Do
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/09/12/java-7-linkedtransferqueue/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="Java-7-LinkedTransferQueue解析"><a href="#Java-7-LinkedTransferQueue解析" class="headerlink" title="Java 7 LinkedTransferQueue解析"></a>Java 7 LinkedTransferQueue解析</h1><p>LinkedTransferQueue出身Google，现在已经被集成在JDK7中，但目前主流的JDK平台仍然是JDK6，所以很多时候我们需要这样引入：</p>
+<p><code>import com.google.code.yanf4j.util;</code></p>
+<p>她的作者依然是Doug Lea大神，他说：</p>
+<blockquote>
+<p>LinkedTransferQueue是一个聪明的队列，他是ConcurrentLinkedQueue,<br>SynchronousQueue (in “fair” mode公平模式), and unbounded LinkedBlockingQueue的超集。</p>
+</blockquote>
+<p>我们从她的声明中也可以看出这一点： </p>
+<p><code>public class LinkedTransferQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements BlockingQueue&lt;E&gt;</code></p>
+<p>Google的注释中，有这样一段描述：</p>
+<blockquote>
+<p>This class extends the approach used in FIFO-mode SynchronousQueues. See the internal documentation, as well as the PPoPP 2006 paper “Scalable Synchronous Queues” by Scherer,<br>                                  <em>Lea &amp; Scott</em> </p>
+</blockquote>
+<p>(<a href="http://www.cs.rice.edu/~wns1/papers/2006-PPoPP-SQ.pdf" target="_blank" rel="external">http://www.cs.rice.edu/~wns1/papers/2006-PPoPP-SQ.pdf</a>) </p>
+<blockquote>
+<p>The main extension is to provide different Wait modes for the main “xfer” method that puts or takes items.  These don’t impact the basic dual-queue logic, but instead control whether or how threads block upon insertion of request or data nodes into the dual queue. It also uses slightly different conventions for tracking whether nodes are off-list or cancelled. </p>
+</blockquote>
+<p>LinkedTransferQueue实现了一个重要的接口TransferQueue,该接口含有下面几个重要方法：</p>
+<p>1. transfer(E e) </p>
+<p>   若当前存在一个正在等待获取的消费者线程，即立刻移交之；否则，会插入当前元素e到队列尾部，并且等待进入阻塞状态，到有消费者线程取走该元素。</p>
+<p>2. tryTransfer(E e) </p>
+<p>   若当前存在一个正在等待获取的消费者线程（使用take()或者poll()函数），使用该方法会即刻转移/传输对象元素e；若不存在，则返回false，并且不进入队列。这是一个不阻塞的操作。</p>
+<p>3. tryTransfer(E e, long timeout, TimeUnit unit) </p>
+<p>   若当前存在一个正在等待获取的消费者线程，会立即传输给它; 否则将插入元素e到队列尾部，并且等待被消费者线程获取消费掉,若在指定的时间内元素e无法被消费者线程获取，则返回false，同时该元素被移除。</p>
+<p>4. hasWaitingConsumer() </p>
+<p>   判断是否存在消费者线程</p>
+<p>5. getWaitingConsumerCount() </p>
+<p>   获取所有等待获取元素的消费线程数量</p>
+<p>6. size()</p>
+<p>因为队列的异步特性，检测当前队列的元素个数需要逐一迭代，可能会得到一个不太准确的结果，尤其是在遍历时有可能队列发生更改。 </p>
+<p>7. 批量操作</p>
+<p>类似于 addAll，removeAll, retainAll, containsAll, equals, toArray 等方法，API不能保证一定会立刻执行。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1680,6 +1765,10 @@ import com.google.code.yanf4j.util;
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1692,7 +1781,7 @@ import com.google.code.yanf4j.util;
   </nav>
 
 
-          
+
           </div>
           
 
@@ -1712,6 +1801,7 @@ import com.google.code.yanf4j.util;
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -1729,10 +1819,10 @@ import com.google.code.yanf4j.util;
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -1740,8 +1830,10 @@ import com.google.code.yanf4j.util;
           
 
           
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1749,8 +1841,10 @@ import com.google.code.yanf4j.util;
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1762,44 +1856,6 @@ import com.google.code.yanf4j.util;
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
           
         </div>
 
@@ -1836,10 +1892,10 @@ import com.google.code.yanf4j.util;
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heartbeat"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1852,7 +1908,7 @@ import com.google.code.yanf4j.util;
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -1869,7 +1925,7 @@ import com.google.code.yanf4j.util;
         
       </div>
     
-    
+
   </div>
 
   
@@ -1889,6 +1945,14 @@ import com.google.code.yanf4j.util;
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -1915,48 +1979,31 @@ import com.google.code.yanf4j.util;
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"chentaonight"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
   
 
 
@@ -1966,13 +2013,18 @@ import com.google.code.yanf4j.util;
 
 
 
+  
+
 
 
 
 
 
   
-  
+
+
+
+
 
   
 
@@ -1982,6 +2034,7 @@ import com.google.code.yanf4j.util;
 
   
 
+  
 
   
 

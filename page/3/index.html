@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -68,19 +75,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
-
-
-
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/chentao.ico?v=5.1.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -104,13 +111,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'CT'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -130,11 +138,7 @@
 
 
 
-  <title> Chen-Tao </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Chen-Tao</title>
   
 
 
@@ -149,13 +153,17 @@
 
 
 
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -203,18 +211,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,21 +222,11 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -270,7 +258,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/21/unix-into-apue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,16 +281,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/21/unix-into-apue/" itemprop="url">
-                  unix高级编程引入apue.h
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/21/unix-into-apue/" itemprop="url">unix高级编程引入apue.h</a></h1>
         
 
         <div class="post-meta">
@@ -324,16 +308,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/21/unix-into-apue/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/unix-into-apue/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -349,7 +323,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -368,15 +344,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -390,6 +366,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -402,7 +382,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/linux-swap-conf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -421,16 +405,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/17/linux-swap-conf/" itemprop="url">
-                  linux的swap扩容
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/17/linux-swap-conf/" itemprop="url">linux的swap扩容</a></h1>
         
 
         <div class="post-meta">
@@ -456,16 +432,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/17/linux-swap-conf/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/17/linux-swap-conf/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -481,7 +447,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -500,15 +468,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -522,6 +490,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -534,7 +506,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -553,16 +529,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/17/c-cpp-preprocessor/" itemprop="url">
-                  C/C++ 预处理指令
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/17/c-cpp-preprocessor/" itemprop="url">C/C++ 预处理指令</a></h1>
         
 
         <div class="post-meta">
@@ -588,16 +556,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/17/c-cpp-preprocessor/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/17/c-cpp-preprocessor/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -613,7 +571,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -632,15 +592,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -654,6 +614,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -666,7 +630,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/16/macbook-shortcuts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -685,16 +653,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/16/macbook-shortcuts/" itemprop="url">
-                  Macbook技巧整理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/16/macbook-shortcuts/" itemprop="url">Macbook技巧整理</a></h1>
         
 
         <div class="post-meta">
@@ -742,16 +702,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/16/macbook-shortcuts/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/16/macbook-shortcuts/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -767,7 +717,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -786,15 +738,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -808,6 +760,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -820,7 +776,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/13/code-self-discipline/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -839,16 +799,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/13/code-self-discipline/" itemprop="url">
-                  程序员的自我修养 读书笔记
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/13/code-self-discipline/" itemprop="url">程序员的自我修养 读书笔记</a></h1>
         
 
         <div class="post-meta">
@@ -874,16 +826,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/13/code-self-discipline/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/13/code-self-discipline/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -899,7 +841,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -918,15 +862,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -940,6 +884,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -952,7 +900,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/12/cpp-d-lib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -971,16 +923,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/12/cpp-d-lib/" itemprop="url">
-                  Linux动态库相关知识整理
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/12/cpp-d-lib/" itemprop="url">Linux动态库相关知识整理</a></h1>
         
 
         <div class="post-meta">
@@ -1006,16 +950,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/12/cpp-d-lib/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/cpp-d-lib/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1031,7 +965,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1050,15 +986,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1072,6 +1008,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1084,7 +1024,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/newbee-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1103,16 +1047,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/09/newbee-problem/" itemprop="url">
-                  新人破冰问题
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/09/newbee-problem/" itemprop="url">新人破冰问题</a></h1>
         
 
         <div class="post-meta">
@@ -1138,16 +1074,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/09/newbee-problem/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/newbee-problem/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1163,7 +1089,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1184,15 +1112,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1206,6 +1134,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1218,7 +1150,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/linux-nc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1237,16 +1173,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/09/linux-nc/" itemprop="url">
-                  linux nc命令
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/09/linux-nc/" itemprop="url">linux nc命令</a></h1>
         
 
         <div class="post-meta">
@@ -1272,16 +1200,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/09/linux-nc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/linux-nc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1297,7 +1215,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1316,15 +1236,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1338,6 +1258,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1350,7 +1274,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/08/server-dev-things/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1369,16 +1297,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/08/server-dev-things/" itemprop="url">
-                  服务端开发那些事儿
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/08/server-dev-things/" itemprop="url">服务端开发那些事儿</a></h1>
         
 
         <div class="post-meta">
@@ -1404,16 +1324,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/08/server-dev-things/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/08/server-dev-things/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1429,7 +1339,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1438,28 +1350,21 @@
       
         
           
-          PPT
+            <p><a href="https://github.com/Chen-tao/Chen-tao.github.io/blob/master/docs/things-about-service-dev.pdf" target="_blank" rel="external">PPT</a></p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/08/server-dev-things/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1473,6 +1378,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1485,7 +1394,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/07/cmakeprotoprotobuf-cpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1504,16 +1417,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/07/cmakeprotoprotobuf-cpp/" itemprop="url">
-                  利用Cmake自动编译proto文件生成protobuf cpp代码
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/07/cmakeprotoprotobuf-cpp/" itemprop="url">利用Cmake自动编译proto文件生成protobuf cpp代码</a></h1>
         
 
         <div class="post-meta">
@@ -1539,16 +1444,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/07/cmakeprotoprotobuf-cpp/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/07/cmakeprotoprotobuf-cpp/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1564,7 +1459,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1573,32 +1470,36 @@
       
         
           
-          项目中pb用的越来越多，更改后手动编译proto越来越麻烦，摸索了下在cmake中自动编译proto文件的办法。
+            <p>项目中pb用的越来越多，更改后手动编译proto越来越麻烦，摸索了下在cmake中自动编译proto文件的办法。</p>
+<ol>
+<li>利用cmake提供的宏PROTOBUF_GENERATE_CPP</li>
+</ol>
+<p>示例代码结构如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- CMakeLists.txt</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure>
+<p> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
+<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">add_subdirectory(proto)</div><div class="line">add_executable(demo main.cpp) </div><div class="line">target_link_libraries(demo proto)</div></pre></td></tr></table></figure></p>
+<p> src/proto/CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">find_package(Protobuf REQUIRED)</div><div class="line">FILE(GLOB protofiles &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/*.proto&quot;)</div><div class="line">message(STATUS $&#123;protofiles&#125;)</div><div class="line">PROTOBUF_GENERATE_CPP(PROTOSRCS PROTOHDRS $&#123;protofiles&#125;)</div><div class="line">message(STATUS $&#123;PROTOSRCS&#125;)</div><div class="line">add_library(proto STATIC $&#123;PROTOSRCS&#125; $&#123;PROTOHDRS&#125;) </div><div class="line">target_link_libraries(proto protobuf) </div><div class="line">target_include_directories(proto PUBLIC $&#123;CMAKE_CURRENT_BINARY_DIR&#125;)</div></pre></td></tr></table></figure></p>
+<p> 采用out of source编译，cmake将生成的.pb.h,.pb.cc放在build/src/proto/目录下，故而需要在src/proto/CMakeLists.txt中设置<code>target_include_directories(proto PUBLIC ${CMAKE_CURRENT_BINARY_DIR})</code>，这样生成的头文件才能被外层cmake可见。</p>
+<ol>
+<li>利用命令ADD_CUSTOM_COMMAND</li>
+</ol>
+<p>示例代码结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb1]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure></p>
+<p>3 directories, 5 files<br> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
+<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">FILE(GLOB proto_files $&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/*.proto)  </div><div class="line">FOREACH(proto_file $&#123;proto_files&#125;)</div><div class="line">    STRING(REGEX REPLACE &quot;[^/]proto&quot; &quot;&quot; proto_file_name $&#123;proto_file&#125;)</div><div class="line">    LIST(APPEND PROTO_SRCS &quot;$&#123;proto_file_name&#125;.pb.cc&quot;)</div><div class="line">	ADD_CUSTOM_COMMAND(</div><div class="line">		OUTPUT &quot;$&#123;proto_file_name&#125;.pb.h&quot; &quot;$&#123;proto_file_name&#125;.pb.cc&quot;</div><div class="line">		COMMAND protoc --proto_path=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto</div><div class="line">                       --cpp_out=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/ $&#123;proto_file&#125; </div><div class="line">		DEPENDS $&#123;proto_file&#125;</div><div class="line">	)</div><div class="line">ENDFOREACH(proto_file)</div><div class="line">message(STATUS $&#123;PROTO_SRCS&#125;)</div><div class="line">include_directories(./proto)</div><div class="line">add_executable(demo main.cpp $&#123;PROTO_SRCS&#125;) </div><div class="line">target_link_libraries(demo protobuf)</div></pre></td></tr></table></figure></p>
 
-利用cmake提供的宏PROTOBUF_GENERATE_CPP
-
-示例代码结构如下:
-1234567891011[@gapp_devnet_1 ~/tests/cmakepb]$ t
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/07/cmakeprotoprotobuf-cpp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1612,6 +1513,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1624,7 +1529,7 @@
   </nav>
 
 
-          
+
           </div>
           
 
@@ -1644,6 +1549,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -1661,10 +1567,10 @@
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -1672,8 +1578,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1681,8 +1589,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1694,44 +1604,6 @@
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
           
         </div>
 
@@ -1768,10 +1640,10 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heartbeat"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1784,7 +1656,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -1801,7 +1673,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -1821,6 +1693,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -1847,48 +1727,31 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"chentaonight"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
   
 
 
@@ -1898,13 +1761,18 @@
 
 
 
+  
+
 
 
 
 
 
   
-  
+
+
+
+
 
   
 
@@ -1914,6 +1782,7 @@
 
   
 
+  
 
   
 

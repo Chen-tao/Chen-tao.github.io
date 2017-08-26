@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -68,19 +75,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
-
-
-
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/chentao.ico?v=5.1.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -104,13 +111,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'CT'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -130,11 +138,7 @@
 
 
 
-  <title> Chen-Tao </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Chen-Tao</title>
   
 
 
@@ -149,13 +153,17 @@
 
 
 
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -203,18 +211,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,21 +222,11 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -270,7 +258,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/07/atom-shortcuts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,16 +281,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/07/atom-shortcuts/" itemprop="url">
-                  atom shortcuts
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/07/atom-shortcuts/" itemprop="url">atom shortcuts</a></h1>
         
 
         <div class="post-meta">
@@ -324,16 +308,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/07/atom-shortcuts/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/07/atom-shortcuts/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -349,7 +323,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -358,34 +334,129 @@
       
         
           
-          文件切换ctrl-shift-s 保存所有打开的文件
-cmd-shift-o 打开目录
-cmd-\ 显示或隐藏目录树
-ctrl-0 焦点移到目录树
-目录树下，使用a，m，delete来增加，修改和删除
-cmd-t或cmd-p 查找文件
-cmd-b 在打开的文件之间切换
-cmd-shift-b 只搜索
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/07/atom-shortcuts/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><p><code>ctrl-shift-s</code> 保存所有打开的文件</p>
+<p><code>cmd-shift-o</code> 打开目录</p>
+<p><code>cmd-\</code> 显示或隐藏目录树</p>
+<p><code>ctrl-0</code> 焦点移到目录树</p>
+<p>目录树下，使用a，m，delete来增加，修改和删除</p>
+<p><code>cmd-t</code>或<code>cmd-p</code> 查找文件</p>
+<p><code>cmd-b</code> 在打开的文件之间切换</p>
+<p><code>cmd-shift-b</code> 只搜索从上次<code>git commit</code>后修改或者新增的文件</p>
+<h3 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h3><p>（等价于上下左右）</p>
+<p><code>ctrl-p</code> 前一行</p>
+<p><code>ctrl-n</code> 后一行</p>
+<p><code>ctrl-f</code> 前一个字符</p>
+<p><code>ctrl-b</code> 后一个字符</p>
+<p><code>alt-B</code>, <code>alt-left</code> 移动到单词开始</p>
+<p><code>alt-F</code>, <code>alt-right</code> 移动到单词末尾</p>
+<p><code>cmd-right</code>, <code>ctrl-E</code> 移动到一行结束</p>
+<p><code>cmd-left</code>, <code>ctrl-A</code> 移动到一行开始</p>
+<p><code>cmd-up</code> 移动到文件开始</p>
+<p><code>cmd-down</code> 移动到文件结束</p>
+<p><code>ctrl-g</code> 移动到指定行 <code>row:column</code> 处</p>
+<p><code>cmd-r</code> 在方法之间跳转</p>
+<h3 id="目录树操作"><a href="#目录树操作" class="headerlink" title="目录树操作"></a>目录树操作</h3><p><code>cmd-\</code>或者 <code>cmd-k</code> <code>cmd-b</code> 显示(隐藏)目录树</p>
+<p><code>ctrl-0</code> 焦点切换到目录树(再按一次或者Esc退出目录树)</p>
+<p><code>a</code> 添加文件</p>
+<p><code>d</code> 将当前文件另存为(duplicate)</p>
+<p><code>i</code> 显示(隐藏)版本控制忽略的文件</p>
+<p><code>alt-right</code> 和 <code>alt-left</code> 展开(隐藏)所有目录</p>
+<p><code>ctrl-al-]</code> 和 <code>ctrl-al-[</code> 同上</p>
+<p><code>ctrl-[</code> 和 <code>ctrl-]</code> 展开(隐藏)当前目录</p>
+<p><code>ctrl-f</code> 和 <code>ctrl-b</code> 同上</p>
+<p><code>cmd-k h</code> 或者 <code>cmd-k left</code> 在左半视图中打开文件</p>
+<p><code>cmd-k j</code>或者<code>cmd-k down</code>在下半视图中打开文件</p>
+<p><code>cmd-k k</code> 或者<code>cmd-k up</code> 在上半视图中打开文件</p>
+<p><code>cmd-k l</code> 或者 <code>cmd-k right</code> 在右半视图中打开文件</p>
+<p><code>ctrl-shift-C</code> 复制当前文件绝对路径</p>
+<h3 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h3><p><code>cmd-F2</code> 在本行增加书签<br><code>F2</code> 跳到当前文件的下一条书签<br><code>shift-F2</code> 跳到当前文件的上一条书签<br><code>ctrl-F2</code> 列出当前工程所有书签</p>
+<h3 id="选取"><a href="#选取" class="headerlink" title="选取"></a>选取</h3><p>大部分和导航一致，只不过加上shift</p>
+<p><code>ctrl-shift-P</code> 选取至上一行</p>
+<p><code>ctrl-shift-N</code> 选取至下一样</p>
+<p><code>ctrl-shift-B</code> 选取至前一个字符</p>
+<p><code>ctrl-shift-F</code> 选取至后一个字符</p>
+<p><code>alt-shift-B</code>, <code>alt-shift-left</code> 选取至字符开始</p>
+<p><code>alt-shift-F</code>, <code>alt-shift-right</code> 选取至字符结束</p>
+<p><code>ctrl-shift-E</code>, <code>cmd-shift-right</code> 选取至本行结束</p>
+<p><code>ctrl-shift-A</code>, <code>cmd-shift-left</code> 选取至本行开始</p>
+<p><code>cmd-shift-up</code> 选取至文件开始</p>
+<p><code>cmd-shift-down</code> 选取至文件结尾</p>
+<p><code>cmd-A</code> 全选</p>
+<p><code>cmd-L</code> 选取一行，继续按回选取下一行</p>
+<p><code>ctrl-shift-W</code> 选取当前单词</p>
+<h3 id="编辑和删除文本"><a href="#编辑和删除文本" class="headerlink" title="编辑和删除文本"></a>编辑和删除文本</h3><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p><code>ctrl-T</code> 使光标前后字符交换</p>
+<p><code>cmd-J</code> 将下一行与当前行合并</p>
+<p><code>ctrl-cmd-up</code>, <code>ctrl-cmd-down</code> 使当前行向上或者向下移动</p>
+<p><code>cmd-shift-D</code> 复制当前行到下一行</p>
+<p><code>cmd-K</code>, <code>cmd-U</code> 使当前字符大写</p>
+<p><code>cmd-K</code>, <code>cmd-L</code> 使当前字符小写</p>
+<h3 id="删除和剪切"><a href="#删除和剪切" class="headerlink" title="删除和剪切"></a>删除和剪切</h3><p><code>ctrl-shift-K</code> 删除当前行</p>
+<p><code>cmd-backspace</code> 删除到当前行开始</p>
+<p><code>cmd-fn-backspace</code> 删除到当前行结束</p>
+<p><code>ctrl-K</code> 剪切到当前行结束</p>
+<p><code>alt-backspace</code> 或 <code>alt-H</code> 删除到当前单词开始</p>
+<p><code>alt-delete</code> 或 <code>alt-D</code> 删除到当前单词结束</p>
+<h3 id="多光标和多处选取"><a href="#多光标和多处选取" class="headerlink" title="多光标和多处选取"></a>多光标和多处选取</h3><p><code>cmd-click</code> 增加新光标</p>
+<p><code>cmd-shift-L</code> 将多行选取改为多行光标</p>
+<p><code>ctrl-shift-up</code>, <code>ctrl-shift-down</code> 增加上（下）一行光标</p>
+<p><code>cmd-D</code> 选取文档中和当前单词相同的下一处</p>
+<p><code>ctrl-cmd-G</code> 选取文档中所有和当前光标单词相同的位置</p>
+<h3 id="括号跳转"><a href="#括号跳转" class="headerlink" title="括号跳转"></a>括号跳转</h3><p><code>ctrl-m</code> 相应括号之间，<code>html tag</code>之间等跳转</p>
+<p><code>ctrl-cmd-m</code> 括号(tag)之间文本选取</p>
+<p><code>alt-cmd-.</code> 关闭当前XML/HTML tag</p>
+<h3 id="编码方式"><a href="#编码方式" class="headerlink" title="编码方式"></a>编码方式</h3><p><code>ctrl-shift-U</code> 调出切换编码选项</p>
+<h3 id="查找和替换"><a href="#查找和替换" class="headerlink" title="查找和替换"></a>查找和替换</h3><p><code>cmd-F</code> 在buffer中查找</p>
+<p><code>cmd-shift-f</code> 在整个工程中查找</p>
+<h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><p><code>alt-shift-S</code> 查看当前可用代码片段</p>
+<p>在<code>~/.atom</code>目录下<code>snippets.cson</code>文件中存放了你定制的<code>snippets</code></p>
+<p><a href="https://atom.io/docs/v1.0.0/using-atom-snippets" target="_blank" rel="external">定制说明</a></p>
+<h3 id="自动补全"><a href="#自动补全" class="headerlink" title="自动补全"></a>自动补全</h3><p><code>ctrl-space</code> 提示补全信息</p>
+<h3 id="折叠"><a href="#折叠" class="headerlink" title="折叠"></a>折叠</h3><p><code>alt-cmd-[</code> 折叠</p>
+<p><code>alt-cmd-]</code> 展开</p>
+<p><code>alt-cmd-shift-{</code> 折叠全部</p>
+<p><code>alt-cmd-shift-}</code> 展开全部</p>
+<p><code>cmd-k</code> <code>cmd-N</code> 指定折叠层级 N为层级数</p>
+<h3 id="文件语法高亮"><a href="#文件语法高亮" class="headerlink" title="文件语法高亮"></a>文件语法高亮</h3><p><code>ctrl-shift-L</code> 选择文本类型</p>
+<h3 id="使用Atom进行写作"><a href="#使用Atom进行写作" class="headerlink" title="使用Atom进行写作"></a>使用Atom进行写作</h3><p><code>ctrl-shift-M</code> Markdown预览</p>
+<h3 id="可用代码片段"><a href="#可用代码片段" class="headerlink" title="可用代码片段"></a>可用代码片段</h3><p><code>b, legal, img, l, i, code, t, table</code></p>
+<h3 id="git操作"><a href="#git操作" class="headerlink" title="git操作"></a>git操作</h3><p><code>cmd-alt-Z</code> checkout HEAD 版本</p>
+<p><code>cmd-shift-B</code> 弹出untracked 和 modified文件列表</p>
+<p><code>alt-g down</code> <code>alt-g up</code> 在修改处跳转</p>
+<p><code>alt-G D</code> 弹出diff列表</p>
+<p><code>alt-G O</code> 在github上打开文件</p>
+<p><code>alt-G G</code> 在github上打开项目地址</p>
+<p><code>alt-G B</code> 在github上打开文件blame</p>
+<p><code>alt-G H</code> 在github上打开文件history</p>
+<p><code>alt-G I</code> 在github上打开issues</p>
+<p><code>alt-G R</code> 在github打开分支比较</p>
+<p><code>alt-G C</code> 拷贝当前文件在gihub上的网址</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><a href="https://atom.io/themes/atom-material-ui" target="_blank" rel="external">atom-material-ui</a> </p>
+<p><a href="https://atom.io/themes/atom-material-syntax" target="_blank" rel="external">atom-material-syntax</a></p>
+<h3 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h3><p><a href="https://atom.io/packages/atom-beautify" target="_blank" rel="external">atom-beautify</a></p>
+<p><a href="https://atom.io/packages/file-icons" target="_blank" rel="external">file-icons</a></p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p><a href="https://atom.io/packages/atomatigit" target="_blank" rel="external">atomatigit</a></p>
+<h3 id="代码提示"><a href="#代码提示" class="headerlink" title="代码提示"></a>代码提示</h3><p><a href="https://atom.io/packages/emmet" target="_blank" rel="external">emmet</a> </p>
+<p><a href="https://atom.io/packages/atom-ternjs" target="_blank" rel="external">atom-ternjs</a> js代码提示很强大，高度定制化</p>
+<p><a href="https://atom.io/packages/docblockr" target="_blank" rel="external">docblockr jsdoc</a> 给js添加注释。</p>
+<p><a href="https://atom.io/packages/autoclose-html" target="_blank" rel="external">autoclose-html</a> 闭合html标签。</p>
+<p><a href="https://atom.io/packages/color-picker" target="_blank" rel="external">color-picker</a> 取色器</p>
+<p><a href="https://atom.io/packages/pigments" target="_blank" rel="external">pigments</a> 颜色显示插件</p>
+<p><a href="https://atom.io/packages/terminal-panel" target="_blank" rel="external">terminal-panel</a> 直接在atom里面写命令</p>
+<p><a href="https://atom.io/packages/svg-preview" target="_blank" rel="external">svg-preview</a> svg预览</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -399,6 +470,10 @@ cmd-shift-b 只搜索
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -411,7 +486,11 @@ cmd-shift-b 只搜索
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/05/http2-comp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -430,16 +509,8 @@ cmd-shift-b 只搜索
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/05/http2-comp/" itemprop="url">
-                  HTTP/2 头部压缩技术介绍
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/05/http2-comp/" itemprop="url">HTTP/2 头部压缩技术介绍</a></h1>
         
 
         <div class="post-meta">
@@ -465,16 +536,6 @@ cmd-shift-b 只搜索
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/05/http2-comp/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/05/http2-comp/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -490,7 +551,9 @@ cmd-shift-b 只搜索
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -499,29 +562,97 @@ cmd-shift-b 只搜索
       
         
           
-          我们知道，HTTP/2 协议由两个 RFC 组成：一个是 RFC 7540，描述了 HTTP/2 协议本身；一个是 RFC 7541，描述了 HTTP/2 协议中使用的头部压缩技术。本文将通过实际案例带领大家详细地认识 HTTP/2 头部压缩这门技术。
-###为什么要压缩
-在 HTTP/1 中，HT
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/05/http2-comp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>我们知道，HTTP/2 协议由两个 RFC 组成：一个是 <a href="https://httpwg.github.io/specs/rfc7540.html" target="_blank" rel="external">RFC 7540</a>，描述了 HTTP/2 协议本身；一个是 <a href="https://httpwg.github.io/specs/rfc7541.html" target="_blank" rel="external">RFC 7541</a>，描述了 HTTP/2 协议中使用的头部压缩技术。本文将通过实际案例带领大家详细地认识 HTTP/2 头部压缩这门技术。</p>
+<p>###为什么要压缩</p>
+<p>在 HTTP/1 中，HTTP 请求和响应都是由<strong>「状态行、请求 / 响应头部、消息主体」</strong>三部分组成。一般而言，消息主体都会经过 <code>gzip</code> 压缩，或者本身传输的就是压缩过后的二进制文件（例如图片、音频），但状态行和头部却没有经过任何压缩，直接以纯文本传输。</p>
+<p>随着 Web 功能越来越复杂，每个页面产生的请求数也越来越多，根据 <a href="http://httparchive.org/trends.php" target="_blank" rel="external">HTTP Archive</a> 的统计，当前平均每个页面都会产生上百个请求。越来越多的请求导致消耗在头部的流量越来越多，尤其是每次都要传输 <code>UserAgent</code>、<code>Cookie</code> 这类不会频繁变动的内容，完全是一种浪费。</p>
+<p>以下是我随手打开的一个页面的抓包结果。可以看到，传输头部的网络开销超过 100kb，比 HTML 还多：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961173/e645b29a-83c6-11e5-9a35-cc1e4bc10d48.png" alt="image"></p>
+<p>下面是其中一个请求的明细。可以看到，为了获得 58 字节的数据，在头部传输上花费了好几倍的流量：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961184/20d86858-83c7-11e5-9d0e-682637bd96f7.png" alt="image"></p>
+<p>HTTP/1 时代，为了减少头部消耗的流量，有很多优化方案可以尝试，例如合并请求、启用 <code>Cookie-Free</code> 域名等等，但是这些方案或多或少会引入一些新的问题，这里不展开讨论。</p>
+<p>###压缩后的效果</p>
+<p>接下来我将使用访问本博客的抓包记录来说明 HTTP/2 头部压缩带来的变化。本文使用的抓包文件，可以点<a href="http://qgy18.imququ.com/file/http2.pcapng" target="_blank" rel="external">这里下载</a>。</p>
+<p>首先直接上图。下图选中的 Stream 是首次访问本站，浏览器发出的请求头：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961196/36c73d56-83c7-11e5-9d20-2adad534603c.png" alt="image"></p>
+<p>从图片中可以看到这个 HEADERS 流的长度是 206 个字节，而解码后的头部长度有 451 个字节。由此可见，压缩后的头部大小减少了一半多。</p>
+<p>然而这就是全部吗？再上一张图。下图选中的 Stream 是点击本站链接后，浏览器发出的请求头：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961208/526c10f4-83c7-11e5-9d5a-345fb7aa71d0.png" alt="image"></p>
+<p>可以看到这一次，HEADERS 流的长度只有 49 个字节，但是解码后的头部长度却有 470 个字节。这一次，压缩后的头部大小几乎只有原始大小的 1/10。</p>
+<p>为什么前后两次差距这么大呢？我们把两次的头部信息展开，查看同一个字段两次传输所占用的字节数：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961219/66c3457c-83c7-11e5-9847-39b00478a63f.png" alt="image"></p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961227/81aee8be-83c7-11e5-90d4-bee12338250a.png" alt="image"></p>
+<p>对比后可以发现，第二次的请求头部之所以非常小，是因为大部分键值对只占用了一个字节。尤其是 UserAgent、Cookie 这样的头部，首次请求中需要占用很多字节，后续请求中都只需要一个字节。</p>
+<p>###技术原理</p>
+<p>下面这张截图，取自 Google 的性能专家 Ilya Grigorik 在 Velocity 2015 • SC 会议中分享的「<a href="http://velocityconf.com/devops-web-performance-2015/public/schedule/detail/42385" target="_blank" rel="external">HTTP/2 is here, let’s optimize!</a>」，非常直观地描述了 HTTP/2 中头部压缩的原理：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961234/9735063c-83c7-11e5-9685-2e5bfcee85c5.png" alt="image"></p>
+<p>我再用通俗的语言解释下，头部压缩需要在支持 HTTP/2 的浏览器和服务端之间：</p>
+<ul>
+<li>维护一份相同的静态字典（Static Table），包含常见的头部名称，以及特别常见的头部名称与值的组合；</li>
+<li>维护一份相同的动态字典（Dynamic Table），可以动态的添加内容；</li>
+<li>支持基于静态哈夫曼码表的哈夫曼编码（Huffman Coding）；</li>
+</ul>
+<p>静态字典的作用有两个：1）对于完全匹配的头部键值对，例如 <code>:method :GET</code>，可以直接使用一个字符表示；2）对于头部名称可以匹配的键值对，例如 <code>cookie :xxxxxxx</code>，可以将名称使用一个字符表示。HTTP/2 中的静态字典如下（以下只截取了部分，完整表格在<a href="https://httpwg.github.io/specs/rfc7541.html#static.table.definition" target="_blank" rel="external">这里</a>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">| Index | Header Name | Header Value |</div><div class="line">| --- | --- | --- |</div><div class="line">| 1 | :authority |</div><div class="line">| 2 | :method | GET |</div><div class="line">| 3 | :method | POST |</div><div class="line">| 4 | :path | / |</div><div class="line">| 5 | :path | /index.html |</div><div class="line">| 6 | :scheme | http |</div><div class="line">| 7 | :scheme | https |</div><div class="line">| 8 | :status | 200 |</div><div class="line">| ... | ... | ... |</div><div class="line">| 32 | cookie |</div><div class="line">| ... | ... | ... |</div><div class="line">| 60 | via |</div><div class="line">| 61 | www-authenticate |</div></pre></td></tr></table></figure>
+<p>同时，浏览器可以告知服务端，将 <code>cookie :xxxxxxx</code> 添加到动态字典中，这样后续整个键值对就可以使用一个字符表示了。类似的，服务端也可以更新对方的动态字典。需要注意的是，动态字典上下文有关，需要为每个 HTTP/2 连接维护不同的字典。</p>
+<p>使用字典可以极大地提升压缩效果，其中静态字典在首次请求中就可以使用。对于静态、动态字典中不存在的内容，还可以使用哈夫曼编码来减小体积。HTTP/2 使用了一份静态哈夫曼码表（<a href="https://httpwg.github.io/specs/rfc7541.html#huffman.code" target="_blank" rel="external">详见</a>），也需要内置在客户端和服务端之中。</p>
+<p>这里顺便说一下，HTTP/1 的状态行信息（Method、Path、Status 等），在 HTTP/2 中被拆成键值对放入头部（冒号开头的那些），同样可以享受到字典和哈夫曼压缩。另外，HTTP/2 中所有头部名称必须小写。</p>
+<p>###实现细节</p>
+<p>了解了 HTTP/2 头部压缩的基本原理，最后我们来看一下具体的实现细节。HTTP/2 的头部键值对有以下这些情况：</p>
+<p><strong>1）整个头部键值对都在字典中</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 1 |        Index (7+)         |</div><div class="line">+---+---------------------------+</div></pre></td></tr></table></figure>
+<p>这是最简单的情况，使用一个字节就可以表示这个头部了，最左一位固定为 1，之后七位存放键值对在静态或动态字典中的索引。例如下图中，头部索引值为 2（0000010），在静态字典中查询可得 <code>:method :GET</code>。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961261/cfab5ed0-83c7-11e5-9b04-d70ac8afc962.png" alt="image"></p>
+<p><strong>2）头部名称在字典中，更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 1 |      Index (6+)       |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>对于这种情况，首先需要使用一个字节表示头部名称：左两位固定为 01，之后六位存放头部名称在静态或动态字典中的索引。接下来的一个字节第一位 H 表示头部值是否使用了哈夫曼编码，剩余七位表示头部值的长度 L，后续 L 个字节就是头部值的具体内容了。例如下图中索引值为 32（100000），在静态字典中查询可得 <code>cookie</code>；头部值使用了哈夫曼编码（1），长度是 28（0011100）；接下来的 28 个字节是 <code>cookie</code> 的值，将其进行哈夫曼解码就能得到具体内容。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961268/ea5336d6-83c7-11e5-8aa3-8b99de030c7a.png" alt="image"></p>
+<p>客户端或服务端看到这种格式的头部键值对，会将其添加到自己的动态字典中。后续传输这样的内容，就符合第 1 种情况了。</p>
+<p><strong>3）头部名称不在字典中，更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 1 |           0           |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Name Length (7+)      |</div><div class="line">+---+---------------------------+</div><div class="line">|  Name String (Length octets)  |</div><div class="line">+---+---------------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>这种情况与第 2 种情况类似，只是由于头部名称不在字典中，所以第一个字节固定为 01000000；接着申明名称是否使用哈夫曼编码及长度，并放上名称的具体内容；再申明值是否使用哈夫曼编码及长度，最后放上值的具体内容。例如下图中名称的长度是 5（0000101），值的长度是 6（0000110）。对其具体内容进行哈夫曼解码后，可得 <code>pragma: no-cache</code>。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961286/11ebab4c-83c8-11e5-9efe-3bdbeff4395e.png" alt="image"></p>
+<p>客户端或服务端看到这种格式的头部键值对，会将其添加到自己的动态字典中。后续传输这样的内容，就符合第 1 种情况了。</p>
+<p><strong>4）头部名称在字典中，不允许更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 0 | 0 | 1 |  Index (4+)   |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>这种情况与第 2 种情况非常类似，唯一不同之处是：第一个字节左四位固定为 0001，只剩下四位来存放索引了，如下图：</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10961292/2a87c5a0-83c8-11e5-9ee7-b1d7653e36a1.png" alt="image"></p>
+<p>这里需要介绍另外一个知识点：对整数的解码。上图中第一个字节为 00011111，并不代表头部名称的索引为 15（1111）。第一个字节去掉固定的 0001，只剩四位可用，将位数用 N 表示，它只能用来表示小于「2 ^ N - 1 = 15」的整数 I。对于 I，需要按照以下规则求值（RFC 7541 中的伪代码，<a href="http://http2.github.io/http2-spec/compression.html#integer.representation" target="_blank" rel="external">via</a>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">if I &lt; 2 ^ N - 1, return I         # I 小于 2 ^ N - 1 时，直接返回</div><div class="line">else</div><div class="line">    M = 0</div><div class="line">    repeat</div><div class="line">        B = next octet             # 让 B 等于下一个八位</div><div class="line">        I = I + (B &amp; 127) * 2 ^ M  # I = I + (B 低七位 * 2 ^ M)</div><div class="line">        M = M + 7</div><div class="line">    while B &amp; 128 == 128           # B 最高位 = 1 时继续，否则返回 I</div><div class="line">    return I</div></pre></td></tr></table></figure>
+<p>对于上图中的数据，按照这个规则算出索引值为 32（00011111 00010001，15 + 17），代表 <code>cookie</code>。需要注意的是，协议中所有写成（N+）的数字，例如 Index (4+)、Name Length (7+)，都需要按照这个规则来编码和解码。</p>
+<p>这种格式的头部键值对，不允许被添加到动态字典中（但可以使用哈夫曼编码）。对于一些非常敏感的头部，比如用来认证的 Cookie，这么做可以提高安全性。</p>
+<p><strong>5）头部名称不在字典中，不允许更新动态字典</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  0   1   2   3   4   5   6   7</div><div class="line">+---+---+---+---+---+---+---+---+</div><div class="line">| 0 | 0 | 0 | 1 |       0       |</div><div class="line">+---+---+-----------------------+</div><div class="line">| H |     Name Length (7+)      |</div><div class="line">+---+---------------------------+</div><div class="line">|  Name String (Length octets)  |</div><div class="line">+---+---------------------------+</div><div class="line">| H |     Value Length (7+)     |</div><div class="line">+---+---------------------------+</div><div class="line">| Value String (Length octets)  |</div><div class="line">+-------------------------------+</div></pre></td></tr></table></figure>
+<p>这种情况与第 3 种情况非常类似，唯一不同之处是：第一个字节固定为 00010000。这种情况比较少见，没有截图，各位可以脑补。同样，这种格式的头部键值对，也不允许被添加到动态字典中，只能使用哈夫曼编码来减少体积。</p>
+<p>实际上，协议中还规定了与 4、5 非常类似的另外两种格式：将 4、5 格式中的第一个字节第四位由 1 改为 0 即可。它表示「本次不更新动态词典」，而 4、5 表示「绝对不允许更新动态词典」。区别不是很大，这里略过。</p>
+<p>明白了头部压缩的技术细节，理论上可以很轻松写出 HTTP/2 头部解码工具了。我比较懒，直接找来 node-http2 中的 <a href="https://github.com/molnarg/node-http2/blob/master/lib/protocol/compressor.js" target="_blank" rel="external">compressor.js</a> 验证一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Decompressor = require(&apos;./compressor&apos;).Decompressor;</div><div class="line"></div><div class="line">var testLog = require(&apos;bunyan&apos;).createLogger(&#123;name: &apos;test&apos;&#125;);</div><div class="line">var decompressor = new Decompressor(testLog, &apos;REQUEST&apos;);</div><div class="line"></div><div class="line">var buffer = new Buffer(&apos;820481634188353daded6ae43d3f877abdd07f66a281b0dae053fad0321aa49d13fda992a49685340c8a6adca7e28102e10fda9677b8d05707f6a62293a9d810020004015309ac2ca7f2c3415c1f53b0497ca589d34d1f43aeba0c41a4c7a98f33a69a3fdf9a68fa1d75d0620d263d4c79a68fbed00177febe58f9fbed00177b518b2d4b70ddf45abefb4005db901f1184ef034eff609cb60725034f48e1561c8469669f081678ae3eb3afba465f7cb234db9f4085aec1cd48ff86a8eb10649cbf&apos;, &apos;hex&apos;);</div><div class="line"></div><div class="line">console.log(decompressor.decompress(buffer));</div><div class="line"></div><div class="line">decompressor._table.forEach(function(row, index) &#123;</div><div class="line">    console.log(index + 1, row[0], row[1]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>头部原始数据来自于本文第三张截图，运行结果如下（静态字典只截取了一部分）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&#123; &apos;:method&apos;: &apos;GET&apos;,</div><div class="line">  &apos;:path&apos;: &apos;/&apos;,</div><div class="line">  &apos;:authority&apos;: &apos;imququ.com&apos;,</div><div class="line">  &apos;:scheme&apos;: &apos;https&apos;,</div><div class="line">  &apos;user-agent&apos;: &apos;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:41.0) Gecko/20100101 Firefox/41.0&apos;,</div><div class="line">  accept: &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;,</div><div class="line">  &apos;accept-language&apos;: &apos;en-US,en;q=0.5&apos;,</div><div class="line">  &apos;accept-encoding&apos;: &apos;gzip, deflate&apos;,</div><div class="line">  cookie: &apos;v=47; u=6f048d6e-adc4-4910-8e69-797c399ed456&apos;,</div><div class="line">  pragma: &apos;no-cache&apos; &#125;</div><div class="line">1 &apos;:authority&apos; &apos;&apos;</div><div class="line">2 &apos;:method&apos; &apos;GET&apos;</div><div class="line">3 &apos;:method&apos; &apos;POST&apos;</div><div class="line">4 &apos;:path&apos; &apos;/&apos;</div><div class="line">5 &apos;:path&apos; &apos;/index.html&apos;</div><div class="line">6 &apos;:scheme&apos; &apos;http&apos;</div><div class="line">7 &apos;:scheme&apos; &apos;https&apos;</div><div class="line">8 &apos;:status&apos; &apos;200&apos;</div><div class="line">... ...</div><div class="line">32 &apos;cookie&apos; &apos;&apos;</div><div class="line">... ...</div><div class="line">60 &apos;via&apos; &apos;&apos;</div><div class="line">61 &apos;www-authenticate&apos; &apos;&apos;</div><div class="line">62 &apos;pragma&apos; &apos;no-cache&apos;</div><div class="line">63 &apos;cookie&apos; &apos;u=6f048d6e-adc4-4910-8e69-797c399ed456&apos;</div><div class="line">64 &apos;accept-language&apos; &apos;en-US,en;q=0.5&apos;</div><div class="line">65 &apos;accept&apos; &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;</div><div class="line">66 &apos;user-agent&apos; &apos;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:41.0) Gecko/20100101 Firefox/41.0&apos;</div><div class="line">67 &apos;:authority&apos; &apos;imququ.com&apos;</div></pre></td></tr></table></figure>
+<p>可以看到，这段从 Wireshark 拷出来的头部数据可以正常解码，动态字典也得到了更新（62 - 67）。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a name="toc-4"></a>总结</h3><p>在进行 HTTP/2 网站性能优化时很重要一点是「使用尽可能少的连接数」，本文提到的头部压缩是其中一个很重要的原因：同一个连接上产生的请求和响应越多，动态字典积累得越全，头部压缩效果也就越好。所以，针对 HTTP/2 网站，最佳实践是不要合并资源，不要散列域名。</p>
+<p>默认情况下，浏览器会针对这些情况使用同一个连接：</p>
+<ul>
+<li>同一域名下的资源；</li>
+<li>不同域名下的资源，但是满足两个条件：1）解析到同一个 IP；2）使用同一个证书；</li>
+</ul>
+<p>上面第一点容易理解，第二点则很容易被忽略。实际上 Google 已经这么做了，Google 一系列网站都共用了同一个证书，可以这样验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ openssl s_client -connect google.com:443 |openssl x509 -noout -text | grep DNS</div><div class="line">depth=2 C = US, O = GeoTrust Inc., CN = GeoTrust Global CA</div><div class="line">verify error:num=20:unable to get local issuer certificate</div><div class="line">verify return:0</div><div class="line">                DNS:*.google.com, DNS:*.android.com, DNS:*.appengine.google.com, DNS:*.cloud.google.com, DNS:*.google-analytics.com, DNS:*.google.ca, DNS:*.google.cl, DNS:*.google.co.in, DNS:*.google.co.jp, DNS:*.google.co.uk, DNS:*.google.com.ar, DNS:*.google.com.au, DNS:*.google.com.br, DNS:*.google.com.co, DNS:*.google.com.mx, DNS:*.google.com.tr, DNS:*.google.com.vn, DNS:*.google.de, DNS:*.google.es, DNS:*.google.fr, DNS:*.google.hu, DNS:*.google.it, DNS:*.google.nl, DNS:*.google.pl, DNS:*.google.pt, DNS:*.googleadapis.com, DNS:*.googleapis.cn, DNS:*.googlecommerce.com, DNS:*.googlevideo.com, DNS:*.gstatic.cn, DNS:*.gstatic.com, DNS:*.gvt1.com, DNS:*.gvt2.com, DNS:*.metric.gstatic.com, DNS:*.urchin.com, DNS:*.url.google.com, DNS:*.youtube-nocookie.com, DNS:*.youtube.com, DNS:*.youtubeeducation.com, DNS:*.ytimg.com, DNS:android.com, DNS:g.co, DNS:goo.gl, DNS:google-analytics.com, DNS:google.com, DNS:googlecommerce.com, DNS:urchin.com, DNS:youtu.be, DNS:youtube.com, DNS:youtubeeducation.com</div></pre></td></tr></table></figure>
+<p>使用多域名加上相同的 IP 和证书部署 Web 服务有特殊的意义：让支持 HTTP/2 的终端只建立一个连接，用上 HTTP/2 协议带来的各种好处；而只支持 HTTP/1.1 的终端则会建立多个连接，达到同时更多并发请求的目的。这在 HTTP/2 完全普及前也是一个不错的选择。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -535,6 +666,10 @@ cmd-shift-b 只搜索
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -547,7 +682,11 @@ cmd-shift-b 只搜索
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/the-trust-machine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -566,16 +705,8 @@ cmd-shift-b 只搜索
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/04/the-trust-machine/" itemprop="url">
-                  The trust machine 信任机器
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/04/the-trust-machine/" itemprop="url">The trust machine 信任机器</a></h1>
         
 
         <div class="post-meta">
@@ -601,16 +732,6 @@ cmd-shift-b 只搜索
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/04/the-trust-machine/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/04/the-trust-machine/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -626,7 +747,9 @@ cmd-shift-b 只搜索
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -635,30 +758,58 @@ cmd-shift-b 只搜索
       
         
           
-          The promise of the blockchain区块链的前途
-The trust machine信任机器
-The technology behind bitcoin could transform how the economy works比特币背后的技术可能转变经济运行模式
-BITCOI
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/04/the-trust-machine/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h4 id="The-promise-of-the-blockchain"><a href="#The-promise-of-the-blockchain" class="headerlink" title="The promise of the blockchain"></a>The promise of the blockchain</h4><p>区块链的前途</p>
+<h4 id="The-trust-machine"><a href="#The-trust-machine" class="headerlink" title="The trust machine"></a>The trust machine</h4><p>信任机器</p>
+<h4 id="The-technology-behind-bitcoin-could-transform-how-the-economy-works"><a href="#The-technology-behind-bitcoin-could-transform-how-the-economy-works" class="headerlink" title="The technology behind bitcoin could transform how the economy works"></a>The technology behind bitcoin could transform how the economy works</h4><p>比特币背后的技术可能转变经济运行模式</p>
+<h5 id="BITCOIN-has-a-bad-reputation-The-decentralised-digital-cryptocurrency-①-powered-by-a-vast-computer-network-is-notorious-for-the-wild-fluctuations-in-its-value-the-zeal-of-its-supporters-and-its-degenerate-uses-such-as-extortion-buying-drugs-and-hiring-hitmen-in-the-online-bazaars-of-the-“dark-net”"><a href="#BITCOIN-has-a-bad-reputation-The-decentralised-digital-cryptocurrency-①-powered-by-a-vast-computer-network-is-notorious-for-the-wild-fluctuations-in-its-value-the-zeal-of-its-supporters-and-its-degenerate-uses-such-as-extortion-buying-drugs-and-hiring-hitmen-in-the-online-bazaars-of-the-“dark-net”" class="headerlink" title="BITCOIN has a bad reputation. The decentralised digital cryptocurrency ①, powered by a vast computer network, is notorious for the wild fluctuations in its value, the zeal of its supporters and its degenerate uses, such as extortion, buying drugs and hiring hitmen in the online bazaars of the “dark net”."></a>BITCOIN has a bad reputation. The decentralised digital cryptocurrency ①, powered by a vast computer network, is notorious for the wild fluctuations in its value, the zeal of its supporters and its degenerate uses, such as extortion, buying drugs and hiring hitmen in the online bazaars of the “dark net”.</h5><p>比特币风评不佳。由巨大的计算机网络所驱动的去中心化数字加密货币【注一】的价值剧烈波动，支持者们对其热情高涨，很多人还热衷于堕落交易，比如用其敲诈勒索，买毒品和在“暗网”的线上集市雇佣职业杀手，这些使它声名狼藉。</p>
+<p>【注一】密码货币指不依托任何实物，使用密码算法的数字货币，现指代英文Cryptocurrency（意指比特币类数字货币，且包括比特币）。<br>比如比特币、莱特币等，是一种依靠密码技术和校验技术来创建，分发和维持的数字货币。加密货币的特点在其运用了点对点技术且每个人都可发行它。</p>
+<h5 id="This-is-unfair-The-value-of-a-bitcoin-has-been-pretty-stable-at-around-250-for-most-of-this-year-Among-regulators-and-financial-institutions-scepticism-has-given-way-to-enthusiasm-the-European-Union-recently-recognised-it-as-a-currency-But-most-unfair-of-all-is-that-bitcoin’s-shady-image-causes-people-to-overlook-the-extraordinary-potential-of-the-“blockchain-②”-the-technology-that-underpins-it-This-innovation-carries-a-significance-stretching-far-beyond-cryptocurrency-The-blockchain-lets-people-who-have-no-particular-confidence-in-each-other-collaborate-without-having-to-go-through-a-neutral-central-authority-Simply-put-it-is-a-machine-for-creating-trust"><a href="#This-is-unfair-The-value-of-a-bitcoin-has-been-pretty-stable-at-around-250-for-most-of-this-year-Among-regulators-and-financial-institutions-scepticism-has-given-way-to-enthusiasm-the-European-Union-recently-recognised-it-as-a-currency-But-most-unfair-of-all-is-that-bitcoin’s-shady-image-causes-people-to-overlook-the-extraordinary-potential-of-the-“blockchain-②”-the-technology-that-underpins-it-This-innovation-carries-a-significance-stretching-far-beyond-cryptocurrency-The-blockchain-lets-people-who-have-no-particular-confidence-in-each-other-collaborate-without-having-to-go-through-a-neutral-central-authority-Simply-put-it-is-a-machine-for-creating-trust" class="headerlink" title="This is unfair. The value of a bitcoin has been pretty stable, at around $250, for most of this year. Among regulators and financial institutions, scepticism has given way to enthusiasm (the European Union recently recognised it as a currency). But most unfair of all is that bitcoin’s shady image causes people to overlook the extraordinary potential of the “blockchain ②”, the technology that underpins it. This innovation carries a significance stretching far beyond cryptocurrency. The blockchain lets people who have no particular confidence in each other collaborate without having to go through a neutral central authority. Simply put, it is a machine for creating trust."></a>This is unfair. The value of a bitcoin has been pretty stable, at around $250, for most of this year. Among regulators and financial institutions, scepticism has given way to enthusiasm (the European Union recently recognised it as a currency). But most unfair of all is that bitcoin’s shady image causes people to overlook the extraordinary potential of the “blockchain ②”, the technology that underpins it. This innovation carries a significance stretching far beyond cryptocurrency. The blockchain lets people who have no particular confidence in each other collaborate without having to go through a neutral central authority. Simply put, it is a machine for creating trust.</h5><p>这不公平。比特币的价值在今年的大部分时间都很稳定，一枚在250美元左右。在监管机构和金融机构中，热情替代了怀疑欧盟最近承认其作为货币)。但最不公平的是，比特币的阴暗形象使人们忽视了其背后由 “区块链”【注二】技术支撑的非凡潜力。这一革新带来的深远意义远超加密货币本身。区块链不用通过中立的中央集权机构就可以让彼此没有特别信任的人们互相协作。简单地说，区块链是可以创建信任的机器。</p>
+<p>【注二】区块链（Blockchain）是比特币的一个重要概念，区块链是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了过去十分钟内所有比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
+<h4 id="The-blockchain-food-chain"><a href="#The-blockchain-food-chain" class="headerlink" title="The blockchain food chain"></a>The blockchain food chain</h4><p>区块链的食物链</p>
+<h5 id="To-understand-the-power-of-blockchain-systems-and-the-things-they-can-do-it-is-important-to-distinguish-between-three-things-that-are-commonly-muddled-up-namely-the-bitcoin-currency-the-specific-blockchain-that-underpins-it-and-the-idea-of-blockchains-in-general-A-helpful-analogy-is-with-Napster-the-pioneering-but-illegal-“peer-to-peer”-file-sharing-service-that-went-on-line-in-1999-providing-free-access-to-millions-of-music-tracks-Napster-itself-was-swiftly-shut-down-but-it-inspired-a-host-of-other-peer-to-peer-services-Many-of-these-were-also-used-for-pirating-music-and-films-Yet-despite-its-dubious-origins-peer-to-peer-technology-found-legitimate-uses-powering-internet-startups-such-as-Skype-for-telephony-and-Spotify-for-music-streaming-—and-also-as-it-happens-bitcoin"><a href="#To-understand-the-power-of-blockchain-systems-and-the-things-they-can-do-it-is-important-to-distinguish-between-three-things-that-are-commonly-muddled-up-namely-the-bitcoin-currency-the-specific-blockchain-that-underpins-it-and-the-idea-of-blockchains-in-general-A-helpful-analogy-is-with-Napster-the-pioneering-but-illegal-“peer-to-peer”-file-sharing-service-that-went-on-line-in-1999-providing-free-access-to-millions-of-music-tracks-Napster-itself-was-swiftly-shut-down-but-it-inspired-a-host-of-other-peer-to-peer-services-Many-of-these-were-also-used-for-pirating-music-and-films-Yet-despite-its-dubious-origins-peer-to-peer-technology-found-legitimate-uses-powering-internet-startups-such-as-Skype-for-telephony-and-Spotify-for-music-streaming-—and-also-as-it-happens-bitcoin" class="headerlink" title="To understand the power of blockchain systems, and the things they can do, it is important to distinguish between three things that are commonly muddled up, namely the bitcoin currency, the specific blockchain that underpins it and the idea of blockchains in general. A helpful analogy is with Napster, the pioneering but illegal “peer-to-peer” file-sharing service that went on line in 1999, providing free access to millions of music tracks. Napster itself was swiftly shut down, but it inspired a host of other peer-to-peer services. Many of these were also used for pirating music and films. Yet despite its dubious origins, peer-to-peer technology found legitimate uses, powering internet startups such as Skype (for telephony) and Spotify (for music streaming)—and also, as it happens, bitcoin."></a>To understand the power of blockchain systems, and the things they can do, it is important to distinguish between three things that are commonly muddled up, namely the bitcoin currency, the specific blockchain that underpins it and the idea of blockchains in general. A helpful analogy is with Napster, the pioneering but illegal “peer-to-peer” file-sharing service that went on line in 1999, providing free access to millions of music tracks. Napster itself was swiftly shut down, but it inspired a host of other peer-to-peer services. Many of these were also used for pirating music and films. Yet despite its dubious origins, peer-to-peer technology found legitimate uses, powering internet startups such as Skype (for telephony) and Spotify (for music streaming)—and also, as it happens, bitcoin.</h5><p>要理解区块链系统之强大和其所能做的事情，区分普遍混淆的三件事情尤为重要，即比特币，支撑其特定的区块链和广义区块链。来看个有帮助性的类比奈普斯特（Napster），它是P2P文件共享服务的先驱，但其是非法的，在1999年上线，提供数以百万计的免费音乐。 奈普斯特随后被迅速叫停，但其激发了许多其他的P2P服务。 其中很多也被用于盗版音乐和电影。尽管P2P技术的出身不太可靠，但还是被应用于合法用途，并推动了互联网初创公司如Skype(电话通讯)和Spotify(音乐流媒体)的兴起——还有碰巧出现的比特币。</p>
+<h5 id="The-blockchain-is-an-even-more-potent-technology-In-essence-it-is-a-shared-trusted-public-ledger-that-everyone-can-inspect-but-which-no-single-user-controls-The-participants-in-a-blockchain-system-collectively-keep-the-ledger-up-to-date-it-can-be-amended-only-according-to-strict-rules-and-by-general-agreement-Bitcoin’s-blockchain-ledger-prevents-double-spending-and-keeps-track-of-transactions-continuously-It-is-what-makes-possible-a-currency-without-a-central-bank"><a href="#The-blockchain-is-an-even-more-potent-technology-In-essence-it-is-a-shared-trusted-public-ledger-that-everyone-can-inspect-but-which-no-single-user-controls-The-participants-in-a-blockchain-system-collectively-keep-the-ledger-up-to-date-it-can-be-amended-only-according-to-strict-rules-and-by-general-agreement-Bitcoin’s-blockchain-ledger-prevents-double-spending-and-keeps-track-of-transactions-continuously-It-is-what-makes-possible-a-currency-without-a-central-bank" class="headerlink" title="The blockchain is an even more potent technology. In essence it is a shared, trusted, public ledger that everyone can inspect, but which no single user controls. The participants in a blockchain system collectively keep the ledger up to date: it can be amended only according to strict rules and by general agreement. Bitcoin’s blockchain ledger prevents double-spending and keeps track of transactions continuously. It is what makes possible a currency without a central bank."></a>The blockchain is an even more potent technology. In essence it is a shared, trusted, public ledger that everyone can inspect, but which no single user controls. The participants in a blockchain system collectively keep the ledger up to date: it can be amended only according to strict rules and by general agreement. Bitcoin’s blockchain ledger prevents double-spending and keeps track of transactions continuously. It is what makes possible a currency without a central bank.</h5><p>区块链是更加强大的技术。本质上它是一个共享的，值得信任的公共“账目记录本”，每个人都可以核查它，但其不受任何单个用户控制。区块链系统参与者们共同更新“账目记录本”：根据严格规则和通过多数人同意才能对其修改。比特币区块链“账目记录本”会不断阻止重复支出和跟踪交易情况。 这使货币和中央银行脱钩成为可能。</p>
+<h5 id="Blockchains-are-also-the-latest-example-of-the-unexpected-fruits-of-cryptography-Mathematical-scrambling-is-used-to-boil-down-an-original-piece-of-information-into-a-code-known-as-a-hash-Any-attempt-to-tamper-with-any-part-of-the-blockchain-is-apparent-immediately—because-the-new-hash-will-not-match-the-old-ones-In-this-way-a-science-that-keeps-information-secret-vital-for-encrypting-messages-and-online-shopping-and-banking-is-paradoxically-also-a-tool-for-open-dealing"><a href="#Blockchains-are-also-the-latest-example-of-the-unexpected-fruits-of-cryptography-Mathematical-scrambling-is-used-to-boil-down-an-original-piece-of-information-into-a-code-known-as-a-hash-Any-attempt-to-tamper-with-any-part-of-the-blockchain-is-apparent-immediately—because-the-new-hash-will-not-match-the-old-ones-In-this-way-a-science-that-keeps-information-secret-vital-for-encrypting-messages-and-online-shopping-and-banking-is-paradoxically-also-a-tool-for-open-dealing" class="headerlink" title="Blockchains are also the latest example of the unexpected fruits of cryptography. Mathematical scrambling is used to boil down an original piece of information into a code, known as a hash. Any attempt to tamper with any part of the blockchain is apparent immediately—because the new hash will not match the old ones. In this way a science that keeps information secret (vital for encrypting messages and online shopping and banking) is, paradoxically, also a tool for open dealing."></a>Blockchains are also the latest example of the unexpected fruits of cryptography. Mathematical scrambling is used to boil down an original piece of information into a code, known as a hash. Any attempt to tamper with any part of the blockchain is apparent immediately—because the new hash will not match the old ones. In this way a science that keeps information secret (vital for encrypting messages and online shopping and banking) is, paradoxically, also a tool for open dealing.</h5><p>区块链也是密码学意外成果的最新例子。 将一段原始信息用数学扰码手段生成代码，就是我们称之为的散列。企图篡改区块链的任一部分都是徒劳——因为新的散列不会和旧的匹配。 而这样一门信息保密科学（对于加密消息，在线购物和网上银行至关重要）自相矛盾地成了公开交易的工具。</p>
+<h5 id="Bitcoin-itself-may-never-be-more-than-a-curiosity-However-blockchains-have-a-host-of-other-uses-because-they-meet-the-need-for-a-trustworthy-record-something-vital-for-transactions-of-every-sort-Dozens-of-startups-now-hope-to-capitalise-on-the-blockchain-technology-either-by-doing-clever-things-with-the-bitcoin-blockchain-or-by-creating-new-blockchains-of-their-own"><a href="#Bitcoin-itself-may-never-be-more-than-a-curiosity-However-blockchains-have-a-host-of-other-uses-because-they-meet-the-need-for-a-trustworthy-record-something-vital-for-transactions-of-every-sort-Dozens-of-startups-now-hope-to-capitalise-on-the-blockchain-technology-either-by-doing-clever-things-with-the-bitcoin-blockchain-or-by-creating-new-blockchains-of-their-own" class="headerlink" title="Bitcoin itself may never be more than a curiosity. However blockchains have a host of other uses because they meet the need for a trustworthy record, something vital for transactions of every sort. Dozens of startups now hope to capitalise on the blockchain technology, either by doing clever things with the bitcoin blockchain or by creating new blockchains of their own."></a>Bitcoin itself may never be more than a curiosity. However blockchains have a host of other uses because they meet the need for a trustworthy record, something vital for transactions of every sort. Dozens of startups now hope to capitalise on the blockchain technology, either by doing clever things with the bitcoin blockchain or by creating new blockchains of their own.</h5><p>比特币本身可能不止是满足好奇心这么简单。然而区块链有许多其他用途，因为一个可靠的记录需要依赖它，其对各种交易都至关重要。几十家初创公司希望通过区块链技术获利，用比特币区块链做聪明的事情或是创建自己的新区块链。</p>
+<h5 id="One-idea-for-example-is-to-make-cheap-tamper-proof-public-databases—land-registries-say-Honduras-and-Greece-are-interested-or-registers-of-the-ownership-of-luxury-goods-or-works-of-art-Documents-can-be-notarised-by-embedding-information-about-them-into-a-public-blockchain—and-you-will-no-longer-need-a-notary-to-vouch-for-them-Financial-services-firms-are-contemplating-using-blockchains-as-a-record-of-who-owns-what-instead-of-having-a-series-of-internal-ledgers-A-trusted-private-ledger-removes-the-need-for-reconciling-each-transaction-with-a-counterparty-it-is-fast-and-it-minimises-errors-Santander-reckons-that-it-could-save-banks-up-to-20-billion-a-year-by-2022-Twenty-five-banks-have-just-joined-a-blockchain-startup-called-R3-CEV-to-develop-common-standards-and-NASDAQ-is-about-to-start-using-the-technology-to-record-trading-in-securities-of-private-companies"><a href="#One-idea-for-example-is-to-make-cheap-tamper-proof-public-databases—land-registries-say-Honduras-and-Greece-are-interested-or-registers-of-the-ownership-of-luxury-goods-or-works-of-art-Documents-can-be-notarised-by-embedding-information-about-them-into-a-public-blockchain—and-you-will-no-longer-need-a-notary-to-vouch-for-them-Financial-services-firms-are-contemplating-using-blockchains-as-a-record-of-who-owns-what-instead-of-having-a-series-of-internal-ledgers-A-trusted-private-ledger-removes-the-need-for-reconciling-each-transaction-with-a-counterparty-it-is-fast-and-it-minimises-errors-Santander-reckons-that-it-could-save-banks-up-to-20-billion-a-year-by-2022-Twenty-five-banks-have-just-joined-a-blockchain-startup-called-R3-CEV-to-develop-common-standards-and-NASDAQ-is-about-to-start-using-the-technology-to-record-trading-in-securities-of-private-companies" class="headerlink" title="One idea, for example, is to make cheap, tamper-proof public databases—land registries, say, (Honduras and Greece are interested); or registers of the ownership of luxury goods or works of art. Documents can be notarised by embedding information about them into a public blockchain—and you will no longer need a notary to vouch for them. Financial-services firms are contemplating using blockchains as a record of who owns what instead of having a series of internal ledgers. A trusted private ledger removes the need for reconciling each transaction with a counterparty, it is fast and it minimises errors. Santander reckons that it could save banks up to $20 billion a year by 2022. Twenty-five banks have just joined a blockchain startup, called R3 CEV, to develop common standards, and NASDAQ is about to start using the technology to record trading in securities of private companies."></a>One idea, for example, is to make cheap, tamper-proof public databases—land registries, say, (Honduras and Greece are interested); or registers of the ownership of luxury goods or works of art. Documents can be notarised by embedding information about them into a public blockchain—and you will no longer need a notary to vouch for them. Financial-services firms are contemplating using blockchains as a record of who owns what instead of having a series of internal ledgers. A trusted private ledger removes the need for reconciling each transaction with a counterparty, it is fast and it minimises errors. Santander reckons that it could save banks up to $20 billion a year by 2022. Twenty-five banks have just joined a blockchain startup, called R3 CEV, to develop common standards, and NASDAQ is about to start using the technology to record trading in securities of private companies.</h5><p>例如，有些想法是做些便宜的，防篡改的公共数据库——诸如地政局(洪都拉斯和希腊对此感兴趣)；或奢侈品和艺术品的所有权登记。通过将文档信息嵌入公共区块链能对其进行公证——你将不再需要公证人来做担保。金融服务公司正在考虑用区块链来记录每个人的账目，而不是一系列的公司内部账目。可靠的个人“账目记录本”无需要同交易对方协调每一笔交易，这样既快速又能尽量减少错误。桑坦德银行（Santander）估计到2022年银行业用这一技术每年可以节省200亿美元。25家银行刚刚加入名为R3CEV的区块链初创公司来开发通用标准，而纳斯达克（NASDAQ）市场即将开始用这项技术来记录私企的证券交易情况。</p>
+<h5 id="These-new-blockchains-need-not-work-in-exactly-the-way-that-bitcoin’s-does-Many-of-them-could-tweak-its-model-by-for-example-finding-alternatives-to-its-energy-intensive-“mining”-process-which-pays-participants-newly-minted-bitcoins-in-return-for-providing-the-computing-power-needed-to-maintain-the-ledger-A-group-of-vetted-participants-within-an-industry-might-instead-agree-to-join-a-private-blockchain-say-that-needs-less-security-Blockchains-can-also-implement-business-rules-such-as-transactions-that-take-place-only-if-two-or-more-parties-endorse-them-or-if-another-transaction-has-been-completed-first-As-with-Napster-and-peer-to-peer-technology-a-clever-idea-is-being-modified-and-improved-In-the-process-it-is-fast-throwing-off-its-reputation-for-shadiness"><a href="#These-new-blockchains-need-not-work-in-exactly-the-way-that-bitcoin’s-does-Many-of-them-could-tweak-its-model-by-for-example-finding-alternatives-to-its-energy-intensive-“mining”-process-which-pays-participants-newly-minted-bitcoins-in-return-for-providing-the-computing-power-needed-to-maintain-the-ledger-A-group-of-vetted-participants-within-an-industry-might-instead-agree-to-join-a-private-blockchain-say-that-needs-less-security-Blockchains-can-also-implement-business-rules-such-as-transactions-that-take-place-only-if-two-or-more-parties-endorse-them-or-if-another-transaction-has-been-completed-first-As-with-Napster-and-peer-to-peer-technology-a-clever-idea-is-being-modified-and-improved-In-the-process-it-is-fast-throwing-off-its-reputation-for-shadiness" class="headerlink" title="These new blockchains need not work in exactly the way that bitcoin’s does. Many of them could tweak its model by, for example, finding alternatives to its energy-intensive “mining” process, which pays participants newly minted bitcoins in return for providing the computing power needed to maintain the ledger. A group of vetted participants within an industry might instead agree to join a private blockchain, say, that needs less security. Blockchains can also implement business rules, such as transactions that take place only if two or more parties endorse them, or if another transaction has been completed first. As with Napster and peer-to-peer technology, a clever idea is being modified and improved. In the process, it is fast throwing off its reputation for shadiness."></a>These new blockchains need not work in exactly the way that bitcoin’s does. Many of them could tweak its model by, for example, finding alternatives to its energy-intensive “mining” process, which pays participants newly minted bitcoins in return for providing the computing power needed to maintain the ledger. A group of vetted participants within an industry might instead agree to join a private blockchain, say, that needs less security. Blockchains can also implement business rules, such as transactions that take place only if two or more parties endorse them, or if another transaction has been completed first. As with Napster and peer-to-peer technology, a clever idea is being modified and improved. In the process, it is fast throwing off its reputation for shadiness.</h5><p>这些新的区块链不需要完全以比特币那样的方式运行。例如，它们中的很多会将其模型稍作调整以寻求新模型来替代其耗能的“挖矿”程序，新的比特币参与者通过“挖矿”可以得到比特币——作为回报他们为维持“账目记录本”所提供的计算能力。一条区块链内参与审查的人，可能会加入个人特有的区块链来达到同意的效果，这需要更少的安全工作。区块链还可以用于执行商业规则，如只有两方或多方认可的交易，或者另一个交易已先完成，当前交易才能发生。正如奈普斯特（Napster）和P2P技术，聪明的想法正在被调整和改进。在此过程中，比特币正快速摆脱其阴暗形象。</p>
+<h4 id="New-chains-on-the-block"><a href="#New-chains-on-the-block" class="headerlink" title="New chains on the block"></a>New chains on the block</h4><p>区块新链</p>
+<h5 id="The-spread-of-blockchains-is-bad-for-anyone-in-the-“trust-business”—the-centralised-institutions-and-bureaucracies-such-as-banks-clearing-houses-and-government-authorities-that-are-deemed-sufficiently-trustworthy-to-handle-transactions-Even-as-some-banks-and-governments-explore-the-use-of-this-new-technology-others-will-surely-fight-it-But-given-the-decline-in-trust-in-governments-and-banks-in-recent-years-a-way-to-create-more-scrutiny-and-transparency-could-be-no-bad-thing"><a href="#The-spread-of-blockchains-is-bad-for-anyone-in-the-“trust-business”—the-centralised-institutions-and-bureaucracies-such-as-banks-clearing-houses-and-government-authorities-that-are-deemed-sufficiently-trustworthy-to-handle-transactions-Even-as-some-banks-and-governments-explore-the-use-of-this-new-technology-others-will-surely-fight-it-But-given-the-decline-in-trust-in-governments-and-banks-in-recent-years-a-way-to-create-more-scrutiny-and-transparency-could-be-no-bad-thing" class="headerlink" title="The spread of blockchains is bad for anyone in the “trust business”—the centralised institutions and bureaucracies, such as banks, clearing houses and government authorities that are deemed sufficiently trustworthy to handle transactions. Even as some banks and governments explore the use of this new technology, others will surely fight it. But given the decline in trust in governments and banks in recent years, a way to create more scrutiny and transparency could be no bad thing."></a>The spread of blockchains is bad for anyone in the “trust business”—the centralised institutions and bureaucracies, such as banks, clearing houses and government authorities that are deemed sufficiently trustworthy to handle transactions. Even as some banks and governments explore the use of this new technology, others will surely fight it. But given the decline in trust in governments and banks in recent years, a way to create more scrutiny and transparency could be no bad thing.</h5><p>区块链的发展对于从事“信托行业”的人们是个坏消息，包括中央集权体系和官僚机构，如银行、清算机构和政府部门，它们被认为又足够的信用来处理各种交易。甚至当一些银行和政府探求使用这一新技术时，其他地区会坚定的反对。但鉴于近些年政府信用和银行信用的下降，一种能带来更多审查和更高透明度的创新可能不是一件坏事。</p>
+<h5 id="Drawing-up-regulations-for-blockchains-at-this-early-stage-would-be-a-mistake-the-history-of-peer-to-peer-technology-suggests-that-it-is-likely-to-be-several-years-before-the-technology’s-full-potential-becomes-clear-In-the-meantime-regulators-should-stay-their-hands-or-find-ways-to-accommodate-new-approaches-within-existing-frameworks-rather-than-risk-stifling-a-fast-evolving-idea-with-overly-prescriptive-rules"><a href="#Drawing-up-regulations-for-blockchains-at-this-early-stage-would-be-a-mistake-the-history-of-peer-to-peer-technology-suggests-that-it-is-likely-to-be-several-years-before-the-technology’s-full-potential-becomes-clear-In-the-meantime-regulators-should-stay-their-hands-or-find-ways-to-accommodate-new-approaches-within-existing-frameworks-rather-than-risk-stifling-a-fast-evolving-idea-with-overly-prescriptive-rules" class="headerlink" title="Drawing up regulations for blockchains at this early stage would be a mistake: the history of peer-to-peer technology suggests that it is likely to be several years before the technology’s full potential becomes clear. In the meantime regulators should stay their hands, or find ways to accommodate new approaches within existing frameworks, rather than risk stifling a fast-evolving idea with overly prescriptive rules."></a>Drawing up regulations for blockchains at this early stage would be a mistake: the history of peer-to-peer technology suggests that it is likely to be several years before the technology’s full potential becomes clear. In the meantime regulators should stay their hands, or find ways to accommodate new approaches within existing frameworks, rather than risk stifling a fast-evolving idea with overly prescriptive rules.</h5><p>在这个早期阶段起草区块链的规定将是一个错误：P2P技术的历史表明，一个技术的全部潜力变得清晰可能需要若干年。同时监管机构应静观其变，或在现有框架内设法去适应新的方法，而不是以过于死板的规则冒险压制迅速发展的创意。</p>
+<h5 id="The-notion-of-shared-public-ledgers-may-not-sound-revolutionary-or-sexy-Neither-did-double-entry-book-keeping-or-joint-stock-companies-Yet-like-them-the-blockchain-is-an-apparently-mundane-process-that-has-the-potential-to-transform-how-people-and-businesses-co-operate-Bitcoin-fanatics-are-enthralled-by-the-libertarian-ideal-of-a-pure-digital-currency-beyond-the-reach-of-any-central-bank-The-real-innovation-is-not-the-digital-coins-themselves-but-the-trust-machine-that-mints-them—and-which-promises-much-more-besides"><a href="#The-notion-of-shared-public-ledgers-may-not-sound-revolutionary-or-sexy-Neither-did-double-entry-book-keeping-or-joint-stock-companies-Yet-like-them-the-blockchain-is-an-apparently-mundane-process-that-has-the-potential-to-transform-how-people-and-businesses-co-operate-Bitcoin-fanatics-are-enthralled-by-the-libertarian-ideal-of-a-pure-digital-currency-beyond-the-reach-of-any-central-bank-The-real-innovation-is-not-the-digital-coins-themselves-but-the-trust-machine-that-mints-them—and-which-promises-much-more-besides" class="headerlink" title="The notion of shared public ledgers may not sound revolutionary or sexy. Neither did double-entry book-keeping or joint-stock companies. Yet, like them, the blockchain is an apparently mundane process that has the potential to transform how people and businesses co-operate. Bitcoin fanatics are enthralled by the libertarian ideal of a pure, digital currency beyond the reach of any central bank. The real innovation is not the digital coins themselves, but the trust machine that mints them—and which promises much more besides."></a>The notion of shared public ledgers may not sound revolutionary or sexy. Neither did double-entry book-keeping or joint-stock companies. Yet, like them, the blockchain is an apparently mundane process that has the potential to transform how people and businesses co-operate. Bitcoin fanatics are enthralled by the libertarian ideal of a pure, digital currency beyond the reach of any central bank. The real innovation is not the digital coins themselves, but the trust machine that mints them—and which promises much more besides.</h5><p>共享公共“账目记录本”的概念听起来可能不那么革命性或性感。复式簿记或股份制公司同样也是如此。然而,像他们一样，区块链有潜力改变人们和企业的合作方式，这显然会是一个平凡的过程。比特币狂热者着迷于纯粹的数字货币所引导的自由主义理想，这种货币超越了央行的能力范围。真正的创新不是数字硬币本身，而是铸造它们的信任机器——它还承担着人们太多的寄托。</p>
+<p>=============================</p>
+<p>bazaar N-COUNT In areas such as the Middle East and India, a bazaar is a place where there are many small stores and stalls. (中东、印度等地的) 集市</p>
+<p>ledger N-COUNT A ledger is a book in which a company or organization writes down the amounts of money it spends and receives. 分类账</p>
+<p>cryptography N the science or study of analysing and deciphering codes, ciphers, etc; cryptanalysis 密码学</p>
+<p>tamper with 篡改</p>
+<p>eg. The most security-conscious developers distrust even their own databases, on the theory that a malicious user might have found a way to tamper with the database.</p>
+<p>安全意识很强的开发人员甚至不信任他们自己的数据库，理由是他们认为恶意用户可能有办法篡改数据库。</p>
+<p>capitalise on 利用，获利</p>
+<p>notarise V to attest to or authenticate (a document, contract, etc), as a notary 由公证人(对文件、合同等)进行公证</p>
+<p>notary N-COUNT A notary or a notary public is a person, often a lawyer, who has legal authority to witness the signing of documents in order to make them legally valid. 公证人</p>
+<p>reconcile V-T If you reconcile two beliefs, facts, or demands that seem to be opposed or completely different, you find a way in which they can both be true or both be successful. 使和谐一致; 调和</p>
+<p>tweak V-T If you tweak something such as a system or a design, you improve it by making a slight change. 稍稍改进(如系统或设计)</p>
+<p>stifle V-T If someone stifles something you consider to be a good thing, they prevent it from continuing. 压制表不满</p>
+<p><em>参考资料：</em></p>
+<ol>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MjA1Mzk2MQ==&amp;mid=400588344&amp;idx=3&amp;sn=fc45f0cfef2ea5d1837c82ec2dd7617c&amp;scene=0#wechat_redirect" target="_blank" rel="external">详解比特币与区块链</a></p>
+</li>
+<li><p><a href="http://blog.codinglabs.org/articles/bitcoin-mechanism-make-easy.html" target="_blank" rel="external">一个故事告诉你比特币的原理及运作机制</a></p>
+</li>
+</ol>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -672,6 +823,10 @@ BITCOI
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -684,7 +839,11 @@ BITCOI
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/surge-new-user/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -703,16 +862,8 @@ BITCOI
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/04/surge-new-user/" itemprop="url">
-                  Surge 新手使用指南
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/04/surge-new-user/" itemprop="url">Surge 新手使用指南</a></h1>
         
 
         <div class="post-meta">
@@ -738,16 +889,6 @@ BITCOI
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/04/surge-new-user/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/04/surge-new-user/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -763,7 +904,9 @@ BITCOI
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -772,27 +915,86 @@ BITCOI
       
         
           
-          Surge 是基于 iOS 9 的新特性 Network Extension 开发的一款网络调试工具，工作原理是使用 Packet Tunnel Provider 给系统套上一个代理，Surge 有两个主要组件：Surge 代理服务器和 Surge TUN 接口。程序运行之后，Surge 会将自身设
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/04/surge-new-user/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>Surge 是基于 iOS 9 的新特性 Network Extension 开发的一款网络调试工具，工作原理是使用 Packet Tunnel Provider 给系统套上一个代理，Surge 有两个主要组件：Surge 代理服务器和 Surge TUN 接口。程序运行之后，Surge 会将自身设置为默认的 HTTP/HTTPS 代理服务器来处理所有的 HTTP/HTTPS 流量。针对一些不服从系统代理设置（如 Mail.app ）的应用程序 ，将由 Surge 的 TUN 接口来进行处理。</p>
+<p>Surge 会接管全局的（几乎）所有通信，所以所有网络方面的电量消耗都会被算在 Surge 头上，实际上 Surge 的运行功耗很少，使用中也不会感到 Surge 对电量有明显影响。</p>
+<h3 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h3><p>打开 Surge，默认包含有一个 Default 的配置文件，点击右上角的编辑（Edit）可以打开了解配置文件的基本结构：日志模式（Log Level）的设定、代理服务器（Proxy）的设置以及规则（Rules）的设置。</p>
+<p>一条一条添加内容是困难的，而且对刚接触这一块的用户来说也不明所以，所以简单的方法是从网上复制一份现成配置内容下来，保存成后缀为.conf 的文本（Uncode UTF-8）文件，最后连接数据线通过 iTunes 导入到 Surge中。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934714/6df70690-831c-11e5-9c65-cc02d5ed4ef5.png" alt="image"></p>
+<p>配置文件中服务器的部分需要填写，如果不知道服务器的地址和端口是多少，不妨打开 GoagentX 停止服务后选择不同的服务器并查看具体地址，你既可以直接在 Surge 中填写，也可以直接编辑 .conf 配置文件最后再导入到 Surge。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934730/8639af96-831c-11e5-859f-b25fb1ac2a87.png" alt="image"></p>
+<p>对于大多数人来说，基于范例文件编辑加上自己的服务器（Proxy）地址 Surge 就可以开始工作了。规则部分可以借鉴范例文件进行补充，规则并不是越多越好，除了利用 DNS 缓存对经常访问的网站进行加速外，仅需要补充本地 DNS 无法正常解析的域名到规则中。</p>
+<blockquote>
+<p>如果您使用的是 HTTPS 代理，尽量设置 SSL 加密（Cipher）以减少内存占用，推荐 GCM 模式加密算法，例如：TLS_RSA_WITH_AES_128_GCM_SHA256。</p>
+</blockquote>
+<h3 id="使用单独的服务器配置文件"><a href="#使用单独的服务器配置文件" class="headerlink" title="使用单独的服务器配置文件"></a>使用单独的服务器配置文件</h3><p>配置文件的 Proxy 部分可以写入多个服务器地址，Surge 会将当前命名为「Proxy」的地址作为当前使用地址，这种方式每次想切换代理服务器时比较麻烦，例如我想使用香港代理服务器，需要找到 HK 条目，并将现有「 Proxy = 」中的 Proxy 改成别的名字，然后将「 HK = 」中的 HK 改成 Proxy，说起来都比较绕。</p>
+<p>多个服务器切换更简单的方式是单独写「服务器配置覆盖文件」，在这种覆盖文件中只需要指向自定义配置的主文件（如图示中HK(HKG3).conf 第一行），然后写上服务器地址的部分（Proxy 定义部分）即可。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934755/a7b021dc-831c-11e5-8e25-d39cc63bca72.png" alt="image"></p>
+<p>主文件（如，Main.conf）是个独立的标准文件，所以其中 Proxy 部分是必须的，服务器覆盖配置文件（如，HK.conf、TYO.conf）中只写一个服务器地址，并且这个地址不需要和 Main.conf 的中 Proxy 部分形成对应关系，如果你打算使用 5 个服务器切换，Main.conf 的 Proxy 部分可以写 1 ，然后其他覆盖配置文件里分别写 2、3、4、5 的地址，在 Surge 主界面中选中哪个使用哪一个。（点击示范代码名称后的链接下载配置文件范例，导入后修改服务器地址、端口、用户名和密码部分）</p>
+<blockquote>
+<p>Main.conf (for SSLEdge)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[General]</div><div class="line"># warning, notify, info, verbose</div><div class="line">skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local</div><div class="line">bypass-tun = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12</div><div class="line">dns-server = 119.29.29.29,223.5.5.5,114.114.114.114</div><div class="line">loglevel = notify</div><div class="line"></div><div class="line">[Proxy]</div><div class="line"># SSLEdge,自行修改 Proxy 中的服务器地址、端口、用户名、密码</div><div class="line">Proxy = https,1.2.3.4,443,username,password</div><div class="line"></div><div class="line">[Rule]</div><div class="line"># 规则部分请参照范例补充完善，此处只列出几条示意</div><div class="line">DOMAIN-KEYWORD,umeng.co,REJECT</div><div class="line">DOMAIN-KEYWORD,google,Proxy,force-remote-dns</div><div class="line"></div><div class="line">GEOIP,CN,DIRECT</div><div class="line">FINAL,Proxy</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Main.conf (for ShadowSocks)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[General]</div><div class="line"># warning, notify, info, verbose</div><div class="line">skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local</div><div class="line">bypass-tun = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12</div><div class="line">dns-server = 119.29.29.29,223.5.5.5,114.114.114.114</div><div class="line">loglevel = notify</div><div class="line">[Proxy]</div><div class="line"># ShadowSocks,custom不要变，修改服务器地址、端口、加密方式、密码、Shadowsocks 模块URL</div><div class="line">Proxy = custom,$IP,$PORT,$METHOD,$PASSWORD,$MODULE_URL</div><div class="line">[Rule]</div><div class="line"># 规则部分请参照范例补充完善，此处只列出几条示意</div><div class="line">DOMAIN-KEYWORD,umeng.co,REJECT</div><div class="line">DOMAIN-KEYWORD,google,Proxy,force-remote-dns</div><div class="line">GEOIP,CN,DIRECT</div><div class="line">FINAL,Proxy</div><div class="line"></div><div class="line"></div><div class="line">&gt; 🇭🇰HK(HKG3).CONF</div></pre></td></tr></table></figure>
+<p>#!PROXY-OVERRIDE:Main.conf</p>
+<p>[Proxy]<br>Proxy = https,2.2.3.5,6556,username,password<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; 🇯🇵JP(TYO2).CONF</div></pre></td></tr></table></figure></p>
+<p>#!PROXY-OVERRIDE:Main.conf</p>
+<p>[Proxy]<br>Proxy = https,3.2.3.6,15560,username,password<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">SSLEdge 和 ShadowSocks 的差别只是 Proxy 代理服务器那一行，服务器覆盖配置中同理，SSEncrypt.module 模块的下载链接请自行 Google。</div><div class="line"></div><div class="line">为了显示上的直观，图示服务器覆盖文件的文件名加入了表情符号（原生拼音输入法输入香港🇭🇰）。 Dropbox 目前还不支持同步文件名包含表情符号的文件，所以如果要传到 Surge 里请使用 iTunes 或 iCloud Drive 方式。</div><div class="line"></div><div class="line">### 具体配置和规则</div><div class="line"></div><div class="line">![image](https://cloud.githubusercontent.com/assets/1845119/10934808/fabd4508-831c-11e5-9baf-f335e473a1c9.png)</div></pre></td></tr></table></figure></p>
+<h1 id="通用设置"><a href="#通用设置" class="headerlink" title="通用设置"></a>通用设置</h1><p>loglevel = notify<br>bypass-system = true<br>skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local<br>bypass-tun = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12<br>dns-server = 8.8.8.8, 8.8.4.4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 记录日志的几种方式: verbose、info、notify、warning。默认是 notify，分析（Analytics）模块中可以查看具体的 Logs，日志对分析 Surge 的使用状况很有帮助，打开具体日志能看到 Surge 的行为和动作，如果遇到异常情况可以打开具体日志并通过右上角的分享将日志通过邮件发送给作者</div><div class="line">- 除非是在调试 Bug 的时候，平时请不要启动 verbose 级别的日志，因为日志需要保证完整写入，使用的是同步式地写入，性能上会有严重问题</div></pre></td></tr></table></figure></p>
+<h1 id="代理设置"><a href="#代理设置" class="headerlink" title="代理设置"></a>代理设置</h1><p>[Proxy]<br>Proxy = https,127.0.0.1,3120,username,password,cipher<br>ProxyA = socks5,127.0.0.1,3129<br>ProxyC = http,127.0.0.1,3120<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 可以创建多个代理服务器条目，规则中可以指定某条规则走哪个代理</div><div class="line">- SSLedge 使用 HTTPS，老式 APNp 用 HTTP</div><div class="line">- Surge 支持 HTTP, HTTPS 和 SOCKS5 的代理服务器，当前仅 HTTP/HTTPS 代理支持验证（用户名、密码）</div></pre></td></tr></table></figure></p>
+<h1 id="规则设置"><a href="#规则设置" class="headerlink" title="规则设置"></a>规则设置</h1><p>[Rule] </p>
+<h1 id="基于域名判断并屏蔽（REJECT）请求"><a href="#基于域名判断并屏蔽（REJECT）请求" class="headerlink" title="基于域名判断并屏蔽（REJECT）请求"></a>基于域名判断并屏蔽（REJECT）请求</h1><p>DOMAIN,pingma.qq.com,REJECT</p>
+<h1 id="基于域名后缀判断屏蔽（REJECT）请求"><a href="#基于域名后缀判断屏蔽（REJECT）请求" class="headerlink" title="基于域名后缀判断屏蔽（REJECT）请求"></a>基于域名后缀判断屏蔽（REJECT）请求</h1><p>DOMAIN-SUFFIX,flurry.com,REJECT</p>
+<h1 id="基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走-Packet-Tunnel-Provider"><a href="#基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走-Packet-Tunnel-Provider" class="headerlink" title="基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走 Packet-Tunnel-Provider"></a>基于关键词后缀判断走代理（Proxy），强制不尊重系统代理的请求走 Packet-Tunnel-Provider</h1><p>DOMAIN-KEYWORD,google,Proxy,force-remote-dns</p>
+<h1 id="基于域名后缀判断请求走直连（DIRECT）"><a href="#基于域名后缀判断请求走直连（DIRECT）" class="headerlink" title="基于域名后缀判断请求走直连（DIRECT）"></a>基于域名后缀判断请求走直连（DIRECT）</h1><p>DOMAIN-SUFFIX,126.net,DIRECT</p>
+<h1 id="Telegram-app-指定“no-resolve”Surge-忽略这个规则与域的请求。"><a href="#Telegram-app-指定“no-resolve”Surge-忽略这个规则与域的请求。" class="headerlink" title="Telegram.app 指定“no-resolve”Surge 忽略这个规则与域的请求。"></a>Telegram.app 指定“no-resolve”Surge 忽略这个规则与域的请求。</h1><p>IP-CIDR,91.108.56.0/22,Proxy,no-resolve </p>
+<h1 id="判断是否是局域网，如果是，走直连"><a href="#判断是否是局域网，如果是，走直连" class="headerlink" title="判断是否是局域网，如果是，走直连"></a>判断是否是局域网，如果是，走直连</h1><p>IP-CIDR,192.168.0.0/16,DIRECT</p>
+<h1 id="判断服务器所在地，如果是国内，走直连"><a href="#判断服务器所在地，如果是国内，走直连" class="headerlink" title="判断服务器所在地，如果是国内，走直连"></a>判断服务器所在地，如果是国内，走直连</h1><p>GEOIP,CN,DIRECT</p>
+<h1 id="其他的走代理"><a href="#其他的走代理" class="headerlink" title="其他的走代理"></a>其他的走代理</h1><p>FINAL,Proxy<br>```</p>
+<blockquote>
+<p>规则配置的高级选项中，「Force Remote DNS」的作用主要是用来解决本地 DNS 解析受到污染的问题，在添加针对 Google、Twitter 的规则时可以开启。<br>规则按照顺序执行，注意不要出现先后矛盾的地方，同一个域名或后缀的规则定义不要重复，使用文本编辑器编辑时注意每条规则间的分隔逗号是英文标点。</p>
+</blockquote>
+<h3 id="高级设置中的选项"><a href="#高级设置中的选项" class="headerlink" title="高级设置中的选项"></a>高级设置中的选项</h3><p><img src="https://cloud.githubusercontent.com/assets/1845119/10934852/4066bd50-831d-11e5-85fa-9b04bf27c96e.png" alt="image"></p>
+<blockquote>
+<p>最右侧的图是分析模块中的统计（Statistics）数据，可以直观的看到当前连接（Surge 断开后统计重置）的时长以及Wi-Fi 和蜂窝移动网络的流量使用情况。</p>
+</blockquote>
+<p>主配置文件设置高级选项中的「Bypass System Related」不要关闭，Surge 通过这个开关和内置规则放行系统层面的通讯请求。如果禁用此选项，它可能会导致一些系统问题，如推送通知的延迟。</p>
+<p>高级选项中的其他两项设置「SKIP PROXY」和「BYPASS TUN」是为了解决一些应用的兼容性问题，通过指定具体域名（apple.com或者<em>apple.com）或者 IP（192.168.2.</em> 或 192.168.2.0/24）让这类请求绕过 Surge 代理服务器和 TUN 接口。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934877/716087e2-831d-11e5-888e-2c0fb02d8ea7.png" alt="image"></p>
+<p>Skip Proxy 和 Bypass TUN 的功能与原理(By @Blankwonder )<br>Surge 能作为 DNS Client 使用，「DNS OVERRIDE」中填写的 DNS 地址将覆盖缺省的 DNS，针对较差的网络环境 Surge 能进行更高频率地重发，并同样适用于蜂窝数据网络，支持设置中（如：119.29.29.29,223.5.5.5,114.114.114.114）的多服务器并发查询。</p>
+<h3 id="分析网络活动"><a href="#分析网络活动" class="headerlink" title="分析网络活动"></a>分析网络活动</h3><p>Surge 分析模块中能直观看到 Surge 启动后最近地访问请求（Recent Requests）。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934902/95840310-831d-11e5-84d6-6a67fcc8dfc9.png" alt="image"></p>
+<p>还可以通过规则结果测试（Rule Test Results）临时调整规则（点击某条记录），REJECT、DIRECT 或者指定它走某个代理。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10935768/4dcc45ea-8323-11e5-8242-13a6fc71d15b.png" alt="image"></p>
+<p>通过规则结果测试（Rule Test Results）可以方便地跟踪当前 App 的网络访问，临时改变规则后可以观察 App 的实际运行情况，如果有效随后就能补充到主配置文件中。</p>
+<p>在 iPad 分屏模式的使用场景中，我经常干的一件事就是打开某个国产应用，然后分屏查看 Surge 里 Test Results 的网络访问情况，侦查那些和应用功能无关的隐私或广告请求，然后记录下来添加到自己的规则列表中。</p>
+<p>如果说 Surge 最吸引人的地方在哪里，估计就是这种透明的网络访问方式，在轻松访问各种网络服务以外还是一个强有力地调试工具。安全和隐私已经变成只有少数人才能掌控的东西，学习掌握一款这样的工具还是很重要的。</p>
+<h3 id="常见问答"><a href="#常见问答" class="headerlink" title="常见问答"></a>常见问答</h3><h4 id="Q：为什么-Surge-一直显示是下载状态没有安装成功？"><a href="#Q：为什么-Surge-一直显示是下载状态没有安装成功？" class="headerlink" title="Q：为什么 Surge 一直显示是下载状态没有安装成功？"></a>Q：为什么 Surge 一直显示是下载状态没有安装成功？</h4><blockquote>
+<p>A：不能开启 Surge 的同时更新它自己，需要先停用 Surge，等更新完成后再打开 Surge。</p>
+<h4 id="Q：修改配置文件中的规则后会立即生效吗？"><a href="#Q：修改配置文件中的规则后会立即生效吗？" class="headerlink" title="Q：修改配置文件中的规则后会立即生效吗？"></a>Q：修改配置文件中的规则后会立即生效吗？</h4><p>A：不会，需要到 Surge 中停止（Stop）后重新开始（Start）。</p>
+<h4 id="Q：Surge-的配置文件中的服务器该如何填写？"><a href="#Q：Surge-的配置文件中的服务器该如何填写？" class="headerlink" title="Q：Surge 的配置文件中的服务器该如何填写？"></a>Q：Surge 的配置文件中的服务器该如何填写？</h4><p>A：Surge 是一个网络调试工具，并不提供代理服务器，需要另行购买或自行搭建服务器，具体的服务器地址和端口可以咨询服务器提供商。</p>
+<h4 id="Q：如何快速启动或关闭-Surge-？"><a href="#Q：如何快速启动或关闭-Surge-？" class="headerlink" title="Q：如何快速启动或关闭 Surge ？"></a>Q：如何快速启动或关闭 Surge ？</h4><p>A：Surge 提供了通知中心扩展 Widget，加载后由通知中心就能快速切换 Surge 状态。如果使用 Launcher 这类软件，可以通过 URL Scheme 命令<code>surge:///toggle</code>来控制 Surge 的切换，更多命令参见 surge.run。</p>
+<h4 id="Q：网上分享和供参考的配置中为什么规则都不一样-？"><a href="#Q：网上分享和供参考的配置中为什么规则都不一样-？" class="headerlink" title="Q：网上分享和供参考的配置中为什么规则都不一样 ？"></a>Q：网上分享和供参考的配置中为什么规则都不一样 ？</h4><p>A：配置文件中 [Rule] 的部分可以根据各自的使用环境进行定制，合并或借鉴时注意不要前后冲突或重复即可。</p>
+</blockquote>
+<p>Surge 是一款开发者调试和代理工具，需要一定的专业背景知识才可使用，请在仔细阅读 AppStore 说明且理解软件功能后再进行购买。</p>
+<p>后续版本可能还会有功能、界面上的变化，如有必要本文会进行补充和更新。</p>
+<p>本文档适用于：<code>Surge 1.0.1（Bulid 300）</code></p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -806,6 +1008,10 @@ BITCOI
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -818,7 +1024,11 @@ BITCOI
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/surge-the-missing-tool-for-ios/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -837,16 +1047,8 @@ BITCOI
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/04/surge-the-missing-tool-for-ios/" itemprop="url">
-                  Surge, the missing tool for iOS
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/04/surge-the-missing-tool-for-ios/" itemprop="url">Surge, the missing tool for iOS</a></h1>
         
 
         <div class="post-meta">
@@ -872,16 +1074,6 @@ BITCOI
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/04/surge-the-missing-tool-for-ios/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/04/surge-the-missing-tool-for-ios/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -897,7 +1089,9 @@ BITCOI
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -906,28 +1100,44 @@ BITCOI
       
         
           
-          iOS 9 有个激动人心的新特性 Network Extension 弥补了 iOS 长久以来无法定制底层网络 app 的不足。APN 代理不安全，成本高；虚拟专网速度不佳，爱掉线，阻塞问题严重…
-那么对于专业用户来说比较完美的方案必须是安全的，可低成本的，最大网络速度，无连接状态，国内外分流完美的
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/04/surge-the-missing-tool-for-ios/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>iOS 9 有个激动人心的新特性 <a href="https://developer.apple.com/videos/play/wwdc2015-717/" target="_blank" rel="external">Network Extension</a> 弥补了 iOS 长久以来无法定制底层网络 app 的不足。APN 代理不安全，成本高；虚拟专网速度不佳，爱掉线，阻塞问题严重…</p>
+<p>那么对于专业用户来说比较完美的方案必须是安全的，可低成本的，最大网络速度，无连接状态，国内外分流完美的 iOS 方案，那么现在这个堕落的愿望已经实现了，感谢苹果公司这么给(chi)力(dao)的 API 和 app 开发大牛。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934359/5acd3ae6-831a-11e5-9ea7-fcc22256bb56.png" alt="image"></p>
+<p>Surge.app （App Store）是一款给专业用户使用的网络调试工具，使用比较复杂。它的工作原理是使用 packet tunnel provider，然后给系统套上一个代理，后端转发支持 http 代理，SSL 代理，和 Socks 代理。如果 app 尊重系统代理，就会走这个代理，如果不尊重，我们也可以通过规则强制流量走系统 tun 设备达到支持全部 app 的目的。用代理的好处是可以跟踪和调试网络，容易分流，ACL 功能更多，弹性更大更方便。感觉安卓上都没有这么好用的 app 呐。。</p>
+<p>简单的开始可以直接导入一份 conf 文件（URL 或者 iTunes），例如这里的，对于不求甚解的用户来说你可以直接使用完事（但是你还是要改改服务器地址用户名什么的。。或者直接从供应商处获取导入 URL）。</p>
+<p>配置的结构大概是这样，对于专业用户来说，理解应该不难(Surge 还处于不断开发阶段，下面的配置已经过时。请关注 Surge 官方的消息和手册，或者 Surge.tips 网站)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">[General]</div><div class="line"># warning, notify, info, verbose</div><div class="line">loglevel = notify</div><div class="line"></div><div class="line">[Proxy]</div><div class="line"># http, https, socks5</div><div class="line"># SSLedge 使用 https，老式 APNp 用 http</div><div class="line">Proxy = https, server, port, username, password, ciphers </div><div class="line"></div><div class="line">[Rule]</div><div class="line"># 域名关键字，干掉不想要的请求</div><div class="line">DOMAIN-KEYWORD,umeng.co,REJECT  </div><div class="line">...</div><div class="line"></div><div class="line"># 常用网站优先匹配，加快速度。使用代理转发，完全没有 CDN 被干扰的问题~</div><div class="line">DOMAIN-SUFFIX,cn,DIRECT  </div><div class="line">DOMAIN-SUFFIX,qq.com,DIRECT  </div><div class="line">DOMAIN-SUFFIX,ls.apple.com,DIRECT  </div><div class="line">DOMAIN-SUFFIX,apple.com,Proxy  </div><div class="line">...</div><div class="line"></div><div class="line"># 强制这些不尊重系统代理的请求走 packet-tunnel-provider，解决 Twitter.app 和 Mail.app 收发邮件问题</div><div class="line">DOMAIN-KEYWORD,twitter,Proxy,force-remote-dns  </div><div class="line">DOMAIN-KEYWORD,gmail,Proxy,force-remote-dns  </div><div class="line"># instagram.app 也没问题</div><div class="line">DOMAIN-KEYWORD,instagram,Proxy,force-remote-dns  </div><div class="line"># Telegram.app 也没问题</div><div class="line">IP-CIDR,91.108.56.0/22,Proxy,force-remote-dns  </div><div class="line">...</div><div class="line"></div><div class="line"># LAN</div><div class="line">IP-CIDR,192.168.0.0/16,DIRECT  </div><div class="line">...</div><div class="line"></div><div class="line"># 其余的请求使用 GEOIP 判断服务器所在地，如果是国内的，走直连，搞定</div><div class="line">GEOIP,CN,DIRECT</div><div class="line"></div><div class="line"># 最后 Matchall，丢给代理</div><div class="line">FINAL,Proxy</div></pre></td></tr></table></figure>
+<p>通过规则定义和组合，必然可以满足专业用户的需求，非常强大。配置可以使用 app 自带的 GUI，当然也有文本编辑方式。</p>
+<p>由于 Surge 的核心和是个 http proxy，有些处理不了的请求我们可以强制 bypass(proxy-skip/tun-bypass) 掉，走系统接口，这个可以在代理设置-高级处设置，如果你不太懂，请不要随意设置。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934377/7496d1ee-831a-11e5-91e2-9764531c3f76.png" alt="image"></p>
+<p>方便查看调试记录当然得靠很骚的 3D touch 菜单了。。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934390/8d341a54-831a-11e5-9f46-6eafd545ab35.png" alt="image"></p>
+<p>Log 显示，看到了吗，IMAP 也可以走代理 XD 对已迫切想知道系统访问历史的同学来说是不是很赞。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934448/f1627e4e-831a-11e5-9e23-a20e7c4c6601.png" alt="image"></p>
+<p>还可以更改规则，干掉不想要的访问，专治流氓 app。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934456/0370d266-831b-11e5-8ac6-5b0e44f39ba6.png" alt="image"></p>
+<p>再看看这位开心的同学。。神器吧。。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934468/19979bb0-831b-11e5-96c5-549492298c52.png" alt="image"></p>
+<p>简单的流量统计，现在版本已经有 widget 显示速率。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10934512/534d6eac-831b-11e5-95ed-abaf450df081.png" alt="image"></p>
+<p>搭配加速的 SSLedge 速度还算不错。</p>
+<p>由于目前 iOS 系统对内存限制较严格，SSLedge 代理推荐使用 TLS_RSA_WITH_AES_128_GCM_SHA256 ciphers，使用这个后 Surge 的崩溃问题就比较少了(1.0.1后不需要)。</p>
+<p>自从有了 Surge，微信、煎蛋刷起来不卡了，看油条速度杠杠的，下载 app 更新没有压力，妈妈和库克再也不用操心了…更主要的是，你可以随时切换线路，不用担心国内中转质量变坏…</p>
+<p>更多的使用技巧和高级功能请关注 Twitter 或者 Surge.tips 网站。</p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -941,6 +1151,10 @@ BITCOI
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -953,7 +1167,11 @@ BITCOI
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/03/http2--web-/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -972,16 +1190,8 @@ BITCOI
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/03/http2--web-/" itemprop="url">
-                  HTTP/2 与 WEB 性能优化
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/03/http2--web-/" itemprop="url">HTTP/2 与 WEB 性能优化</a></h1>
         
 
         <div class="post-meta">
@@ -1007,16 +1217,6 @@ BITCOI
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/03/http2--web-/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/http2--web-/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1032,7 +1232,9 @@ BITCOI
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1041,28 +1243,45 @@ BITCOI
       
         
           
-          提出问题我们知道，一个页面通常由一个 HTML 文档和多个资源组成。有一些很重要的资源，例如头部的 CSS、关键的 JS，如果迟迟没有加载完，会阻塞页面渲染或导致用户无法交互，体验很差。如何让重要的资源更快加载完是我本文要讨论的问题。
-HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都会部
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/03/http2--web-/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h3 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h3><p>我们知道，一个页面通常由一个 HTML 文档和多个资源组成。有一些很重要的资源，例如头部的 CSS、关键的 JS，如果迟迟没有加载完，会阻塞页面渲染或导致用户无法交互，体验很差。如何让重要的资源更快加载完是我本文要讨论的问题。</p>
+<h3 id="HTTP-1"><a href="#HTTP-1" class="headerlink" title="HTTP/1"></a>HTTP/1</h3><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>我们先来考虑资源外链的情况。通常，外链资源都会部署在 CDN 上，这样用户就可以从离自己最近的节点上获取数据。一般文本文件都会采用 gzip 压缩，实际传输大小是文件大小的几分之一。服务端托管静态资源的效率通常非常高，服务端处理时间几乎可以忽略。在忽略网络因素、传输大小以及服务端处理时间之后，用户何时能加载完外链资源，很大程度上取决于请求何时能发出去，这主要受下面三个因素影响：</p>
+<ul>
+<li>浏览器阻塞（Stalled）：浏览器会因为一些原因阻塞请求。例如在 rfc2616 中规定浏览器对于一个域名，同时只能有 2 个连接（HTTP/1.1 的修订版中去掉了这个限制，详见 rfc7230，因为后来浏览器实际上都放宽了限制），超过浏览器最大连接数限制，后续请求就会被阻塞。再例如现代浏览器在加载同一域名多个 HTTPS 资源时，会有意等第一个 TLS 连接建立完成再请求其他资源；</li>
+<li>DNS 查询（DNS Lookup）：浏览器需要知道目标服务器的 IP 才能建立连接。将域名解析为 IP 的这个系统就是 DNS。DNS 查询结果通常会被缓存一段时间，但第一次访问或者缓存失效时，还是可能耗费几十到几百毫秒；</li>
+<li>建立连接（Initial connection）：HTTP 是基于 TCP 协议的，浏览器最快也要在第三次握手时才能捎带 HTTP 请求报文。这个过程通常也要耗费几百毫秒；</li>
+</ul>
+<p>当然我们一般都会给静态资源设置一个很长时间的缓存头。只要用户不清除浏览器缓存也不刷新，第二次访问我们网页时，静态资源会直接从本地缓存获取，并不产生网络请求；如果用户只是普通刷新而不是强刷，浏览器会在请求头带上协商字段 If-Modified-Since 或 If-None-Match，服务端对没有变化的资源会响应 304 状态码，告知浏览器从本地缓存获取资源。304 请求没有正文，非常小。</p>
+<p>也就是说资源外链的特点是，第一次慢，第二次快。</p>
+<p>再来看看资源内联的情况。把 CSS、JS 文件内容直接内联在 HTML 中的方案，毫无疑问会在用户第一次访问时有速度优势。但通常我们很少缓存 HTML 页面，这种方案会导致内联的资源没办法利用浏览器缓存，后续每次访问都是一种浪费。</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>很早之前，就有网站开始针对第一次访问的用户将资源内联，并在页面加载完之后异步加载这些资源的外链版本，同时记录一个 Cookie 标记表示用户来过。用户再次访问这个页面时，服务端就可以输出只有外链版本的页面，减小体积。</p>
+<p>这个方案除了有点浪费流量之外（一份资源，内联外链加载了两次），基本上能达到更快加载重要资源的效果。但是在流量更加宝贵的移动端，我们需要继续改进这个方案。</p>
+<p>考虑到移动端浏览器都支持 localStorage，可以将第一次内联引入的资源缓存起来后续使用。缓存更新机制可以通过在 Cookie 中存放版本号来实现。这样，服务端收到请求后，首先要检查 Cookie 头中的版本标记：</p>
+<ul>
+<li><p>如果标记不存在或者版本不匹配，就将资源内联输出，并提供当前版本标记。页面执行时，会把内联资源存入 localStorage，并将资源版本标记存入 Cookie；</p>
+</li>
+<li><p>如果标记匹配，就输出 JavaScript 片段，用来从 localStorage 读取并使用资源；</p>
+</li>
+</ul>
+<p>由于 Cookie 内容需要尽可能的少，所以一般只存总的版本号。这会导致页面任何一处资源变动，都会改变总版本号，进而忽略客户端所有 localStorage 缓存。要解决这个问题可以继续改进我们的方案：Cookie 中只存放用户唯一标识，用户和资源对应关系存在服务端。服务端收到请求后根据用户标识，计算出哪些资源需要更新，从而输出更有针对性的 HTML 文档。</p>
+<p>这套方案要投入实际使用，要处理一系列异常情况，例如 JS / Cookie / localStorage 被禁用；localStorage 被写满；localStorage 内容损坏或丢失等等。考虑成本和实际收益，推荐只在移动项目中使用这种方案。</p>
+<h3 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h3><p>对于 HTTP/2 来说，要解决前面这个问题简直就太容易了，开启「Server Push」即可。HTTP/2 的多路复用特性，使得可以在一个连接上同时打开多个流，双向传输数据。Server Push，意味着服务端可以在发送页面 HTML 时主动推送其它资源，而不用等到浏览器解析到相应位置，发起请求再响应。另外，服务端主动推送的资源不是被内联在页面里，它们有自己独立的 URL，可以被浏览器缓存，当然也可以给其他页面使用。</p>
+<p>服务端可以主动推送，客户端也有权利选择接收与否。如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送 RST_STREAM 帧来拒收。</p>
+<p>可以看到，HTTP/2 的 Server Push 能够很好地解决「如何让重要资源尽快加载」这个问题，一旦普及开来，可以取代前面介绍过的 HTTP/1 时代优化方案。</p>
+<p>本文链接：<a href="https://imququ.com/post/http2-and-wpo-1.html" target="_blank" rel="external">https://imququ.com/post/http2-and-wpo-1.html</a></p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1076,6 +1295,10 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1088,7 +1311,11 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/surge-confs-index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1107,16 +1334,8 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/02/surge-confs-index/" itemprop="url">
-                  Surge.conf
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/02/surge-confs-index/" itemprop="url">Surge.conf</a></h1>
         
 
         <div class="post-meta">
@@ -1142,16 +1361,6 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/02/surge-confs-index/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/surge-confs-index/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1167,7 +1376,9 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1176,28 +1387,30 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
       
         
           
-          Surge.confHTTP 配置：https://raw.githubusercontent.com/hzlzh/Surge.conf/master/surge-HTTP-Proxy.conf
-12App 内下载后，手动替换成自己的代理服务即可，如：MyHTTPProxy = http,xxx.x
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/02/surge-confs-index/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="Surge-conf"><a href="#Surge-conf" class="headerlink" title="Surge.conf"></a>Surge.conf</h1><p>HTTP 配置：<br><code>https://raw.githubusercontent.com/hzlzh/Surge.conf/master/surge-HTTP-Proxy.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">App 内下载后，手动替换成自己的代理服务即可，如：</div><div class="line">MyHTTPProxy = http,xxx.xxx.xxx,123456</div></pre></td></tr></table></figure>
+<p>知乎备份：<br><a href="http://ww1.sinaimg.cn/large/644eac00gw1exfon1o67bj214m1mewvi.jpg" target="_blank" rel="external">http://ww1.sinaimg.cn/large/644eac00gw1exfon1o67bj214m1mewvi.jpg</a></p>
+<h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><p>相关： </p>
+<p><a href="http://surge.run/manual/" target="_blank" rel="external">官网</a> </p>
+<p><a href="https://medium.com/@scomper/surge-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-a1533c10e80b#.p6jou9a6l" target="_blank" rel="external">surge 新手指南</a> </p>
+<p><a href="https://medium.com/@Blankwonder/surge-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0-8aa3304fb3bb#.ujkp7yp7z" target="_blank" rel="external">surge 原理与实现</a></p>
+<p><a href="http://proxy.sofi.sh/" target="_blank" rel="external">Shadowsocks 配置</a></p>
+<p><a href="https://surge.tips/" target="_blank" rel="external">Surge 论坛</a></p>
+<p><img src="http://ww4.sinaimg.cn/large/644eac00gw1exeoiqbwuzj20e60d8myq.jpg" alt="proxy"><br><img src="http://ww4.sinaimg.cn/large/644eac00gw1exeo5n0kilj20ku112goy.jpg" alt="conf"></p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1211,6 +1424,10 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1223,7 +1440,11 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/postman-expat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1242,16 +1463,8 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/02/postman-expat/" itemprop="url">
-                  Postman expat
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/02/postman-expat/" itemprop="url">Postman expat</a></h1>
         
 
         <div class="post-meta">
@@ -1277,16 +1490,6 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/02/postman-expat/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/postman-expat/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1302,7 +1505,9 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1311,28 +1516,62 @@ HTTP/1分析我们先来考虑资源外链的情况。通常，外链资源都�
       
         
           
-          A clash between the British past and Chinese present昔日英治时期的香港 vs. 今日中共治下的香港
-HONG KONG is littered with reminders of its imperial past. Prisons, school
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/02/postman-expat/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>A clash between the British past and Chinese present<br>昔日英治时期的香港 vs. 今日中共治下的香港</p>
+<p><strong>HONG KONG is littered with reminders of its imperial past. Prisons, schools and parks bear the names of British monarchs. There are still public statues of them. The island’s harbour, its hilly peak and a main road in the business district are named in honour of Queen Victoria. Almost all of the British colonial governors are remembered in street names.</strong></p>
+<p>在香港到处可见英国殖民时期遗留下来的痕迹。有些监狱、学校和公园以英国君主的名字命名，而且他们的雕像仍然保留至今。维多利亚港、太平山(Victoria Peak)还有位于商业区的皇后大道都是为了纪念维多利亚女皇(Queen Victoria)而命名的，几乎所有港督的名字都被用作街道名称。</p>
+<p><strong>But China is worried about what it sees as a lack of appreciation in Hong Kong for its salvation from colonial rule (sometimes evident at pro-democracy rallies where a few people are seen waving colonial-era flags). In September Chen Zuo’er, a former Chinese official who heads a think-tank in Hong Kong, criticised the island’s “failure” to decolonise and the “refusal” of people to accept the territory’s relationship with the mainland. Even FIFA, football’s world governing body, is cross. This month it fined the Hong Kong Football Association because of booing by the territory’s fans of China’s national anthem (which is now their own) during a match.</strong></p>
+<p>但中国担心香港脱离英国殖民统治后，香港人对国家欠缺归属感 (有些人在争取民主的集会上挥动着旧日香港在殖民时期使用的旗帜)。今年9月，前港澳办常务副主任、现任全国港澳研究会会长陈佐洱(Chen Zuo’er)批评香港在回归后并没有“去殖民化”，拒绝承认中港关系。甚至连国际足球联合会(FIFA)都发出警告，就香港球迷在比赛中嘘中国国歌 (如今也是香港人的国歌) 一事，于本月向香港足球总会(the Hong Kong Football Association)罚款。</p>
+<p><strong>Many suspect that the humble post box may now fall victim to what appears to be a new effort to reinforce patriotism. Hong Kong’s postal service was set up in 1841 by Britain’s Royal Mail. Its colonial past is visible in boxes embedded in the sides of buildings, or of the traditional “pillar box” variety—complete with royal insignia. A start was made on correcting this after the handover of Hong Kong to China in 1997: red post boxes, as they are coloured in Britain, were mostly repainted green (see picture).</strong></p>
+<p>如今普通的邮筒也可能沦为用来强调爱国主义的工具。香港邮政服务于1841年由英国皇家邮政(Royal Mail)设立，印有英国皇室徽号的嵌墙式邮筒或传统圆柱型邮筒带有过去殖民时代的色彩。1997年回归之前，香港邮筒和英国的邮筒一样是红色的。回归后，大部分邮筒被改成绿色 (见图)。</p>
+<p><strong>In October the postal authorities said the use of royal symbols was “inappropriate” and “confusing” and announced plans to cover them up. Conservationists were dismayed. One of them, Sin Wai-man, accused officials of trying to “whitewash” colonial history and likened the proposed covering of the insignia to “killing the souls” of the boxes.</strong></p>
+<p>今年10月，香港邮政署认为在旧邮筒上保留英国皇室徽号已”不合时宜”而且”容易令人混淆”，宣布计划将这些徽号遮盖起来。保育人士对此表示强烈不满，其中民间组织”邮筒搜索队”队长冼伟文(Sin Wai-man)指责当局有意掩盖香港殖民时期的历史，并认为遮盖徽号等于“杀了邮筒的灵魂”。</p>
+<p><strong>Postal officials appear unfazed by the outcry, though they have yet to say when they will carry out the makeover. Lovers of the 59 remaining colonial-era boxes can at least draw comfort from their freedom to complain. Losing that hallmark of Hong Kong’s identity would be a far bigger blow than anything that may happen to the royal marks.</strong></p>
+<p>虽然还没有决定何时进行改造，但邮政署似乎对民众的强烈抗议并不感到意外。现时殖民时期的邮筒只剩下59个，至少这些旧邮筒的爱好者该为自己还能自由地表达不满而感到安慰。若失去了代表香港的“特征”，到时候的打击远比英国皇室标记被摧毁要大得多。</p>
+<p>From the print edition: China</p>
+<p>原文链接: <a href="http://www.economist.com/news/china/21676817-clash-between-british-past-and-chinese-present-postman-expat" target="_blank" rel="external">http://www.economist.com/news/china/21676817-clash-between-british-past-and-chinese-present-postman-expat</a></p>
+<p>================================<br>Vocabularies and phrases</p>
+<ol>
+<li><p>Colony: a country or area controlled politically by a more powerful and often distant country</p>
+</li>
+<li><p>Relics: an object, tradition or system from the past which continues to exist</p>
+</li>
+<li><p>Expatriate: someone who does not live in their own country</p>
+</li>
+<li><p>Be littered with sth: a place, document or other object that is littered with something, has or contains a lot of that thing</p>
+</li>
+<li><p>Imperial: belonging or relating to an empire or the person or country that rules it</p>
+</li>
+<li><p>Monarch: a king or queen</p>
+</li>
+<li><p>Fall victim to sth/sb: to suddenly begin to suffer as a result of something or someone bad</p>
+</li>
+<li><p>Insignia: an object or mark that shows that a person belongs to a particular organization or group, or has a particular rank</p>
+</li>
+<li><p>Dismay: to make someone very worried, disappointed, or sad</p>
+</li>
+<li><p>Whitewash: to try to stop people from discovering the true facts about something, in order to prevent someone in authority from being criticized</p>
+</li>
+<li><p>Unfazed: not surprised or worried</p>
+</li>
+<li><p>Outcry: a strong expression of anger and disapproval about something, made by a group of people or by the public</p>
+</li>
+<li><p>Draw comfort: if you draw comfort from something good in a bad situation, it makes you feel less sad or worried</p>
+</li>
+</ol>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1346,6 +1585,10 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1358,7 +1601,11 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/surge-explain/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1377,16 +1624,8 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/02/surge-explain/" itemprop="url">
-                  Surge 原理与实现
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/02/surge-explain/" itemprop="url">Surge 原理与实现</a></h1>
         
 
         <div class="post-meta">
@@ -1412,16 +1651,6 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/02/surge-explain/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/surge-explain/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1437,7 +1666,9 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1446,31 +1677,54 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
       
         
           
-          文章来自Surge作者YaChen Liu
-为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。
+            <p>文章来自Surge作者<a href="https://medium.com/@Blankwonder/surge-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0-8aa3304fb3bb#.tyf8rgwvj" target="_blank" rel="external">YaChen Liu</a></p>
+<p>为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10875352/8dddf128-816c-11e5-8831-834e5b9d575e.png" alt="image"></p>
+<p>从 Surge 的几大核心组件分别说起吧：</p>
+<h3 id="1-Surge-Proxy-Server"><a href="#1-Surge-Proxy-Server" class="headerlink" title="1. Surge Proxy Server"></a>1. Surge Proxy Server</h3><p>这是 Surge 最核心的部分，用于处理所有的 HTTP/HTTPS 请求。</p>
+<p>用 Proxy 去处理请求而不是用 TUN，有很多原因，主要是因为 TUN 是工作在 IP Layer 的：</p>
+<ul>
+<li>Proxy 可以直接收到包含域名 / URL 的请求，从而使基于域名的规则过滤成为可能（甚至 URL，之后版本可能考虑加入支持）</li>
+<li>Proxy 可以省略不必要的 DNS 请求，对首次访问的速度提升相当明显</li>
+<li>Surge 的 Proxy 支持全局的 HTTP Connection Keep Alive 机制，极大的减少了 TCP 握手产生的开销（跨应用间也能共享一个 TCP Connection，但由于内存限制在 iOS 版本上超时时间很短，之后 Mac 版本上的效果会明显一些）</li>
+<li>准确的记录下每个请求的 header 和 body（从 TCP 层面直接抓，可能会有误）</li>
+<li>使得之后的高级功能（如修改 header，rewrite URL）成为可能</li>
+<li>减少了不必要的 IP Packet 相关开销</li>
+<li>这样 Surge iOS 版本与 Mac 版本可以共享核心代码</li>
+</ul>
+<p>这是 Surge 中最复杂的组件，基本上等同于一个不带 cache 的 squid，其中的难点一方面是调度问题，另一方面是怎么样去判断一个 HTTP 请求是否完成(比如 chunked transfer encoding)，本身 HTTP RFC 在这方面就有非常多的细节问题，再加上很多自制的 HTTP Server 不是特别的遵守规范，所以只能通过大量的时间去积累经验完成。</p>
+<h3 id="2-DNS-Client"><a href="#2-DNS-Client" class="headerlink" title="2. DNS Client"></a>2. DNS Client</h3><p>最早的版本中，Surge 也是使用 getaddrinfo 这类的系统调用去进行 DNS 解析的，但是后来越来越不能满足需求，所以就又造了个轮子，有这些好处：</p>
+<ul>
+<li>可以完全自定义 upstream DNS 服务器地址，无视系统设置</li>
+<li>可以并发的向多个 DNS 服务器发出 question</li>
+<li>可以自定义超时和重发的策略</li>
+<li>getaddrinfo 等方法本身不支持 cache</li>
+<li>为之后的 Local DNS Map 功能提供了基础</li>
+</ul>
+<p>这部分的功能差不多是个 mini 版本的 dnsmasq 吧。由于是自己实现的，以后要做 TCP DNS 或者非 53 端口的支持都是很简单的事。</p>
+<h3 id="3-Surge-TUN-Interface"><a href="#3-Surge-TUN-Interface" class="headerlink" title="3. Surge TUN Interface"></a>3. Surge TUN Interface</h3><p>最早的版本没有这个组件，但有部分应用使用的是 HTTP/HTTPS 以外的 TCP 协议 (如 SPDY、IMAP)，没有遵从代理设置，因此无法被 Surge 接管流量。为了解决这个问题，才加入了这个组件。</p>
+<p>核心原理就是通过一个 Surge 内部的 TCP stack，将 IP Packet 中的 TCP 数据提取出来，再重新用 Proxy 进行请求（或者直接连接对应的服务器），再将返回的数据重新封装成 IP Packet。</p>
+<p>正如前面提到的，用 TUN 处理请求会有一些问题，最大的问题是，由 TUN Interface 处理的流量，DOMAIN 相关的 Rule 会无效，除非使用了 force-remote-dns 选项。</p>
+<p>这是由 TCP/IP 协议的特性所决定的，App 会先发出一个 DNS question，获取要连接的服务器的 IP 地址，然后直接向这个 IP 地址发起连接，所以有了第 4 个组件。</p>
+<h3 id="4-IP-Layer-DNS-Forwarder"><a href="#4-IP-Layer-DNS-Forwarder" class="headerlink" title="4. IP Layer DNS Forwarder"></a>4. IP Layer DNS Forwarder</h3><p>这个组件配合 TUN Interface 使用，会将收到 DNS 的 IP Packet，进行简单改动后直接转发给 upstream DNS。</p>
+<p>但是在转发前，该组件会检查需要解析的域名，是否匹配上了带有 force-remote-dns 选项的规则，如果是，不进行转发，直接返回一个 240.1.x.x 的 fake IP。当 TUN Interface 收到一个发往 240.1.x.x 的包的时候，反向查出真正的域名是什么，然后直接以域名的形式转交给 Proxy，避免本地的 DNS 查询动作。</p>
+<p>force-remote-dns 选项主要是为了解决有些域名在本地查询会有障碍的问题（如公司内网域名），然而因为返回了一个 fake IP，且 Surge 没有权限去强制清除系统或者应用的 DNS cache，所以在 Surge 关闭后可能导致一些问题，所以请谨慎的只给确实需要的域名开启这个选项。</p>
+<p>其余还有一系列的 homemade 小组件（如各个协议的 client），就不一一描述了，之后想到什么再补充。</p>
+<p>所以，看起来 $9.99 超值吧（大雾）</p>
 
-从 Surge 的几大核心组件分别说起吧：
-1. Surge Proxy Server这
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/02/surge-explain/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1484,6 +1738,10 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1496,7 +1754,11 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/30/git-into/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1515,16 +1777,8 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/10/30/git-into/" itemprop="url">
-                  git - 简易指南
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/10/30/git-into/" itemprop="url">git - 简易指南</a></h1>
         
 
         <div class="post-meta">
@@ -1550,16 +1804,6 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/30/git-into/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/30/git-into/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1575,7 +1819,9 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1584,34 +1830,79 @@ HONG KONG is littered with reminders of its imperial past. Prisons, school
       
         
           
-          助你开始使用 git 的简易指南，木有高深内容，;)。
-作者：罗杰·杜德勒 
-感谢：@tfnico, @fhd and Namics
-创建新仓库创建新文件夹，打开，然后执行 
-git init
-以创建新的 git 仓库。
-检出仓库执行如下命令以创建一个本地仓库的克隆版本：
-git clone /pa
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/10/30/git-into/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>助你开始使用 git 的简易指南，木有高深内容，;)。</p>
+<p><strong>作者</strong>：罗杰·杜德勒 </p>
+<p><strong>感谢</strong>：@tfnico, @fhd and Namics</p>
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行 </p>
+<p><code>git init</code></p>
+<p>以创建新的 git 仓库。</p>
+<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<p><code>git clone /path/to/repository</code></p>
+<p>如果是远端服务器上的仓库，你的命令会是这个样子：</p>
+<p><code>git clone username@host:/path/to/repository</code></p>
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 缓存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。</p>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><p>你可以计划改动（把它们添加到缓存区），使用如下命令：<br><code>git add &lt;filename&gt;</code></p>
+<p><code>git add *</code></p>
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：</p>
+<p><code>git commit -m &quot;代码提交信息&quot;</code></p>
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+<p><code>git push origin master</code></p>
+<p>可以把 master 换成你想要推送的任何分支。 </p>
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<p><code>git remote add origin &lt;server&gt;</code></p>
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。</p>
+<p>创建一个叫做“feature_x”的分支，并切换过去：</p>
+<p><code>git checkout -b feature_x</code></p>
+<p>切换回主分支：</p>
+<p><code>git checkout master</code></p>
+<p>再把新建的分支删掉：</p>
+<p><code>git branch -d feature_x</code></p>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
+<p><code>git push origin &lt;branch&gt;</code></p>
+<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
+<p><code>git pull</code></p>
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。</p>
+<p>要合并其他分支到你的当前分支（例如 master），执行：</p>
+<p><code>git merge &lt;branch&gt;</code></p>
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+<p><code>git add &lt;filename&gt;</code></p>
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+<p><code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code></p>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>在软件发布时创建标签，是被推荐的。这是个旧有概念，在 SVN 中也有。可以执行如下命令以创建一个叫做 1.0.0 的标签：</p>
+<p><code>git tag 1.0.0 1b2e1d63ff</code></p>
+<p>1b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符。使用如下命令获取提交 ID：</p>
+<p><code>git log</code></p>
+<p>你也可以用该提交 ID 的少一些的前几位，只要它是唯一的。</p>
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
+<p><code>git checkout -- &lt;filename&gt;</code></p>
+<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
+<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
+<p><code>git fetch origin</code></p>
+<p><code>git reset --hard origin/master</code></p>
+<h3 id="有用的贴士"><a href="#有用的贴士" class="headerlink" title="有用的贴士"></a>有用的贴士</h3><p>内建的图形化 git：</p>
+<p><code>gitk</code></p>
+<p>彩色的 git 输出：</p>
+<p><code>git config color.ui true</code></p>
+<p>显示历史记录时，只显示一行注释信息：</p>
+<p><code>git config format.pretty oneline</code></p>
+<p>交互地添加文件至缓存区：</p>
+<p><code>git add -i</code></p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1625,6 +1916,10 @@ git clone /pa
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1637,7 +1932,7 @@ git clone /pa
   </nav>
 
 
-          
+
           </div>
           
 
@@ -1657,6 +1952,7 @@ git clone /pa
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -1674,10 +1970,10 @@ git clone /pa
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -1685,8 +1981,10 @@ git clone /pa
           
 
           
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1694,8 +1992,10 @@ git clone /pa
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1707,44 +2007,6 @@ git clone /pa
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
           
         </div>
 
@@ -1781,10 +2043,10 @@ git clone /pa
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heartbeat"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1797,7 +2059,7 @@ git clone /pa
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -1814,7 +2076,7 @@ git clone /pa
         
       </div>
     
-    
+
   </div>
 
   
@@ -1834,6 +2096,14 @@ git clone /pa
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -1860,48 +2130,31 @@ git clone /pa
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"chentaonight"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
   
 
 
@@ -1911,13 +2164,18 @@ git clone /pa
 
 
 
+  
+
 
 
 
 
 
   
-  
+
+
+
+
 
   
 
@@ -1927,6 +2185,7 @@ git clone /pa
 
   
 
+  
 
   
 

@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -68,19 +75,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
-
-
-
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/chentao.ico?v=5.1.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -104,13 +111,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'CT'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -130,11 +138,7 @@
 
 
 
-  <title> Chen-Tao </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Chen-Tao</title>
   
 
 
@@ -149,13 +153,17 @@
 
 
 
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -203,18 +211,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,21 +222,11 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -270,7 +258,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/09/01/awestruck-data/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,16 +281,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/09/01/awestruck-data/" itemprop="url">
-                  敬畏数据
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/09/01/awestruck-data/" itemprop="url">敬畏数据</a></h1>
         
 
         <div class="post-meta">
@@ -346,16 +330,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/09/01/awestruck-data/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/01/awestruck-data/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -371,7 +345,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -390,15 +366,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -412,6 +388,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -424,7 +404,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/22/waiting-for-me/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -443,16 +427,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/22/waiting-for-me/" itemprop="url">
-                  正因为时世艰辛，你要等着我
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/22/waiting-for-me/" itemprop="url">正因为时世艰辛，你要等着我</a></h1>
         
 
         <div class="post-meta">
@@ -478,16 +454,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/22/waiting-for-me/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/22/waiting-for-me/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -503,7 +469,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -523,15 +491,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -545,6 +513,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -557,7 +529,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/21/python-regular-expression1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -576,16 +552,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/21/python-regular-expression1/" itemprop="url">
-                  Python正则
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/21/python-regular-expression1/" itemprop="url">Python正则</a></h1>
         
 
         <div class="post-meta">
@@ -633,16 +601,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/21/python-regular-expression1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/21/python-regular-expression1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -658,7 +616,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -677,15 +637,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -699,6 +659,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -711,7 +675,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/20/mysql-performance-optimization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -730,16 +698,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/20/mysql-performance-optimization/" itemprop="url">
-                  MySQL性能检测优化工具
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/20/mysql-performance-optimization/" itemprop="url">MySQL性能检测优化工具</a></h1>
         
 
         <div class="post-meta">
@@ -765,16 +725,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/20/mysql-performance-optimization/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/20/mysql-performance-optimization/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -790,7 +740,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -809,15 +761,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -831,6 +783,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -843,7 +799,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/19/log-anaysis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -862,16 +822,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/19/log-anaysis/" itemprop="url">
-                  浅谈日志的采集与分析
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/19/log-anaysis/" itemprop="url">浅谈日志的采集与分析</a></h1>
         
 
         <div class="post-meta">
@@ -897,16 +849,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/19/log-anaysis/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/19/log-anaysis/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -922,7 +864,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -931,27 +875,54 @@
       
         
           
-          大规模信息系统中，日志的处理其实是一个非常基础又重要的部分。对于日志Log文件的采集，一般都是分布式的集群：一方面单一的采集节点会造成流量的拥堵，另一方面，大量日志的处理与存放对于单节点来说压力巨大，这也是分布式系统常需考虑的方面。 采集的另一个重点是增量模式，对于实时系统来说，需要进行类似于流处理
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/08/19/log-anaysis/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>大规模信息系统中，日志的处理其实是一个非常基础又重要的部分。对于日志Log文件的采集，一般都是分布式的集群：一方面单一的采集节点会造成流量的拥堵，另一方面，大量日志的处理与存放对于单节点来说压力巨大，这也是分布式系统常需考虑的方面。 采集的另一个重点是增量模式，对于实时系统来说，需要进行类似于流处理(Stream)的增量实时采集(类似于Flume工具的一种实现模式)；当然，采集并不是目的，只是为分析打基础的第一步——采集后实时处理，以及处理之后的实时分析参考运用才是重点。 日志文件通常是非结构化的文本，常见的一般是JSON，XML等等。很明显，非结构化的文件中包含了可以结构化出来的信息(总之就是解析啦)，因此，对于日志的存储有几种方案： </p>
+<ul>
+<li>使用mongoDB数据库进行存储</li>
+<li>使用Hadoop+Hive+HBase进行存储</li>
+</ul>
+<p>2种方案差异不是很大，当然还有很多类似的NoSQL数据库，这里暂时不表。 对于mongoDB来说： </p>
+<ul>
+<li>很大程度的保留了SQL的一些友好的特性(查询，特性)</li>
+<li>Master/Slave复制机制(支持自动错误恢复吗，使用sets copy)</li>
+<li>内建的分片机制</li>
+<li>支持Javascript表达式查询</li>
+<li>性能相对更好(关注性能多于功能)</li>
+<li>总体上讲，适用于有性能需求的场合，希望使用MySQL或者PostgreSQL但本身预定义分隔符无法满足要求的场合</li>
+</ul>
+<p>而对于HBase来说： </p>
+<ul>
+<li>支持数十亿行×上百万列(很诱人)</li>
+<li>脱胎于Hadoop项目，采用分布式架构MapReduce</li>
+<li>对实时查询进行优化</li>
+<li>对配置改变和小升级都会重新回滚</li>
+<li>没有单点故障</li>
+<li>良好的随机访问性能(堪比MySQL)</li>
+<li>总体上说，适用于BigTable和需要对大数据进行随机、实时访问的场合</li>
+</ul>
+<p>言归正传，存储选好之后，接下来就是对日志文件进行实时的解析与入库。 这里的难点是：需要开发对于不同格式的日志的解析规则的适配器，这里也有2种方案： </p>
+<ul>
+<li>对所有终端报回的日志做统一的规范，在解析端只需要简单的解析重要与次要，分开即可，在实时的情况下节约时间与流量成本，这样方便分析，也更加统一。</li>
+<li>使用正则表达式在存储之前对日志进行清洗处理，这样稍被动，但处理之后的Log更加有利于查询，容易提升未来查询的速度。</li>
+</ul>
+<p>这里我们采用了第一种方案，同时汲取方案2的有点，尝试一次性解决日志的解析存储问题。通过灵活的解析配置，动态的支持所有类型的日志文件(当然是合乎统一规范的)，同时还可以自定义相关的解析规则以满足临时查询和其他情况的需要。 </p>
+<p>对于任何日志文件，这里简单的举例，基本都可以采集发生的时间，日志类型，关键词，异常信息，状态信息和标志等等。假如在mongoDB中存储可以实现本身在数据存储层面的灵活水平扩展。 </p>
+<p>在对采集的日志进行处理并持久化存储入库后，接下来的工作就相当简单，即需要开发相应的日志查询和分析功能，可以根据时间段，日志类型，可以根据具体的异常编码，异常关键字内容等对日志信息进行快速的查询和定位。进一步的，可以根据系统的具体需求建立上层的数据报表平台，进行自动化的实时分析。 </p>
+<p>在ITIL里面我们经常看到一个功能即问题树和知识库，那么基于日志的分析和处理仍然可以采用该模式，对于关键的日志异常信息的处理，我们可以将实际的处理方法和结果信息直接登记入库，同时关键日常和处理方法建立对应的关联关系，那么这就不仅仅是一个日志采集分析功能，而是一个基于日志快速的解决问题的知识库。 </p>
+<p>要将该思路实现为一个产品，涉及到诸多的分布式，云计算相关技术的应用。这个选点可能比较小，但是却有实际支撑的业务场景，能够发挥我们说的在大规模分布式集群架构下的实时流处理，实时分析，半结构化数据库的使用等。任何云技术的使用都应该根据目标驱动的方式去思考问题，而不是为了技术而技术——驱动技术的，永远是商业需求；不懂商业，技术永远只是技术；不懂包装，数据就永远只是数据。 </p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -965,6 +936,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -977,7 +952,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/18/bonferroni-corretion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -996,16 +975,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/18/bonferroni-corretion/" itemprop="url">
-                  从Bonferroni Corretion说起
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/18/bonferroni-corretion/" itemprop="url">从Bonferroni Corretion说起</a></h1>
         
 
         <div class="post-meta">
@@ -1053,16 +1024,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/18/bonferroni-corretion/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/18/bonferroni-corretion/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1078,7 +1039,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1087,27 +1050,21 @@
       
         
           
-          从Bonferroni Corretion说起Mining of Massive Datasets一书中曾简要介绍了有关Bonferroni的知识。 关于Bonferroni。统计学上，为了解决多重比较(Multiple comparisons)的问题，我们使用在同一数据集(Same Dataset
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/08/18/bonferroni-corretion/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="从Bonferroni-Corretion说起"><a href="#从Bonferroni-Corretion说起" class="headerlink" title="从Bonferroni Corretion说起"></a>从Bonferroni Corretion说起</h1><p>Mining of Massive Datasets一书中曾简要介绍了有关Bonferroni的知识。 关于Bonferroni。统计学上，为了解决多重比较(Multiple comparisons)的问题，我们使用在同一数据集(Same Dataset)上检验多个独立假设的1/n方法，也即：将显著水平设置为仅检验一个假设时的1/n。之所以为每一次独立的假设加权，是因为在实际统计的过程中，我们无法预测巨大样本中出现的随机事件所占的百分比，更通俗的说法是：在同一数据集上进行的这种多重假设，若显著水平设为5%(normal)，那么每20个假设中就有一个可能纯粹由于随机概率的影响而达到显著。(Bonferroni/Olive Jean Dunn 1959&amp;1961) Bonferroni Corretion的应用又称为Bonferroni T Tests，是目前最为常用的事后鉴定方法之一，用于解决方差分析中反应变量的平均数差异。 这里反映了进行数据挖掘与分析时需要注意的很重要的一点——在对数据分析的过程中，需要理性看待假设，随机数据的结论很可能正与你心中的假设“巧合”，如果在这时对准等概率事件的判断失误，那么就将做出错误乃至更加危险的决策。 当然，选择合适的统计学方法在一定程度上避免了这些情况的发生。得出真实有用的建议与意见，是建立在对数据的整体把握上的。 </p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1121,6 +1078,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1133,7 +1094,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/17/flume_use/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1152,16 +1117,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/17/flume_use/" itemprop="url">
-                  Flume使用总结
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/17/flume_use/" itemprop="url">Flume使用总结</a></h1>
         
 
         <div class="post-meta">
@@ -1187,16 +1144,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/17/flume_use/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/17/flume_use/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1212,7 +1159,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1231,15 +1180,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1253,6 +1202,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1265,7 +1218,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/12/晚来风急/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1284,16 +1241,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/12/晚来风急/" itemprop="url">
-                  晚来风急
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/12/晚来风急/" itemprop="url">晚来风急</a></h1>
         
 
         <div class="post-meta">
@@ -1319,16 +1268,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/12/晚来风急/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/12/晚来风急/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1344,7 +1283,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1353,27 +1294,21 @@
       
         
           
-          观望了很久终于搞了这个独立博。 挣钱了啊！第一笔正式的薪酬，我就冲动了。不过自己觉得还是不贵（因为用的是新浪的域名服务，大家从跳转域名可以看出来），嗯，在天朝，很多人死在了备案这一步，准备走愤青路线可能不能…… 虽然迟，但是我肯定会非常勤劳的（平时在知识管理那边写的东西估计也会都搬过来），有句话怎么
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/08/12/晚来风急/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>观望了很久终于搞了这个独立博。 挣钱了啊！第一笔正式的薪酬，我就冲动了。不过自己觉得还是不贵（因为用的是新浪的域名服务，大家从跳转域名可以看出来），嗯，在天朝，很多人死在了备案这一步，准备走愤青路线可能不能…… 虽然迟，但是我肯定会非常勤劳的（平时在知识管理那边写的东西估计也会都搬过来），有句话怎么说的：目光聚集的地方，金钱比将追随——用在我这里，就是金钱消费的地方，精力必将跟进（这边由于流量的问题，我肯定不会发水文和转帖的，这个质量请诸君放心——说大了）。 周末，就说这么多，欢迎常来。 </p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1387,6 +1322,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1399,7 +1338,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/08/10/ambari-cluster-conf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1418,16 +1361,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2013/08/10/ambari-cluster-conf/" itemprop="url">
-                  Ambari集群监控配置
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2013/08/10/ambari-cluster-conf/" itemprop="url">Ambari集群监控配置</a></h1>
         
 
         <div class="post-meta">
@@ -1453,16 +1388,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/08/10/ambari-cluster-conf/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/10/ambari-cluster-conf/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1478,7 +1403,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1487,32 +1414,98 @@
       
         
           
-          Ambar1.检测依赖软件安装情况RHEL/CentOS v5Ambari Agent
-libffi 3.0.5-1.el5
-python26 2.6.``8``-``2``.el5
-python26-libs ``2.6``.``8``-``2``.el5
-Nagios Server
-nagios
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/08/10/ambari-cluster-conf/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="Ambar"><a href="#Ambar" class="headerlink" title="Ambar"></a>Ambar</h1><h2 id="1-检测依赖软件安装情况"><a href="#1-检测依赖软件安装情况" class="headerlink" title="1.检测依赖软件安装情况"></a>1.检测依赖软件安装情况</h2><h3 id="RHEL-CentOS-v5"><a href="#RHEL-CentOS-v5" class="headerlink" title="RHEL/CentOS v5"></a>RHEL/CentOS v5</h3><p><code>Ambari Agent</code></p>
+<p><code>libffi 3.0.5-1.el5</code></p>
+<p><code>python26 2.6.``8``-``2``.el5</code></p>
+<p><code>python26-libs ``2.6``.``8``-``2``.el5</code></p>
+<p><code>Nagios Server</code></p>
+<p><code>nagios ``3.2``.``3``-``2``.el5</code></p>
+<p><code>nagios-plugins ``1.4``.``15``-``2``.el5</code></p>
+<p><code>nagios-common ``2.12``-``10``.el5</code></p>
+<p><code>Ganglia Collector</code></p>
+<p><code>ganglia-gmetad ``3.2``.``0``-``99</code></p>
+<p><code>rrdtool ``1.4``.``5``-``1``.el5</code></p>
+<p><code>Ganglia Monitor</code></p>
+<p><code>ganglia-gmond ``3.2``.``0``-``99</code></p>
+<p><code>(将未安装的一并yum安装)</code></p>
+<h2 id="2-检查SELinux"><a href="#2-检查SELinux" class="headerlink" title="2.检查SELinux"></a>2.检查SELinux</h2><p><code>暂时关闭</code></p>
+<p><code>setenforce ``0</code></p>
+<p><code>永久关闭</code></p>
+<p><code>vi /etc/selinux/config</code></p>
+<p><code># This file controls the state of SELinux on the system.</code></p>
+<p><code># SELINUX= can take one of these three values:</code></p>
+<p><code># enforcing - SELinux security policy is enforced.</code></p>
+<p><code># permissive - SELinux prints warnings instead of enforcing.</code></p>
+<p><code># disabled - SELinux is fully disabled.</code></p>
+<p><code>SELINUX=disabled</code></p>
+<p><code># SELINUXTYPE= type of policy in use. Possible values are:</code></p>
+<p><code># targeted - Only targeted network daemons are ``protected``.</code></p>
+<p><code># strict - Full SELinux protection.</code></p>
+<p><code>SELINUXTYPE=targeted</code></p>
+<h2 id="3-关闭防火墙"><a href="#3-关闭防火墙" class="headerlink" title="3.关闭防火墙"></a>3.关闭防火墙</h2><p><code>chkconfig iptables off</code></p>
+<p><code>/etc/init.d/iptables stop</code></p>
+<h2 id="4-关闭PackageKit"><a href="#4-关闭PackageKit" class="headerlink" title="4.关闭PackageKit"></a>4.关闭PackageKit</h2><p><code>vim /etc/yum/pluginconf.d/refresh-packagekit.conf</code></p>
+<p><code>enable=``0</code></p>
+<h2 id="5-检查umask值"><a href="#5-检查umask值" class="headerlink" title="5.检查umask值"></a>5.检查umask值</h2><p><code>umask</code></p>
+<p><code>022``(``0022``)</code></p>
+<h1 id="二-安装"><a href="#二-安装" class="headerlink" title="二. 安装"></a>二. 安装</h1><h2 id="1-setup-bits"><a href="#1-setup-bits" class="headerlink" title="1.setup bits"></a>1.setup bits</h2><p><code>yum install epel-release</code></p>
+<p><code>yum repolist</code></p>
+<p><code>(保证执行后列表中出现以下项目)</code></p>
+<p><code>repo id repo name status</code></p>
+<p><code>HDP-UTILS-``1.1``.``0.15</code> <code>Hortonworks Data Platform Utils Version - HDP-UTILS-``1.1``.``0.15</code> <code>52</code></p>
+<p><code>Updates-ambari-``1``.x ambari-``1``.x - Updates ``35</code></p>
+<p><code>ambari-``1``.x Ambari ``1``.x ``5</code></p>
+<p><code>epel Extra Packages ``for</code> <code>Enterprise Linux ``5</code> <code>\- x86_64 ``7``,``397</code></p>
+<p><code>yum install ambari-server</code></p>
+<h2 id="2-set-up-the-Server"><a href="#2-set-up-the-Server" class="headerlink" title="2.set up the Server"></a>2.set up the Server</h2><p><code>ambari-server setup</code></p>
+<p><code>过程中会出现询问PostgreSQL数据库(Ambari默认DB)的用户名密码</code></p>
+<p><code>n ``//使用默认 ambari-server/bigdata</code></p>
+<p><code>y ``//使用自己指定的</code></p>
+<p><code> </code></p>
+<p><code>#成功配置显示的内容</code></p>
+<p><code>ambari-server setup</code></p>
+<p><code>Using python /usr/bin/python2.``6</code></p>
+<p><code>Initializing ...</code></p>
+<p><code>Setup ambari-server</code></p>
+<p><code>Checking SELinux...</code></p>
+<p><code>SELinux status is ``&#39;disabled&#39;</code></p>
+<p><code>Checking iptables...</code></p>
+<p><code>iptables is disabled now</code></p>
+<p><code>Checking JDK...</code></p>
+<p><code>Completing setup...</code></p>
+<p><code>Configuring database...</code></p>
+<p><code>Enter advanced database configuration [y/n] (n)?</code></p>
+<p><code>Default properties detected. Using built-in database.</code></p>
+<p><code>Checking PostgreSQL...</code></p>
+<p><code>Running initdb: This may take upto a minute.</code></p>
+<p><code>About to start PostgreSQL</code></p>
+<p><code>Configuring database...</code></p>
+<p><code>Configuring PostgreSQL...</code></p>
+<p><code>Restarting PostgreSQL</code></p>
+<p><code>Ambari Server ``&#39;setup&#39;</code> <code>finished successfully</code></p>
+<h2 id="3-start-amp-login"><a href="#3-start-amp-login" class="headerlink" title="3.start&amp;login"></a>3.start&amp;login</h2><p><code>#成功启动显示的内容</code></p>
+<p><code>ambari-server start</code></p>
+<p><code>Using python /usr/bin/python2.``6</code></p>
+<p><code>Starting ambari-server</code></p>
+<p><code>Checking iptables...</code></p>
+<p><code>iptables is disabled now</code></p>
+<p><code>Running server: /usr/jdk64/jdk1.``6``.0_31/bin/java -server -XX:NewRatio=``3</code> <code>-XX:+UseConcMarkSweepGC</code></p>
+<p><code>-XX:-UseGCOverheadLimit -XX:CMSInitiatingOccupancyFraction=``60</code> <code>-Xms512m -Xmx2048m -cp</code></p>
+<p><code>/etc/ambari-server/conf:/usr/lib/ambari-server/*:/usr/kerberos/sbin:/usr/local/hadoop/hive/bin:/usr/local/jdk1.``6``.0_45/bin:</code></p>
+
+          
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1526,6 +1519,10 @@ nagios
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1538,7 +1535,7 @@ nagios
   </nav>
 
 
-          
+
           </div>
           
 
@@ -1558,6 +1555,7 @@ nagios
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -1575,10 +1573,10 @@ nagios
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -1586,8 +1584,10 @@ nagios
           
 
           
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1595,8 +1595,10 @@ nagios
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1608,44 +1610,6 @@ nagios
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
           
         </div>
 
@@ -1682,10 +1646,10 @@ nagios
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heartbeat"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1698,7 +1662,7 @@ nagios
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -1715,7 +1679,7 @@ nagios
         
       </div>
     
-    
+
   </div>
 
   
@@ -1735,6 +1699,14 @@ nagios
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -1761,48 +1733,31 @@ nagios
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"chentaonight"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
   
 
 
@@ -1812,13 +1767,18 @@ nagios
 
 
 
+  
+
 
 
 
 
 
   
-  
+
+
+
+
 
   
 
@@ -1828,6 +1788,7 @@ nagios
 
   
 
+  
 
   
 

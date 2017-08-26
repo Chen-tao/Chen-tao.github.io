@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -68,19 +75,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
-
-
-
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/chentao.ico?v=5.1.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -110,13 +117,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'CT'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -136,38 +144,32 @@
 
 
 
-  <title>
+  <title> | Chen-Tao</title>
   
 
-  
-     | Chen-Tao
-  
-</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,18 +215,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -234,21 +226,11 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -272,7 +254,11 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
 
 	<h1 class="post-title" itemprop="name headline"></h1>
 
@@ -280,9 +266,13 @@
 
 </header>
 
-    
-    
-      <p>HTTP 是一个客户端终端（用户）和服务器端（网站）请求和应答的标准。通过使用Web浏览器、网络爬虫或者其它的工具，客户端发起一个HTTP请求到服务器上指定端口（默认端口为80），我们称这个客户端为用户代理程序（user agent）。应答的服务器上存储着一些资源，比如HTML文件和图像，我们称这个应答服务器为源服务器（origin server）。在用户代理和源服务器中间可能存在多个“中间层”，比如代理服务器、网关或者隧道（tunnel）。</p>
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <p>HTTP 是一个客户端终端（用户）和服务器端（网站）请求和应答的标准。通过使用Web浏览器、网络爬虫或者其它的工具，客户端发起一个HTTP请求到服务器上指定端口（默认端口为80），我们称这个客户端为用户代理程序（user agent）。应答的服务器上存储着一些资源，比如HTML文件和图像，我们称这个应答服务器为源服务器（origin server）。在用户代理和源服务器中间可能存在多个“中间层”，比如代理服务器、网关或者隧道（tunnel）。</p>
 <p>HTTP协议中，并没有规定它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输，因此，任何能够提供这种保证的协议都可以被其使用，在TCP/IP协议族使用TCP作为其传输层。</p>
 <p>HTTP是一个应用层协议，主要用于Web开发，通常由HTTP客户端发起一个请求，创建一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态，比如”HTTP/1.1 200 OK”，以及返回的内容，如请求的文件、错误消息、或者其它信息。</p>
 <p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Network_HTTP_1.png" alt=""></p>
@@ -474,20 +464,24 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
 <p>代理服务器和抓包工具（比如Fiddler）都能看到http request中的数据。如果我们发送的request中有敏感数据，比如用户名，密码，信用卡号码，就会被代理服务器看到。所以我们一般都是用HTTPS来加密Http request。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.voidcn.com/blog/huangjianxiang1875/article/p-1596378.html" target="_blank" rel="external">深入理解HTTP协议（二）——协议详解篇</a><br><a href="http://www.voidcn.com/blog/huangjianxiang1875/article/p-1596379.html" target="_blank" rel="external">深入理解HTTP协议（三）——深入了解篇</a><br><a href="https://www.mnot.net/blog/2014/06/07/rfc2616_is_dead" target="_blank" rel="external">RFC2616 is Dead</a><br><a href="http://www.cnblogs.com/TankXiao/archive/2012/11/28/2793365.html" target="_blank" rel="external">HTTP协议 (四) 缓存</a><br><a href="http://bubkoo.com/2014/04/21/http-cookies-explained/" target="_blank" rel="external">HTTP cookies 详解</a><br><a href="http://www.cnblogs.com/fish-li/archive/2011/07/03/2096903.html" target="_blank" rel="external">细说 Cookie</a><br><a href="http://blog.csdn.net/forgotaboutgirl/article/details/6936982" target="_blank" rel="external">HTTP/1.1与HTTP/1.0的区别</a><br><a href="http://web.jobbole.com/82997/" target="_blank" rel="external">浏览器缓存机制浅析</a><br><a href="http://oohcode.com/2015/05/28/http-cache/" target="_blank" rel="external">HTTP缓存机制</a><br><a href="http://www.bkjia.com/headlines/491296.html" target="_blank" rel="external">Http状态码查询，各种返回码的详解</a><br><a href="http://www.bkjia.com/headlines/491855.html" target="_blank" rel="external">HTTP协议详解(五) http协议代理</a>  </p>
 
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
     
   </div>
 
-          
+
           </div>
           
 
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="CS_Offer/More/Network_HTTP.html"
-           data-title="" data-url="http://chen-tao.github.io/CS_Offer/More/Network_HTTP.html">
-      </div>
     
   </div>
 
@@ -505,13 +499,23 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
@@ -522,10 +526,10 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -533,8 +537,10 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
           
 
           
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -542,8 +548,10 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -555,44 +563,6 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
           
         </div>
 
@@ -614,6 +584,22 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-协议基础"><span class="nav-number">1.</span> <span class="nav-text">HTTP 协议基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-请求"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP 请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求行"><span class="nav-number">1.1.1.</span> <span class="nav-text">请求行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息报头"><span class="nav-number">1.1.2.</span> <span class="nav-text">消息报头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求正文"><span class="nav-number">1.1.3.</span> <span class="nav-text">请求正文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-响应"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP 响应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态行"><span class="nav-number">1.2.1.</span> <span class="nav-text">状态行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息报头-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">消息报头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应正文"><span class="nav-number">1.2.3.</span> <span class="nav-text">响应正文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP协议之Get和Post"><span class="nav-number">1.3.</span> <span class="nav-text">HTTP协议之Get和Post</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http不同版本区别"><span class="nav-number">1.4.</span> <span class="nav-text">Http不同版本区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-高级内容"><span class="nav-number">2.</span> <span class="nav-text">HTTP 高级内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie与Session"><span class="nav-number">2.1.</span> <span class="nav-text">Cookie与Session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie-机制"><span class="nav-number">2.1.1.</span> <span class="nav-text">Cookie 机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session-机制"><span class="nav-number">2.1.2.</span> <span class="nav-text">Session 机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-缓存"><span class="nav-number">2.2.</span> <span class="nav-text">Web 缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-代理"><span class="nav-number">2.3.</span> <span class="nav-text">HTTP 代理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -629,10 +615,10 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heartbeat"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -645,7 +631,7 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -662,7 +648,7 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
         
       </div>
     
-    
+
   </div>
 
   
@@ -682,6 +668,14 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -708,48 +702,31 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"chentaonight"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
   
 
 
@@ -759,13 +736,18 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
 
 
 
+  
+
 
 
 
 
 
   
-  
+
+
+
+
 
   
 
@@ -775,6 +757,7 @@ POST http://192.168.2.217:8080/index.jsp HTTP/1.1
 
   
 
+  
 
   
 

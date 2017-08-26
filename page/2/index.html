@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -68,19 +75,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
-
-
-
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/chentao.ico?v=5.1.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -104,13 +111,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'CT'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -130,11 +138,7 @@
 
 
 
-  <title> Chen-Tao </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>Chen-Tao</title>
   
 
 
@@ -149,13 +153,17 @@
 
 
 
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -203,18 +211,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,21 +222,11 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -270,7 +258,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/10/jvm-param-rcmd-2016/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,16 +281,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/01/10/jvm-param-rcmd-2016/" itemprop="url">
-                  关键业务系统jvm参数推荐
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/01/10/jvm-param-rcmd-2016/" itemprop="url">关键业务系统jvm参数推荐</a></h1>
         
 
         <div class="post-meta">
@@ -346,16 +330,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/10/jvm-param-rcmd-2016/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/10/jvm-param-rcmd-2016/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -371,7 +345,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -390,15 +366,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -412,6 +388,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -424,7 +404,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/09/jit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -443,16 +427,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2017/01/09/jit/" itemprop="url">
-                  JIT编译器解读
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/01/09/jit/" itemprop="url">JIT编译器解读</a></h1>
         
 
         <div class="post-meta">
@@ -500,16 +476,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/09/jit/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/09/jit/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -525,7 +491,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -544,15 +512,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -566,6 +534,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -578,7 +550,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/12/30/about-java-singleton/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -597,16 +573,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/12/30/about-java-singleton/" itemprop="url">
-                  java单例模式与指令重排
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/12/30/about-java-singleton/" itemprop="url">java单例模式与指令重排</a></h1>
         
 
         <div class="post-meta">
@@ -632,16 +600,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/30/about-java-singleton/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/30/about-java-singleton/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -657,7 +615,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -678,15 +638,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -700,6 +660,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -712,7 +676,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/12/23/best-tips-of-vim/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -731,16 +699,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/12/23/best-tips-of-vim/" itemprop="url">
-                  vim奇技淫巧--向大师冲刺
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/12/23/best-tips-of-vim/" itemprop="url">vim奇技淫巧--向大师冲刺</a></h1>
         
 
         <div class="post-meta">
@@ -788,16 +748,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/23/best-tips-of-vim/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/23/best-tips-of-vim/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -813,7 +763,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -834,15 +786,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -856,6 +808,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -868,7 +824,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/12/21/useful-coding-experience/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -887,16 +847,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/12/21/useful-coding-experience/" itemprop="url">
-                  老鸟经验谈
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/12/21/useful-coding-experience/" itemprop="url">老鸟经验谈</a></h1>
         
 
         <div class="post-meta">
@@ -922,16 +874,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/21/useful-coding-experience/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/useful-coding-experience/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -947,7 +889,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -966,15 +910,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -988,6 +932,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1000,7 +948,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/12/01/linux-system-oom/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1019,16 +971,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/12/01/linux-system-oom/" itemprop="url">
-                  理解和配置Linux OOM killer
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/12/01/linux-system-oom/" itemprop="url">理解和配置Linux OOM killer</a></h1>
         
 
         <div class="post-meta">
@@ -1076,16 +1020,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/01/linux-system-oom/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/linux-system-oom/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1101,7 +1035,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1120,15 +1056,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1142,6 +1078,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1154,7 +1094,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/11/30/some-useful-shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1173,16 +1117,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/11/30/some-useful-shell/" itemprop="url">
-                  常用命令集
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/11/30/some-useful-shell/" itemprop="url">常用命令集</a></h1>
         
 
         <div class="post-meta">
@@ -1230,16 +1166,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/30/some-useful-shell/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/30/some-useful-shell/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1255,7 +1181,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1274,15 +1202,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1296,6 +1224,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1308,7 +1240,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/05/15/nihongo-history-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1327,16 +1263,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/05/15/nihongo-history-note/" itemprop="url">
-                  日本历史笔记
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/05/15/nihongo-history-note/" itemprop="url">日本历史笔记</a></h1>
         
 
         <div class="post-meta">
@@ -1362,16 +1290,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/05/15/nihongo-history-note/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/nihongo-history-note/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1387,7 +1305,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1406,15 +1326,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1428,6 +1348,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1440,7 +1364,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/01/30/some-feeling-about-programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1459,16 +1387,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2016/01/30/some-feeling-about-programming/" itemprop="url">
-                  把程序员修炼之道读薄
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2016/01/30/some-feeling-about-programming/" itemprop="url">把程序员修炼之道读薄</a></h1>
         
 
         <div class="post-meta">
@@ -1494,16 +1414,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/01/30/some-feeling-about-programming/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/30/some-feeling-about-programming/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1519,7 +1429,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1540,15 +1452,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1562,6 +1474,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1574,7 +1490,11 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1593,16 +1513,8 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-            
-            
-              
                 
-                <a class="post-title-link" href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/" itemprop="url">
-                  Check and Install Mac OS X Software Updates from the Terminal
-                </a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/" itemprop="url">Check and Install Mac OS X Software Updates from the Terminal</a></h1>
         
 
         <div class="post-meta">
@@ -1628,16 +1540,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1653,7 +1555,9 @@
       </header>
     
 
-
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1662,29 +1566,29 @@
       
         
           
+            <a id="more"></a>
+<h3 id="List-All-Available-Mac-Software-Updates-from-Command-Line"><a href="#List-All-Available-Mac-Software-Updates-from-Command-Line" class="headerlink" title="List All Available Mac Software Updates from Command Line"></a>List All Available Mac Software Updates from Command Line</h3><p>To get a list of available software updates, type the following command:</p>
+<figure class="highlight plain"><figcaption><span>-l```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You will see a list of available updates.</div><div class="line"></div><div class="line">### Installing All Available Updates from Terminal</div><div class="line"></div><div class="line">You can then install all available software updates with the following command:</div><div class="line"></div><div class="line">```sudo softwareupdate -iva</div></pre></td></tr></table></figure>
+<p>The use of sudo is required to get superuser privileges to actually install the updates.</p>
+<h3 id="Install-Recommended-Updates-Only-from-Terminal-in-OS-X"><a href="#Install-Recommended-Updates-Only-from-Terminal-in-OS-X" class="headerlink" title="Install Recommended Updates Only from Terminal in OS X"></a>Install Recommended Updates Only from Terminal in OS X</h3><p>You can also install only the recommended updates with:</p>
+<figure class="highlight plain"><figcaption><span>softwareupdate -irv```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### Installing &amp; Ignoring Specific Software Updates to Mac from Terminal of OS X</div><div class="line">Or you can just install specific software updates by specifying the shorthand package name from the previous list, like so:</div><div class="line"></div><div class="line">```sudo softwareupdate -i iPhoneConfigurationUtility-3.2</div></pre></td></tr></table></figure>
+<p>If there are any updates you want to ignore, you can do so with the –ignore flag, for example:</p>
+<figure class="highlight plain"><figcaption><span>softwareupdate --ignore iWeb3.0.2-3.0.2```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">If you want to see all the available command line shortcuts for Software Update, just type:</div><div class="line"></div><div class="line">```softwareupdate -h</div></pre></td></tr></table></figure>
+<p>This is really useful for remotely updating Macs, setting up automated updates via a bash script, or if you just want to geek out.<br>This tool is available in all versions of OS X and therefore it can be used to update just about any Mac with necessary software updates. This is one way to avoid using the Mac App Store to update a Mac if that is necessary for whatever reason.</p>
+
           
-List All Available Mac Software Updates from Command LineTo get a list of available software updates, type the following command:
--l```12345678You wi
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
+    
 
     <footer class="post-footer">
       
@@ -1698,6 +1602,10 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1710,7 +1618,7 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
   </nav>
 
 
-          
+
           </div>
           
 
@@ -1730,6 +1638,7 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
@@ -1747,10 +1656,10 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -1758,8 +1667,10 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
           
 
           
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1767,8 +1678,10 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1780,44 +1693,6 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
           
         </div>
 
@@ -1854,10 +1729,10 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heartbeat"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1870,7 +1745,7 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -1887,7 +1762,7 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
         
       </div>
     
-    
+
   </div>
 
   
@@ -1907,6 +1782,14 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -1933,48 +1816,31 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"chentaonight"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
   
 
 
@@ -1984,13 +1850,18 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
 
 
 
+  
+
 
 
 
 
 
   
-  
+
+
+
+
 
   
 
@@ -2000,6 +1871,7 @@ List All Available Mac Software Updates from Command LineTo get a list of availa
 
   
 
+  
 
   
 

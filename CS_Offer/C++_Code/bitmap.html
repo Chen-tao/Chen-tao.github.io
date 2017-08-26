@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -68,19 +75,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Engineer, Blogger, Creator, Runner, Java, ML, DM, JVM, Web, 旅行, 电影, 歌手, 摄影" />
-
-
-
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/chentao.ico?v=5.1.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
 
@@ -105,13 +112,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
+    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'CT'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -131,38 +139,32 @@
 
 
 
-  <title>
+  <title> | Chen-Tao</title>
   
 
-  
-     | Chen-Tao
-  
-</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -208,18 +210,8 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -229,21 +221,11 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -267,7 +249,11 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
 
 	<h1 class="post-title" itemprop="name headline"></h1>
 
@@ -275,29 +261,37 @@
 
 </header>
 
-    
-    
-      <h1 id="include"><a href="#include" class="headerlink" title="include \"></a>include \<stdio.h\></stdio.h\></h1><h1 id="define-BITSPERWORD-32"><a href="#define-BITSPERWORD-32" class="headerlink" title="define BITSPERWORD 32"></a>define BITSPERWORD 32</h1><h1 id="define-SHIFT-5"><a href="#define-SHIFT-5" class="headerlink" title="define SHIFT 5"></a>define SHIFT 5</h1><h1 id="define-MASK-0x1F"><a href="#define-MASK-0x1F" class="headerlink" title="define MASK 0x1F"></a>define MASK 0x1F</h1><h1 id="define-N-10000000"><a href="#define-N-10000000" class="headerlink" title="define N 10000000"></a>define N 10000000</h1><p>int a[1 + N/BITSPERWORD];//申请内存的大小</p>
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h1 id="include"><a href="#include" class="headerlink" title="include \"></a>include \<stdio.h\></stdio.h\></h1><h1 id="define-BITSPERWORD-32"><a href="#define-BITSPERWORD-32" class="headerlink" title="define BITSPERWORD 32"></a>define BITSPERWORD 32</h1><h1 id="define-SHIFT-5"><a href="#define-SHIFT-5" class="headerlink" title="define SHIFT 5"></a>define SHIFT 5</h1><h1 id="define-MASK-0x1F"><a href="#define-MASK-0x1F" class="headerlink" title="define MASK 0x1F"></a>define MASK 0x1F</h1><h1 id="define-N-10000000"><a href="#define-N-10000000" class="headerlink" title="define N 10000000"></a>define N 10000000</h1><p>int a[1 + N/BITSPERWORD];//申请内存的大小</p>
 <p>//set 设置所在的bit位为1<br>//clr 初始化所有的bit位为0<br>//test 测试所在的bit为是否为1</p>
 <p>void set(int i) {        a[i>>SHIFT] |=  (1\&lt;\&lt;(i &amp; MASK)); }<br>void clr(int i) {        a[i>>SHIFT] &amp;= ~(1\&lt;\&lt;(i &amp; MASK)); }<br>int  test(int i){ return a[i>>SHIFT] &amp;   (1\&lt;\&lt;(i &amp; MASK)); }</p>
 <p>int main()<br>{   int i;<br>    for (i = 0; i &lt; N; i++)<br>        clr(i);<br>    while (scanf(“%d”, &amp;i) != EOF)<br>        set(i);<br>    for (i = 0; i &lt; N; i++)<br>        if (test(i))<br>            printf(“%d\n”, i);</p>
 <pre><code>return 0;
 </code></pre><p>}</p>
 
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
     
   </div>
 
-          
+
           </div>
           
 
 
           
   <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="CS_Offer/C++_Code/bitmap.html"
-           data-title="" data-url="http://chen-tao.github.io/CS_Offer/C++_Code/bitmap.html">
-      </div>
     
   </div>
 
@@ -315,13 +309,23 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
@@ -332,10 +336,10 @@
           
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/archives/">
                 <span class="site-state-item-count">179</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -343,8 +347,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -352,8 +358,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -365,44 +373,6 @@
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
-                  
-                    <i class="fa fa-fw fa-book"></i>
-                  
-                  知乎
-                </a>
-              </span>
-            
           
         </div>
 
@@ -424,6 +394,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#include"><span class="nav-number">1.</span> <span class="nav-text">include \</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#define-BITSPERWORD-32"><span class="nav-number">2.</span> <span class="nav-text">define BITSPERWORD 32</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#define-SHIFT-5"><span class="nav-number">3.</span> <span class="nav-text">define SHIFT 5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#define-MASK-0x1F"><span class="nav-number">4.</span> <span class="nav-text">define MASK 0x1F</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#define-N-10000000"><span class="nav-number">5.</span> <span class="nav-text">define N 10000000</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -439,10 +425,10 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2013 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heartbeat"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -455,7 +441,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -472,7 +458,7 @@
         
       </div>
     
-    
+
   </div>
 
   
@@ -492,6 +478,14 @@
 
 
   
+
+
+
+
+
+
+
+
 
 
 
@@ -518,48 +512,31 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"chentaonight"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
   
 
 
@@ -569,13 +546,18 @@
 
 
 
+  
+
 
 
 
 
 
   
-  
+
+
+
+
 
   
 
@@ -585,6 +567,7 @@
 
   
 
+  
 
   
 
