@@ -87,20 +87,14 @@
 
 
 
-<meta name="description" content="针对三次握手、流量控制（接收窗口）、慢启动（cwnd，拥塞窗口）、队首阻塞等方面看下TCP对HTTP的影响
-
-这篇文章基本是对《Web性能权威指南》第一章和第二章的读书笔记，另外加一些扩展内容,这本书确实赞，推荐
-高带宽和低延迟所有网络通信都有决定性影响的两个方面:延迟和带宽
-延迟 分组从信息源发送到目的地所需的时间。带宽 逻辑或物理通信路径最大的吞吐量延迟的因素传播延迟 消息从发送端到接收端需">
+<meta name="description" content="针对三次握手、流量控制（接收窗口）、慢启动（cwnd，拥塞窗口）、队首阻塞等方面看下TCP对HTTP的影响  这篇文章基本是对《Web性能权威指南》第一章和第二章的读书笔记，另外加一些扩展内容,这本书确实赞，推荐 高带宽和低延迟所有网络通信都有决定性影响的两个方面:延迟和带宽 延迟 分组从信息源发送到目的地所需的时间。带宽 逻辑或物理通信路径最大的吞吐量延迟的因素传播延迟 消息从发送端到接收端需">
+<meta name="keywords" content="http,tcp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP请求的TCP瓶颈分析">
 <meta property="og:url" content="http://chen-tao.github.io/2015/06/27/httptcp/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="针对三次握手、流量控制（接收窗口）、慢启动（cwnd，拥塞窗口）、队首阻塞等方面看下TCP对HTTP的影响
-
-这篇文章基本是对《Web性能权威指南》第一章和第二章的读书笔记，另外加一些扩展内容,这本书确实赞，推荐
-高带宽和低延迟所有网络通信都有决定性影响的两个方面:延迟和带宽
-延迟 分组从信息源发送到目的地所需的时间。带宽 逻辑或物理通信路径最大的吞吐量延迟的因素传播延迟 消息从发送端到接收端需">
+<meta property="og:description" content="针对三次握手、流量控制（接收窗口）、慢启动（cwnd，拥塞窗口）、队首阻塞等方面看下TCP对HTTP的影响  这篇文章基本是对《Web性能权威指南》第一章和第二章的读书笔记，另外加一些扩展内容,这本书确实赞，推荐 高带宽和低延迟所有网络通信都有决定性影响的两个方面:延迟和带宽 延迟 分组从信息源发送到目的地所需的时间。带宽 逻辑或物理通信路径最大的吞吐量延迟的因素传播延迟 消息从发送端到接收端需">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xijc0.com1.z0.glb.clouddn.com/TCP-Stack.png">
 <meta property="og:image" content="http://7xijc0.com1.z0.glb.clouddn.com/HTTP-TCP1.png">
 <meta property="og:image" content="http://7xijc0.com1.z0.glb.clouddn.com/http-tcp2.png">
@@ -114,11 +108,7 @@
 <meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP请求的TCP瓶颈分析">
-<meta name="twitter:description" content="针对三次握手、流量控制（接收窗口）、慢启动（cwnd，拥塞窗口）、队首阻塞等方面看下TCP对HTTP的影响
-
-这篇文章基本是对《Web性能权威指南》第一章和第二章的读书笔记，另外加一些扩展内容,这本书确实赞，推荐
-高带宽和低延迟所有网络通信都有决定性影响的两个方面:延迟和带宽
-延迟 分组从信息源发送到目的地所需的时间。带宽 逻辑或物理通信路径最大的吞吐量延迟的因素传播延迟 消息从发送端到接收端需">
+<meta name="twitter:description" content="针对三次握手、流量控制（接收窗口）、慢启动（cwnd，拥塞窗口）、队首阻塞等方面看下TCP对HTTP的影响  这篇文章基本是对《Web性能权威指南》第一章和第二章的读书笔记，另外加一些扩展内容,这本书确实赞，推荐 高带宽和低延迟所有网络通信都有决定性影响的两个方面:延迟和带宽 延迟 分组从信息源发送到目的地所需的时间。带宽 逻辑或物理通信路径最大的吞吐量延迟的因素传播延迟 消息从发送端到接收端需">
 <meta name="twitter:image" content="http://7xijc0.com1.z0.glb.clouddn.com/TCP-Stack.png">
 
 
@@ -417,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/27/git-tips/" rel="next" title="简明 Git 命令速查表（中文版）">
-                <i class="fa fa-chevron-left"></i> 简明 Git 命令速查表（中文版）
+              <a href="/2015/06/27/nginx-location-conf-prority/" rel="next" title="nginx location在配置中的优先级">
+                <i class="fa fa-chevron-left"></i> nginx location在配置中的优先级
               </a>
             
           </div>

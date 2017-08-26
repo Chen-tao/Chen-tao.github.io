@@ -87,26 +87,14 @@
 
 
 
-<meta name="description" content="开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：
-
-
-
-
-
-强制要求JVM始终抛出含堆栈的错误(-XX:OmitStackTraceInFastThrow)
-问题描述：生产环境抛异常,但却没有将堆栈信息">
+<meta name="description" content="开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：      强制要求JVM始终抛出含堆栈的错误(-XX:OmitStackTraceInFastThrow) 问题描述：生产环境抛异常,但却没有将堆栈信息">
+<meta name="keywords" content="java,jvm,优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM调优–参数总结">
 <meta property="og:url" content="http://chen-tao.github.io/2014/09/12/jvm-params/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：
-
-
-
-
-
-强制要求JVM始终抛出含堆栈的错误(-XX:OmitStackTraceInFastThrow)
-问题描述：生产环境抛异常,但却没有将堆栈信息">
+<meta property="og:description" content="开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：      强制要求JVM始终抛出含堆栈的错误(-XX:OmitStackTraceInFastThrow) 问题描述：生产环境抛异常,但却没有将堆栈信息">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/jvmp1.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/jvmp2.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/jvmp3.jpg">
@@ -115,14 +103,7 @@
 <meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM调优–参数总结">
-<meta name="twitter:description" content="开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：
-
-
-
-
-
-强制要求JVM始终抛出含堆栈的错误(-XX:OmitStackTraceInFastThrow)
-问题描述：生产环境抛异常,但却没有将堆栈信息">
+<meta name="twitter:description" content="开发中，内存泄露、线程锁、GC调优这些东西处理起来都很痛苦。这三个邪恶的小伙伴带来的性能问题是最难复现的，这也使得修复这些问题有如噩梦一般。JVM调优是一项这里根据LinkedIn的工程师的推荐，解读一下进行GC调优改善吞吐量和延迟用的这组参数：      强制要求JVM始终抛出含堆栈的错误(-XX:OmitStackTraceInFastThrow) 问题描述：生产环境抛异常,但却没有将堆栈信息">
 <meta name="twitter:image" content="http://chentaohome.qiniudn.com/jvmp1.jpg">
 
 

@@ -87,23 +87,19 @@
 
 
 
-<meta name="description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。
-用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。
-写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
+<meta name="description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。 用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。 写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
+<meta name="keywords" content="java,netty">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Netty权威指南》里没有说到的Decoder编写细节">
 <meta property="og:url" content="http://chen-tao.github.io/2015/10/03/nettydecoder/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。
-用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。
-写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
+<meta property="og:description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。 用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。 写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://files.blogcn.com/wp06/M00/00/B6/CpCCFVXOolgAAAAAAABJ-m_ZJA0544.png">
 <meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Netty权威指南》里没有说到的Decoder编写细节">
-<meta name="twitter:description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。
-用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。
-写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
+<meta name="twitter:description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。 用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。 写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
 <meta name="twitter:image" content="http://files.blogcn.com/wp06/M00/00/B6/CpCCFVXOolgAAAAAAABJ-m_ZJA0544.png">
 
 

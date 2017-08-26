@@ -93,6 +93,7 @@
 <meta property="og:url" content="http://chen-tao.github.io/page/8/index.html">
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chen-Tao">
 <meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
@@ -270,7 +271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/06/27/nginx-location-conf-prority/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/06/27/git-tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -292,8 +293,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/06/27/nginx-location-conf-prority/" itemprop="url">
-                  nginx location在配置中的优先级
+                <a class="post-title-link" href="/2015/06/27/git-tips/" itemprop="url">
+                  简明 Git 命令速查表（中文版）
                 </a>
               
             
@@ -328,8 +329,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/06/27/nginx-location-conf-prority/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/27/nginx-location-conf-prority/" itemprop="commentCount"></span>
+                <a href="/2015/06/27/git-tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/27/git-tips/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,13 +357,10 @@
 
       
         
-          
-          location表达式类型
-~     表示执行一个正则匹配，区分大小写~    表示执行一个正则匹配，不区分大小写^~    表示普通字符匹配。使用前缀匹配。如果匹配成功，则不再匹配其他location。=     进行普通字符精确匹配。也就是完全匹配。@     &#8220;@&#8221; 
-          ...
+          Git Cheat Sheet
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/06/27/nginx-location-conf-prority/#more" rel="contents">
+            <a class="btn" href="/2015/06/27/git-tips/">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1538,7 +1536,7 @@ Limiting concurrent access to disk (this can kill performance du
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysql-too-many-connection-solve/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysqlwaiting-for-tables/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1560,8 +1558,8 @@ Limiting concurrent access to disk (this can kill performance du
             
               
                 
-                <a class="post-title-link" href="/2015/05/15/mysql-too-many-connection-solve/" itemprop="url">
-                  记一次 mysql 'too many connection' 
+                <a class="post-title-link" href="/2015/05/15/mysqlwaiting-for-tables/" itemprop="url">
+                  mysql中的Waiting for tables
                 </a>
               
             
@@ -1596,8 +1594,8 @@ Limiting concurrent access to disk (this can kill performance du
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/05/15/mysql-too-many-connection-solve/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/15/mysql-too-many-connection-solve/" itemprop="commentCount"></span>
+                <a href="/2015/05/15/mysqlwaiting-for-tables/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/15/mysqlwaiting-for-tables/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1625,17 +1623,11 @@ Limiting concurrent access to disk (this can kill performance du
       
         
           
-          早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。
-
-试图定位
- 连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题
-
-确认现场
- 使用netstat -
+          在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于Waiting for tables的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询阻塞了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/05/15/mysql-too-many-connection-solve/#more" rel="contents">
+            <a class="btn" href="/2015/05/15/mysqlwaiting-for-tables/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

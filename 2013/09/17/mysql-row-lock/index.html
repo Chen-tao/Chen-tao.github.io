@@ -88,11 +88,13 @@
 
 
 <meta name="description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。">
+<meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL锁定机制分析--行级锁定">
 <meta property="og:url" content="http://chen-tao.github.io/2013/09/17/mysql-row-lock/index.html">
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="上一节我们概述了MySQL的锁机制，讲到了MySQL锁定机制分析–表级锁定，今天我们来看一下行级锁定。 行级锁定不是MySQL本身自己实现的锁机制，而是其他引擎实现的，其中有InnoDB，NDB Cluster(MySQL分布式存储引擎)。由于锁定粒度最小，实现也相对复杂，每一种引擎实现的方式也不大相同，这里以使用最为广泛的InnoDB为例来介绍。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/create_test_table.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/session2_trans.jpg">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/deadlock.jpg">

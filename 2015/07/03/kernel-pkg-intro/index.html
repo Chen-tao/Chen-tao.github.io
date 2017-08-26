@@ -87,34 +87,18 @@
 
 
 
-<meta name="description" content="数据结构
-
-每个cpu都配有一个napi queue，用于放待处理的napi结构，napi结构里有对应的网卡、poll函数等重要信息（如果是非napi，每个cpu的这个napi queue里内置了2个东东：一个特殊的napi用于兼容napi处理，其含有一个特殊的poll函数；另外一个是input queue，用于存放收到的包）。
-
-硬中断处理
-
-当有包来时，收包的该网卡的对应硬中断（multiq">
+<meta name="description" content="数据结构  每个cpu都配有一个napi queue，用于放待处理的napi结构，napi结构里有对应的网卡、poll函数等重要信息（如果是非napi，每个cpu的这个napi queue里内置了2个东东：一个特殊的napi用于兼容napi处理，其含有一个特殊的poll函数；另外一个是input queue，用于存放收到的包）。  硬中断处理  当有包来时，收包的该网卡的对应硬中断（multiq">
+<meta name="keywords" content="linux,kernel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内核收包解析">
 <meta property="og:url" content="http://chen-tao.github.io/2015/07/03/kernel-pkg-intro/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="数据结构
-
-每个cpu都配有一个napi queue，用于放待处理的napi结构，napi结构里有对应的网卡、poll函数等重要信息（如果是非napi，每个cpu的这个napi queue里内置了2个东东：一个特殊的napi用于兼容napi处理，其含有一个特殊的poll函数；另外一个是input queue，用于存放收到的包）。
-
-硬中断处理
-
-当有包来时，收包的该网卡的对应硬中断（multiq">
+<meta property="og:description" content="数据结构  每个cpu都配有一个napi queue，用于放待处理的napi结构，napi结构里有对应的网卡、poll函数等重要信息（如果是非napi，每个cpu的这个napi queue里内置了2个东东：一个特殊的napi用于兼容napi处理，其含有一个特殊的poll函数；另外一个是input queue，用于存放收到的包）。  硬中断处理  当有包来时，收包的该网卡的对应硬中断（multiq">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内核收包解析">
-<meta name="twitter:description" content="数据结构
-
-每个cpu都配有一个napi queue，用于放待处理的napi结构，napi结构里有对应的网卡、poll函数等重要信息（如果是非napi，每个cpu的这个napi queue里内置了2个东东：一个特殊的napi用于兼容napi处理，其含有一个特殊的poll函数；另外一个是input queue，用于存放收到的包）。
-
-硬中断处理
-
-当有包来时，收包的该网卡的对应硬中断（multiq">
+<meta name="twitter:description" content="数据结构  每个cpu都配有一个napi queue，用于放待处理的napi结构，napi结构里有对应的网卡、poll函数等重要信息（如果是非napi，每个cpu的这个napi queue里内置了2个东东：一个特殊的napi用于兼容napi处理，其含有一个特殊的poll函数；另外一个是input queue，用于存放收到的包）。  硬中断处理  当有包来时，收包的该网卡的对应硬中断（multiq">
 
 
 

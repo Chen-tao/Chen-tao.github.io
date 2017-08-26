@@ -87,19 +87,18 @@
 
 
 
-<meta name="description" content="垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
-其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃">
+<meta name="description" content="垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。 其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃">
+<meta name="keywords" content="gc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="垃圾回收（GC）的三种基本方式">
 <meta property="og:url" content="http://chen-tao.github.io/2015/10/02/gc/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
-其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃">
+<meta property="og:description" content="垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。 其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="垃圾回收（GC）的三种基本方式">
-<meta name="twitter:description" content="垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
-其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃">
+<meta name="twitter:description" content="垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。 其实这三种方式也可以大体归为两类：跟踪回收，引用计数。美国IBM的沃森研究中心David F.Bacon等人发布的「垃">
 
 
 
@@ -421,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/02/kilim-work-way/" rel="next" title="Kilim工作原理">
-                <i class="fa fa-chevron-left"></i> Kilim工作原理
+              <a href="/2015/08/10/neil-gaiman-keynote-address-2012/" rel="next" title="Neil Gaiman: Keynote Address 2012">
+                <i class="fa fa-chevron-left"></i> Neil Gaiman: Keynote Address 2012
               </a>
             
           </div>
@@ -431,8 +430,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/03/6-mysql-useful-exp/" rel="prev" title="6个有用的MySQL语句">
-                6个有用的MySQL语句 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/02/el-cap-homebrew/" rel="prev" title="El Capitan & Homebrew">
+                El Capitan & Homebrew <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

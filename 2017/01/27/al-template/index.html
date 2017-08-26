@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法,BFS,递归,回溯,DFS," />
+  <meta name="keywords" content="算法,BFS,DFS,递归,回溯," />
 
 
 
@@ -87,19 +87,18 @@
 
 
 
-<meta name="description" content="LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯
-这里参考了一些网上写得很不错的文章，总结一下理解与模板">
+<meta name="description" content="LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯 这里参考了一些网上写得很不错的文章，总结一下理解与模板">
+<meta name="keywords" content="算法,BFS,DFS,递归,回溯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="递归，回溯，DFS，BFS的理解和模板">
 <meta property="og:url" content="http://chen-tao.github.io/2017/01/27/al-template/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯
-这里参考了一些网上写得很不错的文章，总结一下理解与模板">
+<meta property="og:description" content="LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯 这里参考了一些网上写得很不错的文章，总结一下理解与模板">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-13T08:43:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="递归，回溯，DFS，BFS的理解和模板">
-<meta name="twitter:description" content="LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯
-这里参考了一些网上写得很不错的文章，总结一下理解与模板">
+<meta name="twitter:description" content="LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯 这里参考了一些网上写得很不错的文章，总结一下理解与模板">
 
 
 
@@ -384,11 +383,11 @@
 <p>优点：结构简洁</p>
 <p>缺点：效率低，可能栈溢出</p>
 <p>递归的一般结构：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">if</span>(符合边界条件)</div><div class="line">    &#123;</div><div class="line">       <span class="comment">///////</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">     <span class="comment">//某种形式的调用</span></div><div class="line">     f();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">     <span class="keyword">if</span>(符合边界条件)</div><div class="line">    &#123;</div><div class="line">       <span class="comment">///////</span></div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">     <span class="comment">//某种形式的调用</span></div><div class="line">     f();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h2><p>回溯：递归的一种，或者说是通过递归这种代码结构来实现回溯这个目的。回溯法可以被认为是一个有过剪枝的DFS过程。</p>
 <p>解答树角度：带回溯的dfs遍历一棵解答树</p>
 <p>回溯的一般结构：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> 当前状态)</span></span></div><div class="line">	&#123;</div><div class="line">	      <span class="keyword">if</span>(当前状态为边界状态)</div><div class="line">	      &#123;</div><div class="line">	        记录或输出</div><div class="line">	        <span class="keyword">return</span>;</div><div class="line">	      &#125;</div><div class="line">	      <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)		<span class="comment">//横向遍历解答树所有子节点</span></div><div class="line">	     &#123;</div><div class="line">	           <span class="comment">//扩展出一个子状态。</span></div><div class="line">	           修改了全局变量</div><div class="line">	           <span class="keyword">if</span>(子状态满足约束条件)</div><div class="line">	            &#123;</div><div class="line">	              dfs(子状态)</div><div class="line">	           &#125;</div><div class="line">	            恢复全局变量<span class="comment">//回溯部分</span></div><div class="line">	        &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> 当前状态)</span></span></div><div class="line"><span class="function">	</span>&#123;</div><div class="line">	      <span class="keyword">if</span>(当前状态为边界状态)</div><div class="line">	      &#123;</div><div class="line">	        记录或输出</div><div class="line">	        <span class="keyword">return</span>;</div><div class="line">	      &#125;</div><div class="line">	      <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)		<span class="comment">//横向遍历解答树所有子节点</span></div><div class="line">	     &#123;</div><div class="line">	           <span class="comment">//扩展出一个子状态。</span></div><div class="line">	           修改了全局变量</div><div class="line">	           <span class="keyword">if</span>(子状态满足约束条件)</div><div class="line">	            &#123;</div><div class="line">	              dfs(子状态)</div><div class="line">	           &#125;</div><div class="line">	            恢复全局变量<span class="comment">//回溯部分</span></div><div class="line">	        &#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <h2 id="BFS-amp-DFS"><a href="#BFS-amp-DFS" class="headerlink" title="BFS&amp;DFS"></a>BFS&amp;DFS</h2><p>常用的搜索方式。</p>
 <ol>
 <li>枚举。枚举运算量很大，需要预先确定枚举的定义域。</li>
@@ -436,11 +435,11 @@
           
             <a href="/tags/BFS/" rel="tag"># BFS</a>
           
+            <a href="/tags/DFS/" rel="tag"># DFS</a>
+          
             <a href="/tags/递归/" rel="tag"># 递归</a>
           
             <a href="/tags/回溯/" rel="tag"># 回溯</a>
-          
-            <a href="/tags/DFS/" rel="tag"># DFS</a>
           
         </div>
       

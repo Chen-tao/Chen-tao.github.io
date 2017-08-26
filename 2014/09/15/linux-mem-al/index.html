@@ -87,29 +87,19 @@
 
 
 
-<meta name="description" content="互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。
-
-LRU(Least Recently Used)
-
-顾名思义，最近最少使用算法，这个算法的理念是：如果数据最近被访问过，那么它将来被访问的几率也很高。">
+<meta name="description" content="互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。  LRU(Least Recently Used)  顾名思义，最近最少使用算法，这个算法的理念是：如果数据最近被访问过，那么它将来被访问的几率也很高。">
+<meta name="keywords" content="Linux,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux内存调度-几种页面置换算法">
 <meta property="og:url" content="http://chen-tao.github.io/2014/09/15/linux-mem-al/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。
-
-LRU(Least Recently Used)
-
-顾名思义，最近最少使用算法，这个算法的理念是：如果数据最近被访问过，那么它将来被访问的几率也很高。">
+<meta property="og:description" content="互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。  LRU(Least Recently Used)  顾名思义，最近最少使用算法，这个算法的理念是：如果数据最近被访问过，那么它将来被访问的几率也很高。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chentaohome.qiniudn.com/queue2.png">
 <meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux内存调度-几种页面置换算法">
-<meta name="twitter:description" content="互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。
-
-LRU(Least Recently Used)
-
-顾名思义，最近最少使用算法，这个算法的理念是：如果数据最近被访问过，那么它将来被访问的几率也很高。">
+<meta name="twitter:description" content="互联网应用的一个特点就是大量的使用缓存技术。目前已知的缓存技术非常多，比如memcache、guava cache等等，当然这些都是比较上层的技术，而Linux系统底层的缓存，仍然是依赖于一些经典的页面置换算法来实现，这里着重介绍几个重点的算法。  LRU(Least Recently Used)  顾名思义，最近最少使用算法，这个算法的理念是：如果数据最近被访问过，那么它将来被访问的几率也很高。">
 <meta name="twitter:image" content="http://chentaohome.qiniudn.com/queue2.png">
 
 

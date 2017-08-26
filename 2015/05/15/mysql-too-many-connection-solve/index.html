@@ -87,43 +87,18 @@
 
 
 
-<meta name="description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。
-
-试图定位
- 连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题
-
-确认现场
- 使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行
-
-重启服务
- /e">
+<meta name="description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。  试图定位  连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题  确认现场  使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行  重启服务  /e">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次 mysql 'too many connection' ">
+<meta property="og:title" content="记一次 mysql &#39;too many connection&#39; ">
 <meta property="og:url" content="http://chen-tao.github.io/2015/05/15/mysql-too-many-connection-solve/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。
-
-试图定位
- 连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题
-
-确认现场
- 使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行
-
-重启服务
- /e">
+<meta property="og:description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。  试图定位  连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题  确认现场  使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行  重启服务  /e">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-09T07:47:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记一次 mysql 'too many connection' ">
-<meta name="twitter:description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。
-
-试图定位
- 连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题
-
-确认现场
- 使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行
-
-重启服务
- /e">
+<meta name="twitter:title" content="记一次 mysql &#39;too many connection&#39; ">
+<meta name="twitter:description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。  试图定位  连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题  确认现场  使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行  重启服务  /e">
 
 
 
@@ -433,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/15/mysqlwaiting-for-tables/" rel="next" title="mysql中的Waiting for tables">
-                <i class="fa fa-chevron-left"></i> mysql中的Waiting for tables
+              <a href="/2015/05/06/every-programmer-should-know-these-latency-numbers/" rel="next" title="Every Programmer Should Know These Latency Numbers">
+                <i class="fa fa-chevron-left"></i> Every Programmer Should Know These Latency Numbers
               </a>
             
           </div>
@@ -443,8 +418,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/18/java-concurrency-tips/" rel="prev" title="Java concurrency tips">
-                Java concurrency tips <i class="fa fa-chevron-right"></i>
+              <a href="/2015/05/15/mysqlwaiting-for-tables/" rel="prev" title="mysql中的Waiting for tables">
+                mysql中的Waiting for tables <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

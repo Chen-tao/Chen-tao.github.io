@@ -93,6 +93,7 @@
 <meta property="og:url" content="http://chen-tao.github.io/page/9/index.html">
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chen-Tao">
 <meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
@@ -270,7 +271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysqlwaiting-for-tables/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysql-too-many-connection-solve/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -292,8 +293,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/05/15/mysqlwaiting-for-tables/" itemprop="url">
-                  mysql中的Waiting for tables
+                <a class="post-title-link" href="/2015/05/15/mysql-too-many-connection-solve/" itemprop="url">
+                  记一次 mysql 'too many connection' 
                 </a>
               
             
@@ -328,8 +329,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/05/15/mysqlwaiting-for-tables/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/15/mysqlwaiting-for-tables/" itemprop="commentCount"></span>
+                <a href="/2015/05/15/mysql-too-many-connection-solve/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/15/mysql-too-many-connection-solve/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -357,11 +358,17 @@
       
         
           
-          在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于Waiting for tables的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询阻塞了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，
+          早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。
+
+试图定位
+ 连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题
+
+确认现场
+ 使用netstat -
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/05/15/mysqlwaiting-for-tables/#more" rel="contents">
+            <a class="btn" href="/2015/05/15/mysql-too-many-connection-solve/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -813,141 +820,6 @@ open命令用于打开
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-new-of-jdk8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/04/23/some-new-of-jdk8/" itemprop="url">
-                  JDK7-8 进步点
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-23T00:00:00+08:00">
-                2015-04-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/04/23/some-new-of-jdk8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/23/some-new-of-jdk8/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-关于反射，两个最让人郁闷的地方都修正了旧版JDK，反射时可能抛出ClassNotFoundException、NoSuchMethodException、IllegalAccessException还有InvocationTargetExcetpion，不知道别人怎样，反正我肯定会很偷懒的只捕捉或
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/04/23/some-new-of-jdk8/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/java-collection-basic-infos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1063,6 +935,141 @@ open命令用于打开
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/04/23/java-collection-basic-infos/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-new-of-jdk8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/23/some-new-of-jdk8/" itemprop="url">
+                  JDK7-8 进步点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-23T00:00:00+08:00">
+                2015-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/04/23/some-new-of-jdk8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/23/some-new-of-jdk8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+关于反射，两个最让人郁闷的地方都修正了旧版JDK，反射时可能抛出ClassNotFoundException、NoSuchMethodException、IllegalAccessException还有InvocationTargetExcetpion，不知道别人怎样，反正我肯定会很偷懒的只捕捉或
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/23/some-new-of-jdk8/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1244,6 +1251,142 @@ grep &quot;thermcontact&quot; */*.in
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/20/mac-show-hide-files/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/20/mac-show-hide-files/" itemprop="url">
+                  Mac show hide files
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-20T00:00:00+08:00">
+                2015-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/04/20/mac-show-hide-files/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/20/mac-show-hide-files/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          显示：defaults write com.apple.finder AppleShowAllFiles -bool true
+隐藏：defaults write com.apple.finder AppleShowAllFiles -bool false
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/20/mac-show-hide-files/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/20/some-domestic-mirrors/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1366,142 +1509,6 @@ grep &quot;thermcontact&quot; */*.in
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/04/20/some-domestic-mirrors/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/20/mac-show-hide-files/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/04/20/mac-show-hide-files/" itemprop="url">
-                  Mac show hide files
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-20T00:00:00+08:00">
-                2015-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/04/20/mac-show-hide-files/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/20/mac-show-hide-files/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          显示：defaults write com.apple.finder AppleShowAllFiles -bool true
-隐藏：defaults write com.apple.finder AppleShowAllFiles -bool false
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/04/20/mac-show-hide-files/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
