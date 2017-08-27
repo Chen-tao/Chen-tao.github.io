@@ -392,6 +392,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">Guava学习之避免Null的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-10T00:00:00+08:00">
+                2014-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>Null Sucks.__    Doug Lea</em></p>
+<p><em>I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人</em></p>
+<p>编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的colletions中都不应该有null（空值）存在；对于开发者来说，如果null可以直接报错，会比默默地接收更加有益。</p>
+<p>此外，null让人讨厌的一点在于它的表义模糊不清。当null作为一个返回值时，很难判断它的具体含义——比如，Map.get(key)返回null时，既可以表示Map中的值为空，又可以表示这个值不在Map中。Null可以表示失败，可以表示成功，可以表示几乎所有的状态。用别的东西来取代null会让你的代码更为清晰。</p>
+<p>当然，很多时候用null也是正确的选择。从时间和空间的角度看，null都是廉价的，并且在Object array中是不可避免的。但相对于官方的library，在实际的Application代码中，null仍然是导致混淆，怪异bug和含糊不清的主要源头之一——比如，当Map.get返回null，可能说明不存在对应的值，也可能说明值存在且为null。最大的问题在于，null无法提示这个null值表示什么意思。</p>
+<p>因此，很多Guava utility设计为对null值直接报错；只要有不用null的代替方案，就不允许null值。另外，Guava提供了一些工具来帮你避免使用null，同时在你不得不用时让使用null更容易。</p>
+<h2 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h2><p>不要惊讶，即便是有特殊操作情况存在，你仍然不应该在Set中使用null或者在Map中把null作为参数传入。</p>
+<p>如果你想在不考虑entry的情况下，将null作为一个参数传入Map，那你就需要保证含non-null key的Set与含null的Set分离（就是2个Set集啦）。当Map中包含key的entry的值为null，或者Map中的key没有entry，这两种情况是非常容易混淆的。更好的办法是直接将key进行分离，这样就很容易分辨实际应用中key为null时的含义了。</p>
+<p>使用Map<integer,?>可能会比在一个稀疏的List中使用null效率更高，而且很可能前者更适合你实际应用中的需要。</integer,?></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-ordering/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1202,135 +1330,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/02/23/china-future/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/02/23/china-future/" itemprop="url">二月漫谈——中国的前途</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-23T00:00:00+08:00">
-                2014-02-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://chentaohome.qiniudn.com/china-future.jpg" alt="">  </p>
-<p>二月快结束了，不写一篇月份儿就断片儿了。</p>
-<p>之前我说过，很多人的“互联网思维”太“互联”了；这种模式并非是放之四海而皆准的一类真理。一连串的投资收购并购案使得现在整个行业的模块轮廓愈发不清晰了，也很难界定到底什么（广义上的）是互联网了。不过，有一点是肯定的，互联网与其他产业一样，离不开创新，也更为依赖创新。</p>
-<p>关于“创新”，我觉得需要力求能透过现象看本质。前几天看了一篇“中国前途论”的东西，我觉得收获很大。西方媒体鼓吹“中国威胁论”很多年了；现在大批的中国企业奔赴华尔街希望能在海外圈到钱，更多的企业希望拜托“内模式”，不再仅限于中国市场这块蛋糕，希望从传统行业尤其是实业中寻求合作发展的机遇，这一方面是发展的必由之路，另一方面则是历史的必然。</p>
-<p>让我们借用一下黄仁宇先生的大历史观，往回看五百年，就会发现历史实际上清楚的告诉了我们很多东西。</p>
-<p>十六十七世纪的世界，是探索的天堂。伊比利亚半岛的人民逐步走向了征服世界的道路，那时的两牙就是世界之巅，船坚炮利，所向披靡，有限的资源与无限的欲望促成了世界变幻的风暴。教皇一声令下，他们就“瓜分”了世界；西班牙王国，称霸一时。那时的西班牙、葡萄牙，人口只有七位数。走入十八世纪，英伦三岛升起“日不落帝国”，工业革命，殖民扩张，直到一战之前都盛极一时。那是的英国，人口大概是千万级别。紧接着就是美利坚登上历史舞台了——前沿科学，航天技术，摆脱制式武器走上强势科技，这就是我们眼睛看见的历史了。多说一句吧，美国的人口是九位数。扯了这么多大国崛起，其实我想要说明的是创新的要素——技术与基数。</p>
-<p>量变引起质变。不管保密的多严，旧技术与好技术总是会很快普及，如果不能源源不断的开发新技术，那么不久，基数就会成为相对决定性的因素。而开发新技术，一方面有“反摩尔定律”几乎可以遇见的指数倍增长的困难瓶颈，另一方面则是对基础劳力愈发严重的依赖。说到这里，你就知道我要表达什么了——未来两百年中国的前途。</p>
-<p>廉价劳动力使得中国很十几年前开始变成世界经济最大的“血汗工厂”，犹记得富士康的“十一连跳”触目惊心。与之相比，北美和欧洲的劳动力，尤其是手工业劳力则是出奇的“奢侈”。出现这种状况，原因很多，但不可否认的一点是，<strong>这个时代的中国人，比以前其他任何一个时代都渴望成功，渴望世界的认可，我觉得这大可不必妄自菲薄，而这必将导致中国的崛起，包括技术上对北美欧洲老毛子的全面超越——中国的前途恐怕也就在于此了</strong>。而顺着大国崛起的路线来看，“统治”各自时代的每一个世界强国，都是前一个强国人口基数的十倍……所以，就算是YY中国未来的强盛，也不是凭空的说法吧（我直接屏蔽了基数上同样符合条件的阿三，我觉得跟中国比还是有相当差距的）。</p>
-<p>从现在再往回看一百年吧，IBM，HP，GE，摩根大通，通用，Microsoft，Intel，Google，Apple，Facebook（我能想到的多数是这种企业）几乎都是美利坚“称霸”着世界级企业的班子，偶尔其他国家走出一个这样的企业也会很快被“包裹围剿”。而未来，这种情况肯定会在中国上演：Lenovo，Tencent，Huawei，都是目前看起来极有可能成长为世界级企业的候选，当然很有更多的企业也具有这样的潜力（说着说着就觉得自己五毛了），所以，世界终究会是我们的（？）</p>
-<p>我的想法应当不算是言过其实的，世界报以中国努力的，必是更大的话语权、更具影响力的国际地位和更广阔的未来。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/02/23/quotes-from-house-of-cards-season-ii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1483,7 +1482,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/01/11/2013-gose-on/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/02/23/china-future/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1502,7 +1501,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/01/11/2013-gose-on/" itemprop="url">告别2013——从移动互联网兴起看“小”时代变迁</a></h1>
+                <a class="post-title-link" href="/2014/02/23/china-future/" itemprop="url">二月漫谈——中国的前途</a></h1>
         
 
         <div class="post-meta">
@@ -1514,8 +1513,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-01-11T00:00:00+08:00">
-                2014-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-23T00:00:00+08:00">
+                2014-02-23
               </time>
             
 
@@ -1554,14 +1553,16 @@
       
         
           
-            <p>都说腾讯以微信的势如破竹拿到了“移动互联网”的第一张船票，率先登上了新时代的诺亚方舟，而各路英雄也都在这场竞争中，利用摸索、出招、回击的种种方式来做出回应，这一年与其说是“可穿戴设备元年”，不如说是“移动互联白热化斗争的转折之年（好长……）”——简单讲，路还很长，未来只能说是很有“想象空间”的。</p>
-<p>无论时代如何发展，有一点我想是不会变化的——迎合刚需的硬科技和软实力，才是正真实至名归能成为时代弄潮的东西。</p>
-<p>时间后退个十年，QQ可能还是个“小众”的东西呢；说起安全还得提瑞星江民呢；搜索点东西还用雅虎呢；网上购物还没几个人敢下手呢；手里抓个直板机还会被翻盖的鄙视呢——互联网的这种改变，似乎恍然间就降临了。</p>
-<p>世纪初的这“伪”十年，波澜诡谲的程度与上世纪九十年代恐怕是不相上下的，甚至有过之而无不及；不过，对处于社会剧烈转型期的中国来说，意义似乎又更加深远。互联网企业几次收到政治局常委接见巡查，大佬数次赴中南海，加上最近一次的观看卫星发射，实际上，上层建筑同样敏锐的感受到互联网的“小转型”对国事“大转型”所带来的潜移默化的影响。</p>
-<p>最近看了不少文章社论，对于移动互联网，总之就是一句话——所有的企业都想统一天下。实际上，每个企业都有自己强势的一个点，一个领域，都希望“借力打力”的发挥长处带动自己的“弱项”，比如最近搜搜地图化身腾讯地图这件事就有点意思：街景、地形海拔、都是希望能在新的别家没有的点上做突破，对于创新性来说，这无疑是一件好事，但是否是真的“刚需”，需要进一步的用户检验；相比之下，百度地图似乎值得借鉴：看到团购与社会化需求激增，将大量优势入口集成，直接秒杀了很多地图客户端乃至团购生活类的客户端，不仅为你指路，更能为你省钱；而最近阿里高调进军游戏来看，未来是否会如同来往一样“虚旺干火”也有待观察。由此可见，互联网领域已经将“借鉴”和“模仿”的含义扩大化，“人云亦云”也不再是一个贬义词，“跑马圈地”实际上成了互联网民营企业继续大踏步前进“刷存在感”的一个具体表象。</p>
-<p>如何“以强带弱”，占领高地？这实在是一个见仁见智的问题，我以为重点在于以环境和形势走向为基准，最大程度的满足用户需求。有的人一听到“闭环”这个词就如同听到了“纳粹”“独裁”“垄断”一般，其实这只是做服务必求的终点。优质的服务，良好的生态，“安定和谐”，这并不只是走“大时代”“主旋律”路线才催生的东西，这种满足，是任何行业任何企业任何产品乃至任何App吸引用户的首要条件。所以说那些拥有大量用户群的企业、应用是多么令人艳羡，这也是他们可以频频出拳、招招致命的一个很关键的点，这也从一个角度解释了互联网行业中“互相学习借鉴”的合理性，至少，大方向不会错。</p>
-<p>互联网看似被BAT把持着命脉，实际上长尾依然。豆瓣、去哪儿、优酷土豆、这些长尾的典型正在风生水起的在自己的领域里大展拳脚，同时也在思考做突破——这样看来，实际上移动互联时代的企业并无本质不同了。有人说，阿里有阿里的基因，腾讯有腾讯的文化。诚然，企业的立身之本自然是文化底蕴，而对风云变幻的市场与时局来说，“见风使舵”“剑走偏锋”显然与之并不矛盾。人类历史上，恐怕从来没有这样的“攻城略地”引起如此全面的关注，互联网行业的纷争也在向着金融、投资、广播电视、电影、图书出版等等行业蔓延，应了马云的话，“传统行业的一个个‘颠覆’”，但是否有齐头并进开拓共赢的可能呢？天下熙熙，皆为利来；天下攘攘，皆为利往。2014，“想象”继续，实干依然。</p>
-<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#544" title="2014-08-19 15:43:01">环保石灰窑</a>:</strong> 有日子没更新了啊,赶紧更新</p>
+            <p><img src="http://chentaohome.qiniudn.com/china-future.jpg" alt="">  </p>
+<p>二月快结束了，不写一篇月份儿就断片儿了。</p>
+<p>之前我说过，很多人的“互联网思维”太“互联”了；这种模式并非是放之四海而皆准的一类真理。一连串的投资收购并购案使得现在整个行业的模块轮廓愈发不清晰了，也很难界定到底什么（广义上的）是互联网了。不过，有一点是肯定的，互联网与其他产业一样，离不开创新，也更为依赖创新。</p>
+<p>关于“创新”，我觉得需要力求能透过现象看本质。前几天看了一篇“中国前途论”的东西，我觉得收获很大。西方媒体鼓吹“中国威胁论”很多年了；现在大批的中国企业奔赴华尔街希望能在海外圈到钱，更多的企业希望拜托“内模式”，不再仅限于中国市场这块蛋糕，希望从传统行业尤其是实业中寻求合作发展的机遇，这一方面是发展的必由之路，另一方面则是历史的必然。</p>
+<p>让我们借用一下黄仁宇先生的大历史观，往回看五百年，就会发现历史实际上清楚的告诉了我们很多东西。</p>
+<p>十六十七世纪的世界，是探索的天堂。伊比利亚半岛的人民逐步走向了征服世界的道路，那时的两牙就是世界之巅，船坚炮利，所向披靡，有限的资源与无限的欲望促成了世界变幻的风暴。教皇一声令下，他们就“瓜分”了世界；西班牙王国，称霸一时。那时的西班牙、葡萄牙，人口只有七位数。走入十八世纪，英伦三岛升起“日不落帝国”，工业革命，殖民扩张，直到一战之前都盛极一时。那是的英国，人口大概是千万级别。紧接着就是美利坚登上历史舞台了——前沿科学，航天技术，摆脱制式武器走上强势科技，这就是我们眼睛看见的历史了。多说一句吧，美国的人口是九位数。扯了这么多大国崛起，其实我想要说明的是创新的要素——技术与基数。</p>
+<p>量变引起质变。不管保密的多严，旧技术与好技术总是会很快普及，如果不能源源不断的开发新技术，那么不久，基数就会成为相对决定性的因素。而开发新技术，一方面有“反摩尔定律”几乎可以遇见的指数倍增长的困难瓶颈，另一方面则是对基础劳力愈发严重的依赖。说到这里，你就知道我要表达什么了——未来两百年中国的前途。</p>
+<p>廉价劳动力使得中国很十几年前开始变成世界经济最大的“血汗工厂”，犹记得富士康的“十一连跳”触目惊心。与之相比，北美和欧洲的劳动力，尤其是手工业劳力则是出奇的“奢侈”。出现这种状况，原因很多，但不可否认的一点是，<strong>这个时代的中国人，比以前其他任何一个时代都渴望成功，渴望世界的认可，我觉得这大可不必妄自菲薄，而这必将导致中国的崛起，包括技术上对北美欧洲老毛子的全面超越——中国的前途恐怕也就在于此了</strong>。而顺着大国崛起的路线来看，“统治”各自时代的每一个世界强国，都是前一个强国人口基数的十倍……所以，就算是YY中国未来的强盛，也不是凭空的说法吧（我直接屏蔽了基数上同样符合条件的阿三，我觉得跟中国比还是有相当差距的）。</p>
+<p>从现在再往回看一百年吧，IBM，HP，GE，摩根大通，通用，Microsoft，Intel，Google，Apple，Facebook（我能想到的多数是这种企业）几乎都是美利坚“称霸”着世界级企业的班子，偶尔其他国家走出一个这样的企业也会很快被“包裹围剿”。而未来，这种情况肯定会在中国上演：Lenovo，Tencent，Huawei，都是目前看起来极有可能成长为世界级企业的候选，当然很有更多的企业也具有这样的潜力（说着说着就觉得自己五毛了），所以，世界终究会是我们的（？）</p>
+<p>我的想法应当不算是言过其实的，世界报以中国努力的，必是更大的话语权、更具影响力的国际地位和更广阔的未来。</p>
 
           
         
@@ -1647,7 +1648,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

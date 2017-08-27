@@ -263,6 +263,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/07/17/java-thread-pool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/07/17/java-thread-pool/" itemprop="url">Java线程池的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-17T00:00:00+08:00">
+                2014-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>线程池,指的是管理一组”同构工作线程的资源池”.</p>
+<p>提供相似的资源,或者是用户定制的配置,预先准备槽位等待任务的到来.</p>
+<p>首先区别一下,”在线程池中执行任务”和”为每一个任务分配一个线程”.</p>
+<ol>
+<li>前者的重点是”重用”,后者的重点是任务的”独立”,每次都在创建新的线程.</li>
+<li>前者在处理多个请求时比后者消耗的资源要少得多,后者需要大量重复的建立销毁线程的工作</li>
+<li>前者在任务到达时,往往线程已经存在,只需要简单的分配,后者需要即时的创建,响应速度较慢</li>
+<li>使用线程池,更可以通过对资源的计算规划最大程度的利用CPU,Mem,文件句柄等等资源,保证系统的高效运行</li>
+</ol>
+<p>一般使用Execteor框架中Executors的静态工厂方法来创建线程池</p>
+<ul>
+<li>newFixedThreadPool</li>
+</ul>
+<p>创建一个固定大小的线程池，当然不会一开始就创建好最大数量的线程，而是等待任务到来的同时创建，当任务总量大于线程池大小时，在任务队列中等待，否则，线程池中有空闲线程，此时会将空闲线程回收</p>
+<ul>
+<li>newCachedThreadExecutor</li>
+</ul>
+<p>创建一个可变大小的线程池，其他方面与Fixed类似，当线程数量超过当前线程池大小时，线程池会跟随任务量膨胀，理论上没有等待队列，当然此方法受限于系统的资源总量和网络因素，容易在大量请求并发时发生OOM</p>
+<ul>
+<li>newSingleThreadExecutor</li>
+</ul>
+<p>创建一个只有一个线程的线程池，在特殊条件下，需要对任务的执行进行排序时用到，如FIFO，Priority</p>
+<p>当然，内部机制为了防止过度等待和超时以及线程饥饿死锁，会在队列上加入一定的等待和阻塞限制</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/05/09/wechat53/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1496,134 +1638,6 @@ public class ReadFileFromTxt {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">Guava学习之避免Null的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-10T00:00:00+08:00">
-                2014-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>Null Sucks.__    Doug Lea</em></p>
-<p><em>I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人</em></p>
-<p>编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的colletions中都不应该有null（空值）存在；对于开发者来说，如果null可以直接报错，会比默默地接收更加有益。</p>
-<p>此外，null让人讨厌的一点在于它的表义模糊不清。当null作为一个返回值时，很难判断它的具体含义——比如，Map.get(key)返回null时，既可以表示Map中的值为空，又可以表示这个值不在Map中。Null可以表示失败，可以表示成功，可以表示几乎所有的状态。用别的东西来取代null会让你的代码更为清晰。</p>
-<p>当然，很多时候用null也是正确的选择。从时间和空间的角度看，null都是廉价的，并且在Object array中是不可避免的。但相对于官方的library，在实际的Application代码中，null仍然是导致混淆，怪异bug和含糊不清的主要源头之一——比如，当Map.get返回null，可能说明不存在对应的值，也可能说明值存在且为null。最大的问题在于，null无法提示这个null值表示什么意思。</p>
-<p>因此，很多Guava utility设计为对null值直接报错；只要有不用null的代替方案，就不允许null值。另外，Guava提供了一些工具来帮你避免使用null，同时在你不得不用时让使用null更容易。</p>
-<h2 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h2><p>不要惊讶，即便是有特殊操作情况存在，你仍然不应该在Set中使用null或者在Map中把null作为参数传入。</p>
-<p>如果你想在不考虑entry的情况下，将null作为一个参数传入Map，那你就需要保证含non-null key的Set与含null的Set分离（就是2个Set集啦）。当Map中包含key的entry的值为null，或者Map中的key没有entry，这两种情况是非常容易混淆的。更好的办法是直接将key进行分离，这样就很容易分辨实际应用中key为null时的含义了。</p>
-<p>使用Map<integer,?>可能会比在一个稀疏的List中使用null效率更高，而且很可能前者更适合你实际应用中的需要。</integer,?></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1674,7 +1688,7 @@ public class ReadFileFromTxt {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -263,6 +263,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/" itemprop="url">Check and Install Mac OS X Software Updates from the Terminal</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-26T00:00:00+08:00">
+                2015-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h3 id="List-All-Available-Mac-Software-Updates-from-Command-Line"><a href="#List-All-Available-Mac-Software-Updates-from-Command-Line" class="headerlink" title="List All Available Mac Software Updates from Command Line"></a>List All Available Mac Software Updates from Command Line</h3><p>To get a list of available software updates, type the following command:</p>
+<figure class="highlight plain"><figcaption><span>-l```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You will see a list of available updates.</div><div class="line"></div><div class="line">### Installing All Available Updates from Terminal</div><div class="line"></div><div class="line">You can then install all available software updates with the following command:</div><div class="line"></div><div class="line">```sudo softwareupdate -iva</div></pre></td></tr></table></figure>
+<p>The use of sudo is required to get superuser privileges to actually install the updates.</p>
+<h3 id="Install-Recommended-Updates-Only-from-Terminal-in-OS-X"><a href="#Install-Recommended-Updates-Only-from-Terminal-in-OS-X" class="headerlink" title="Install Recommended Updates Only from Terminal in OS X"></a>Install Recommended Updates Only from Terminal in OS X</h3><p>You can also install only the recommended updates with:</p>
+<figure class="highlight plain"><figcaption><span>softwareupdate -irv```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### Installing &amp; Ignoring Specific Software Updates to Mac from Terminal of OS X</div><div class="line">Or you can just install specific software updates by specifying the shorthand package name from the previous list, like so:</div><div class="line"></div><div class="line">```sudo softwareupdate -i iPhoneConfigurationUtility-3.2</div></pre></td></tr></table></figure>
+<p>If there are any updates you want to ignore, you can do so with the –ignore flag, for example:</p>
+<figure class="highlight plain"><figcaption><span>softwareupdate --ignore iWeb3.0.2-3.0.2```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">If you want to see all the available command line shortcuts for Software Update, just type:</div><div class="line"></div><div class="line">```softwareupdate -h</div></pre></td></tr></table></figure>
+<p>This is really useful for remotely updating Macs, setting up automated updates via a bash script, or if you just want to geek out.<br>This tool is available in all versions of OS X and therefore it can be used to update just about any Mac with necessary software updates. This is one way to avoid using the Mac App Store to update a Mac if that is necessary for whatever reason.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/21/unix-into-apue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -387,130 +515,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/linux-swap-conf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/17/linux-swap-conf/" itemprop="url">linux的swap扩容</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-17T00:00:00+08:00">
-                2015-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>很多时候，Linux的虚拟内存配置的并不尽如人意，这时候我们需要自己再分配一下，这里提供两个方法。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/17/linux-swap-conf/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -585,6 +589,130 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/11/17/c-cpp-preprocessor/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/linux-swap-conf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/17/linux-swap-conf/" itemprop="url">linux的swap扩容</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-17T00:00:00+08:00">
+                2015-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>很多时候，Linux的虚拟内存配置的并不尽如人意，这时候我们需要自己再分配一下，这里提供两个方法。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/17/linux-swap-conf/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1029,6 +1157,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/linux-nc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/09/linux-nc/" itemprop="url">linux nc命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-09T00:00:00+08:00">
+                2015-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>功能说明</strong>：功能强大的网络工具</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/09/linux-nc/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/newbee-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1105,130 +1357,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/11/09/newbee-problem/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/linux-nc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/09/linux-nc/" itemprop="url">linux nc命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-09T00:00:00+08:00">
-                2015-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>功能说明</strong>：功能强大的网络工具</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/09/linux-nc/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1386,141 +1514,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/07/cmakeprotoprotobuf-cpp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/07/cmakeprotoprotobuf-cpp/" itemprop="url">利用Cmake自动编译proto文件生成protobuf cpp代码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-07T00:00:00+08:00">
-                2015-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>项目中pb用的越来越多，更改后手动编译proto越来越麻烦，摸索了下在cmake中自动编译proto文件的办法。</p>
-<ol>
-<li>利用cmake提供的宏PROTOBUF_GENERATE_CPP</li>
-</ol>
-<p>示例代码结构如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- CMakeLists.txt</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure>
-<p> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
-<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">add_subdirectory(proto)</div><div class="line">add_executable(demo main.cpp) </div><div class="line">target_link_libraries(demo proto)</div></pre></td></tr></table></figure></p>
-<p> src/proto/CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">find_package(Protobuf REQUIRED)</div><div class="line">FILE(GLOB protofiles &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/*.proto&quot;)</div><div class="line">message(STATUS $&#123;protofiles&#125;)</div><div class="line">PROTOBUF_GENERATE_CPP(PROTOSRCS PROTOHDRS $&#123;protofiles&#125;)</div><div class="line">message(STATUS $&#123;PROTOSRCS&#125;)</div><div class="line">add_library(proto STATIC $&#123;PROTOSRCS&#125; $&#123;PROTOHDRS&#125;) </div><div class="line">target_link_libraries(proto protobuf) </div><div class="line">target_include_directories(proto PUBLIC $&#123;CMAKE_CURRENT_BINARY_DIR&#125;)</div></pre></td></tr></table></figure></p>
-<p> 采用out of source编译，cmake将生成的.pb.h,.pb.cc放在build/src/proto/目录下，故而需要在src/proto/CMakeLists.txt中设置<code>target_include_directories(proto PUBLIC ${CMAKE_CURRENT_BINARY_DIR})</code>，这样生成的头文件才能被外层cmake可见。</p>
-<ol>
-<li>利用命令ADD_CUSTOM_COMMAND</li>
-</ol>
-<p>示例代码结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb1]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure></p>
-<p>3 directories, 5 files<br> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
-<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">FILE(GLOB proto_files $&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/*.proto)  </div><div class="line">FOREACH(proto_file $&#123;proto_files&#125;)</div><div class="line">    STRING(REGEX REPLACE &quot;[^/]proto&quot; &quot;&quot; proto_file_name $&#123;proto_file&#125;)</div><div class="line">    LIST(APPEND PROTO_SRCS &quot;$&#123;proto_file_name&#125;.pb.cc&quot;)</div><div class="line">	ADD_CUSTOM_COMMAND(</div><div class="line">		OUTPUT &quot;$&#123;proto_file_name&#125;.pb.h&quot; &quot;$&#123;proto_file_name&#125;.pb.cc&quot;</div><div class="line">		COMMAND protoc --proto_path=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto</div><div class="line">                       --cpp_out=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/ $&#123;proto_file&#125; </div><div class="line">		DEPENDS $&#123;proto_file&#125;</div><div class="line">	)</div><div class="line">ENDFOREACH(proto_file)</div><div class="line">message(STATUS $&#123;PROTO_SRCS&#125;)</div><div class="line">include_directories(./proto)</div><div class="line">add_executable(demo main.cpp $&#123;PROTO_SRCS&#125;) </div><div class="line">target_link_libraries(demo protobuf)</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1571,7 +1564,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

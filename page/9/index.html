@@ -401,6 +401,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysqlwaiting-for-tables/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/05/15/mysqlwaiting-for-tables/" itemprop="url">mysql中的Waiting for tables</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-15T00:00:00+08:00">
+                2015-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于<a href="http://dev.mysql.com/doc/refman/5.6/en/general-thread-states.html" target="_blank" rel="external">Waiting for tables</a>的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询<span style="color: #ff0000;"><strong>阻塞</strong></span>了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，这还是说不通的。那么我们就来看看所有的请求处于Waiting for tables这个状态是什么原因导致的：</p><p></p>
+<p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table, it must wait until all other threads have closed the table in question.</p><br><p>This notification takes place if another thread has used <a title="12.4.6.3. FLUSH Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/flush.html" target="_blank" rel="external"><code>FLUSH TABLES</code></a> or one of the following statements on the table in question: <code>FLUSH TABLES <em><code>tbl<em>name</em></code></em></code>, <a title="12.1.6. ALTER TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="external"><code>ALTER TABLE</code></a>, <a title="12.1.26. RENAME TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/rename-table.html" target="_blank" rel="external"><code>RENAME TABLE</code></a>, <a title="12.4.2.5. REPAIR TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/repair-table.html" target="_blank" rel="external"><code>REPAIR TABLE</code></a>, <a title="12.4.2.1. ANALYZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/analyze-table.html" target="_blank" rel="external"><code>ANALYZE TABLE</code></a>, or<a title="12.4.2.4. OPTIMIZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/optimize-table.html" target="_blank" rel="external"><code>OPTIMIZE TABLE</code></a>.</p><br><p>从文档上的解释来看，是主库做了一个flush tables的操作，导致所有的表都需要打开，但是由于在10-07号放假，应该不会有人在主库上执行flush tables，而且从日志中可以看到：</p><br><p>1044    system user                     Connect 27406   Flushing tables FLUSH TABLES</p><br><p>所以可以判断是系统自己执行了这个操作，那么既然不是主库上执行而来，那么这个flush tables操作是从slave上复制过来的（M-M结构)，</p><br><p>那么备库的什么操作会有flush tables，真的百思不其解，我们备库在6点之前做的是什么，后端应用的dump?还是数据库的备份？是不是xtrabackup，很有可能是xtrabackup在备份的时候做的fulsh tables，查看备份脚本，应该轮到mysqldump做逻辑备份操作了，并不是xtrabackup，检查了mysqldump的备份脚本，脚本里：</p><br><p>-uroot -P$port &#8211;protocol=tcp &#8211;single-transaction &#8211;master-data=2是这样的</p><br><p>Single-transaction这个选项是加上了的，希望再一次被打破 &gt;&lt;</p><br><p>最后想还是想到到官网上去看看，mysqldump+flush tables是否有bug，</p><br><p>唉，搜索了一下果然发现了蹊跷：</p><br><p><a href="http://bugs.mysql.com/bug.php?id=35157" target="_blank" rel="external">http://bugs.mysql.com/bug.php?id=35157</a></p><br><p>When using the &#8211;master-data option with mysqldump, mysqldump uses   a FLUSH TABLES command.  However, this statement got replicated to   the slave(s), which caused the slave(s) to block unnecessarily while  the FLUSH tables command completed.</p><br><p>在5.0存在的bug很好的解释了这个问题，在mysqldump加入了&#8211;master-data就会将flush tables记录到binglog中，然后在被同步到主库，主库执行binglog后，由于有一个大查询正在</p><br><p>执行，这个子查询由于执行了很长时间，阻塞了flush tables的操作,最后导致了雪崩，所有的请求都被阻塞：</p><br><p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table,</p><br><p>it must wait until all other threads have closed the table in question.</p><br><p>综合上篇的所写，Mysqldump的在5.0的bug加上数据库的低效子查询构成这次故障的原因。</p><br><p>峰回路转，山穷水尽，哈哈</p>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/06/every-programmer-should-know-these-latency-numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -785,7 +905,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-tcpip/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-new-of-jdk8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -804,7 +924,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/04/23/some-tcpip/" itemprop="url">some tcpip</a></h1>
+                <a class="post-title-link" href="/2015/04/23/some-new-of-jdk8/" itemprop="url">JDK7-8 进步点</a></h1>
         
 
         <div class="post-meta">
@@ -856,7 +976,48 @@
       
         
           
-            <p><a href="http://coolshell.cn/articles/11564.html" target="_blank" rel="external">TCP 的那些事儿（上）</a> by 陈皓<br><br><a href="http://coolshell.cn/articles/11609.html" target="_blank" rel="external">TCP 的那些事儿（下）</a> by 陈皓</p><br><p><a href="http://weibo.com/p/230418e59371cc0102vg4n" target="_blank" rel="external">Linux &amp;TCP相关参数的总结</a> by 锋寒<br><br><a href="http://colobu.com/2014/09/18/linux-tcpip-tuning/" target="_blank" rel="external">Linux TCP/IP 协议栈调优</a> by 鸟窝</p><br><p><a href="http://www.importnew.com/11229.html" target="_blank" rel="external">Web基础架构：负载均衡和LVS</a> by ImportNew<br><br><a href="http://colobu.com/2014/10/21/udp-and-unicast-multicast-broadcast-anycast/" target="_blank" rel="external">单播，组播(多播)，广播以及任播</a> by 鸟窝</p>
+            <ol>
+<li>关于反射，两个最让人郁闷的地方都修正了<br>旧版JDK，反射时可能抛出ClassNotFoundException、NoSuchMethodException、IllegalAccessException还有InvocationTargetExcetpion，不知道别人怎样，反正我肯定会很偷懒的只捕捉或声明Exception类了，虽然可能有一百个理由说这样不好。JDK7之后，这堆异常有了叫ReflectiveOperationExcetpion的父类，抓它就行。</li>
+</ol>
+<p>旧版JDK，还有个很莫名其妙的地方，就是所有反射，都拿不到参数名，无论名字叫啥，都返回arg0，arg1，所以在CXF，SpringMVC里，你都要把参数名字用annotation再写一遍：</p>
+<p> Person getEmployee(@PathParam(“dept”) Long dept, @QueryParam(“id”) Long id)<br>现在，JDK8新提供的类java.lang.reflect.Parameter可以反射参数名了，编译时要加参数，如 javac -parameters xxx.java，或者Eclipse里设置。然后就可以写成:</p>
+<p> Person getEmployee(@PathParam Long dept, @QueryParam Long id)</p>
+<ol>
+<li><p>比AtomicLong更好的高并发计数器<br>在超高并发的场景下，AtomicLong其实没有银弹，虽然没有锁，一样要通过不停循环的CAS来解决并发冲突。</p>
+<p>for ( ; ; ) {<br>long current = get();<br>long next = current + 1;<br>if (compareAndSet(current, next))<br>return next;<br>}<br>可见，如果并发很高，每条线程可能要转好几轮的compareAndSet()才把自己的increment()做了。</p>
+</li>
+</ol>
+<p>那这时候，是不是会想起ConcurrentHashMap，分散开十六把锁来分散冲突概率的模式？</p>
+<p>JDK8新增了一个LongAdder来实现这个思路，内部有多个计数器，每次increment()会落到其中一个计数器上，到sum()的时候再把它们的值汇总。</p>
+<p>没有JDK8的同学也没所谓，Guava把LongAdder拷贝了一份。</p>
+<p>但注意，此计数器适合高并发地increment()，到了某个时刻才sum()一次的统计型场景，如果要频繁、高并发地查询计数器的当前值，分散计数器带来的好处就抵消了。<br>另外，它的实现也比AtomicLong复杂不少，如果并发度不是那么高，继续用AtomicLong其实也挺好，简单就是好。<br>PS. 在酷壳有一篇更详细的讲解：&lt;从LongAdder看更高效的无锁实现&gt;</p>
+<ol>
+<li>JDK7/8中排序算法的改进<br>面试季的同学背一脑袋的插入、归并、冒泡、快排，那，JDK到底看上了哪家的排序算法？</li>
+</ol>
+<p>Colletions.sort(list) 与 Arrays.sort(T[])<br>Colletions.sort()实际会将list转为数组，然后调用Arrays.sort()，排完了再转回List。<br>PS. JDK8里，List有自己的sort()方法了，像ArrayList就直接用自己内部的数组来排，而LinkedList, CopyOnWriteArrayList还是要复制出一份数组。</p>
+<p>而Arrays.sort()，对原始类型(int[],double[],char[],byte[])，JDK6里用的是快速排序，对于对象类型(Object[])，JDK6则使用归并排序。为什么要用不同的算法呢？</p>
+<p>JDK7的进步<br>到了JDK7，快速排序升级为双基准快排(双基准快排 vs 三路快排)；归并排序升级为归并排序的改进版TimSort，一个JDK的自我进化。</p>
+<p>JDK8的进步<br>再到了JDK8， 对大集合增加了Arrays.parallelSort()函数，使用fork-Join框架，充分利用多核，对大的集合进行切分然后再归并排序，而在小的连续片段里，依然使用TimSort与DualPivotQuickSort。</p>
+<p>结论<br>JDK团队的努力，从一些简单的New Features / Change List 根本看不到，所以没事升级一下JDK还是好的…..</p>
+<ol>
+<li><p>高并发的ThreadLocalRandom<br>JDK7的Concurrent包里有一个ThreadLocalRandom，伪随机数序列的算法和父类util.Random一样，遵照高德纳老爷子在《The Art of Computer Programming, Volume 2》里说的：</p>
+<p>x(0)=seed;<br>x(i+1)=(A* x(i) +B) mod M;<br>区别是Random里的seed要用到AtomicLong，还要经常compareAndSet(current, next)来避免并发冲突，而ThreadLocalRandom用ThreadLocal模式来解决并发问题，seed用long就行了。</p>
+</li>
+</ol>
+<p>用法： int r = ThreadLocalRandom.current() .nextInt(1000);</p>
+<p>没有JDK7的，可自行Copy Paste这个类，Netty和Esper都是这么干的。</p>
+<p>ImportNews翻译了一篇更详细的文章： 多线程环境下生成随机数</p>
+<ol>
+<li>JDK7<br>JDK6好像终于混不下去了，Spring Boot 1.2带的Tomcat和Jetty都要JDK7才能跑。没有用spring boot的Parent的话，要把Tomcat版本降下去挺麻烦的。另外JavaSimon的4.0版也需要JDK7了。</li>
+</ol>
+<p>发现新JDK无论吸引人与否，比如JDK8y有了种种突破，最终还是靠Big Player的框架类库决然升级才能带动开发者的升级。而Big Player们又在担心如果升级了会丢失一些无法升级的用户…..麻杆打狼两头怕。</p>
+<ol>
+<li>《写给大忙人看的Java SE 8》<br>《写给大忙人看的Java SE 8》 ：Java8的改进太大, 值得《Core Java》的作者再码一本， 事实上，为了保持兼容性，很多代码都保持在JDK5/6的水平上，这本书一次过将JDK7/JDK8的更新讲了，是本快捷的升级指南。</li>
+</ol>
+<ol>
+<li>Nashorn<br>Nashorn——在JDK 8中融合Java与JavaScript之力： JDK8的新JavaScript引擎据说是JDK6时的2-10倍，另外Avatar.js可以在Java里跑Node.js及其类库， 然后Node.js里又再调用Java的类库，纸包鸡包纸。</li>
+</ol>
+
           
         
       
@@ -1155,7 +1316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-new-of-jdk8/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-tcpip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1174,7 +1335,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/04/23/some-new-of-jdk8/" itemprop="url">JDK7-8 进步点</a></h1>
+                <a class="post-title-link" href="/2015/04/23/some-tcpip/" itemprop="url">some tcpip</a></h1>
         
 
         <div class="post-meta">
@@ -1226,48 +1387,7 @@
       
         
           
-            <ol>
-<li>关于反射，两个最让人郁闷的地方都修正了<br>旧版JDK，反射时可能抛出ClassNotFoundException、NoSuchMethodException、IllegalAccessException还有InvocationTargetExcetpion，不知道别人怎样，反正我肯定会很偷懒的只捕捉或声明Exception类了，虽然可能有一百个理由说这样不好。JDK7之后，这堆异常有了叫ReflectiveOperationExcetpion的父类，抓它就行。</li>
-</ol>
-<p>旧版JDK，还有个很莫名其妙的地方，就是所有反射，都拿不到参数名，无论名字叫啥，都返回arg0，arg1，所以在CXF，SpringMVC里，你都要把参数名字用annotation再写一遍：</p>
-<p> Person getEmployee(@PathParam(“dept”) Long dept, @QueryParam(“id”) Long id)<br>现在，JDK8新提供的类java.lang.reflect.Parameter可以反射参数名了，编译时要加参数，如 javac -parameters xxx.java，或者Eclipse里设置。然后就可以写成:</p>
-<p> Person getEmployee(@PathParam Long dept, @QueryParam Long id)</p>
-<ol>
-<li><p>比AtomicLong更好的高并发计数器<br>在超高并发的场景下，AtomicLong其实没有银弹，虽然没有锁，一样要通过不停循环的CAS来解决并发冲突。</p>
-<p>for ( ; ; ) {<br>long current = get();<br>long next = current + 1;<br>if (compareAndSet(current, next))<br>return next;<br>}<br>可见，如果并发很高，每条线程可能要转好几轮的compareAndSet()才把自己的increment()做了。</p>
-</li>
-</ol>
-<p>那这时候，是不是会想起ConcurrentHashMap，分散开十六把锁来分散冲突概率的模式？</p>
-<p>JDK8新增了一个LongAdder来实现这个思路，内部有多个计数器，每次increment()会落到其中一个计数器上，到sum()的时候再把它们的值汇总。</p>
-<p>没有JDK8的同学也没所谓，Guava把LongAdder拷贝了一份。</p>
-<p>但注意，此计数器适合高并发地increment()，到了某个时刻才sum()一次的统计型场景，如果要频繁、高并发地查询计数器的当前值，分散计数器带来的好处就抵消了。<br>另外，它的实现也比AtomicLong复杂不少，如果并发度不是那么高，继续用AtomicLong其实也挺好，简单就是好。<br>PS. 在酷壳有一篇更详细的讲解：&lt;从LongAdder看更高效的无锁实现&gt;</p>
-<ol>
-<li>JDK7/8中排序算法的改进<br>面试季的同学背一脑袋的插入、归并、冒泡、快排，那，JDK到底看上了哪家的排序算法？</li>
-</ol>
-<p>Colletions.sort(list) 与 Arrays.sort(T[])<br>Colletions.sort()实际会将list转为数组，然后调用Arrays.sort()，排完了再转回List。<br>PS. JDK8里，List有自己的sort()方法了，像ArrayList就直接用自己内部的数组来排，而LinkedList, CopyOnWriteArrayList还是要复制出一份数组。</p>
-<p>而Arrays.sort()，对原始类型(int[],double[],char[],byte[])，JDK6里用的是快速排序，对于对象类型(Object[])，JDK6则使用归并排序。为什么要用不同的算法呢？</p>
-<p>JDK7的进步<br>到了JDK7，快速排序升级为双基准快排(双基准快排 vs 三路快排)；归并排序升级为归并排序的改进版TimSort，一个JDK的自我进化。</p>
-<p>JDK8的进步<br>再到了JDK8， 对大集合增加了Arrays.parallelSort()函数，使用fork-Join框架，充分利用多核，对大的集合进行切分然后再归并排序，而在小的连续片段里，依然使用TimSort与DualPivotQuickSort。</p>
-<p>结论<br>JDK团队的努力，从一些简单的New Features / Change List 根本看不到，所以没事升级一下JDK还是好的…..</p>
-<ol>
-<li><p>高并发的ThreadLocalRandom<br>JDK7的Concurrent包里有一个ThreadLocalRandom，伪随机数序列的算法和父类util.Random一样，遵照高德纳老爷子在《The Art of Computer Programming, Volume 2》里说的：</p>
-<p>x(0)=seed;<br>x(i+1)=(A* x(i) +B) mod M;<br>区别是Random里的seed要用到AtomicLong，还要经常compareAndSet(current, next)来避免并发冲突，而ThreadLocalRandom用ThreadLocal模式来解决并发问题，seed用long就行了。</p>
-</li>
-</ol>
-<p>用法： int r = ThreadLocalRandom.current() .nextInt(1000);</p>
-<p>没有JDK7的，可自行Copy Paste这个类，Netty和Esper都是这么干的。</p>
-<p>ImportNews翻译了一篇更详细的文章： 多线程环境下生成随机数</p>
-<ol>
-<li>JDK7<br>JDK6好像终于混不下去了，Spring Boot 1.2带的Tomcat和Jetty都要JDK7才能跑。没有用spring boot的Parent的话，要把Tomcat版本降下去挺麻烦的。另外JavaSimon的4.0版也需要JDK7了。</li>
-</ol>
-<p>发现新JDK无论吸引人与否，比如JDK8y有了种种突破，最终还是靠Big Player的框架类库决然升级才能带动开发者的升级。而Big Player们又在担心如果升级了会丢失一些无法升级的用户…..麻杆打狼两头怕。</p>
-<ol>
-<li>《写给大忙人看的Java SE 8》<br>《写给大忙人看的Java SE 8》 ：Java8的改进太大, 值得《Core Java》的作者再码一本， 事实上，为了保持兼容性，很多代码都保持在JDK5/6的水平上，这本书一次过将JDK7/JDK8的更新讲了，是本快捷的升级指南。</li>
-</ol>
-<ol>
-<li>Nashorn<br>Nashorn——在JDK 8中融合Java与JavaScript之力： JDK8的新JavaScript引擎据说是JDK6时的2-10倍，另外Avatar.js可以在Java里跑Node.js及其类库， 然后Node.js里又再调用Java的类库，纸包鸡包纸。</li>
-</ol>
-
+            <p><a href="http://coolshell.cn/articles/11564.html" target="_blank" rel="external">TCP 的那些事儿（上）</a> by 陈皓<br><br><a href="http://coolshell.cn/articles/11609.html" target="_blank" rel="external">TCP 的那些事儿（下）</a> by 陈皓</p><br><p><a href="http://weibo.com/p/230418e59371cc0102vg4n" target="_blank" rel="external">Linux &amp;TCP相关参数的总结</a> by 锋寒<br><br><a href="http://colobu.com/2014/09/18/linux-tcpip-tuning/" target="_blank" rel="external">Linux TCP/IP 协议栈调优</a> by 鸟窝</p><br><p><a href="http://www.importnew.com/11229.html" target="_blank" rel="external">Web基础架构：负载均衡和LVS</a> by ImportNew<br><br><a href="http://colobu.com/2014/10/21/udp-and-unicast-multicast-broadcast-anycast/" target="_blank" rel="external">单播，组播(多播)，广播以及任播</a> by 鸟窝</p>
           
         
       
@@ -1403,127 +1523,6 @@
 <p><code>find / -type f -name &quot;*.log&quot; | xargs grep &quot;ERROR&quot;</code></p>
 <p>例子：从当前目录开始查找所有扩展名为.in的文本文件，并找出包含”thermcontact”的行</p>
 <p><code>find . -name &quot;*.in&quot; | xargs grep &quot;thermcontact&quot;</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/20/mac-show-hide-files/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/20/mac-show-hide-files/" itemprop="url">Mac show hide files</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-20T00:00:00+08:00">
-                2015-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>显示：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool true</code></p>
-<p>隐藏：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool false</code></p>
 
           
         
@@ -1729,7 +1728,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/17/baidu-music/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/20/mac-show-hide-files/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1748,7 +1747,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/04/17/baidu-music/" itemprop="url">[百度]随机播放音乐（随机数相关）</a></h1>
+                <a class="post-title-link" href="/2015/04/20/mac-show-hide-files/" itemprop="url">Mac show hide files</a></h1>
         
 
         <div class="post-meta">
@@ -1760,8 +1759,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-17T00:00:00+08:00">
-                2015-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-20T00:00:00+08:00">
+                2015-04-20
               </time>
             
 
@@ -1800,36 +1799,8 @@
       
         
           
-            <p>##问题</p>
-<p>假设张三的mp3里有1000首歌，现在希望设计一种随机算法来随机播放。与普通随机模式不同的是，张三希望每首歌被随机到的改了吧是与一首歌的豆瓣评分（0~10分）成正比的，如朴树的《平凡之路》评分为8.9分，逃跑计划的《夜空中最亮的星》评分为9.5分，则希望听《平凡之路》的概率与《夜空中最亮的星》的概率比为89:95,。现在我们已知这1000首歌的豆瓣评分：</p>
-<ul>
-<li>请设计一种随机算法来满足张三的需求。</li>
-<li>请写代码实现自己的算法。</li>
-</ul>
-<p>##思路解答</p>
-<ul>
-<li>1000首歌曲编号，从1至1000</li>
-<li>产生一个1至1000的随机数，表示要播放的歌曲，这时，所有的歌曲被选中播放的概率是相同的</li>
-<li>假设选定的歌曲是54号，它的豆瓣评分是9.5分，那么此时再随机生成一个1至100的随机数，如果随机数小于等于95，那么就播放这首歌曲，如果随机数大于95，则重复1,2,3的步骤，直至找到一首可以播放的歌曲</li>
-</ul>
-<blockquote>
-<p>备注：两首歌曲，评分分别为8.0,9.5，他们被选中的概率为1/1000,选中后还要产生一次随机数，被播放的概率分别为80%，95%，选中概率相同，播放概率比恰好是分数比值</p>
-</blockquote>
-<p>##证明</p>
-<p>假定歌曲总数为N，第i个歌曲的评分为pi(预处理一下：评分值除以满分，使得评分取值范围是0到1)</p>
-<p>重述具体方法：</p>
-<ul>
-<li>以[1,N]均匀分布产生随机数s；</li>
-<li>以[0,1]均与分布产生随机数q，若q&lt;ps，则选择第s首歌，算法结束；否则，跳转到第1步。</li>
-</ul>
-<p>下面分析这种算法的正确性：</p>
-<ol>
-<li>歌曲i第一次即被选中的概率：(1/N) <em> pi<br> 简要说明：<br> 即第一个随机数s=i，概率为1/N；第二个随机数q要小于pi。<br> 因此，第一次被选中的概率是：(1/N) </em> pi</li>
-<li>歌曲i第二次即被选中的概率：((N-1)/N) <em> (1/N) </em> pi；</li>
-<li>歌曲i第三次即被选中的概率：((N-1)/N) <em> (N-1)/N) </em> (1/N) * pi；</li>
-<li>歌曲i第四次即被选中的概率：((N-1)/N) <em> (N-1)/N) </em> (N-1)/N) <em> (1/N) </em> pi；<br>依次类推…</li>
-</ol>
-<p>第i首歌被选中的概率为上述概率的和。大家会发现，提取公因子(1/N) * pi后，剩下的是个首项为1，公比为(N-1)/N)的递减数列，所有项的和是1/(1-(N-1)/N))=1/N，和公因子相乘后，结论恰好为pi。</p>
+            <p>显示：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool true</code></p>
+<p>隐藏：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool false</code></p>
 
           
         
@@ -1915,7 +1886,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

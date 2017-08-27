@@ -263,6 +263,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/21/git-change-commit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/21/git-change-commit/" itemprop="url">Git Change Commit</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-21T00:00:00+08:00">
+                2014-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p><code>git commit --amend</code> change least commit</p>
+</li>
+<li><p><code>git revert HEAD</code> cancel the least commit</p>
+</li>
+<li><p><code>git reset --hard HEAD~~</code> delete 2 commit in master least</p>
+<p>  if your operation is error, you can rollback this with</p>
+<p>  <code>git reset --hard ORIG_HEAD</code></p>
+</li>
+</ul>
+<p>:blush:</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/20/about-kilims-ifaq/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1623,156 +1775,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/12/java-7-linkedtransferqueue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/09/12/java-7-linkedtransferqueue/" itemprop="url">Java 7 LinkedTransferQueue解析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-12T00:00:00+08:00">
-                2014-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Java-7-LinkedTransferQueue解析"><a href="#Java-7-LinkedTransferQueue解析" class="headerlink" title="Java 7 LinkedTransferQueue解析"></a>Java 7 LinkedTransferQueue解析</h1><p>LinkedTransferQueue出身Google，现在已经被集成在JDK7中，但目前主流的JDK平台仍然是JDK6，所以很多时候我们需要这样引入：</p>
-<p><code>import com.google.code.yanf4j.util;</code></p>
-<p>她的作者依然是Doug Lea大神，他说：</p>
-<blockquote>
-<p>LinkedTransferQueue是一个聪明的队列，他是ConcurrentLinkedQueue,<br>SynchronousQueue (in “fair” mode公平模式), and unbounded LinkedBlockingQueue的超集。</p>
-</blockquote>
-<p>我们从她的声明中也可以看出这一点： </p>
-<p><code>public class LinkedTransferQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements BlockingQueue&lt;E&gt;</code></p>
-<p>Google的注释中，有这样一段描述：</p>
-<blockquote>
-<p>This class extends the approach used in FIFO-mode SynchronousQueues. See the internal documentation, as well as the PPoPP 2006 paper “Scalable Synchronous Queues” by Scherer,<br>                                  <em>Lea &amp; Scott</em> </p>
-</blockquote>
-<p>(<a href="http://www.cs.rice.edu/~wns1/papers/2006-PPoPP-SQ.pdf" target="_blank" rel="external">http://www.cs.rice.edu/~wns1/papers/2006-PPoPP-SQ.pdf</a>) </p>
-<blockquote>
-<p>The main extension is to provide different Wait modes for the main “xfer” method that puts or takes items.  These don’t impact the basic dual-queue logic, but instead control whether or how threads block upon insertion of request or data nodes into the dual queue. It also uses slightly different conventions for tracking whether nodes are off-list or cancelled. </p>
-</blockquote>
-<p>LinkedTransferQueue实现了一个重要的接口TransferQueue,该接口含有下面几个重要方法：</p>
-<p>1. transfer(E e) </p>
-<p>   若当前存在一个正在等待获取的消费者线程，即立刻移交之；否则，会插入当前元素e到队列尾部，并且等待进入阻塞状态，到有消费者线程取走该元素。</p>
-<p>2. tryTransfer(E e) </p>
-<p>   若当前存在一个正在等待获取的消费者线程（使用take()或者poll()函数），使用该方法会即刻转移/传输对象元素e；若不存在，则返回false，并且不进入队列。这是一个不阻塞的操作。</p>
-<p>3. tryTransfer(E e, long timeout, TimeUnit unit) </p>
-<p>   若当前存在一个正在等待获取的消费者线程，会立即传输给它; 否则将插入元素e到队列尾部，并且等待被消费者线程获取消费掉,若在指定的时间内元素e无法被消费者线程获取，则返回false，同时该元素被移除。</p>
-<p>4. hasWaitingConsumer() </p>
-<p>   判断是否存在消费者线程</p>
-<p>5. getWaitingConsumerCount() </p>
-<p>   获取所有等待获取元素的消费线程数量</p>
-<p>6. size()</p>
-<p>因为队列的异步特性，检测当前队列的元素个数需要逐一迭代，可能会得到一个不太准确的结果，尤其是在遍历时有可能队列发生更改。 </p>
-<p>7. 批量操作</p>
-<p>类似于 addAll，removeAll, retainAll, containsAll, equals, toArray 等方法，API不能保证一定会立刻执行。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1823,7 +1825,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

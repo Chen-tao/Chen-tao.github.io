@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/13/vivim/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/17/baidu-music/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -282,7 +282,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/04/13/vivim/" itemprop="url">vi/vim使用进阶:移动</a></h1>
+                <a class="post-title-link" href="/2015/04/17/baidu-music/" itemprop="url">[百度]随机播放音乐（随机数相关）</a></h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-13T00:00:00+08:00">
-                2015-04-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-17T00:00:00+08:00">
+                2015-04-17
               </time>
             
 
@@ -334,56 +334,36 @@
       
         
           
-            <p>vim提供的移动方式多如牛毛，但我们并不需要掌握全部这些命令，只需要掌握最适合自己的那些命令。因为我们最终的目的，并不是成为一个vim高手，而是更高效的编辑文本。</p>
-<p>我们下面介绍的命令，如果没有特别说明，都是在Normal模式下使用的命令。</p>
-<p>这些命令的帮助入口，就是”:help 命令名“。例如，对于”j“命令，查看它的帮助，使用”:help j“。</p>
-<p>[上下左右]</p>
-<p>让我们从最简单的、也是使用频率最高的h, j, k, l开始。</p>
-<p>h, j, k, l的移动方式，已经成为vim的标志之一，并且也为更多的软件所接受。如果你仍在用上下左右光标来移动的话，说明你内心并没有真正接受vim的哲学，如果真的打算把vim做为你的编辑工具，就从使用h, j, k, l开始吧！</p>
-<p>h, j, k, l分别代表向左、下、上、右移动。如同许多vim命令一样，可以在这些键前加一个数字，表示移动的倍数。例如，”10j“表示向下移动10行；”10l“表示向右移动10列。</p>
-<p>缺省情况下，h和l命令不会把光标移出当前行。如果已经到了行首，无论按多少次h键，光标始终停留在行首，l命令也类似。如果希望h和l命令可以移出当前行，更改‘whichwrap’选项的设置(:help ‘whichwrap’)。</p>
-<p>vim的作者在安排按键功能时别具匠心，在其它的键绑定中，也能看到h, j, k, l所代表的含义。</p>
-<p>例如，使光标在多个窗口间上下左右移动的命令，就是CTRL-W h/j/k/l (:help CTRL-W_h, …)；</p>
-<p>再如，上下左右移动窗口位置的命令，是CTRL-W H/J/K/L (:help CTRL-W_H, …)。注意，这里的H, J, K, L是大写的。</p>
-<p>[ 翻页 ]</p>
-<p>在vim中翻页，同样可以使用PageUp和PageDown，不过，像使用上下左右光标一样，你的手指会移出主键盘区。因此，我们通常使用CTRL-B和CTRL-F来进行翻页，它们的功能等同于PageUp和PageDown。CTRL-B和CTRL-F前也可以加上数字，来表示向上或向下翻多少页。</p>
-<p>vim中还可以向上或向下翻半页，翻指定的行数，参见scroll.txt帮助手册页。</p>
-<p>[ 在文件中移动 ]</p>
-<p>vim提供了一些命令，可以方便的在文件中移动。</p>
-<p>命令”gg“移动到文件的第一行，而命令”G“则移动到文件的最后一行。</p>
-<p>命令”G“前可以加上数字，在这里，数字的含义并不是倍数，而是你打算跳转的行号。例如，你想跳转到文件的第1234行，只需输入”1234G“。</p>
-<p>你还可以按百分比来跳转，例如，你想跳到文件的正中间，输入”50%“；如果想跳到75%处，输入”75%“。注意，你必须先输入一个数字，然后输入”%“。如果直接输入”%“，那含义就完全不同了。”:help N%“阅读更多细节。</p>
-<p>在文件中移动，你可能会迷失自己的位置，这时使用”CTRL-G“命令，查看一下自己位置。这个命令会显示出光标的位置及其它信息。为了避免迷失，你可以打开行号显示；使用”:set number“命令后，会在每一行前显示出行号，可以更方便的定位的跳转（:help ‘number’）。</p>
-<p>[ 移动到指定字符 ]</p>
-<p>上面的命令都是行间移动(除h, l外)，也就是从当前行移动到另外一行。如果我们想在当前行内快速移动，可以使用f, t, F, T命令。</p>
-<p>“f“命令移动到光标右边的指定字符上，例如，”fx“，会把移动到光标右边的第一个’x’字符上。”F“命令则反方向查找，也就是移动到光标左边的指定字符上。</p>
-<p>“t“命令和”f“命令的区别在于，它移动到光标右边的指定字符之前。例如，”tx“会移动到光标右边第一个’x’字符的前面。”T“命令是”t“命令的反向版本，它移动到光标右边的指定字符之后。</p>
-<p>这四个命令只在当前行中移动光标，光标不会跨越回车换行符。</p>
-<p>可以在命令前面使用数字，表示倍数。例如，”3fx“表示移动到光标右边的第3个’x’字符上。</p>
-<p>“;“命令重复前一次输入的f, t, F, T命令，而”,“命令会反方向重复前一次输入的f, t, F, T命令。这两个命令前也可以使用数字来表示倍数。</p>
-<p>[ 行首/行尾 ]</p>
-<p>在vim中，移动到行首的命令非常简单，就是”0“，这个是数字0，而不是大写字母O。移动到行尾的命令是”$“。</p>
-<p>另外还有一个命令”^“，用它可以移动到行首的第一个非空白字符。</p>
-<p>在正则表达式中我们会看到，”^“字符代表行首，而”$“字符代表行尾。可见，vi/vim的按键的安排，的确是别具匠心的。</p>
-<p>[ 按单词移动 ]</p>
-<p>我们知道，英文文档的主体是单词，通常用空白字符(包括空格、制表符和回车换行符)来分隔单词。vim中提供了许多命令来按单词移动。</p>
-<p>要根据单词来移动，首先要把文本分隔为一个个独立的单词。vim在对单词进行分隔时，会把’iskeyword‘选项中的字符做为单词的组成字符。也就是说，一个单词(word)由’iskeyword‘选项中定义的字符构成，它前面、后面的字符不在’iskeyword‘选项定义的字符中。例如，如果我们把’iskeyword‘选项设置为”a-z,A-Z,48-57,_“，那么”FooBar<em>123“被做为一个单词，而”FooBar-123“被做为三个单词：”FooBar“, “-“和”123“。”a-z,A-Z,48-57,</em>“中的48-57表示ASCII码表中的数字0-9。</p>
-<p>vim中，移动光标到下一个单词的词首，使用命令”w“，移动光标到上一个单词的词首，使用命令”b“；移动光标到下一个单词的结尾，用命令”e“，移动光标到上一个单词的结尾，使用命令”ge“。</p>
-<p>上面这些命令都使用’iskeyword‘选项中的字符来确定单词的分界，还有几个命令，只把空白字符当做”单词“的分界。当然，这里说的”单词“已经不是传统意义上的单词了，而是由非空白字符构成一串字串。命令”W“移动光标到下个字串的开始，命令”B“移动到上个字串的开始；命令”E“移动到下个字串的结尾，命令”gE“移动到上个字串的结尾。和上面的命令比较一下，发现什么规律没有？</p>
-<p>[ H/M/L ]</p>
-<p>注意：这几个命令是大写的。</p>
-<p>使用H/M/L这三个键，可以让光标跳到当前窗口的顶部、中间、和底部，停留在第一个非空字符上。H命令和L命令前也可以加一个数字，但数字的含义不再是倍数，而是指距窗口顶部、底部的行数。例如，”3H“表示光标移动到距窗口顶部第3行的位置；”5L“表示光标移动到距窗口底部5行的位置。</p>
-<p>[ 相对于光标滚屏 ]</p>
-<p>在阅读代码时，有时我们需要根据光标所在的位置滚屏，把光标所在行移动窗口的顶端、中间或底部，这时就可以用到”zt“、”zz“和”zb“。这种滚屏方式相对于翻页来讲，它的好处在于，你能够始终以当前光标位置做为参照，不会出现翻几次页后，发现自己迷失了方向。 ^_^</p>
-<p>[ 查找 ]</p>
-<p>查找，也可以做为一种快速移动的方式。</p>
-<p>在vim中查找非常容易，直接在Normal模式下输入”/“，然后输入你想查询的字符串，回车，就跳转到第一个匹配的地方了。”/“是向下查找，而”?“进行反方向查找。命令”n“重复上一次的查找命令，而命令”N“也重复上一次的查找命令，只不过它按相反方向查找。</p>
-<p>vim保存了查找的历史记录，你可以在输入”/“或”?“后，用上、下光标键(或CTRL-P/CTRL-N)翻看历史记录，然后再次执行这个查找。</p>
-<p>另外你还可以使用”q/“和”q?“命令，在vim窗口最下面打开一个新的窗口，这个窗口会列出你的查找历史记录，你可以使用任何vim编辑命令对此窗口的内容进行编辑，然后再按回车，就会对光标所在的行的内容进行查找。</p>
-<p>点击查看大图<br>在上图中，我使用”q/“命令打开了command-line窗口，这个窗口列出了我之前所查找的字符串。我现在想查找包含”check_swap“，于是先跳到第399行，把”check_tty“改为”check_swap“，然后按回车。此时vim就去查找包含”check_swap“位置了。这个例子比较简单，你可能觉得command-line窗口没什么必要，但如果你要查找的内容是一个很长的正则表达式，你就会发现它非常有用了。</p>
-<p>vim中有许多与查找相关的选项设置，其中最常用的是’incsearch‘, ‘hlsearch‘, ‘ignorecase‘。</p>
-<p>‘incsearch‘表示在你输入查找内容的同时，vim就开始对你输入的内容进行匹配，并显示匹配的位置。打开这个选项，你可以即时看到查找的结果。<br>‘hlsearch‘选项表示对匹配的所有项目进行高亮显示。<br>‘ignorecase‘选项表示在查找时忽略大小写。<br>通常我会打开’incsearch‘和’hlsearch‘选项，关闭’ignorecase‘选项。</p>
-<p>下一篇文章介绍了在vim中移动的另外一些方法，这些移动命令的需要的技巧更高一些。</p>
+            <p>##问题</p>
+<p>假设张三的mp3里有1000首歌，现在希望设计一种随机算法来随机播放。与普通随机模式不同的是，张三希望每首歌被随机到的改了吧是与一首歌的豆瓣评分（0~10分）成正比的，如朴树的《平凡之路》评分为8.9分，逃跑计划的《夜空中最亮的星》评分为9.5分，则希望听《平凡之路》的概率与《夜空中最亮的星》的概率比为89:95,。现在我们已知这1000首歌的豆瓣评分：</p>
+<ul>
+<li>请设计一种随机算法来满足张三的需求。</li>
+<li>请写代码实现自己的算法。</li>
+</ul>
+<p>##思路解答</p>
+<ul>
+<li>1000首歌曲编号，从1至1000</li>
+<li>产生一个1至1000的随机数，表示要播放的歌曲，这时，所有的歌曲被选中播放的概率是相同的</li>
+<li>假设选定的歌曲是54号，它的豆瓣评分是9.5分，那么此时再随机生成一个1至100的随机数，如果随机数小于等于95，那么就播放这首歌曲，如果随机数大于95，则重复1,2,3的步骤，直至找到一首可以播放的歌曲</li>
+</ul>
+<blockquote>
+<p>备注：两首歌曲，评分分别为8.0,9.5，他们被选中的概率为1/1000,选中后还要产生一次随机数，被播放的概率分别为80%，95%，选中概率相同，播放概率比恰好是分数比值</p>
+</blockquote>
+<p>##证明</p>
+<p>假定歌曲总数为N，第i个歌曲的评分为pi(预处理一下：评分值除以满分，使得评分取值范围是0到1)</p>
+<p>重述具体方法：</p>
+<ul>
+<li>以[1,N]均匀分布产生随机数s；</li>
+<li>以[0,1]均与分布产生随机数q，若q&lt;ps，则选择第s首歌，算法结束；否则，跳转到第1步。</li>
+</ul>
+<p>下面分析这种算法的正确性：</p>
+<ol>
+<li>歌曲i第一次即被选中的概率：(1/N) <em> pi<br> 简要说明：<br> 即第一个随机数s=i，概率为1/N；第二个随机数q要小于pi。<br> 因此，第一次被选中的概率是：(1/N) </em> pi</li>
+<li>歌曲i第二次即被选中的概率：((N-1)/N) <em> (1/N) </em> pi；</li>
+<li>歌曲i第三次即被选中的概率：((N-1)/N) <em> (N-1)/N) </em> (1/N) * pi；</li>
+<li>歌曲i第四次即被选中的概率：((N-1)/N) <em> (N-1)/N) </em> (N-1)/N) <em> (1/N) </em> pi；<br>依次类推…</li>
+</ol>
+<p>第i首歌被选中的概率为上述概率的和。大家会发现，提取公因子(1/N) * pi后，剩下的是个首项为1，公比为(N-1)/N)的递减数列，所有项的和是1/(1-(N-1)/N))=1/N，和公因子相乘后，结论恰好为pi。</p>
 
           
         
@@ -557,6 +537,175 @@
 </li>
 </ul>
 <p>说明成功了，如果你使用的是Mou这类可以实时预览的编辑器，这时候就可以在右侧窗口看到图片咯。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/13/vivim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/13/vivim/" itemprop="url">vi/vim使用进阶:移动</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-13T00:00:00+08:00">
+                2015-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>vim提供的移动方式多如牛毛，但我们并不需要掌握全部这些命令，只需要掌握最适合自己的那些命令。因为我们最终的目的，并不是成为一个vim高手，而是更高效的编辑文本。</p>
+<p>我们下面介绍的命令，如果没有特别说明，都是在Normal模式下使用的命令。</p>
+<p>这些命令的帮助入口，就是”:help 命令名“。例如，对于”j“命令，查看它的帮助，使用”:help j“。</p>
+<p>[上下左右]</p>
+<p>让我们从最简单的、也是使用频率最高的h, j, k, l开始。</p>
+<p>h, j, k, l的移动方式，已经成为vim的标志之一，并且也为更多的软件所接受。如果你仍在用上下左右光标来移动的话，说明你内心并没有真正接受vim的哲学，如果真的打算把vim做为你的编辑工具，就从使用h, j, k, l开始吧！</p>
+<p>h, j, k, l分别代表向左、下、上、右移动。如同许多vim命令一样，可以在这些键前加一个数字，表示移动的倍数。例如，”10j“表示向下移动10行；”10l“表示向右移动10列。</p>
+<p>缺省情况下，h和l命令不会把光标移出当前行。如果已经到了行首，无论按多少次h键，光标始终停留在行首，l命令也类似。如果希望h和l命令可以移出当前行，更改‘whichwrap’选项的设置(:help ‘whichwrap’)。</p>
+<p>vim的作者在安排按键功能时别具匠心，在其它的键绑定中，也能看到h, j, k, l所代表的含义。</p>
+<p>例如，使光标在多个窗口间上下左右移动的命令，就是CTRL-W h/j/k/l (:help CTRL-W_h, …)；</p>
+<p>再如，上下左右移动窗口位置的命令，是CTRL-W H/J/K/L (:help CTRL-W_H, …)。注意，这里的H, J, K, L是大写的。</p>
+<p>[ 翻页 ]</p>
+<p>在vim中翻页，同样可以使用PageUp和PageDown，不过，像使用上下左右光标一样，你的手指会移出主键盘区。因此，我们通常使用CTRL-B和CTRL-F来进行翻页，它们的功能等同于PageUp和PageDown。CTRL-B和CTRL-F前也可以加上数字，来表示向上或向下翻多少页。</p>
+<p>vim中还可以向上或向下翻半页，翻指定的行数，参见scroll.txt帮助手册页。</p>
+<p>[ 在文件中移动 ]</p>
+<p>vim提供了一些命令，可以方便的在文件中移动。</p>
+<p>命令”gg“移动到文件的第一行，而命令”G“则移动到文件的最后一行。</p>
+<p>命令”G“前可以加上数字，在这里，数字的含义并不是倍数，而是你打算跳转的行号。例如，你想跳转到文件的第1234行，只需输入”1234G“。</p>
+<p>你还可以按百分比来跳转，例如，你想跳到文件的正中间，输入”50%“；如果想跳到75%处，输入”75%“。注意，你必须先输入一个数字，然后输入”%“。如果直接输入”%“，那含义就完全不同了。”:help N%“阅读更多细节。</p>
+<p>在文件中移动，你可能会迷失自己的位置，这时使用”CTRL-G“命令，查看一下自己位置。这个命令会显示出光标的位置及其它信息。为了避免迷失，你可以打开行号显示；使用”:set number“命令后，会在每一行前显示出行号，可以更方便的定位的跳转（:help ‘number’）。</p>
+<p>[ 移动到指定字符 ]</p>
+<p>上面的命令都是行间移动(除h, l外)，也就是从当前行移动到另外一行。如果我们想在当前行内快速移动，可以使用f, t, F, T命令。</p>
+<p>“f“命令移动到光标右边的指定字符上，例如，”fx“，会把移动到光标右边的第一个’x’字符上。”F“命令则反方向查找，也就是移动到光标左边的指定字符上。</p>
+<p>“t“命令和”f“命令的区别在于，它移动到光标右边的指定字符之前。例如，”tx“会移动到光标右边第一个’x’字符的前面。”T“命令是”t“命令的反向版本，它移动到光标右边的指定字符之后。</p>
+<p>这四个命令只在当前行中移动光标，光标不会跨越回车换行符。</p>
+<p>可以在命令前面使用数字，表示倍数。例如，”3fx“表示移动到光标右边的第3个’x’字符上。</p>
+<p>“;“命令重复前一次输入的f, t, F, T命令，而”,“命令会反方向重复前一次输入的f, t, F, T命令。这两个命令前也可以使用数字来表示倍数。</p>
+<p>[ 行首/行尾 ]</p>
+<p>在vim中，移动到行首的命令非常简单，就是”0“，这个是数字0，而不是大写字母O。移动到行尾的命令是”$“。</p>
+<p>另外还有一个命令”^“，用它可以移动到行首的第一个非空白字符。</p>
+<p>在正则表达式中我们会看到，”^“字符代表行首，而”$“字符代表行尾。可见，vi/vim的按键的安排，的确是别具匠心的。</p>
+<p>[ 按单词移动 ]</p>
+<p>我们知道，英文文档的主体是单词，通常用空白字符(包括空格、制表符和回车换行符)来分隔单词。vim中提供了许多命令来按单词移动。</p>
+<p>要根据单词来移动，首先要把文本分隔为一个个独立的单词。vim在对单词进行分隔时，会把’iskeyword‘选项中的字符做为单词的组成字符。也就是说，一个单词(word)由’iskeyword‘选项中定义的字符构成，它前面、后面的字符不在’iskeyword‘选项定义的字符中。例如，如果我们把’iskeyword‘选项设置为”a-z,A-Z,48-57,_“，那么”FooBar<em>123“被做为一个单词，而”FooBar-123“被做为三个单词：”FooBar“, “-“和”123“。”a-z,A-Z,48-57,</em>“中的48-57表示ASCII码表中的数字0-9。</p>
+<p>vim中，移动光标到下一个单词的词首，使用命令”w“，移动光标到上一个单词的词首，使用命令”b“；移动光标到下一个单词的结尾，用命令”e“，移动光标到上一个单词的结尾，使用命令”ge“。</p>
+<p>上面这些命令都使用’iskeyword‘选项中的字符来确定单词的分界，还有几个命令，只把空白字符当做”单词“的分界。当然，这里说的”单词“已经不是传统意义上的单词了，而是由非空白字符构成一串字串。命令”W“移动光标到下个字串的开始，命令”B“移动到上个字串的开始；命令”E“移动到下个字串的结尾，命令”gE“移动到上个字串的结尾。和上面的命令比较一下，发现什么规律没有？</p>
+<p>[ H/M/L ]</p>
+<p>注意：这几个命令是大写的。</p>
+<p>使用H/M/L这三个键，可以让光标跳到当前窗口的顶部、中间、和底部，停留在第一个非空字符上。H命令和L命令前也可以加一个数字，但数字的含义不再是倍数，而是指距窗口顶部、底部的行数。例如，”3H“表示光标移动到距窗口顶部第3行的位置；”5L“表示光标移动到距窗口底部5行的位置。</p>
+<p>[ 相对于光标滚屏 ]</p>
+<p>在阅读代码时，有时我们需要根据光标所在的位置滚屏，把光标所在行移动窗口的顶端、中间或底部，这时就可以用到”zt“、”zz“和”zb“。这种滚屏方式相对于翻页来讲，它的好处在于，你能够始终以当前光标位置做为参照，不会出现翻几次页后，发现自己迷失了方向。 ^_^</p>
+<p>[ 查找 ]</p>
+<p>查找，也可以做为一种快速移动的方式。</p>
+<p>在vim中查找非常容易，直接在Normal模式下输入”/“，然后输入你想查询的字符串，回车，就跳转到第一个匹配的地方了。”/“是向下查找，而”?“进行反方向查找。命令”n“重复上一次的查找命令，而命令”N“也重复上一次的查找命令，只不过它按相反方向查找。</p>
+<p>vim保存了查找的历史记录，你可以在输入”/“或”?“后，用上、下光标键(或CTRL-P/CTRL-N)翻看历史记录，然后再次执行这个查找。</p>
+<p>另外你还可以使用”q/“和”q?“命令，在vim窗口最下面打开一个新的窗口，这个窗口会列出你的查找历史记录，你可以使用任何vim编辑命令对此窗口的内容进行编辑，然后再按回车，就会对光标所在的行的内容进行查找。</p>
+<p>点击查看大图<br>在上图中，我使用”q/“命令打开了command-line窗口，这个窗口列出了我之前所查找的字符串。我现在想查找包含”check_swap“，于是先跳到第399行，把”check_tty“改为”check_swap“，然后按回车。此时vim就去查找包含”check_swap“位置了。这个例子比较简单，你可能觉得command-line窗口没什么必要，但如果你要查找的内容是一个很长的正则表达式，你就会发现它非常有用了。</p>
+<p>vim中有许多与查找相关的选项设置，其中最常用的是’incsearch‘, ‘hlsearch‘, ‘ignorecase‘。</p>
+<p>‘incsearch‘表示在你输入查找内容的同时，vim就开始对你输入的内容进行匹配，并显示匹配的位置。打开这个选项，你可以即时看到查找的结果。<br>‘hlsearch‘选项表示对匹配的所有项目进行高亮显示。<br>‘ignorecase‘选项表示在查找时忽略大小写。<br>通常我会打开’incsearch‘和’hlsearch‘选项，关闭’ignorecase‘选项。</p>
+<p>下一篇文章介绍了在vim中移动的另外一些方法，这些移动命令的需要的技巧更高一些。</p>
 
           
         
@@ -1440,164 +1589,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/04/starting-and-stopping-background-services-with-homebrew/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/04/starting-and-stopping-background-services-with-homebrew/" itemprop="url">Starting and Stopping Background Services with Homebrew</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-04T00:00:00+08:00">
-                2015-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I love Homebrew, but sometimes it really gets me down, you know? Especially when I have to deal with launchctl.</p>
-<p>+<br>launchctl loads and unloads services that start at login. In OS X, these services are represented by files ending with .plist (which stands for “property list”). These plists are usually stored in either ~/Library/LaunchAgents or /Library/LaunchAgents. You load them (i.e. tell them to start at login) with launchctl load $PATH_TO_LIST and unload them with launchctl unload $PATH_TO_LIST. Loading a plist tells the program it represents (e.g. redis) to start at login, while unloading it tells the program not to start at login.</p>
-<p>+<br>This post-install message from Homebrew may look familiar:</p>
-<p>+<br>To have launchd start mysql at login:<br>    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents<br>Then to load mysql now:<br>    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>Or, if you don’t want/need launchctl, you can just run:<br>    mysql.server start<br>+<br>Doing all that takes too long, and I can never remember where Homebrew plists are. Fortunately, Homebrew includes a lovely interface for managing this without using ln, launchctl or knowing where plists are.</p>
-<p>brew services</p>
-<p>+<br>First, install brew services by tapping gapple/services (one time):</p>
-<p>+<br>brew tap gapple/services<br>+<br>Here’s an example usage:</p>
-<p>3<br>$ brew services start mysql<br>==&gt; Successfully started <code>mysql</code> (label: homebrew.mxcl.mysql)<br>+<br>Behind the scenes, brew services start is doing everything in the post-install message above. First it runs ln -sfv … for you. Then it runs launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist. It Just Works.</p>
-<p>+<br>Let’s say MySQL’s acting funky. We can easily restart it:</p>
-<p>+<br>brew services restart mysql<br>Stopping <code>mysql</code>… (might take a while)<br>==&gt; Successfully stopped <code>mysql</code> (label: homebrew.mxcl.mysql)<br>==&gt; Successfully started <code>mysql</code> (label: homebrew.mxcl.mysql)<br>+<br>Now let’s see everything we’ve loaded:</p>
-<p>+<br>$ brew services list<br>redis      started      442 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.redis.plist<br>postgresql started      443 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.postgresql.plist<br>mongodb    started      444 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mongodb.plist<br>memcached  started      445 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.memcached.plist<br>mysql      started    87538 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>+<br>Note that the list of services includes services you started with launchctl load, not just services you loaded with brew services.</p>
-<p>+<br>Let’s say we uninstalled MySQL and Homebrew didn’t remove the plist for some reason (it usually removes it for you). There’s a command for you:</p>
-<p>+<br>$ brew services cleanup<br>Removing unused plist /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>+<br>Kachow.</p>
-<p>Hidden Homebrew commands</p>
-<p>1<br>Homebrew ships with a whole bunch of commands that don’t show up in brew –help. You can see a list of them in the Homebrew git repo. Each file is named like brew-COMMAND, and you run them with brew command. I recommend brew beer.</p>
-<p>What’s next</p>
-<p>+<br>If you liked this, I recommend reading through Homebrew’s Tips and Tricks. You can also try out another Homebrew extension for installing Mac apps: homebrew-cask.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/04/mac-os-x-1010-yosemite-dashboardspotlight/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1744,7 +1735,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/02/11/mac-homebrew--update-all-packages-at-once/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/04/starting-and-stopping-background-services-with-homebrew/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1763,7 +1754,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/02/11/mac-homebrew--update-all-packages-at-once/" itemprop="url">Mac Homebrew – Update all packages at once</a></h1>
+                <a class="post-title-link" href="/2015/04/04/starting-and-stopping-background-services-with-homebrew/" itemprop="url">Starting and Stopping Background Services with Homebrew</a></h1>
         
 
         <div class="post-meta">
@@ -1775,8 +1766,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-11T00:00:00+08:00">
-                2015-02-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-04T00:00:00+08:00">
+                2015-04-04
               </time>
             
 
@@ -1785,6 +1776,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1815,12 +1828,23 @@
       
         
           
-            <p>With the release of Mountain Lion, some brew packages have stopped working… because they need updates!</p>
-<p>Updating all my brew packages installed via mac homebrew was my solution, unfortunatly there is no easy way to do this built-in.</p>
-<p>Run this command, it first updates homebrew itself then looks for outdated formulas and updates them one by one. (Since there is no built-in command to update all brew packages at once)</p>
-<p><code>brew update; brew list | xargs brew upgrade</code><br>Afterwards, you can issue a</p>
-<p><code>brew outdated</code><br>to confirm that there are no packages requiring updates.</p>
-<p>brew upgrade <code>brew outdated</code></p>
+            <p>I love Homebrew, but sometimes it really gets me down, you know? Especially when I have to deal with launchctl.</p>
+<p>+<br>launchctl loads and unloads services that start at login. In OS X, these services are represented by files ending with .plist (which stands for “property list”). These plists are usually stored in either ~/Library/LaunchAgents or /Library/LaunchAgents. You load them (i.e. tell them to start at login) with launchctl load $PATH_TO_LIST and unload them with launchctl unload $PATH_TO_LIST. Loading a plist tells the program it represents (e.g. redis) to start at login, while unloading it tells the program not to start at login.</p>
+<p>+<br>This post-install message from Homebrew may look familiar:</p>
+<p>+<br>To have launchd start mysql at login:<br>    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents<br>Then to load mysql now:<br>    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>Or, if you don’t want/need launchctl, you can just run:<br>    mysql.server start<br>+<br>Doing all that takes too long, and I can never remember where Homebrew plists are. Fortunately, Homebrew includes a lovely interface for managing this without using ln, launchctl or knowing where plists are.</p>
+<p>brew services</p>
+<p>+<br>First, install brew services by tapping gapple/services (one time):</p>
+<p>+<br>brew tap gapple/services<br>+<br>Here’s an example usage:</p>
+<p>3<br>$ brew services start mysql<br>==&gt; Successfully started <code>mysql</code> (label: homebrew.mxcl.mysql)<br>+<br>Behind the scenes, brew services start is doing everything in the post-install message above. First it runs ln -sfv … for you. Then it runs launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist. It Just Works.</p>
+<p>+<br>Let’s say MySQL’s acting funky. We can easily restart it:</p>
+<p>+<br>brew services restart mysql<br>Stopping <code>mysql</code>… (might take a while)<br>==&gt; Successfully stopped <code>mysql</code> (label: homebrew.mxcl.mysql)<br>==&gt; Successfully started <code>mysql</code> (label: homebrew.mxcl.mysql)<br>+<br>Now let’s see everything we’ve loaded:</p>
+<p>+<br>$ brew services list<br>redis      started      442 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.redis.plist<br>postgresql started      443 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.postgresql.plist<br>mongodb    started      444 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mongodb.plist<br>memcached  started      445 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.memcached.plist<br>mysql      started    87538 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>+<br>Note that the list of services includes services you started with launchctl load, not just services you loaded with brew services.</p>
+<p>+<br>Let’s say we uninstalled MySQL and Homebrew didn’t remove the plist for some reason (it usually removes it for you). There’s a command for you:</p>
+<p>+<br>$ brew services cleanup<br>Removing unused plist /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist<br>+<br>Kachow.</p>
+<p>Hidden Homebrew commands</p>
+<p>1<br>Homebrew ships with a whole bunch of commands that don’t show up in brew –help. You can see a list of them in the Homebrew git repo. Each file is named like brew-COMMAND, and you run them with brew command. I recommend brew beer.</p>
+<p>What’s next</p>
+<p>+<br>If you liked this, I recommend reading through Homebrew’s Tips and Tricks. You can also try out another Homebrew extension for installing Mac apps: homebrew-cask.</p>
 
           
         
@@ -1906,7 +1930,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

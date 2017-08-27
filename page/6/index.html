@@ -263,6 +263,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/6-mysql-useful-exp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/10/03/6-mysql-useful-exp/" itemprop="url">6个有用的MySQL语句</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>计算年数<br> 你想通过生日来计算这个人有几岁了。</li>
+</ol>
+<p>``SELECT<br>DATE_FORMAT(FROM_DAYS(TO_DAYS(now()) - TO_DAYS(@dateofbirth)), ‘%Y’)</p>
+<ul>
+<li>0;``</li>
+</ul>
+<ol>
+<li>两个时间的差<br>取得两个 datetime 值的差。假设 dt1 和 dt2 是 datetime 类型，其格式为 ‘yyyy-mm-dd hh:mm:ss’，那么它们之间所差的秒数为：</li>
+</ol>
+<p><code>UNIX_TIMESTAMP(dt2 ) - UNIX_TIMESTAMP( dt1 )</code></p>
+<p>除以60就是所差的分钟数，除以3600就是所差的小时数，再除以24就是所差的天数。</p>
+<ol>
+<li>显示某一列出现过N次的值</li>
+</ol>
+<p><code>SELECT id FROM tbl GROUP BY id HAVING COUNT(*) = N;</code></p>
+<ol>
+<li>计算两个日子间的工作日<br>所谓工作日就是除出周六周日和节假日。</li>
+</ol>
+<p><code>SELECT COUNT(*) FROM calendar WHERE d BETWEEN Start AND Stop  AND DAYOFWEEK(d) NOT IN(1,7) AND holiday=0</code></p>
+<ol>
+<li>查找表中的主键</li>
+</ol>
+<p><code>SELECT k.column_name FROM information_schema.table_constraints t JOIN information_schema.key_column_usage k USING  (constraint_name,table_schema,table_name) WHERE t.constraint_type=&#39;PRIMARY
+ KEY&#39; AND t.table_schema=&#39;db&#39; AND t.table_name=tbl&#39;</code></p>
+<ol>
+<li>查看你的数库有多大</li>
+</ol>
+<p><code>SELECT table_schema AS &#39;Db Name&#39;,  Round(Sum( data_length + index_length ) / 1024 / 1024, 3 ) AS &#39;Db Size (MB)&#39;,  Round( Sum( data_free ) / 1024 / 1024, 3 ) AS &#39;Free Space (MB)&#39; FROM information_schema.tables GROUP BY table_schema ;</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/kilim-work-way/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -413,144 +561,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">El Capitan & Homebrew</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
-                2015-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="El-Capitan-amp-Homebrew"><a href="#El-Capitan-amp-Homebrew" class="headerlink" title="El Capitan &amp; Homebrew"></a>El Capitan &amp; Homebrew</h1><p>Part of the OS X 10.11/El Capitan changes is something called <a href="https://en.wikipedia.org/wiki/System_Integrity_Protection" target="_blank" rel="external">System Integrity Protection</a> or “SIP”.</p>
-<p>SIP prevents you from writing to many system directories such as <code>/usr</code>, <code>/System</code> &amp; <code>/bin</code>, regardless of whether or not you are root. The Apple keynote is <a href="https://developer.apple.com/videos/wwdc/2015/?id=706" target="_blank" rel="external">here</a> if you’d like to learn more.</p>
-<p>One of the implications of SIP is that you cannot simply create <code>/usr/local</code> if it is removed or doesn’t exist for another reason. However, as noted in the keynote, Apple is leaving <code>/usr/local</code> open for developers to use, so Homebrew can still be used as expected.</p>
-<p>Apple documentation <em>hints</em> that <code>/usr/local</code> will be returned to <code>root:wheel restricted</code> permissions on <a href="https://developer.apple.com/library/mac/releasenotes/General/rn-osx-10.11/index.html" target="_blank" rel="external">every OS X update</a>. There is a <code>brew doctor</code> check in place to advise if permissions have slipped for whatever reason.</p>
-<p><strong>If you haven’t installed Homebrew in <code>/usr/local</code> or another system-protected directory, this document does not apply to you.</strong></p>
-<p>This is how to fix Homebrew on El Capitan if you see permission issues:</p>
-<h2 id="If-usr-local-exists-already"><a href="#If-usr-local-exists-already" class="headerlink" title="If /usr/local exists already:"></a>If <code>/usr/local</code> exists already:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
-<h2 id="If-usr-local-does-not-exist"><a href="#If-usr-local-does-not-exist" class="headerlink" title="If /usr/local does not exist:"></a>If <code>/usr/local</code> does not exist:</h2><ul>
-<li>Reboot into Recovery mode (Hold Cmd+R on boot) &amp; access the Terminal.</li>
-<li>In that terminal run:<br>  <code>csrutil disable</code></li>
-<li>Reboot back into OS X</li>
-<li>Open your Terminal application and execute:</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /usr/<span class="built_in">local</span> &amp;&amp; sudo chflags norestricted /usr/<span class="built_in">local</span> &amp;&amp; sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
-<ul>
-<li>Reboot back into Recovery Mode &amp; access the Terminal again.</li>
-<li>In that terminal execute:<br><code>csrutil enable</code></li>
-<li>Reboot back into OS X &amp; you’ll be able to write to <code>/usr/local</code> &amp; install Homebrew.</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -653,6 +663,144 @@
 <p>##并行回收</p>
 <p>基本原理是，在程序运行的同时进行GC工作，最大化CPU的性能。但是这种方式也要面对增量回收的问题，所以也要进行写屏障操作。</p>
 <p>然而这种方式也并未做到完全不暂停原程序的运行，在某些特定的GC阶段还是要暂停原程序。多核化迅速发展的今天，这种算法也在不断优化。不间断原程序实现并行回收这个领域是相当值得期待的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">El Capitan & Homebrew</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
+                2015-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="El-Capitan-amp-Homebrew"><a href="#El-Capitan-amp-Homebrew" class="headerlink" title="El Capitan &amp; Homebrew"></a>El Capitan &amp; Homebrew</h1><p>Part of the OS X 10.11/El Capitan changes is something called <a href="https://en.wikipedia.org/wiki/System_Integrity_Protection" target="_blank" rel="external">System Integrity Protection</a> or “SIP”.</p>
+<p>SIP prevents you from writing to many system directories such as <code>/usr</code>, <code>/System</code> &amp; <code>/bin</code>, regardless of whether or not you are root. The Apple keynote is <a href="https://developer.apple.com/videos/wwdc/2015/?id=706" target="_blank" rel="external">here</a> if you’d like to learn more.</p>
+<p>One of the implications of SIP is that you cannot simply create <code>/usr/local</code> if it is removed or doesn’t exist for another reason. However, as noted in the keynote, Apple is leaving <code>/usr/local</code> open for developers to use, so Homebrew can still be used as expected.</p>
+<p>Apple documentation <em>hints</em> that <code>/usr/local</code> will be returned to <code>root:wheel restricted</code> permissions on <a href="https://developer.apple.com/library/mac/releasenotes/General/rn-osx-10.11/index.html" target="_blank" rel="external">every OS X update</a>. There is a <code>brew doctor</code> check in place to advise if permissions have slipped for whatever reason.</p>
+<p><strong>If you haven’t installed Homebrew in <code>/usr/local</code> or another system-protected directory, this document does not apply to you.</strong></p>
+<p>This is how to fix Homebrew on El Capitan if you see permission issues:</p>
+<h2 id="If-usr-local-exists-already"><a href="#If-usr-local-exists-already" class="headerlink" title="If /usr/local exists already:"></a>If <code>/usr/local</code> exists already:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
+<h2 id="If-usr-local-does-not-exist"><a href="#If-usr-local-does-not-exist" class="headerlink" title="If /usr/local does not exist:"></a>If <code>/usr/local</code> does not exist:</h2><ul>
+<li>Reboot into Recovery mode (Hold Cmd+R on boot) &amp; access the Terminal.</li>
+<li>In that terminal run:<br>  <code>csrutil disable</code></li>
+<li>Reboot back into OS X</li>
+<li>Open your Terminal application and execute:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /usr/<span class="built_in">local</span> &amp;&amp; sudo chflags norestricted /usr/<span class="built_in">local</span> &amp;&amp; sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Reboot back into Recovery Mode &amp; access the Terminal again.</li>
+<li>In that terminal execute:<br><code>csrutil enable</code></li>
+<li>Reboot back into OS X &amp; you’ll be able to write to <code>/usr/local</code> &amp; install Homebrew.</li>
+</ul>
 
           
         
@@ -1101,171 +1249,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/how-to-support-full-unicode-in-mysql-databases/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/08/02/how-to-support-full-unicode-in-mysql-databases/" itemprop="url">How to support full Unicode in MySQL databases</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
-                2015-08-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>####Alternative title: The things we do to store U+1F4A9 PILE OF POO (💩) correctly.####</p>
-<p>Are you using MySQL’s utf8 charset in your databases? In this write-up I’ll explain why you should switch to utf8mb4 instead, and how to do it.</p>
-<p>##UTF-8</p>
-<p>The UTF-8 encoding can represent every symbol in the Unicode character set, which ranges from U+000000 to U+10FFFF. That’s 1,114,112 possible symbols. (Not all of these Unicode code points have been assigned characters yet, but that doesn’t stop UTF-8 from being able to encode them.)</p>
-<p>UTF-8 is a variable-width encoding; it encodes each symbol using one to four 8-bit bytes. Symbols with lower numerical code point values are encoded using fewer bytes. This way, UTF-8 is optimized for the common case where ASCII characters and other BMP symbols (whose code points range from U+000000 to U+00FFFF) are used — while still allowing astral symbols (whose code points range from U+010000 to U+10FFFF) to be stored.</p>
-<p>##MySQL’s utf8<br>For a long time, I was using MySQL’s utf8 charset for databases, tables, and columns, assuming it mapped to the UTF-8 encoding described above. By using utf8, I’d be able to store any symbol I want in my database — or so I thought.</p>
-<p>While writing about JavaScript’s internal character encoding, I noticed that there was no way to insert the U+1D306 TETRAGRAM FOR CENTRE (𝌆) symbol into the MySQL database behind this site. The column I was trying to update had the utf8_unicode_ci collation, and the connection charset was set to utf8.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET NAMES utf8; # just to emphasize that the connection charset is set to `utf8`</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; UPDATE database_name.table_name SET column_name = &apos;foo𝌆bar&apos; WHERE id = 9001;</div><div class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</div><div class="line">Rows matched: 1  Changed: 1  Warnings: 1</div><div class="line"></div><div class="line">mysql&gt; SELECT column_name FROM database_name.table_name WHERE id = 9001;</div><div class="line">+-------------+</div><div class="line">| column_name |</div><div class="line">+-------------+</div><div class="line">| foo         |</div><div class="line">+-------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
-<p>The content got truncated at the first astral Unicode symbol, in this case 𝌆 — so, attempting to insert foo𝌆bar actually inserted foo instead, resulting in data loss (and possibly introducing security risks). MySQL returned a warning message, too:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW WARNINGS;</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Level   | Code | Message                                                                      |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Warning | 1366 | Incorrect string value: &apos;\xF0\x9D\x8C\x86&apos; for column &apos;column_name&apos; at row 1 |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
-<p>Turns out MySQL’s utf8 charset only partially implements proper UTF-8 encoding. It can only store UTF-8-encoded symbols that consist of one to three bytes; encoded symbols that take up four bytes aren’t supported.</p>
-<p>Since astral symbols (whose code points range from U+010000 to U+10FFFF) each consist of four bytes in UTF-8, you cannot store them using MySQL’s utf8 implementation.</p>
-<p>This doesn’t just affect the 𝌆 character, but more important symbols like U+01F4A9 PILE OF POO (💩) as well. In total, that’s 1,048,575 possible code points you can’t use. In fact, MySQL’s utf8 only allows you to store 5.88% ((0x00FFFF + 1) / (0x10FFFF + 1)) of all possible Unicode code points. Proper UTF-8 can encode 100% of all Unicode code points.</p>
-<p>TL;DR MySQL’s utf8 encoding is awkwardly named, as it’s different from proper UTF-8 encoding. It doesn’t offer full Unicode support.</p>
-<p>##MySQL’s utf8mb4<br>Luckily, MySQL 5.5.3 (released in early 2010) introduced a new encoding called utf8mb4 which maps to proper UTF-8 and thus fully supports Unicode, including astral symbols.</p>
-<p>##Switching from MySQL’s utf8 to utf8mb4</p>
-<p>###Step 1: Create a backup</p>
-<p>Create a backup of all the databases on the server you want to upgrade. Safety first!</p>
-<p>###Step 2: Upgrade the MySQL server</p>
-<p>Upgrade the MySQL server to v5.5.3+, or ask your server administrator to do it for you.</p>
-<p>###Step 3: Modify databases, tables, and columns</p>
-<p>Change the character set and collation properties of the databases, tables, and columns to use utf8mb4 instead of utf8.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">*For each database:*</div><div class="line">ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;</div><div class="line">*For each table:*</div><div class="line">ALTER TABLE table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*For each column:*</div><div class="line">ALTER TABLE table_name CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*(Don’t blindly copy-paste this! The exact statement depends on the column type, maximum length, and other properties. The above line is just an example for a `VARCHAR` column.)*</div></pre></td></tr></table></figure>
-<p>Since utf8mb4 is fully backwards compatible with utf8, no mojibake or other forms of data loss should occur. (But you have a backup, right?)</p>
-<p>###Step 4: Check the maximum length of columns and index keys</p>
-<p>This is probably the most tedious part of the whole upgrading process.</p>
-<p>When converting from utf8 to utf8mb4, the maximum length of a column or index key is unchanged in terms of bytes. Therefore, it is smaller in terms of characters, because the maximum length of a character is now four bytes instead of three.</p>
-<p>For example, a TINYTEXT column can hold up to 255 bytes, which correlates to 85 three-byte or 63 four-byte characters. Let’s say you have a TINYTEXT column that uses utf8 but must be able to contain more than 63 characters. Given this requirement, you can’t convert this column to utf8mb4 unless you also change the data type to a longer type such as TEXT — because if you’d try to fill it with four-byte characters, you’d only be able to enter 63 characters, but not more.</p>
-<p>The same goes for index keys. The InnoDB storage engine has a maximum index length of 767 bytes, so for utf8 or utf8mb4 columns, you can index a maximum of 255 or 191 characters, respectively. If you currently have utf8 columns with indexes longer than 191 characters, you will need to index a smaller number of characters when using utf8mb4. (Because of this, I had to change some indexed VARCHAR(255) columns to VARCHAR(191).)</p>
-<p>Section 10.1.11 of the MySQL 5.5 Reference Manual has some more information on this.</p>
-<p>###Step 5: Modify connection, client, and server character sets</p>
-<p>In your application code, set the connection character set to utf8mb4. This can be done by simply replacing any variants of SET NAMES utf8 with SET NAMES utf8mb4. If your old SET NAMES statement specified the collation, make sure to change that as well, e.g. SET NAMES utf8 COLLATE utf8_unicode_ci becomes SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci.</p>
-<p>Make sure to set the client and server character set as well. I have the following in my MySQL configuration file (/etc/my.cnf):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysql]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">character-set-client-handshake = FALSE</div><div class="line">character-set-server = utf8mb4</div><div class="line">collation-server = utf8mb4_unicode_ci</div></pre></td></tr></table></figure>
-<p>You can easily confirm these settings work correctly:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; OR Variable_name LIKE &apos;collation%&apos;;</div><div class="line">+--------------------------+--------------------+</div><div class="line">| Variable_name            | Value              |</div><div class="line">+--------------------------+--------------------+</div><div class="line">| character_set_client     | utf8mb4            |</div><div class="line">| character_set_connection | utf8mb4            |</div><div class="line">| character_set_database   | utf8mb4            |</div><div class="line">| character_set_filesystem | binary             |</div><div class="line">| character_set_results    | utf8mb4            |</div><div class="line">| character_set_server     | utf8mb4            |</div><div class="line">| character_set_system     | utf8               |</div><div class="line">| collation_connection     | utf8mb4_unicode_ci |</div><div class="line">| collation_database       | utf8mb4_unicode_ci |</div><div class="line">| collation_server         | utf8mb4_unicode_ci |</div><div class="line">+--------------------------+--------------------+</div><div class="line">10 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
-<p>As you can see, all the relevant options are set to utf8mb4, except for character_set_filesystem which should be binary unless you’re on a file system that supports multi-byte UTF-8-encoded characters in file names, and character_set_system which is always utf8 and can’t be overridden.</p>
-<p><em>Note: The default character set and collation can be configured at some other levels as well.</em></p>
-<p>###Step 6: Repair and optimize all tables</p>
-<p>After upgrading the MySQL server and making the necessary changes explained above, make sure to repair and optimize all databases and tables. I didn’t do this right away after upgrading (I didn’t think it was necessary, as everything seemed to work fine at first glance), and ran into some weird bugs where UPDATE statements didn’t have any effect, even though no errors were thrown.</p>
-<p>You could run the following MySQL queries for each table you want to repair and optimize:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">*For each table*</div><div class="line">REPAIR TABLE table_name;</div><div class="line">OPTIMIZE TABLE table_name;</div></pre></td></tr></table></figure>
-<p>Luckily, this can easily be done in one go using the command-line mysqlcheck utility:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysqlcheck -u root -p --auto-repair --optimize --all-databases</div></pre></td></tr></table></figure>
-<p>This will prompt for the root user’s password, after which all tables in all databases will be repaired and optimized.</p>
-<p>##Summary<br>Never use utf8 in MySQL — always use utf8mb4 instead. Updating your databases and code might take some time, but it’s definitely worth the effort. Why would you arbitrarily limit the set of symbols that can be used in your database? Why would you lose data every time a user enters an astral symbol as part of a comment or message or whatever it is you store in your database? There’s no reason not to strive for full Unicode support everywhere. Do the right thing, and use utf8mb4. 🍻</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1592,6 +1575,307 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/how-to-support-full-unicode-in-mysql-databases/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/08/02/how-to-support-full-unicode-in-mysql-databases/" itemprop="url">How to support full Unicode in MySQL databases</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
+                2015-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####Alternative title: The things we do to store U+1F4A9 PILE OF POO (💩) correctly.####</p>
+<p>Are you using MySQL’s utf8 charset in your databases? In this write-up I’ll explain why you should switch to utf8mb4 instead, and how to do it.</p>
+<p>##UTF-8</p>
+<p>The UTF-8 encoding can represent every symbol in the Unicode character set, which ranges from U+000000 to U+10FFFF. That’s 1,114,112 possible symbols. (Not all of these Unicode code points have been assigned characters yet, but that doesn’t stop UTF-8 from being able to encode them.)</p>
+<p>UTF-8 is a variable-width encoding; it encodes each symbol using one to four 8-bit bytes. Symbols with lower numerical code point values are encoded using fewer bytes. This way, UTF-8 is optimized for the common case where ASCII characters and other BMP symbols (whose code points range from U+000000 to U+00FFFF) are used — while still allowing astral symbols (whose code points range from U+010000 to U+10FFFF) to be stored.</p>
+<p>##MySQL’s utf8<br>For a long time, I was using MySQL’s utf8 charset for databases, tables, and columns, assuming it mapped to the UTF-8 encoding described above. By using utf8, I’d be able to store any symbol I want in my database — or so I thought.</p>
+<p>While writing about JavaScript’s internal character encoding, I noticed that there was no way to insert the U+1D306 TETRAGRAM FOR CENTRE (𝌆) symbol into the MySQL database behind this site. The column I was trying to update had the utf8_unicode_ci collation, and the connection charset was set to utf8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET NAMES utf8; # just to emphasize that the connection charset is set to `utf8`</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; UPDATE database_name.table_name SET column_name = &apos;foo𝌆bar&apos; WHERE id = 9001;</div><div class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</div><div class="line">Rows matched: 1  Changed: 1  Warnings: 1</div><div class="line"></div><div class="line">mysql&gt; SELECT column_name FROM database_name.table_name WHERE id = 9001;</div><div class="line">+-------------+</div><div class="line">| column_name |</div><div class="line">+-------------+</div><div class="line">| foo         |</div><div class="line">+-------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>The content got truncated at the first astral Unicode symbol, in this case 𝌆 — so, attempting to insert foo𝌆bar actually inserted foo instead, resulting in data loss (and possibly introducing security risks). MySQL returned a warning message, too:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW WARNINGS;</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Level   | Code | Message                                                                      |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">| Warning | 1366 | Incorrect string value: &apos;\xF0\x9D\x8C\x86&apos; for column &apos;column_name&apos; at row 1 |</div><div class="line">+---------+------+------------------------------------------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>Turns out MySQL’s utf8 charset only partially implements proper UTF-8 encoding. It can only store UTF-8-encoded symbols that consist of one to three bytes; encoded symbols that take up four bytes aren’t supported.</p>
+<p>Since astral symbols (whose code points range from U+010000 to U+10FFFF) each consist of four bytes in UTF-8, you cannot store them using MySQL’s utf8 implementation.</p>
+<p>This doesn’t just affect the 𝌆 character, but more important symbols like U+01F4A9 PILE OF POO (💩) as well. In total, that’s 1,048,575 possible code points you can’t use. In fact, MySQL’s utf8 only allows you to store 5.88% ((0x00FFFF + 1) / (0x10FFFF + 1)) of all possible Unicode code points. Proper UTF-8 can encode 100% of all Unicode code points.</p>
+<p>TL;DR MySQL’s utf8 encoding is awkwardly named, as it’s different from proper UTF-8 encoding. It doesn’t offer full Unicode support.</p>
+<p>##MySQL’s utf8mb4<br>Luckily, MySQL 5.5.3 (released in early 2010) introduced a new encoding called utf8mb4 which maps to proper UTF-8 and thus fully supports Unicode, including astral symbols.</p>
+<p>##Switching from MySQL’s utf8 to utf8mb4</p>
+<p>###Step 1: Create a backup</p>
+<p>Create a backup of all the databases on the server you want to upgrade. Safety first!</p>
+<p>###Step 2: Upgrade the MySQL server</p>
+<p>Upgrade the MySQL server to v5.5.3+, or ask your server administrator to do it for you.</p>
+<p>###Step 3: Modify databases, tables, and columns</p>
+<p>Change the character set and collation properties of the databases, tables, and columns to use utf8mb4 instead of utf8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">*For each database:*</div><div class="line">ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;</div><div class="line">*For each table:*</div><div class="line">ALTER TABLE table_name CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*For each column:*</div><div class="line">ALTER TABLE table_name CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</div><div class="line">*(Don’t blindly copy-paste this! The exact statement depends on the column type, maximum length, and other properties. The above line is just an example for a `VARCHAR` column.)*</div></pre></td></tr></table></figure>
+<p>Since utf8mb4 is fully backwards compatible with utf8, no mojibake or other forms of data loss should occur. (But you have a backup, right?)</p>
+<p>###Step 4: Check the maximum length of columns and index keys</p>
+<p>This is probably the most tedious part of the whole upgrading process.</p>
+<p>When converting from utf8 to utf8mb4, the maximum length of a column or index key is unchanged in terms of bytes. Therefore, it is smaller in terms of characters, because the maximum length of a character is now four bytes instead of three.</p>
+<p>For example, a TINYTEXT column can hold up to 255 bytes, which correlates to 85 three-byte or 63 four-byte characters. Let’s say you have a TINYTEXT column that uses utf8 but must be able to contain more than 63 characters. Given this requirement, you can’t convert this column to utf8mb4 unless you also change the data type to a longer type such as TEXT — because if you’d try to fill it with four-byte characters, you’d only be able to enter 63 characters, but not more.</p>
+<p>The same goes for index keys. The InnoDB storage engine has a maximum index length of 767 bytes, so for utf8 or utf8mb4 columns, you can index a maximum of 255 or 191 characters, respectively. If you currently have utf8 columns with indexes longer than 191 characters, you will need to index a smaller number of characters when using utf8mb4. (Because of this, I had to change some indexed VARCHAR(255) columns to VARCHAR(191).)</p>
+<p>Section 10.1.11 of the MySQL 5.5 Reference Manual has some more information on this.</p>
+<p>###Step 5: Modify connection, client, and server character sets</p>
+<p>In your application code, set the connection character set to utf8mb4. This can be done by simply replacing any variants of SET NAMES utf8 with SET NAMES utf8mb4. If your old SET NAMES statement specified the collation, make sure to change that as well, e.g. SET NAMES utf8 COLLATE utf8_unicode_ci becomes SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci.</p>
+<p>Make sure to set the client and server character set as well. I have the following in my MySQL configuration file (/etc/my.cnf):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysql]</div><div class="line">default-character-set = utf8mb4</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">character-set-client-handshake = FALSE</div><div class="line">character-set-server = utf8mb4</div><div class="line">collation-server = utf8mb4_unicode_ci</div></pre></td></tr></table></figure>
+<p>You can easily confirm these settings work correctly:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE &apos;character\_set\_%&apos; OR Variable_name LIKE &apos;collation%&apos;;</div><div class="line">+--------------------------+--------------------+</div><div class="line">| Variable_name            | Value              |</div><div class="line">+--------------------------+--------------------+</div><div class="line">| character_set_client     | utf8mb4            |</div><div class="line">| character_set_connection | utf8mb4            |</div><div class="line">| character_set_database   | utf8mb4            |</div><div class="line">| character_set_filesystem | binary             |</div><div class="line">| character_set_results    | utf8mb4            |</div><div class="line">| character_set_server     | utf8mb4            |</div><div class="line">| character_set_system     | utf8               |</div><div class="line">| collation_connection     | utf8mb4_unicode_ci |</div><div class="line">| collation_database       | utf8mb4_unicode_ci |</div><div class="line">| collation_server         | utf8mb4_unicode_ci |</div><div class="line">+--------------------------+--------------------+</div><div class="line">10 rows in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>As you can see, all the relevant options are set to utf8mb4, except for character_set_filesystem which should be binary unless you’re on a file system that supports multi-byte UTF-8-encoded characters in file names, and character_set_system which is always utf8 and can’t be overridden.</p>
+<p><em>Note: The default character set and collation can be configured at some other levels as well.</em></p>
+<p>###Step 6: Repair and optimize all tables</p>
+<p>After upgrading the MySQL server and making the necessary changes explained above, make sure to repair and optimize all databases and tables. I didn’t do this right away after upgrading (I didn’t think it was necessary, as everything seemed to work fine at first glance), and ran into some weird bugs where UPDATE statements didn’t have any effect, even though no errors were thrown.</p>
+<p>You could run the following MySQL queries for each table you want to repair and optimize:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">*For each table*</div><div class="line">REPAIR TABLE table_name;</div><div class="line">OPTIMIZE TABLE table_name;</div></pre></td></tr></table></figure>
+<p>Luckily, this can easily be done in one go using the command-line mysqlcheck utility:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mysqlcheck -u root -p --auto-repair --optimize --all-databases</div></pre></td></tr></table></figure>
+<p>This will prompt for the root user’s password, after which all tables in all databases will be repaired and optimized.</p>
+<p>##Summary<br>Never use utf8 in MySQL — always use utf8mb4 instead. Updating your databases and code might take some time, but it’s definitely worth the effort. Why would you arbitrarily limit the set of symbols that can be used in your database? Why would you lose data every time a user enters an astral symbol as part of a comment or message or whatever it is you store in your database? There’s no reason not to strive for full Unicode support everywhere. Do the right thing, and use utf8mb4. 🍻</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/07/18/ios-developer-infos-coll/" itemprop="url">iOS developer infos coll</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
+                2015-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> </p><h2 id="介绍">介绍</h2><p>工欲善其事，必先利其器。这篇博文，主要是总结自己在开发iOS过程中使用到的一些可以提高效率的方法和工具。</p><p></p>
+<p></p><h3 id="开发工具，当然还是首选Xcode。">开发工具，当然还是首选Xcode。</h3><ul><p></p>
+<p><li><a href="http://www.cocoachina.com/ios/20141224/10752.html" target="_blank" rel="external">常用快捷键</a></li><br></p></ul><p></p>
+<p></p><h3 id="木说我不告诉你常用片段">木说我不告诉你常用片段</h3><ul><p></p>
+<p><li><a href="https://github.com/Xcode-Snippets/Objective-C" target="_blank" rel="external">Objective-C常用片段</a></li></p>
+<p><li><a href="https://github.com/burczyk/XcodeSwiftSnippets" target="_blank" rel="external">Swift常用片段</a></li><br></p></ul><p></p>
+<p></p><h3 id="我自己常用的Xcode插件">我自己常用的Xcode插件</h3><ul><p></p>
+<p><li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">cocoapods管理-cocoapods-xcode-plugin</a></li></p>
+<p><li><a href="https://github.com/supermarin/Alcatraz" target="_blank" rel="external">Xcode插件管理-Alcatraz</a></li></p>
+<p><li><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="external">选择图片时的智能提示-KSImageNamed-Xcode</a></li></p>
+<p><li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">UIColor可以弹出Xcode的颜色选择框-ColorSense-for-Xcode</a></li></p>
+<p><li><a href="https://github.com/markohlebar/Peckham" target="_blank" rel="external">快捷 add #import-Peckham</a></li></p>
+<p><li><a href="https://github.com/stefanceriu/SCXcodeMiniMap" target="_blank" rel="external">Xcode迷你小地图-SCXcodeMiniMap</a></li></p>
+<p><li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">文档注释-VVDocumenter-Xcode</a></li></p>
+<p><li><a href="https://github.com/trawor/XToDo" target="_blank" rel="external">快捷查看ToDo-XToDo</a> </li><br></p></ul><p></p>
+<p></p><p>如果Xcode插件不能满足自己的需求，怎么办？请看<a href="http://zixun.github.io/blog/2015/05/04/xcode6cha-jian-kai-fa-ru-men/" target="_blank" rel="external">自己动手丰衣足食-Xcode插件开发</a></p><p></p>
+<p></p><p>另外推荐学习一下LLDB调试</p><p></p>
+<ul><br><li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="external">LLDB调试命令初探</a></li><br><li><a href="http://objccn.io/issue-19-2/" target="_blank" rel="external">与调试器共舞 - LLDB 的华尔兹</a></li><br><li><a href="https://github.com/facebook/chisel" target="_blank" rel="external">LLDB命令库扩展</a></li><br></ul><br><h3 id="我自己常用的网络数据相关工具">我自己常用的网络数据相关工具</h3><ul><br><li><a href="https://www.sprintapi.com/dhcs.html" target="_blank" rel="external">DHC</a></li><br><li><a href="https://www.getpostman.com/" target="_blank" rel="external">POSTMAN</a></li><br><li><a href="http://www.runoob.com/tool/json/index.html" target="_blank" rel="external">JSON格式化工具</a></li><br><li><a href="https://chrome.google.com/webstore/detail/xml-tree/gbammbheopgpmaagmckhpjbfgdfkpadb" target="_blank" rel="external">XML TREE</a></li><br></ul><br><h3 id="我自己常用的其他工具">我自己常用的其他工具</h3><p>要是设计师太较真，那么测量像素的工具是你的好帮手</p><br><ul><br><li><a href="http://www.ricciadams.com/projects/pixel-winch" target="_blank" rel="external">Pixel Winch</a></li><br></ul><br><p>收集亦是灵感的来源，36¥</p><br><ul><br><li><a href="http://zrey.com/app/pincap" target="_blank" rel="external">PinCap</a></li><br></ul><br><p>模拟器文件目录太深，怎么办？用SimPholders2吧</p><br><ul><br><li><a href="http://simpholders.com/" target="_blank" rel="external">SimPholders2</a></li><br></ul><br><p>png图片可以压缩质量</p><br><ul><br><li><a href="https://tinypng.com/" target="_blank" rel="external">tinypng</a></li><br></ul><br><p>设计工具，（做为一个不懂设计的人用这个也很容易）198¥</p><br><ul><br><li><a href="http://www.pixelmator.com/support/" target="_blank" rel="external">Pixelmator</a></li><br></ul><br><p>自动生成icon，只需要上传一张1024*1024图片，在线和Mac客户端要求一样</p><br><ul><br><li><a href="http://makeappicon.com/" target="_blank" rel="external">makeappicon在线的</a></li><br><li><a href="http://wearemothership.com/" target="_blank" rel="external">Mac 客户端的</a></li><br></ul><br><p>搜索免费的图标icon，而且是全套哦，亲（iOS Android Windows）</p><br><ul><br><li><a href="https://icons8.com/" target="_blank" rel="external">icons8</a></li><br></ul><br><p>搜索素材，而且已经署名了版权免费，审核时再也不怕因为版权问题被拒了</p><br><ul><br><li><a href="https://pixabay.com/" target="_blank" rel="external">pixabay</a></li><br></ul><br><p>提交AppStore的截图工具（4s-6p全套）</p><br><ul><br><li><a href="https://appscreens.io/" target="_blank" rel="external">appscreens</a></li><br></ul><br><p>把用户提交到的评论发送到邮件，及时看见反馈</p><br><ul><br><li><a href="https://launchkit.io/reviews/" target="_blank" rel="external">launchkit</a></li><br></ul><br><p>高效的利用Github的star来管理比较好的开源项目，建议还是可以入手的68¥</p><br><ul><br><li><a href="http://www.ohmystarapp.com/" target="_blank" rel="external">ohmystar</a></li><br></ul><br><p>另外也可以利用Github Search</p><br><ul><br><li><a href="https://github.com/search/advanced" target="_blank" rel="external">advanced</a></li><br></ul><br><h3 id="开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来">开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来</h3><ul><br><li><a href="https://github.com/iamdaiyuan/ios_top_1000" target="_blank" rel="external">感觉真的史上最全的了 1000+ 大部分是Objective-C</a> </li><br><li><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">Swift比较全的开源项目</a></li><br></ul><br><h3 id="绝对没给VPN打广告，代理不得不用">绝对没给VPN打广告，代理不得不用</h3><p>我自己用云梯，感觉还可以—<a href="https://www.cloudtizi.com/" target="_blank" rel="external">云梯</a></p><br><h3 id="感觉还可以但没舍得买的工具，真的真的好贵">感觉还可以但没舍得买的工具，真的真的好贵</h3><ul><br><li><a href="http://www.coreanimator.com/#keyframing" target="_blank" rel="external">CoreAnimator</a></li><br><li><a href="http://www.quartzcodeapp.com/" target="_blank" rel="external">QuartzCode</a></li><br></ul>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/some-blogs-i-see/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1831,264 +2115,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/07/18/ios-developer-infos-coll/" itemprop="url">iOS developer infos coll</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
-                2015-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> </p><h2 id="介绍">介绍</h2><p>工欲善其事，必先利其器。这篇博文，主要是总结自己在开发iOS过程中使用到的一些可以提高效率的方法和工具。</p><p></p>
-<p></p><h3 id="开发工具，当然还是首选Xcode。">开发工具，当然还是首选Xcode。</h3><ul><p></p>
-<p><li><a href="http://www.cocoachina.com/ios/20141224/10752.html" target="_blank" rel="external">常用快捷键</a></li><br></p></ul><p></p>
-<p></p><h3 id="木说我不告诉你常用片段">木说我不告诉你常用片段</h3><ul><p></p>
-<p><li><a href="https://github.com/Xcode-Snippets/Objective-C" target="_blank" rel="external">Objective-C常用片段</a></li></p>
-<p><li><a href="https://github.com/burczyk/XcodeSwiftSnippets" target="_blank" rel="external">Swift常用片段</a></li><br></p></ul><p></p>
-<p></p><h3 id="我自己常用的Xcode插件">我自己常用的Xcode插件</h3><ul><p></p>
-<p><li><a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">cocoapods管理-cocoapods-xcode-plugin</a></li></p>
-<p><li><a href="https://github.com/supermarin/Alcatraz" target="_blank" rel="external">Xcode插件管理-Alcatraz</a></li></p>
-<p><li><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="external">选择图片时的智能提示-KSImageNamed-Xcode</a></li></p>
-<p><li><a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">UIColor可以弹出Xcode的颜色选择框-ColorSense-for-Xcode</a></li></p>
-<p><li><a href="https://github.com/markohlebar/Peckham" target="_blank" rel="external">快捷 add #import-Peckham</a></li></p>
-<p><li><a href="https://github.com/stefanceriu/SCXcodeMiniMap" target="_blank" rel="external">Xcode迷你小地图-SCXcodeMiniMap</a></li></p>
-<p><li><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">文档注释-VVDocumenter-Xcode</a></li></p>
-<p><li><a href="https://github.com/trawor/XToDo" target="_blank" rel="external">快捷查看ToDo-XToDo</a> </li><br></p></ul><p></p>
-<p></p><p>如果Xcode插件不能满足自己的需求，怎么办？请看<a href="http://zixun.github.io/blog/2015/05/04/xcode6cha-jian-kai-fa-ru-men/" target="_blank" rel="external">自己动手丰衣足食-Xcode插件开发</a></p><p></p>
-<p></p><p>另外推荐学习一下LLDB调试</p><p></p>
-<ul><br><li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="external">LLDB调试命令初探</a></li><br><li><a href="http://objccn.io/issue-19-2/" target="_blank" rel="external">与调试器共舞 - LLDB 的华尔兹</a></li><br><li><a href="https://github.com/facebook/chisel" target="_blank" rel="external">LLDB命令库扩展</a></li><br></ul><br><h3 id="我自己常用的网络数据相关工具">我自己常用的网络数据相关工具</h3><ul><br><li><a href="https://www.sprintapi.com/dhcs.html" target="_blank" rel="external">DHC</a></li><br><li><a href="https://www.getpostman.com/" target="_blank" rel="external">POSTMAN</a></li><br><li><a href="http://www.runoob.com/tool/json/index.html" target="_blank" rel="external">JSON格式化工具</a></li><br><li><a href="https://chrome.google.com/webstore/detail/xml-tree/gbammbheopgpmaagmckhpjbfgdfkpadb" target="_blank" rel="external">XML TREE</a></li><br></ul><br><h3 id="我自己常用的其他工具">我自己常用的其他工具</h3><p>要是设计师太较真，那么测量像素的工具是你的好帮手</p><br><ul><br><li><a href="http://www.ricciadams.com/projects/pixel-winch" target="_blank" rel="external">Pixel Winch</a></li><br></ul><br><p>收集亦是灵感的来源，36¥</p><br><ul><br><li><a href="http://zrey.com/app/pincap" target="_blank" rel="external">PinCap</a></li><br></ul><br><p>模拟器文件目录太深，怎么办？用SimPholders2吧</p><br><ul><br><li><a href="http://simpholders.com/" target="_blank" rel="external">SimPholders2</a></li><br></ul><br><p>png图片可以压缩质量</p><br><ul><br><li><a href="https://tinypng.com/" target="_blank" rel="external">tinypng</a></li><br></ul><br><p>设计工具，（做为一个不懂设计的人用这个也很容易）198¥</p><br><ul><br><li><a href="http://www.pixelmator.com/support/" target="_blank" rel="external">Pixelmator</a></li><br></ul><br><p>自动生成icon，只需要上传一张1024*1024图片，在线和Mac客户端要求一样</p><br><ul><br><li><a href="http://makeappicon.com/" target="_blank" rel="external">makeappicon在线的</a></li><br><li><a href="http://wearemothership.com/" target="_blank" rel="external">Mac 客户端的</a></li><br></ul><br><p>搜索免费的图标icon，而且是全套哦，亲（iOS Android Windows）</p><br><ul><br><li><a href="https://icons8.com/" target="_blank" rel="external">icons8</a></li><br></ul><br><p>搜索素材，而且已经署名了版权免费，审核时再也不怕因为版权问题被拒了</p><br><ul><br><li><a href="https://pixabay.com/" target="_blank" rel="external">pixabay</a></li><br></ul><br><p>提交AppStore的截图工具（4s-6p全套）</p><br><ul><br><li><a href="https://appscreens.io/" target="_blank" rel="external">appscreens</a></li><br></ul><br><p>把用户提交到的评论发送到邮件，及时看见反馈</p><br><ul><br><li><a href="https://launchkit.io/reviews/" target="_blank" rel="external">launchkit</a></li><br></ul><br><p>高效的利用Github的star来管理比较好的开源项目，建议还是可以入手的68¥</p><br><ul><br><li><a href="http://www.ohmystarapp.com/" target="_blank" rel="external">ohmystar</a></li><br></ul><br><p>另外也可以利用Github Search</p><br><ul><br><li><a href="https://github.com/search/advanced" target="_blank" rel="external">advanced</a></li><br></ul><br><h3 id="开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来">开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来</h3><ul><br><li><a href="https://github.com/iamdaiyuan/ios_top_1000" target="_blank" rel="external">感觉真的史上最全的了 1000+ 大部分是Objective-C</a> </li><br><li><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">Swift比较全的开源项目</a></li><br></ul><br><h3 id="绝对没给VPN打广告，代理不得不用">绝对没给VPN打广告，代理不得不用</h3><p>我自己用云梯，感觉还可以—<a href="https://www.cloudtizi.com/" target="_blank" rel="external">云梯</a></p><br><h3 id="感觉还可以但没舍得买的工具，真的真的好贵">感觉还可以但没舍得买的工具，真的真的好贵</h3><ul><br><li><a href="http://www.coreanimator.com/#keyframing" target="_blank" rel="external">CoreAnimator</a></li><br><li><a href="http://www.quartzcodeapp.com/" target="_blank" rel="external">QuartzCode</a></li><br></ul>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/arch-collections/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/07/17/arch-collections/" itemprop="url">架构资料集合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T00:00:00+08:00">
-                2015-07-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p></p><h4>简介</h4><p></p>
-<p></p><p>以前见过零零散散地介绍一些知名网站架构的分析文章。最近D瓜哥也想研究一下各大知名网站的架构。所以，就搜集了一下这方面资料。限于时间问题，这篇文章分享的文章并没有都看完，所以不保证所有文章的质量。另外，如果有朋友发现更好的文章，欢迎留言告知。再补充进来。</p><p></p>
-<p></p><h4>知名网站架构分析</h4><p></p>
-<ol><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch.html">探索Google App Engine背后的奥秘(1)–Google的核心技术</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine_arch_guess.html">探索Google App Engine背后的奥秘(2)–Google的整体架构猜想</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-intro.html">探索Google App Engine背后的奥秘(3)- Google App Engine的简介</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-arch_intro.html">探索Google App Engine背后的奥秘(4)- Google App Engine的架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-datastore.html">探索Google App Engine背后的奥秘(5)- Datastore的设计</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/google_app_engine-summary.html">探索Google App Engine背后的奥秘(6)-<span id="more-41"></span> 总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-amazon.html">Amazon网站架构学习总结</a></li><br><li><a target="_blank" href="http://dbanotes.net/tech-memo/amazon_dynamo.html">Amazon 的 Dynamo 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/ebay_application_server.html">eBay 的应用服务器规模</a></li><br><li><a target="_blank" href="http://dbanotes.net/database/ebay_storage.html">eBay 的数据量</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/taobao_arch.html">来自淘宝的架构经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/yahoo_arch.html">Yahoo！社区架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part1">基于Facebook和Flash平台的应用架构解析（一）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-part2">基于Facebook和Flash平台的应用架构解析（二）</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/facebook-arch-overview-final">基于Facebook和Flash平台的应用架构解析（三）</a></li><br><li><a target="_blank" href="http://www.biaodianfu.com/facebook-efficient-storage-of-billions-of-photos.html">Facebook图片存储架构的学习</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/200905/123565.htm">facebook图片存储架构技术全解析</a></li><br><li><a target="_blank" href="http://www.csdn.net/article/2011-04-29/296900">Facebook数据仓库揭秘：RCFile高效存储结构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/facebook_arch_note.html">Facebook 架构学习</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/renren-mobile-arch">人人网移动开发架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/qzone-architecture">QQ空间技术架构之深刻揭密</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/twitter_arch.html">Twitter 的架构扩展: 100 倍性能提升</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/14/the-architecture-of-twitter.html">Twitter网站架构学习笔记</a></li><br><li><a target="_blank" href="http://developer.51cto.com/art/201009/226825.htm">国内外大型SNS网站后台架构对比</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/13/the-architecture-of-youku.html">优酷网架构学习笔记</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/youku_arch.html">优酷网(Youku.com)架构经验</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/6/634350416046298451.html">YouTube架构学习体会</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/youtube_web_arch.html">YouTube 的架构扩展</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/27/the-architecture-of-digg.html">Digg网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/digg_arch_cache_and_shard.html">Digg 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/opensource/wikipedia_arch.html">WikiPedia技术架构学习笔记</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/8/16/the-architecture-of-yupoo.html">Yupoo网站架构学习总结</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351294385186067.html">Flickr 网站架构分析</a></li><br><li><a target="_blank" href="http://dbanotes.net/web/flickr_lamp_capacity_planning.html">学习 Flickr 的 基于 LAMP 的容量规划经验</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/myspace_arch_2008.html">MySpace 系统架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/7/634351257301504864.html">回顾MySpace架构的坎坷之路</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/hj-yihaodian-b2c-evolution-road">挑战空中加油——1号店B2C电商系统演进之路</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/5/634349627089221280.html">PlentyOfFish.com .NET网站的又一传奇</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/douban_arch.html">学习豆瓣好榜样–网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/37signals_arch.html">37Signals 架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/review/tailrank_arch.html">Tailrank 网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/smugmug_arch.html">SmugMug 的架构介绍</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/26/poppende-architecture.html">高并发PHP网站Poppen.de架构学习</a></li><br><li><a target="_blank" href="https://groups.drupal.org/node/194308">Drupal与大型网站架构</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/imobile_web_arch_gaochunhui.html">手机之家网站架构–对话高春辉</a></li><br><li><a target="_blank" href="http://www.cnblogs.com/realviv/articles/1883563.html">手机之家的网站架构设计和演化</a></li><br><li><a target="_blank" href="http://dbanotes.net/arch/heroku_architecture.html">学习 HeroKu 的架构设计</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/3/17/634359701352994625.html">各大网站架构总结笔记</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/presentations/petals-network-architecture-introduced">花瓣网的架构介绍</a></li><br><li><a target="_blank" href="http://developer.51cto.com/developer/webarc/">大型网站架构技术专家谈</a></li><br></ol><br><h4>架构分析与设计</h4><br><ol><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/the-network-infrastructure-in-an-open-environment">架构之美–开放环境下的网络架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/message-based-distributed-architecture">案例分析：基于消息的分布式架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/ieee-pattern-based-architecture-reviews">基于模式的架构评审</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/next-generation-massively-multithreaded-architectures">为不规则应用设计新一代超大型多线程架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/rails-voip-system-architecture-and-development">从简单到复杂：大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/it-architecture-inside-out-perspectives">专家视角看IT与架构</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/cjz-architecture-corruption">架构腐化之谜</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/xw-cloud-in-my-view">我眼中的云端架构</a></li><br><li><a target="_blank" href="http://www.yejun.cn/?p=1154">从100PV到1亿级PV网站架构演变</a></li><br><li><a target="_blank" href="http://open.taobao.com/doc/detail.htm?id=1011">网站架构设计方案</a></li><br><li><a target="_blank" href="http://hi.baidu.com/injava/item/e62923e88a713ff7e1a5d44b">浅谈大型网站动态应用系统架构</a>——鉴于某度有胡乱改系统，而且不自动保留原来数据的恶习，建议大家手动备份下来。</li><br><li><a target="_blank" href="http://blog.sina.com.cn/s/blog_46d0a3930100euxb.html">做大的艺术 &#8211; 大型网站的架构设计</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1960.html">平台网站架构设计之我所见</a></li><br><li><a target="_blank" href="https://speakerdeck.com/shiningray/diao-si-cheng-xu-yuan-ru-he-da-zao-ri-pvbai-mo-de-wang-zhan-jia-gou">屌丝程序员如何打造日PV百万的网站架构</a></li><br><li><a target="_blank" href="http://www.ibm.com/developerworks/cn/java/j-lo-restmvc/">设计 REST 风格的 MVC 框架</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/24/memcached-in-cluster-structure.html">集群架构实践 &#8211; 初试Memcached</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/5/7/634404076902160236.html">BigPipe，加速你的页面加载</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/4/28/634395931511515337.html">一步步构建大型网站架构</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/2/18/image-storage-cache-1.html">图片存储架构学习：缓存，架构师的美丽小三</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/news/2008/06/extremescaling">要快速伸缩？重新架构吧！</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/12/2/big-cluster-rails-voip-experience.html">大型Rails与VoIP系统架构与部署实践</a></li><br><li><a target="_blank" href="http://www.williamlong.info/archives/1908.html">LAMP网站架构方案分析</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html">大型网站架构演变和知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2009/04/28/267970.html">网站架构相关PPT、文章整理</a></li><br><li><a target="_blank" href="http://www.toplee.com/blog/71.html">说说大型高并发高负载网站的系统架构</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/09/25/14035.html">软件架构设计思考之一</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/video-service-arch">视频流服务架构解析</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/7.html">Rails架构简介</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-1">自建CDN防御DDoS（1）：知己知彼，建设持久防线</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-2">自建CDN防御DDoS（2）：架构设计、成本与部署细节</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/anti-ddos-cdn-3">自建CDN防御DDoS（3）：架构的后续改进</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/ppt">系统技术非业余研究-资料下载</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/29/11503.html">中小型应用系统知识体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/08/23/10824.html">中小型应用系统架构体系</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/architect/">《架构师》月刊</a>——InfoQ推出来的电子杂志。貌似还不错。</li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/13/6037.html">系统设计说明书(架构、概要、详细)目录结构</a>——D瓜哥不太擅长写文档，所以插播个文档模板。</li><br></ol><br><h4>架构背后的技术</h4><br><ol><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2011/11/15/cdn-introduction.html">CDN（内容分发网络）技术原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/34.html">高性能网站的十四条黄金法则</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6647024">大型网站后台架构的web server与缓存</a></li><br><li><a target="_blank" href="http://blog.csdn.net/21aspnet/article/details/5295572">Facebook性能大提升的秘密：HipHop</a></li><br><li><a target="_blank" href="http://www.itivy.com/ivy/archive/2012/3/10/squid-usage.html">浅谈Squid在图片存储架构中的应用</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/tao-tfs">揭秘淘宝自主研发的文件系统——TFS</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/lzy-million-visits-site-technical-preparations">百万级访问量网站的技术准备工作</a></li><br><li><a target="_blank" href="http://blog.csdn.net/longxibendi/article/details/6665670">谈谈大型网站的负载均衡器、db proxy和db</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/design-motivation-and-introduction-of-Pomelo-framework">深入浅出node.js游戏服务器开发——Pomelo框架的设计动机与架构介绍</a></li><br><li><a target="_blank" href="http://os.51cto.com/art/201111/301143.htm">架构师不可不知的十大可扩展架构</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4322953">Memcached FAQ(1) 一般性的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4336035">Memcached FAQ(2) 集群架构方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4341819">Memcached FAQ(3) 性能和客户端库方面的问题</a></li><br><li><a target="_blank" href="http://blog.csdn.net/jarfield/article/details/4345501">Memcached FAQ(4) 选项、Item过期和命名空间方面的问题</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/6.html">分享一些资料（侧重Linux）</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/75.html">用JavaScript阐述MapReduce原理</a></li><br><li><a target="_blank" href="http://www.diguage.com/archives/67.html">分享一些D瓜哥攒的比较好的Web开发资料</a></li><br></ol><br><h4>数据库架构</h4><br><ol><br><li><a target="_blank" href="http://blog.csdn.net/zhangzhaokun/article/details/4711693">大型高并发高负载web应用系统架构-数据库架构策略</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/yupoo-partition-database">又拍网架构中的分库设计</a></li><br><li><a target="_blank" href="http://www.infoq.com/cn/articles/Architecture-Datomic">Datomic的架构</a></li><br><li><a target="_blank" href="http://blog.yufeng.info/archives/2349">低成本和高性能MySQL云数据的架构探索</a></li><br></ol><br><h4>插件架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/05/25/5187.html">关于Plugin Framework的关键因素</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/06/30/6925.html">Plugin Architecture简述</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/07/03/7069.html">Eclipse(3.1) Plugin Framework(基于OSGI的Plugin Architecture)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/06/18491.html">OSGI与Plugin Architecture</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/11/15/19820.html">思考插件架构体系</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/03/12/34930.html">基于Equinox开发系统的总结</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/07/39880.html">Declarative Services――Service-Oriented Component Model</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/04/15/41268.html">Service-Oriented Component Model(SOCM)</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/05/28/48593.html">插件开发框架的思考</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2006/08/18/64440.html">基于Eclipse Equinox的插件框架：TPF</a></li><br></ol><br><h5>问题</h5><br><ol><br><li>WordPress的插件架构是怎么样的？</li><br></ol><br><h4>权限架构</h4><br><ol><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/05/14846.html">漫谈权限系统 I</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/08/15004.html">漫谈权限系统系列之概述、目的和需求</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/09/15091.html">漫谈权限系统之技术策略以及基于RBAC的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/13/15438.html">漫谈权限系统之基于ACL的实现</a></li><br><li><a target="_blank" href="http://www.blogjava.net/BlueDavy/archive/2005/10/14/15545.html">漫谈权限系统之结尾篇(开源产品、个人观点、知识体系)</a></li><br></ol>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2139,7 +2165,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

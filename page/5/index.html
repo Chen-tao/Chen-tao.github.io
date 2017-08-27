@@ -263,6 +263,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/30/git-into/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/10/30/git-into/" itemprop="url">git - 简易指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-30T00:00:00+08:00">
+                2015-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>助你开始使用 git 的简易指南，木有高深内容，;)。</p>
+<p><strong>作者</strong>：罗杰·杜德勒 </p>
+<p><strong>感谢</strong>：@tfnico, @fhd and Namics</p>
+<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行 </p>
+<p><code>git init</code></p>
+<p>以创建新的 git 仓库。</p>
+<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
+<p><code>git clone /path/to/repository</code></p>
+<p>如果是远端服务器上的仓库，你的命令会是这个样子：</p>
+<p><code>git clone username@host:/path/to/repository</code></p>
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 缓存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。</p>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><p>你可以计划改动（把它们添加到缓存区），使用如下命令：<br><code>git add &lt;filename&gt;</code></p>
+<p><code>git add *</code></p>
+<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：</p>
+<p><code>git commit -m &quot;代码提交信息&quot;</code></p>
+<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
+<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
+<p><code>git push origin master</code></p>
+<p>可以把 master 换成你想要推送的任何分支。 </p>
+<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<p><code>git remote add origin &lt;server&gt;</code></p>
+<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。</p>
+<p>创建一个叫做“feature_x”的分支，并切换过去：</p>
+<p><code>git checkout -b feature_x</code></p>
+<p>切换回主分支：</p>
+<p><code>git checkout master</code></p>
+<p>再把新建的分支删掉：</p>
+<p><code>git branch -d feature_x</code></p>
+<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
+<p><code>git push origin &lt;branch&gt;</code></p>
+<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
+<p><code>git pull</code></p>
+<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。</p>
+<p>要合并其他分支到你的当前分支（例如 master），执行：</p>
+<p><code>git merge &lt;branch&gt;</code></p>
+<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
+<p><code>git add &lt;filename&gt;</code></p>
+<p>在合并改动之前，也可以使用如下命令查看：</p>
+<p><code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code></p>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>在软件发布时创建标签，是被推荐的。这是个旧有概念，在 SVN 中也有。可以执行如下命令以创建一个叫做 1.0.0 的标签：</p>
+<p><code>git tag 1.0.0 1b2e1d63ff</code></p>
+<p>1b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符。使用如下命令获取提交 ID：</p>
+<p><code>git log</code></p>
+<p>你也可以用该提交 ID 的少一些的前几位，只要它是唯一的。</p>
+<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
+<p><code>git checkout -- &lt;filename&gt;</code></p>
+<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
+<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
+<p><code>git fetch origin</code></p>
+<p><code>git reset --hard origin/master</code></p>
+<h3 id="有用的贴士"><a href="#有用的贴士" class="headerlink" title="有用的贴士"></a>有用的贴士</h3><p>内建的图形化 git：</p>
+<p><code>gitk</code></p>
+<p>彩色的 git 输出：</p>
+<p><code>git config color.ui true</code></p>
+<p>显示历史记录时，只显示一行注释信息：</p>
+<p><code>git config format.pretty oneline</code></p>
+<p>交互地添加文件至缓存区：</p>
+<p><code>git add -i</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/29/welcome-to-jekyll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1275,7 +1453,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/java-classloader-infos/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/netty/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1294,7 +1472,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/10/03/java-classloader-infos/" itemprop="url">ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖</a></h1>
+                <a class="post-title-link" href="/2015/10/03/netty/" itemprop="url">Netty之有效规避内存泄漏</a></h1>
         
 
         <div class="post-meta">
@@ -1368,63 +1546,9 @@
       
         
           
-            <p>为了尽量简单明了容易背，有些部分写得比较干。</p>
-<h3 id="0-参考资料："><a href="#0-参考资料：" class="headerlink" title="0. 参考资料："></a>0. 参考资料：</h3><ul><br><li>书：《深入了解Java虚拟机》、《实战Java虚拟机》</li><br><li>规范：<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范</a> 第12章</li><br><li>源码： <a href="http://hg.openjdk.java.net/jdk7" target="_blank" rel="external">OpenJDK 7</a>的Java及C代码( <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/Class.c" target="_blank" rel="external">Class.c</a> , <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/ClassLoader.c" target="_blank" rel="external">Classloader.c</a>，<a href="http://hg.openjdk.java.net/jdk7/jdk7/hotspot/file/9b0ca45cd756/src/share/vm/prims/jvm.cpp" target="_blank" rel="external">jvm.cpp</a>)</li><br></ul>
+            <p><em>有过痛苦的经历，特别能写出深刻的文章 —— 凯尔文. 肖</em></p>
 
-
-<h3 id="1-Class装载的三个阶段"><a href="#1-Class装载的三个阶段" class="headerlink" title="1. Class装载的三个阶段"></a>1. Class装载的三个阶段</h3><h4 id="1-1-载入-Load"><a href="#1-1-载入-Load" class="headerlink" title="1.1 载入 (Load)"></a>1.1 载入 (Load)</h4><p>从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行时数据结构，生成一个Class对象。</p>
-<h4 id="1-2-链接-Resolve"><a href="#1-2-链接-Resolve" class="headerlink" title="1.2 链接 (Resolve)"></a>1.2 链接 (Resolve)</h4><p>将之前载入的数据结构里的符号引用表，解析成直接引用。<br>中间如果遇到引用的类还没被加载，就会触发该类的加载。<br>可能JDK会很懒惰的在运行某个函数实际使用到该引用时才发生链接，也可能在类加载时就解析全部引用。</p>
-<h4 id="1-3-初始化-Initniazle"><a href="#1-3-初始化-Initniazle" class="headerlink" title="1.3 初始化 (Initniazle)"></a>1.3 初始化 (Initniazle)</h4><p>初始化静态变量，并执行静态初始化语句。</p>
-<h3 id="2-Class装载的时机"><a href="#2-Class装载的时机" class="headerlink" title="2. Class装载的时机"></a>2. Class装载的时机</h3><ul>
-<li>ClassLoader.loadClass()</li>
-<li>前文所说的链接时触发的装载</li>
-<li>Class.forName() 等java.lang.reflect反射包</li>
-<li>new 构造对象</li>
-<li>初始化子类时，会同时初始化父类</li>
-<li>访问类的静态变量或静态方法（但static final的常量除外，此君在常量池里)</li>
-</ul>
-<p>本质上，也是很懒惰的按需加载的，由于类装载的Lazy和前面解释引用的Lazy，所以Jar包里有时候有些类用到的了没在Class Path里的其他类，也能人品爆发的照跑不误。</p>
-<p>除了1，其他几种方式默认都到达类装载的初始化阶段。</p>
-<h3 id="3-ClassLoader-loadClass-与-Class-forName"><a href="#3-ClassLoader-loadClass-与-Class-forName" class="headerlink" title="3. ClassLoader.loadClass() 与 Class.forName()"></a>3. ClassLoader.loadClass() 与 Class.forName()</h3><p>ClassLoader.loadClass(String name, boolean resolve)，其中resolve默认为false，即只执行类装载的第一个阶段。</p>
-<p>Class.forName(String name, boolean initialize, ClassLoader loader)， 其中initialize默认为true，即执行到类装载的第三个阶段。</p>
-<h3 id="4-ClassNotFoundException-和-NoClassDefFoundError"><a href="#4-ClassNotFoundException-和-NoClassDefFoundError" class="headerlink" title="4. ClassNotFoundException 和 NoClassDefFoundError"></a>4. ClassNotFoundException 和 NoClassDefFoundError</h3><p>ClassLoader.loadClass() 与 Class.forName() 找不到类定义的二进制流时抛出ClassNotFoundException。</p>
-<p>链接阶段解释引用失败，找不到引用的类时抛出NoClassDefFoundError。</p>
-<h3 id="5-ClassLoader及双亲委派机制"><a href="#5-ClassLoader及双亲委派机制" class="headerlink" title="5. ClassLoader及双亲委派机制"></a>5. ClassLoader及双亲委派机制</h3><p>ClassLoader.loadClass()的标准流程:</p>
-<ul>
-<li>findLoadedClass() 查看类是否已加载</li>
-<li>如果不存在，则调用parent loader的loadClass()</li>
-<li>如果不存在，调用findClass() 在本ClassLoader的ClassPath里加载该类</li>
-</ul>
-<p>所谓双亲委派机制，就是先从parent loader开始查找，找不到了才用自己的findClass()函数去查找，兼顾了效率：避免重复加载，当父亲已经加载了该类的时候，就没有必要子ClassLoader再加载一次，和安全，避免子类乱加载。</p>
-<p>而OSGI或SPI或热替换方案，则需要破坏这个双亲委托，先调用自己的findClass()。</p>
-<p>findClass() 是各个ClassLoader各自实现，各显神通的地方，从各种奇葩地方载入Class二进制字节流。</p>
-<p>但最后都会调用defineClass()，传入二进制字节流，返回Class对象。留意此处，呆会AspectJ的时候会回到这里。</p>
-<p>在JDK6，loadClass()很过分的定义了方法级的synchronized ，在JDK7改成一个以Class Name作Key的 parallelLockMap，增强了并行加载不同Class的能力。</p>
-<h3 id="6-System-ClassLoader-与-Thread-Context-Classloader"><a href="#6-System-ClassLoader-与-Thread-Context-Classloader" class="headerlink" title="6. System ClassLoader 与 Thread Context Classloader"></a>6. System ClassLoader 与 Thread Context Classloader</h3><p>有时候，看到错误日志说张三不是张三，包名类名一样但instanceof 死活返回 false，唯一原因是它们由两个不同的ClassLoader加载。</p>
-<p>默认的Bootstrap(加载jdk的lib目录)，Extension(加载jdk的lib/ext目录)，Application(加载启动时定义的classpath)三层ClassLoader机制不再重复。</p>
-<p>平时用ClassLoader.getSystemClassLoader()就可以得到sun.misc.Launcher$ApplicationClassLoader 这个Application ClassLoader。</p>
-<p>在类A里加载类B，默认使用加载了类A的Loader。但，也有特殊情况，比如JDBC加载driver时的机制，需要在父ClassLoader（JDBC属于JDK一部分）里根据配置反射创建jdbc driver的数据实现类，Sun设计了一个特殊方案 －－Thread Context Class Loader。</p>
-<p>JAXB(比如要在Jar包里找xsd schema文件的时候)也使用了它，所以用到它们时就要注意Thread Context ClassLoader的设置，可以用代码随时设置current thread的loader，也可以用自定义的ThreadFactory在创建线程时设置，它默认是父线程的loader，如果都没设置就是 System ClassLoader。</p>
-<h3 id="7-Java-Agent机制与AspectJ的LoadTime-Weaving"><a href="#7-Java-Agent机制与AspectJ的LoadTime-Weaving" class="headerlink" title="7. Java Agent机制与AspectJ的LoadTime Weaving"></a>7. Java Agent机制与AspectJ的LoadTime Weaving</h3><p>在JDK5开始，在启动JVM时可增加-javaagent参数，在装载Class时对类进行动态的修改。</p>
-<p>AspectJ的Load Time Weaving机制，需要配置 -javaagent: [path to aspectj-weaver.jar] 。</p>
-<p>打开aspectj-weaver.jar，可以看到META-INF/MANIFEST里定义了 Premain-Class: org.aspectj.weaver.loadtime.Agent</p>
-<p>再打开这个Agent类，简化后的代码大概这个样子：</p>
-<p><code>ClassFileTransformer s_transformer = new ClassPreProcessorAgentAdapter(); 
-public static void premain(String options, Instrumentation instrumentation) { 
-instrumentation.addTransformer(s_transformer); }</code></p>
-<p>可见它的主要作用是将自己的类转换器注册到JDK所传入的Instrumentation。</p>
-<p>再看ClassFileTransformer的定义：ClassLoader会在前面defineClass()的过程中，在把二进制字节流转换为Class对象之前，先把二进制流和当前ClassLoader传给Transformer，由Transformer加工为另一段二进制字节流返回。</p>
-<p>AspectJ就是利用传入的ClassLoader，找出其Class Path里的META-INF/aop.xml，然后根据aop.xml里的配置进行代码植入。</p>
-<p>测试显示，加了LoadTime Weaving，类加载的速度明显变慢，如果是100ms就调用超时的服务，需要做类的预加载。</p>
-<h3 id="8-Jar包的预加载"><a href="#8-Jar包的预加载" class="headerlink" title="8. Jar包的预加载"></a>8. Jar包的预加载</h3><p>比如有个有趣的需求是加载某个Class A所在的Jar里的全部的Class （怎么好像一点都不有趣）</p>
-<figure class="highlight plain"><figcaption><span>jarUrl = ClassA.getProtectionDomain().getCodeSource().getLocation();</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">JarFile jarfile = new JarFile(jarUrl.getPath());</div><div class="line"></div><div class="line">Enumeration entries = jarfile.entries();</div></pre></td></tr></table></figure>
-<p>然后遍历JarEntry，过滤出后缀为.class的文件，按类名进行装载就可以了。</p>
-<h3 id="9-Class的二进制兼容性"><a href="#9-Class的二进制兼容性" class="headerlink" title="9.Class的二进制兼容性"></a>9.Class的二进制兼容性</h3><p>如果Class A 依赖 spring-1.0.jar编译，当spring升级到spring-2.0.jar，Class A不需要修改代码也不需要重新编译，可以直接运行的，spring-2.0.jar就满足二进制兼容性。</p>
-<p>在<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范的第13章</a>有详细的描述 ，不想直接睡着最好可以找个中文版来看，感谢那些翻译的同学。</p>
-<p>虽然规范的这章看着比较长比较吓人，但其实二进制兼容性还是很容易做到的，只要你不做把接口改为抽象类之类奇怪的事情，其他一些看起来很大的改动，比如改throws定义，其实都没有问题。</p>
-<p>真的遇到问题，设身处地想想自己是那段Class A的字节码，现在还能不能跑就行。</p>
-<p>感谢你看到这里，希望你只在工作里用到这些知识，祝工作愉快。</p>
-<p>文章持续修订，转载请保留原链接：<br><a href="http://calvin1978.blogcn.com/articles/classloader-javaagent.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/classloader-javaagent.html</a></p>
+<p>直接内存是IO框架的绝配，但直接内存的分配销毁不易，所以使用内存池能大幅提高性能，也告别了频繁的GC。但，要重新培养被Java的自动垃圾回收惯坏了的惰性。</p><br><p>Netty有一篇必读的文档 <a href="http://damacheng009.iteye.com/blog/2013657" target="_blank" rel="external">官方文档翻译：引用计数对象</a> ，在此基础上补充一些自己的理解和细节。</p><br><p>&nbsp;</p><br><h3>1.为什么要有引用计数器</h3><br><p>Netty里四种主力的ByteBuf，<br><br>其中UnpooledHeapByteBuf 底下的byte[]能够依赖JVM GC自然回收；而UnpooledDirectByteBuf底下是DirectByteBuffer，如<a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">Java堆外内存扫盲贴</a>所述，除了等JVM GC，最好也能主动进行回收；而PooledHeapByteBuf 和 PooledDirectByteBuf，则必须要主动将用完的byte[]/ByteBuffer放回池里，否则内存就要爆掉。所以，Netty ByteBuf需要在JVM的GC机制之外，有自己的引用计数器和回收过程。</p><br><p>一下又回到了C的冰冷时代，自己malloc对象要自己free。 但和C时代又不完全一样，内有引用计数器，外有JVM的GC，情况更为复杂。</p><br><p>&nbsp;</p><br><h3>2. 引用计数器常识</h3><br><ul><br><li>计数器基于 AtomicIntegerFieldUpdater，为什么不直接用AtomicInteger？因为ByteBuf对象很多，如果都把int包一层AtomicInteger花销较大，而AtomicIntegerFieldUpdater只需要一个全局的静态变量。</li><br><li>所有ByteBuf的引用计数器初始值为1。</li><br><li>调用release()，将计数器减1，等于零时， deallocate()被调用，各种回收。</li><br><li>调用retain()，将计数器加1，即使ByteBuf在别的地方被人release()了，在本Class没喊cut之前，不要把它释放掉。</li><br><li>由duplicate(), slice()和order()所衍生的ByteBuf，与原对象共享底下的buffer，也共享引用计数器，所以它们经常需要调用retain()来显示自己的存在。</li><br><li>当引用计数器为0，底下的buffer已被回收，即使ByteBuf对象还在，对它的各种访问操作都会抛出异常。</li><br></ul><br><p>&nbsp;</p><br><h3>3.谁来负责Release</h3><br><p>在C时代，我们喜欢让malloc和free成对出现，而在Netty里，因为Handler链的存在，ByteBuf经常要传递到下一个Hanlder去而不复还，所以规则变成了谁是最后使用者，谁负责释放。</p><br><p>另外，更要注意的是各种异常情况，ByteBuf没有成功传递到下一个Hanlder，还在自己地界里的话，一定要进行释放。</p><br><h4>3.1 InBound Message</h4><br><p>在AbstractNioByteChannel.NioByteUnsafe.read() 处创建了ByteBuf并调用 pipeline.fireChannelRead(byteBuf) 送入Handler链。</p><br><p>根据上面的谁最后谁负责原则，每个Handler对消息可能有三种处理方式</p><br><ul><br><li>对原消息不做处理，调用 ctx.fireChannelRead(msg)把原消息往下传，那不用做什么释放。</li><br><li>将原消息转化为新的消息并调用 ctx.fireChannelRead(newMsg)往下传，那必须把原消息release掉。</li><br><li>如果已经不再调用ctx.fireChannelRead(msg)传递任何消息，那更要把原消息release掉。</li><br></ul><br><p>假设每一个Handler都把消息往下传，Handler并也不知道谁是启动Netty时所设定的Handler链的最后一员，所以Netty在Handler链的最末补了一个TailHandler，如果此时消息仍然是ReferenceCounted类型就会被release掉。<br><br>&nbsp;</p><br><h4>3.2 OutBound Message</h4><br><p>要发送的消息由应用所创建，并调用 ctx.writeAndFlush(msg) 进入Handler链。在每个Handler中的处理类似InBound Message，最后消息会来到HeadHandler，再经过一轮复杂的调用，在flush完成后终将被release掉。</p><br><p>&nbsp;</p><br><h4>3.3 异常发生时的释放</h4><br><p>多层的异常处理机制，有些异常处理的地方不一定准确知道ByteBuf之前释放了没有，可以在释放前加上引用计数大于0的判断避免释放失败；</p><br><p>有时候不清楚ByteBuf被引用了多少次，但又必须在此进行彻底的释放，可以循环调用reelase()直到返回true。</p><br><p>&nbsp;</p><br><h3>4. 内存泄漏检测</h3><br><p>所谓内存泄漏，主要是针对池化的ByteBuf。ByteBuf对象被JVM GC掉之前，没有调用release()把底下的DirectByteBuffer或byte[]归还到池里，会导致池越来越大。而非池化的ByteBuf，即使像DirectByteBuf那样可能会用到System.gc()，但终归会被release掉的，不会出大事。</p><br><p>Netty担心大家不小心就搞出个大新闻来，因此提供了内存泄漏的监测机制。</p><br><p>Netty默认会从分配的ByteBuf里抽样出大约1%的来进行跟踪。如果泄漏，会有如下语句打印：</p><br><blockquote><br><p>LEAK: ByteBuf.release() was not called before it’s garbage-collected. Enable advanced leak reporting to find out where the leak occurred. To enable advanced leak reporting, specify the JVM option ‘-Dio.netty.leakDetectionLevel=advanced’ or call ResourceLeakDetector.setLevel()</p><br></blockquote><br><p>这句话报告有泄漏的发生，提示你用-D参数，把防漏等级从默认的simple升到advanced，就能具体看到被泄漏的ByteBuf被创建和访问的地方。</p><br><ul><br><li>禁用（DISABLED） - 完全禁止泄露检测，省点消耗。</li><br><li>简单（SIMPLE） - 默认等级，告诉我们取样的1%的ByteBuf是否发生了泄露，但总共一次只打印一次，看不到就没有了。</li><br><li>高级（ADVANCED） - 告诉我们取样的1%的ByteBuf发生泄露的地方。每种类型的泄漏（创建的地方与访问路径一致）只打印一次。对性能有影响。</li><br><li>偏执（PARANOID） - 跟高级选项类似，但此选项检测所有ByteBuf，而不仅仅是取样的那1%。对性能有绝大的影响。</li><br></ul><br><h4>实现细节</h4><br><p>每当各种ByteBufAllocator 创建ByteBuf时，都会问问是否需要采样，Simple和Advanced级别下，就是以113这个素数来取模（害我看文档的时候还在瞎担心，1％，万一泄漏的地方有所规律，刚好躲过了100这个数字呢，比如都是3倍数的），命中了就创建一个<a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">Java堆外内存扫盲贴</a>里说的PhantomReference。然后创建一个Wrapper，包住ByteBuf和Reference。</p><br><p>simple级别下，wrapper只在执行release()时调用Reference.clear()，Advanced级别下则会记录每一个创建和访问的动作。</p><br><p>当GC发生，还没有被clear()的Reference就会被JVM放入到之前设定的ReferenceQueue里。</p><br><p>在每次创建PhantomReference时，都会顺便看看有没有因为忘记执行release()把Reference给clear掉，在GC时被放进了ReferenceQueue的对象，有则以 “io.netty.util.ResourceLeakDetector”为logger name，写出前面例子里的Error级别的日日志。顺便说一句，Netty能自动匹配日志框架，先找Slf4j，再找Log4j，最后找JDK logger。</p><br><h4>值得说三遍的事</h4><br><p>一定要盯紧log里有没有出现 “LEAK: “字样，因为simple级别下它只会出现一次，所以不要依赖自己的眼睛，要依赖grep。如果出现了，而且你用的是PooledBuf，那一定是问题，不要有任何的侥幸，立刻用”-Dio.netty.leakDetectionLevel=advanced” 再跑一次，看清楚它创建和访问的地方。</p><br><p>功能测试时，最好开着”-Dio.netty.leakDetectionLevel=paranoid”。</p><br><p>但是，怎么测试都可能存在没有覆盖到的分支。如果内存尚够，可以适当把-XX:MaxDirectMemorySize 调大，反正只是max，平时也不会真用了你的。然后监控其使用量，及时报警。</p><br><p>&nbsp;<br><br></p><p>&nbsp;<br><br>文章持续修订，转载请保留原链接： <a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/netty-leak.html</a></p>
 
           
         
@@ -1631,7 +1755,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/6-mysql-useful-exp/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/java-classloader-infos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1650,155 +1774,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/10/03/6-mysql-useful-exp/" itemprop="url">6个有用的MySQL语句</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
-                2015-10-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>计算年数<br> 你想通过生日来计算这个人有几岁了。</li>
-</ol>
-<p>``SELECT<br>DATE_FORMAT(FROM_DAYS(TO_DAYS(now()) - TO_DAYS(@dateofbirth)), ‘%Y’)</p>
-<ul>
-<li>0;``</li>
-</ul>
-<ol>
-<li>两个时间的差<br>取得两个 datetime 值的差。假设 dt1 和 dt2 是 datetime 类型，其格式为 ‘yyyy-mm-dd hh:mm:ss’，那么它们之间所差的秒数为：</li>
-</ol>
-<p><code>UNIX_TIMESTAMP(dt2 ) - UNIX_TIMESTAMP( dt1 )</code></p>
-<p>除以60就是所差的分钟数，除以3600就是所差的小时数，再除以24就是所差的天数。</p>
-<ol>
-<li>显示某一列出现过N次的值</li>
-</ol>
-<p><code>SELECT id FROM tbl GROUP BY id HAVING COUNT(*) = N;</code></p>
-<ol>
-<li>计算两个日子间的工作日<br>所谓工作日就是除出周六周日和节假日。</li>
-</ol>
-<p><code>SELECT COUNT(*) FROM calendar WHERE d BETWEEN Start AND Stop  AND DAYOFWEEK(d) NOT IN(1,7) AND holiday=0</code></p>
-<ol>
-<li>查找表中的主键</li>
-</ol>
-<p><code>SELECT k.column_name FROM information_schema.table_constraints t JOIN information_schema.key_column_usage k USING  (constraint_name,table_schema,table_name) WHERE t.constraint_type=&#39;PRIMARY
- KEY&#39; AND t.table_schema=&#39;db&#39; AND t.table_name=tbl&#39;</code></p>
-<ol>
-<li>查看你的数库有多大</li>
-</ol>
-<p><code>SELECT table_schema AS &#39;Db Name&#39;,  Round(Sum( data_length + index_length ) / 1024 / 1024, 3 ) AS &#39;Db Size (MB)&#39;,  Round( Sum( data_free ) / 1024 / 1024, 3 ) AS &#39;Free Space (MB)&#39; FROM information_schema.tables GROUP BY table_schema ;</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/netty/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/03/netty/" itemprop="url">Netty之有效规避内存泄漏</a></h1>
+                <a class="post-title-link" href="/2015/10/03/java-classloader-infos/" itemprop="url">ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖</a></h1>
         
 
         <div class="post-meta">
@@ -1872,9 +1848,63 @@ instrumentation.addTransformer(s_transformer); }</code></p>
       
         
           
-            <p><em>有过痛苦的经历，特别能写出深刻的文章 —— 凯尔文. 肖</em></p>
+            <p>为了尽量简单明了容易背，有些部分写得比较干。</p>
+<h3 id="0-参考资料："><a href="#0-参考资料：" class="headerlink" title="0. 参考资料："></a>0. 参考资料：</h3><ul><br><li>书：《深入了解Java虚拟机》、《实战Java虚拟机》</li><br><li>规范：<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范</a> 第12章</li><br><li>源码： <a href="http://hg.openjdk.java.net/jdk7" target="_blank" rel="external">OpenJDK 7</a>的Java及C代码( <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/Class.c" target="_blank" rel="external">Class.c</a> , <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/ClassLoader.c" target="_blank" rel="external">Classloader.c</a>，<a href="http://hg.openjdk.java.net/jdk7/jdk7/hotspot/file/9b0ca45cd756/src/share/vm/prims/jvm.cpp" target="_blank" rel="external">jvm.cpp</a>)</li><br></ul>
 
-<p>直接内存是IO框架的绝配，但直接内存的分配销毁不易，所以使用内存池能大幅提高性能，也告别了频繁的GC。但，要重新培养被Java的自动垃圾回收惯坏了的惰性。</p><br><p>Netty有一篇必读的文档 <a href="http://damacheng009.iteye.com/blog/2013657" target="_blank" rel="external">官方文档翻译：引用计数对象</a> ，在此基础上补充一些自己的理解和细节。</p><br><p>&nbsp;</p><br><h3>1.为什么要有引用计数器</h3><br><p>Netty里四种主力的ByteBuf，<br><br>其中UnpooledHeapByteBuf 底下的byte[]能够依赖JVM GC自然回收；而UnpooledDirectByteBuf底下是DirectByteBuffer，如<a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">Java堆外内存扫盲贴</a>所述，除了等JVM GC，最好也能主动进行回收；而PooledHeapByteBuf 和 PooledDirectByteBuf，则必须要主动将用完的byte[]/ByteBuffer放回池里，否则内存就要爆掉。所以，Netty ByteBuf需要在JVM的GC机制之外，有自己的引用计数器和回收过程。</p><br><p>一下又回到了C的冰冷时代，自己malloc对象要自己free。 但和C时代又不完全一样，内有引用计数器，外有JVM的GC，情况更为复杂。</p><br><p>&nbsp;</p><br><h3>2. 引用计数器常识</h3><br><ul><br><li>计数器基于 AtomicIntegerFieldUpdater，为什么不直接用AtomicInteger？因为ByteBuf对象很多，如果都把int包一层AtomicInteger花销较大，而AtomicIntegerFieldUpdater只需要一个全局的静态变量。</li><br><li>所有ByteBuf的引用计数器初始值为1。</li><br><li>调用release()，将计数器减1，等于零时， deallocate()被调用，各种回收。</li><br><li>调用retain()，将计数器加1，即使ByteBuf在别的地方被人release()了，在本Class没喊cut之前，不要把它释放掉。</li><br><li>由duplicate(), slice()和order()所衍生的ByteBuf，与原对象共享底下的buffer，也共享引用计数器，所以它们经常需要调用retain()来显示自己的存在。</li><br><li>当引用计数器为0，底下的buffer已被回收，即使ByteBuf对象还在，对它的各种访问操作都会抛出异常。</li><br></ul><br><p>&nbsp;</p><br><h3>3.谁来负责Release</h3><br><p>在C时代，我们喜欢让malloc和free成对出现，而在Netty里，因为Handler链的存在，ByteBuf经常要传递到下一个Hanlder去而不复还，所以规则变成了谁是最后使用者，谁负责释放。</p><br><p>另外，更要注意的是各种异常情况，ByteBuf没有成功传递到下一个Hanlder，还在自己地界里的话，一定要进行释放。</p><br><h4>3.1 InBound Message</h4><br><p>在AbstractNioByteChannel.NioByteUnsafe.read() 处创建了ByteBuf并调用 pipeline.fireChannelRead(byteBuf) 送入Handler链。</p><br><p>根据上面的谁最后谁负责原则，每个Handler对消息可能有三种处理方式</p><br><ul><br><li>对原消息不做处理，调用 ctx.fireChannelRead(msg)把原消息往下传，那不用做什么释放。</li><br><li>将原消息转化为新的消息并调用 ctx.fireChannelRead(newMsg)往下传，那必须把原消息release掉。</li><br><li>如果已经不再调用ctx.fireChannelRead(msg)传递任何消息，那更要把原消息release掉。</li><br></ul><br><p>假设每一个Handler都把消息往下传，Handler并也不知道谁是启动Netty时所设定的Handler链的最后一员，所以Netty在Handler链的最末补了一个TailHandler，如果此时消息仍然是ReferenceCounted类型就会被release掉。<br><br>&nbsp;</p><br><h4>3.2 OutBound Message</h4><br><p>要发送的消息由应用所创建，并调用 ctx.writeAndFlush(msg) 进入Handler链。在每个Handler中的处理类似InBound Message，最后消息会来到HeadHandler，再经过一轮复杂的调用，在flush完成后终将被release掉。</p><br><p>&nbsp;</p><br><h4>3.3 异常发生时的释放</h4><br><p>多层的异常处理机制，有些异常处理的地方不一定准确知道ByteBuf之前释放了没有，可以在释放前加上引用计数大于0的判断避免释放失败；</p><br><p>有时候不清楚ByteBuf被引用了多少次，但又必须在此进行彻底的释放，可以循环调用reelase()直到返回true。</p><br><p>&nbsp;</p><br><h3>4. 内存泄漏检测</h3><br><p>所谓内存泄漏，主要是针对池化的ByteBuf。ByteBuf对象被JVM GC掉之前，没有调用release()把底下的DirectByteBuffer或byte[]归还到池里，会导致池越来越大。而非池化的ByteBuf，即使像DirectByteBuf那样可能会用到System.gc()，但终归会被release掉的，不会出大事。</p><br><p>Netty担心大家不小心就搞出个大新闻来，因此提供了内存泄漏的监测机制。</p><br><p>Netty默认会从分配的ByteBuf里抽样出大约1%的来进行跟踪。如果泄漏，会有如下语句打印：</p><br><blockquote><br><p>LEAK: ByteBuf.release() was not called before it’s garbage-collected. Enable advanced leak reporting to find out where the leak occurred. To enable advanced leak reporting, specify the JVM option ‘-Dio.netty.leakDetectionLevel=advanced’ or call ResourceLeakDetector.setLevel()</p><br></blockquote><br><p>这句话报告有泄漏的发生，提示你用-D参数，把防漏等级从默认的simple升到advanced，就能具体看到被泄漏的ByteBuf被创建和访问的地方。</p><br><ul><br><li>禁用（DISABLED） - 完全禁止泄露检测，省点消耗。</li><br><li>简单（SIMPLE） - 默认等级，告诉我们取样的1%的ByteBuf是否发生了泄露，但总共一次只打印一次，看不到就没有了。</li><br><li>高级（ADVANCED） - 告诉我们取样的1%的ByteBuf发生泄露的地方。每种类型的泄漏（创建的地方与访问路径一致）只打印一次。对性能有影响。</li><br><li>偏执（PARANOID） - 跟高级选项类似，但此选项检测所有ByteBuf，而不仅仅是取样的那1%。对性能有绝大的影响。</li><br></ul><br><h4>实现细节</h4><br><p>每当各种ByteBufAllocator 创建ByteBuf时，都会问问是否需要采样，Simple和Advanced级别下，就是以113这个素数来取模（害我看文档的时候还在瞎担心，1％，万一泄漏的地方有所规律，刚好躲过了100这个数字呢，比如都是3倍数的），命中了就创建一个<a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">Java堆外内存扫盲贴</a>里说的PhantomReference。然后创建一个Wrapper，包住ByteBuf和Reference。</p><br><p>simple级别下，wrapper只在执行release()时调用Reference.clear()，Advanced级别下则会记录每一个创建和访问的动作。</p><br><p>当GC发生，还没有被clear()的Reference就会被JVM放入到之前设定的ReferenceQueue里。</p><br><p>在每次创建PhantomReference时，都会顺便看看有没有因为忘记执行release()把Reference给clear掉，在GC时被放进了ReferenceQueue的对象，有则以 “io.netty.util.ResourceLeakDetector”为logger name，写出前面例子里的Error级别的日日志。顺便说一句，Netty能自动匹配日志框架，先找Slf4j，再找Log4j，最后找JDK logger。</p><br><h4>值得说三遍的事</h4><br><p>一定要盯紧log里有没有出现 “LEAK: “字样，因为simple级别下它只会出现一次，所以不要依赖自己的眼睛，要依赖grep。如果出现了，而且你用的是PooledBuf，那一定是问题，不要有任何的侥幸，立刻用”-Dio.netty.leakDetectionLevel=advanced” 再跑一次，看清楚它创建和访问的地方。</p><br><p>功能测试时，最好开着”-Dio.netty.leakDetectionLevel=paranoid”。</p><br><p>但是，怎么测试都可能存在没有覆盖到的分支。如果内存尚够，可以适当把-XX:MaxDirectMemorySize 调大，反正只是max，平时也不会真用了你的。然后监控其使用量，及时报警。</p><br><p>&nbsp;<br><br></p><p>&nbsp;<br><br>文章持续修订，转载请保留原链接： <a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/netty-leak.html</a></p>
+
+<h3 id="1-Class装载的三个阶段"><a href="#1-Class装载的三个阶段" class="headerlink" title="1. Class装载的三个阶段"></a>1. Class装载的三个阶段</h3><h4 id="1-1-载入-Load"><a href="#1-1-载入-Load" class="headerlink" title="1.1 载入 (Load)"></a>1.1 载入 (Load)</h4><p>从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行时数据结构，生成一个Class对象。</p>
+<h4 id="1-2-链接-Resolve"><a href="#1-2-链接-Resolve" class="headerlink" title="1.2 链接 (Resolve)"></a>1.2 链接 (Resolve)</h4><p>将之前载入的数据结构里的符号引用表，解析成直接引用。<br>中间如果遇到引用的类还没被加载，就会触发该类的加载。<br>可能JDK会很懒惰的在运行某个函数实际使用到该引用时才发生链接，也可能在类加载时就解析全部引用。</p>
+<h4 id="1-3-初始化-Initniazle"><a href="#1-3-初始化-Initniazle" class="headerlink" title="1.3 初始化 (Initniazle)"></a>1.3 初始化 (Initniazle)</h4><p>初始化静态变量，并执行静态初始化语句。</p>
+<h3 id="2-Class装载的时机"><a href="#2-Class装载的时机" class="headerlink" title="2. Class装载的时机"></a>2. Class装载的时机</h3><ul>
+<li>ClassLoader.loadClass()</li>
+<li>前文所说的链接时触发的装载</li>
+<li>Class.forName() 等java.lang.reflect反射包</li>
+<li>new 构造对象</li>
+<li>初始化子类时，会同时初始化父类</li>
+<li>访问类的静态变量或静态方法（但static final的常量除外，此君在常量池里)</li>
+</ul>
+<p>本质上，也是很懒惰的按需加载的，由于类装载的Lazy和前面解释引用的Lazy，所以Jar包里有时候有些类用到的了没在Class Path里的其他类，也能人品爆发的照跑不误。</p>
+<p>除了1，其他几种方式默认都到达类装载的初始化阶段。</p>
+<h3 id="3-ClassLoader-loadClass-与-Class-forName"><a href="#3-ClassLoader-loadClass-与-Class-forName" class="headerlink" title="3. ClassLoader.loadClass() 与 Class.forName()"></a>3. ClassLoader.loadClass() 与 Class.forName()</h3><p>ClassLoader.loadClass(String name, boolean resolve)，其中resolve默认为false，即只执行类装载的第一个阶段。</p>
+<p>Class.forName(String name, boolean initialize, ClassLoader loader)， 其中initialize默认为true，即执行到类装载的第三个阶段。</p>
+<h3 id="4-ClassNotFoundException-和-NoClassDefFoundError"><a href="#4-ClassNotFoundException-和-NoClassDefFoundError" class="headerlink" title="4. ClassNotFoundException 和 NoClassDefFoundError"></a>4. ClassNotFoundException 和 NoClassDefFoundError</h3><p>ClassLoader.loadClass() 与 Class.forName() 找不到类定义的二进制流时抛出ClassNotFoundException。</p>
+<p>链接阶段解释引用失败，找不到引用的类时抛出NoClassDefFoundError。</p>
+<h3 id="5-ClassLoader及双亲委派机制"><a href="#5-ClassLoader及双亲委派机制" class="headerlink" title="5. ClassLoader及双亲委派机制"></a>5. ClassLoader及双亲委派机制</h3><p>ClassLoader.loadClass()的标准流程:</p>
+<ul>
+<li>findLoadedClass() 查看类是否已加载</li>
+<li>如果不存在，则调用parent loader的loadClass()</li>
+<li>如果不存在，调用findClass() 在本ClassLoader的ClassPath里加载该类</li>
+</ul>
+<p>所谓双亲委派机制，就是先从parent loader开始查找，找不到了才用自己的findClass()函数去查找，兼顾了效率：避免重复加载，当父亲已经加载了该类的时候，就没有必要子ClassLoader再加载一次，和安全，避免子类乱加载。</p>
+<p>而OSGI或SPI或热替换方案，则需要破坏这个双亲委托，先调用自己的findClass()。</p>
+<p>findClass() 是各个ClassLoader各自实现，各显神通的地方，从各种奇葩地方载入Class二进制字节流。</p>
+<p>但最后都会调用defineClass()，传入二进制字节流，返回Class对象。留意此处，呆会AspectJ的时候会回到这里。</p>
+<p>在JDK6，loadClass()很过分的定义了方法级的synchronized ，在JDK7改成一个以Class Name作Key的 parallelLockMap，增强了并行加载不同Class的能力。</p>
+<h3 id="6-System-ClassLoader-与-Thread-Context-Classloader"><a href="#6-System-ClassLoader-与-Thread-Context-Classloader" class="headerlink" title="6. System ClassLoader 与 Thread Context Classloader"></a>6. System ClassLoader 与 Thread Context Classloader</h3><p>有时候，看到错误日志说张三不是张三，包名类名一样但instanceof 死活返回 false，唯一原因是它们由两个不同的ClassLoader加载。</p>
+<p>默认的Bootstrap(加载jdk的lib目录)，Extension(加载jdk的lib/ext目录)，Application(加载启动时定义的classpath)三层ClassLoader机制不再重复。</p>
+<p>平时用ClassLoader.getSystemClassLoader()就可以得到sun.misc.Launcher$ApplicationClassLoader 这个Application ClassLoader。</p>
+<p>在类A里加载类B，默认使用加载了类A的Loader。但，也有特殊情况，比如JDBC加载driver时的机制，需要在父ClassLoader（JDBC属于JDK一部分）里根据配置反射创建jdbc driver的数据实现类，Sun设计了一个特殊方案 －－Thread Context Class Loader。</p>
+<p>JAXB(比如要在Jar包里找xsd schema文件的时候)也使用了它，所以用到它们时就要注意Thread Context ClassLoader的设置，可以用代码随时设置current thread的loader，也可以用自定义的ThreadFactory在创建线程时设置，它默认是父线程的loader，如果都没设置就是 System ClassLoader。</p>
+<h3 id="7-Java-Agent机制与AspectJ的LoadTime-Weaving"><a href="#7-Java-Agent机制与AspectJ的LoadTime-Weaving" class="headerlink" title="7. Java Agent机制与AspectJ的LoadTime Weaving"></a>7. Java Agent机制与AspectJ的LoadTime Weaving</h3><p>在JDK5开始，在启动JVM时可增加-javaagent参数，在装载Class时对类进行动态的修改。</p>
+<p>AspectJ的Load Time Weaving机制，需要配置 -javaagent: [path to aspectj-weaver.jar] 。</p>
+<p>打开aspectj-weaver.jar，可以看到META-INF/MANIFEST里定义了 Premain-Class: org.aspectj.weaver.loadtime.Agent</p>
+<p>再打开这个Agent类，简化后的代码大概这个样子：</p>
+<p><code>ClassFileTransformer s_transformer = new ClassPreProcessorAgentAdapter(); 
+public static void premain(String options, Instrumentation instrumentation) { 
+instrumentation.addTransformer(s_transformer); }</code></p>
+<p>可见它的主要作用是将自己的类转换器注册到JDK所传入的Instrumentation。</p>
+<p>再看ClassFileTransformer的定义：ClassLoader会在前面defineClass()的过程中，在把二进制字节流转换为Class对象之前，先把二进制流和当前ClassLoader传给Transformer，由Transformer加工为另一段二进制字节流返回。</p>
+<p>AspectJ就是利用传入的ClassLoader，找出其Class Path里的META-INF/aop.xml，然后根据aop.xml里的配置进行代码植入。</p>
+<p>测试显示，加了LoadTime Weaving，类加载的速度明显变慢，如果是100ms就调用超时的服务，需要做类的预加载。</p>
+<h3 id="8-Jar包的预加载"><a href="#8-Jar包的预加载" class="headerlink" title="8. Jar包的预加载"></a>8. Jar包的预加载</h3><p>比如有个有趣的需求是加载某个Class A所在的Jar里的全部的Class （怎么好像一点都不有趣）</p>
+<figure class="highlight plain"><figcaption><span>jarUrl = ClassA.getProtectionDomain().getCodeSource().getLocation();</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">JarFile jarfile = new JarFile(jarUrl.getPath());</div><div class="line"></div><div class="line">Enumeration entries = jarfile.entries();</div></pre></td></tr></table></figure>
+<p>然后遍历JarEntry，过滤出后缀为.class的文件，按类名进行装载就可以了。</p>
+<h3 id="9-Class的二进制兼容性"><a href="#9-Class的二进制兼容性" class="headerlink" title="9.Class的二进制兼容性"></a>9.Class的二进制兼容性</h3><p>如果Class A 依赖 spring-1.0.jar编译，当spring升级到spring-2.0.jar，Class A不需要修改代码也不需要重新编译，可以直接运行的，spring-2.0.jar就满足二进制兼容性。</p>
+<p>在<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范的第13章</a>有详细的描述 ，不想直接睡着最好可以找个中文版来看，感谢那些翻译的同学。</p>
+<p>虽然规范的这章看着比较长比较吓人，但其实二进制兼容性还是很容易做到的，只要你不做把接口改为抽象类之类奇怪的事情，其他一些看起来很大的改动，比如改throws定义，其实都没有问题。</p>
+<p>真的遇到问题，设身处地想想自己是那段Class A的字节码，现在还能不能跑就行。</p>
+<p>感谢你看到这里，希望你只在工作里用到这些知识，祝工作愉快。</p>
+<p>文章持续修订，转载请保留原链接：<br><a href="http://calvin1978.blogcn.com/articles/classloader-javaagent.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/classloader-javaagent.html</a></p>
 
           
         
@@ -1960,7 +1990,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

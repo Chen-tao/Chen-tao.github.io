@@ -491,6 +491,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/07/cmakeprotoprotobuf-cpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/07/cmakeprotoprotobuf-cpp/" itemprop="url">利用Cmake自动编译proto文件生成protobuf cpp代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-07T00:00:00+08:00">
+                2015-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目中pb用的越来越多，更改后手动编译proto越来越麻烦，摸索了下在cmake中自动编译proto文件的办法。</p>
+<ol>
+<li>利用cmake提供的宏PROTOBUF_GENERATE_CPP</li>
+</ol>
+<p>示例代码结构如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- CMakeLists.txt</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure>
+<p> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
+<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">add_subdirectory(proto)</div><div class="line">add_executable(demo main.cpp) </div><div class="line">target_link_libraries(demo proto)</div></pre></td></tr></table></figure></p>
+<p> src/proto/CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">find_package(Protobuf REQUIRED)</div><div class="line">FILE(GLOB protofiles &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/*.proto&quot;)</div><div class="line">message(STATUS $&#123;protofiles&#125;)</div><div class="line">PROTOBUF_GENERATE_CPP(PROTOSRCS PROTOHDRS $&#123;protofiles&#125;)</div><div class="line">message(STATUS $&#123;PROTOSRCS&#125;)</div><div class="line">add_library(proto STATIC $&#123;PROTOSRCS&#125; $&#123;PROTOHDRS&#125;) </div><div class="line">target_link_libraries(proto protobuf) </div><div class="line">target_include_directories(proto PUBLIC $&#123;CMAKE_CURRENT_BINARY_DIR&#125;)</div></pre></td></tr></table></figure></p>
+<p> 采用out of source编译，cmake将生成的.pb.h,.pb.cc放在build/src/proto/目录下，故而需要在src/proto/CMakeLists.txt中设置<code>target_include_directories(proto PUBLIC ${CMAKE_CURRENT_BINARY_DIR})</code>，这样生成的头文件才能被外层cmake可见。</p>
+<ol>
+<li>利用命令ADD_CUSTOM_COMMAND</li>
+</ol>
+<p>示例代码结构如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[@gapp_devnet_1 ~/tests/cmakepb1]$ tree</div><div class="line">.</div><div class="line">|-- CMakeLists.txt</div><div class="line">|-- build</div><div class="line">`-- src</div><div class="line">    |-- CMakeLists.txt</div><div class="line">    |-- main.cpp</div><div class="line">    `-- proto</div><div class="line">        |-- cmd.proto</div><div class="line">        `-- head.proto</div></pre></td></tr></table></figure></p>
+<p>3 directories, 5 files<br> 顶层CMakeLists.txt如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">project (demo)</div><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_subdirectory(src)</div></pre></td></tr></table></figure></p>
+<p> src/CMakeLists.txt如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">FILE(GLOB proto_files $&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/*.proto)  </div><div class="line">FOREACH(proto_file $&#123;proto_files&#125;)</div><div class="line">    STRING(REGEX REPLACE &quot;[^/]proto&quot; &quot;&quot; proto_file_name $&#123;proto_file&#125;)</div><div class="line">    LIST(APPEND PROTO_SRCS &quot;$&#123;proto_file_name&#125;.pb.cc&quot;)</div><div class="line">	ADD_CUSTOM_COMMAND(</div><div class="line">		OUTPUT &quot;$&#123;proto_file_name&#125;.pb.h&quot; &quot;$&#123;proto_file_name&#125;.pb.cc&quot;</div><div class="line">		COMMAND protoc --proto_path=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto</div><div class="line">                       --cpp_out=$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/proto/ $&#123;proto_file&#125; </div><div class="line">		DEPENDS $&#123;proto_file&#125;</div><div class="line">	)</div><div class="line">ENDFOREACH(proto_file)</div><div class="line">message(STATUS $&#123;PROTO_SRCS&#125;)</div><div class="line">include_directories(./proto)</div><div class="line">add_executable(demo main.cpp $&#123;PROTO_SRCS&#125;) </div><div class="line">target_link_libraries(demo protobuf)</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/05/http2-comp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -687,163 +822,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/the-trust-machine/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/04/the-trust-machine/" itemprop="url">The trust machine 信任机器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-04T00:00:00+08:00">
-                2015-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="The-promise-of-the-blockchain"><a href="#The-promise-of-the-blockchain" class="headerlink" title="The promise of the blockchain"></a>The promise of the blockchain</h4><p>区块链的前途</p>
-<h4 id="The-trust-machine"><a href="#The-trust-machine" class="headerlink" title="The trust machine"></a>The trust machine</h4><p>信任机器</p>
-<h4 id="The-technology-behind-bitcoin-could-transform-how-the-economy-works"><a href="#The-technology-behind-bitcoin-could-transform-how-the-economy-works" class="headerlink" title="The technology behind bitcoin could transform how the economy works"></a>The technology behind bitcoin could transform how the economy works</h4><p>比特币背后的技术可能转变经济运行模式</p>
-<h5 id="BITCOIN-has-a-bad-reputation-The-decentralised-digital-cryptocurrency-①-powered-by-a-vast-computer-network-is-notorious-for-the-wild-fluctuations-in-its-value-the-zeal-of-its-supporters-and-its-degenerate-uses-such-as-extortion-buying-drugs-and-hiring-hitmen-in-the-online-bazaars-of-the-“dark-net”"><a href="#BITCOIN-has-a-bad-reputation-The-decentralised-digital-cryptocurrency-①-powered-by-a-vast-computer-network-is-notorious-for-the-wild-fluctuations-in-its-value-the-zeal-of-its-supporters-and-its-degenerate-uses-such-as-extortion-buying-drugs-and-hiring-hitmen-in-the-online-bazaars-of-the-“dark-net”" class="headerlink" title="BITCOIN has a bad reputation. The decentralised digital cryptocurrency ①, powered by a vast computer network, is notorious for the wild fluctuations in its value, the zeal of its supporters and its degenerate uses, such as extortion, buying drugs and hiring hitmen in the online bazaars of the “dark net”."></a>BITCOIN has a bad reputation. The decentralised digital cryptocurrency ①, powered by a vast computer network, is notorious for the wild fluctuations in its value, the zeal of its supporters and its degenerate uses, such as extortion, buying drugs and hiring hitmen in the online bazaars of the “dark net”.</h5><p>比特币风评不佳。由巨大的计算机网络所驱动的去中心化数字加密货币【注一】的价值剧烈波动，支持者们对其热情高涨，很多人还热衷于堕落交易，比如用其敲诈勒索，买毒品和在“暗网”的线上集市雇佣职业杀手，这些使它声名狼藉。</p>
-<p>【注一】密码货币指不依托任何实物，使用密码算法的数字货币，现指代英文Cryptocurrency（意指比特币类数字货币，且包括比特币）。<br>比如比特币、莱特币等，是一种依靠密码技术和校验技术来创建，分发和维持的数字货币。加密货币的特点在其运用了点对点技术且每个人都可发行它。</p>
-<h5 id="This-is-unfair-The-value-of-a-bitcoin-has-been-pretty-stable-at-around-250-for-most-of-this-year-Among-regulators-and-financial-institutions-scepticism-has-given-way-to-enthusiasm-the-European-Union-recently-recognised-it-as-a-currency-But-most-unfair-of-all-is-that-bitcoin’s-shady-image-causes-people-to-overlook-the-extraordinary-potential-of-the-“blockchain-②”-the-technology-that-underpins-it-This-innovation-carries-a-significance-stretching-far-beyond-cryptocurrency-The-blockchain-lets-people-who-have-no-particular-confidence-in-each-other-collaborate-without-having-to-go-through-a-neutral-central-authority-Simply-put-it-is-a-machine-for-creating-trust"><a href="#This-is-unfair-The-value-of-a-bitcoin-has-been-pretty-stable-at-around-250-for-most-of-this-year-Among-regulators-and-financial-institutions-scepticism-has-given-way-to-enthusiasm-the-European-Union-recently-recognised-it-as-a-currency-But-most-unfair-of-all-is-that-bitcoin’s-shady-image-causes-people-to-overlook-the-extraordinary-potential-of-the-“blockchain-②”-the-technology-that-underpins-it-This-innovation-carries-a-significance-stretching-far-beyond-cryptocurrency-The-blockchain-lets-people-who-have-no-particular-confidence-in-each-other-collaborate-without-having-to-go-through-a-neutral-central-authority-Simply-put-it-is-a-machine-for-creating-trust" class="headerlink" title="This is unfair. The value of a bitcoin has been pretty stable, at around $250, for most of this year. Among regulators and financial institutions, scepticism has given way to enthusiasm (the European Union recently recognised it as a currency). But most unfair of all is that bitcoin’s shady image causes people to overlook the extraordinary potential of the “blockchain ②”, the technology that underpins it. This innovation carries a significance stretching far beyond cryptocurrency. The blockchain lets people who have no particular confidence in each other collaborate without having to go through a neutral central authority. Simply put, it is a machine for creating trust."></a>This is unfair. The value of a bitcoin has been pretty stable, at around $250, for most of this year. Among regulators and financial institutions, scepticism has given way to enthusiasm (the European Union recently recognised it as a currency). But most unfair of all is that bitcoin’s shady image causes people to overlook the extraordinary potential of the “blockchain ②”, the technology that underpins it. This innovation carries a significance stretching far beyond cryptocurrency. The blockchain lets people who have no particular confidence in each other collaborate without having to go through a neutral central authority. Simply put, it is a machine for creating trust.</h5><p>这不公平。比特币的价值在今年的大部分时间都很稳定，一枚在250美元左右。在监管机构和金融机构中，热情替代了怀疑欧盟最近承认其作为货币)。但最不公平的是，比特币的阴暗形象使人们忽视了其背后由 “区块链”【注二】技术支撑的非凡潜力。这一革新带来的深远意义远超加密货币本身。区块链不用通过中立的中央集权机构就可以让彼此没有特别信任的人们互相协作。简单地说，区块链是可以创建信任的机器。</p>
-<p>【注二】区块链（Blockchain）是比特币的一个重要概念，区块链是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了过去十分钟内所有比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
-<h4 id="The-blockchain-food-chain"><a href="#The-blockchain-food-chain" class="headerlink" title="The blockchain food chain"></a>The blockchain food chain</h4><p>区块链的食物链</p>
-<h5 id="To-understand-the-power-of-blockchain-systems-and-the-things-they-can-do-it-is-important-to-distinguish-between-three-things-that-are-commonly-muddled-up-namely-the-bitcoin-currency-the-specific-blockchain-that-underpins-it-and-the-idea-of-blockchains-in-general-A-helpful-analogy-is-with-Napster-the-pioneering-but-illegal-“peer-to-peer”-file-sharing-service-that-went-on-line-in-1999-providing-free-access-to-millions-of-music-tracks-Napster-itself-was-swiftly-shut-down-but-it-inspired-a-host-of-other-peer-to-peer-services-Many-of-these-were-also-used-for-pirating-music-and-films-Yet-despite-its-dubious-origins-peer-to-peer-technology-found-legitimate-uses-powering-internet-startups-such-as-Skype-for-telephony-and-Spotify-for-music-streaming-—and-also-as-it-happens-bitcoin"><a href="#To-understand-the-power-of-blockchain-systems-and-the-things-they-can-do-it-is-important-to-distinguish-between-three-things-that-are-commonly-muddled-up-namely-the-bitcoin-currency-the-specific-blockchain-that-underpins-it-and-the-idea-of-blockchains-in-general-A-helpful-analogy-is-with-Napster-the-pioneering-but-illegal-“peer-to-peer”-file-sharing-service-that-went-on-line-in-1999-providing-free-access-to-millions-of-music-tracks-Napster-itself-was-swiftly-shut-down-but-it-inspired-a-host-of-other-peer-to-peer-services-Many-of-these-were-also-used-for-pirating-music-and-films-Yet-despite-its-dubious-origins-peer-to-peer-technology-found-legitimate-uses-powering-internet-startups-such-as-Skype-for-telephony-and-Spotify-for-music-streaming-—and-also-as-it-happens-bitcoin" class="headerlink" title="To understand the power of blockchain systems, and the things they can do, it is important to distinguish between three things that are commonly muddled up, namely the bitcoin currency, the specific blockchain that underpins it and the idea of blockchains in general. A helpful analogy is with Napster, the pioneering but illegal “peer-to-peer” file-sharing service that went on line in 1999, providing free access to millions of music tracks. Napster itself was swiftly shut down, but it inspired a host of other peer-to-peer services. Many of these were also used for pirating music and films. Yet despite its dubious origins, peer-to-peer technology found legitimate uses, powering internet startups such as Skype (for telephony) and Spotify (for music streaming)—and also, as it happens, bitcoin."></a>To understand the power of blockchain systems, and the things they can do, it is important to distinguish between three things that are commonly muddled up, namely the bitcoin currency, the specific blockchain that underpins it and the idea of blockchains in general. A helpful analogy is with Napster, the pioneering but illegal “peer-to-peer” file-sharing service that went on line in 1999, providing free access to millions of music tracks. Napster itself was swiftly shut down, but it inspired a host of other peer-to-peer services. Many of these were also used for pirating music and films. Yet despite its dubious origins, peer-to-peer technology found legitimate uses, powering internet startups such as Skype (for telephony) and Spotify (for music streaming)—and also, as it happens, bitcoin.</h5><p>要理解区块链系统之强大和其所能做的事情，区分普遍混淆的三件事情尤为重要，即比特币，支撑其特定的区块链和广义区块链。来看个有帮助性的类比奈普斯特（Napster），它是P2P文件共享服务的先驱，但其是非法的，在1999年上线，提供数以百万计的免费音乐。 奈普斯特随后被迅速叫停，但其激发了许多其他的P2P服务。 其中很多也被用于盗版音乐和电影。尽管P2P技术的出身不太可靠，但还是被应用于合法用途，并推动了互联网初创公司如Skype(电话通讯)和Spotify(音乐流媒体)的兴起——还有碰巧出现的比特币。</p>
-<h5 id="The-blockchain-is-an-even-more-potent-technology-In-essence-it-is-a-shared-trusted-public-ledger-that-everyone-can-inspect-but-which-no-single-user-controls-The-participants-in-a-blockchain-system-collectively-keep-the-ledger-up-to-date-it-can-be-amended-only-according-to-strict-rules-and-by-general-agreement-Bitcoin’s-blockchain-ledger-prevents-double-spending-and-keeps-track-of-transactions-continuously-It-is-what-makes-possible-a-currency-without-a-central-bank"><a href="#The-blockchain-is-an-even-more-potent-technology-In-essence-it-is-a-shared-trusted-public-ledger-that-everyone-can-inspect-but-which-no-single-user-controls-The-participants-in-a-blockchain-system-collectively-keep-the-ledger-up-to-date-it-can-be-amended-only-according-to-strict-rules-and-by-general-agreement-Bitcoin’s-blockchain-ledger-prevents-double-spending-and-keeps-track-of-transactions-continuously-It-is-what-makes-possible-a-currency-without-a-central-bank" class="headerlink" title="The blockchain is an even more potent technology. In essence it is a shared, trusted, public ledger that everyone can inspect, but which no single user controls. The participants in a blockchain system collectively keep the ledger up to date: it can be amended only according to strict rules and by general agreement. Bitcoin’s blockchain ledger prevents double-spending and keeps track of transactions continuously. It is what makes possible a currency without a central bank."></a>The blockchain is an even more potent technology. In essence it is a shared, trusted, public ledger that everyone can inspect, but which no single user controls. The participants in a blockchain system collectively keep the ledger up to date: it can be amended only according to strict rules and by general agreement. Bitcoin’s blockchain ledger prevents double-spending and keeps track of transactions continuously. It is what makes possible a currency without a central bank.</h5><p>区块链是更加强大的技术。本质上它是一个共享的，值得信任的公共“账目记录本”，每个人都可以核查它，但其不受任何单个用户控制。区块链系统参与者们共同更新“账目记录本”：根据严格规则和通过多数人同意才能对其修改。比特币区块链“账目记录本”会不断阻止重复支出和跟踪交易情况。 这使货币和中央银行脱钩成为可能。</p>
-<h5 id="Blockchains-are-also-the-latest-example-of-the-unexpected-fruits-of-cryptography-Mathematical-scrambling-is-used-to-boil-down-an-original-piece-of-information-into-a-code-known-as-a-hash-Any-attempt-to-tamper-with-any-part-of-the-blockchain-is-apparent-immediately—because-the-new-hash-will-not-match-the-old-ones-In-this-way-a-science-that-keeps-information-secret-vital-for-encrypting-messages-and-online-shopping-and-banking-is-paradoxically-also-a-tool-for-open-dealing"><a href="#Blockchains-are-also-the-latest-example-of-the-unexpected-fruits-of-cryptography-Mathematical-scrambling-is-used-to-boil-down-an-original-piece-of-information-into-a-code-known-as-a-hash-Any-attempt-to-tamper-with-any-part-of-the-blockchain-is-apparent-immediately—because-the-new-hash-will-not-match-the-old-ones-In-this-way-a-science-that-keeps-information-secret-vital-for-encrypting-messages-and-online-shopping-and-banking-is-paradoxically-also-a-tool-for-open-dealing" class="headerlink" title="Blockchains are also the latest example of the unexpected fruits of cryptography. Mathematical scrambling is used to boil down an original piece of information into a code, known as a hash. Any attempt to tamper with any part of the blockchain is apparent immediately—because the new hash will not match the old ones. In this way a science that keeps information secret (vital for encrypting messages and online shopping and banking) is, paradoxically, also a tool for open dealing."></a>Blockchains are also the latest example of the unexpected fruits of cryptography. Mathematical scrambling is used to boil down an original piece of information into a code, known as a hash. Any attempt to tamper with any part of the blockchain is apparent immediately—because the new hash will not match the old ones. In this way a science that keeps information secret (vital for encrypting messages and online shopping and banking) is, paradoxically, also a tool for open dealing.</h5><p>区块链也是密码学意外成果的最新例子。 将一段原始信息用数学扰码手段生成代码，就是我们称之为的散列。企图篡改区块链的任一部分都是徒劳——因为新的散列不会和旧的匹配。 而这样一门信息保密科学（对于加密消息，在线购物和网上银行至关重要）自相矛盾地成了公开交易的工具。</p>
-<h5 id="Bitcoin-itself-may-never-be-more-than-a-curiosity-However-blockchains-have-a-host-of-other-uses-because-they-meet-the-need-for-a-trustworthy-record-something-vital-for-transactions-of-every-sort-Dozens-of-startups-now-hope-to-capitalise-on-the-blockchain-technology-either-by-doing-clever-things-with-the-bitcoin-blockchain-or-by-creating-new-blockchains-of-their-own"><a href="#Bitcoin-itself-may-never-be-more-than-a-curiosity-However-blockchains-have-a-host-of-other-uses-because-they-meet-the-need-for-a-trustworthy-record-something-vital-for-transactions-of-every-sort-Dozens-of-startups-now-hope-to-capitalise-on-the-blockchain-technology-either-by-doing-clever-things-with-the-bitcoin-blockchain-or-by-creating-new-blockchains-of-their-own" class="headerlink" title="Bitcoin itself may never be more than a curiosity. However blockchains have a host of other uses because they meet the need for a trustworthy record, something vital for transactions of every sort. Dozens of startups now hope to capitalise on the blockchain technology, either by doing clever things with the bitcoin blockchain or by creating new blockchains of their own."></a>Bitcoin itself may never be more than a curiosity. However blockchains have a host of other uses because they meet the need for a trustworthy record, something vital for transactions of every sort. Dozens of startups now hope to capitalise on the blockchain technology, either by doing clever things with the bitcoin blockchain or by creating new blockchains of their own.</h5><p>比特币本身可能不止是满足好奇心这么简单。然而区块链有许多其他用途，因为一个可靠的记录需要依赖它，其对各种交易都至关重要。几十家初创公司希望通过区块链技术获利，用比特币区块链做聪明的事情或是创建自己的新区块链。</p>
-<h5 id="One-idea-for-example-is-to-make-cheap-tamper-proof-public-databases—land-registries-say-Honduras-and-Greece-are-interested-or-registers-of-the-ownership-of-luxury-goods-or-works-of-art-Documents-can-be-notarised-by-embedding-information-about-them-into-a-public-blockchain—and-you-will-no-longer-need-a-notary-to-vouch-for-them-Financial-services-firms-are-contemplating-using-blockchains-as-a-record-of-who-owns-what-instead-of-having-a-series-of-internal-ledgers-A-trusted-private-ledger-removes-the-need-for-reconciling-each-transaction-with-a-counterparty-it-is-fast-and-it-minimises-errors-Santander-reckons-that-it-could-save-banks-up-to-20-billion-a-year-by-2022-Twenty-five-banks-have-just-joined-a-blockchain-startup-called-R3-CEV-to-develop-common-standards-and-NASDAQ-is-about-to-start-using-the-technology-to-record-trading-in-securities-of-private-companies"><a href="#One-idea-for-example-is-to-make-cheap-tamper-proof-public-databases—land-registries-say-Honduras-and-Greece-are-interested-or-registers-of-the-ownership-of-luxury-goods-or-works-of-art-Documents-can-be-notarised-by-embedding-information-about-them-into-a-public-blockchain—and-you-will-no-longer-need-a-notary-to-vouch-for-them-Financial-services-firms-are-contemplating-using-blockchains-as-a-record-of-who-owns-what-instead-of-having-a-series-of-internal-ledgers-A-trusted-private-ledger-removes-the-need-for-reconciling-each-transaction-with-a-counterparty-it-is-fast-and-it-minimises-errors-Santander-reckons-that-it-could-save-banks-up-to-20-billion-a-year-by-2022-Twenty-five-banks-have-just-joined-a-blockchain-startup-called-R3-CEV-to-develop-common-standards-and-NASDAQ-is-about-to-start-using-the-technology-to-record-trading-in-securities-of-private-companies" class="headerlink" title="One idea, for example, is to make cheap, tamper-proof public databases—land registries, say, (Honduras and Greece are interested); or registers of the ownership of luxury goods or works of art. Documents can be notarised by embedding information about them into a public blockchain—and you will no longer need a notary to vouch for them. Financial-services firms are contemplating using blockchains as a record of who owns what instead of having a series of internal ledgers. A trusted private ledger removes the need for reconciling each transaction with a counterparty, it is fast and it minimises errors. Santander reckons that it could save banks up to $20 billion a year by 2022. Twenty-five banks have just joined a blockchain startup, called R3 CEV, to develop common standards, and NASDAQ is about to start using the technology to record trading in securities of private companies."></a>One idea, for example, is to make cheap, tamper-proof public databases—land registries, say, (Honduras and Greece are interested); or registers of the ownership of luxury goods or works of art. Documents can be notarised by embedding information about them into a public blockchain—and you will no longer need a notary to vouch for them. Financial-services firms are contemplating using blockchains as a record of who owns what instead of having a series of internal ledgers. A trusted private ledger removes the need for reconciling each transaction with a counterparty, it is fast and it minimises errors. Santander reckons that it could save banks up to $20 billion a year by 2022. Twenty-five banks have just joined a blockchain startup, called R3 CEV, to develop common standards, and NASDAQ is about to start using the technology to record trading in securities of private companies.</h5><p>例如，有些想法是做些便宜的，防篡改的公共数据库——诸如地政局(洪都拉斯和希腊对此感兴趣)；或奢侈品和艺术品的所有权登记。通过将文档信息嵌入公共区块链能对其进行公证——你将不再需要公证人来做担保。金融服务公司正在考虑用区块链来记录每个人的账目，而不是一系列的公司内部账目。可靠的个人“账目记录本”无需要同交易对方协调每一笔交易，这样既快速又能尽量减少错误。桑坦德银行（Santander）估计到2022年银行业用这一技术每年可以节省200亿美元。25家银行刚刚加入名为R3CEV的区块链初创公司来开发通用标准，而纳斯达克（NASDAQ）市场即将开始用这项技术来记录私企的证券交易情况。</p>
-<h5 id="These-new-blockchains-need-not-work-in-exactly-the-way-that-bitcoin’s-does-Many-of-them-could-tweak-its-model-by-for-example-finding-alternatives-to-its-energy-intensive-“mining”-process-which-pays-participants-newly-minted-bitcoins-in-return-for-providing-the-computing-power-needed-to-maintain-the-ledger-A-group-of-vetted-participants-within-an-industry-might-instead-agree-to-join-a-private-blockchain-say-that-needs-less-security-Blockchains-can-also-implement-business-rules-such-as-transactions-that-take-place-only-if-two-or-more-parties-endorse-them-or-if-another-transaction-has-been-completed-first-As-with-Napster-and-peer-to-peer-technology-a-clever-idea-is-being-modified-and-improved-In-the-process-it-is-fast-throwing-off-its-reputation-for-shadiness"><a href="#These-new-blockchains-need-not-work-in-exactly-the-way-that-bitcoin’s-does-Many-of-them-could-tweak-its-model-by-for-example-finding-alternatives-to-its-energy-intensive-“mining”-process-which-pays-participants-newly-minted-bitcoins-in-return-for-providing-the-computing-power-needed-to-maintain-the-ledger-A-group-of-vetted-participants-within-an-industry-might-instead-agree-to-join-a-private-blockchain-say-that-needs-less-security-Blockchains-can-also-implement-business-rules-such-as-transactions-that-take-place-only-if-two-or-more-parties-endorse-them-or-if-another-transaction-has-been-completed-first-As-with-Napster-and-peer-to-peer-technology-a-clever-idea-is-being-modified-and-improved-In-the-process-it-is-fast-throwing-off-its-reputation-for-shadiness" class="headerlink" title="These new blockchains need not work in exactly the way that bitcoin’s does. Many of them could tweak its model by, for example, finding alternatives to its energy-intensive “mining” process, which pays participants newly minted bitcoins in return for providing the computing power needed to maintain the ledger. A group of vetted participants within an industry might instead agree to join a private blockchain, say, that needs less security. Blockchains can also implement business rules, such as transactions that take place only if two or more parties endorse them, or if another transaction has been completed first. As with Napster and peer-to-peer technology, a clever idea is being modified and improved. In the process, it is fast throwing off its reputation for shadiness."></a>These new blockchains need not work in exactly the way that bitcoin’s does. Many of them could tweak its model by, for example, finding alternatives to its energy-intensive “mining” process, which pays participants newly minted bitcoins in return for providing the computing power needed to maintain the ledger. A group of vetted participants within an industry might instead agree to join a private blockchain, say, that needs less security. Blockchains can also implement business rules, such as transactions that take place only if two or more parties endorse them, or if another transaction has been completed first. As with Napster and peer-to-peer technology, a clever idea is being modified and improved. In the process, it is fast throwing off its reputation for shadiness.</h5><p>这些新的区块链不需要完全以比特币那样的方式运行。例如，它们中的很多会将其模型稍作调整以寻求新模型来替代其耗能的“挖矿”程序，新的比特币参与者通过“挖矿”可以得到比特币——作为回报他们为维持“账目记录本”所提供的计算能力。一条区块链内参与审查的人，可能会加入个人特有的区块链来达到同意的效果，这需要更少的安全工作。区块链还可以用于执行商业规则，如只有两方或多方认可的交易，或者另一个交易已先完成，当前交易才能发生。正如奈普斯特（Napster）和P2P技术，聪明的想法正在被调整和改进。在此过程中，比特币正快速摆脱其阴暗形象。</p>
-<h4 id="New-chains-on-the-block"><a href="#New-chains-on-the-block" class="headerlink" title="New chains on the block"></a>New chains on the block</h4><p>区块新链</p>
-<h5 id="The-spread-of-blockchains-is-bad-for-anyone-in-the-“trust-business”—the-centralised-institutions-and-bureaucracies-such-as-banks-clearing-houses-and-government-authorities-that-are-deemed-sufficiently-trustworthy-to-handle-transactions-Even-as-some-banks-and-governments-explore-the-use-of-this-new-technology-others-will-surely-fight-it-But-given-the-decline-in-trust-in-governments-and-banks-in-recent-years-a-way-to-create-more-scrutiny-and-transparency-could-be-no-bad-thing"><a href="#The-spread-of-blockchains-is-bad-for-anyone-in-the-“trust-business”—the-centralised-institutions-and-bureaucracies-such-as-banks-clearing-houses-and-government-authorities-that-are-deemed-sufficiently-trustworthy-to-handle-transactions-Even-as-some-banks-and-governments-explore-the-use-of-this-new-technology-others-will-surely-fight-it-But-given-the-decline-in-trust-in-governments-and-banks-in-recent-years-a-way-to-create-more-scrutiny-and-transparency-could-be-no-bad-thing" class="headerlink" title="The spread of blockchains is bad for anyone in the “trust business”—the centralised institutions and bureaucracies, such as banks, clearing houses and government authorities that are deemed sufficiently trustworthy to handle transactions. Even as some banks and governments explore the use of this new technology, others will surely fight it. But given the decline in trust in governments and banks in recent years, a way to create more scrutiny and transparency could be no bad thing."></a>The spread of blockchains is bad for anyone in the “trust business”—the centralised institutions and bureaucracies, such as banks, clearing houses and government authorities that are deemed sufficiently trustworthy to handle transactions. Even as some banks and governments explore the use of this new technology, others will surely fight it. But given the decline in trust in governments and banks in recent years, a way to create more scrutiny and transparency could be no bad thing.</h5><p>区块链的发展对于从事“信托行业”的人们是个坏消息，包括中央集权体系和官僚机构，如银行、清算机构和政府部门，它们被认为又足够的信用来处理各种交易。甚至当一些银行和政府探求使用这一新技术时，其他地区会坚定的反对。但鉴于近些年政府信用和银行信用的下降，一种能带来更多审查和更高透明度的创新可能不是一件坏事。</p>
-<h5 id="Drawing-up-regulations-for-blockchains-at-this-early-stage-would-be-a-mistake-the-history-of-peer-to-peer-technology-suggests-that-it-is-likely-to-be-several-years-before-the-technology’s-full-potential-becomes-clear-In-the-meantime-regulators-should-stay-their-hands-or-find-ways-to-accommodate-new-approaches-within-existing-frameworks-rather-than-risk-stifling-a-fast-evolving-idea-with-overly-prescriptive-rules"><a href="#Drawing-up-regulations-for-blockchains-at-this-early-stage-would-be-a-mistake-the-history-of-peer-to-peer-technology-suggests-that-it-is-likely-to-be-several-years-before-the-technology’s-full-potential-becomes-clear-In-the-meantime-regulators-should-stay-their-hands-or-find-ways-to-accommodate-new-approaches-within-existing-frameworks-rather-than-risk-stifling-a-fast-evolving-idea-with-overly-prescriptive-rules" class="headerlink" title="Drawing up regulations for blockchains at this early stage would be a mistake: the history of peer-to-peer technology suggests that it is likely to be several years before the technology’s full potential becomes clear. In the meantime regulators should stay their hands, or find ways to accommodate new approaches within existing frameworks, rather than risk stifling a fast-evolving idea with overly prescriptive rules."></a>Drawing up regulations for blockchains at this early stage would be a mistake: the history of peer-to-peer technology suggests that it is likely to be several years before the technology’s full potential becomes clear. In the meantime regulators should stay their hands, or find ways to accommodate new approaches within existing frameworks, rather than risk stifling a fast-evolving idea with overly prescriptive rules.</h5><p>在这个早期阶段起草区块链的规定将是一个错误：P2P技术的历史表明，一个技术的全部潜力变得清晰可能需要若干年。同时监管机构应静观其变，或在现有框架内设法去适应新的方法，而不是以过于死板的规则冒险压制迅速发展的创意。</p>
-<h5 id="The-notion-of-shared-public-ledgers-may-not-sound-revolutionary-or-sexy-Neither-did-double-entry-book-keeping-or-joint-stock-companies-Yet-like-them-the-blockchain-is-an-apparently-mundane-process-that-has-the-potential-to-transform-how-people-and-businesses-co-operate-Bitcoin-fanatics-are-enthralled-by-the-libertarian-ideal-of-a-pure-digital-currency-beyond-the-reach-of-any-central-bank-The-real-innovation-is-not-the-digital-coins-themselves-but-the-trust-machine-that-mints-them—and-which-promises-much-more-besides"><a href="#The-notion-of-shared-public-ledgers-may-not-sound-revolutionary-or-sexy-Neither-did-double-entry-book-keeping-or-joint-stock-companies-Yet-like-them-the-blockchain-is-an-apparently-mundane-process-that-has-the-potential-to-transform-how-people-and-businesses-co-operate-Bitcoin-fanatics-are-enthralled-by-the-libertarian-ideal-of-a-pure-digital-currency-beyond-the-reach-of-any-central-bank-The-real-innovation-is-not-the-digital-coins-themselves-but-the-trust-machine-that-mints-them—and-which-promises-much-more-besides" class="headerlink" title="The notion of shared public ledgers may not sound revolutionary or sexy. Neither did double-entry book-keeping or joint-stock companies. Yet, like them, the blockchain is an apparently mundane process that has the potential to transform how people and businesses co-operate. Bitcoin fanatics are enthralled by the libertarian ideal of a pure, digital currency beyond the reach of any central bank. The real innovation is not the digital coins themselves, but the trust machine that mints them—and which promises much more besides."></a>The notion of shared public ledgers may not sound revolutionary or sexy. Neither did double-entry book-keeping or joint-stock companies. Yet, like them, the blockchain is an apparently mundane process that has the potential to transform how people and businesses co-operate. Bitcoin fanatics are enthralled by the libertarian ideal of a pure, digital currency beyond the reach of any central bank. The real innovation is not the digital coins themselves, but the trust machine that mints them—and which promises much more besides.</h5><p>共享公共“账目记录本”的概念听起来可能不那么革命性或性感。复式簿记或股份制公司同样也是如此。然而,像他们一样，区块链有潜力改变人们和企业的合作方式，这显然会是一个平凡的过程。比特币狂热者着迷于纯粹的数字货币所引导的自由主义理想，这种货币超越了央行的能力范围。真正的创新不是数字硬币本身，而是铸造它们的信任机器——它还承担着人们太多的寄托。</p>
-<p>=============================</p>
-<p>bazaar N-COUNT In areas such as the Middle East and India, a bazaar is a place where there are many small stores and stalls. (中东、印度等地的) 集市</p>
-<p>ledger N-COUNT A ledger is a book in which a company or organization writes down the amounts of money it spends and receives. 分类账</p>
-<p>cryptography N the science or study of analysing and deciphering codes, ciphers, etc; cryptanalysis 密码学</p>
-<p>tamper with 篡改</p>
-<p>eg. The most security-conscious developers distrust even their own databases, on the theory that a malicious user might have found a way to tamper with the database.</p>
-<p>安全意识很强的开发人员甚至不信任他们自己的数据库，理由是他们认为恶意用户可能有办法篡改数据库。</p>
-<p>capitalise on 利用，获利</p>
-<p>notarise V to attest to or authenticate (a document, contract, etc), as a notary 由公证人(对文件、合同等)进行公证</p>
-<p>notary N-COUNT A notary or a notary public is a person, often a lawyer, who has legal authority to witness the signing of documents in order to make them legally valid. 公证人</p>
-<p>reconcile V-T If you reconcile two beliefs, facts, or demands that seem to be opposed or completely different, you find a way in which they can both be true or both be successful. 使和谐一致; 调和</p>
-<p>tweak V-T If you tweak something such as a system or a design, you improve it by making a slight change. 稍稍改进(如系统或设计)</p>
-<p>stifle V-T If someone stifles something you consider to be a good thing, they prevent it from continuing. 压制表不满</p>
-<p><em>参考资料：</em></p>
-<ol>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MjA1Mzk2MQ==&amp;mid=400588344&amp;idx=3&amp;sn=fc45f0cfef2ea5d1837c82ec2dd7617c&amp;scene=0#wechat_redirect" target="_blank" rel="external">详解比特币与区块链</a></p>
-</li>
-<li><p><a href="http://blog.codinglabs.org/articles/bitcoin-mechanism-make-easy.html" target="_blank" rel="external">一个故事告诉你比特币的原理及运作机制</a></p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/surge-new-user/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -981,6 +959,163 @@
 <p>Surge 是一款开发者调试和代理工具，需要一定的专业背景知识才可使用，请在仔细阅读 AppStore 说明且理解软件功能后再进行购买。</p>
 <p>后续版本可能还会有功能、界面上的变化，如有必要本文会进行补充和更新。</p>
 <p>本文档适用于：<code>Surge 1.0.1（Bulid 300）</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/04/the-trust-machine/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/04/the-trust-machine/" itemprop="url">The trust machine 信任机器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-04T00:00:00+08:00">
+                2015-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="The-promise-of-the-blockchain"><a href="#The-promise-of-the-blockchain" class="headerlink" title="The promise of the blockchain"></a>The promise of the blockchain</h4><p>区块链的前途</p>
+<h4 id="The-trust-machine"><a href="#The-trust-machine" class="headerlink" title="The trust machine"></a>The trust machine</h4><p>信任机器</p>
+<h4 id="The-technology-behind-bitcoin-could-transform-how-the-economy-works"><a href="#The-technology-behind-bitcoin-could-transform-how-the-economy-works" class="headerlink" title="The technology behind bitcoin could transform how the economy works"></a>The technology behind bitcoin could transform how the economy works</h4><p>比特币背后的技术可能转变经济运行模式</p>
+<h5 id="BITCOIN-has-a-bad-reputation-The-decentralised-digital-cryptocurrency-①-powered-by-a-vast-computer-network-is-notorious-for-the-wild-fluctuations-in-its-value-the-zeal-of-its-supporters-and-its-degenerate-uses-such-as-extortion-buying-drugs-and-hiring-hitmen-in-the-online-bazaars-of-the-“dark-net”"><a href="#BITCOIN-has-a-bad-reputation-The-decentralised-digital-cryptocurrency-①-powered-by-a-vast-computer-network-is-notorious-for-the-wild-fluctuations-in-its-value-the-zeal-of-its-supporters-and-its-degenerate-uses-such-as-extortion-buying-drugs-and-hiring-hitmen-in-the-online-bazaars-of-the-“dark-net”" class="headerlink" title="BITCOIN has a bad reputation. The decentralised digital cryptocurrency ①, powered by a vast computer network, is notorious for the wild fluctuations in its value, the zeal of its supporters and its degenerate uses, such as extortion, buying drugs and hiring hitmen in the online bazaars of the “dark net”."></a>BITCOIN has a bad reputation. The decentralised digital cryptocurrency ①, powered by a vast computer network, is notorious for the wild fluctuations in its value, the zeal of its supporters and its degenerate uses, such as extortion, buying drugs and hiring hitmen in the online bazaars of the “dark net”.</h5><p>比特币风评不佳。由巨大的计算机网络所驱动的去中心化数字加密货币【注一】的价值剧烈波动，支持者们对其热情高涨，很多人还热衷于堕落交易，比如用其敲诈勒索，买毒品和在“暗网”的线上集市雇佣职业杀手，这些使它声名狼藉。</p>
+<p>【注一】密码货币指不依托任何实物，使用密码算法的数字货币，现指代英文Cryptocurrency（意指比特币类数字货币，且包括比特币）。<br>比如比特币、莱特币等，是一种依靠密码技术和校验技术来创建，分发和维持的数字货币。加密货币的特点在其运用了点对点技术且每个人都可发行它。</p>
+<h5 id="This-is-unfair-The-value-of-a-bitcoin-has-been-pretty-stable-at-around-250-for-most-of-this-year-Among-regulators-and-financial-institutions-scepticism-has-given-way-to-enthusiasm-the-European-Union-recently-recognised-it-as-a-currency-But-most-unfair-of-all-is-that-bitcoin’s-shady-image-causes-people-to-overlook-the-extraordinary-potential-of-the-“blockchain-②”-the-technology-that-underpins-it-This-innovation-carries-a-significance-stretching-far-beyond-cryptocurrency-The-blockchain-lets-people-who-have-no-particular-confidence-in-each-other-collaborate-without-having-to-go-through-a-neutral-central-authority-Simply-put-it-is-a-machine-for-creating-trust"><a href="#This-is-unfair-The-value-of-a-bitcoin-has-been-pretty-stable-at-around-250-for-most-of-this-year-Among-regulators-and-financial-institutions-scepticism-has-given-way-to-enthusiasm-the-European-Union-recently-recognised-it-as-a-currency-But-most-unfair-of-all-is-that-bitcoin’s-shady-image-causes-people-to-overlook-the-extraordinary-potential-of-the-“blockchain-②”-the-technology-that-underpins-it-This-innovation-carries-a-significance-stretching-far-beyond-cryptocurrency-The-blockchain-lets-people-who-have-no-particular-confidence-in-each-other-collaborate-without-having-to-go-through-a-neutral-central-authority-Simply-put-it-is-a-machine-for-creating-trust" class="headerlink" title="This is unfair. The value of a bitcoin has been pretty stable, at around $250, for most of this year. Among regulators and financial institutions, scepticism has given way to enthusiasm (the European Union recently recognised it as a currency). But most unfair of all is that bitcoin’s shady image causes people to overlook the extraordinary potential of the “blockchain ②”, the technology that underpins it. This innovation carries a significance stretching far beyond cryptocurrency. The blockchain lets people who have no particular confidence in each other collaborate without having to go through a neutral central authority. Simply put, it is a machine for creating trust."></a>This is unfair. The value of a bitcoin has been pretty stable, at around $250, for most of this year. Among regulators and financial institutions, scepticism has given way to enthusiasm (the European Union recently recognised it as a currency). But most unfair of all is that bitcoin’s shady image causes people to overlook the extraordinary potential of the “blockchain ②”, the technology that underpins it. This innovation carries a significance stretching far beyond cryptocurrency. The blockchain lets people who have no particular confidence in each other collaborate without having to go through a neutral central authority. Simply put, it is a machine for creating trust.</h5><p>这不公平。比特币的价值在今年的大部分时间都很稳定，一枚在250美元左右。在监管机构和金融机构中，热情替代了怀疑欧盟最近承认其作为货币)。但最不公平的是，比特币的阴暗形象使人们忽视了其背后由 “区块链”【注二】技术支撑的非凡潜力。这一革新带来的深远意义远超加密货币本身。区块链不用通过中立的中央集权机构就可以让彼此没有特别信任的人们互相协作。简单地说，区块链是可以创建信任的机器。</p>
+<p>【注二】区块链（Blockchain）是比特币的一个重要概念，区块链是一串使用密码学方法相关联产生的数据块，每一个数据块中包含了过去十分钟内所有比特币网络交易的信息，用于验证其信息的有效性（防伪）和生成下一个区块。</p>
+<h4 id="The-blockchain-food-chain"><a href="#The-blockchain-food-chain" class="headerlink" title="The blockchain food chain"></a>The blockchain food chain</h4><p>区块链的食物链</p>
+<h5 id="To-understand-the-power-of-blockchain-systems-and-the-things-they-can-do-it-is-important-to-distinguish-between-three-things-that-are-commonly-muddled-up-namely-the-bitcoin-currency-the-specific-blockchain-that-underpins-it-and-the-idea-of-blockchains-in-general-A-helpful-analogy-is-with-Napster-the-pioneering-but-illegal-“peer-to-peer”-file-sharing-service-that-went-on-line-in-1999-providing-free-access-to-millions-of-music-tracks-Napster-itself-was-swiftly-shut-down-but-it-inspired-a-host-of-other-peer-to-peer-services-Many-of-these-were-also-used-for-pirating-music-and-films-Yet-despite-its-dubious-origins-peer-to-peer-technology-found-legitimate-uses-powering-internet-startups-such-as-Skype-for-telephony-and-Spotify-for-music-streaming-—and-also-as-it-happens-bitcoin"><a href="#To-understand-the-power-of-blockchain-systems-and-the-things-they-can-do-it-is-important-to-distinguish-between-three-things-that-are-commonly-muddled-up-namely-the-bitcoin-currency-the-specific-blockchain-that-underpins-it-and-the-idea-of-blockchains-in-general-A-helpful-analogy-is-with-Napster-the-pioneering-but-illegal-“peer-to-peer”-file-sharing-service-that-went-on-line-in-1999-providing-free-access-to-millions-of-music-tracks-Napster-itself-was-swiftly-shut-down-but-it-inspired-a-host-of-other-peer-to-peer-services-Many-of-these-were-also-used-for-pirating-music-and-films-Yet-despite-its-dubious-origins-peer-to-peer-technology-found-legitimate-uses-powering-internet-startups-such-as-Skype-for-telephony-and-Spotify-for-music-streaming-—and-also-as-it-happens-bitcoin" class="headerlink" title="To understand the power of blockchain systems, and the things they can do, it is important to distinguish between three things that are commonly muddled up, namely the bitcoin currency, the specific blockchain that underpins it and the idea of blockchains in general. A helpful analogy is with Napster, the pioneering but illegal “peer-to-peer” file-sharing service that went on line in 1999, providing free access to millions of music tracks. Napster itself was swiftly shut down, but it inspired a host of other peer-to-peer services. Many of these were also used for pirating music and films. Yet despite its dubious origins, peer-to-peer technology found legitimate uses, powering internet startups such as Skype (for telephony) and Spotify (for music streaming)—and also, as it happens, bitcoin."></a>To understand the power of blockchain systems, and the things they can do, it is important to distinguish between three things that are commonly muddled up, namely the bitcoin currency, the specific blockchain that underpins it and the idea of blockchains in general. A helpful analogy is with Napster, the pioneering but illegal “peer-to-peer” file-sharing service that went on line in 1999, providing free access to millions of music tracks. Napster itself was swiftly shut down, but it inspired a host of other peer-to-peer services. Many of these were also used for pirating music and films. Yet despite its dubious origins, peer-to-peer technology found legitimate uses, powering internet startups such as Skype (for telephony) and Spotify (for music streaming)—and also, as it happens, bitcoin.</h5><p>要理解区块链系统之强大和其所能做的事情，区分普遍混淆的三件事情尤为重要，即比特币，支撑其特定的区块链和广义区块链。来看个有帮助性的类比奈普斯特（Napster），它是P2P文件共享服务的先驱，但其是非法的，在1999年上线，提供数以百万计的免费音乐。 奈普斯特随后被迅速叫停，但其激发了许多其他的P2P服务。 其中很多也被用于盗版音乐和电影。尽管P2P技术的出身不太可靠，但还是被应用于合法用途，并推动了互联网初创公司如Skype(电话通讯)和Spotify(音乐流媒体)的兴起——还有碰巧出现的比特币。</p>
+<h5 id="The-blockchain-is-an-even-more-potent-technology-In-essence-it-is-a-shared-trusted-public-ledger-that-everyone-can-inspect-but-which-no-single-user-controls-The-participants-in-a-blockchain-system-collectively-keep-the-ledger-up-to-date-it-can-be-amended-only-according-to-strict-rules-and-by-general-agreement-Bitcoin’s-blockchain-ledger-prevents-double-spending-and-keeps-track-of-transactions-continuously-It-is-what-makes-possible-a-currency-without-a-central-bank"><a href="#The-blockchain-is-an-even-more-potent-technology-In-essence-it-is-a-shared-trusted-public-ledger-that-everyone-can-inspect-but-which-no-single-user-controls-The-participants-in-a-blockchain-system-collectively-keep-the-ledger-up-to-date-it-can-be-amended-only-according-to-strict-rules-and-by-general-agreement-Bitcoin’s-blockchain-ledger-prevents-double-spending-and-keeps-track-of-transactions-continuously-It-is-what-makes-possible-a-currency-without-a-central-bank" class="headerlink" title="The blockchain is an even more potent technology. In essence it is a shared, trusted, public ledger that everyone can inspect, but which no single user controls. The participants in a blockchain system collectively keep the ledger up to date: it can be amended only according to strict rules and by general agreement. Bitcoin’s blockchain ledger prevents double-spending and keeps track of transactions continuously. It is what makes possible a currency without a central bank."></a>The blockchain is an even more potent technology. In essence it is a shared, trusted, public ledger that everyone can inspect, but which no single user controls. The participants in a blockchain system collectively keep the ledger up to date: it can be amended only according to strict rules and by general agreement. Bitcoin’s blockchain ledger prevents double-spending and keeps track of transactions continuously. It is what makes possible a currency without a central bank.</h5><p>区块链是更加强大的技术。本质上它是一个共享的，值得信任的公共“账目记录本”，每个人都可以核查它，但其不受任何单个用户控制。区块链系统参与者们共同更新“账目记录本”：根据严格规则和通过多数人同意才能对其修改。比特币区块链“账目记录本”会不断阻止重复支出和跟踪交易情况。 这使货币和中央银行脱钩成为可能。</p>
+<h5 id="Blockchains-are-also-the-latest-example-of-the-unexpected-fruits-of-cryptography-Mathematical-scrambling-is-used-to-boil-down-an-original-piece-of-information-into-a-code-known-as-a-hash-Any-attempt-to-tamper-with-any-part-of-the-blockchain-is-apparent-immediately—because-the-new-hash-will-not-match-the-old-ones-In-this-way-a-science-that-keeps-information-secret-vital-for-encrypting-messages-and-online-shopping-and-banking-is-paradoxically-also-a-tool-for-open-dealing"><a href="#Blockchains-are-also-the-latest-example-of-the-unexpected-fruits-of-cryptography-Mathematical-scrambling-is-used-to-boil-down-an-original-piece-of-information-into-a-code-known-as-a-hash-Any-attempt-to-tamper-with-any-part-of-the-blockchain-is-apparent-immediately—because-the-new-hash-will-not-match-the-old-ones-In-this-way-a-science-that-keeps-information-secret-vital-for-encrypting-messages-and-online-shopping-and-banking-is-paradoxically-also-a-tool-for-open-dealing" class="headerlink" title="Blockchains are also the latest example of the unexpected fruits of cryptography. Mathematical scrambling is used to boil down an original piece of information into a code, known as a hash. Any attempt to tamper with any part of the blockchain is apparent immediately—because the new hash will not match the old ones. In this way a science that keeps information secret (vital for encrypting messages and online shopping and banking) is, paradoxically, also a tool for open dealing."></a>Blockchains are also the latest example of the unexpected fruits of cryptography. Mathematical scrambling is used to boil down an original piece of information into a code, known as a hash. Any attempt to tamper with any part of the blockchain is apparent immediately—because the new hash will not match the old ones. In this way a science that keeps information secret (vital for encrypting messages and online shopping and banking) is, paradoxically, also a tool for open dealing.</h5><p>区块链也是密码学意外成果的最新例子。 将一段原始信息用数学扰码手段生成代码，就是我们称之为的散列。企图篡改区块链的任一部分都是徒劳——因为新的散列不会和旧的匹配。 而这样一门信息保密科学（对于加密消息，在线购物和网上银行至关重要）自相矛盾地成了公开交易的工具。</p>
+<h5 id="Bitcoin-itself-may-never-be-more-than-a-curiosity-However-blockchains-have-a-host-of-other-uses-because-they-meet-the-need-for-a-trustworthy-record-something-vital-for-transactions-of-every-sort-Dozens-of-startups-now-hope-to-capitalise-on-the-blockchain-technology-either-by-doing-clever-things-with-the-bitcoin-blockchain-or-by-creating-new-blockchains-of-their-own"><a href="#Bitcoin-itself-may-never-be-more-than-a-curiosity-However-blockchains-have-a-host-of-other-uses-because-they-meet-the-need-for-a-trustworthy-record-something-vital-for-transactions-of-every-sort-Dozens-of-startups-now-hope-to-capitalise-on-the-blockchain-technology-either-by-doing-clever-things-with-the-bitcoin-blockchain-or-by-creating-new-blockchains-of-their-own" class="headerlink" title="Bitcoin itself may never be more than a curiosity. However blockchains have a host of other uses because they meet the need for a trustworthy record, something vital for transactions of every sort. Dozens of startups now hope to capitalise on the blockchain technology, either by doing clever things with the bitcoin blockchain or by creating new blockchains of their own."></a>Bitcoin itself may never be more than a curiosity. However blockchains have a host of other uses because they meet the need for a trustworthy record, something vital for transactions of every sort. Dozens of startups now hope to capitalise on the blockchain technology, either by doing clever things with the bitcoin blockchain or by creating new blockchains of their own.</h5><p>比特币本身可能不止是满足好奇心这么简单。然而区块链有许多其他用途，因为一个可靠的记录需要依赖它，其对各种交易都至关重要。几十家初创公司希望通过区块链技术获利，用比特币区块链做聪明的事情或是创建自己的新区块链。</p>
+<h5 id="One-idea-for-example-is-to-make-cheap-tamper-proof-public-databases—land-registries-say-Honduras-and-Greece-are-interested-or-registers-of-the-ownership-of-luxury-goods-or-works-of-art-Documents-can-be-notarised-by-embedding-information-about-them-into-a-public-blockchain—and-you-will-no-longer-need-a-notary-to-vouch-for-them-Financial-services-firms-are-contemplating-using-blockchains-as-a-record-of-who-owns-what-instead-of-having-a-series-of-internal-ledgers-A-trusted-private-ledger-removes-the-need-for-reconciling-each-transaction-with-a-counterparty-it-is-fast-and-it-minimises-errors-Santander-reckons-that-it-could-save-banks-up-to-20-billion-a-year-by-2022-Twenty-five-banks-have-just-joined-a-blockchain-startup-called-R3-CEV-to-develop-common-standards-and-NASDAQ-is-about-to-start-using-the-technology-to-record-trading-in-securities-of-private-companies"><a href="#One-idea-for-example-is-to-make-cheap-tamper-proof-public-databases—land-registries-say-Honduras-and-Greece-are-interested-or-registers-of-the-ownership-of-luxury-goods-or-works-of-art-Documents-can-be-notarised-by-embedding-information-about-them-into-a-public-blockchain—and-you-will-no-longer-need-a-notary-to-vouch-for-them-Financial-services-firms-are-contemplating-using-blockchains-as-a-record-of-who-owns-what-instead-of-having-a-series-of-internal-ledgers-A-trusted-private-ledger-removes-the-need-for-reconciling-each-transaction-with-a-counterparty-it-is-fast-and-it-minimises-errors-Santander-reckons-that-it-could-save-banks-up-to-20-billion-a-year-by-2022-Twenty-five-banks-have-just-joined-a-blockchain-startup-called-R3-CEV-to-develop-common-standards-and-NASDAQ-is-about-to-start-using-the-technology-to-record-trading-in-securities-of-private-companies" class="headerlink" title="One idea, for example, is to make cheap, tamper-proof public databases—land registries, say, (Honduras and Greece are interested); or registers of the ownership of luxury goods or works of art. Documents can be notarised by embedding information about them into a public blockchain—and you will no longer need a notary to vouch for them. Financial-services firms are contemplating using blockchains as a record of who owns what instead of having a series of internal ledgers. A trusted private ledger removes the need for reconciling each transaction with a counterparty, it is fast and it minimises errors. Santander reckons that it could save banks up to $20 billion a year by 2022. Twenty-five banks have just joined a blockchain startup, called R3 CEV, to develop common standards, and NASDAQ is about to start using the technology to record trading in securities of private companies."></a>One idea, for example, is to make cheap, tamper-proof public databases—land registries, say, (Honduras and Greece are interested); or registers of the ownership of luxury goods or works of art. Documents can be notarised by embedding information about them into a public blockchain—and you will no longer need a notary to vouch for them. Financial-services firms are contemplating using blockchains as a record of who owns what instead of having a series of internal ledgers. A trusted private ledger removes the need for reconciling each transaction with a counterparty, it is fast and it minimises errors. Santander reckons that it could save banks up to $20 billion a year by 2022. Twenty-five banks have just joined a blockchain startup, called R3 CEV, to develop common standards, and NASDAQ is about to start using the technology to record trading in securities of private companies.</h5><p>例如，有些想法是做些便宜的，防篡改的公共数据库——诸如地政局(洪都拉斯和希腊对此感兴趣)；或奢侈品和艺术品的所有权登记。通过将文档信息嵌入公共区块链能对其进行公证——你将不再需要公证人来做担保。金融服务公司正在考虑用区块链来记录每个人的账目，而不是一系列的公司内部账目。可靠的个人“账目记录本”无需要同交易对方协调每一笔交易，这样既快速又能尽量减少错误。桑坦德银行（Santander）估计到2022年银行业用这一技术每年可以节省200亿美元。25家银行刚刚加入名为R3CEV的区块链初创公司来开发通用标准，而纳斯达克（NASDAQ）市场即将开始用这项技术来记录私企的证券交易情况。</p>
+<h5 id="These-new-blockchains-need-not-work-in-exactly-the-way-that-bitcoin’s-does-Many-of-them-could-tweak-its-model-by-for-example-finding-alternatives-to-its-energy-intensive-“mining”-process-which-pays-participants-newly-minted-bitcoins-in-return-for-providing-the-computing-power-needed-to-maintain-the-ledger-A-group-of-vetted-participants-within-an-industry-might-instead-agree-to-join-a-private-blockchain-say-that-needs-less-security-Blockchains-can-also-implement-business-rules-such-as-transactions-that-take-place-only-if-two-or-more-parties-endorse-them-or-if-another-transaction-has-been-completed-first-As-with-Napster-and-peer-to-peer-technology-a-clever-idea-is-being-modified-and-improved-In-the-process-it-is-fast-throwing-off-its-reputation-for-shadiness"><a href="#These-new-blockchains-need-not-work-in-exactly-the-way-that-bitcoin’s-does-Many-of-them-could-tweak-its-model-by-for-example-finding-alternatives-to-its-energy-intensive-“mining”-process-which-pays-participants-newly-minted-bitcoins-in-return-for-providing-the-computing-power-needed-to-maintain-the-ledger-A-group-of-vetted-participants-within-an-industry-might-instead-agree-to-join-a-private-blockchain-say-that-needs-less-security-Blockchains-can-also-implement-business-rules-such-as-transactions-that-take-place-only-if-two-or-more-parties-endorse-them-or-if-another-transaction-has-been-completed-first-As-with-Napster-and-peer-to-peer-technology-a-clever-idea-is-being-modified-and-improved-In-the-process-it-is-fast-throwing-off-its-reputation-for-shadiness" class="headerlink" title="These new blockchains need not work in exactly the way that bitcoin’s does. Many of them could tweak its model by, for example, finding alternatives to its energy-intensive “mining” process, which pays participants newly minted bitcoins in return for providing the computing power needed to maintain the ledger. A group of vetted participants within an industry might instead agree to join a private blockchain, say, that needs less security. Blockchains can also implement business rules, such as transactions that take place only if two or more parties endorse them, or if another transaction has been completed first. As with Napster and peer-to-peer technology, a clever idea is being modified and improved. In the process, it is fast throwing off its reputation for shadiness."></a>These new blockchains need not work in exactly the way that bitcoin’s does. Many of them could tweak its model by, for example, finding alternatives to its energy-intensive “mining” process, which pays participants newly minted bitcoins in return for providing the computing power needed to maintain the ledger. A group of vetted participants within an industry might instead agree to join a private blockchain, say, that needs less security. Blockchains can also implement business rules, such as transactions that take place only if two or more parties endorse them, or if another transaction has been completed first. As with Napster and peer-to-peer technology, a clever idea is being modified and improved. In the process, it is fast throwing off its reputation for shadiness.</h5><p>这些新的区块链不需要完全以比特币那样的方式运行。例如，它们中的很多会将其模型稍作调整以寻求新模型来替代其耗能的“挖矿”程序，新的比特币参与者通过“挖矿”可以得到比特币——作为回报他们为维持“账目记录本”所提供的计算能力。一条区块链内参与审查的人，可能会加入个人特有的区块链来达到同意的效果，这需要更少的安全工作。区块链还可以用于执行商业规则，如只有两方或多方认可的交易，或者另一个交易已先完成，当前交易才能发生。正如奈普斯特（Napster）和P2P技术，聪明的想法正在被调整和改进。在此过程中，比特币正快速摆脱其阴暗形象。</p>
+<h4 id="New-chains-on-the-block"><a href="#New-chains-on-the-block" class="headerlink" title="New chains on the block"></a>New chains on the block</h4><p>区块新链</p>
+<h5 id="The-spread-of-blockchains-is-bad-for-anyone-in-the-“trust-business”—the-centralised-institutions-and-bureaucracies-such-as-banks-clearing-houses-and-government-authorities-that-are-deemed-sufficiently-trustworthy-to-handle-transactions-Even-as-some-banks-and-governments-explore-the-use-of-this-new-technology-others-will-surely-fight-it-But-given-the-decline-in-trust-in-governments-and-banks-in-recent-years-a-way-to-create-more-scrutiny-and-transparency-could-be-no-bad-thing"><a href="#The-spread-of-blockchains-is-bad-for-anyone-in-the-“trust-business”—the-centralised-institutions-and-bureaucracies-such-as-banks-clearing-houses-and-government-authorities-that-are-deemed-sufficiently-trustworthy-to-handle-transactions-Even-as-some-banks-and-governments-explore-the-use-of-this-new-technology-others-will-surely-fight-it-But-given-the-decline-in-trust-in-governments-and-banks-in-recent-years-a-way-to-create-more-scrutiny-and-transparency-could-be-no-bad-thing" class="headerlink" title="The spread of blockchains is bad for anyone in the “trust business”—the centralised institutions and bureaucracies, such as banks, clearing houses and government authorities that are deemed sufficiently trustworthy to handle transactions. Even as some banks and governments explore the use of this new technology, others will surely fight it. But given the decline in trust in governments and banks in recent years, a way to create more scrutiny and transparency could be no bad thing."></a>The spread of blockchains is bad for anyone in the “trust business”—the centralised institutions and bureaucracies, such as banks, clearing houses and government authorities that are deemed sufficiently trustworthy to handle transactions. Even as some banks and governments explore the use of this new technology, others will surely fight it. But given the decline in trust in governments and banks in recent years, a way to create more scrutiny and transparency could be no bad thing.</h5><p>区块链的发展对于从事“信托行业”的人们是个坏消息，包括中央集权体系和官僚机构，如银行、清算机构和政府部门，它们被认为又足够的信用来处理各种交易。甚至当一些银行和政府探求使用这一新技术时，其他地区会坚定的反对。但鉴于近些年政府信用和银行信用的下降，一种能带来更多审查和更高透明度的创新可能不是一件坏事。</p>
+<h5 id="Drawing-up-regulations-for-blockchains-at-this-early-stage-would-be-a-mistake-the-history-of-peer-to-peer-technology-suggests-that-it-is-likely-to-be-several-years-before-the-technology’s-full-potential-becomes-clear-In-the-meantime-regulators-should-stay-their-hands-or-find-ways-to-accommodate-new-approaches-within-existing-frameworks-rather-than-risk-stifling-a-fast-evolving-idea-with-overly-prescriptive-rules"><a href="#Drawing-up-regulations-for-blockchains-at-this-early-stage-would-be-a-mistake-the-history-of-peer-to-peer-technology-suggests-that-it-is-likely-to-be-several-years-before-the-technology’s-full-potential-becomes-clear-In-the-meantime-regulators-should-stay-their-hands-or-find-ways-to-accommodate-new-approaches-within-existing-frameworks-rather-than-risk-stifling-a-fast-evolving-idea-with-overly-prescriptive-rules" class="headerlink" title="Drawing up regulations for blockchains at this early stage would be a mistake: the history of peer-to-peer technology suggests that it is likely to be several years before the technology’s full potential becomes clear. In the meantime regulators should stay their hands, or find ways to accommodate new approaches within existing frameworks, rather than risk stifling a fast-evolving idea with overly prescriptive rules."></a>Drawing up regulations for blockchains at this early stage would be a mistake: the history of peer-to-peer technology suggests that it is likely to be several years before the technology’s full potential becomes clear. In the meantime regulators should stay their hands, or find ways to accommodate new approaches within existing frameworks, rather than risk stifling a fast-evolving idea with overly prescriptive rules.</h5><p>在这个早期阶段起草区块链的规定将是一个错误：P2P技术的历史表明，一个技术的全部潜力变得清晰可能需要若干年。同时监管机构应静观其变，或在现有框架内设法去适应新的方法，而不是以过于死板的规则冒险压制迅速发展的创意。</p>
+<h5 id="The-notion-of-shared-public-ledgers-may-not-sound-revolutionary-or-sexy-Neither-did-double-entry-book-keeping-or-joint-stock-companies-Yet-like-them-the-blockchain-is-an-apparently-mundane-process-that-has-the-potential-to-transform-how-people-and-businesses-co-operate-Bitcoin-fanatics-are-enthralled-by-the-libertarian-ideal-of-a-pure-digital-currency-beyond-the-reach-of-any-central-bank-The-real-innovation-is-not-the-digital-coins-themselves-but-the-trust-machine-that-mints-them—and-which-promises-much-more-besides"><a href="#The-notion-of-shared-public-ledgers-may-not-sound-revolutionary-or-sexy-Neither-did-double-entry-book-keeping-or-joint-stock-companies-Yet-like-them-the-blockchain-is-an-apparently-mundane-process-that-has-the-potential-to-transform-how-people-and-businesses-co-operate-Bitcoin-fanatics-are-enthralled-by-the-libertarian-ideal-of-a-pure-digital-currency-beyond-the-reach-of-any-central-bank-The-real-innovation-is-not-the-digital-coins-themselves-but-the-trust-machine-that-mints-them—and-which-promises-much-more-besides" class="headerlink" title="The notion of shared public ledgers may not sound revolutionary or sexy. Neither did double-entry book-keeping or joint-stock companies. Yet, like them, the blockchain is an apparently mundane process that has the potential to transform how people and businesses co-operate. Bitcoin fanatics are enthralled by the libertarian ideal of a pure, digital currency beyond the reach of any central bank. The real innovation is not the digital coins themselves, but the trust machine that mints them—and which promises much more besides."></a>The notion of shared public ledgers may not sound revolutionary or sexy. Neither did double-entry book-keeping or joint-stock companies. Yet, like them, the blockchain is an apparently mundane process that has the potential to transform how people and businesses co-operate. Bitcoin fanatics are enthralled by the libertarian ideal of a pure, digital currency beyond the reach of any central bank. The real innovation is not the digital coins themselves, but the trust machine that mints them—and which promises much more besides.</h5><p>共享公共“账目记录本”的概念听起来可能不那么革命性或性感。复式簿记或股份制公司同样也是如此。然而,像他们一样，区块链有潜力改变人们和企业的合作方式，这显然会是一个平凡的过程。比特币狂热者着迷于纯粹的数字货币所引导的自由主义理想，这种货币超越了央行的能力范围。真正的创新不是数字硬币本身，而是铸造它们的信任机器——它还承担着人们太多的寄托。</p>
+<p>=============================</p>
+<p>bazaar N-COUNT In areas such as the Middle East and India, a bazaar is a place where there are many small stores and stalls. (中东、印度等地的) 集市</p>
+<p>ledger N-COUNT A ledger is a book in which a company or organization writes down the amounts of money it spends and receives. 分类账</p>
+<p>cryptography N the science or study of analysing and deciphering codes, ciphers, etc; cryptanalysis 密码学</p>
+<p>tamper with 篡改</p>
+<p>eg. The most security-conscious developers distrust even their own databases, on the theory that a malicious user might have found a way to tamper with the database.</p>
+<p>安全意识很强的开发人员甚至不信任他们自己的数据库，理由是他们认为恶意用户可能有办法篡改数据库。</p>
+<p>capitalise on 利用，获利</p>
+<p>notarise V to attest to or authenticate (a document, contract, etc), as a notary 由公证人(对文件、合同等)进行公证</p>
+<p>notary N-COUNT A notary or a notary public is a person, often a lawyer, who has legal authority to witness the signing of documents in order to make them legally valid. 公证人</p>
+<p>reconcile V-T If you reconcile two beliefs, facts, or demands that seem to be opposed or completely different, you find a way in which they can both be true or both be successful. 使和谐一致; 调和</p>
+<p>tweak V-T If you tweak something such as a system or a design, you improve it by making a slight change. 稍稍改进(如系统或设计)</p>
+<p>stifle V-T If someone stifles something you consider to be a good thing, they prevent it from continuing. 压制表不满</p>
+<p><em>参考资料：</em></p>
+<ol>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MjA1Mzk2MQ==&amp;mid=400588344&amp;idx=3&amp;sn=fc45f0cfef2ea5d1837c82ec2dd7617c&amp;scene=0#wechat_redirect" target="_blank" rel="external">详解比特币与区块链</a></p>
+</li>
+<li><p><a href="http://blog.codinglabs.org/articles/bitcoin-mechanism-make-easy.html" target="_blank" rel="external">一个故事告诉你比特币的原理及运作机制</a></p>
+</li>
+</ol>
 
           
         
@@ -1316,6 +1451,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/surge-explain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/02/surge-explain/" itemprop="url">Surge 原理与实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-02T00:00:00+08:00">
+                2015-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>文章来自Surge作者<a href="https://medium.com/@Blankwonder/surge-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0-8aa3304fb3bb#.tyf8rgwvj" target="_blank" rel="external">YaChen Liu</a></p>
+<p>为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1845119/10875352/8dddf128-816c-11e5-8831-834e5b9d575e.png" alt="image"></p>
+<p>从 Surge 的几大核心组件分别说起吧：</p>
+<h3 id="1-Surge-Proxy-Server"><a href="#1-Surge-Proxy-Server" class="headerlink" title="1. Surge Proxy Server"></a>1. Surge Proxy Server</h3><p>这是 Surge 最核心的部分，用于处理所有的 HTTP/HTTPS 请求。</p>
+<p>用 Proxy 去处理请求而不是用 TUN，有很多原因，主要是因为 TUN 是工作在 IP Layer 的：</p>
+<ul>
+<li>Proxy 可以直接收到包含域名 / URL 的请求，从而使基于域名的规则过滤成为可能（甚至 URL，之后版本可能考虑加入支持）</li>
+<li>Proxy 可以省略不必要的 DNS 请求，对首次访问的速度提升相当明显</li>
+<li>Surge 的 Proxy 支持全局的 HTTP Connection Keep Alive 机制，极大的减少了 TCP 握手产生的开销（跨应用间也能共享一个 TCP Connection，但由于内存限制在 iOS 版本上超时时间很短，之后 Mac 版本上的效果会明显一些）</li>
+<li>准确的记录下每个请求的 header 和 body（从 TCP 层面直接抓，可能会有误）</li>
+<li>使得之后的高级功能（如修改 header，rewrite URL）成为可能</li>
+<li>减少了不必要的 IP Packet 相关开销</li>
+<li>这样 Surge iOS 版本与 Mac 版本可以共享核心代码</li>
+</ul>
+<p>这是 Surge 中最复杂的组件，基本上等同于一个不带 cache 的 squid，其中的难点一方面是调度问题，另一方面是怎么样去判断一个 HTTP 请求是否完成(比如 chunked transfer encoding)，本身 HTTP RFC 在这方面就有非常多的细节问题，再加上很多自制的 HTTP Server 不是特别的遵守规范，所以只能通过大量的时间去积累经验完成。</p>
+<h3 id="2-DNS-Client"><a href="#2-DNS-Client" class="headerlink" title="2. DNS Client"></a>2. DNS Client</h3><p>最早的版本中，Surge 也是使用 getaddrinfo 这类的系统调用去进行 DNS 解析的，但是后来越来越不能满足需求，所以就又造了个轮子，有这些好处：</p>
+<ul>
+<li>可以完全自定义 upstream DNS 服务器地址，无视系统设置</li>
+<li>可以并发的向多个 DNS 服务器发出 question</li>
+<li>可以自定义超时和重发的策略</li>
+<li>getaddrinfo 等方法本身不支持 cache</li>
+<li>为之后的 Local DNS Map 功能提供了基础</li>
+</ul>
+<p>这部分的功能差不多是个 mini 版本的 dnsmasq 吧。由于是自己实现的，以后要做 TCP DNS 或者非 53 端口的支持都是很简单的事。</p>
+<h3 id="3-Surge-TUN-Interface"><a href="#3-Surge-TUN-Interface" class="headerlink" title="3. Surge TUN Interface"></a>3. Surge TUN Interface</h3><p>最早的版本没有这个组件，但有部分应用使用的是 HTTP/HTTPS 以外的 TCP 协议 (如 SPDY、IMAP)，没有遵从代理设置，因此无法被 Surge 接管流量。为了解决这个问题，才加入了这个组件。</p>
+<p>核心原理就是通过一个 Surge 内部的 TCP stack，将 IP Packet 中的 TCP 数据提取出来，再重新用 Proxy 进行请求（或者直接连接对应的服务器），再将返回的数据重新封装成 IP Packet。</p>
+<p>正如前面提到的，用 TUN 处理请求会有一些问题，最大的问题是，由 TUN Interface 处理的流量，DOMAIN 相关的 Rule 会无效，除非使用了 force-remote-dns 选项。</p>
+<p>这是由 TCP/IP 协议的特性所决定的，App 会先发出一个 DNS question，获取要连接的服务器的 IP 地址，然后直接向这个 IP 地址发起连接，所以有了第 4 个组件。</p>
+<h3 id="4-IP-Layer-DNS-Forwarder"><a href="#4-IP-Layer-DNS-Forwarder" class="headerlink" title="4. IP Layer DNS Forwarder"></a>4. IP Layer DNS Forwarder</h3><p>这个组件配合 TUN Interface 使用，会将收到 DNS 的 IP Packet，进行简单改动后直接转发给 upstream DNS。</p>
+<p>但是在转发前，该组件会检查需要解析的域名，是否匹配上了带有 force-remote-dns 选项的规则，如果是，不进行转发，直接返回一个 240.1.x.x 的 fake IP。当 TUN Interface 收到一个发往 240.1.x.x 的包的时候，反向查出真正的域名是什么，然后直接以域名的形式转交给 Proxy，避免本地的 DNS 查询动作。</p>
+<p>force-remote-dns 选项主要是为了解决有些域名在本地查询会有障碍的问题（如公司内网域名），然而因为返回了一个 fake IP，且 Surge 没有权限去强制清除系统或者应用的 DNS cache，所以在 Surge 关闭后可能导致一些问题，所以请谨慎的只给确实需要的域名开启这个选项。</p>
+<p>其余还有一系列的 homemade 小组件（如各个协议的 client），就不一一描述了，之后想到什么再补充。</p>
+<p>所以，看起来 $9.99 超值吧（大雾）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/surge-confs-index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1593,337 +1881,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/surge-explain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/02/surge-explain/" itemprop="url">Surge 原理与实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-02T00:00:00+08:00">
-                2015-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>文章来自Surge作者<a href="https://medium.com/@Blankwonder/surge-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0-8aa3304fb3bb#.tyf8rgwvj" target="_blank" rel="external">YaChen Liu</a></p>
-<p>为了方便各位购买了 Surge 的用户更好的理解 Surge 的功能，能够自己通过灵活修改配置以应对不同的需求，我写了这篇中文的 Surge 原理与实现供各位参考。</p>
-<p><img src="https://cloud.githubusercontent.com/assets/1845119/10875352/8dddf128-816c-11e5-8831-834e5b9d575e.png" alt="image"></p>
-<p>从 Surge 的几大核心组件分别说起吧：</p>
-<h3 id="1-Surge-Proxy-Server"><a href="#1-Surge-Proxy-Server" class="headerlink" title="1. Surge Proxy Server"></a>1. Surge Proxy Server</h3><p>这是 Surge 最核心的部分，用于处理所有的 HTTP/HTTPS 请求。</p>
-<p>用 Proxy 去处理请求而不是用 TUN，有很多原因，主要是因为 TUN 是工作在 IP Layer 的：</p>
-<ul>
-<li>Proxy 可以直接收到包含域名 / URL 的请求，从而使基于域名的规则过滤成为可能（甚至 URL，之后版本可能考虑加入支持）</li>
-<li>Proxy 可以省略不必要的 DNS 请求，对首次访问的速度提升相当明显</li>
-<li>Surge 的 Proxy 支持全局的 HTTP Connection Keep Alive 机制，极大的减少了 TCP 握手产生的开销（跨应用间也能共享一个 TCP Connection，但由于内存限制在 iOS 版本上超时时间很短，之后 Mac 版本上的效果会明显一些）</li>
-<li>准确的记录下每个请求的 header 和 body（从 TCP 层面直接抓，可能会有误）</li>
-<li>使得之后的高级功能（如修改 header，rewrite URL）成为可能</li>
-<li>减少了不必要的 IP Packet 相关开销</li>
-<li>这样 Surge iOS 版本与 Mac 版本可以共享核心代码</li>
-</ul>
-<p>这是 Surge 中最复杂的组件，基本上等同于一个不带 cache 的 squid，其中的难点一方面是调度问题，另一方面是怎么样去判断一个 HTTP 请求是否完成(比如 chunked transfer encoding)，本身 HTTP RFC 在这方面就有非常多的细节问题，再加上很多自制的 HTTP Server 不是特别的遵守规范，所以只能通过大量的时间去积累经验完成。</p>
-<h3 id="2-DNS-Client"><a href="#2-DNS-Client" class="headerlink" title="2. DNS Client"></a>2. DNS Client</h3><p>最早的版本中，Surge 也是使用 getaddrinfo 这类的系统调用去进行 DNS 解析的，但是后来越来越不能满足需求，所以就又造了个轮子，有这些好处：</p>
-<ul>
-<li>可以完全自定义 upstream DNS 服务器地址，无视系统设置</li>
-<li>可以并发的向多个 DNS 服务器发出 question</li>
-<li>可以自定义超时和重发的策略</li>
-<li>getaddrinfo 等方法本身不支持 cache</li>
-<li>为之后的 Local DNS Map 功能提供了基础</li>
-</ul>
-<p>这部分的功能差不多是个 mini 版本的 dnsmasq 吧。由于是自己实现的，以后要做 TCP DNS 或者非 53 端口的支持都是很简单的事。</p>
-<h3 id="3-Surge-TUN-Interface"><a href="#3-Surge-TUN-Interface" class="headerlink" title="3. Surge TUN Interface"></a>3. Surge TUN Interface</h3><p>最早的版本没有这个组件，但有部分应用使用的是 HTTP/HTTPS 以外的 TCP 协议 (如 SPDY、IMAP)，没有遵从代理设置，因此无法被 Surge 接管流量。为了解决这个问题，才加入了这个组件。</p>
-<p>核心原理就是通过一个 Surge 内部的 TCP stack，将 IP Packet 中的 TCP 数据提取出来，再重新用 Proxy 进行请求（或者直接连接对应的服务器），再将返回的数据重新封装成 IP Packet。</p>
-<p>正如前面提到的，用 TUN 处理请求会有一些问题，最大的问题是，由 TUN Interface 处理的流量，DOMAIN 相关的 Rule 会无效，除非使用了 force-remote-dns 选项。</p>
-<p>这是由 TCP/IP 协议的特性所决定的，App 会先发出一个 DNS question，获取要连接的服务器的 IP 地址，然后直接向这个 IP 地址发起连接，所以有了第 4 个组件。</p>
-<h3 id="4-IP-Layer-DNS-Forwarder"><a href="#4-IP-Layer-DNS-Forwarder" class="headerlink" title="4. IP Layer DNS Forwarder"></a>4. IP Layer DNS Forwarder</h3><p>这个组件配合 TUN Interface 使用，会将收到 DNS 的 IP Packet，进行简单改动后直接转发给 upstream DNS。</p>
-<p>但是在转发前，该组件会检查需要解析的域名，是否匹配上了带有 force-remote-dns 选项的规则，如果是，不进行转发，直接返回一个 240.1.x.x 的 fake IP。当 TUN Interface 收到一个发往 240.1.x.x 的包的时候，反向查出真正的域名是什么，然后直接以域名的形式转交给 Proxy，避免本地的 DNS 查询动作。</p>
-<p>force-remote-dns 选项主要是为了解决有些域名在本地查询会有障碍的问题（如公司内网域名），然而因为返回了一个 fake IP，且 Surge 没有权限去强制清除系统或者应用的 DNS cache，所以在 Surge 关闭后可能导致一些问题，所以请谨慎的只给确实需要的域名开启这个选项。</p>
-<p>其余还有一系列的 homemade 小组件（如各个协议的 client），就不一一描述了，之后想到什么再补充。</p>
-<p>所以，看起来 $9.99 超值吧（大雾）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/30/git-into/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/30/git-into/" itemprop="url">git - 简易指南</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-30T00:00:00+08:00">
-                2015-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>助你开始使用 git 的简易指南，木有高深内容，;)。</p>
-<p><strong>作者</strong>：罗杰·杜德勒 </p>
-<p><strong>感谢</strong>：@tfnico, @fhd and Namics</p>
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行 </p>
-<p><code>git init</code></p>
-<p>以创建新的 git 仓库。</p>
-<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
-<p><code>git clone /path/to/repository</code></p>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子：</p>
-<p><code>git clone username@host:/path/to/repository</code></p>
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 缓存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。</p>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><p>你可以计划改动（把它们添加到缓存区），使用如下命令：<br><code>git add &lt;filename&gt;</code></p>
-<p><code>git add *</code></p>
-<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：</p>
-<p><code>git commit -m &quot;代码提交信息&quot;</code></p>
-<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
-<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-<p><code>git push origin master</code></p>
-<p>可以把 master 换成你想要推送的任何分支。 </p>
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
-<p><code>git remote add origin &lt;server&gt;</code></p>
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。</p>
-<p>创建一个叫做“feature_x”的分支，并切换过去：</p>
-<p><code>git checkout -b feature_x</code></p>
-<p>切换回主分支：</p>
-<p><code>git checkout master</code></p>
-<p>再把新建的分支删掉：</p>
-<p><code>git branch -d feature_x</code></p>
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
-<p><code>git push origin &lt;branch&gt;</code></p>
-<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
-<p><code>git pull</code></p>
-<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。</p>
-<p>要合并其他分支到你的当前分支（例如 master），执行：</p>
-<p><code>git merge &lt;branch&gt;</code></p>
-<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
-<p><code>git add &lt;filename&gt;</code></p>
-<p>在合并改动之前，也可以使用如下命令查看：</p>
-<p><code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code></p>
-<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>在软件发布时创建标签，是被推荐的。这是个旧有概念，在 SVN 中也有。可以执行如下命令以创建一个叫做 1.0.0 的标签：</p>
-<p><code>git tag 1.0.0 1b2e1d63ff</code></p>
-<p>1b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符。使用如下命令获取提交 ID：</p>
-<p><code>git log</code></p>
-<p>你也可以用该提交 ID 的少一些的前几位，只要它是唯一的。</p>
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
-<p><code>git checkout -- &lt;filename&gt;</code></p>
-<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
-<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
-<p><code>git fetch origin</code></p>
-<p><code>git reset --hard origin/master</code></p>
-<h3 id="有用的贴士"><a href="#有用的贴士" class="headerlink" title="有用的贴士"></a>有用的贴士</h3><p>内建的图形化 git：</p>
-<p><code>gitk</code></p>
-<p>彩色的 git 输出：</p>
-<p><code>git config color.ui true</code></p>
-<p>显示历史记录时，只显示一行注释信息：</p>
-<p><code>git config format.pretty oneline</code></p>
-<p>交互地添加文件至缓存区：</p>
-<p><code>git add -i</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1974,7 +1931,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/28/postgresql-prompting/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/02/11/mac-homebrew--update-all-packages-at-once/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -282,7 +282,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/11/28/postgresql-prompting/" itemprop="url">PostgreSQL Prompting</a></h1>
+                <a class="post-title-link" href="/2015/02/11/mac-homebrew--update-all-packages-at-once/" itemprop="url">Mac Homebrew – Update all packages at once</a></h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-28T00:00:00+08:00">
-                2014-11-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-11T00:00:00+08:00">
+                2015-02-11
               </time>
             
 
@@ -334,51 +334,13 @@
       
         
           
-            <p> Prompting 参数以百分号 % 打头，主要有如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">Prompting  参数</th>
-<th style="text-align:right">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">%M</td>
-<td style="text-align:right">数据库主机全名，如果通过 UNIX Socket 连接则显示为 [local]</td>
-</tr>
-<tr>
-<td style="text-align:right">%m</td>
-<td style="text-align:right">也表示数据库主机名，会截断第一个 . 后的内容</td>
-</tr>
-<tr>
-<td style="text-align:right">%&gt;</td>
-<td style="text-align:right">数据库端口号</td>
-</tr>
-<tr>
-<td style="text-align:right">%n</td>
-<td style="text-align:right">会话的用户名</td>
-</tr>
-<tr>
-<td style="text-align:right">%/</td>
-<td style="text-align:right">当前数据库名</td>
-</tr>
-<tr>
-<td style="text-align:right">%#</td>
-<td style="text-align:right">如果是超级用户显示为 #，否则显示为 &gt;</td>
-</tr>
-<tr>
-<td style="text-align:right">%R</td>
-<td style="text-align:right">在prompt 1中，通常显示 = ，单用户模式显示为 ^，如果会话被断开显示为 !, 等等。</td>
-</tr>
-</tbody>
-</table>
-<p> <strong>备注： 默认的 prompt 的设置为 ‘%/%R%# ‘。</strong></p>
-<p> 常用的<code>.psqlrc</code>文件例子：</p>
-<pre><code>\set PROMPT1 &apos;SQL&gt;%n@ %/ %`date +%H:%M:%S`%R%#&apos;
-这里显示为：
-SQL&gt;chentao@ template1 12:22:29=#
-</code></pre>
+            <p>With the release of Mountain Lion, some brew packages have stopped working… because they need updates!</p>
+<p>Updating all my brew packages installed via mac homebrew was my solution, unfortunatly there is no easy way to do this built-in.</p>
+<p>Run this command, it first updates homebrew itself then looks for outdated formulas and updates them one by one. (Since there is no built-in command to update all brew packages at once)</p>
+<p><code>brew update; brew list | xargs brew upgrade</code><br>Afterwards, you can issue a</p>
+<p><code>brew outdated</code><br>to confirm that there are no packages requiring updates.</p>
+<p>brew upgrade <code>brew outdated</code></p>
+
           
         
       
@@ -553,7 +515,7 @@ SQL&gt;chentao@ template1 12:22:29=#
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-on-mac-tips/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/28/postgresql-prompting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -572,7 +534,7 @@ SQL&gt;chentao@ template1 12:22:29=#
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/11/27/postgresql-on-mac-tips/" itemprop="url">PostgreSQL on Mac Tips</a></h1>
+                <a class="post-title-link" href="/2014/11/28/postgresql-prompting/" itemprop="url">PostgreSQL Prompting</a></h1>
         
 
         <div class="post-meta">
@@ -584,8 +546,8 @@ SQL&gt;chentao@ template1 12:22:29=#
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T00:00:00+08:00">
-                2014-11-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-28T00:00:00+08:00">
+                2014-11-28
               </time>
             
 
@@ -624,172 +586,51 @@ SQL&gt;chentao@ template1 12:22:29=#
       
         
           
-            <ol>
-<li><p>install</p>
-<p> <code>brew install postgresql</code></p>
-</li>
-<li><p>satrt</p>
-<p> <code>pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</code></p>
-</li>
-<li><p>open</p>
-<p> <code>psql basename</code></p>
-</li>
-<li><p>stop</p>
-<p> <code>pg_ctl -D /usr/local/var/postgres stop -s -m fast</code></p>
-</li>
-<li><p>exit</p>
-<p> <code>\q</code></p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/mac-install-mysql-use-brew/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/11/27/mac-install-mysql-use-brew/" itemprop="url">Mac Install Mysql use Brew</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T00:00:00+08:00">
-                2014-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>执行：</p>
-<p> <code>$ brew install mysql</code></p>
-</li>
-<li><p>在 <code>/usr/local/etc/</code> 下创建或修改 <code>my.cnf</code>，示例：</p>
-<p> [client]</p>
-<p> port = 3306</p>
-<p> socket = /tmp/mysql.sock</p>
-<p> default-character-set = utf8</p>
-<p> [mysqld]</p>
-<p> collation-server = utf8_unicode_ci</p>
-<p> character-set-server = utf8</p>
-<p> init-connect =’SET NAMES utf8’</p>
-<p> max_allowed_packet = 64M</p>
-<p> bind-address = 127.0.0.1</p>
-<p> port = 3306</p>
-<p> socket = /tmp/mysql.sock</p>
-<p> innodb_file_per_table=1</p>
-<p> [mysqld_safe]</p>
-<p> timezone = ‘+0:00’</p>
-</li>
-<li><p>安装完 mysql 后，他会提示你 init database，并提供下面这两句让你执行，很可能你没执行这两句</p>
-<p> <code>$ unset TMPDIR</code></p>
-<p> <code>$ mysql_install_db --verbose --user=</code>whoami<code>--basedir=&quot;$(brew --prefix mysql)&quot; --datadir=/usr/local/var/mysql --tmpdir=/tmp</code></p>
-</li>
-<li><p>然后就可以指向 <code>mysql.server start</code> 来启动了，为了安全，你还可以执行安全设置向导，根据提示一步一步配置</p>
-<p> <code>$ mysql_secure_installation</code></p>
-</li>
-</ol>
-
+            <p> Prompting 参数以百分号 % 打头，主要有如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Prompting  参数</th>
+<th style="text-align:right">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">%M</td>
+<td style="text-align:right">数据库主机全名，如果通过 UNIX Socket 连接则显示为 [local]</td>
+</tr>
+<tr>
+<td style="text-align:right">%m</td>
+<td style="text-align:right">也表示数据库主机名，会截断第一个 . 后的内容</td>
+</tr>
+<tr>
+<td style="text-align:right">%&gt;</td>
+<td style="text-align:right">数据库端口号</td>
+</tr>
+<tr>
+<td style="text-align:right">%n</td>
+<td style="text-align:right">会话的用户名</td>
+</tr>
+<tr>
+<td style="text-align:right">%/</td>
+<td style="text-align:right">当前数据库名</td>
+</tr>
+<tr>
+<td style="text-align:right">%#</td>
+<td style="text-align:right">如果是超级用户显示为 #，否则显示为 &gt;</td>
+</tr>
+<tr>
+<td style="text-align:right">%R</td>
+<td style="text-align:right">在prompt 1中，通常显示 = ，单用户模式显示为 ^，如果会话被断开显示为 !, 等等。</td>
+</tr>
+</tbody>
+</table>
+<p> <strong>备注： 默认的 prompt 的设置为 ‘%/%R%# ‘。</strong></p>
+<p> 常用的<code>.psqlrc</code>文件例子：</p>
+<pre><code>\set PROMPT1 &apos;SQL&gt;%n@ %/ %`date +%H:%M:%S`%R%#&apos;
+这里显示为：
+SQL&gt;chentao@ template1 12:22:29=#
+</code></pre>
           
         
       
@@ -1207,6 +1048,290 @@ SQL&gt;chentao@ template1 12:22:29=#
 <p>peter@localhost testdb=&gt; \pset border 1<br>Border style is 1.<br>peter@localhost testdb=&gt; \pset format unaligned<br>Output format is unaligned.<br>peter@localhost testdb=&gt; \pset fieldsep “,”<br>Field separator is “,”.<br>peter@localhost testdb=&gt; \pset tuples_only<br>Showing only tuples.<br>peter@localhost testdb=&gt; SELECT second, first FROM my_table;<br>one,1<br>two,2<br>three,3<br>four,4<br>还可以用短（缩写）命令：</p>
 <p>peter@localhost testdb=&gt; \a \t \x<br>Output format is aligned.<br>Tuples only is off.<br>Expanded display is on.<br>peter@localhost testdb=&gt; SELECT * FROM my_table;<br>-[ RECORD 1 ]-<br>first  | 1<br>second | one<br>-[ RECORD 2 ]-<br>first  | 2<br>second | two<br>-[ RECORD 3 ]-<br>first  | 3<br>second | three<br>-[ RECORD 4 ]-<br>first  | 4<br>second | four<br>又见</p>
 <p>环境变量（Section 28.11）<br>Prev    Home    Next<br>pg_restore    Up    vacuumdb</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/postgresql-on-mac-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/27/postgresql-on-mac-tips/" itemprop="url">PostgreSQL on Mac Tips</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T00:00:00+08:00">
+                2014-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>install</p>
+<p> <code>brew install postgresql</code></p>
+</li>
+<li><p>satrt</p>
+<p> <code>pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</code></p>
+</li>
+<li><p>open</p>
+<p> <code>psql basename</code></p>
+</li>
+<li><p>stop</p>
+<p> <code>pg_ctl -D /usr/local/var/postgres stop -s -m fast</code></p>
+</li>
+<li><p>exit</p>
+<p> <code>\q</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/27/mac-install-mysql-use-brew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/27/mac-install-mysql-use-brew/" itemprop="url">Mac Install Mysql use Brew</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T00:00:00+08:00">
+                2014-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>执行：</p>
+<p> <code>$ brew install mysql</code></p>
+</li>
+<li><p>在 <code>/usr/local/etc/</code> 下创建或修改 <code>my.cnf</code>，示例：</p>
+<p> [client]</p>
+<p> port = 3306</p>
+<p> socket = /tmp/mysql.sock</p>
+<p> default-character-set = utf8</p>
+<p> [mysqld]</p>
+<p> collation-server = utf8_unicode_ci</p>
+<p> character-set-server = utf8</p>
+<p> init-connect =’SET NAMES utf8’</p>
+<p> max_allowed_packet = 64M</p>
+<p> bind-address = 127.0.0.1</p>
+<p> port = 3306</p>
+<p> socket = /tmp/mysql.sock</p>
+<p> innodb_file_per_table=1</p>
+<p> [mysqld_safe]</p>
+<p> timezone = ‘+0:00’</p>
+</li>
+<li><p>安装完 mysql 后，他会提示你 init database，并提供下面这两句让你执行，很可能你没执行这两句</p>
+<p> <code>$ unset TMPDIR</code></p>
+<p> <code>$ mysql_install_db --verbose --user=</code>whoami<code>--basedir=&quot;$(brew --prefix mysql)&quot; --datadir=/usr/local/var/mysql --tmpdir=/tmp</code></p>
+</li>
+<li><p>然后就可以指向 <code>mysql.server start</code> 来启动了，为了安全，你还可以执行安全设置向导，根据提示一步一步配置</p>
+<p> <code>$ mysql_secure_installation</code></p>
+</li>
+</ol>
 
           
         
@@ -1877,158 +2002,6 @@ X(n+1)=Xn+(A/X^4-Xn)1/5 . (n，n+1是下角标）
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/11/21/git-change-commit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/11/21/git-change-commit/" itemprop="url">Git Change Commit</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-21T00:00:00+08:00">
-                2014-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p><code>git commit --amend</code> change least commit</p>
-</li>
-<li><p><code>git revert HEAD</code> cancel the least commit</p>
-</li>
-<li><p><code>git reset --hard HEAD~~</code> delete 2 commit in master least</p>
-<p>  if your operation is error, you can rollback this with</p>
-<p>  <code>git reset --hard ORIG_HEAD</code></p>
-</li>
-</ul>
-<p>:blush:</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2079,7 +2052,7 @@ X(n+1)=Xn+(A/X^4-Xn)1/5 . (n，n+1是下角标）
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

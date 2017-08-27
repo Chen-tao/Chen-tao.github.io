@@ -263,6 +263,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/06/27/nginx-location-conf-prority/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/06/27/nginx-location-conf-prority/" itemprop="url">nginx location在配置中的优先级</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-27T00:00:00+08:00">
+                2015-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p></p><h3>location表达式类型</h3><p></p>
+<p>~     表示执行一个正则匹配，区分大小写<br><br>~<em>    表示执行一个正则匹配，不区分大小写<br><br>^~    表示普通字符匹配。使用前缀匹配。如果匹配成功，则不再匹配其他location。<br><br>=     进行普通字符精确匹配。也就是完全匹配。<br><br>@     &#8220;@&#8221; 定义一个命名的 location，使用在内部定向时，例如 error_page, try_files</em></p><br><h3>location优先级说明</h3><br><p>在nginx的location和配置中location的顺序没有太大关系。正location表达式的类型有关。相同类型的表达式，字符串长的会优先匹配。<br><br>以下是按优先级排列说明：<br><br>第一优先级：等号类型（=）的优先级最高。一旦匹配成功，则不再查找其他匹配项。<br><br>第二优先级：^~类型表达式。一旦匹配成功，则不再查找其他匹配项。<br><br>第三优先级：正则表达式类型（~  ~）的优先级次之。如果有多个location的正则能匹配的话，则使用正则表达式最长的那个。<br><br>第四优先级：常规字符串匹配类型。按前缀匹配。</p><br><h3>location优先级示例</h3><br><p>配置项如下:<br><br>location  = / {<br><br>  # 仅仅匹配请求 /<br><br>  [ configuration A ]<br><br>}<br><br>location  / {<br><br>  # 匹配所有以 / 开头的请求。但是如果有更长的同类型的表达式，则选择更长的表达式。如果有正则表达式可以匹配，则<br><br>  # 优先匹配正则表达式。<br><br>  [ configuration B ]<br><br>}<br><br>location /documents/ {<br><br>    # 匹配所有以 /documents/ 开头的请求。但是如果有更长的同类型的表达式，则选择更长的表达式。<br><br>    #如果有正则表达式可以匹配，则优先匹配正则表达式。<br><br>  [ configuration C ]<br><br>}<br><br>location ^~ /images/ {<br><br>  # 匹配所有以 /images/ 开头的表达式，如果匹配成功，则停止匹配查找。所以，即便有符合的正则表达式location，也<br><br>  # 不会被使用<br><br>  [ configuration D ]<br><br>}<br><br>location ~* .(gif|jpg|jpeg)$ {<br><br>  # 匹配所有以 gif jpg jpeg结尾的请求。但是 以 /images/开头的请求，将使用 Configuration D<br><br>  [ configuration E ]<br><br>}</p><br><p>请求匹配示例<br><br>/ -&gt; configuration A<br><br>/index.html -&gt; configuration B<br><br>/documents/document.html -&gt; configuration C<br><br>/images/1.gif -&gt; configuration D<br><br>/documents/1.jpg -&gt; configuration E</p><br><p>注意，以上的匹配和在配置文件中定义的顺序无关。</p>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/06/27/git-tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1685,126 +1805,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysqlwaiting-for-tables/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/05/15/mysqlwaiting-for-tables/" itemprop="url">mysql中的Waiting for tables</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-15T00:00:00+08:00">
-                2015-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于<a href="http://dev.mysql.com/doc/refman/5.6/en/general-thread-states.html" target="_blank" rel="external">Waiting for tables</a>的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询<span style="color: #ff0000;"><strong>阻塞</strong></span>了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，这还是说不通的。那么我们就来看看所有的请求处于Waiting for tables这个状态是什么原因导致的：</p><p></p>
-<p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table, it must wait until all other threads have closed the table in question.</p><br><p>This notification takes place if another thread has used <a title="12.4.6.3. FLUSH Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/flush.html" target="_blank" rel="external"><code>FLUSH TABLES</code></a> or one of the following statements on the table in question: <code>FLUSH TABLES <em><code>tbl<em>name</em></code></em></code>, <a title="12.1.6. ALTER TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="external"><code>ALTER TABLE</code></a>, <a title="12.1.26. RENAME TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/rename-table.html" target="_blank" rel="external"><code>RENAME TABLE</code></a>, <a title="12.4.2.5. REPAIR TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/repair-table.html" target="_blank" rel="external"><code>REPAIR TABLE</code></a>, <a title="12.4.2.1. ANALYZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/analyze-table.html" target="_blank" rel="external"><code>ANALYZE TABLE</code></a>, or<a title="12.4.2.4. OPTIMIZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/optimize-table.html" target="_blank" rel="external"><code>OPTIMIZE TABLE</code></a>.</p><br><p>从文档上的解释来看，是主库做了一个flush tables的操作，导致所有的表都需要打开，但是由于在10-07号放假，应该不会有人在主库上执行flush tables，而且从日志中可以看到：</p><br><p>1044    system user                     Connect 27406   Flushing tables FLUSH TABLES</p><br><p>所以可以判断是系统自己执行了这个操作，那么既然不是主库上执行而来，那么这个flush tables操作是从slave上复制过来的（M-M结构)，</p><br><p>那么备库的什么操作会有flush tables，真的百思不其解，我们备库在6点之前做的是什么，后端应用的dump?还是数据库的备份？是不是xtrabackup，很有可能是xtrabackup在备份的时候做的fulsh tables，查看备份脚本，应该轮到mysqldump做逻辑备份操作了，并不是xtrabackup，检查了mysqldump的备份脚本，脚本里：</p><br><p>-uroot -P$port &#8211;protocol=tcp &#8211;single-transaction &#8211;master-data=2是这样的</p><br><p>Single-transaction这个选项是加上了的，希望再一次被打破 &gt;&lt;</p><br><p>最后想还是想到到官网上去看看，mysqldump+flush tables是否有bug，</p><br><p>唉，搜索了一下果然发现了蹊跷：</p><br><p><a href="http://bugs.mysql.com/bug.php?id=35157" target="_blank" rel="external">http://bugs.mysql.com/bug.php?id=35157</a></p><br><p>When using the &#8211;master-data option with mysqldump, mysqldump uses   a FLUSH TABLES command.  However, this statement got replicated to   the slave(s), which caused the slave(s) to block unnecessarily while  the FLUSH tables command completed.</p><br><p>在5.0存在的bug很好的解释了这个问题，在mysqldump加入了&#8211;master-data就会将flush tables记录到binglog中，然后在被同步到主库，主库执行binglog后，由于有一个大查询正在</p><br><p>执行，这个子查询由于执行了很长时间，阻塞了flush tables的操作,最后导致了雪崩，所有的请求都被阻塞：</p><br><p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table,</p><br><p>it must wait until all other threads have closed the table in question.</p><br><p>综合上篇的所写，Mysqldump的在5.0的bug加上数据库的低效子查询构成这次故障的原因。</p><br><p>峰回路转，山穷水尽，哈哈</p>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1855,7 +1855,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

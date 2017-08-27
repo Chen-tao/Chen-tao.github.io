@@ -263,6 +263,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/12/java-7-linkedtransferqueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/09/12/java-7-linkedtransferqueue/" itemprop="url">Java 7 LinkedTransferQueue解析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-12T00:00:00+08:00">
+                2014-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Java-7-LinkedTransferQueue解析"><a href="#Java-7-LinkedTransferQueue解析" class="headerlink" title="Java 7 LinkedTransferQueue解析"></a>Java 7 LinkedTransferQueue解析</h1><p>LinkedTransferQueue出身Google，现在已经被集成在JDK7中，但目前主流的JDK平台仍然是JDK6，所以很多时候我们需要这样引入：</p>
+<p><code>import com.google.code.yanf4j.util;</code></p>
+<p>她的作者依然是Doug Lea大神，他说：</p>
+<blockquote>
+<p>LinkedTransferQueue是一个聪明的队列，他是ConcurrentLinkedQueue,<br>SynchronousQueue (in “fair” mode公平模式), and unbounded LinkedBlockingQueue的超集。</p>
+</blockquote>
+<p>我们从她的声明中也可以看出这一点： </p>
+<p><code>public class LinkedTransferQueue&lt;E&gt; extends AbstractQueue&lt;E&gt; implements BlockingQueue&lt;E&gt;</code></p>
+<p>Google的注释中，有这样一段描述：</p>
+<blockquote>
+<p>This class extends the approach used in FIFO-mode SynchronousQueues. See the internal documentation, as well as the PPoPP 2006 paper “Scalable Synchronous Queues” by Scherer,<br>                                  <em>Lea &amp; Scott</em> </p>
+</blockquote>
+<p>(<a href="http://www.cs.rice.edu/~wns1/papers/2006-PPoPP-SQ.pdf" target="_blank" rel="external">http://www.cs.rice.edu/~wns1/papers/2006-PPoPP-SQ.pdf</a>) </p>
+<blockquote>
+<p>The main extension is to provide different Wait modes for the main “xfer” method that puts or takes items.  These don’t impact the basic dual-queue logic, but instead control whether or how threads block upon insertion of request or data nodes into the dual queue. It also uses slightly different conventions for tracking whether nodes are off-list or cancelled. </p>
+</blockquote>
+<p>LinkedTransferQueue实现了一个重要的接口TransferQueue,该接口含有下面几个重要方法：</p>
+<p>1. transfer(E e) </p>
+<p>   若当前存在一个正在等待获取的消费者线程，即立刻移交之；否则，会插入当前元素e到队列尾部，并且等待进入阻塞状态，到有消费者线程取走该元素。</p>
+<p>2. tryTransfer(E e) </p>
+<p>   若当前存在一个正在等待获取的消费者线程（使用take()或者poll()函数），使用该方法会即刻转移/传输对象元素e；若不存在，则返回false，并且不进入队列。这是一个不阻塞的操作。</p>
+<p>3. tryTransfer(E e, long timeout, TimeUnit unit) </p>
+<p>   若当前存在一个正在等待获取的消费者线程，会立即传输给它; 否则将插入元素e到队列尾部，并且等待被消费者线程获取消费掉,若在指定的时间内元素e无法被消费者线程获取，则返回false，同时该元素被移除。</p>
+<p>4. hasWaitingConsumer() </p>
+<p>   判断是否存在消费者线程</p>
+<p>5. getWaitingConsumerCount() </p>
+<p>   获取所有等待获取元素的消费线程数量</p>
+<p>6. size()</p>
+<p>因为队列的异步特性，检测当前队列的元素个数需要逐一迭代，可能会得到一个不太准确的结果，尤其是在遍历时有可能队列发生更改。 </p>
+<p>7. 批量操作</p>
+<p>类似于 addAll，removeAll, retainAll, containsAll, equals, toArray 等方法，API不能保证一定会立刻执行。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/09/10/wechat-pay/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1570,148 +1720,6 @@ peida value : hello peida!
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/07/17/java-thread-pool/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/07/17/java-thread-pool/" itemprop="url">Java线程池的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-17T00:00:00+08:00">
-                2014-07-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>线程池,指的是管理一组”同构工作线程的资源池”.</p>
-<p>提供相似的资源,或者是用户定制的配置,预先准备槽位等待任务的到来.</p>
-<p>首先区别一下,”在线程池中执行任务”和”为每一个任务分配一个线程”.</p>
-<ol>
-<li>前者的重点是”重用”,后者的重点是任务的”独立”,每次都在创建新的线程.</li>
-<li>前者在处理多个请求时比后者消耗的资源要少得多,后者需要大量重复的建立销毁线程的工作</li>
-<li>前者在任务到达时,往往线程已经存在,只需要简单的分配,后者需要即时的创建,响应速度较慢</li>
-<li>使用线程池,更可以通过对资源的计算规划最大程度的利用CPU,Mem,文件句柄等等资源,保证系统的高效运行</li>
-</ol>
-<p>一般使用Execteor框架中Executors的静态工厂方法来创建线程池</p>
-<ul>
-<li>newFixedThreadPool</li>
-</ul>
-<p>创建一个固定大小的线程池，当然不会一开始就创建好最大数量的线程，而是等待任务到来的同时创建，当任务总量大于线程池大小时，在任务队列中等待，否则，线程池中有空闲线程，此时会将空闲线程回收</p>
-<ul>
-<li>newCachedThreadExecutor</li>
-</ul>
-<p>创建一个可变大小的线程池，其他方面与Fixed类似，当线程数量超过当前线程池大小时，线程池会跟随任务量膨胀，理论上没有等待队列，当然此方法受限于系统的资源总量和网络因素，容易在大量请求并发时发生OOM</p>
-<ul>
-<li>newSingleThreadExecutor</li>
-</ul>
-<p>创建一个只有一个线程的线程池，在特殊条件下，需要对任务的执行进行排序时用到，如FIFO，Priority</p>
-<p>当然，内部机制为了防止过度等待和超时以及线程饥饿死锁，会在队列上加入一定的等待和阻塞限制</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1762,7 +1770,7 @@ peida value : hello peida!
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">179</span>
+                <span class="site-state-item-count">180</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
