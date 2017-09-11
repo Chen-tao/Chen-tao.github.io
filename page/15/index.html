@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -111,10 +106,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -138,7 +132,11 @@
 
 
 
-  <title>Chen-Tao</title>
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -153,17 +151,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,12 +272,8 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-preconditions/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/11/java-get-web-pic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -281,8 +291,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/04/10/guava-preconditions/" itemprop="url">Guava学习之Preconditions</a></h1>
+                <a class="post-title-link" href="/2014/04/11/java-get-web-pic/" itemprop="url">
+                  Java实现抓取网页图片
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -294,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-10T00:00:00+08:00">
-                2014-04-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-11T00:00:00+08:00">
+                2014-04-11
               </time>
             
 
@@ -323,9 +341,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,30 +350,31 @@
       
         
           
-            <p>在日常开发中，我们经常会对方法的输入参数做一些数据格式上的验证，以便保证方法能够按照正常流程执行下去。对于可预知的一些数据上的错误，我们一定要做事前检测和判断，来避免程序流程出错，而不是完全通过错误处理来保证流程正确执行，毕竟错误处理是比较消耗资源的方式。在平常情况下我们对参数的判断都需要自己来逐个写方法判断，代码量不少并且复用性不高。</p>
-<p>Preconditions提供的就是测试时使用的验证逻辑，它可以简化我们代码中对于参数的预判断和处理，让我们对方法输入参数的验证实现起来更加简单优雅。</p>
-<p>官方强烈建议在代码中使用这个类，而且在Preconditions类中的所有函数都是static修饰的，这意味着你不需要声明（你不可以申请一个Preconditions对象，因为Preconditions的构造函数用private修饰的）一个Preconditions类对象，而可以直接使用这个类提供的方法。</p>
-<h2 id="Preconditions里面常用的方法："><a href="#Preconditions里面常用的方法：" class="headerlink" title="Preconditions里面常用的方法："></a>Preconditions里面常用的方法：</h2><p><strong>1 .checkArgument(boolean) **</strong>：**<br>功能描述：检查boolean是否为真。 用作方法中检查参数<br>失败时抛出的异常类型: IllegalArgumentException</p>
-<p><strong>2.checkNotNull(T)**</strong>：<strong>**   </strong><br>功能描述：检查value不为null， 直接返回value；<br>失败时抛出的异常类型：NullPointerException  </p>
-<p><strong> **</strong>3.checkState(boolean)<strong>**：</strong><br>功能描述：检查对象的一些状态，不依赖方法参数。 例如， Iterator可以用来next是否在remove之前被调用。<br>失败时抛出的异常类型：IllegalStateException  </p>
-<p><strong> **</strong>4.checkElementIndex(int index, int size)<strong>**：</strong><br>功能描述：检查index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0, size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
-<p><strong>5.checkPositionIndex(int index, int size)**</strong>：**<br>功能描述：检查位置index是否为在一个长度为size的list， string或array合法的范围。 index的范围区间是[0， size)(包含0不包含size)。无需直接传入list， string或array， 只需传入大小。返回index。<br>失败时抛出的异常类型：IndexOutOfBoundsException</p>
-<p><strong>6.checkPositionIndexes(int start, int end, int size)**</strong>：**</p>
-<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p><strong><a href="#535" title="2014-08-18 14:15:48">智能化石灰立窑</a>:</strong> 必须给一个赞</p>
-
-          
+          场景如下： 
+业务需要，有一批返回图片列表，存放在文本文档中，分行URL 
+通过Java程序将数据读取到本地磁盘（更进一步可以考虑不抛出异常，而是判断返回码） 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStre
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/04/11/java-get-web-pic/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -371,10 +388,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -387,11 +400,132 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/11/guava-common-object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/11/guava-common-object/" itemprop="url">
+                  Guava学习之复写Object方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-11T00:00:00+08:00">
+                2014-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在Java中Object类是所有类的父类，其中有几个需要override的方法比如equals,hashCode和toString等方法。每次写这几个方法都要做很多重复性的判断, 很多类库提供了覆写这几个方法的工具类, Guava也提供了类似的方式。下面我们来看看Guava中这几个方法简单使用。
+e
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/04/11/guava-common-object/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -410,8 +544,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">Guava学习之避免Null的使用</a></h1>
+                <a class="post-title-link" href="/2014/04/10/using-and-avoiding-null/" itemprop="url">
+                  Guava学习之避免Null的使用
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -452,9 +594,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -463,29 +603,29 @@
       
         
           
-            <p><em>Null Sucks.__    Doug Lea</em></p>
-<p><em>I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人</em></p>
-<p>编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的colletions中都不应该有null（空值）存在；对于开发者来说，如果null可以直接报错，会比默默地接收更加有益。</p>
-<p>此外，null让人讨厌的一点在于它的表义模糊不清。当null作为一个返回值时，很难判断它的具体含义——比如，Map.get(key)返回null时，既可以表示Map中的值为空，又可以表示这个值不在Map中。Null可以表示失败，可以表示成功，可以表示几乎所有的状态。用别的东西来取代null会让你的代码更为清晰。</p>
-<p>当然，很多时候用null也是正确的选择。从时间和空间的角度看，null都是廉价的，并且在Object array中是不可避免的。但相对于官方的library，在实际的Application代码中，null仍然是导致混淆，怪异bug和含糊不清的主要源头之一——比如，当Map.get返回null，可能说明不存在对应的值，也可能说明值存在且为null。最大的问题在于，null无法提示这个null值表示什么意思。</p>
-<p>因此，很多Guava utility设计为对null值直接报错；只要有不用null的代替方案，就不允许null值。另外，Guava提供了一些工具来帮你避免使用null，同时在你不得不用时让使用null更容易。</p>
-<h2 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h2><p>不要惊讶，即便是有特殊操作情况存在，你仍然不应该在Set中使用null或者在Map中把null作为参数传入。</p>
-<p>如果你想在不考虑entry的情况下，将null作为一个参数传入Map，那你就需要保证含non-null key的Set与含null的Set分离（就是2个Set集啦）。当Map中包含key的entry的值为null，或者Map中的key没有entry，这两种情况是非常容易混淆的。更好的办法是直接将key进行分离，这样就很容易分辨实际应用中key为null时的含义了。</p>
-<p>使用Map<integer,?>可能会比在一个稀疏的List中使用null效率更高，而且很可能前者更适合你实际应用中的需要。</integer,?></p>
-
-          
+          Null Sucks.__    Doug Lea
+I call it my billion-dollar mistake.__    Sir C.A.R Hoare null指针发明人
+编程中如果对null缺乏注意就会导致很多bug。通过对Google基础代码的阅读，我们发现，几乎95%的coll
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/04/10/using-and-avoiding-null/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -499,10 +639,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -515,11 +651,131 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-preconditions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/04/10/guava-preconditions/" itemprop="url">
+                  Guava学习之Preconditions
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-04-10T00:00:00+08:00">
+                2014-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在日常开发中，我们经常会对方法的输入参数做一些数据格式上的验证，以便保证方法能够按照正常流程执行下去。对于可预知的一些数据上的错误，我们一定要做事前检测和判断，来避免程序流程出错，而不是完全通过错误处理来保证流程正确执行，毕竟错误处理是比较消耗资源的方式。在平常情况下我们对参数的判断都需要自己来逐个
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/04/10/guava-preconditions/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/10/guava-ordering/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -538,8 +794,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/04/10/guava-ordering/" itemprop="url">Guava学习之Ordering</a></h1>
+                <a class="post-title-link" href="/2014/04/10/guava-ordering/" itemprop="url">
+                  Guava学习之Ordering
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -580,9 +844,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -591,41 +853,30 @@
       
         
           
-            <p><strong>示例</strong></p>
-<pre><code>assertTrue(byLengthOrdering.reverse().isOrdered(list))；
-</code></pre><p>  <strong>    **</strong>概述<strong>**  
-</strong>    Ordering 是Guava的”流畅版” Comparator , 一个强大的比较器工具。它用来构建高级comparator,并把comparator应用于各种集合(collection)。<br>    本质上讲， Ordering 实例不过是一个特殊的 Comparator 实例。 Ordering 所做的就是把那些依赖于 Comparator 的方法(例如， Collections.max) 改写为成员方法。另外， Ordering 类提供一些可链式调用的方法，用来调整和增强已有的comparator.<br><strong>    **</strong>创建<strong>**Ordering  
-</strong>    Ordering对象一般由以下静态方法创建：<br><strong>    **</strong>方法<strong><strong> </strong></strong>描述<strong><strong>(</strong></strong>静态<strong>**)  
-</strong>    natural() 在Comparable类型上应用自然排序(natural ordering)。<br>    usingToString() 将对象的toString()返回值按字典序排序。<br>    想要将已有的 Comparator 转化为 Ordering ,只需使用 Ordering.from(Comparator) .<br>    但是创建 Ordering 更常规的做法是完全忽略 Comparator ,直接扩展 Ordering 抽象类：</p>
-<pre><code>Ordering&lt;String&gt; byLengthOrdering = new Ordering&lt;String&gt;(){
-         public int compare(String left,String right){
-         return Ints.compare(left.length()， right.length())；
-       }
-     };
-</code></pre><p> <strong>    **</strong>链式调用<strong>**  
-</strong>    可以通过包装 Ordering 来进行一些预处理。一些最常见的处理如下：<br><strong>    **</strong>方法<strong><strong> </strong></strong>描述<strong>**  
-</strong>    reverse() 返回逆序的Ordering.<br>    nullsFirst() 返回的 Ordering 将null元素排在非null元素前面，其余部分的排序规则与原始的 Ordering 相同。nullsLast()同理。<br>    compound(Comparator) 返回的 Ordering 对之前每组相等的元素用指定的 Comparator 再排序。<br>    lexicographical() 返回的 Ordering 对iterable的元素按字典序排序。<br>    onResultOf(Function) 返回的 Ordering 将被排序的元素传入function,对返回值用原始的 Ordering排序。<br>    举例来说，假设你希望创建下面这个类的 comparator …</p>
-<pre><code>classFoo{
-     @NullableString sortedBy;
-     int notSortedBy;
-     }
-
-
- …并且希望它能在 sortedBy 基础上处理null值。下面是应用链式调用的解决方案：
-</code></pre>
-          
+          示例
+assertTrue(byLengthOrdering.reverse().isOrdered(list))；
+      **概述**  
+    Ordering 是Guava的”流畅版” Comparator , 一个强大的比较器工具。它用来构建高级comparator,并把compar
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/04/10/guava-ordering/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -639,10 +890,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -655,11 +902,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/04/09/guava-tutorial/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -678,8 +921,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/04/09/guava-tutorial/" itemprop="url">Guava学习之用户指南-概述</a></h1>
+                <a class="post-title-link" href="/2014/04/09/guava-tutorial/" itemprop="url">
+                  Guava学习之用户指南-概述
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -720,9 +971,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -731,41 +980,28 @@
       
         
           
-            <h1 id="Guava用户指南"><a href="#Guava用户指南" class="headerlink" title="Guava用户指南"></a>Guava用户指南</h1><p>Guava是Google内部基于Java项目的核心库项目，现已开源。组件包括：</p>
-<p>collections, caching, primitives support, concurrency libraries, common annotations, string processing, I/O, etc。这些包每天都在被Google的工程师使用在产品中和服务中。</p>
-<p>但通过Javadoc文档来学习这些组件不是最有效的学习方法，所以这里提供一个可读性更强的文档来诠释Guava中强力的功能与特色。</p>
-<p>类库使用手册：</p>
-<h2 id="一-基本工具类"><a href="#一-基本工具类" class="headerlink" title="一.  基本工具类"></a>一.  基本工具类</h2><h3 id="1-Using-and-avoiding-null"><a href="#1-Using-and-avoiding-null" class="headerlink" title="1. Using and avoiding null "></a>1. <a href="/using-and-avoiding-null/">Using and avoiding null</a><a href="http://qyappchentao.sinaapp.com/using-and-avoiding-null/" target="_blank" rel="external"> </a></h3><p>null 有歧义， 会产生很多令人费解的错误， 人多错误都来自。很多 Guava 的工具类在遇到 null 时会直接拒绝或出错，而不是默默地接受他们。</p>
-<h3 id="2-Preconditions"><a href="#2-Preconditions" class="headerlink" title="2. Preconditions "></a>2. <a href="/preconditions/">Preconditions</a><a href="http://qyappchentao.sinaapp.com/preconditions/" target="_blank" rel="external"> </a></h3><p>提供更简便的途径对你的方法进行测试。</p>
-<h3 id="3-Common-object-methods"><a href="#3-Common-object-methods" class="headerlink" title="3. Common object methods "></a>3. <a href="/guava-common-object/">Common object methods</a><a href="http://http://qyappchentao.sinaapp.com/guava-common-object/" target="_blank" rel="external"> </a></h3><p>简化Object常用方法的实现，如 hashCode() 和 toString()。</p>
-<h3 id="4-Ordering"><a href="#4-Ordering" class="headerlink" title="4. Ordering"></a>4. <a href="/guava-ordering/">Ordering</a></h3><p>强大的 “fluent Comparator”比较器， 提供多关键字排序。</p>
-<h3 id="5-Throwable类"><a href="#5-Throwable类" class="headerlink" title="5. Throwable类"></a>5. Throwable类</h3><p>简化了异常检查和错误处理。</p>
-<h2 id="二-集合类"><a href="#二-集合类" class="headerlink" title="二.  集合类"></a>二.  集合类</h2><p>集合类库是 Guava 对 JDK 集合类的扩展， 这是 Guava 项目最完善和为人所知的部分。</p>
-<h3 id="1-Immutable-collections（不可变集合）"><a href="#1-Immutable-collections（不可变集合）" class="headerlink" title="1.Immutable collections（不可变集合）"></a>1.Immutable collections（不可变集合）</h3><p>防御性编程， 不可修改的集合，并且提高了效率。</p>
-<h3 id="2-New-collection-types-新集合"><a href="#2-New-collection-types-新集合" class="headerlink" title="2.New collection types(新集合)"></a>2.New collection types(新集合)</h3><p>JDK collections 没有的一些集合类型，主要有：multisets，multimaps，tables， bidirectional maps等等</p>
-<h3 id="3-Powerful-collection-utilities（强大的集合工具）"><a href="#3-Powerful-collection-utilities（强大的集合工具）" class="headerlink" title="3.Powerful collection utilities（强大的集合工具）"></a>3.Powerful collection utilities（强大的集合工具）</h3><p>java.util.Collections 中未包含的常用操作工具类</p>
-<h3 id="4-Extension-utilities（扩展工具）"><a href="#4-Extension-utilities（扩展工具）" class="headerlink" title="4.Extension utilities（扩展工具）"></a>4.Extension utilities（扩展工具）</h3><p>给 Collection 对象添加一个装饰器? 实现迭代器? 我们可以更容易使用这些方法。</p>
-<h2 id="三-缓存"><a href="#三-缓存" class="headerlink" title="三.  缓存"></a>三.  缓存</h2><p>本地缓存，可以很方便的操作缓存对象，并且支持各种缓存失效行为模式。</p>
-<h2 id="四-Functional-idioms（函数式）"><a href="#四-Functional-idioms（函数式）" class="headerlink" title="四.  Functional idioms（函数式）"></a>四.  Functional idioms（函数式）</h2><p>简洁, Guava实现了Java的函数式编程，可以显著简化代码。</p>
-<h2 id="五-Concurrency（并发）"><a href="#五-Concurrency（并发）" class="headerlink" title="五. Concurrency（并发）"></a>五. Concurrency（并发）</h2><p>强大,简单的抽象,让我们更容易实现简单正确的并发性代码</p>
-<h3 id="1-ListenableFuture（可监听的Future）"><a href="#1-ListenableFuture（可监听的Future）" class="headerlink" title="1.ListenableFuture（可监听的Future）"></a>1.ListenableFuture（可监听的Future）</h3><p>Futures,用于异步完成的回调。</p>
-<h3 id="2-Service"><a href="#2-Service" class="headerlink" title="2.Service"></a>2.Service</h3><p>控制事件的启动和关闭，为你管理复杂的状态逻辑。</p>
-<h2 id="六-Strings"><a href="#六-Strings" class="headerlink" title="六. Strings"></a>六. Strings</h2><p> 一个非常非常有用的字符串工具类: 提供 splitting，joining， padding 等操作。</p>
-<h2 id="七-Primitives"><a href="#七-Primitives" class="headerlink" title="七. Primitives"></a>七. Primitives</h2><p>扩展 JDK 中未提供的对原生类型（如int、char等）的操作， 包括某些类型的无符号的变量。</p>
-
-          
+          Guava用户指南Guava是Google内部基于Java项目的核心库项目，现已开源。组件包括：
+collections, caching, primitives support, concurrency libraries, common annotations, string processin
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/04/09/guava-tutorial/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -779,10 +1015,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -795,11 +1027,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/03/31/about-qzone/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -818,8 +1046,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/03/31/about-qzone/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2014/03/31/about-qzone/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -860,9 +1096,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -871,31 +1105,29 @@
       
         
           
-            <hr>
-<p>title: 扯谈Qzone<br>layout: post<br>description: “”<br>category: </p>
-<h2 id="tags-feeling"><a href="#tags-feeling" class="headerlink" title="tags: [feeling]"></a>tags: [feeling]</h2><p>我不止一次的说过，从一开始我就不看好Qzone，但是人家拧拧的变成了社交平台里相当大气的一位主子。想想当年，Qzone不是你想开就能开的啊！要邀请啊！开始的邀请还不是谁都能邀请啊！用过Qzone的“有范儿”好友啊！这特么是什么一种逻辑啊！Qzone那时的产品经理脑子被门挤了啊！</p>
-<p>PS，我不是景涛同好小组的成员。咆哮就此结束。</p>
-<p>当然上面的并不是这件事情发展现状的“主要复杂度”。重点还是在受众。有时候会觉得Qzone“低龄化”&amp;“启蒙化”——与之鲜明对比的是微博的公众影响力、豆瓣的文艺气质、知乎的专业素养，以及没有完全发展成型的松鼠会果壳（当然这些是弱关联的社交了）也是类似的。其实，Qzone的式微已见端倪，而是否会持续下去或者依然有新的极点也未可知。如果全面的将社会文化政治经济因素铺开来分析还是有可能接触到走势的真相的……算了。</p>
-<p>朋友圈蚕食了Qzone的一部分，就像当年微博蚕食了博客，而各种自媒体又在蚕食微博一样。人群聚散的平台之间跑马圈地，固守微博的大有人在，但Qzone呢？我持怀疑的态度——友邻的联系被功能的细化冲淡之后，很多人慢慢的不自觉的冷落了Qzone。记忆中Qzone还是希望朝着“专业化”方向努力过，结局自然是收效甚微，我不知道腾讯大家这样的东西是否搞的有模有样，但放在Qzone很可能渐渐会变成满满的“恶意”与“不适合”。</p>
-<p>很多人评价Qzone，核心就是一个字——“晒”——晒吃晒喝晒自拍，晒玩晒买晒鸡汤。创造价值创造内容的用户，极少，而且还在锐减——转向朋友圈，转向自媒体，转向圈外墙外——很多用户在自己的受众面前希望表达的无非是这样几点：存在感，我很好，心情贴，偶尔的时事关心，乃至深度用户在评论栏里“打嘴仗”。这一方面成因于自媒体的发展，另一方面，是微博这类SNS中的“聪明人”在创造Qzone不具备的价值的同时也在潜移默化的传播这样的舆论，更重要的一点是，Qzone自身的目标定位是否明确，大方向是否脉络清晰，对于上面的问题可能到我这里就算了，但Qzone自己却注定不能回避。</p>
-<p>微博相比之下，姿态要高得多。影响社会的程度也不是一个层面的，这自然是社交属性内部的一些细节决定的：在经历“隐私门”事件之后的Qzone采取了限制访问的策略，这是悬崖勒马，也是命数使然；而微信则在这个基础上又进了一步，朋友圈对于分组来说又很严格，彼此不是好友的评论乃至喜欢都是不可见的——用户圈子更加分散也更加封闭，大圈套小圈的甘特图逐渐成为了特色。</p>
-<p>物以类聚，人以群分。对于所有的SNS业务来说，每个用户的价值在于他们的关系链，而关系链的核心在于：他们是什么样的人，就会有什么样的圈子。Qzone时至今日的发展轨迹与当初跟QQ的“强绑定关系”是密不可分的，Qzone的用户就是QQ的用户，伴随着十几年的成长，旧的用户不断淡化存在感，新的血液不断注入用户群，使得QQ这个生态大圈子中的用户群体变得无比复杂而混乱——满足最普遍用户的需求，做互联网的水和电确实是最核心的诉求，因为样样精通很可能就是样样稀松。拿QQ群来说，巨大的数据量，却很难挖掘出相对普适的信息，地域性特色，文化，主题，方方面面……只能说在有想法的前提下有目的的去挖掘，而如果对此投入大量人力物力的话，是否会如淘宝般有相应真金白银的产出对于SNS这种业务类型来说还犹未可知。剥开复杂的背景，Qzone与微博的可比性仅仅在于弱端SNS的层面，资讯与公信是微博的重点属性，而Qzone，则是私密与真实。</p>
-<p>-————————————————–</p>
-<p>前段时间，在公众号发了一篇关于Qzone的文章，现在觉得当时写的不好，有失公允，论点片面，今天重新整理，放在这里。</p>
-
           
+title: 扯谈Qzonelayout: postdescription: “”category: 
+tags: [feeling]我不止一次的说过，从一开始我就不看好Qzone，但是人家拧拧的变成了社交平台里相当大气的一位主子。想想当年，Qzone不是你想开就能开的啊！要邀请啊！开始的邀请还不
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/03/31/about-qzone/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -909,10 +1141,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -925,11 +1153,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/03/06/internet-and-travel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -948,8 +1172,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/03/06/internet-and-travel/" itemprop="url">旅游大蛋糕，早想切一刀。</a></h1>
+                <a class="post-title-link" href="/2014/03/06/internet-and-travel/" itemprop="url">
+                  旅游大蛋糕，早想切一刀。
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -990,9 +1222,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1001,25 +1231,28 @@
       
         
           
-            <p>SNG瓜大的某同学想做一个一站式旅游服务云平台。大意是希望可以通过线上支付直接完成旅游门票之类的付费，然后通过返回的验证码或者二维码来直接到旅游目的地进行旅行。</p>
-<p>很亮的点子，这就像是Passbook的旅游版，进一步思考还有“团购”与“社交”的成分可以添加；但是，在兴奋之余，很明显看到在旅游业这种特定行业的线下阻力。</p>
-<p>对于目前的旅游业来说，大蛋糕很多很多人和势力在“瓜分”。看一下腾讯与阿里的“打车战争”你就知道，如果希望在支付领域完成O2O闭环，需要相当大的线下动作——App的宣传，地推，基站的建立，乃至不停的砸钱甚至去寻求有利于己方的政策倾斜——即便如此，依然不能说谁就真的在未来会有怎样的结局。而如果希望在旅游业做到这一点，难度则不可同日而语了。</p>
-<p>打车这个场景，对于每一辆出租车来说都是几近相同的：对于每一台车，只要接受合作并安装相应的App即可，利益链条在这一层简单明了。而对于旅游这个场景来说，从门票付费开始到刷二维码旅游，这其中跨越的利益方就相当多了。为什么淘宝旅行、同程、携程、去哪儿、百度旅行没有做旅游呢？这里面最大的原因恐怕就是利益链条上既得利益群体对于互联网闭环的阻碍乃至“敌视”。直接通过线上支付，首先需要同旅游局乃至地方政府的合作，这个合作的难度就是讲如何让景点觉得有利可图来使用产品甚至通过利益叠加来为你做推广，这是很困难的事情，但这样的地推又是无法回避的；每成功的合作一个景区，当然就可以实现一个点的对接，要形成规模可能就是难以估量的推广费用与时空人力消耗，还不见得会成功多少；越过这条线，往后就是其他的也和旅游局或者政府有合作的组织势力，分一杯羹或者拒不承认门票有效性等等任一情况的发生，对口碑与产品本身的影响都可能是致命的；再加上业内的竞争，其他相关行业，诸如酒店业、餐饮业、小商品市场等等的反应也会造成相当的影响；在用户这一侧，如果说，打车应用需要不停的对用、商户双方户返券才做到今日规模的话，那对于旅游业这样的“金矿行业”和税收大户来说，如何刺激产品推广与业务可持续增长呢？盲目占领市场的补贴方式是否可行呢？线下问题看来是越想越多了……同线下的阻力比较，线上技术层面的问题此刻已然微不足道了。</p>
-<p>旅游领域的产品，是否注定是“中规中矩”呢？</p>
-
-          
+          SNG瓜大的某同学想做一个一站式旅游服务云平台。大意是希望可以通过线上支付直接完成旅游门票之类的付费，然后通过返回的验证码或者二维码来直接到旅游目的地进行旅行。
+很亮的点子，这就像是Passbook的旅游版，进一步思考还有“团购”与“社交”的成分可以添加；但是，在兴奋之余，很明显看到在旅游业这种特定
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/03/06/internet-and-travel/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1033,10 +1266,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1049,11 +1278,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/03/01/intern-and-learn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1072,8 +1297,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/03/01/intern-and-learn/" itemprop="url">实习与学习</a></h1>
+                <a class="post-title-link" href="/2014/03/01/intern-and-learn/" itemprop="url">
+                  实习与学习
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1114,9 +1347,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1125,25 +1356,29 @@
       
         
           
-            <p><img src="http://chentaohome.qiniudn.com/forrest.jpg" alt="">  </p>
-<p>又到了找实习的季节。</p>
-<p>实习与学习的比较，我看是不难的，甚至广义上是相通的。古人对家中几代做官的人家有“仕宦之家”或者“官宦人家”的说法，现在我们好像不太提起这个“宦”字了，总觉得这是个相对下贱的词汇。实际上，古人解释宦字，曰二：“一是仕，二是学。”这是不是跟很多人理解是“学而优则仕，仕而优则学”的理论冲突了呢？没有。《论语》《先进篇》中说：“子路使子羔为费宰。子曰：‘贼夫人之子。’子路曰：‘有民人焉，有社稷。何必读书，然后为学？’”子路就算是再莽撞，也不会主张人们不学习就可以为官办事。这里，子路看中的是且学习且办事（工作），而反对的是不能直接应用的知识，是一种很强烈的实用价值观；这和很多现代人现代企业看重应用技术，而忽略乃至藐视高深学理是一般道理。“宦”就是这种理论下的一种官职，一种在办事中学习的官职——从其办事的一方面说，就是仕；从其学习的一方面说，就是学。说白了，就是在机关中做事，学习做公务员罢了。</p>
-<p>再向外扩展开来，我们就知道了，原来实习这个事情，自古有之啊！一边工作一边学习，其实更好的说法是从工作中学习，积累技能，查漏补缺，完善理念，这是人实现自我以求进一步走向社会化从而实现更高层次价值的过程。一曰“读万卷书，行万里路”，一曰“实践出真知”，都是的。读书学习走“圣贤路”实际上是吸纳和重组旧知识的过程，而实践则是验证旧知识和开创新知识的过程。</p>
-<p>人有时候宁可高傲一点，也不可以妄自菲薄。学习如此，实习如此，工作生活亦如此。把现在的实习当成是学习与奉献投入进去，未来的收获一定不只是身心之娱。</p>
-
-          
+            
+又到了找实习的季节。
+实习与学习的比较，我看是不难的，甚至广义上是相通的。古人对家中几代做官的人家有“仕宦之家”或者“官宦人家”的说法，现在我们好像不太提起这个“宦”字了，总觉得这是个相对下贱的词汇。实际上，古人解释宦字，曰二：“一是仕，二是学。”这是不是跟很多人理解是“学而优则仕，仕而优则学
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/03/01/intern-and-learn/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1157,10 +1392,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1173,11 +1404,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/02/26/wh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1196,8 +1423,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2014/02/26/wh/" itemprop="url">《白马调》</a></h1>
+                <a class="post-title-link" href="/2014/02/26/wh/" itemprop="url">
+                  《白马调》
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1238,9 +1473,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1249,53 +1482,29 @@
       
         
           
-            <p>再现“黑历史”。刚听这个东西的时候直接就喷了。</p>
-<p>《东方红》的前身《白马调》，现在高大上的背后是当时农民实实在在的参军动机——“一人一个女学生”，多么现实啊！(乍一听还真以为是国军的口号)“一个女学生”一晃变成了“人民大救星”~~这样看来，革命是否真就是一场豪赌呢？</p>
-<p>开一下脑洞，这个议题还可以参考“台湾日据时代的‘汉奸文学’”与</p>
-<p>“文革时期‘血色文学’价值”展开。</p>
-<p>(这歌词忍不住就跟着唱起来了……)</p>
-<p>附音频链接_<a href="http://v.youku.com/v_show/id_XNTY0MDkxNDQ4.html" target="_blank" rel="external">http://v.youku.com/v_show/id_XNTY0MDkxNDQ4.html</a>_</p>
-<p><em>骑白马，跑沙滩</em></p>
-<p><em>我没有婆姨呀你没有汉。</em></p>
-<p><em>咱们俩捆成一嘟噜蒜，呼儿嗨哟</em></p>
-<p><em>土里生来土里烂。</em></p>
-<p>__</p>
-<p><em>要穿灰，一身身灰，</em></p>
-<p><em>肩膀上要把枪来背。</em></p>
-<p><em>哥哥当兵斗起来，呼儿嗨呦</em></p>
-<p><em>家里留下小妹妹。</em></p>
-<p>__</p>
-<p><em>骑白马，挎洋枪</em></p>
-<p><em>三哥哥吃了八路军的粮。</em></p>
-<p><em>有心回家看姑娘，呼儿嗨哟</em></p>
-<p><em>打鬼子就(也)顾不上。</em></p>
-<p>__</p>
-<p><em>三八枪，没盖盖</em></p>
-<p><em>八路军当兵的没太太。</em></p>
-<p><em>待到那打下榆林城，呼儿嗨哟</em></p>
-<p><em>一人一个女学生。</em></p>
-<p>__</p>
-<p><em>(__另)</em></p>
-<p><em>兰格茵茵的天，飘来一疙瘩云，</em></p>
-<p><em>刮风下雨响雷声</em></p>
-<p><em>三哥哥今要出远门，呼儿嗨哟</em></p>
-<p><em>倒叫咱妹妹不放心……</em></p>
-<p>__</p>
-<p><em>《白马调》(又名《骑白马调》陕北民歌)</em></p>
-
-          
+          再现“黑历史”。刚听这个东西的时候直接就喷了。
+《东方红》的前身《白马调》，现在高大上的背后是当时农民实实在在的参军动机——“一人一个女学生”，多么现实啊！(乍一听还真以为是国军的口号)“一个女学生”一晃变成了“人民大救星”~~这样看来，革命是否真就是一场豪赌呢？
+开一下脑洞，这个议题还可以参考“台
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/02/26/wh/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1309,291 +1518,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/02/23/quotes-from-house-of-cards-season-ii/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/02/23/quotes-from-house-of-cards-season-ii/" itemprop="url">Quotes From House of Cards Season II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-23T00:00:00+08:00">
-                2014-02-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://chentaohome.qiniudn.com/house%20of%20card.jpg" alt="">  </p>
-<p>all via (Vice) President Francis Underwood </p>
-<p>Compiled by Chentao</p>
-<ol>
-<li><p>The heart can choke the mind when all its blood flows back onto itself.</p>
-</li>
-<li><p>The road to power is paved with hypocrisy and casualties.</p>
-</li>
-<li><p>To improve is to change. To perfect is to change often.</p>
-</li>
-<li><p>It’s hard to say “NO” twice than once.</p>
-</li>
-<li><p>Appeal to the heart, not the brain.</p>
-</li>
-<li><p>Good things happen to good people.</p>
-</li>
-<li><p>If we never did anything we shouldn’t do, we’d never feel good about doing the things we should.</p>
-</li>
-<li><p>If you don’t like how the table is set, turn over the table.</p>
-</li>
-<li><p>Putting the cart way before the horse.</p>
-</li>
-<li><p>One heartbeat away from the president and not a single vote cast in my name. Democracy is so overrated.</p>
-</li>
-<li><p>There are two types of vice presidents, Doormats and Matadors.</p>
-</li>
-<li><p>The higher up the mountain the more treacherous the path.</p>
-</li>
-<li><p>I will be damned if I will make the same mistake twice.</p>
-</li>
-<li><p>That stubbornness is far more costly than obedience.</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2014/02/23/china-future/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/02/23/china-future/" itemprop="url">二月漫谈——中国的前途</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-02-23T00:00:00+08:00">
-                2014-02-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://chentaohome.qiniudn.com/china-future.jpg" alt="">  </p>
-<p>二月快结束了，不写一篇月份儿就断片儿了。</p>
-<p>之前我说过，很多人的“互联网思维”太“互联”了；这种模式并非是放之四海而皆准的一类真理。一连串的投资收购并购案使得现在整个行业的模块轮廓愈发不清晰了，也很难界定到底什么（广义上的）是互联网了。不过，有一点是肯定的，互联网与其他产业一样，离不开创新，也更为依赖创新。</p>
-<p>关于“创新”，我觉得需要力求能透过现象看本质。前几天看了一篇“中国前途论”的东西，我觉得收获很大。西方媒体鼓吹“中国威胁论”很多年了；现在大批的中国企业奔赴华尔街希望能在海外圈到钱，更多的企业希望拜托“内模式”，不再仅限于中国市场这块蛋糕，希望从传统行业尤其是实业中寻求合作发展的机遇，这一方面是发展的必由之路，另一方面则是历史的必然。</p>
-<p>让我们借用一下黄仁宇先生的大历史观，往回看五百年，就会发现历史实际上清楚的告诉了我们很多东西。</p>
-<p>十六十七世纪的世界，是探索的天堂。伊比利亚半岛的人民逐步走向了征服世界的道路，那时的两牙就是世界之巅，船坚炮利，所向披靡，有限的资源与无限的欲望促成了世界变幻的风暴。教皇一声令下，他们就“瓜分”了世界；西班牙王国，称霸一时。那时的西班牙、葡萄牙，人口只有七位数。走入十八世纪，英伦三岛升起“日不落帝国”，工业革命，殖民扩张，直到一战之前都盛极一时。那是的英国，人口大概是千万级别。紧接着就是美利坚登上历史舞台了——前沿科学，航天技术，摆脱制式武器走上强势科技，这就是我们眼睛看见的历史了。多说一句吧，美国的人口是九位数。扯了这么多大国崛起，其实我想要说明的是创新的要素——技术与基数。</p>
-<p>量变引起质变。不管保密的多严，旧技术与好技术总是会很快普及，如果不能源源不断的开发新技术，那么不久，基数就会成为相对决定性的因素。而开发新技术，一方面有“反摩尔定律”几乎可以遇见的指数倍增长的困难瓶颈，另一方面则是对基础劳力愈发严重的依赖。说到这里，你就知道我要表达什么了——未来两百年中国的前途。</p>
-<p>廉价劳动力使得中国很十几年前开始变成世界经济最大的“血汗工厂”，犹记得富士康的“十一连跳”触目惊心。与之相比，北美和欧洲的劳动力，尤其是手工业劳力则是出奇的“奢侈”。出现这种状况，原因很多，但不可否认的一点是，<strong>这个时代的中国人，比以前其他任何一个时代都渴望成功，渴望世界的认可，我觉得这大可不必妄自菲薄，而这必将导致中国的崛起，包括技术上对北美欧洲老毛子的全面超越——中国的前途恐怕也就在于此了</strong>。而顺着大国崛起的路线来看，“统治”各自时代的每一个世界强国，都是前一个强国人口基数的十倍……所以，就算是YY中国未来的强盛，也不是凭空的说法吧（我直接屏蔽了基数上同样符合条件的阿三，我觉得跟中国比还是有相当差距的）。</p>
-<p>从现在再往回看一百年吧，IBM，HP，GE，摩根大通，通用，Microsoft，Intel，Google，Apple，Facebook（我能想到的多数是这种企业）几乎都是美利坚“称霸”着世界级企业的班子，偶尔其他国家走出一个这样的企业也会很快被“包裹围剿”。而未来，这种情况肯定会在中国上演：Lenovo，Tencent，Huawei，都是目前看起来极有可能成长为世界级企业的候选，当然很有更多的企业也具有这样的潜力（说着说着就觉得自己五毛了），所以，世界终究会是我们的（？）</p>
-<p>我的想法应当不算是言过其实的，世界报以中国努力的，必是更大的话语权、更具影响力的国际地位和更广阔的未来。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1602,11 +1526,11 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
-
+          
           </div>
           
 
@@ -1626,7 +1550,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -1644,33 +1567,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1679,18 +1598,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -1720,7 +1678,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1733,7 +1691,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -1750,7 +1708,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -1770,14 +1728,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -1804,29 +1754,26 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -1834,12 +1781,7 @@
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -1853,6 +1795,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -1860,6 +1811,9 @@
   
 
   
+
+  
+
 
   
 

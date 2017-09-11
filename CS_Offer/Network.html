@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -104,7 +99,7 @@
 <meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_3.png">
 <meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_1.png">
 <meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Network_2.jpg">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chen-Tao">
 <meta name="twitter:description" content="TCP/IP 参考模型OSI(Open System Interconnect)，即开放式系统互联。 一般都叫 OSI 参考模型，是 ISO （国际标准化组织）组织在 1985 年研究的网络互联模型。该体系结构标准定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层和应用层），即 ISO 开放系统互连参考模型。在这一框架下进一步详细规定了每一层的功能，以实现开放系统环境中的">
@@ -116,10 +111,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -143,7 +137,17 @@
 
 
 
-  <title> | Chen-Tao</title>
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -158,17 +162,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,8 +214,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -225,11 +235,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -253,11 +273,7 @@
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
+  <header class="post-header">
 
 	<h1 class="post-title" itemprop="name headline"></h1>
 
@@ -265,13 +281,9 @@
 
 </header>
 
-      
-      
-      
-      <div class="post-body">
-        
-        
-          <h2 id="TCP-IP-参考模型"><a href="#TCP-IP-参考模型" class="headerlink" title="TCP/IP 参考模型"></a>TCP/IP 参考模型</h2><p>OSI(Open System Interconnect)，即开放式系统互联。 一般都叫 OSI 参考模型，是 ISO （国际标准化组织）组织在 1985 年研究的网络互联模型。该体系结构标准定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层和应用层），即 ISO 开放系统互连参考模型。在这一框架下进一步详细规定了每一层的功能，以实现开放系统环境中的互连性、互操作性和应用的可移植性。</p>
+    
+    
+      <h2 id="TCP-IP-参考模型"><a href="#TCP-IP-参考模型" class="headerlink" title="TCP/IP 参考模型"></a>TCP/IP 参考模型</h2><p>OSI(Open System Interconnect)，即开放式系统互联。 一般都叫 OSI 参考模型，是 ISO （国际标准化组织）组织在 1985 年研究的网络互联模型。该体系结构标准定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层和应用层），即 ISO 开放系统互连参考模型。在这一框架下进一步详细规定了每一层的功能，以实现开放系统环境中的互连性、互操作性和应用的可移植性。</p>
 <p>根据分而治之的原则， ISO 将整个通信功能划分为七个层次，划分原则是：</p>
 <ul>
 <li>网路中各节点都有相同的层次；</li>
@@ -416,18 +428,10 @@
 </ol>
 <h2 id="ADSL"><a href="#ADSL" class="headerlink" title="ADSL"></a>ADSL</h2><p>ADSL 是非对称数字用户线路（Asymmetric Digital Subscriber Line）的缩写，亦可称作非对称数字用户环路。ADSL技术提供的上行和下行带宽不对称，因此称为非对称数字用户线路，是一种异步传输模式（ATM）。</p>
 
-        
-      </div>
-      
-      
-      
-    </div>
-    
-    
     
   </div>
 
-
+          
           </div>
           
 
@@ -451,23 +455,13 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
@@ -478,33 +472,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -513,18 +503,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -535,22 +564,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-参考模型"><span class="nav-number">1.</span> <span class="nav-text">TCP/IP 参考模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-地址"><span class="nav-number">2.</span> <span class="nav-text">IP 地址</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT-网络地址转换"><span class="nav-number"></span> <span class="nav-text">NAT 网络地址转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络套接字-socket"><span class="nav-number">1.</span> <span class="nav-text">网络套接字 socket</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-协议"><span class="nav-number"></span> <span class="nav-text">TCP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP，UDP区别"><span class="nav-number">0.1.</span> <span class="nav-text">TCP，UDP区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-协议"><span class="nav-number"></span> <span class="nav-text">HTTP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问网页过程"><span class="nav-number">1.</span> <span class="nav-text">访问网页过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ping-过程"><span class="nav-number">2.</span> <span class="nav-text">Ping 过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由器与交换机区别。"><span class="nav-number">3.</span> <span class="nav-text">路由器与交换机区别。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络端口"><span class="nav-number">4.</span> <span class="nav-text">网络端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络延迟"><span class="nav-number">5.</span> <span class="nav-text">网络延迟</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP-报文"><span class="nav-number"></span> <span class="nav-text">IP 报文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路由权"><span class="nav-number">1.</span> <span class="nav-text">路由权</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ARP-地址解析协议"><span class="nav-number"></span> <span class="nav-text">ARP(地址解析协议)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以太网工作模式"><span class="nav-number">1.</span> <span class="nav-text">以太网工作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ADSL"><span class="nav-number">2.</span> <span class="nav-text">ADSL</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -570,7 +583,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -583,7 +596,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -600,7 +613,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -620,14 +633,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -654,29 +659,26 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -684,12 +686,7 @@
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -703,6 +700,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -710,6 +716,9 @@
   
 
   
+
+  
+
 
   
 

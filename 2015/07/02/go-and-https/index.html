@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="go," />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -103,7 +98,7 @@
 <meta property="og:description" content="一、HTTPS简介日常生活中，我们上网用的最多的应用层协议就是HTTP协议了，直至目前全世界的网站中大多数依然只支持HTTP访问。使用Go创建一个HTTP Server十分Easy，十几行代码就能搞定：//gohttps/1-http/server.go    package mainimport (    &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;quot;fmt&amp;quot;    &amp;nbsp;&amp;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chen-tao.github.io/wp-content/uploads/gohttps-chrome-unsecure-connection.png">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go and HTTPS">
 <meta name="twitter:description" content="一、HTTPS简介日常生活中，我们上网用的最多的应用层协议就是HTTP协议了，直至目前全世界的网站中大多数依然只支持HTTP访问。使用Go创建一个HTTP Server十分Easy，十几行代码就能搞定：//gohttps/1-http/server.go    package mainimport (    &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;quot;fmt&amp;quot;    &amp;nbsp;&amp;">
@@ -115,10 +110,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -142,7 +136,11 @@
 
 
 
-  <title>Go and HTTPS | Chen-Tao</title>
+  <title> Go and HTTPS | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -157,17 +155,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,8 +207,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,11 +228,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -260,11 +274,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/02/go-and-https/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -282,7 +292,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go and HTTPS</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Go and HTTPS
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -323,9 +340,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -341,15 +356,21 @@
         New">curl performs SSL certificate verification by default, using a &quot;bundle&quot;<br><br>    &nbsp;of Certificate Authority (CA) public keys (CA certs). If the default<br><br>    &nbsp;bundle file isn&#39;t adequate, you can specify an alternate file<br><br>    &nbsp;using the &#8211;cacert option.<br><br>    If this HTTPS server uses a certificate signed by a CA represented in<br><br>    &nbsp;the bundle, the certificate verification probably failed due to a<br><br>    &nbsp;problem with the certificate (it might be expired, or the name might<br><br>    &nbsp;not match the domain name in the URL).<br><br>    If you&#39;d like to turn off curl&#39;s verification of the certificate, use<br><br>    &nbsp;the -k (or &#8211;insecure) option.</font></font></p><br><p><font face="Courier New"><b>三、非对称加密和数字证书</b></font></p><br><p><font face="Courier New">前面说过，HTTPS的数据传输是加密的。实际使用中，HTTPS利用的是对称与非对称加密算法结合的方式。</font></p><br><p><font face="Courier New">对称加密，就是通信双方使用一个密钥，该密钥既用于数据加密（发送方），也用于数据解密（接收方）。<br><br>    非对称加密，使用两个密钥。发送方使用公钥（公开密钥）对数据进行加密，数据接收方使用私钥对数据进行解密。</font></p><br><p><font face="Courier New">实际操作中，单纯使用对称加密或单纯使用非对称加密都会存在一些问题，比如对称加密的密钥管理复杂；非对称加密的处理性能低、资源占用高等，因 此HTTPS结合了这两种方式。</font></p><br><p><font face="Courier New">HTTPS服务端在连接建立过程（ssl shaking握手协议）中，会将自身的公钥发送给客户端。客户端拿到公钥后，与服务端协商数据传输通道的对称加密密钥-对话密钥，随后的这个协商过程则 是基于非对称加密的（因为这时客户端已经拿到了公钥，而服务端有私钥）。一旦双方协商出对话密钥，则后续的数据通讯就会一直使用基于该对话密 钥的对称加密算法了。</font></p><br><p><font face="Courier New">上述过程有一个问题，那就是双方握手过程中，如何保障HTTPS服务端发送给客户端的公钥信息没有被篡改呢？实际应用中，HTTPS并非直接 传输公钥信息，而是使用携带公钥信息的数字证书来保证公钥的安全性和完整性。</font></p><br><p><font face="Courier New">数字证书，又称互联网上的&quot;身份证&quot;，用于唯一标识一个组织或一个服务器的，这就好比我们日常生活中使用的&quot;居民身份证&quot;，用于唯一标识一个 人。服务端将数字证书传输给客户端，客户端如何校验这个证书的真伪呢？我们知道</font>居民身份证是由国家统一制作和颁发的，个人向户 口所在地公安机关申请，国家颁发的身份证才具有法律 效力，任何地方这个身份证都是有效和可被接纳的。大悦城的会员卡也是一种身份标识，但你若用大悦城的会员卡去买机票，对不起， 不卖。航空公司可不认大悦城的会员卡，只认居民身份证。网站的证书也是同样的道理。一般来说数字证书从受信的权威证书授权机构 (Certification Authority，证书授权机构)买来的（免费的很少）。一般浏览器在出厂时就内置了诸多知名CA（如Verisign、GoDaddy、美国国防部、 CNNIC等）的数字证书校验方法，只要是这些CA机构颁发的证书，浏览器都能校验。对于CA未知的证书，浏览器则会报错（就像上面那个截图一 样）。主流浏览器都有证书管理功能，但鉴于这些功能比较高级，一般用户是不用去关心的。</p><br><p>初步原理先讲到这，我们再回到上面的例子。</p><br><p><b>四、服务端私钥与证书</b></p><br><p>接上面的例子，我们来说说服务端私钥与证书的生成。</p><br><p>go的<font face="Courier New">http.ListenAndServeTLS需要两个特别参数，一个是服务端的私钥 文件路径，另外一个是服务端的数字证书文件路径。在测试环境，我们没有必要花钱去购买什么证书，利用openssl工具，我们可以自己生成相 关私钥和自签发的数字证书。</font></p><br><p><font face="Courier New">openssl genrsa -out server.key 2048 用于生成服务端私钥文件server.key，后面的参数2048单位是bit，是私钥的长度。<br><br>    openssl生成的私钥中包含了公钥的信息，我们可以根据私钥生成公钥：</font></p><br><p><font face="Courier New">$openssl rsa -in server.key -out server.key.public</font></p><br><p><font face="Courier New">我们也可以根据私钥直接生成自签发的数字证书：</font></p><br><p><font face="Courier New">$openssl req -new -x509 -key server.key -out server.crt -days 365</font></p><br><p><font face="Courier New">server.key和server.crt将作为ListenAndServeTLS的两个输入参数。</font></p><br><p><font face="Courier New">我们编写一个Go程序来尝试与这个HTTPS server建立连接并通信。</font></p><br><p><font face="Courier New">//gohttps/4-https/client1.go<br><br>    package main</font></p><br><p><font face="Courier New">import (<br><br>    &nbsp;&nbsp;&nbsp; &quot;fmt&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;io/ioutil&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;net/http&quot;<br><br>    )</font></p><br><p><font face="Courier New">func main() {<br><br>    &nbsp;&nbsp;&nbsp; resp, err := http.Get(<a class="moz-txt-link-rfc2396E" href="https://localhost:8081" target="_blank" rel="external">&quot;https://localhost:8081&quot;</a>)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;error:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; defer resp.Body.Close()<br><br>    &nbsp;&nbsp;&nbsp; body, err := ioutil.ReadAll(resp.Body)<br><br>    &nbsp;&nbsp;&nbsp; fmt.Println(string(body))<br><br>    }</font></p><br><p><font face="Courier New">运行这个client，我们得到如下错误：</font></p><br><p><font face="Courier New">$go run client1.go<br><br>    error: Get <a class="moz-txt-link-freetext" href="https://localhost:8081" target="_blank" rel="external">https://localhost:8081</a>: x509: certificate signed by unknown authority</font></p><br><p><font face="Courier New">此时服务端也给出了错误日志提示：<br><br>    2015/04/30 16:03:31 http: TLS handshake error from 127.0.0.1:62004: remote error: bad certificate</font></p><br><p><font face="Courier New">显然从客户端日志来看，go实现的Client端默认也是要对服务端传过来的数字证书进行校验的，但客户端提示：这个证书是由不知名CA签发 的！</font></p><br><p><font face="Courier New">我们可以修改一下client1.go的代码，让client端略过对证书的校验：</font></p><br><p><font face="Courier New"><font face="Courier New">//gohttps/4-https/client2.go</font><br><br>    package main</font></p><br><p><font face="Courier New">import (<br><br>    &nbsp;&nbsp;&nbsp; &quot;crypto/tls&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;fmt&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;io/ioutil&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;net/http&quot;<br><br>    )</font></p><br><p><font face="Courier New">func main() {<br><br>    &nbsp;&nbsp;&nbsp; tr := &amp;http.Transport{<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>TLSClientConfig:&nbsp;&nbsp;&nbsp; &amp;tls.Config{InsecureSkipVerify: true},</b><br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; client := &amp;http.Client{Transport: tr}<br><br>    &nbsp;&nbsp;&nbsp; resp, err := client.Get(<a class="moz-txt-link-rfc2396E" href="https://localhost:8081" target="_blank" rel="external">&quot;https://localhost:8081&quot;</a>)</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;error:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; defer resp.Body.Close()<br><br>    &nbsp;&nbsp;&nbsp; body, err := ioutil.ReadAll(resp.Body)<br><br>    &nbsp;&nbsp;&nbsp; fmt.Println(string(body))<br><br>    }</font></p><br><p><font face="Courier New">通过设置tls.Config的InsecureSkipVerify为true，client将不再对服务端的证书进行校验。执行后的结果 也证实了这一点：<br><br>    $go run client2.go<br><br>    Hi, This is an example of http service in golang!</font></p><br><p><font face="Courier New"><b>五、对服务端的证书进行校验</b></font></p><br><p><font face="Courier New">多数时候，我们需要对服务端的证书进行校验，而不是像上面client2.go那样忽略这个校验。我大脑中的这个产品需要服务端和客户端双向 校验，我们先来看看如何能让client端实现对Server端证书的校验呢？</font></p><br><p><font face="Courier New">client端校验证书的原理是什么呢？回想前面我们提到的浏览器内置了知名CA的相关信息，用来校验服务端发送过来的数字证书。那么浏览器 存储的到底是CA的什么信息呢？其实是CA自身的数字证书(包含CA自己的公钥)。而且为了保证CA证书的真实性，浏览器是在出厂时就内置了 这些CA证书的，而不是后期通过通信的方式获取的。CA证书就是用来校验由该CA颁发的数字证书的。</font></p><br><p><font face="Courier New">那么如何使用CA证书校验Server证书的呢？这就涉及到数字证书到底是什么了！</font></p><br><p><font face="Courier New">我们可以通过浏览器中的&quot;https/ssl证书管理&quot;来查看证书的内容，一般服务器证书都会包含诸如站点的名称和主机名、公钥、签发机构 (CA)名称和来自签发机构的签名等。我们重点关注这个</font><font face="Courier New"><font face="Courier New">来自签发机构的签名，因为对于证书的校验，就是使用客户端CA证书来验证服务端证书的签名是否这 个CA签的。</font></font></p><br><p><font face="Courier New"><font face="Courier New">通过签名验证我们可以来确认两件事：</font><br><br>    1、服务端传来的数字证书是由某个特定CA签发的（如果是self-signed，也无妨），数字证书中的签名类似于日常生活中的签名，首先 验证这个签名签的是Tony Bai，而不是Tom Bai， Tony Blair等。<br><br>    2、服务端传来的数字证书没有被中途篡改过。这类似于&quot;Tony Bai&quot;有无数种写法，这里验证必须是我自己的那种写法，而不是张三、李四写的&quot;Tony Bai&quot;。</font></p><br><p><font face="Courier New">一旦签名验证通过，我们因为信任这个CA，从而信任这个服务端证书。由此也可以看出，CA机构的最大资本就是其信用度。</font></p><br><p><font face="Courier New">CA在为客户签发数字证书时是这样在证书上签名的：</font></p><br><p><font face="Courier New">数字证书由两部分组成：<br><br>    1、C：证书相关信息（对象名称+过期时间+证书发布者+证书签名算法&#8230;.）<br><br>    2、S：证书的数字签名</font></p><br><p><font face="Courier New">其中的数字签名是通过公式S = F(Digest(C))得到的。</font></p><br><p><font face="Courier New">Digest为摘要函数，也就是 md5、sha-1或sha256等单向散列算法，用于将无限输入值转换为一个有限长度的&ldquo;浓缩&rdquo;输出值。比如我们常用md5值来验证下载的大文件是否完 整。大文件的内容就是一个无限输入。大文件被放在网站上用于下载时，网站会对大文件做一次md5计算，得出一个128bit的值作为大文件的 摘要一同放在网站上。用户在下载文件后，对下载后的文件再进行一次本地的md5计算，用得出的值与网站上的md5值进行比较，如果一致，则大 文件下载完好，否则下载过程大文件内容有损坏或源文件被篡改。</font></p><br><p><font face="Courier New">F为签名函数。CA自己的私钥是唯一标识CA签名的，因此CA用于生成数字证书的签名函数一定要以自己的私钥作为一个输入参数。在RSA加密 系统中，发送端的解密函数就是一个以私钥作 为参数的函数，因此常常被用作签名函数使用。签名算法是与证书一并发送给接收 端的，比如apple的一个服务的证书中关于签名算法的描述是&ldquo;带 RSA 加密的 SHA-256 ( 1.2.840.113549.1.1.11 )&rdquo;。因此CA用私钥解密函数作为F，对C的摘要进行运算得到了客户数字证书的签名，好比大学毕业证上的校长签名，所有毕业证都是校长签发的。</font></p><br><p><font face="Courier New">接收端接收服务端数字证书后，如何验证数字证书上携带的签名是这个CA的签名呢？接收端会运用下面算法对数字证书的签名进行校验：<br><br>    F&#39;(S) ?= Digest(C)</font></p><br><p><font face="Courier New">接收端进行两个计算，并将计算结果进行比对：<br><br>    1、首先通过Digest(C)，接收端计算出证书内容（除签名之外）的摘要。<br><br>    2、数字证书携带的签名是CA通过CA密钥加密摘要后的结果，因此接收端通过一个解密函数F&#39;对S进行&ldquo;解密&rdquo;。RSA系统中，接收端使用 CA公钥对S进行&ldquo;解密&rdquo;，这恰是CA用私钥对S进行&ldquo;加密&rdquo;的逆过程。</font></p><br><p><font face="Courier New">将上述两个运算的结果进行比较，如果一致，说明签名的确属于该CA，该证书有效，否则要么证书不是该CA的，要么就是中途被人篡改了。</font></p><br><p><font face="Courier New">但对于self-signed(自签发)证书来说，接收端并没有你这个self-CA的数字证书，也就是没有CA公钥，也就没有办法对数字证 书的签名进行验证。因此如果要编写一个可以对self-signed证书进行校验的接收端程序的话，首先我们要做的就是建立一个属于自己的 CA，用该CA签发我们的server端证书，并将该CA自身的数字证书随客户端一并发布。</font></p><br><p><font face="Courier New">这让我想起了在《<a href="http://tonybai.com/2015/03/14/selfhost-ngrok-service/" target="_blank" rel="external">搭建自己的ngrok服务</a>》一文中为ngrok服务端、客户端生成证书的那几个步骤，我们来重温并分析一下每一步都在做什么。</font></p><br><p><font face="Courier New">(1)openssl genrsa -out rootCA.key 2048<br><br>    (2)openssl req -x509 -new -nodes -key rootCA.key -subj &quot;/CN=<em>.tunnel.tonybai.com&quot; -days 5000 -out rootCA.pem</em></font></p><br><p><font face="Courier New">(3)openssl genrsa -out device.key 2048<br><br>    (4)openssl req -new -key device.key -subj &quot;/CN=.tunnel.tonybai.com&quot; -out device.csr<br><br>    (5)openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000</font></p><br><p><font face="Courier New">(6)cp rootCA.pem assets/client/tls/ngrokroot.crt<br><br>    (7)cp device.crt assets/server/tls/snakeoil.crt<br><br>    (8)cp device.key assets/server/tls/snakeoil.key</font></p><br><p><font face="Courier New">自己搭建ngrok服务，客户端要验证服务端证书，我们需要自己做CA，因此步骤(1)和步骤(2)就是生成CA自己的相关信息。<br><br>    步骤(1) ，生成CA自己的私钥 rootCA.key<br><br>    步骤(2)，根据CA自己的私钥生成自签发的数字证书，该证书里包含CA自己的公钥。</font></p><br><p><font face="Courier New">步骤(3)~(5)是用来生成ngrok服务端的私钥和数字证书（由自CA签发）。<br><br>    步骤(3)，生成ngrok服务端私钥。<br><br>    步骤(4)，生成Certificate Sign Request，CSR，证书签名请求。<br><br>    步骤(5)，自CA用自己的CA私钥对服务端提交的csr进行签名处理，得到服务端的数字证书device.crt。</font></p><br><p><font face="Courier New">步骤(6)，将自CA的数字证书同客户端一并发布，用于客户端对服务端的数字证书进行校验。<br><br>    步骤(7)和步骤(8)，将服务端的数字证书和私钥同服务端一并发布。</font></p><br><p><font face="Courier New">接下来我们来验证一下客户端对服务端数字证书进行验证（gohttps/5-verify-server-cert）！</font></p><br><p><font face="Courier New">首先我们来建立我们自己的CA，需要生成一个CA私钥和一个CA的数字证书:</font></p><br><p><font face="Courier New">$openssl genrsa -out ca.key 2048<br><br>    Generating RSA private key, 2048 bit long modulus<br><br>    &#8230;&#8230;&#8230;.+++<br><br>    &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;.+++<br><br>    e is 65537 (0&#215;10001)</font></p><br><p><font face="Courier New">$openssl req -x509 -new -nodes -key ca.key -subj &quot;/CN=tonybai.com&quot; -days 5000 -out ca.crt</font></p><br><p><font face="Courier New">接下来，生成server端的私钥，生成数字证书请求，并用我们的ca私钥签发server的数字证书：</font></p><br><p><font face="Courier New">openssl genrsa -out server.key 2048<br><br>    Generating RSA private key, 2048 bit long modulus<br><br>    &#8230;.+++<br><br>    &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;.+++<br><br>    e is 65537 (0&#215;10001)</font></p><br><p><font face="Courier New">$openssl req -new -key server.key -subj &quot;/CN=localhost&quot; -out server.csr</font></p><br><p><font face="Courier New">$openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 5000<br><br>    Signature ok<br><br>    subject=/CN=localhost<br><br>    Getting CA Private Key</font></p><br><p><font face="Courier New">现在我们的工作目录下有如下一些私钥和证书文件：<br><br>    CA:<br><br>    &nbsp;&nbsp;&nbsp; 私钥文件 ca.key<br><br>    &nbsp;&nbsp;&nbsp; 数字证书 ca.crt</font></p><br><p><font face="Courier New">Server:<br><br>    &nbsp;&nbsp;&nbsp; 私钥文件 server.key<br><br>    &nbsp;&nbsp;&nbsp; 数字证书 server.crt</font></p><br><p><font face="Courier New">接下来，我们就来完成我们的程序。</font></p><br><p><font face="Courier New">Server端的程序几乎没有变化：</font></p><br><p><font face="Courier New">// gohttps/5-verify-server-cert/server.go<br><br>    package main</font></p><br><p><font face="Courier New">import (<br><br>    &nbsp;&nbsp;&nbsp; &quot;fmt&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;net/http&quot;<br><br>    )</font></p><br><p><font face="Courier New">func handler(w http.ResponseWriter, r <em>http.Request) {<br><br>    &nbsp;&nbsp;&nbsp; fmt.Fprintf(w,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Hi, This is an example of http service in golang!&quot;)<br><br>    }</em></font></p><br><p><font face="Courier New">func main() {<br><br>    &nbsp;&nbsp;&nbsp; http.HandleFunc(&quot;/&quot;, handler)<br><br>    &nbsp;&nbsp;&nbsp; http.ListenAndServeTLS(&quot;:8081&quot;,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;server.crt&quot;, &quot;server.key&quot;, nil)<br><br>    }</font></p><br><p><font face="Courier New">client端程序变化较大，由于client端需要验证server端的数字证书，因此client端需要预先加载ca.crt，以用于服务端数字证书的校验：</font></p><br><p><font face="Courier New"><font face="Courier New">// gohttps/5-verify-server-cert/client.go</font><br><br>    package main</font></p><br><p><font face="Courier New">import (<br><br>    &nbsp;&nbsp;&nbsp; &quot;crypto/tls&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;crypto/x509&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;fmt&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;io/ioutil&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;net/http&quot;<br><br>    )</font></p><br><p><font face="Courier New">func main() {<br><br>    &nbsp;&nbsp;&nbsp; pool := x509.NewCertPool()<br><br>    &nbsp;&nbsp;&nbsp; caCertPath := &quot;ca.crt&quot;</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; caCrt, err := ioutil.ReadFile(caCertPath)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;ReadFile err:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; pool.AppendCertsFromPEM(caCrt)</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; tr := &amp;http.Transport{<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TLSClientConfig: &amp;tls.Config{RootCAs: pool},<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; client := &amp;http.Client{Transport: tr}<br><br>    &nbsp;&nbsp;&nbsp; resp, err := client.Get(&quot;<a href="https://localhost:8081&amp;quot" target="_blank" rel="external">https://localhost:8081&amp;quot</a>;)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;Get error:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; defer resp.Body.Close()<br><br>    &nbsp;&nbsp;&nbsp; body, err := ioutil.ReadAll(resp.Body)<br><br>    &nbsp;&nbsp;&nbsp; fmt.Println(string(body))<br><br>    }</font></p><br><p><font face="Courier New">运行server和client:</font></p><br><p><font face="Courier New">$go run server.go</font></p><br><p><font face="Courier New">go run client.go<br><br>    Hi, This is an example of http service in golang!</font></p><br><p><font face="Courier New"><font face="Courier New"><b>六、对客户端的证书进行校验(双向证书校验）</b></font></font></p><br><p><font face="Courier New">服务端可以要求对客户端的证书进行校验，以更严格识别客户端的身份，限制客户端的访问。</font></p><br><p><font face="Courier New">要对客户端数字证书进行校验，首先客户端需要先有自己的证书。我们以上面的例子为基础，生成客户端的私钥与证书。</font></p><br><p><font face="Courier New">$openssl genrsa -out client.key 2048<br><br>    Generating RSA private key, 2048 bit long modulus<br><br>    &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..+++<br><br>    &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..+++<br><br>    e is 65537 (0&#215;10001)<br><br>    $openssl req -new -key client.key -subj &quot;/CN=tonybai_cn&quot; -out client.csr<br><br>    $openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt -days 5000<br><br>    Signature ok<br><br>    subject=/CN=tonybai_cn<br><br>    Getting CA Private Key</font></p><br><p><font face="Courier New">接下来我们来改造我们的程序，首先是server端。</font></p><br><p><font face="Courier New">首先server端需要要求校验client端的数字证书，并且加载用于校验数字证书的ca.crt，因此我们需要对server进行更加灵活的控制：</font></p><br><p><font face="Courier New">// gohttps/6-dual-verify-certs/server.go<br><br>    package main</font></p><br><p><font face="Courier New">import (<br><br>    &nbsp;&nbsp;&nbsp; &quot;crypto/tls&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;crypto/x509&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;fmt&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;io/ioutil&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;net/http&quot;<br><br>    )</font></p><br><p><font face="Courier New">type myhandler struct {<br><br>    }</font></p><br><p><font face="Courier New">func (h myhandler) ServeHTTP(w http.ResponseWriter,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r *http.Request) {<br><br>    &nbsp;&nbsp;&nbsp; fmt.Fprintf(w,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Hi, This is an example of http service in golang!\n&quot;)<br><br>    }</font></p><br><p><font face="Courier New">func main() {<br><br>    &nbsp;&nbsp;&nbsp; pool := x509.NewCertPool()<br><br>    &nbsp;&nbsp;&nbsp; caCertPath := &quot;ca.crt&quot;</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; caCrt, err := ioutil.ReadFile(caCertPath)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;ReadFile err:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; pool.AppendCertsFromPEM(caCrt)</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; s := &amp;http.Server{<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Addr:&nbsp;&nbsp;&nbsp; &quot;:8081&quot;,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Handler: &amp;myhandler{},<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TLSConfig: &amp;tls.Config{<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ClientCAs:&nbsp; pool,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ClientAuth: <b>tls.RequireAndVerifyClientCert</b>,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br><br>    &nbsp;&nbsp;&nbsp; }</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; err = s.ListenAndServeTLS(&quot;server.crt&quot;, &quot;server.key&quot;)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;ListenAndServeTLS err:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    }</font></p><br><p><font face="Courier New">可以看出代码通过将tls.Config.ClientAuth赋值为tls.RequireAndVerifyClientCert来实现Server强制校验client端证书。ClientCAs是用来校验客户端证书的ca certificate。</font></p><br><p><font face="Courier New">Client端变化也很大，需要加载client.key和client.crt用于server端连接时的证书校验：</font></p><br><p><font face="Courier New">// </font><font face="Courier New"><font face="Courier New">gohttps/6-dual-verify-certs/client.go</font></font></p><br><p><font face="Courier New">package main<br><br>    import (<br><br>    &nbsp;&nbsp;&nbsp; &quot;crypto/tls&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;crypto/x509&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;fmt&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;io/ioutil&quot;<br><br>    &nbsp;&nbsp;&nbsp; &quot;net/http&quot;<br><br>    )</font></p><br><p><font face="Courier New">func main() {<br><br>    &nbsp;&nbsp;&nbsp; pool := x509.NewCertPool()<br><br>    &nbsp;&nbsp;&nbsp; caCertPath := &quot;ca.crt&quot;</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; caCrt, err := ioutil.ReadFile(caCertPath)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;ReadFile err:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; pool.AppendCertsFromPEM(caCrt)</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; cliCrt, err := tls.LoadX509KeyPair(&quot;client.crt&quot;, &quot;client.key&quot;)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;Loadx509keypair err:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }</font></p><br><p><font face="Courier New">&nbsp;&nbsp;&nbsp; tr := &amp;http.Transport{<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TLSClientConfig: &amp;tls.Config{<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RootCAs:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pool,<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Certificates: []tls.Certificate{cliCrt},<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; client := &amp;http.Client{Transport: tr}<br><br>    &nbsp;&nbsp;&nbsp; resp, err := client.Get(&quot;<a href="https://localhost:8081&amp;quot" target="_blank" rel="external">https://localhost:8081&amp;quot</a>;)<br><br>    &nbsp;&nbsp;&nbsp; if err != nil {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fmt.Println(&quot;Get error:&quot;, err)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    &nbsp;&nbsp;&nbsp; defer resp.Body.Close()<br><br>    &nbsp;&nbsp;&nbsp; body, err := ioutil.ReadAll(resp.Body)<br><br>    &nbsp;&nbsp;&nbsp; fmt.Println(string(body))<br><br>    }</font></p><br><p><font face="Courier New">好了，让我们来试着运行一下这两个程序，结果如下：</font></p><br><p><font face="Courier New">$go run server.go<br><br>    2015/04/30 22:13:33 http: TLS handshake error from 127.0.0.1:53542:<br><br>    tls: client&#39;s certificate&#39;s extended key usage doesn&#39;t permit it to be<br><br>    used for client authentication</font></p><br><p><font face="Courier New">$go run client.go<br><br>    Get error: Get <a href="https://localhost:8081" target="_blank" rel="external">https://localhost:8081</a>: remote error: handshake failure</font></p><br><p><font face="Courier New">失败了！从server端的错误日志来看，似乎是client端的client.crt文件不满足某些条件。</font></p><br><p><font face="Courier New">根据server端的错误日志，搜索了Golang的源码，发现错误出自crypto/tls/handshake<em>server.go。</em></font></p><br><p><font face="Courier New">k := false<br><br>    for , ku := range certs[0].ExtKeyUsage {<br><br>    &nbsp;&nbsp;&nbsp; if ku == x509.ExtKeyUsageClientAuth {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ok = true<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break<br><br>    &nbsp;&nbsp;&nbsp; }<br><br>    }<br><br>    if !ok {<br><br>    &nbsp;&nbsp;&nbsp; c.sendAlert(alertHandshakeFailure)<br><br>    &nbsp;&nbsp;&nbsp; return nil, errors.New(&quot;tls: client&#39;s certificate&#39;s extended key usage doesn&#39;t permit it to be used for client authentication&quot;)<br><br>    }</font></p><br><p><font face="Courier New">大致判断是证书中的ExtKeyUsage信息应该包含clientAuth。翻看openssl的相关资料，了解到自CA签名的数字证书中包含的都是一些basic的信息，根本没有ExtKeyUsage的信息。我们可以用命令来查看一下当前client.crt的内容：</font></p><br><p><font face="Courier New">$ openssl x509 -text -in client.crt -noout<br><br>    Certificate:<br><br>    &nbsp;&nbsp;&nbsp; Data:<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Version: 1 (0&#215;0)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Serial Number:<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d6:e3:f6:fa:ae:65:ed:df<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature Algorithm: sha1WithRSAEncryption<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Issuer: CN=tonybai.com<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Validity<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not Before: Apr 30 14:11:34 2015 GMT<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not After : Jan&nbsp; 6 14:11:34 2029 GMT<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subject: CN=tonybai_cn<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Subject Public Key Info:<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Public Key Algorithm: rsaEncryption<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RSA Public Key: (2048 bit)<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Modulus (2048 bit):<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00:e4:12:22:50:75:ae:b2:8a:9e:56:d5:f3:7d:31:<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7b:aa:75:5d:3f:90:05:4e:ff:ed:9a:0a:2a:75:15:<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8230; &#8230;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exponent: 65537 (0&#215;10001)<br><br>    &nbsp;&nbsp;&nbsp; Signature Algorithm: sha1WithRSAEncryption<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 76:3b:31:3e:9d:b0:66:ad:c0:03:d4:19:c6:f2:1a:52:91:d6:<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13:31:3a:c5:d5:58:ea:42:1d:b7:33:b8:43:a8:a8:28:91:ac:<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#8230; &#8230;</font></p><br><div class="page" title="Page 87"><br><div class="section"><br><div class="layoutArea"><br><div class="column"><br><p><span style="color: rgb(0, 0, 0); font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 21px;"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; line-height: 24px; text-indent: 28px;">而偏偏golang的tls又要校验ExtKeyUsage，如此我们需要重新生成client.crt，并在生成时指定extKeyUsage。经过摸索，可以用如下方法重新生成client.crt：</span></span></p><br><p><span style="color: rgb(0, 0, 0); font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 21px;"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; line-height: 24px; text-indent: 28px;">1、创建文件client.ext<br><br>                    内容：<br><br>                    <font face="Courier New">extendedKeyUsage=clientAuth</font></span></span></p><br><p><span style="color: rgb(0, 0, 0); font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; line-height: 21px;"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; line-height: 24px; text-indent: 28px;">2、重建client.crt</span></span></p><br><p><font face="Courier New">$openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial <b>-extfile client.ext</b> -out client.crt -days 5000<br><br>                    Signature ok<br><br>                    subject=/CN=tonybai_cn<br><br>                    Getting CA Private Key</font></p><br><p>再通过命令查看一下新client.crt：</p><br><p>看到输出的文本中多了这么几行：<br><br>                    <font face="DIN Alternate"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X509v3 extensions:<br><br>                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X509v3 Extended Key Usage:<br><br>                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TLS Web Client Authentication</font></font></p><br><p>这说明client.crt的extended key usage已经添加成功了。我们再来执行一下server和client：</p><br><p><font face="Courier New">$ go run client.go<br><br>                    Hi, This is an example of http service in golang!</font></p><br><p>client端证书验证成功，也就是说双向证书验证均ok了。</p><br><p><b>七、小结</b></p><br><p>通过上面的例子可以看出，使用golang开发https相关程序十分便利，Golang标准库已经实现了TLS 1.2版本协议。上述所有example代码均放在我的github上的<a href="https://github.com/bigwhite/experiments/tree/master/gohttps" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://github.com']);" target="_blank" rel="external">experiments/gohttps</a>中。</p></div></div></div></div>
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -361,7 +382,7 @@
       
 
       
-      
+        
       
 
       
@@ -389,10 +410,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -402,7 +419,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -426,7 +443,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -444,33 +460,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -479,18 +491,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -520,7 +571,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -533,7 +584,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -550,7 +601,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -570,14 +621,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -604,42 +647,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -653,6 +692,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -660,6 +708,9 @@
   
 
   
+
+  
+
 
   
 

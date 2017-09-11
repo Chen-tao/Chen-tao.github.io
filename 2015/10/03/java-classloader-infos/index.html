@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="java," />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -102,7 +97,7 @@
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="为了尽量简单明了容易背，有些部分写得比较干。 0. 参考资料：书：《深入了解Java虚拟机》、《实战Java虚拟机》规范：Java语言规范 第12章源码： OpenJDK 7的Java及C代码( Class.c , Classloader.c，jvm.cpp)   1. Class装载的三个阶段1.1 载入 (Load)从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖">
 <meta name="twitter:description" content="为了尽量简单明了容易背，有些部分写得比较干。 0. 参考资料：书：《深入了解Java虚拟机》、《实战Java虚拟机》规范：Java语言规范 第12章源码： OpenJDK 7的Java及C代码( Class.c , Classloader.c，jvm.cpp)   1. Class装载的三个阶段1.1 载入 (Load)从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行">
@@ -113,10 +108,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,7 +134,11 @@
 
 
 
-  <title>ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖 | Chen-Tao</title>
+  <title> ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -155,17 +153,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/java-classloader-infos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +290,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -343,9 +360,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -401,7 +416,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 <p>AspectJ就是利用传入的ClassLoader，找出其Class Path里的META-INF/aop.xml，然后根据aop.xml里的配置进行代码植入。</p>
 <p>测试显示，加了LoadTime Weaving，类加载的速度明显变慢，如果是100ms就调用超时的服务，需要做类的预加载。</p>
 <h3 id="8-Jar包的预加载"><a href="#8-Jar包的预加载" class="headerlink" title="8. Jar包的预加载"></a>8. Jar包的预加载</h3><p>比如有个有趣的需求是加载某个Class A所在的Jar里的全部的Class （怎么好像一点都不有趣）</p>
-<figure class="highlight plain"><figcaption><span>jarUrl = ClassA.getProtectionDomain().getCodeSource().getLocation();</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">JarFile jarfile = new JarFile(jarUrl.getPath());</div><div class="line"></div><div class="line">Enumeration entries = jarfile.entries();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>jarUrl </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">JarFile jarfile = new JarFile(jarUrl.getPath());</div><div class="line"></div><div class="line">Enumeration entries = jarfile.entries();</div></pre></td></tr></table></figure>
 <p>然后遍历JarEntry，过滤出后缀为.class的文件，按类名进行装载就可以了。</p>
 <h3 id="9-Class的二进制兼容性"><a href="#9-Class的二进制兼容性" class="headerlink" title="9.Class的二进制兼容性"></a>9.Class的二进制兼容性</h3><p>如果Class A 依赖 spring-1.0.jar编译，当spring升级到spring-2.0.jar，Class A不需要修改代码也不需要重新编译，可以直接运行的，spring-2.0.jar就满足二进制兼容性。</p>
 <p>在<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范的第13章</a>有详细的描述 ，不想直接睡着最好可以找个中文版来看，感谢那些翻译的同学。</p>
@@ -412,15 +427,21 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -432,15 +453,15 @@ instrumentation.addTransformer(s_transformer); }</code></p>
       
 
       
-      
+        
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/03/6-mysql-useful-exp/" rel="next" title="6个有用的MySQL语句">
-                <i class="fa fa-chevron-left"></i> 6个有用的MySQL语句
+              <a href="/2015/10/03/nettyjava/" rel="next" title="Netty之Java堆外内存扫盲贴">
+                <i class="fa fa-chevron-left"></i> Netty之Java堆外内存扫盲贴
               </a>
             
           </div>
@@ -449,8 +470,8 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/03/nettydecoder/" rel="prev" title="《Netty权威指南》里没有说到的Decoder编写细节">
-                《Netty权威指南》里没有说到的Decoder编写细节 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/03/netty/" rel="prev" title="Netty之有效规避内存泄漏">
+                Netty之有效规避内存泄漏 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -460,10 +481,6 @@ instrumentation.addTransformer(s_transformer); }</code></p>
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -473,7 +490,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -497,7 +514,6 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -524,33 +540,29 @@ instrumentation.addTransformer(s_transformer); }</code></p>
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -559,18 +571,57 @@ instrumentation.addTransformer(s_transformer); }</code></p>
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -616,7 +667,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -629,7 +680,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -646,7 +697,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
         
       </div>
     
-
+    
   </div>
 
   
@@ -666,14 +717,6 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -700,42 +743,38 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -749,6 +788,15 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -756,6 +804,9 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   
 
   
+
+  
+
 
   
 

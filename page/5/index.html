@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -111,10 +106,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -138,7 +132,11 @@
 
 
 
-  <title>Chen-Tao</title>
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -153,17 +151,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,257 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/surge-confs-index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/02/surge-confs-index/" itemprop="url">
+                  Surge.conf
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-02T00:00:00+08:00">
+                2015-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Surge.confHTTP 配置：https://raw.githubusercontent.com/hzlzh/Surge.conf/master/surge-HTTP-Proxy.conf
+12App 内下载后，手动替换成自己的代理服务即可，如：MyHTTPProxy = http,xxx.x
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/02/surge-confs-index/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/02/postman-expat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/02/postman-expat/" itemprop="url">
+                  Postman expat
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-02T00:00:00+08:00">
+                2015-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          A clash between the British past and Chinese present昔日英治时期的香港 vs. 今日中共治下的香港
+HONG KONG is littered with reminders of its imperial past. Prisons, school
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/02/postman-expat/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/30/git-into/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -281,8 +541,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/10/30/git-into/" itemprop="url">git - 简易指南</a></h1>
+                <a class="post-title-link" href="/2015/10/30/git-into/" itemprop="url">
+                  git - 简易指南
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -323,9 +591,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,79 +600,34 @@
       
         
           
-            <p>助你开始使用 git 的简易指南，木有高深内容，;)。</p>
-<p><strong>作者</strong>：罗杰·杜德勒 </p>
-<p><strong>感谢</strong>：@tfnico, @fhd and Namics</p>
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>创建新文件夹，打开，然后执行 </p>
-<p><code>git init</code></p>
-<p>以创建新的 git 仓库。</p>
-<h3 id="检出仓库"><a href="#检出仓库" class="headerlink" title="检出仓库"></a>检出仓库</h3><p>执行如下命令以创建一个本地仓库的克隆版本：</p>
-<p><code>git clone /path/to/repository</code></p>
-<p>如果是远端服务器上的仓库，你的命令会是这个样子：</p>
-<p><code>git clone username@host:/path/to/repository</code></p>
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 缓存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，指向你最近一次提交后的结果。</p>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><p>你可以计划改动（把它们添加到缓存区），使用如下命令：<br><code>git add &lt;filename&gt;</code></p>
-<p><code>git add *</code></p>
-<p>这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：</p>
-<p><code>git commit -m &quot;代码提交信息&quot;</code></p>
-<p>现在，你的改动已经提交到了 HEAD，但是还没到你的远端仓库。</p>
-<h3 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h3><p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-<p><code>git push origin master</code></p>
-<p>可以把 master 换成你想要推送的任何分支。 </p>
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
-<p><code>git remote add origin &lt;server&gt;</code></p>
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。</p>
-<p>创建一个叫做“feature_x”的分支，并切换过去：</p>
-<p><code>git checkout -b feature_x</code></p>
-<p>切换回主分支：</p>
-<p><code>git checkout master</code></p>
-<p>再把新建的分支删掉：</p>
-<p><code>git branch -d feature_x</code></p>
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
-<p><code>git push origin &lt;branch&gt;</code></p>
-<h3 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h3><p>要更新你的本地仓库至最新改动，执行：</p>
-<p><code>git pull</code></p>
-<p>以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。</p>
-<p>要合并其他分支到你的当前分支（例如 master），执行：</p>
-<p><code>git merge &lt;branch&gt;</code></p>
-<p>两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：</p>
-<p><code>git add &lt;filename&gt;</code></p>
-<p>在合并改动之前，也可以使用如下命令查看：</p>
-<p><code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code></p>
-<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>在软件发布时创建标签，是被推荐的。这是个旧有概念，在 SVN 中也有。可以执行如下命令以创建一个叫做 1.0.0 的标签：</p>
-<p><code>git tag 1.0.0 1b2e1d63ff</code></p>
-<p>1b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符。使用如下命令获取提交 ID：</p>
-<p><code>git log</code></p>
-<p>你也可以用该提交 ID 的少一些的前几位，只要它是唯一的。</p>
-<h3 id="替换本地改动"><a href="#替换本地改动" class="headerlink" title="替换本地改动"></a>替换本地改动</h3><p>假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：</p>
-<p><code>git checkout -- &lt;filename&gt;</code></p>
-<p>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。</p>
-<p>假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：</p>
-<p><code>git fetch origin</code></p>
-<p><code>git reset --hard origin/master</code></p>
-<h3 id="有用的贴士"><a href="#有用的贴士" class="headerlink" title="有用的贴士"></a>有用的贴士</h3><p>内建的图形化 git：</p>
-<p><code>gitk</code></p>
-<p>彩色的 git 输出：</p>
-<p><code>git config color.ui true</code></p>
-<p>显示历史记录时，只显示一行注释信息：</p>
-<p><code>git config format.pretty oneline</code></p>
-<p>交互地添加文件至缓存区：</p>
-<p><code>git add -i</code></p>
-
-          
+          助你开始使用 git 的简易指南，木有高深内容，;)。
+作者：罗杰·杜德勒 
+感谢：@tfnico, @fhd and Namics
+创建新仓库创建新文件夹，打开，然后执行 
+git init
+以创建新的 git 仓库。
+检出仓库执行如下命令以创建一个本地仓库的克隆版本：
+git clone /pa
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/30/git-into/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -420,10 +641,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -436,11 +653,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/29/welcome-to-jekyll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -459,8 +672,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/10/29/welcome-to-jekyll/" itemprop="url">升级jekyll 3.0</a></h1>
+                <a class="post-title-link" href="/2015/10/29/welcome-to-jekyll/" itemprop="url">
+                  升级jekyll 3.0
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -523,9 +744,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -534,28 +753,30 @@
       
         
           
-            <p>看到jekyll 3.0出现了，再看了一眼自己的版本0.3……</p>
-<p>我觉得我确实应该升级一下，不过这种申请总是有阵痛，需要习惯一段时间，默认的标本文如下。</p>
-<hr>
-<p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
-<p>Jekyll also offers powerful support for code snippets:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def print_hi(name)</div><div class="line">  puts &quot;Hi, #&#123;name&#125;&quot;</div><div class="line">end</div><div class="line">print_hi(&apos;Tom&apos;)</div><div class="line">#=&gt; prints &apos;Hi, Tom&apos; to STDOUT.</div></pre></td></tr></table></figure>
-<p>Check out the <a href="http://jekyllrb.com/docs/home" target="_blank" rel="external">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll" target="_blank" rel="external">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/" target="_blank" rel="external">Jekyll Talk</a>.</p>
+          看到jekyll 3.0出现了，再看了一眼自己的版本0.3……
+我觉得我确实应该升级一下，不过这种申请总是有阵痛，需要习惯一段时间，默认的标本文如下。
 
-          
+You’ll find this post in your _posts directory. Go ahead and edit it and 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/29/welcome-to-jekyll/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -569,10 +790,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -585,11 +802,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/29/kafka-design/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -608,8 +821,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/10/29/kafka-design/" itemprop="url">Kafka 设计与原理详解</a></h1>
+                <a class="post-title-link" href="/2015/10/29/kafka-design/" itemprop="url">
+                  Kafka 设计与原理详解
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -650,9 +871,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -661,93 +880,34 @@
       
         
           
-            <h3 id="kafka-应用场景"><a href="#kafka-应用场景" class="headerlink" title="kafka 应用场景"></a>kafka 应用场景</h3><ul>
-<li>日志收集</li>
-<li>消息系统 解耦生产者和消费者、缓存消息。</li>
-<li>用户活动跟踪: 就是我们在做的。</li>
-<li>运营指标：生产各种操作的集中反馈。</li>
-<li>流式处理：比如spark steaming</li>
-</ul>
-<p>kafka的发布对象是topic。每类数据我们可以归为一个topic。向topic发送消息的我们称为生产者、从topic订阅消息的称为consumer。producer 和 consumer 可以同时读写数据。</p>
-<ul>
-<li>topic: 消息主题。</li>
-<li>producer: 生产者到topic的一方。</li>
-<li>consumer: 订阅topic消费消息的一方。</li>
-<li>broker</li>
-</ul>
-<h3 id="kafka-topic-amp-partition"><a href="#kafka-topic-amp-partition" class="headerlink" title="kafka topic &amp; partition"></a>kafka topic &amp; partition</h3><p>kafka 集群会保存所有消息，不管消息有没有被消费；通过设置消息过期时间，可以来定制的删除消息。比如我们设置过期时间为2天。</p>
-<p>一个消息被生产出来，写入到多个partition。消息就是以partition作为存储单位，每个partition可以通过调整以适应它所在的机器，而一个topic对应多个partition，这样整个集群就可以适应各个大小的数据了。第二，也可以提高并发，因为可以以partition 为单位来读写了。</p>
-<h3 id="Kafka-核心组件"><a href="#Kafka-核心组件" class="headerlink" title="Kafka 核心组件"></a>Kafka 核心组件</h3><h4 id="replications-partitions-and-leaders"><a href="#replications-partitions-and-leaders" class="headerlink" title="replications partitions and leaders"></a>replications partitions and leaders</h4><h5 id="怎么实现持久化？"><a href="#怎么实现持久化？" class="headerlink" title="怎么实现持久化？"></a>怎么实现持久化？</h5><p>kafka能够做数据持久化。可以为每个topic设置副本容量。 如果副本容量设为3，那么一份数据就会被放在3台不同的机器上。一般设为2.</p>
-<h5 id="关于partition。"><a href="#关于partition。" class="headerlink" title="关于partition。"></a>关于partition。</h5><p>topic的存放形式是partition。每一个topic都可以设置partition数量。partition的数量决定了log的数量。producer 在生产消息时，会把消息发布到topic的各个partition中。上面说的副本都是以partition为单位的，不过只有一个partition的副本会被选为leader作为读写用。</p>
-<p>kafka从0.8开始提供partition级别的replication，replication的数量可在$KAFKA_HOME/config/server.properties中配置。</p>
-<p><code>default.replication.factor = 1</code></p>
-<h5 id="如何设置partition值要考虑的因素？"><a href="#如何设置partition值要考虑的因素？" class="headerlink" title="如何设置partition值要考虑的因素？"></a>如何设置partition值要考虑的因素？</h5><p>一个partition只能被一个消费者消费(但是一个消费者可以同时消费多个partition。)，所以，运行的partition的数量要大于运行的comsumer的数量，否则就会有消费者消费不到数据。另一方面，建议partition的数量大于broker 的数量。这样leader partition 的数据就能均匀的分布在各个broker中，最终使得集群负载均衡。</p>
-<p>(如果小于会怎样样，会造成比较集中的存储在单个broker之中吗。)。注意：kafka需要为每个partition分配一些内存来缓存消息数据，如果parttion数量越大，分配更大的heap space。</p>
-<p>partition每一个都会保存作为一个repilca么？ 不是的。partition的概念是根据partition 方法来将数据分布存储。</p>
-<h4 id="producers"><a href="#producers" class="headerlink" title="producers"></a>producers</h4><p>producer发送消息。</p>
-<p>producer 可以直接发送到broker对应的leader partition中，不需要经历任何一个中介的转发。为实现这个特性，每个broker都可以响应producer的请求，并返回topic的一些元信息，这些元信息包括哪些机器是存活的，topic的你leader partition都在哪。现阶段哪些leader partition 是可以直接访问的？</p>
-<p>如果访问的不是leader partition 怎么搞？ 而且我看是可以指定多个进行访问的。</p>
-<h4 id="producer-和-partition"><a href="#producer-和-partition" class="headerlink" title="producer 和 partition"></a>producer 和 partition</h4><p>producer 可以控制以什么样的将消息推送到客户端。实现方法包括随机，实现一类随机负载均衡的算法，或者指定一些分区算法。kafka 提供了用户自定义分区的方法，用户可以为每一个消息指定一个partitionkey，通过这个key来实现一些hash 分区算法。</p>
-<h4 id="效率。"><a href="#效率。" class="headerlink" title="效率。"></a>效率。</h4><p>batch的方式将有效的提高效率，减少网络和磁盘io的占用。这里batch的大小，可以再producer来设置，比如焕春100s，缓存1000条，或者数据的大小。</p>
-<h4 id="关于消息的完整性。"><a href="#关于消息的完整性。" class="headerlink" title="关于消息的完整性。"></a>关于消息的完整性。</h4><p>producer 可以异步的并行的向kafka发送消息，但是通常你producer在发送完消息之后会得到一个future的响应，返回的是offset或者发送过程遇到的错误。这里，acks 这参数很重要，这个参数决定了producer要求leader partition收到的确认副本数。如果acks设置数量为0，表示producer不会等待broker的响应，所以，producer无法知道消息是否发送成功，这有可能会导致数据丢失，但这也是吞吐量最大的方式。</p>
-<p>如果acks设置为1，表示producer 和laeder partition收到消息的时得到的broker的一个确认，这样会有更好的可靠性。如果设置为-1，则组要等待所有partition收到消息。这样能保持最高的可靠性。</p>
-<h4 id="kafka-消息。"><a href="#kafka-消息。" class="headerlink" title="kafka 消息。"></a>kafka 消息。</h4><p>kafka消息有一个定长的header和变长的字节组成。kafka没有限定单个消息的大小，但一般不超过一mb，通常控制在1-10kb之间。</p>
-<h4 id="Consumers"><a href="#Consumers" class="headerlink" title="Consumers"></a>Consumers</h4><p>kafka 提供了两套api。sample api 。是一套无状态的api。每次请求都需要指定offset。所以也是最灵活的。</p>
-<p>在kafka中，当前消息的offset是由consumer来维护的。consumer可以自己决定读哪些数据。比如，consumer 可以重新消费已经消费国的数据。这些数据有一个过期限制。这个限制是可配置的。</p>
-<p>high-level api 封装了对集群的访问。可以透明的消费一个topic。自己本身维持了一个消费队列，每次消费下一个。</p>
-<p>这里consumer 用组来模拟了广播和订阅两个功能。组是嫁接topic和consumer 的桥梁。 组对topic是来说是组内的成员都可以接受到消息，相当于广播，组对成员来说，是订阅，即你在这个组里才能接受到这个消息。所以都在一个组，就相当于一个大广播。</p>
-<h3 id="kafka-的核心特性"><a href="#kafka-的核心特性" class="headerlink" title="kafka 的核心特性"></a>kafka 的核心特性</h3><h4 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h4><p>kafka 支持以batch的方式来发送消息。在此之上，还支持对消息的压缩。 producer端进行压缩之后，在consumer端进行解压。这么做的好处是，往往大数据的瓶颈在于网络，而不是cpu(所以会损耗一定的cpu。)<br>消息压缩的信息，存储在消息头部的描述压缩属性字节。这个字节的后两位表示消息的压缩采用的编码，若后两位为0，则表示消息未被压缩。</p>
-<h4 id="消息可靠性"><a href="#消息可靠性" class="headerlink" title="消息可靠性"></a>消息可靠性</h4><p>在消息系统中，保证消息的可靠性是很重要的。在实际消息的传递过程中，会出现如下3种情况：</p>
-<ul>
-<li>一个消息传递失败</li>
-<li>一个消息被发送多次</li>
-<li>exactly once，一个消息发送成功并且仅发送了一次。</li>
-</ul>
-<p>有许多系统声称它们实现了exactly-once，但一般没有考虑生产者或消费者在生产和消费过程中有可能失败的情况。比如虽然一个producer成功发送一个消息，但消息丢失，或者成功发送到broker，也被consumer成功取走，但是这个consumer在处理消息时失败了。</p>
-<p>这里从两个角度来分析这个。</p>
-<p>从producer的角度：在发送端，看producer会等待broker成功接收到消息的反馈，如果没有接到broker的反馈信息，producer 会重新发送，(我们知道kafka有备份机制，可以通过参数设置是否等待所有节点都收到消息，而本身的消息也有缓存)</p>
-<p>从consumer的角度：因为consumer 可以调整offset，所以可以重复消费消息。也保证了，一条消息被发送一次就ok。</p>
-<h4 id="备份机制"><a href="#备份机制" class="headerlink" title="备份机制"></a>备份机制</h4><p>备份机制是Kafka0.8版本的新特性，备份机制的出现大大提高了Kafka集群的可靠性、稳定性。有了备份机制后，Kafka允许集群中的节点挂掉后而不影响整个集群工作。一个备份数量为n的集群允许n-1个节点失败。在所有备份节点中，有一个节点作为lead节点，这个节点保存了其它备份节点列表，并维持各个备份间的状体同步。</p>
-<h3 id="kafka-高效性相关设计"><a href="#kafka-高效性相关设计" class="headerlink" title="kafka 高效性相关设计"></a>kafka 高效性相关设计</h3><h4 id="消息持久化"><a href="#消息持久化" class="headerlink" title="消息持久化"></a>消息持久化</h4><p>首先这里，kafka是高度依赖文件系统和缓存的。</p>
-<p>文件系统的速度。文件系统的速度并不是想象中的慢或者快。对于，顺序写入和随机写入两者有很大速度差。一个7200的硬盘顺序写入有600m/s的速度，随机写入有100k/s的速度。</p>
-<p>缓存思路。所以，基本的数据写入思路是，先拿内存缓存数据再刷新到磁盘。但是，众所周知，内存的垃圾回收的代价很大，尤其当数据量过大的时候，垃圾回收会非常昂贵。</p>
-<p>感觉这块理解的不是很好<br>基于以上，得到的一个结论就是利用文件系统并且依靠页缓存比维护一个内存缓存或者其他结构要好。而事实上，数据被传输到内核页，稍后会被刷新。这里加上了一个配置项来控制让系统的用户来控制数据在什么时候被刷新到物理硬盘上。</p>
-<h4 id="常数时间性能保证"><a href="#常数时间性能保证" class="headerlink" title="常数时间性能保证"></a>常数时间性能保证</h4><p>没太理解<br>消息系统中持久化数据结构的设计通常是维护者一个和消费队列有关的B树或者其它能够随机存取结构的元数据信息。B树是一个很好的结构，可以用在事务型与非事务型的语义中。但是它需要一个很高的花费，尽管B树的操作需要O(logN)。通常情况下，这被认为与常数时间等价，但这对磁盘操作来说是不对的。磁盘寻道一次需要10ms，并且一次只能寻一个，因此并行化是受限的。 直觉上来讲，一个持久化的队列可以构建在对一个文件的读和追加上，就像一般情况下的日志解决方案。尽管和B树相比，这种结构不能支持丰富的语义，但是它有一个优点，所有的操作都是常数时间，并且读写之间不会相互阻塞。这种设计具有极大的性能优势：最终系统性能和数据大小完全无关，服务器可以充分利用廉价的硬盘来提供高效的消息服务。<br>事实上还有一点，磁盘空间的无限增大而不影响性能这点，意味着我们可以提供一般消息系统无法提供的特性。比如说，消息被消费后不是立马被删除，我们可以将这些消息保留一段相对比较长的时间（比如一个星期）。</p>
-<h4 id="进一步提高效率"><a href="#进一步提高效率" class="headerlink" title="进一步提高效率"></a>进一步提高效率</h4><p>在web开发中，每次一条log都会产生一次写操作，这些小的写操作的量非常大，另外这些log也要至少被一个或以上consumer消费。<br>所以，这里出现了两个比较低效的场景。</p>
-<ul>
-<li>太多小的io操作。</li>
-<li>过多的字节拷贝。<br>太多小的io操作。可以通过发送messageset来搞定。所以对消息的处理，这里没有分开的序列化和反序列化的上步骤，消息的字段可以按需反序列化（如果没有需要，可以不用反序列化）。</li>
-</ul>
-<p>过多的字节拷贝。 为了解决这个问题，kafka设计了一个标准字节消息。producer，broker，consumer共享这一种消息格式。kafka的message log 在broker端就是一些目录文件。这些文件都是按照message set 来存的。</p>
-<p>而这种通用的方式，非常重要： 持久化log块的网络传输。这传输通过一钟非常搞笑的途径来实现页面缓存和socket之间的数据传递。 叫sendfile</p>
-<p>这里解释下sendfile的作用，先声明下一般的数据从文件到socket的路径:</p>
-<ol>
-<li>操作系统将数据从磁盘读到内核空间的页缓存中。</li>
-<li>应用将数据从内核空间读到用户空间的页缓存中。</li>
-<li>应用将数据从用户空间写到内核空间的socket缓存。</li>
-<li>操作系统将数据从socket缓存写入到网卡缓存中。</li>
-</ol>
-<p>这钟方式非常低效，因为这里有四次拷贝，两次系统调用。如果使用sendfile，就可以避免两次拷贝：操作系统将数据直接从页缓存发送到网络上。所以这个过程，只有第一步和最后一步是需要的。利用上述zero copy，数据只需要拷贝到页缓存一次，就可以重复被consumer利用。这样通过页缓存和sendfile的结合，下游有很多consumers，也不会对整个集群服务造成压力。</p>
-<h3 id="kafka-集群部署"><a href="#kafka-集群部署" class="headerlink" title="kafka 集群部署"></a>kafka 集群部署</h3><p>为了提高性能，尽量与hadoop的集群分开部署。如果共享节点的话，会影响其使用页面缓存的性能。</p>
-<p>kafka的性能主要在磁盘上。</p>
-<p>kafka依赖于zookper，一般使用专用服务器来管理。zookeeper集群的节点采用偶数个。注意，zookeeper集群越大其读写性能越慢，因为zookeeper 要在节点之间同步数据。一个3节点的zookeeper集群允许一个节点失败，一个5节点的集群允许2个节点失败。</p>
-<h4 id="集群大小"><a href="#集群大小" class="headerlink" title="集群大小"></a>集群大小</h4><p>衡量kafka集群所需的大小，最好是用模拟负载来测算一下。如果不想用模拟实验，最好的方法是根据磁盘。</p>
-<h3 id="kafka-主要配置"><a href="#kafka-主要配置" class="headerlink" title="kafka 主要配置"></a>kafka 主要配置</h3><h4 id="broker-config"><a href="#broker-config" class="headerlink" title="broker config"></a>broker config</h4><p>log.dirs /tmp/kafka-logs Kafka数据存放的目录。可以指定多个目录，中间用逗号分隔，当新partition被创建的时会被存放到当前存放partition最少的目录。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.csdn.net/suifeng3051/article/details/48053965" target="_blank" rel="external">http://blog.csdn.net/suifeng3051/article/details/48053965</a></p>
+          kafka 应用场景
+日志收集
+消息系统 解耦生产者和消费者、缓存消息。
+用户活动跟踪: 就是我们在做的。
+运营指标：生产各种操作的集中反馈。
+流式处理：比如spark steaming
 
-          
+kafka的发布对象是topic。每类数据我们可以归为一个topic。向topic发送消息的我们称为生产者、从
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/29/kafka-design/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -761,10 +921,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -777,11 +933,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/10/mac-install-notebook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -800,8 +952,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/10/10/mac-install-notebook/" itemprop="url">Mac 安装 ipyhton Notebook 全记录</a></h1>
+                <a class="post-title-link" href="/2015/10/10/mac-install-notebook/" itemprop="url">
+                  Mac 安装 ipyhton Notebook 全记录
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -842,9 +1002,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -853,57 +1011,29 @@
       
         
           
-            <p><em>ipython是Python的集成工具，而ipython Notebook则是通过ipython学习Python的利器，今天尝试安装它，结果出现了很多安装期间的问题，这里记录一下。</em></p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>首先到github上clone下notebook的代码到本地</p>
-<p><code>git clone https://github.com/ipython-books/cookbook-code.git</code></p>
-<h3 id="第一次尝试"><a href="#第一次尝试" class="headerlink" title="第一次尝试"></a>第一次尝试</h3><p>满怀欣喜的准备启动notebook</p>
-<p><code>ipython notebook</code>[*]</p>
-<p>结果报错了 :anger: 其实还是可以理解的，毕竟第一次就成功的人不多。我看了一下错误，应该是少了一些Python的模块，依次逐个安装</p>
-<p><code>sudo pip install xxx</code></p>
-<p>必要的时候，需要在intsall后面加上–upgrade的参数来强制升级一下</p>
-<h3 id="第二组尝试"><a href="#第二组尝试" class="headerlink" title="第二组尝试"></a>第二组尝试</h3><p>确实是第二组尝试，因为，在这次解决之前，已经运行了多次[*]命令来检查是否还有遗漏的模块了。</p>
-<p>这时候启动成功了！</p>
-<p>满怀欣喜的进入notebook本地服务的界面 <a href="http://localhost:8888/" target="_blank" rel="external">http://localhost:8888/</a></p>
-<p>然而，这次依然波折，点击相应的py文件，发现无法加载，页面白茫茫一片 :cry:</p>
-<p>查了半天，发现，是因为OS X 10.11的问题</p>
-<p>~~ 科普环节开始！~~</p>
-<p><strong>Apple 从10.9 开始导入kext需要签名认证后，在10.10全面启用此功能，每项置入/System/Library/Extersions/中的kext必需要经过签名认证系统才会启用此功能，然而在10.11时另外追加了System Integrity Protection (SIP)功能来保护系统档案及kext驱动避免被修改，即使是root权限也无法更改已经被系统设定的项目。</strong></p>
-<p><img src="https://cloud.githubusercontent.com/assets/1845119/10410843/4b443694-6f81-11e5-9902-7c2a20ca1ca7.png" alt="image"></p>
-<p>可以在<code>cat /System/Library/Sandbox/rootless.conf</code>文件中查看被OS X强制锁定的文件目录，不幸的是，我们的ipython目录正在其中 :broken_heart:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">➜  cookbook-code git:(master) ✗ cat /System/Library/Sandbox/rootless.conf</div><div class="line">				/Applications/App Store.app</div><div class="line">				/Applications/Automator.app</div><div class="line">				/Applications/Calculator.app</div><div class="line">				/Applications/Calendar.app</div><div class="line">				/Applications/Chess.app</div><div class="line">				/Applications/Contacts.app</div><div class="line">				/Applications/Dashboard.app</div><div class="line">				/Applications/Dictionary.app</div><div class="line">				/Applications/DVD Player.app</div><div class="line">				/Applications/FaceTime.app</div><div class="line">				/Applications/Font Book.app</div><div class="line">				/Applications/Game Center.app</div><div class="line">				/Applications/Image Capture.app</div><div class="line">				/Applications/Launchpad.app</div><div class="line">				/Applications/Mail.app</div><div class="line">				/Applications/Maps.app</div><div class="line">				/Applications/Messages.app</div><div class="line">				/Applications/Mission Control.app</div><div class="line">				/Applications/Notes.app</div><div class="line">				/Applications/Photo Booth.app</div><div class="line">				/Applications/Photos.app</div><div class="line">				/Applications/Preview.app</div><div class="line">				/Applications/QuickTime Player.app</div><div class="line">				/Applications/Reminders.app</div><div class="line">				/Applications/Safari.app</div><div class="line">				/Applications/Stickies.app</div><div class="line">				/Applications/System Preferences.app</div><div class="line">				/Applications/TextEdit.app</div><div class="line">				/Applications/Time Machine.app</div><div class="line">				/Applications/Utilities/Activity Monitor.app</div><div class="line">				/Applications/Utilities/AirPort Utility.app</div><div class="line">				/Applications/Utilities/Audio MIDI Setup.app</div><div class="line">				/Applications/Utilities/Bluetooth File Exchange.app</div><div class="line">				/Applications/Utilities/Boot Camp Assistant.app</div><div class="line">				/Applications/Utilities/ColorSync Utility.app</div><div class="line">				/Applications/Utilities/Console.app</div><div class="line">				/Applications/Utilities/Digital Color Meter.app</div><div class="line">				/Applications/Utilities/Disk Utility.app</div><div class="line">				/Applications/Utilities/Feedback Assistant.app</div><div class="line">				/Applications/Utilities/Grab.app</div><div class="line">				/Applications/Utilities/Grapher.app</div><div class="line">				/Applications/Utilities/Keychain Access.app</div><div class="line">				/Applications/Utilities/Migration Assistant.app</div><div class="line">				/Applications/Utilities/Script Editor.app</div><div class="line">				/Applications/Utilities/System Information.app</div><div class="line">				/Applications/Utilities/Terminal.app</div><div class="line">				/Applications/Utilities/VoiceOver Utility.app</div><div class="line">				/Library/Preferences/SystemConfiguration/com.apple.Boot.plist</div><div class="line">				/System</div><div class="line">*				/System/Library/Caches</div><div class="line">booter				/System/Library/CoreServices</div><div class="line">*				/System/Library/CoreServices/Photo Library Migration Utility.app</div><div class="line">				/System/Library/CoreServices/RawCamera.bundle</div><div class="line">*				/System/Library/Extensions</div><div class="line">				/System/Library/Extensions/*</div><div class="line">UpdateSettings			/System/Library/LaunchDaemons/com.apple.UpdateSettings.plist</div><div class="line">*				/System/Library/Speech</div><div class="line">*				/System/Library/User Template</div><div class="line">				/bin</div><div class="line">dyld				/private/var/db/dyld</div><div class="line">				/sbin</div><div class="line">				/usr</div><div class="line">*				/usr/libexec/cups</div><div class="line">*				/usr/local</div><div class="line">*				/usr/share/man</div><div class="line"># symlinks</div><div class="line">				/etc</div><div class="line">				/tmp</div><div class="line">				/var</div></pre></td></tr></table></figure>
-<p>由于启动SIP功能，rootless.conf在未关闭时是无法进行修改的。</p>
-<p>而顾名思义，rootless的意思就是，即使你是root用户，也不能轻易动我！ :weary:</p>
-<p>这时候，我们请出大名鼎鼎的<code>csrutil</code>工具</p>
-<p><img src="https://cloud.githubusercontent.com/assets/1845119/10410860/1e13a3ca-6f82-11e5-92a2-696970763bbe.png" alt="image"></p>
-<p>我们运行下<code>csrutil status</code>发现，SIP默认都是开启的，好吧，我们关闭丫</p>
-<p><code>csrutil disable</code></p>
-<p>杯具在这时候发生了，系统提示，只能在恢复模式下运行= =，果然应该仔细看usage的（如上图）</p>
-<p>这时候继续进入恢复模式，重启电脑，按下<code>Alt+R</code>进入恢复模式，进入terminal运行上面的命令，终于搞定！</p>
-<h3 id="第三组尝试"><a href="#第三组尝试" class="headerlink" title="第三组尝试"></a>第三组尝试</h3><p>这时候我们重启电脑，再运行<code>csrutil status</code>，果然SIP已经被关闭成功了~ :grin:</p>
-<p><img src="https://cloud.githubusercontent.com/assets/1845119/10410863/44432c8c-6f82-11e5-9155-34ed33ad2a0f.png" alt="image"></p>
-<p>这时候再次进入notebook，我去……还是有问题 :disappointed:</p>
-<p>依然提示一些奇奇怪怪的信息（恕我没有保存下来），这时候解决办法是，重新安装ipyhton &amp; jupyter </p>
-<p>又经过一番激烈的依赖模块添加之后，我们又开始启动了</p>
-<h3 id="第四组尝试"><a href="#第四组尝试" class="headerlink" title="第四组尝试"></a>第四组尝试</h3><p>此时运行，终成正果！</p>
-<p><img src="https://cloud.githubusercontent.com/assets/1845119/10410894/31d7313c-6f83-11e5-9ede-7dbcb9cc4b0d.png" alt="image"></p>
-<p>上一张运行中的大图，以飨观众</p>
-<p><img src="https://cloud.githubusercontent.com/assets/1845119/10410903/adc6b39e-6f83-11e5-9161-7b45b922b0fb.png" alt="image"></p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>这次安装notebook，遇到的问题确实非常多，本来一味Mac机本身会自带很多东西，结果还是因为各种包的确实和版本的不匹配出现了很多异常，好在最终都解决了，希望这个过程对大家都借鉴的意义。</p>
-<p>另外，关于更多的ipyhton和notebook的信息，大家可以到<a href="http://nbviewer.ipython.org/" target="_blank" rel="external">http://nbviewer.ipython.org/</a>去查询，把神器用起来~</p>
-
-          
+          ipython是Python的集成工具，而ipython Notebook则是通过ipython学习Python的利器，今天尝试安装它，结果出现了很多安装期间的问题，这里记录一下。
+配置首先到github上clone下notebook的代码到本地
+git clone https://github.c
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/10/mac-install-notebook/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -917,10 +1047,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -933,153 +1059,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettyreference-counted-objects/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/03/nettyreference-counted-objects/" itemprop="url">【Netty官方文档翻译】引用计数对象（reference counted objects）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
-                2015-10-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <div id="blog_content" class="blog_content"><br>    <div style="font-size: 14px;" class="iteye-blog-content-contain"><br><p><strong>原文出处：<a href="http://netty.io/wiki/reference-counted-objects.html" target="_blank" rel="external">http://netty.io/wiki/reference-counted-objects.html</a></strong></p><br><p><strong>原文地址可能有变，且内容可能发生变化。</strong></p><br><p><strong>如果转载请注明出处，谢谢合作^_^。</strong></p><br><p> </p><br><p>自从Netty 4开始，对象的生命周期由它们的引用计数（reference counts）管理，而不是由垃圾收集器（garbage collector）管理了。ByteBuf是最值得注意的，它使用了引用计数来改进分配内存和释放内存的性能。</p><br><p> </p><br><p><strong>基本的引用计数</strong></p><br><p> </p><br><p>每个对象的初始计数为1：</p><br><p> </p><br><pre name="code" class="java">ByteBuf buf = ctx.alloc().directBuffer();<br>assert buf.refCnt() == 1;</pre><br><p> </p><br><p> </p><br><p>当你释放（release）引用计数对象时，它的引用计数减1.如果引用计数为0，这个引用计数对象会被释放（deallocate），并返回对象池。</p><br><p> </p><br><pre name="code" class="java">assert buf.refCnt() == 1;<br>// release() returns true only if the reference count becomes 0.<br>boolean destroyed = buf.release();<br>assert destroyed;<br>assert buf.refCnt() == 0;</pre><br><p> </p><br><p> </p><br><p><strong> 悬垂（dangling）引用</strong></p><br><p> </p><br><p>尝试访问引用计数为0的引用计数对象会抛出IllegalReferenceCountException异常：</p><br><p> </p><br><pre name="code" class="java">assert buf.refCnt() == 0;<br>try {<br>  buf.writeLong(0xdeadbeef);<br>  throw new Error(“should not reach here”);<br>} catch (IllegalReferenceCountExeception e) {<br>  // Expected<br>}</pre><br><p> </p><br><p> </p><br><p><strong>增加引用计数</strong></p><br><p> </p><br><p>可通过retain()操作来增加引用计数，前提是此引用计数对象未被销毁：</p><br><p>（译者注：跟未使用ARC的objective-c好像）</p><br><p> </p><br><pre name="code" class="java">ByteBuf buf = ctx.alloc().directBuffer();<br>assert buf.refCnt() == 1;<br><br>buf.retain();<br>assert buf.refCnt() == 2;<br><br>boolean destroyed = buf.release();<br>assert !destroyed;<br>assert buf.refCnt() == 1;</pre><br><p> </p><br><p><strong>谁来销毁（destroy）</strong></p><br><p> </p><br><p>通常的经验法则是谁最后访问（access）了引用计数对象，谁就负责销毁（destruction）它。具体来说是以下两点：</p><br><ul><br><li>如果组件（component）A把一个引用计数对象传给另一个组件B，那么组件A通常不需要销毁对象，而是把决定权交给组件B。</li><br><li>如果一个组件不再访问一个引用计数对象了，那么这个组件负责销毁它。</li><br></ul><br><p> </p><br><p>下面是一个简单的例子：</p><br><p> </p><br><pre name="code" class="java">public ByteBuf a(ByteBuf input) {<br>    input.writeByte(42);<br>    return input;<br>}<br><br>public ByteBuf b(ByteBuf input) {<br>    try {<br>        output = input.alloc().directBuffer(input.readableBytes() + 1);<br>        output.writeBytes(input);<br>        output.writeByte(42);<br>        return output;<br>    } finally {<br>        input.release();<br>    }<br>}<br><br>public void c(ByteBuf input) {<br>    System.out.println(input);<br>    input.release();<br>}<br><br>public void main() {<br>    …<br>    ByteBuf buf = …;<br>    // This will print buf to System.out and destroy it.<br>    c(b(a(buf)));<br>    assert buf.refCnt() == 0;<br>}</pre><br><p> </p><br><p> </p><br><p>行为（Action）                          谁来释放（Who should release）?   谁释放了（Who released）?</p><br><p>1. main()创建了buf                    buf→main()</p><br><p>2. buf由main()传给了a()            buf→a()</p><br><p>3. a()仅仅返回了buf                   buf→main()</p><br><p>4. buf由main()传给了b()            buf→b()</p><br><p>5. b()返回了buf的拷贝               buf→b(), copy→main()                       b()释放了buf</p><br><p>6. 拷贝由main()传给了c()          copy→c()</p><br><p>7. c()消耗（swallow）了拷贝     copy→c()                                           c()释放了拷贝 </p><br><p> </p><br><p><strong>子缓冲（Derived buffers）</strong></p><br><p> </p><br><p>ByteBuf.duplicate(), ByteBuf.slice()和ByteBuf.order(ByteOrder)创建了子缓冲，这些缓存共享了它们的父缓冲（parent buffer）的一部分内存。子缓冲没有自己的引用计数，而是共享父缓冲的引用计数。</p><br><pre name="code" class="java">ByteBuf parent = ctx.alloc().directBuffer();<br>ByteBuf derived = parent.duplicate();<br><br>// Creating a derived buffer does not increase the reference count.<br>assert parent.refCnt() == 1;<br>assert derived.refCnt() == 1;</pre><br><p> </p><br><p>注意父缓冲和它的子缓冲共享同样的引用计数，当创建子缓冲时并不会增加对象的引用计数。因此，如果你要传递（pass）一个子缓冲给你的程序中的其他组件的话，你得先调用retain()。</p><br><p> </p><br><pre name="code" class="java">ByteBuf parent = ctx.alloc().directBuffer(512);<br>parent.writeBytes(…);<br><br>try {<br>    while (parent.isReadable(16)) {<br>        ByteBuf derived = parent.readSlice(16);<br>        derived.retain();<br>        process(derived);<br>    }<br>} finally {<br>    parent.release();<br>}<br>…<br><br>public void process(ByteBuf buf) {<br>    …<br>    buf.release();<br>}</pre><br><p> </p><br><p><strong>ByteBufHolder接口</strong></p><br><p> </p><br><p>有时候，一个ByteBuf被一个buffer holder持有，诸如DatagramPacket, HttpContent,和WebSocketframe。它们都扩展了一个公共接口，ByteBufHolder。</p><br><p> </p><br><p>一个buffer holder共享它所持有的引用计数，如同子缓冲一样。</p><br><p> </p><br><p><strong>ChannelHandler中的引用计数</strong></p><br><p> </p><br><p><strong>Inbound消息（messages）</strong></p><br><p> </p><br><p>当一个事件循环（event loop）读入了数据，用读入的数据创建了ByteBuf，并用这个ByteBuf触发了一个channelRead()事件时，那么管道（pipeline）中相应的ChannelHandler就负责释放这个buffer。因此，处理接收到的数据的handler应该在它的channelRead()中调用buffer的release()。</p><br><pre name="code" class="java">public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    ByteBuf buf = (ByteBuf) msg;<br>    try {<br>        …<br>    } finally {<br>        buf.release();<br>    }<br>}</pre><br><p> </p><br><p>如同在本文档中的“谁来销毁”一节所解释的那样，如果你的handler传递了缓存（或任何引用计数对象）到下一个handler，你就不需要释放它：</p><br><pre name="code" class="java">public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    ByteBuf buf = (ByteBuf) msg;<br>    …<br>    ctx.fireChannelRead(buf);<br>}</pre><br><p> </p><br><p>注意ByteBuf不是Netty中唯一一种引用计数对象。由解码器（decoder）生成的消息（messages）对象，这些对象很可能也是引用计数对象：</p><br><pre name="code" class="java">// Assuming your handler is placed next to <code>HttpRequestDecoder</code><br>public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    if (msg instanceof HttpRequest) {<br>        HttpRequest req = (HttpRequest) msg;<br>        …<br>    }<br>    if (msg instanceof HttpContent) {<br>        HttpContent content = (HttpContent) msg;<br>        try {<br>            …<br>        } finally {<br>            content.release();<br>        }<br>    }<br>}</pre><br><p> </p><br><p>如果你抱有疑问，或者你想简化这些释放消息的工作，你可以使用ReferenceCountUtil.release()：</p><br><pre name="code" class="java">public void channelRead(ChannelHandlerContext ctx, Object msg) {<br>    try {<br>        …<br>    } finally {<br>        ReferenceCountUtil.release(msg);<br>    }<br>}</pre><br><p> </p><br><p>还有一种选择，你可以考虑继承SimpleChannelHandler，它在所有接收消息的地方都调用了ReferenceCountUtil.release(msg)。</p><br><p> </p><br><p><strong>Outbound消息（messages）</strong></p><br><p> </p><br><p>与inbound消息不同，你的程序所创建的消息对象，由Netty负责释放，释放的时机是在这些消息被发送到网络之后。但是，在发送消息的过程中，如果有handler截获（intercept）了你的发送请求，并创建了一些中间对象，则这些handler要确保正确释放这些中间对象。比如编码器（encoder）。</p><br><p> </p><br><pre name="code" class="java">// Simple-pass through<br>public void write(ChannelHandlerContext ctx, Object message, ChannelPromise promise) {<br>    System.err.println(“Writing: “ + message);<br>    ctx.write(message, promise);<br>}<br><br>// Transformation<br>public void write(ChannelHandlerContext ctx, Object message, ChannelPromise promise) {<br>    if (message instanceof HttpContent) {<br>        // Transform HttpContent to ByteBuf.<br>        HttpContent content = (HttpContent) message;<br>        try {<br>            ByteBuf transformed = ctx.alloc().buffer();<br>            ….<br>            ctx.write(transformed, promise);<br>        } finally {<br>            content.release();<br>        }<br>    } else {<br>        // Pass non-HttpContent through.<br>        ctx.write(message, promise);<br>    }<br>}</pre><br><p> </p><br><p><strong>解决（troubleshooting）buffer泄露</strong></p><br><p> </p><br><p>引用计数的缺点是容易发生泄露。因为JVM并不知道Netty实现的引用计数的存在，一旦某些对象不可达（unreachable）就会被自动GC掉，即使这些对象的引用计数不为0。被GC掉的对象就不可用了，因此这些对象也就不能回到对象池中，或者产生内存泄露。</p><br><p> </p><br><p> </p><br><p>幸运的是，尽管要找到泄露很困难，但Netty提供了一种方案来帮助发现泄露，此方案默认在你的程序中的已分配的缓冲中取样（sample）大约1%的缓存，来检查是否存在泄露。如果存在泄露，你会发现如下日志：</p><br><pre name="code" class="plain text">LEAK: ByteBuf.release() was not called before it’s garbage-collected. Enable advanced leak reporting to find out where the leak occurred. To enable advanced leak reporting, specify the JVM option ‘-Dio.netty.leakDetectionLevel=advanced’ or call ResourceLeakDetector.setLevel()</pre><br><p> </p><br><p>上述日志中提到的JVM选项（option）重新启动你的程序，你可以看到在你的程序中最近访问已泄露的内存的位置（location）。下列输出展示了来自单元测试的一个泄露问题(XmlFrameDecoderTest.testDecodeWithXml())：</p><br><pre name="code" class="java">Running io.netty.handler.codec.xml.XmlFrameDecoderTest<br>15:03:36.886 [main] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it’s garbage-collected.<br>Recent access records: 1<br>#1:<br>    io.netty.buffer.AdvancedLeakAwareByteBuf.toString(AdvancedLeakAwareByteBuf.java:697)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithXml(XmlFrameDecoderTest.java:157)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithTwoMessages(XmlFrameDecoderTest.java:133)<br>    …<br><br>Created at:<br>    io.netty.buffer.UnpooledByteBufAllocator.newDirectBuffer(UnpooledByteBufAllocator.java:55)<br>    io.netty.buffer.AbstractByteBufAllocator.directBuffer(AbstractByteBufAllocator.java:155)<br>    io.netty.buffer.UnpooledUnsafeDirectByteBuf.copy(UnpooledUnsafeDirectByteBuf.java:465)<br>    io.netty.buffer.WrappedByteBuf.copy(WrappedByteBuf.java:697)<br>    io.netty.buffer.AdvancedLeakAwareByteBuf.copy(AdvancedLeakAwareByteBuf.java:656)<br>    io.netty.handler.codec.xml.XmlFrameDecoder.extractFrame(XmlFrameDecoder.java:198)<br>    io.netty.handler.codec.xml.XmlFrameDecoder.decode(XmlFrameDecoder.java:174)<br>    io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:227)<br>    io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:140)<br>    io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:74)<br>    io.netty.channel.embedded.EmbeddedEventLoop.invokeChannelRead(EmbeddedEventLoop.java:142)<br>    io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:317)<br>    io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)<br>    io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:176)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithXml(XmlFrameDecoderTest.java:147)<br>    io.netty.handler.codec.xml.XmlFrameDecoderTest.testDecodeWithTwoMessages(XmlFrameDecoderTest.java:133)<br>    …</pre><br><p> </p><br><p>如果你使用Netty 5或以上的版本，还提供了一个额外的信息，帮助我们找到最后操作了（handle）泄露缓冲的handler。下面的例子展示了名为EchoServerHandler#0的handler操作了已泄露的缓冲，并且缓冲已被GC了，这意味着EchoServerHandler#0忘记释放了这个buffer：</p><br><p> </p><br><pre name="code" class="java">12:05:24.374 [nioEventLoop-1-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it’s garbage-collected.<br>Recent access records: 2<br>#2:<br>    Hint: ‘EchoServerHandler#0’ will handle the message from this point.<br>    io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:329)<br>    io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:846)<br>    io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:133)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)<br>    io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)<br>    io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)<br>    java.lang.Thread.run(Thread.java:744)<br>#1:<br>    io.netty.buffer.AdvancedLeakAwareByteBuf.writeBytes(AdvancedLeakAwareByteBuf.java:589)<br>    io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:208)<br>    io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:125)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)<br>    io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)<br>    io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)<br>    java.lang.Thread.run(Thread.java:744)<br>Created at:<br>    io.netty.buffer.UnpooledByteBufAllocator.newDirectBuffer(UnpooledByteBufAllocator.java:55)<br>    io.netty.buffer.AbstractByteBufAllocator.directBuffer(AbstractByteBufAllocator.java:155)<br>    io.netty.buffer.AbstractByteBufAllocator.directBuffer(AbstractByteBufAllocator.java:146)<br>    io.netty.buffer.AbstractByteBufAllocator.ioBuffer(AbstractByteBufAllocator.java:107)<br>    io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:123)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:485)<br>    io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:452)<br>    io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:346)<br>    io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:794)<br>    java.lang.Thread.run(Thread.java:744)</pre><br><p> </p><br><p><strong>泄露检测级别</strong></p><br><p> </p><br><p>当前有4个泄露检测级别：</p><br><ul><br><li>禁用（DISABLED）   - 完全禁止泄露检测。不推荐。</li><br><li>简单（SIMPLE）       - 告诉我们取样的1%的缓冲是否发生了泄露。默认。</li><br><li>高级（ADVANCED） - 告诉我们取样的1%的缓冲发生泄露的地方</li><br><li>偏执（PARANOID）  - 跟高级选项类似，但此选项检测所有缓冲，而不仅仅是取样的那1%。此选项在自动测试阶段很有用。如果构建（build）输出包含了LEAK，可认为构建失败。</li><br></ul><br><p>你可以使用JVM的-Dio.netty.leakDetectionLevel选项来指定泄漏检测级别。</p><br><pre name="code" class="bash">java -Dio.netty.leakDetectionLevel=advanced …</pre><br><p> </p><br><p><strong>避免泄露的最佳实践</strong></p><br><p> </p><br><ul><br><li>在简单级别和偏执级别上运行你的单元测试和集成测试（integration tests）。</li><br><li>在rolling out到整个集群之前，使用简单级别，以一个合理的、足够长的时间canary（金丝雀？不明所以。。）你的程序，来发现是否存在泄露。</li><br><li>如果存在泄露，再用高级级别来canary以获得一些关于泄露的提示。</li><br><li>不要部署存在泄露的程序到整个集群。</li><br></ul><br><p><strong>在单元测试中修复泄露问题</strong></p><br><p> </p><br><p>在单元测试中很容易忘记释放缓冲。这会产生一个泄露的警告，但并不是说就肯定存在泄露。你可以使用ReferenceCountUtil.releaseLater()工具方法，放弃用try-finally来包裹你的单元测试代码以释放所有的缓冲：</p><br><pre name="code" class="java">import static io.netty.util.ReferenceCountUtil.*;<br><br>@Test<br>public void testSomething() throws Exception {<br>    // ReferenceCountUtil.releaseLater() will keep the reference of buf,<br>    // and then release it when the test thread is terminated.<br>    ByteBuf buf = releaseLater(Unpooled.directBuffer(512));<br>    …<br>}</pre><br></div><br>  </div>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettytcp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1098,8 +1078,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/10/03/nettytcp/" itemprop="url">高性能网络框架Netty的TCP拆包、粘包解决方案</a></h1>
+                <a class="post-title-link" href="/2015/10/03/nettytcp/" itemprop="url">
+                  高性能网络框架Netty的TCP拆包、粘包解决方案
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1162,9 +1150,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1173,92 +1159,27 @@
       
         
           
-            <p>p&gt;<span style="font-size:12px">简单地说，网络通信时由于TCP会对传输的数据<span style="font-size:12px">报</span>进行对用户透明的拆分与重新组装，然后将拆分后的分别发送，而我们接收时要获取发送时的数据报，如何再对其拆分与组装，以便于我们能知道报文的意思，这个提取报文的过程就是TCP的拆包与粘包，在我们自己做底层的通信设计时，这是必须要考虑的。<span style="font-size:12px">结合最近在做一个和通信相关的项目，</span>本文讲几个经典且常用的几种粘包与拆包方法及其在Netty中的实现，<span style="font-size:12px">Netty</span>是高性能的通信框架，Netty和另一个通信框架Apache的MINA比较像，而且他们作者相同。关于Netty4与MINA2我做过一次比较总结，并将PPT上传在了网上，地址：<a target="_blank" href="http://share.csdn.net/slides/8056">http://share.csdn.net/slides/8056</a><br><br></span></p><p></p>
-<p></p><p><span style="font-size:12px">进入主题，<span style="font-size:12px">Netty提供的拆包与<span style="font-size:12px">粘包</span>工具类：</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><strong>1、 基于长度字段</strong><br><br>&nbsp;io.netty.handler.codec.LengthFieldPrepender</span></span></p><p></p>
-<p></p><p><span style="font-size:12px">类关系图如下：</span></p><p></p>
-<p></p><p><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114212456839" alt=""></span></p><p></p>
-<p></p><p><span style="font-size:12px">原理和下面的<span style="font-size:12px">io.netty.handler.codec.LengthFieldBasedFrameDecoder</span>原理类&#20284;，不同是这个在编码的过程使用，</span></p><p></p>
-<p></p><p><span style="font-size:12px">例如原报文数据如下：</span></p><p></p>
-<p></p><p><span style="font-size:12px">&nbsp;&#43;—————————-&#43;<br><br>&nbsp; | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;—————————-&#43;</span></p><p></p>
-<p></p><p>长度占2个字节且不包含本身的拆包粘包结果如下：</p><p></p>
-<p></p><p>&nbsp;&#43;———–&#43;————————–&#43;<br><br>&nbsp; | 0x000C | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;———–&#43;————————–&#43;<br><br></p><p></p>
-<p></p><p><span style="font-size:12px">长度占2个字节且包含本身的拆包粘包结果如下：</span></p><p></p>
-<p></p><p><span style="font-size:12px">&nbsp;&#43;————&#43;—————————-&#43;<br><br>&nbsp; | 0x000E | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;————&#43;—————————-&#43;<br><br></span></p><p></p>
-<p></p><p><span style="font-size:12px">&nbsp;<strong><span style="font-size:12px"><span style="font-size:12px">2、基于</span></span>界定符解码器</strong><br><br>&nbsp;io.netty.handler.codec.DelimiterBasedFrameDecoder</span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px">类关系图如下：</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114212806234" alt=""></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px">原理如下：</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px">假设收到的报文如下：</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"></span></span></span></span></p><br>&nbsp;&#43;——————–&#43;<br><br>&nbsp; | ABC\nDEF\r\n |<br><br>&nbsp;&#43;——————–&#43;<p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px">如果以‘\n’为界定符，则拆包粘包后的报文就是：</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px">&nbsp;&#43;——–&#43;——-&#43;<br><br>&nbsp; | ABC | DEF |<br><br>&nbsp;&#43;——–&#43;——-&#43;</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px">如果以‘\r\n’为界定符，则<span style="font-size:12px"><span style="font-size:12px">拆包粘包后的报文就是：</span></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px">&nbsp;&#43;—————–&#43;<br><br>&nbsp; | ABC\nDEF |<br><br>&nbsp;&#43;—————–&#43;</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><br><br></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><strong>&nbsp;<span style="font-size:12px"><span style="font-size:12px">3、基于</span></span>定长解码器</strong><br><br>&nbsp;io.netty.handler.codec.FixedLengthFrameDecoder</span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">类关系图如下：</span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"></span></span><img src="http://img.blog.csdn.net/20141114212806613" alt=""><br><br></span></p><p></p>
-<p></p><p><span style="font-size:12px">&nbsp;定长就是指定了报文的长度，解析时就是按长度组合截取，原理如下：</span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">假设接收到的报文如下：</span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;&#43;—-&#43;—–&#43;———&#43;—-&#43;<br><br>&nbsp; | A | BC | DEFG | HI |<br><br>&nbsp;&#43;—-&#43;—–&#43;———&#43;—-&#43;</span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">当定长参数为3时，拆包与粘包的结果是：</span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;&#43;——–&#43;——-&#43;——&#43;<br><br>&nbsp; | ABC | DEF | GHI |<br><br>&nbsp;&#43;——–&#43;——-&#43;——&#43;</span></span></span></p><br><br><p></p>
-<p></p><p><span style="font-size:12px"><strong><span style="font-size:12px"><span style="font-size:12px">4、基于</span></span>长度字段解码器</strong><br><br>&nbsp;io.netty.handler.codec.LengthFieldBasedFrameDecoder</span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">类关系图如下：</span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114212857390" alt=""><br><br></span></p><p></p>
-<p></p><p><span style="font-size:12px">&nbsp;所谓长字段就是在报文里有说明报文总长度的字段，其实在TCP的报文规则里就用的这个方法，在头部存放报文总长或除报头的内容总长，具体如下：</span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-weight:bold">长度包含<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段本身</span></span></span></span></span></span></span></span></span>且不排除本身的拆包与粘包：</span><br><br></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;lengthFieldOffset&nbsp;&nbsp; = 0&nbsp;&nbsp;&nbsp;&nbsp; 长度字段偏移量<br><br>&nbsp;lengthFieldLength&nbsp;&nbsp; = 2&nbsp;&nbsp;&nbsp; 长度字段所占长度<br><br>&nbsp;lengthAdjustment&nbsp;&nbsp;&nbsp; = 0&nbsp;&nbsp;&nbsp; <br><br>&nbsp;initialBytesToStrip = 0 &nbsp; &nbsp;&nbsp; (要排除的用于初始化的偏移位置)<br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 解码前 (14 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 解码后 (14 bytes)<br><br>&nbsp;&#43;————&#43;—————————&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &#43;————&#43;—————————&#43;<br><br>&nbsp; | Length&nbsp; |&nbsp;&nbsp;&nbsp; Actual Content &nbsp; |&nbsp;&nbsp; —–&gt;&nbsp; &nbsp; | Length&nbsp; |&nbsp;&nbsp;&nbsp; Actual Content &nbsp; |<br><br>&nbsp; | 0x000C | &quot;HELLO, WORLD&quot; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | 0x000C | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;————&#43;—————————-&#43;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#43;———–&#43;—————————-&#43;</span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-weight:bold"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度包含<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">本身</span></span></span>且排除<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">本身</span></span></span></span></span></span>的拆包与粘包：</span></span></span></span><br><br></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;lengthFieldOffset&nbsp;&nbsp; = 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段偏移量</span></span></span><br><br>&nbsp;lengthFieldLength&nbsp;&nbsp; = 2&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段所占长度</span></span></span><br><br>&nbsp;lengthAdjustment&nbsp;&nbsp;&nbsp; = 0<br><br>&nbsp;initialBytesToStrip = 2 (<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">排除头部</span></span></span>)<br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 解码前 (14 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 解码后 (12 bytes)<br><br>&nbsp;&#43;————&#43;—————————-&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43;—————————&#43;<br><br>&nbsp; | Length&nbsp; |&nbsp;&nbsp;&nbsp; Actual Content &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; —–&gt;|&nbsp;&nbsp; Actual Content &nbsp;&nbsp; |<br><br>&nbsp; | 0x000C | &quot;HELLO, WORLD&quot; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;————&#43;—————————-&#43;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &#43;—————————-&#43;<br><br>&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><br><br></span></span></span></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-weight:bold"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度包含<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度</span></span></span></span></span></span></span></span></span>字段<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">本身</span></span></span>且不排除<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">本身</span></span></span>的拆包与粘包：</span></span></span></span></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;lengthFieldOffset&nbsp;&nbsp; =&nbsp; 0&nbsp;&nbsp;&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段偏移量</span></span></span></span></span></span><br><br>&nbsp;lengthFieldLength&nbsp;&nbsp; =&nbsp; 2&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段偏移量</span></span></span></span></span></span><br><br>&nbsp;lengthAdjustment&nbsp;&nbsp;&nbsp; = -2&nbsp; 调整长度 (<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段所占长度</span></span></span></span></span></span>)<br><br>&nbsp;initialBytesToStrip =&nbsp; 0<br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">解码前</span></span></span> (14 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">解码后</span></span></span><br> (14 bytes)<br><br>&nbsp;&#43;————&#43;—————————-&#43;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#43;———–&#43;—————————-&#43;<br><br>&nbsp; | Length&nbsp; |&nbsp; &nbsp; Actual Content&nbsp; &nbsp; |&nbsp;&nbsp; —–&gt;&nbsp;&nbsp;&nbsp; | Length&nbsp; |&nbsp;&nbsp;&nbsp; Actual Content &nbsp; |<br><br>&nbsp; | 0x000E | &quot;HELLO, WORLD&quot; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; | 0x000E | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;————&#43;—————————-&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43;———–&#43;—————————-&#43;</span></span></span></p><p></p>
-<p></p><p>&nbsp;</p><p></p>
-<p></p><p><span style="font-weight:bold">有外部头部的<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">拆包与粘包：</span></span></span></span></span></span></span></p><p></p>
-<p></p><p>&nbsp;lengthFieldOffset&nbsp;&nbsp; = 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段偏移量</span></span></span></span></span></span></span></span></span><br> ( = 外部头部Header 1的长度)<br><br>&nbsp;lengthFieldLength&nbsp;&nbsp; = 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段占用字节数</span></span></span></span></span></span></span></span></span><br><br>&nbsp;lengthAdjustment&nbsp;&nbsp;&nbsp; = 0<br><br>&nbsp;initialBytesToStrip = 0<br><br><br><br>&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 解码前</span></span></span></span></span></span> (17 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">解码后</span></span></span></span></span></span><br> (17 bytes)<br><br>&nbsp;&#43;————–&#43;————–&#43;————————–&#43;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &#43;————-&#43;—————&#43;————————–&#43;<br><br>&nbsp; | Header 1 |&nbsp;&nbsp;&nbsp;&nbsp; Length&nbsp;&nbsp; | &nbsp; &nbsp; Actual Content &nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; —–&gt;&nbsp;&nbsp; | Header 1 |&nbsp; &nbsp; Length&nbsp; &nbsp; | &nbsp;&nbsp;&nbsp; Actual Content &nbsp;&nbsp; |<br><br>&nbsp; |&nbsp; 0xCAFE &nbsp; | 0x00000C | &quot;HELLO, WORLD&quot; |&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; 0xCAFE &nbsp; | 0x00000C | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;————–&#43;————–&#43;————————–&#43;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &#43;————–&#43;————–&#43;————————–&#43;<br><br></p><p></p>
-<p></p><p><span style="font-weight:bold">长度字段在前且有扩展头部的<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">拆包与粘包：</span></span></span></span></span></span></span><br><br></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;lengthFieldOffset&nbsp;&nbsp; = 0&nbsp;&nbsp;&nbsp;<br><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段偏移量</span></span></span></span></span></span></span></span></span><br><br>&nbsp;lengthFieldLength&nbsp;&nbsp; = 3&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段占用字节数</span></span></span></span></span></span></span></span></span><br><br>&nbsp;lengthAdjustment&nbsp;&nbsp;&nbsp; = 2 ( Header 1 的长度)<br><br>&nbsp;initialBytesToStrip = 0<br><br><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">解码前</span></span></span></span></span></span> (17 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">解码后</span></span></span></span></span></span> (17 bytes)<br><br>&nbsp;&#43;—————-&#43;—————&#43;—————————&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43;—————&#43;—————-&#43;—————————&#43;<br><br>&nbsp; |&nbsp;&nbsp;&nbsp; Length &nbsp; |&nbsp; Header 1 |&nbsp; &nbsp; Actual Content&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; —–&gt;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp; Length &nbsp; |&nbsp;&nbsp; Header 1 |&nbsp;&nbsp; Actual Content&nbsp;&nbsp;&nbsp; |<br><br>&nbsp; | 0x00000C |&nbsp; 0xCAFE&nbsp; | &quot;HELLO, WORLD&quot; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | 0x00000C |&nbsp; 0xCAFE&nbsp; | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;—————-&#43;—————&#43;—————————&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43;—————&#43;—————-&#43;—————————&#43;</span></span></span></p><p></p>
-<p></p><p><span style="font-weight:bold">多扩展头部的<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">拆包与粘包：</span></span></span></span></span></span></span><br><br></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;lengthFieldOffset&nbsp;&nbsp; = 1&nbsp;&nbsp;&nbsp;<br><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段偏移量</span></span></span></span></span></span></span></span></span></span></span></span>(=头HDR1的长度)<br><br>&nbsp;lengthFieldLength&nbsp;&nbsp; = 2&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段占用字节数</span></span></span></span></span></span></span></span></span></span></span></span><br><br>&nbsp;lengthAdjustment&nbsp;&nbsp;&nbsp; = 1&nbsp; 调整长度(= <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">头</span></span></span>HDR2<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">的长度</span></span></span>)<br><br>&nbsp;initialBytesToStrip = 3&nbsp;&nbsp;&nbsp;&nbsp; 排除的偏移量(= the length of HDR1 &#43; LEN)<br><br><br><br>&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 解码前</span></span></span></span></span></span> (16 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">解码后</span></span></span></span></span></span> (13 bytes)<br><br>&nbsp;&#43;———-&#43;———–&#43;———-&#43;—————————-&#43;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43;———-&#43;—————————&#43;<br><br>&nbsp; | HDR1 | Length&nbsp; | HDR2 | &nbsp; Actual Content&nbsp;&nbsp; &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; —–&gt;&nbsp;&nbsp;&nbsp; | HDR2 |&nbsp;&nbsp;&nbsp; Actual Content&nbsp;&nbsp; |<br><br>&nbsp; | 0xCA | 0x000C |&nbsp; 0xFE | &quot;HELLO, WORLD&quot; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; |&nbsp; 0xFE | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;———&#43;————&#43;———-&#43;—————————&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43;———-&#43;—————————&#43;</span></span></span></p><p></p>
-<p></p><p></p><p></p>
-<p></p><p><span style="font-weight:bold">调整的多扩展头部的<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">拆包与粘包：</span></span></span></span></span></span></span><br><br></p><p></p>
-<p></p><p>&nbsp;lengthFieldOffset&nbsp;&nbsp; =&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段偏移量</span></span></span></span></span></span></span></span></span></span></span></span>(=头HDR1的长度)</span></span></span><br><br>&nbsp;lengthFieldLength&nbsp;&nbsp; =&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">长度字段占用字节数</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><br><br>&nbsp;lengthAdjustment&nbsp;&nbsp;&nbsp; = -3 &nbsp; &nbsp;&nbsp; (= the length of HDR1 &#43; LEN, negative)<br><br>&nbsp;initialBytesToStrip =&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">排除的偏移量(= the length of HDR1 &#43; LEN)</span></span></span><br><br><br><br>&nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 解码前</span></span></span></span></span></span> (16 bytes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">解码后</span></span></span></span></span></span> (13<br> bytes)<br><br>&nbsp;&#43;———&#43;———–&#43;———&#43;————————–&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43;———&#43;————————-&#43;<br><br>&nbsp; | HDR1 | Length&nbsp; | HDR2 | &nbsp;&nbsp; Actual Content&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; —–&gt;&nbsp;&nbsp;&nbsp;&nbsp; | HDR2 | &nbsp; &nbsp; Actual Content &nbsp; |<br><br>&nbsp; |&nbsp; 0xCA&nbsp; | 0x0010 |&nbsp; 0xFE&nbsp;&nbsp; | &quot;HELLO, WORLD&quot; |&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |&nbsp; 0xFE&nbsp; | &quot;HELLO, WORLD&quot; |<br><br>&nbsp;&#43;———&#43;———–&#43;———&#43;————————–&#43;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#43;———&#43;————————-&#43;<br><br></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><br><br></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><strong><span style="font-size:12px"><span style="font-size:12px">5、基于</span></span>换行符解码器</strong><br><br>&nbsp;io.netty.handler.codec.LineBasedFrameDecoder<br><br></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px">类关系图如下：</span></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114212901837" alt=""></span></span></span></span></p><p></p>
-<p></p><p><span style="font-size:12px">英文的解释是：A decoder that splits the received ByteBufs on line endings.<br><br></span></p><p></p>
-<p></p><p><span style="font-size:12px">一行的结束标志包括： &quot;\n&quot; 和 &quot;\r\n&quot;，所以又属于<span style="font-size:12px">io.netty.handler.codec.FixedLengthFrameDecoder的范畴。</span></span></p><p></p>
-<p></p><p><br><br></p><p></p>
-<p></p><p><strong>6、关于<span style="font-size:12px">Netty中的ByteBuf</span></strong><br><br><span style="font-size:12px"></span></p><p></p>
-<p></p><p><span style="font-size:12px">由于Netty底层是ByteBuf的结构特殊，具有双指针（读指针和写指针）如下：</span></p><p></p>
-<p></p><p><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114224202013" alt=""></span></p><p></p>
-<p></p><p><span style="font-size:12px">所以相比MINA的ChannelBuffer的性能要高很多，这也是拆包与粘包的应用之处，就是如何将byte数组转换成我们想要的Messgae。</span></p><p></p>
-<p></p><p><span style="font-size:12px">从类的关系图中我们可以看到Netty里两种数据流向，其实这是ChannelPipeline（管道）中的两种处理链，如图所示：</span></p><p></p>
-<p></p><p><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114230529151" alt=""></span></p><p></p>
-<p></p><p><span style="font-size:12px">所以处理连接是继承类ChannelInboundHandlerAdapter，<span style="font-size:12px">如下：</span></span></p><p></p>
-<p></p><p><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114231453669" alt=""></span></p><p></p>
-<p></p><p><br><br></p><p></p>
-<p></p><p><span style="font-size:12px">用Netty创建服务并且用能到这些拆包与粘的地方的代码如下（第36行处）：</span></p><p></p>
-<p></p><p><span style="font-size:12px"><img src="http://img.blog.csdn.net/20141114232103953" alt=""></span></p><p></p>
-<p></p><p><span style="font-size:12px"><br><br></span></p><p></p>
-<p></p><p><span style="font-size:12px">总结一下：和拆包与粘包相关的还有就是大小端，也就是高位与低位的位置问题，这些都与编解码相关，通信相关的问题也是这些问题，</span></p><p></p>
-<p></p><p><span style="font-size:12px">今天基本上讲清楚了TCP拆包与粘包，其中引例来自Netty中的注释，我翻译了一下，可能有些地方翻译的不是很到位，感兴趣的可以直接看Netty4的源码。<br><br></span></p><br>s<p></p>
-
-          
+          p&gt;简单地说，网络通信时由于TCP会对传输的数据报进行对用户透明的拆分与重新组装，然后将拆分后的分别发送，而我们接收时要获取发送时的数据报，如何再对其拆分与组装，以便于我们能知道报文的意思，这个提取报文的过程就是TCP的拆包与粘包，在我们自己做底层的通信设计时，这是必须要考虑的。结合最近在做一
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/03/nettytcp/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1272,10 +1193,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1288,315 +1205,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettyjava/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/03/nettyjava/" itemprop="url">Netty之Java堆外内存扫盲贴</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
-                2015-10-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Java的堆外内存本来是高贵而神秘的东西，只在一些缓存方案的收费企业版里出现。但自从用了Netty，就变成了天天打交道的事情，毕竟堆外内存能减少IO时的内存复制，不需要堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中；而且也没了烦人的GC。</p>
-<p>好在，Netty所用的堆外内存只是Java NIO的 DirectByteBuffer类，通读一次很快。还有一些<code>sun.misc.*</code>的类木有源码，要自己跑去<a href="http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/sun/misc" target="_blank" rel="external">OpenJDK</a>那看个明白。</p>
-<h3 id="1-堆外内存的创建"><a href="#1-堆外内存的创建" class="headerlink" title="1. 堆外内存的创建"></a>1. 堆外内存的创建</h3><p>在DirectByteBuffer中，首先向Bits类申请额度，Bits类有一个全局的 totalCapacity变量，记录着全部DirectByteBuffer的总大小，每次申请，都先看看是否超限 – 堆外内存的限额默认与堆内内存(由-XMX 设定)相仿，可用 -XX:MaxDirectMemorySize 重新设定。</p>
-<p>如果已经超限，会主动执行Sytem.gc()，期待能主动回收一点堆外内存。然后休眠一百毫秒，看看totalCapacity降下来没有，如果内存还是不足，就抛出大家最头痛的OOM异常。</p>
-<p>如果额度被批准，就调用大名鼎鼎的sun.misc.Unsafe去分配内存，返回内存基地址，Unsafe的C++实现在此，标准的malloc。然后再调一次Unsafe把这段内存给清零。跑个题，Unsafe的名字是提醒大家这个类只给Sun自家用的，你们别用，不然哪天Sun把它藏起来了你们就哭死。果然，JDK9里就Oracle可能动手哦。</p>
-<p>JDK7开始，DirectByteBuffer分配内存时默认已不做分页对齐，不会再每次分配并清零 实际需要＋分页大小(4k)的内存，这对性能应有较大提升，所以Oracle专门写在了Enhancements in Java I/O里。</p>
-<p>最后，创建一个Cleaner，并把代表清理动作的Deallocator类绑定 – 降低Bits里的totalCapacity，并调用Unsafe调free去释放内存。Cleaner的触发机制后面再说。</p>
-<h3 id="2-堆外内存基于GC的回收"><a href="#2-堆外内存基于GC的回收" class="headerlink" title="2. 堆外内存基于GC的回收"></a>2. 堆外内存基于GC的回收</h3><p>存在于堆内的DirectByteBuffer对象很小，只存着基地址和大小等几个属性，和一个Cleaner，但它代表着后面所分配的一大段内存，是所谓的<strong>冰山对象</strong>。通过前面说的Cleaner，堆内的DirectByteBuffer对象被GC时，它背后的堆外内存也会被回收。</p>
-<p>快速回顾一下堆内的GC机制，<strong>当新生代满了，就会发生young gc；如果此时对象还没失效，就不会被回收；撑过几次young gc后，对象被迁移到老生代；当老生代也满了，就会发生full gc</strong>。</p>
-<p>这里可以看到一种尴尬的情况，因为DirectByteBuffer本身的个头很小，只要熬过了young gc，即使已经失效了也能在老生代里舒服的呆着，不容易把老生代撑爆触发full gc，如果没有别的大块头进入老生代触发full gc，就一直在那耗着，占着一大片堆外内存不释放。</p>
-<p>这时，就只能靠前面提到的申请额度超限时触发的system.gc()来救场了。但这道最后的保险其实也不很好，首先它会中断整个进程，然后它让当前线程睡了整整一百毫秒，而且如果gc没在一百毫秒内完成，它仍然会无情的抛出OOM异常。还有，万一，万一大家迷信某个调优指南设置了-DisableExplicitGC禁止了system.gc()，那就不好玩了。</p>
-<p>所以，堆外内存还是自己主动点回收更好，比如Netty就是这么做的。</p>
-<h3 id="3-堆外内存的主动回收"><a href="#3-堆外内存的主动回收" class="headerlink" title="3. 堆外内存的主动回收"></a>3. 堆外内存的主动回收</h3><p>对于Sun的JDK这其实很简单，只要从DirectByteBuffer里取出那个sun.misc.Cleaner，然后调用它的clean()就行。</p>
-<p>前面说的，clean()执行时实际调用的是被绑定的Deallocator类，这个类可被重复执行，释放过了就不再释放。所以GC时再被动执行一次clean()也没所谓。</p>
-<p>在Netty里，因为不确定跑在Sun的JDK里(比如安卓)，所以多废了些功夫来确定Cleaner的存在。</p>
-<h3 id="4-Cleaner如何与GC相关联？"><a href="#4-Cleaner如何与GC相关联？" class="headerlink" title="4. Cleaner如何与GC相关联？"></a>4. Cleaner如何与GC相关联？</h3><p>涨知识的时间到了，原来JDK除了StrongReference，SoftReference 和 WeakReference之外，还有一种PhantomReference，Phantom是幻影的意思，Cleaner就是PhantomReference的子类。</p>
-<p>当GC时发现它除了PhantomReference外已不可达（持有它的DirectByteBuffer失效了），就会把它放进 Reference类pending list静态变量里。然后另有一条ReferenceHandler线程，名字叫 “Reference Handler”的，关注着这个pending list，如果看到有对象类型是Cleaner，就会执行它的clean()，其他类型就放入应用构造Reference时传入的ReferenceQueue中，这样应用的代码可以从Queue里拖出这些理论上已死的对象，做爱做的事情——这是一种比finalizer更轻量更好的机制。</p>
-<h3 id="5-其实"><a href="#5-其实" class="headerlink" title="5. 其实"></a>5. 其实</h3><p>专家们说，OpenJDK没有接受jemalloc(redis们在用)的补丁，直接用malloc在OS里申请一段内存，比在已申请好的JVM堆内内存里划一块出来要慢，所以我们在Netty一般用池化的 PooledDirectByteBuf 对DirectByteBuffer进行重用 ，《Netty权威指南》说性能提升了23倍，所以基本不需要头痛堆外内存的释放，顺便还告别了大数据流量下的频繁GC。</p>
-<p>文章持续修订，转载请保留原链接： <a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/directbytebuffer.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/netty/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/03/netty/" itemprop="url">Netty之有效规避内存泄漏</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
-                2015-10-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>有过痛苦的经历，特别能写出深刻的文章 —— 凯尔文. 肖</em></p>
-
-<p>直接内存是IO框架的绝配，但直接内存的分配销毁不易，所以使用内存池能大幅提高性能，也告别了频繁的GC。但，要重新培养被Java的自动垃圾回收惯坏了的惰性。</p><br><p>Netty有一篇必读的文档 <a href="http://damacheng009.iteye.com/blog/2013657" target="_blank" rel="external">官方文档翻译：引用计数对象</a> ，在此基础上补充一些自己的理解和细节。</p><br><p>&nbsp;</p><br><h3>1.为什么要有引用计数器</h3><br><p>Netty里四种主力的ByteBuf，<br><br>其中UnpooledHeapByteBuf 底下的byte[]能够依赖JVM GC自然回收；而UnpooledDirectByteBuf底下是DirectByteBuffer，如<a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">Java堆外内存扫盲贴</a>所述，除了等JVM GC，最好也能主动进行回收；而PooledHeapByteBuf 和 PooledDirectByteBuf，则必须要主动将用完的byte[]/ByteBuffer放回池里，否则内存就要爆掉。所以，Netty ByteBuf需要在JVM的GC机制之外，有自己的引用计数器和回收过程。</p><br><p>一下又回到了C的冰冷时代，自己malloc对象要自己free。 但和C时代又不完全一样，内有引用计数器，外有JVM的GC，情况更为复杂。</p><br><p>&nbsp;</p><br><h3>2. 引用计数器常识</h3><br><ul><br><li>计数器基于 AtomicIntegerFieldUpdater，为什么不直接用AtomicInteger？因为ByteBuf对象很多，如果都把int包一层AtomicInteger花销较大，而AtomicIntegerFieldUpdater只需要一个全局的静态变量。</li><br><li>所有ByteBuf的引用计数器初始值为1。</li><br><li>调用release()，将计数器减1，等于零时， deallocate()被调用，各种回收。</li><br><li>调用retain()，将计数器加1，即使ByteBuf在别的地方被人release()了，在本Class没喊cut之前，不要把它释放掉。</li><br><li>由duplicate(), slice()和order()所衍生的ByteBuf，与原对象共享底下的buffer，也共享引用计数器，所以它们经常需要调用retain()来显示自己的存在。</li><br><li>当引用计数器为0，底下的buffer已被回收，即使ByteBuf对象还在，对它的各种访问操作都会抛出异常。</li><br></ul><br><p>&nbsp;</p><br><h3>3.谁来负责Release</h3><br><p>在C时代，我们喜欢让malloc和free成对出现，而在Netty里，因为Handler链的存在，ByteBuf经常要传递到下一个Hanlder去而不复还，所以规则变成了谁是最后使用者，谁负责释放。</p><br><p>另外，更要注意的是各种异常情况，ByteBuf没有成功传递到下一个Hanlder，还在自己地界里的话，一定要进行释放。</p><br><h4>3.1 InBound Message</h4><br><p>在AbstractNioByteChannel.NioByteUnsafe.read() 处创建了ByteBuf并调用 pipeline.fireChannelRead(byteBuf) 送入Handler链。</p><br><p>根据上面的谁最后谁负责原则，每个Handler对消息可能有三种处理方式</p><br><ul><br><li>对原消息不做处理，调用 ctx.fireChannelRead(msg)把原消息往下传，那不用做什么释放。</li><br><li>将原消息转化为新的消息并调用 ctx.fireChannelRead(newMsg)往下传，那必须把原消息release掉。</li><br><li>如果已经不再调用ctx.fireChannelRead(msg)传递任何消息，那更要把原消息release掉。</li><br></ul><br><p>假设每一个Handler都把消息往下传，Handler并也不知道谁是启动Netty时所设定的Handler链的最后一员，所以Netty在Handler链的最末补了一个TailHandler，如果此时消息仍然是ReferenceCounted类型就会被release掉。<br><br>&nbsp;</p><br><h4>3.2 OutBound Message</h4><br><p>要发送的消息由应用所创建，并调用 ctx.writeAndFlush(msg) 进入Handler链。在每个Handler中的处理类似InBound Message，最后消息会来到HeadHandler，再经过一轮复杂的调用，在flush完成后终将被release掉。</p><br><p>&nbsp;</p><br><h4>3.3 异常发生时的释放</h4><br><p>多层的异常处理机制，有些异常处理的地方不一定准确知道ByteBuf之前释放了没有，可以在释放前加上引用计数大于0的判断避免释放失败；</p><br><p>有时候不清楚ByteBuf被引用了多少次，但又必须在此进行彻底的释放，可以循环调用reelase()直到返回true。</p><br><p>&nbsp;</p><br><h3>4. 内存泄漏检测</h3><br><p>所谓内存泄漏，主要是针对池化的ByteBuf。ByteBuf对象被JVM GC掉之前，没有调用release()把底下的DirectByteBuffer或byte[]归还到池里，会导致池越来越大。而非池化的ByteBuf，即使像DirectByteBuf那样可能会用到System.gc()，但终归会被release掉的，不会出大事。</p><br><p>Netty担心大家不小心就搞出个大新闻来，因此提供了内存泄漏的监测机制。</p><br><p>Netty默认会从分配的ByteBuf里抽样出大约1%的来进行跟踪。如果泄漏，会有如下语句打印：</p><br><blockquote><br><p>LEAK: ByteBuf.release() was not called before it’s garbage-collected. Enable advanced leak reporting to find out where the leak occurred. To enable advanced leak reporting, specify the JVM option ‘-Dio.netty.leakDetectionLevel=advanced’ or call ResourceLeakDetector.setLevel()</p><br></blockquote><br><p>这句话报告有泄漏的发生，提示你用-D参数，把防漏等级从默认的simple升到advanced，就能具体看到被泄漏的ByteBuf被创建和访问的地方。</p><br><ul><br><li>禁用（DISABLED） - 完全禁止泄露检测，省点消耗。</li><br><li>简单（SIMPLE） - 默认等级，告诉我们取样的1%的ByteBuf是否发生了泄露，但总共一次只打印一次，看不到就没有了。</li><br><li>高级（ADVANCED） - 告诉我们取样的1%的ByteBuf发生泄露的地方。每种类型的泄漏（创建的地方与访问路径一致）只打印一次。对性能有影响。</li><br><li>偏执（PARANOID） - 跟高级选项类似，但此选项检测所有ByteBuf，而不仅仅是取样的那1%。对性能有绝大的影响。</li><br></ul><br><h4>实现细节</h4><br><p>每当各种ByteBufAllocator 创建ByteBuf时，都会问问是否需要采样，Simple和Advanced级别下，就是以113这个素数来取模（害我看文档的时候还在瞎担心，1％，万一泄漏的地方有所规律，刚好躲过了100这个数字呢，比如都是3倍数的），命中了就创建一个<a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">Java堆外内存扫盲贴</a>里说的PhantomReference。然后创建一个Wrapper，包住ByteBuf和Reference。</p><br><p>simple级别下，wrapper只在执行release()时调用Reference.clear()，Advanced级别下则会记录每一个创建和访问的动作。</p><br><p>当GC发生，还没有被clear()的Reference就会被JVM放入到之前设定的ReferenceQueue里。</p><br><p>在每次创建PhantomReference时，都会顺便看看有没有因为忘记执行release()把Reference给clear掉，在GC时被放进了ReferenceQueue的对象，有则以 “io.netty.util.ResourceLeakDetector”为logger name，写出前面例子里的Error级别的日日志。顺便说一句，Netty能自动匹配日志框架，先找Slf4j，再找Log4j，最后找JDK logger。</p><br><h4>值得说三遍的事</h4><br><p>一定要盯紧log里有没有出现 “LEAK: “字样，因为simple级别下它只会出现一次，所以不要依赖自己的眼睛，要依赖grep。如果出现了，而且你用的是PooledBuf，那一定是问题，不要有任何的侥幸，立刻用”-Dio.netty.leakDetectionLevel=advanced” 再跑一次，看清楚它创建和访问的地方。</p><br><p>功能测试时，最好开着”-Dio.netty.leakDetectionLevel=paranoid”。</p><br><p>但是，怎么测试都可能存在没有覆盖到的分支。如果内存尚够，可以适当把-XX:MaxDirectMemorySize 调大，反正只是max，平时也不会真用了你的。然后监控其使用量，及时报警。</p><br><p>&nbsp;<br><br></p><p>&nbsp;<br><br>文章持续修订，转载请保留原链接： <a href="http://calvin1978.blogcn.com/articles/directbytebuffer.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/netty-leak.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettydecoder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1615,8 +1224,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/10/03/nettydecoder/" itemprop="url">《Netty权威指南》里没有说到的Decoder编写细节</a></h1>
+                <a class="post-title-link" href="/2015/10/03/nettydecoder/" itemprop="url">
+                  《Netty权威指南》里没有说到的Decoder编写细节
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1679,9 +1296,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1690,37 +1305,29 @@
       
         
           
-            <p></p><p>以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。</p><p></p>
-<p></p><p>用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。</p><p></p>
-<p></p><p>写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必须收齐所有的包，把它们粘在一起，才能开始解码。</p><p></p>
-<p></p><p>在Thrift里，解决粘包的方式很简单：每条消息是一个Frame，在每个Frame的前4个字节定义消息的长度。在客户端，为每个Frame调用一次flush发送消息。而在服务端，可以用自带的灵活的LengthFieldBasedFrameDecoder，也可以自行编写更直接明了的一段。</p><p></p>
-<p></p><p><a href="http://files.blogcn.com/wp06/M00/00/B6/CpCCFVXOolgAAAAAAABJ-m_ZJA0544.png" target="_blank" rel="external"><img src="http://files.blogcn.com/wp06/M00/00/B6/CpCCFVXOolgAAAAAAABJ-m_ZJA0544.png" alt="" title="code" width="717" height="327" class="aligncenter size-full wp-image-1575"></a></p><p></p>
-<p></p><p>1. ByteToMessageDecoder 是非线程安全的。</p><p></p>
-<p></p><p>因为有cumulation等成员变量，记得为每个Channel创建一个Decoder。</p><p></p>
-<p></p><p>2. 底下的Decoder如果觉得当前的ByteBuf还不足以进行Frame解码，必须保证readerIndex没有变化。</p><p></p>
-<p></p><p>这样ByteToMessageDecoder才会结束当前的 channelRead()函数，静静等待下一个TCP包输入。 所以上例当readerbleBytes()小于frameLength时，需要resetReaderIndex()。</p><p></p>
-<p></p><p>3. 底下的Decoder完成Frame解码后，必须把当前ByteBuf的readerIndex升到最高，让buf.isReadable() 返回false。</p><p></p>
-<p></p><p>ByteToMessageDecoder同时还看到out中插入了结果，才会认为解码完成了。所以上例要先readInt()，再readSlice(frameLength)，把readerIndex升到最高，否则ByteToMessageDecoder会认为你还没把事做完，继续调用你的decode()函数，期待你继续给out插入结果。</p><p></p>
-<p></p><p>4. 解码完成后，ByteToMessageDecoder才会主动调用ctx.fireChannelRead(out.get(i))，将结果发给Handler链里的下一位。</p><p></p>
-<p></p><p>Netty里的Handler链不是由外层框架自动循环遍历的，必须在每个Handler里主动调用ctx.fireChannelRead(msg)，所以在读够数据前，业务的Handler都不会被调用。</p><p></p>
-<p></p><p>5. 底下的Decoder如果用了slice() 从原ByteBuf中截取自己需要的部分，必须调用retain()让底下的原ByteBuf的refCount ＋1。</p><p></p>
-<p></p><p>如果要截取部分内容，建议用slice()而不是copy()减少复制。但因为ByteToMessageDecoder会在解码结束后，调用原ByteBuf的release()释放它，所以上例调用了reatain()来刀下留人。</p><p></p>
-<p></p><p>6. 在不断粘包过程中，其实是不断的把新输入的ByteBuf data writeBytes() 到 ByteBuf cumulation 里，cumulation 容量不足了还需要复制扩容，所以不要老记着“零复制”这句话，就以为世界会那么美好。</p><p></p>
-<p></p><p>7. 顺便说一下 MessageToByteEncoder 和 MessageToMessageEncoder，前者会创建一个初始256 bytes的output buf给子类的encode()函数去输出，而后者则让encode()函数自行的创建对象或bytebuf，放入out中。两者都会将原始的Message release掉。<br><br>&nbsp;<br></p>
-
-          
+          以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。
+用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。
+写Decoder又总是从解决TCP
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/03/nettydecoder/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1734,10 +1341,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1750,11 +1353,155 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/netty/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/03/netty/" itemprop="url">
+                  Netty之有效规避内存泄漏
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          有过痛苦的经历，特别能写出深刻的文章 —— 凯尔文. 肖
+
+直接内存是IO框架的绝配，但直接内存的分配销毁不易，所以使用内存池能大幅提高性能，也告别了频繁的GC。但，要重新培养被Java的自动垃圾回收惯坏了的惰性。Netty有一篇必读的文档 官方文档翻译：引用计数对象 ，在此基础上补充一些自己的理解
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/03/netty/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/java-classloader-infos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1773,8 +1520,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/10/03/java-classloader-infos/" itemprop="url">ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖</a></h1>
+                <a class="post-title-link" href="/2015/10/03/java-classloader-infos/" itemprop="url">
+                  ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1837,9 +1592,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1848,77 +1601,31 @@
       
         
           
-            <p>为了尽量简单明了容易背，有些部分写得比较干。</p>
-<h3 id="0-参考资料："><a href="#0-参考资料：" class="headerlink" title="0. 参考资料："></a>0. 参考资料：</h3><ul><br><li>书：《深入了解Java虚拟机》、《实战Java虚拟机》</li><br><li>规范：<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范</a> 第12章</li><br><li>源码： <a href="http://hg.openjdk.java.net/jdk7" target="_blank" rel="external">OpenJDK 7</a>的Java及C代码( <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/Class.c" target="_blank" rel="external">Class.c</a> , <a href="http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/native/java/lang/ClassLoader.c" target="_blank" rel="external">Classloader.c</a>，<a href="http://hg.openjdk.java.net/jdk7/jdk7/hotspot/file/9b0ca45cd756/src/share/vm/prims/jvm.cpp" target="_blank" rel="external">jvm.cpp</a>)</li><br></ul>
+          为了尽量简单明了容易背，有些部分写得比较干。
+0. 参考资料：书：《深入了解Java虚拟机》、《实战Java虚拟机》规范：Java语言规范 第12章源码： OpenJDK 7的Java及C代码( Class.c , Classloader.c，jvm.cpp)
 
 
-<h3 id="1-Class装载的三个阶段"><a href="#1-Class装载的三个阶段" class="headerlink" title="1. Class装载的三个阶段"></a>1. Class装载的三个阶段</h3><h4 id="1-1-载入-Load"><a href="#1-1-载入-Load" class="headerlink" title="1.1 载入 (Load)"></a>1.1 载入 (Load)</h4><p>从Class文件或别的什么地方载入一段二进制流字节流，把它解释成永久代里的运行时数据结构，生成一个Class对象。</p>
-<h4 id="1-2-链接-Resolve"><a href="#1-2-链接-Resolve" class="headerlink" title="1.2 链接 (Resolve)"></a>1.2 链接 (Resolve)</h4><p>将之前载入的数据结构里的符号引用表，解析成直接引用。<br>中间如果遇到引用的类还没被加载，就会触发该类的加载。<br>可能JDK会很懒惰的在运行某个函数实际使用到该引用时才发生链接，也可能在类加载时就解析全部引用。</p>
-<h4 id="1-3-初始化-Initniazle"><a href="#1-3-初始化-Initniazle" class="headerlink" title="1.3 初始化 (Initniazle)"></a>1.3 初始化 (Initniazle)</h4><p>初始化静态变量，并执行静态初始化语句。</p>
-<h3 id="2-Class装载的时机"><a href="#2-Class装载的时机" class="headerlink" title="2. Class装载的时机"></a>2. Class装载的时机</h3><ul>
-<li>ClassLoader.loadClass()</li>
-<li>前文所说的链接时触发的装载</li>
-<li>Class.forName() 等java.lang.reflect反射包</li>
-<li>new 构造对象</li>
-<li>初始化子类时，会同时初始化父类</li>
-<li>访问类的静态变量或静态方法（但static final的常量除外，此君在常量池里)</li>
-</ul>
-<p>本质上，也是很懒惰的按需加载的，由于类装载的Lazy和前面解释引用的Lazy，所以Jar包里有时候有些类用到的了没在Class Path里的其他类，也能人品爆发的照跑不误。</p>
-<p>除了1，其他几种方式默认都到达类装载的初始化阶段。</p>
-<h3 id="3-ClassLoader-loadClass-与-Class-forName"><a href="#3-ClassLoader-loadClass-与-Class-forName" class="headerlink" title="3. ClassLoader.loadClass() 与 Class.forName()"></a>3. ClassLoader.loadClass() 与 Class.forName()</h3><p>ClassLoader.loadClass(String name, boolean resolve)，其中resolve默认为false，即只执行类装载的第一个阶段。</p>
-<p>Class.forName(String name, boolean initialize, ClassLoader loader)， 其中initialize默认为true，即执行到类装载的第三个阶段。</p>
-<h3 id="4-ClassNotFoundException-和-NoClassDefFoundError"><a href="#4-ClassNotFoundException-和-NoClassDefFoundError" class="headerlink" title="4. ClassNotFoundException 和 NoClassDefFoundError"></a>4. ClassNotFoundException 和 NoClassDefFoundError</h3><p>ClassLoader.loadClass() 与 Class.forName() 找不到类定义的二进制流时抛出ClassNotFoundException。</p>
-<p>链接阶段解释引用失败，找不到引用的类时抛出NoClassDefFoundError。</p>
-<h3 id="5-ClassLoader及双亲委派机制"><a href="#5-ClassLoader及双亲委派机制" class="headerlink" title="5. ClassLoader及双亲委派机制"></a>5. ClassLoader及双亲委派机制</h3><p>ClassLoader.loadClass()的标准流程:</p>
-<ul>
-<li>findLoadedClass() 查看类是否已加载</li>
-<li>如果不存在，则调用parent loader的loadClass()</li>
-<li>如果不存在，调用findClass() 在本ClassLoader的ClassPath里加载该类</li>
-</ul>
-<p>所谓双亲委派机制，就是先从parent loader开始查找，找不到了才用自己的findClass()函数去查找，兼顾了效率：避免重复加载，当父亲已经加载了该类的时候，就没有必要子ClassLoader再加载一次，和安全，避免子类乱加载。</p>
-<p>而OSGI或SPI或热替换方案，则需要破坏这个双亲委托，先调用自己的findClass()。</p>
-<p>findClass() 是各个ClassLoader各自实现，各显神通的地方，从各种奇葩地方载入Class二进制字节流。</p>
-<p>但最后都会调用defineClass()，传入二进制字节流，返回Class对象。留意此处，呆会AspectJ的时候会回到这里。</p>
-<p>在JDK6，loadClass()很过分的定义了方法级的synchronized ，在JDK7改成一个以Class Name作Key的 parallelLockMap，增强了并行加载不同Class的能力。</p>
-<h3 id="6-System-ClassLoader-与-Thread-Context-Classloader"><a href="#6-System-ClassLoader-与-Thread-Context-Classloader" class="headerlink" title="6. System ClassLoader 与 Thread Context Classloader"></a>6. System ClassLoader 与 Thread Context Classloader</h3><p>有时候，看到错误日志说张三不是张三，包名类名一样但instanceof 死活返回 false，唯一原因是它们由两个不同的ClassLoader加载。</p>
-<p>默认的Bootstrap(加载jdk的lib目录)，Extension(加载jdk的lib/ext目录)，Application(加载启动时定义的classpath)三层ClassLoader机制不再重复。</p>
-<p>平时用ClassLoader.getSystemClassLoader()就可以得到sun.misc.Launcher$ApplicationClassLoader 这个Application ClassLoader。</p>
-<p>在类A里加载类B，默认使用加载了类A的Loader。但，也有特殊情况，比如JDBC加载driver时的机制，需要在父ClassLoader（JDBC属于JDK一部分）里根据配置反射创建jdbc driver的数据实现类，Sun设计了一个特殊方案 －－Thread Context Class Loader。</p>
-<p>JAXB(比如要在Jar包里找xsd schema文件的时候)也使用了它，所以用到它们时就要注意Thread Context ClassLoader的设置，可以用代码随时设置current thread的loader，也可以用自定义的ThreadFactory在创建线程时设置，它默认是父线程的loader，如果都没设置就是 System ClassLoader。</p>
-<h3 id="7-Java-Agent机制与AspectJ的LoadTime-Weaving"><a href="#7-Java-Agent机制与AspectJ的LoadTime-Weaving" class="headerlink" title="7. Java Agent机制与AspectJ的LoadTime Weaving"></a>7. Java Agent机制与AspectJ的LoadTime Weaving</h3><p>在JDK5开始，在启动JVM时可增加-javaagent参数，在装载Class时对类进行动态的修改。</p>
-<p>AspectJ的Load Time Weaving机制，需要配置 -javaagent: [path to aspectj-weaver.jar] 。</p>
-<p>打开aspectj-weaver.jar，可以看到META-INF/MANIFEST里定义了 Premain-Class: org.aspectj.weaver.loadtime.Agent</p>
-<p>再打开这个Agent类，简化后的代码大概这个样子：</p>
-<p><code>ClassFileTransformer s_transformer = new ClassPreProcessorAgentAdapter(); 
-public static void premain(String options, Instrumentation instrumentation) { 
-instrumentation.addTransformer(s_transformer); }</code></p>
-<p>可见它的主要作用是将自己的类转换器注册到JDK所传入的Instrumentation。</p>
-<p>再看ClassFileTransformer的定义：ClassLoader会在前面defineClass()的过程中，在把二进制字节流转换为Class对象之前，先把二进制流和当前ClassLoader传给Transformer，由Transformer加工为另一段二进制字节流返回。</p>
-<p>AspectJ就是利用传入的ClassLoader，找出其Class Path里的META-INF/aop.xml，然后根据aop.xml里的配置进行代码植入。</p>
-<p>测试显示，加了LoadTime Weaving，类加载的速度明显变慢，如果是100ms就调用超时的服务，需要做类的预加载。</p>
-<h3 id="8-Jar包的预加载"><a href="#8-Jar包的预加载" class="headerlink" title="8. Jar包的预加载"></a>8. Jar包的预加载</h3><p>比如有个有趣的需求是加载某个Class A所在的Jar里的全部的Class （怎么好像一点都不有趣）</p>
-<figure class="highlight plain"><figcaption><span>jarUrl = ClassA.getProtectionDomain().getCodeSource().getLocation();</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">JarFile jarfile = new JarFile(jarUrl.getPath());</div><div class="line"></div><div class="line">Enumeration entries = jarfile.entries();</div></pre></td></tr></table></figure>
-<p>然后遍历JarEntry，过滤出后缀为.class的文件，按类名进行装载就可以了。</p>
-<h3 id="9-Class的二进制兼容性"><a href="#9-Class的二进制兼容性" class="headerlink" title="9.Class的二进制兼容性"></a>9.Class的二进制兼容性</h3><p>如果Class A 依赖 spring-1.0.jar编译，当spring升级到spring-2.0.jar，Class A不需要修改代码也不需要重新编译，可以直接运行的，spring-2.0.jar就满足二进制兼容性。</p>
-<p>在<a href="http://docs.oracle.com/javase/specs/jls/se7/html/index.html" target="_blank" rel="external">Java语言规范的第13章</a>有详细的描述 ，不想直接睡着最好可以找个中文版来看，感谢那些翻译的同学。</p>
-<p>虽然规范的这章看着比较长比较吓人，但其实二进制兼容性还是很容易做到的，只要你不做把接口改为抽象类之类奇怪的事情，其他一些看起来很大的改动，比如改throws定义，其实都没有问题。</p>
-<p>真的遇到问题，设身处地想想自己是那段Class A的字节码，现在还能不能跑就行。</p>
-<p>感谢你看到这里，希望你只在工作里用到这些知识，祝工作愉快。</p>
-<p>文章持续修订，转载请保留原链接：<br><a href="http://calvin1978.blogcn.com/articles/classloader-javaagent.html" target="_blank" rel="external">http://calvin1978.blogcn.com/articles/classloader-javaagent.html</a></p>
-
-          
+1. Class装载的三个阶段1.
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/03/java-classloader-infos/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1932,10 +1639,6 @@ instrumentation.addTransformer(s_transformer); }</code></p>
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1944,11 +1647,11 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
-
+          
           </div>
           
 
@@ -1968,7 +1671,6 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -1986,33 +1688,29 @@ instrumentation.addTransformer(s_transformer); }</code></p>
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2021,18 +1719,57 @@ instrumentation.addTransformer(s_transformer); }</code></p>
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -2062,7 +1799,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -2075,7 +1812,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -2092,7 +1829,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
         
       </div>
     
-
+    
   </div>
 
   
@@ -2112,14 +1849,6 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -2146,29 +1875,26 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -2176,12 +1902,7 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -2195,6 +1916,15 @@ instrumentation.addTransformer(s_transformer); }</code></p>
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -2202,6 +1932,9 @@ instrumentation.addTransformer(s_transformer); }</code></p>
   
 
   
+
+  
+
 
   
 

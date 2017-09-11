@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="mysql," />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -102,7 +97,7 @@
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于Waiting for tables的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询阻塞了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，这还是说不通的。那么我们就来看看所有的请求处于Waiting for tables这个状态是什么原因">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql中的Waiting for tables">
 <meta name="twitter:description" content="在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于Waiting for tables的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询阻塞了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，这还是说不通的。那么我们就来看看所有的请求处于Waiting for tables这个状态是什么原因">
@@ -113,10 +108,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,7 +134,11 @@
 
 
 
-  <title>mysql中的Waiting for tables | Chen-Tao</title>
+  <title> mysql中的Waiting for tables | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -155,17 +153,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysqlwaiting-for-tables/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +290,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mysql中的Waiting for tables</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                mysql中的Waiting for tables
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -321,9 +338,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,15 +349,21 @@
 <p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table, it must wait until all other threads have closed the table in question.</p><br><p>This notification takes place if another thread has used <a title="12.4.6.3. FLUSH Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/flush.html" target="_blank" rel="external"><code>FLUSH TABLES</code></a> or one of the following statements on the table in question: <code>FLUSH TABLES <em><code>tbl<em>name</em></code></em></code>, <a title="12.1.6. ALTER TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="external"><code>ALTER TABLE</code></a>, <a title="12.1.26. RENAME TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/rename-table.html" target="_blank" rel="external"><code>RENAME TABLE</code></a>, <a title="12.4.2.5. REPAIR TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/repair-table.html" target="_blank" rel="external"><code>REPAIR TABLE</code></a>, <a title="12.4.2.1. ANALYZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/analyze-table.html" target="_blank" rel="external"><code>ANALYZE TABLE</code></a>, or<a title="12.4.2.4. OPTIMIZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/optimize-table.html" target="_blank" rel="external"><code>OPTIMIZE TABLE</code></a>.</p><br><p>从文档上的解释来看，是主库做了一个flush tables的操作，导致所有的表都需要打开，但是由于在10-07号放假，应该不会有人在主库上执行flush tables，而且从日志中可以看到：</p><br><p>1044    system user                     Connect 27406   Flushing tables FLUSH TABLES</p><br><p>所以可以判断是系统自己执行了这个操作，那么既然不是主库上执行而来，那么这个flush tables操作是从slave上复制过来的（M-M结构)，</p><br><p>那么备库的什么操作会有flush tables，真的百思不其解，我们备库在6点之前做的是什么，后端应用的dump?还是数据库的备份？是不是xtrabackup，很有可能是xtrabackup在备份的时候做的fulsh tables，查看备份脚本，应该轮到mysqldump做逻辑备份操作了，并不是xtrabackup，检查了mysqldump的备份脚本，脚本里：</p><br><p>-uroot -P$port &#8211;protocol=tcp &#8211;single-transaction &#8211;master-data=2是这样的</p><br><p>Single-transaction这个选项是加上了的，希望再一次被打破 &gt;&lt;</p><br><p>最后想还是想到到官网上去看看，mysqldump+flush tables是否有bug，</p><br><p>唉，搜索了一下果然发现了蹊跷：</p><br><p><a href="http://bugs.mysql.com/bug.php?id=35157" target="_blank" rel="external">http://bugs.mysql.com/bug.php?id=35157</a></p><br><p>When using the &#8211;master-data option with mysqldump, mysqldump uses   a FLUSH TABLES command.  However, this statement got replicated to   the slave(s), which caused the slave(s) to block unnecessarily while  the FLUSH tables command completed.</p><br><p>在5.0存在的bug很好的解释了这个问题，在mysqldump加入了&#8211;master-data就会将flush tables记录到binglog中，然后在被同步到主库，主库执行binglog后，由于有一个大查询正在</p><br><p>执行，这个子查询由于执行了很长时间，阻塞了flush tables的操作,最后导致了雪崩，所有的请求都被阻塞：</p><br><p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table,</p><br><p>it must wait until all other threads have closed the table in question.</p><br><p>综合上篇的所写，Mysqldump的在5.0的bug加上数据库的低效子查询构成这次故障的原因。</p><br><p>峰回路转，山穷水尽，哈哈</p>
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -354,15 +375,15 @@
       
 
       
-      
+        
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/06/every-programmer-should-know-these-latency-numbers/" rel="next" title="Every Programmer Should Know These Latency Numbers">
-                <i class="fa fa-chevron-left"></i> Every Programmer Should Know These Latency Numbers
+              <a href="/2015/05/15/mysql-too-many-connection-solve/" rel="next" title="记一次 mysql 'too many connection' ">
+                <i class="fa fa-chevron-left"></i> 记一次 mysql 'too many connection' 
               </a>
             
           </div>
@@ -371,8 +392,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/15/mysql-too-many-connection-solve/" rel="prev" title="记一次 mysql 'too many connection' ">
-                记一次 mysql 'too many connection'  <i class="fa fa-chevron-right"></i>
+              <a href="/2015/05/18/java-concurrency-tips/" rel="prev" title="Java concurrency tips">
+                Java concurrency tips <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -382,10 +403,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -395,7 +412,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -419,7 +436,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -437,33 +453,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -472,18 +484,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -513,7 +564,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -526,7 +577,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -543,7 +594,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -563,14 +614,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -597,42 +640,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -646,6 +685,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -653,6 +701,9 @@
   
 
   
+
+  
+
 
   
 

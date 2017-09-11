@@ -1,0 +1,777 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Golang,Docker," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="几种判断Golang App当前运行环境的方法">
+<meta name="keywords" content="Golang,Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang 如何确定App是否运行在Docker内">
+<meta property="og:url" content="http://chen-tao.github.io/2017/09/11/Go-check-if-app-running-in-docker/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="几种判断Golang App当前运行环境的方法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-11T06:13:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Golang 如何确定App是否运行在Docker内">
+<meta name="twitter:description" content="几种判断Golang App当前运行环境的方法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2017/09/11/Go-check-if-app-running-in-docker/"/>
+
+
+
+
+
+  <title> Golang 如何确定App是否运行在Docker内 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/09/11/Go-check-if-app-running-in-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Golang 如何确定App是否运行在Docker内
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T13:48:47+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  几种判断Golang App当前运行环境的方法
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>背景</p>
+<p>项目需要隔离部署，如果在docker环境需要使用一些特殊的配置，之前没有太好的判别方法，现在总结一下。</p>
+</blockquote>
+<h2 id="V1-使用-dockerenv判断"><a href="#V1-使用-dockerenv判断" class="headerlink" title="V1 使用/.dockerenv判断"></a>V1 使用<code>/.dockerenv</code>判断</h2><p>如果是Docker容器内，根目录会生成一个可执行的<code>/.dockerenv</code>文件，判断此文件是否存在可以基本断定是否运行内容器内，注意是“基本”，极少数的发行版或者某些定制化较高的系统，可能会不存在此文件。</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> DOCKERENV_FILE <span class="keyword">string</span> = <span class="string">"/.dockerenv"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">pathExist</span><span class="params">(_path <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</div><div class="line">	_, err := os.Stat(_path)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; os.IsNotExist(err) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> pathExist(DOCKERENV_FILE) &#123;</div><div class="line">		logs.Warn(<span class="string">"Running in Docker, not check for now..."</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="V2-使用cgroup信息进行判断"><a href="#V2-使用cgroup信息进行判断" class="headerlink" title="V2 使用cgroup信息进行判断"></a>V2 使用<code>cgroup</code>信息进行判断</h2><p>Docker在Xnix下虚拟环境，使用了cgroup，容器内的group信息与物理机会有本质不同，可以根据Docker内特殊化的环境信息进行判断，这也是目前最靠谱的方案。</p>
+<p>正常情况下物理机的cgroup:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> cat /proc/1/cgroup</span></div><div class="line">9:blkio:/</div><div class="line">8:devices:/</div><div class="line">7:freezer:/</div><div class="line">6:cpuset:/</div><div class="line">5:memory:/</div><div class="line">4:cpu,cpuacct:/</div><div class="line">3:perf_event:/</div><div class="line">2:net_cls,net_prio:/</div><div class="line">1:name=systemd:/</div></pre></td></tr></table></figure>
+<p>Docker内的cgroup(例子)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> cat /proc/1/cgroup </span></div><div class="line">10:freezer:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">9:memory:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">8:cpuset:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">7:pids:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">6:devices:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c/init.scope</div><div class="line">5:blkio:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">4:cpu,cpuacct:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">3:perf_event:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">2:net_cls,net_prio:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c</div><div class="line">1:name=systemd:/kubepods/poda2804054-906f-11e7-9ae4-0cc47ad2a6d4/e0ad06c5691de850c976e780c867a254d71df81b315cdc0e2ace2c36983c946c/init.scope</div></pre></td></tr></table></figure>
+<p>判断响应内容即可，一般情况下，主要看<code>name</code> &amp; <code>devices</code></p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">Need Pkg:</span></div><div class="line"><span class="comment">    cgroup "github.com/containerd/cgroups"</span></div><div class="line"><span class="comment">    units "github.com/docker/go-units"</span></div><div class="line"><span class="comment">	specs "github.com/opencontainers/runtime-spec/specs-go"</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    paths, err := parseCgroupFile(<span class="string">"/proc/1/cgroup"</span>)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		t.Fatal(err)</div><div class="line">	&#125;</div><div class="line">	dp := strings.TrimPrefix(paths[<span class="string">"devices"</span>], <span class="string">"/"</span>)</div><div class="line">	path := PidPath(os.Getpid())</div><div class="line">	p, err := path(<span class="string">"devices"</span>)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		t.Fatal(err)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> p != filepath.Join(<span class="string">"/"</span>, dp) &#123;</div><div class="line">		t.Fatalf(<span class="string">"expected self path of %q but received %q"</span>, filepath.Join(<span class="string">"/"</span>, dp), p)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="V3-拓展"><a href="#V3-拓展" class="headerlink" title="V3 拓展"></a>V3 拓展</h2><p>如果需要当前协程的父进程信息，会对我们定位很多关键信息起到很大的帮助</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> processNameFormat = <span class="string">"/proc/%d/comm"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(os.Getppid())</div><div class="line"></div><div class="line">	ppid := os.Getppid()</div><div class="line"></div><div class="line">	bs, err := ioutil.ReadFile(fmt.Sprintf(processNameFormat, ppid))</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		fmt.Println(err.Error())</div><div class="line">	&#125;</div><div class="line">    fmt.Println(<span class="keyword">string</span>(bs)) <span class="comment">// bs is ppid info</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>EOF</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/27/WTF-hexo/" rel="next" title="WTF hexo">
+                <i class="fa fa-chevron-left"></i> WTF hexo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#V1-使用-dockerenv判断"><span class="nav-number">1.</span> <span class="nav-text">V1 使用/.dockerenv判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V2-使用cgroup信息进行判断"><span class="nav-number">2.</span> <span class="nav-text">V2 使用cgroup信息进行判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#V3-拓展"><span class="nav-number">3.</span> <span class="nav-text">V3 拓展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

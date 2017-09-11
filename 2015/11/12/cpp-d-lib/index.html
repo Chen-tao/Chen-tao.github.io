@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="linux,c++," />
@@ -84,28 +77,30 @@
 
 
 
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
 
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
-<meta name="description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。">
+
+
+
+
+
+<meta name="description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。 创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
 <meta name="keywords" content="linux,c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux动态库相关知识整理">
 <meta property="og:url" content="http://chen-tao.github.io/2015/11/12/cpp-d-lib/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。">
+<meta property="og:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。 创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux动态库相关知识整理">
-<meta name="twitter:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。">
+<meta name="twitter:description" content="动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。 创建动态库这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，">
 
 
 
@@ -113,10 +108,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,7 +134,11 @@
 
 
 
-  <title>Linux动态库相关知识整理 | Chen-Tao</title>
+  <title> Linux动态库相关知识整理 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -155,17 +153,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/12/cpp-d-lib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +290,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux动态库相关知识整理</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux动态库相关知识整理
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -321,9 +338,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -331,7 +346,6 @@
 
       
         <p>动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。</p>
-<a id="more"></a>
 <h2 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h2><p>这里我把一个短小却很有用的哈希函数编译成动态库做为示例，ELFhash用于对字符串做哈希，返回一个无符号整数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//elfhash.h</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">unsigned long  ELFhash(const char* key);</div><div class="line"></div><div class="line">//elfhash.c</div><div class="line">#include &quot;elfhash.h&quot;</div><div class="line">unsigned long ELFhash(const char* key)  </div><div class="line">&#123;</div><div class="line">  unsigned long h = 0, g;</div><div class="line">  while( *key ) &#123;</div><div class="line">    h = ( h &lt;&lt; 4 ) + *key++;</div><div class="line">    if ( (g = h &amp; 0xF0000000) != 0 )</div><div class="line">       h ^= g &gt;&gt; 24;</div><div class="line">    h &amp;= ~g;</div><div class="line">&#125;</div><div class="line">  return h;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>接下来使用gcc编译以上代码，并用ld将编译的目标文件链接成动态库</p>
@@ -381,15 +395,21 @@
 
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -403,7 +423,7 @@
       
 
       
-      
+        
       
 
       
@@ -431,10 +451,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -444,7 +460,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -468,7 +484,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -495,33 +510,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -530,18 +541,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -587,7 +637,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -600,7 +650,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -617,7 +667,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -637,14 +687,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -671,42 +713,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -720,6 +758,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -727,6 +774,9 @@
   
 
   
+
+  
+
 
   
 
