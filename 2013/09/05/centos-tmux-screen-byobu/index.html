@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="CentOS,Linux," />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -104,7 +99,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://chen-tao.github.io/wp-content/uploads/2013/09/byobu-conf.jpg">
 <meta property="og:image" content="http://qyappchentao.sinaapp.com/wp-content/uploads/2013/09/slipt-window.jpg">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS下tmux,screen,byobu安装与使用">
 <meta name="twitter:description" content="上次介绍了Linux下几款强大的多任务处理终端 Linux会话与进程剖析，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install *[/code] 来解决，不过，对于RedHat系列的就没有那么简单了，下面介绍一下在RedHat/CentOS一类的发">
@@ -116,10 +111,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -143,7 +137,11 @@
 
 
 
-  <title>CentOS下tmux,screen,byobu安装与使用 | Chen-Tao</title>
+  <title> CentOS下tmux,screen,byobu安装与使用 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -158,17 +156,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,8 +208,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -225,11 +229,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -261,11 +275,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/09/05/centos-tmux-screen-byobu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -283,7 +293,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CentOS下tmux,screen,byobu安装与使用</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CentOS下tmux,screen,byobu安装与使用
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -306,28 +323,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -346,9 +341,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -356,7 +349,6 @@
 
       
         <p>上次介绍了Linux下几款强大的多任务处理终端 <a href="/linux-session-process/">Linux会话与进程剖析</a>，今天我就来更为详细的介绍一下这几款神器的情况。 在不同的Linux发行版本中，这些软件的安装方式并不相同。其中，对于Ubuntu系的发行版，基本可以用 [code]sudo apt-get install <em>*</em>[/code] 来解决，不过，对于RedHat系列的就没有那么简单了，下面介绍一下在RedHat/CentOS一类的发行版上安装这些软件的方法。 </p>
-<a id="more"></a>
 <h2 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h2><p>Screen是一种用于保持终端可持续会话、可以同时进行多个会话的一个工具。而Byobu呢，则是Ubuntu开发的，在Screen的基础上进行包装，使其更加易用的一个工具。安装时，screen算是比较幸运的一种，可以直接用yum搞定 [code]yum install screen[/code] </p>
 <h2 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h2><p>tmux是BSD实现的Screen替代品，相对于Screen，它更加先进：支持屏幕切分，而且具备丰富的命令行参数，使其可以灵活、动态的进行各种布局和操作。它可以做到一条命令就启动起来(强大的配置)，左侧是终端，右侧是Vim，下面来一个gdb——总之它就是一个灵活的IDE，任仍你配置。安装tmux之前需要先安装一些支持的组件 [code]yum install libevent-devel ncurses-devel[/code] 接下来就是下载源码包进行安装了，这里要说明一点：到目前为止，tmux的最新版本是1.8，但进过我测试1.8在编译的时候会出现小小的问题，所以建议选择低一点的版本，1.6/1.7均可。 [code] wget <a href="http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz" target="_blank" rel="external">http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz</a> tar zxvf tmux-1.6.tar.gz cd tmux-1.6 ./configure make make install [/code] 这样依赖，tumx就安装完毕了，具体的配置我会另作说明，其实，默认的配置就很好用了。 </p>
 <h2 id="byobu"><a href="#byobu" class="headerlink" title="byobu"></a>byobu</h2><p>上篇说过，byobu是tmux的再封装，不过有screen的存在他依然可以运行。最新的Byobu（5.9），已经是基于Tmux作为后端了。也就是说，Byobu也是支持屏幕切分，并且通过「byobu-tmux」这个命令行前端来接受各种与tmux一模一样的参数来控制它(还有更多扩展的命令大家可以去自己挖掘)。 安装byobu之前需要保证你已经安装了screen/tmux的其中一种，否则会报错(就是依赖错误) 去到byobu官网下载byobu的源码然后安装即可 [code]wget <a href="https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz" target="_blank" rel="external">https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz</a> tar -zxvf byobu_5.57.orig.tar.gz cd byobu-5.57 ./configure make &amp;&amp; make install[/code] 接下来就可以体验byobu的美好啦(Linux下装X利器之一，另一个是zsh，直接yum就OK，LOL) </p>
@@ -373,15 +365,21 @@
 
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -395,7 +393,7 @@
       
 
       
-      
+        
       
 
       
@@ -423,10 +421,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -436,7 +430,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -460,7 +454,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -487,33 +480,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -522,18 +511,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -579,7 +607,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -592,7 +620,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -609,7 +637,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -629,14 +657,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -663,42 +683,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -712,6 +728,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -719,6 +744,9 @@
   
 
   
+
+  
+
 
   
 

@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -101,7 +96,7 @@
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="String 类的实现类的构造函数，赋值函数，析构函数。 class String { public:     String(const char *str=NULL);//普通构造函数     String(const String &amp;amp;str);//拷贝构造函数     String &amp;amp; operator =(const String &amp;amp;str);//赋值函数     ~">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chen-Tao">
 <meta name="twitter:description" content="String 类的实现类的构造函数，赋值函数，析构函数。 class String { public:     String(const char *str=NULL);//普通构造函数     String(const String &amp;amp;str);//拷贝构造函数     String &amp;amp; operator =(const String &amp;amp;str);//赋值函数     ~">
@@ -112,10 +107,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -139,7 +133,17 @@
 
 
 
-  <title> | Chen-Tao</title>
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -154,17 +158,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,8 +210,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -221,11 +231,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -249,11 +269,7 @@
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
+  <header class="post-header">
 
 	<h1 class="post-title" itemprop="name headline"></h1>
 
@@ -261,13 +277,9 @@
 
 </header>
 
-      
-      
-      
-      <div class="post-body">
-        
-        
-          <h2 id="String-类的实现"><a href="#String-类的实现" class="headerlink" title="String 类的实现"></a>String 类的实现</h2><p>类的构造函数，赋值函数，析构函数。</p>
+    
+    
+      <h2 id="String-类的实现"><a href="#String-类的实现" class="headerlink" title="String 类的实现"></a>String 类的实现</h2><p>类的构造函数，赋值函数，析构函数。</p>
 <pre><code>class String
 {
 public:
@@ -616,18 +628,10 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
 <h2 id="C-11-新特性"><a href="#C-11-新特性" class="headerlink" title="C++ 11 新特性"></a>C++ 11 新特性</h2><p>Lambda、变参模板、auto、decltype、constexpr、智能指针、列表初始化、正则表达式、线程库、静态断言、委托构造。</p>
 <h1 id="更多阅读"><a href="#更多阅读" class="headerlink" title="更多阅读"></a>更多阅读</h1><p><a href="http://chenqx.github.io/2014/09/25/Cpp-Memory-Management/" target="_blank" rel="external">C/C++内存管理详解</a><br><a href="http://www.cnblogs.com/webary/p/4754522.html" target="_blank" rel="external">那些不能遗忘的知识点回顾——C/C++系列</a><br><a href="http://www.nowcoder.com/test/question/done?tid=2482392&amp;qid=14466#summary" target="_blank" rel="external">C语言的整型溢出问题</a></p>
 
-        
-      </div>
-      
-      
-      
-    </div>
-    
-    
     
   </div>
 
-
+          
           </div>
           
 
@@ -651,23 +655,13 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
@@ -678,33 +672,29 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -713,18 +703,57 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -735,22 +764,6 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-类的实现"><span class="nav-number">1.</span> <span class="nav-text">String 类的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚函数"><span class="nav-number">2.</span> <span class="nav-text">虚函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存对齐、struct-结构"><span class="nav-number">3.</span> <span class="nav-text">内存对齐、struct 结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针与引用："><span class="nav-number">4.</span> <span class="nav-text">指针与引用：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#派生类构造函数："><span class="nav-number"></span> <span class="nav-text">派生类构造函数：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extern-关键字"><span class="nav-number">1.</span> <span class="nav-text">extern 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extern-c-编译器的函数名修饰机制"><span class="nav-number">2.</span> <span class="nav-text">extern c 编译器的函数名修饰机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile（透彻理解-cpu-的寄存器缓存机制）"><span class="nav-number">3.</span> <span class="nav-text">volatile（透彻理解 cpu 的寄存器缓存机制）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static-关键字"><span class="nav-number">4.</span> <span class="nav-text">static 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#register-关键字"><span class="nav-number">5.</span> <span class="nav-text">register 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const-用法"><span class="nav-number">6.</span> <span class="nav-text">const 用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针和const"><span class="nav-number">7.</span> <span class="nav-text">指针和const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针和数组"><span class="nav-number">8.</span> <span class="nav-text">指针和数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数指针"><span class="nav-number">9.</span> <span class="nav-text">函数指针</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象程序设计"><span class="nav-number"></span> <span class="nav-text">面向对象程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数初始值列表"><span class="nav-number">1.</span> <span class="nav-text">构造函数初始值列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承实现机制"><span class="nav-number">2.</span> <span class="nav-text">继承实现机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数，析构函数"><span class="nav-number">3.</span> <span class="nav-text">构造函数，析构函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#友元特征"><span class="nav-number">4.</span> <span class="nav-text">友元特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sizeof-运算符"><span class="nav-number">5.</span> <span class="nav-text">sizeof 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-内存堆栈"><span class="nav-number">6.</span> <span class="nav-text">C++内存堆栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#产生野指针原因"><span class="nav-number">7.</span> <span class="nav-text">产生野指针原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的内存错误"><span class="nav-number">8.</span> <span class="nav-text">常见的内存错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-和-delete-操作"><span class="nav-number">9.</span> <span class="nav-text">new 和 delete 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-和-malloc-的对比"><span class="nav-number">10.</span> <span class="nav-text">new 和 malloc 的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四种类型转换"><span class="nav-number">11.</span> <span class="nav-text">四种类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include-头文件"><span class="nav-number">12.</span> <span class="nav-text">include 头文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final-关键字"><span class="nav-number">13.</span> <span class="nav-text">final 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按值传递和按引用传递"><span class="nav-number">14.</span> <span class="nav-text">按值传递和按引用传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合体存储特点以及CPU字节序"><span class="nav-number">15.</span> <span class="nav-text">联合体存储特点以及CPU字节序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值还是构造"><span class="nav-number">16.</span> <span class="nav-text">赋值还是构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组形参"><span class="nav-number">17.</span> <span class="nav-text">数组形参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#If-判断语句"><span class="nav-number">18.</span> <span class="nav-text">If 判断语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unsigned-溢出"><span class="nav-number">19.</span> <span class="nav-text">unsigned 溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逗号运算符"><span class="nav-number">20.</span> <span class="nav-text">逗号运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它详细问题"><span class="nav-number">21.</span> <span class="nav-text">其它详细问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-11-新特性"><span class="nav-number">22.</span> <span class="nav-text">C++ 11 新特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多阅读"><span class="nav-number"></span> <span class="nav-text">更多阅读</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -770,7 +783,7 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -783,7 +796,7 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -800,7 +813,7 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
         
       </div>
     
-
+    
   </div>
 
   
@@ -820,14 +833,6 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -854,29 +859,26 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -884,12 +886,7 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -903,6 +900,15 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -910,6 +916,9 @@ printf(&quot;%d,%d\n&quot;,a,b)；// 2, 1
   
 
   
+
+  
+
 
   
 

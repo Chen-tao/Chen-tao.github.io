@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Linux," />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -102,7 +97,7 @@
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，Hadoop多用户作业调度器，CentOS下tmux,screen,byobu安装与使用，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;amp;Telnet的问题，当我们登录了远程服务器，运行了一些耗时较长的任务， 结果却由于网络的不稳定导致任务中途失败。如何让命令提交后不受本地关闭终端窗口或网络">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下进程后台运行的几种方式">
 <meta name="twitter:description" content="之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，Hadoop多用户作业调度器，CentOS下tmux,screen,byobu安装与使用，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;amp;Telnet的问题，当我们登录了远程服务器，运行了一些耗时较长的任务， 结果却由于网络的不稳定导致任务中途失败。如何让命令提交后不受本地关闭终端窗口或网络">
@@ -113,10 +108,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,7 +134,11 @@
 
 
 
-  <title>Linux下进程后台运行的几种方式 | Chen-Tao</title>
+  <title> Linux下进程后台运行的几种方式 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -155,17 +153,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/09/06/linux-process-bg/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +290,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux下进程后台运行的几种方式</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux下进程后台运行的几种方式
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -321,40 +338,42 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，<a href="/hadoop-job-scheduler/">Hadoop多用户作业调度器</a>，<a href="http://chen-tao.github.io/centos-tmux-screen-byobu/">CentOS下tmux,screen,byobu安装与使用</a>，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;Telnet的问题，当我们登录了远程服务器，运行了一些耗时较长的任务， 结果却由于网络的不稳定导致任务中途失败。如何让命令提交后不受本地关闭终端窗口或网络断开连接或其他意外情况的干扰呢？之前我们介绍了nohup 和 screen(参见以上2篇文章内容)，这次着重介绍一下setsid 、 &amp;  和 disown。 </p>
-<a id="more"></a>
-<h2 id="setsid"><a href="#setsid" class="headerlink" title="setsid"></a>setsid</h2><p>nohup 可以通过忽略 HUP 信号来使我们的进程避免被中断，但如果我们换个角度思考，如果我们的进程不属于接受 HUP 信号的终端的子进程，那么自然也就不会受到 HUP 信号的影响了。setsid 就能帮助我们做到这一点。让我们先来看一下 setsid 的帮助： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SETSID(1) Linux Programmer’s Manual SETSID(1) NAME setsid - run a program in a new session SYNOPSIS setsid program [arg...] DESCRIPTION setsid runs a program in a new session. SEE ALSO setsid(2) AUTHOR Rick Sladkey &lt;jrs@world.std.com&gt; AVAILABILITY The setsid command is part of the util-linux-ng package and is available from ftp://ftp.kernel.org/pub/linux/utils/util-linux-ng/. Linux 0.99 20 November 1993 SETSID(1)</div></pre></td></tr></table></figure>
-<p>举个例子，我们用setsid运行一个ping job：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost hbase]# setsid ping www.google.com </div><div class="line">[root@localhost hbase]# ps -ef | grep www </div><div class="line">root 64312 1 0 07:48 ? 00:00:00 ping www.google.com </div><div class="line">root 64925 64776 0 07:49 pts/10 00:00:00 grep www</div></pre></td></tr></table></figure></p>
-<p>可以看到，setsid指定了job的父进程的进程号为1，也就是说，这个job已经不是当前终端的子进程了。 </p>
+        <p>之前简单讨论了Linux下的会话与进程和一些多路复用终端的软件，<a href="/hadoop-job-scheduler/">Hadoop多用户作业调度器</a>，<a href="http://qyappchentao.sinaapp.com/centos-tmux-screen-byobu/" target="_blank" rel="external">CentOS下tmux,screen,byobu安装与使用</a>，这里再集中的探讨一下如何使得Linux下的进程安全可靠的在后台运行。 依然是SSH&amp;Telnet的问题，当我们登录了远程服务器，运行了一些耗时较长的任务， 结果却由于网络的不稳定导致任务中途失败。如何让命令提交后不受本地关闭终端窗口或网络断开连接或其他意外情况的干扰呢？之前我们介绍了nohup 和 screen(参见以上2篇文章内容)，这次着重介绍一下setsid 、 &amp;  和 disown。 </p>
+<h2 id="setsid"><a href="#setsid" class="headerlink" title="setsid"></a>setsid</h2><p>nohup 可以通过忽略 HUP 信号来使我们的进程避免被中断，但如果我们换个角度思考，如果我们的进程不属于接受 HUP 信号的终端的子进程，那么自然也就不会受到 HUP 信号的影响了。setsid 就能帮助我们做到这一点。让我们先来看一下 setsid 的帮助： [code] SETSID(1) Linux Programmer’s Manual SETSID(1) NAME setsid - run a program in a new session SYNOPSIS setsid program [arg…] DESCRIPTION setsid runs a program in a new session. SEE ALSO setsid(2) AUTHOR Rick Sladkey <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x6a;&#114;&#115;&#x40;&#119;&#x6f;&#114;&#x6c;&#x64;&#x2e;&#115;&#x74;&#x64;&#x2e;&#99;&#111;&#x6d;">&#x6a;&#114;&#115;&#x40;&#119;&#x6f;&#114;&#x6c;&#x64;&#x2e;&#115;&#x74;&#x64;&#x2e;&#99;&#111;&#x6d;</a> AVAILABILITY The setsid command is part of the util-linux-ng package and is available from ftp://ftp.kernel.org/pub/linux/utils/util-linux-ng/. Linux 0.99 20 November 1993 SETSID(1) [/code] 举个例子，我们用setsid运行一个ping job： [code] [root@localhost hbase]# setsid ping www.google.com [root@localhost hbase]# ps -ef | grep www root 64312 1 0 07:48 ? 00:00:00 ping www.google.com root 64925 64776 0 07:49 pts/10 00:00:00 grep www [/code] 可以看到，setsid指定了job的父进程的进程号为1，也就是说，这个job已经不是当前终端的子进程了。 </p>
 <h2 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h2><p>我们知道，将命名包含在“()”中就能让这些命令在子 shell 中运行，而当我们将”&amp;”也放入“()”内之后，我们就会发现所提交的作业并不在作业列表中，也就是说，是无法通过jobs来查看的。这样就巧妙的避开了HUP信号，起到了安全后台运行的作用。 [code][root@localhost hbase]# (ping www.google.com &amp;) [root@localhost hbase]# ps -ef | grep www root 5328 1 0 07:54 pts/10 00:00:00 ping www.google.com root 5527 5395 0 07:54 pts/11 00:00:00 grep www[/code] 这里看到，&amp; 与 setsid的情况相同，父进程的进程号变成了1。 </p>
 <h2 id="disown"><a href="#disown" class="headerlink" title="disown"></a>disown</h2><p>如果事先在命令前加上 nohup 或者 setsid 就可以避免 HUP 信号的影响。但是如果我们未加任何处理就已经提交了命令，该如何补救才能让它避免 HUP 信号的影响呢？ 这时想加 nohup 或者 setsid 已经为时已晚，只能通过作业调度和 disown 来解决这个问题了。对于disown有以下几种使用方式： </p>
 <ul>
 <li>用disown -h jobspec    使某个作业忽略HUP信号。</li>
 <li>用disown -ah                使所有的作业都忽略HUP信号。</li>
 <li>用disown -rh                使正在运行的作业忽略HUP信号。<br>当使用过 disown 之后，会将把目标作业从作业列表中移除，我们将不能再使用jobs来查看它，但是依然能够用ps -ef查找到它。 使用示例： [code] [root@localhost hbase]# ping www.google.com ^Z [1]+ Stopped ping www.google.com [root@localhost hbase]# jobs [1]+ Stopped ping www.google.com [root@localhost hbase]# bg %1 [1]+ ping www.google.com &amp; [root@localhost hbase]# disown -h %1 [root@localhost hbase]# ps -ef | grep www root 13196 5395 0 08:02 pts/11 00:00:00 ping www.google.com root 17803 13349 0 08:07 pts/8 00:00:00 grep www <pre> [/code] 这里举的例子是在完全没有进行后台运行的情况下使用disown，当然也可以先用&amp;再使用disown进行操作。 如果是大批量的操作，还是建议使用screen/tmux/byobu一类的多终端软件。 </pre></li>
+<li>版权声明：自由转载-非商用-非衍生-保持署名 | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank" rel="external">Creative Commons BY-NC-ND 3.0</a></li>
+<li>转载请注明：<a href="http://chentao.1kapp.cpm/" target="_blank" rel="external">Chentao’s Home</a></li>
 </ul>
 
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -366,7 +385,7 @@
       
 
       
-      
+        
       
 
       
@@ -394,10 +413,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -407,7 +422,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -431,7 +446,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -458,33 +472,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -493,18 +503,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -550,7 +599,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -563,7 +612,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -580,7 +629,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -600,14 +649,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -634,42 +675,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -683,6 +720,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -690,6 +736,9 @@
   
 
   
+
+  
+
 
   
 

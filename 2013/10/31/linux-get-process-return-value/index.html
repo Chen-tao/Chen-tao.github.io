@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Linux," />
@@ -84,28 +77,32 @@
 
 
 
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
 
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
-<meta name="description" content="受人之托写一个Linux小Demo">
+
+
+
+
+
+<meta name="description" content="受人之托写一个Linux小Demo，大致意思是这样的：   创建进程，并等待进程结束，获取进程返回值。   创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。  等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒（顺便说一下，我把第一个进程写成了Father，第二个写成了Son，虽然没有父子关系，不过Son是F">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux获取进程返回值">
 <meta property="og:url" content="http://chen-tao.github.io/2013/10/31/linux-get-process-return-value/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="受人之托写一个Linux小Demo">
+<meta property="og:description" content="受人之托写一个Linux小Demo，大致意思是这样的：   创建进程，并等待进程结束，获取进程返回值。   创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。  等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒（顺便说一下，我把第一个进程写成了Father，第二个写成了Son，虽然没有父子关系，不过Son是F">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:image" content="http://chen-tao.github.io/wp-content/uploads/2013/10/return.jpg">
+<meta property="og:updated_time" content="2017-09-11T05:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux获取进程返回值">
-<meta name="twitter:description" content="受人之托写一个Linux小Demo">
+<meta name="twitter:description" content="受人之托写一个Linux小Demo，大致意思是这样的：   创建进程，并等待进程结束，获取进程返回值。   创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。  等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒（顺便说一下，我把第一个进程写成了Father，第二个写成了Son，虽然没有父子关系，不过Son是F">
+<meta name="twitter:image" content="http://chen-tao.github.io/wp-content/uploads/2013/10/return.jpg">
 
 
 
@@ -113,10 +110,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,7 +136,11 @@
 
 
 
-  <title>Linux获取进程返回值 | Chen-Tao</title>
+  <title> Linux获取进程返回值 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -155,17 +155,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,8 +207,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +228,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +274,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/10/31/linux-get-process-return-value/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +292,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux获取进程返回值</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux获取进程返回值
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -303,28 +322,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -343,18 +340,14 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>受人之托写一个Linux小Demo</p>
-<a id="more"></a>
-<p>大致意思是这样的： </p>
+        <p>受人之托写一个Linux小Demo，大致意思是这样的： </p>
 <blockquote>
 <p>创建进程，并等待进程结束，获取进程返回值。 </p>
 </blockquote>
@@ -388,18 +381,26 @@ int main(int argc, char* argv)
 </code></pre><p>编译运行： </p>
 <pre><code>gcc Father.c -o Father
 gcc Son.c -o Son
-</code></pre>
+</code></pre><p>结果如图： </p>
+<p>[caption id=”attachment_206” align=”alignnone” width=”203”]<img src="/wp-content/uploads/2013/10/return.jpg" alt="程序执行结果"> 程序执行结果[/caption]</p>
+
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -411,7 +412,7 @@ gcc Son.c -o Son
       
 
       
-      
+        
       
 
       
@@ -439,10 +440,6 @@ gcc Son.c -o Son
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -452,7 +449,7 @@ gcc Son.c -o Son
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -476,7 +473,6 @@ gcc Son.c -o Son
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -494,33 +490,29 @@ gcc Son.c -o Son
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -529,18 +521,57 @@ gcc Son.c -o Son
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -570,7 +601,7 @@ gcc Son.c -o Son
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -583,7 +614,7 @@ gcc Son.c -o Son
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -600,7 +631,7 @@ gcc Son.c -o Son
         
       </div>
     
-
+    
   </div>
 
   
@@ -620,14 +651,6 @@ gcc Son.c -o Son
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -654,42 +677,38 @@ gcc Son.c -o Son
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -703,6 +722,15 @@ gcc Son.c -o Son
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -710,6 +738,9 @@ gcc Son.c -o Son
   
 
   
+
+  
+
 
   
 

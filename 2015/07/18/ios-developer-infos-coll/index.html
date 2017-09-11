@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="iOS," />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -102,7 +97,7 @@
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="介绍工欲善其事，必先利其器。这篇博文，主要是总结自己在开发iOS过程中使用到的一些可以提高效率的方法和工具。 开发工具，当然还是首选Xcode。 常用快捷键 木说我不告诉你常用片段 Objective-C常用片段 Swift常用片段 我自己常用的Xcode插件 cocoapods管理-cocoapods-xcode-plugin Xcode插件管理-Alcatraz 选择图片时的智能提示-KSI">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS developer infos coll">
 <meta name="twitter:description" content="介绍工欲善其事，必先利其器。这篇博文，主要是总结自己在开发iOS过程中使用到的一些可以提高效率的方法和工具。 开发工具，当然还是首选Xcode。 常用快捷键 木说我不告诉你常用片段 Objective-C常用片段 Swift常用片段 我自己常用的Xcode插件 cocoapods管理-cocoapods-xcode-plugin Xcode插件管理-Alcatraz 选择图片时的智能提示-KSI">
@@ -113,10 +108,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,7 +134,11 @@
 
 
 
-  <title>iOS developer infos coll | Chen-Tao</title>
+  <title> iOS developer infos coll | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -155,17 +153,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +290,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS developer infos coll</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS developer infos coll
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -321,9 +338,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -350,15 +365,21 @@
 <ul><br><li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/" target="_blank" rel="external">LLDB调试命令初探</a></li><br><li><a href="http://objccn.io/issue-19-2/" target="_blank" rel="external">与调试器共舞 - LLDB 的华尔兹</a></li><br><li><a href="https://github.com/facebook/chisel" target="_blank" rel="external">LLDB命令库扩展</a></li><br></ul><br><h3 id="我自己常用的网络数据相关工具">我自己常用的网络数据相关工具</h3><ul><br><li><a href="https://www.sprintapi.com/dhcs.html" target="_blank" rel="external">DHC</a></li><br><li><a href="https://www.getpostman.com/" target="_blank" rel="external">POSTMAN</a></li><br><li><a href="http://www.runoob.com/tool/json/index.html" target="_blank" rel="external">JSON格式化工具</a></li><br><li><a href="https://chrome.google.com/webstore/detail/xml-tree/gbammbheopgpmaagmckhpjbfgdfkpadb" target="_blank" rel="external">XML TREE</a></li><br></ul><br><h3 id="我自己常用的其他工具">我自己常用的其他工具</h3><p>要是设计师太较真，那么测量像素的工具是你的好帮手</p><br><ul><br><li><a href="http://www.ricciadams.com/projects/pixel-winch" target="_blank" rel="external">Pixel Winch</a></li><br></ul><br><p>收集亦是灵感的来源，36¥</p><br><ul><br><li><a href="http://zrey.com/app/pincap" target="_blank" rel="external">PinCap</a></li><br></ul><br><p>模拟器文件目录太深，怎么办？用SimPholders2吧</p><br><ul><br><li><a href="http://simpholders.com/" target="_blank" rel="external">SimPholders2</a></li><br></ul><br><p>png图片可以压缩质量</p><br><ul><br><li><a href="https://tinypng.com/" target="_blank" rel="external">tinypng</a></li><br></ul><br><p>设计工具，（做为一个不懂设计的人用这个也很容易）198¥</p><br><ul><br><li><a href="http://www.pixelmator.com/support/" target="_blank" rel="external">Pixelmator</a></li><br></ul><br><p>自动生成icon，只需要上传一张1024*1024图片，在线和Mac客户端要求一样</p><br><ul><br><li><a href="http://makeappicon.com/" target="_blank" rel="external">makeappicon在线的</a></li><br><li><a href="http://wearemothership.com/" target="_blank" rel="external">Mac 客户端的</a></li><br></ul><br><p>搜索免费的图标icon，而且是全套哦，亲（iOS Android Windows）</p><br><ul><br><li><a href="https://icons8.com/" target="_blank" rel="external">icons8</a></li><br></ul><br><p>搜索素材，而且已经署名了版权免费，审核时再也不怕因为版权问题被拒了</p><br><ul><br><li><a href="https://pixabay.com/" target="_blank" rel="external">pixabay</a></li><br></ul><br><p>提交AppStore的截图工具（4s-6p全套）</p><br><ul><br><li><a href="https://appscreens.io/" target="_blank" rel="external">appscreens</a></li><br></ul><br><p>把用户提交到的评论发送到邮件，及时看见反馈</p><br><ul><br><li><a href="https://launchkit.io/reviews/" target="_blank" rel="external">launchkit</a></li><br></ul><br><p>高效的利用Github的star来管理比较好的开源项目，建议还是可以入手的68¥</p><br><ul><br><li><a href="http://www.ohmystarapp.com/" target="_blank" rel="external">ohmystar</a></li><br></ul><br><p>另外也可以利用Github Search</p><br><ul><br><li><a href="https://github.com/search/advanced" target="_blank" rel="external">advanced</a></li><br></ul><br><h3 id="开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来">开发用的第三方库，Github上有1000+列表，你想不到的都能挖出来</h3><ul><br><li><a href="https://github.com/iamdaiyuan/ios_top_1000" target="_blank" rel="external">感觉真的史上最全的了 1000+ 大部分是Objective-C</a> </li><br><li><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">Swift比较全的开源项目</a></li><br></ul><br><h3 id="绝对没给VPN打广告，代理不得不用">绝对没给VPN打广告，代理不得不用</h3><p>我自己用云梯，感觉还可以—<a href="https://www.cloudtizi.com/" target="_blank" rel="external">云梯</a></p><br><h3 id="感觉还可以但没舍得买的工具，真的真的好贵">感觉还可以但没舍得买的工具，真的真的好贵</h3><ul><br><li><a href="http://www.coreanimator.com/#keyframing" target="_blank" rel="external">CoreAnimator</a></li><br><li><a href="http://www.quartzcodeapp.com/" target="_blank" rel="external">QuartzCode</a></li><br></ul>
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -370,15 +391,15 @@
       
 
       
-      
+        
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/18/some-blogs-i-see/" rel="next" title="常刷的博客">
-                <i class="fa fa-chevron-left"></i> 常刷的博客
+              <a href="/2015/07/17/java-monitor-and-analysis/" rel="next" title="Java垃圾回收的监控和分析工具">
+                <i class="fa fa-chevron-left"></i> Java垃圾回收的监控和分析工具
               </a>
             
           </div>
@@ -387,8 +408,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/02/how-to-support-full-unicode-in-mysql-databases/" rel="prev" title="How to support full Unicode in MySQL databases">
-                How to support full Unicode in MySQL databases <i class="fa fa-chevron-right"></i>
+              <a href="/2015/07/18/some-blogs-i-see/" rel="prev" title="常刷的博客">
+                常刷的博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -398,10 +419,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -411,7 +428,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -435,7 +452,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -462,33 +478,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -497,18 +509,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -554,7 +605,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -567,7 +618,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -584,7 +635,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -604,14 +655,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -638,42 +681,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -687,6 +726,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -694,6 +742,9 @@
   
 
   
+
+  
+
 
   
 

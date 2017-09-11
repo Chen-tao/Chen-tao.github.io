@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="C++，C," />
@@ -84,28 +77,30 @@
 
 
 
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
 
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
-<meta name="description" content="本文主要记录了C/C++预处理指令">
+
+
+
+
+
+<meta name="description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下： #空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
 <meta name="keywords" content="C++，C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C&#x2F;C++ 预处理指令">
 <meta property="og:url" content="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="本文主要记录了C/C++预处理指令">
+<meta property="og:description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下： #空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C&#x2F;C++ 预处理指令">
-<meta name="twitter:description" content="本文主要记录了C/C++预处理指令">
+<meta name="twitter:description" content="本文主要记录了C/C++预处理指令，常见的预处理指令如下： #空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码#endif结束一个#if……#else条件编">
 
 
 
@@ -113,10 +108,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -140,7 +134,11 @@
 
 
 
-  <title>C/C++ 预处理指令 | Chen-Tao</title>
+  <title> C/C++ 预处理指令 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -155,17 +153,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,7 +290,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C/C++ 预处理指令</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C/C++ 预处理指令
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -321,18 +338,14 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>本文主要记录了C/C++预处理指令</p>
-<a id="more"></a>
-<p>常见的预处理指令如下：</p>
+        <p>本文主要记录了C/C++预处理指令，常见的预处理指令如下：</p>
 <h4 id="空指令，无任何效果"><a href="#空指令，无任何效果" class="headerlink" title="#空指令，无任何效果"></a>#空指令，无任何效果</h4><h4 id="include包含一个源代码文件"><a href="#include包含一个源代码文件" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h4><h4 id="define定义宏"><a href="#define定义宏" class="headerlink" title="#define定义宏"></a>#define定义宏</h4><h4 id="undef取消已定义的宏"><a href="#undef取消已定义的宏" class="headerlink" title="#undef取消已定义的宏"></a>#undef取消已定义的宏</h4><h4 id="if如果给定条件为真，则编译下面代码"><a href="#if如果给定条件为真，则编译下面代码" class="headerlink" title="#if如果给定条件为真，则编译下面代码"></a>#if如果给定条件为真，则编译下面代码</h4><h4 id="ifdef如果宏已经定义，则编译下面代码"><a href="#ifdef如果宏已经定义，则编译下面代码" class="headerlink" title="#ifdef如果宏已经定义，则编译下面代码"></a>#ifdef如果宏已经定义，则编译下面代码</h4><h4 id="ifndef如果宏没有定义，则编译下面代码"><a href="#ifndef如果宏没有定义，则编译下面代码" class="headerlink" title="#ifndef如果宏没有定义，则编译下面代码"></a>#ifndef如果宏没有定义，则编译下面代码</h4><h4 id="elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码"><a href="#elif如果前面的-if给定条件不为真，当前条件为真，则编译下面代码" class="headerlink" title="#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码"></a>#elif如果前面的#if给定条件不为真，当前条件为真，则编译下面代码</h4><h4 id="endif结束一个-if……-else条件编译块"><a href="#endif结束一个-if……-else条件编译块" class="headerlink" title="#endif结束一个#if……#else条件编译块"></a>#endif结束一个#if……#else条件编译块</h4><h4 id="error停止编译并显示错误信息"><a href="#error停止编译并显示错误信息" class="headerlink" title="#error停止编译并显示错误信息"></a>#error停止编译并显示错误信息</h4><h2 id="什么是预处理指令"><a href="#什么是预处理指令" class="headerlink" title="什么是预处理指令?"></a>什么是预处理指令?</h2><p>预处理指令是以#号开头的代码行。#号必须是该行除了任何空白字符外的第一个字符。#后是指令关键字，在关键字和#号之间允许存在任意个数的空白字符。整行语句构成了一条预处理指令，该指令将在编译器进行编译之前对源代码做某些转换。</p>
 <p>以前没有在意的学者注意了,预处理指令是在编译器进行编译之前进行的操作.预处理过程扫描源代码，对其进行初步的转换，产生新的源代码提供给编译器。可见预处理过程先于编译器对源代码进行处理。在很多编程语言中，并没有任何内在的机制来完成如下一些功能：在编译时包含其他源文件、定义宏、根据条件决定编译时是否包含某些代码(防止重复包含某些文件)。要完成这些工作，就需要使用预处理程序。尽管在目前绝大多数编译器都包含了预处理程序，但通常认为它们是独立于编译器的。预处理过程读入源代码，检查包含预处理指令的语句和宏定义，并对源代码进行响应的转换。预处理过程还会删除程序中的注释和多余的空白字符。</p>
 <h2 id="include包含一个源代码文件-1"><a href="#include包含一个源代码文件-1" class="headerlink" title="#include包含一个源代码文件"></a>#include包含一个源代码文件</h2><p>这个预处理指令，我想是见得最多的一个，简单说一下，第一种方法是用尖括号把头文件括起来。这种格式告诉预处理程序在编译器自带的或外部库的头文件中搜索被包含的头文件。第二种方法是用双引号把头文件括起来。这种格式告诉预处理程序在当前被编译的应用程序的源代码文件中搜索被包含的头文件，如果找不到，再搜索编译器自带的头文件。采用两种不同包含格式的理由在于，编译器是安装在公共子目录下的，而被编译的应用程序是在它们自己的私有子目录下的。一个应用程序既包含编译器提供的公共头文件，也包含自定义的私有头文件。采用两种不同的包含格式使得编译器能够在很多头文件中区别出一组公共的头文件。</p>
@@ -376,15 +389,21 @@
 
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -396,15 +415,15 @@
       
 
       
-      
+        
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/17/linux-swap-conf/" rel="next" title="linux的swap扩容">
-                <i class="fa fa-chevron-left"></i> linux的swap扩容
+              <a href="/2015/11/16/macbook-shortcuts/" rel="next" title="Macbook技巧整理">
+                <i class="fa fa-chevron-left"></i> Macbook技巧整理
               </a>
             
           </div>
@@ -413,8 +432,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/21/unix-into-apue/" rel="prev" title="unix高级编程引入apue.h">
-                unix高级编程引入apue.h <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/17/linux-swap-conf/" rel="prev" title="linux的swap扩容">
+                linux的swap扩容 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -424,10 +443,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -437,7 +452,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -461,7 +476,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -488,33 +502,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -523,18 +533,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -580,7 +629,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -593,7 +642,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -610,7 +659,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -630,14 +679,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -664,42 +705,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -713,6 +750,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -720,6 +766,9 @@
   
 
   
+
+  
+
 
   
 

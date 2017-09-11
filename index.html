@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -111,10 +106,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -138,7 +132,11 @@
 
 
 
-  <title>Chen-Tao</title>
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -153,17 +151,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,151 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/09/11/Go-check-if-app-running-in-docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/11/Go-check-if-app-running-in-docker/" itemprop="url">
+                  Golang 如何确定App是否运行在Docker内
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T13:48:47+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          几种判断Golang App当前运行环境的方法
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/11/Go-check-if-app-running-in-docker/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/08/27/WTF-hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -281,8 +435,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/08/27/WTF-hexo/" itemprop="url">WTF hexo</a></h1>
+                <a class="post-title-link" href="/2017/08/27/WTF-hexo/" itemprop="url">
+                  WTF hexo
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -323,9 +485,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,24 +494,31 @@
       
         
           
-            <p>真的不知道出了什么问题，突然这个hexo就不好用了，也许是我太久没用了吧 = = </p>
-<p>昨天开始一直报错，找不到某个Trace，另外有一点我不太明白，deploy的时候替我提交了，那为何我本地还有这么多修改。</p>
-<p>问题很多，但是确实很多没到这边来了，我的个人页也莫名其妙丢失了，SAD。</p>
-<p>以上です。</p>
+          真的不知道出了什么问题，突然这个hexo就不好用了，也许是我太久没用了吧 = = 
+昨天开始一直报错，找不到某个Trace，另外有一点我不太明白，deploy的时候替我提交了，那为何我本地还有这么多修改。
+问题很多，但是确实很多没到这边来了，我的个人页也莫名其妙丢失了，SAD。
+以上です。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/27/WTF-hexo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -365,10 +532,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -381,11 +544,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/03/14/about-tencent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -404,8 +563,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/03/14/about-tencent/" itemprop="url">告别腾讯-一点总结</a></h1>
+                <a class="post-title-link" href="/2017/03/14/about-tencent/" itemprop="url">
+                  告别腾讯-一点总结
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -446,9 +613,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -467,15 +632,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -489,10 +654,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -505,11 +666,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/03/09/move-to-hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -528,8 +685,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/03/09/move-to-hexo/" itemprop="url">从jekyll到hexo</a></h1>
+                <a class="post-title-link" href="/2017/03/09/move-to-hexo/" itemprop="url">
+                  从jekyll到hexo
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -570,9 +735,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -591,15 +754,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -613,10 +776,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -629,11 +788,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/02/08/algo-pic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -652,8 +807,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/02/08/algo-pic/" itemprop="url">Algorithm Anaysis</a></h1>
+                <a class="post-title-link" href="/2017/02/08/algo-pic/" itemprop="url">
+                  Algorithm Anaysis
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -676,28 +839,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -716,9 +857,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -726,10 +865,13 @@
 
       
         
-          算法分析基本思想 思维导图
+          
+          
+
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/02/08/algo-pic/">
+            <a class="btn" href="/2017/02/08/algo-pic/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -737,15 +879,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -759,10 +901,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -775,11 +913,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/02/01/soa-and-micro-service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -798,8 +932,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/02/01/soa-and-micro-service/" itemprop="url">SOA面向服务架构浅析</a></h1>
+                <a class="post-title-link" href="/2017/02/01/soa-and-micro-service/" itemprop="url">
+                  SOA面向服务架构浅析
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -862,9 +1004,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -883,15 +1023,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -905,10 +1045,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -921,11 +1057,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/28/quick-sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -944,8 +1076,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/01/28/quick-sort/" itemprop="url">quick sort快速排序算法总结 </a></h1>
+                <a class="post-title-link" href="/2017/01/28/quick-sort/" itemprop="url">
+                  quick sort快速排序算法总结 
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1008,9 +1148,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1018,7 +1156,13 @@
 
       
         
-          <p>今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).</p>
+          
+          今天总结一下非常有用的快速排序(qsort)算法, 以及由此衍生的一些其他相关算法(Knuth shuffle, quick select, 3-way partition).
+快速排序的算法可以用三句话描述:[Algo]
+
+
+选择基准项(pivot element, 一般取第一个元素为pivot)
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/28/quick-sort/#more" rel="contents">
@@ -1029,15 +1173,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1051,10 +1195,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1067,11 +1207,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/27/al-template/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1090,8 +1226,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/01/27/al-template/" itemprop="url">递归，回溯，DFS，BFS的理解和模板</a></h1>
+                <a class="post-title-link" href="/2017/01/27/al-template/" itemprop="url">
+                  递归，回溯，DFS，BFS的理解和模板
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1154,9 +1298,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1164,8 +1306,12 @@
 
       
         
-          <p>LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯</p>
-<p>这里参考了一些网上写得很不错的文章，总结一下理解与模板</p>
+          
+          LeetCode 里面很大一部分题目都是属于这个范围，例如Path Sum用的就是递归+DFS，Path Sum2用的是递归+DFS+回溯
+这里参考了一些网上写得很不错的文章，总结一下理解与模板
+递归递归：就是出现这种情况的代码： （或者说是用到了栈）
+解答树角度：在dfs遍历一棵解答树      
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/27/al-template/#more" rel="contents">
@@ -1176,15 +1322,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1198,10 +1344,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1214,11 +1356,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/26/about-dfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1237,8 +1375,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/01/26/about-dfs/" itemprop="url">DFS深度优先搜索算法总结</a></h1>
+                <a class="post-title-link" href="/2017/01/26/about-dfs/" itemprop="url">
+                  DFS深度优先搜索算法总结
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1301,9 +1447,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1311,9 +1455,20 @@
 
       
         
-          <p>总结复习一下DFS算法。</p>
-<p>深度优先算法是N种算法的基础，是算法学习中的重中之重。</p>
-<p>可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。</p>
+          
+          
+
+Recursive DFS
+Non-Recursive DFS
+(for Tree) DFS with depth
+DFS for binary tree–PreOrder traversal
+
+
+Cycle Detection
+Topology Sort
+LeetCode DFS
+Subset
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/26/about-dfs/#more" rel="contents">
@@ -1324,15 +1479,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1346,10 +1501,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1362,11 +1513,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/25/about-bfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1385,8 +1532,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/01/25/about-bfs/" itemprop="url">BFS广度优先搜索算法总结</a></h1>
+                <a class="post-title-link" href="/2017/01/25/about-bfs/" itemprop="url">
+                  BFS广度优先搜索算法总结
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1449,9 +1604,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1459,7 +1612,10 @@
 
       
         
-          <h2 id="BFS-intro"><a href="#BFS-intro" class="headerlink" title="BFS intro"></a>BFS intro</h2><p>广度优先搜索算法(Breadth First Search)，又称为”宽度优先搜索”或”横向优先搜索”，简称BFS。</p>
+          
+          BFS intro广度优先搜索算法(Breadth First Search)，又称为”宽度优先搜索”或”横向优先搜索”，简称BFS。
+它的思想是：从图中某顶点v出发，在访问了v之后依次访问v的各个未曾访问过的邻接点，然后分别从这些邻接点出发依次访问它们的邻接点，并使得“先被访问的顶点的邻接点先于后
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/25/about-bfs/#more" rel="contents">
@@ -1470,135 +1626,15 @@
         
       
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/18/japanese-shou-shou-rela/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/18/japanese-shou-shou-rela/" itemprop="url">日语授受关系总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-18T00:00:00+08:00">
-                2017-01-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="./授受关系.png" alt="授受关系"></p>
-
-          
-        
+    <div>
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
-
-    
 
     <footer class="post-footer">
       
@@ -1612,10 +1648,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1624,11 +1656,11 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
-
+          
           </div>
           
 
@@ -1648,7 +1680,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -1666,33 +1697,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1701,18 +1728,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -1742,7 +1808,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1755,7 +1821,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -1772,7 +1838,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -1792,14 +1858,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -1826,29 +1884,26 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -1856,12 +1911,7 @@
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -1875,6 +1925,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -1882,6 +1941,9 @@
   
 
   
+
+  
+
 
   
 

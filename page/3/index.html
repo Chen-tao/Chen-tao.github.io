@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -111,10 +106,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -138,7 +132,11 @@
 
 
 
-  <title>Chen-Tao</title>
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -153,17 +151,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,11 +272,135 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2016/01/30/some-feeling-about-programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/30/some-feeling-about-programming/" itemprop="url">
+                  把程序员修炼之道读薄
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-30T00:00:00+08:00">
+                2016-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+这是一篇技术书籍读后感
+
+早在2014年的时候我就已经购入《程序员的修炼之道》.还是由于慵懒一直没有翻开，最近才把它从书柜里翻出来看完。
+老实说这本书相比CodeComplete2来说，还是差那么点味道，但是它依旧是一本好书。本书通篇都在向读者灌输一种做一个注重实效的程序员的概念，这句话出现了不下
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/01/30/some-feeling-about-programming/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -281,8 +419,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/" itemprop="url">Check and Install Mac OS X Software Updates from the Terminal</a></h1>
+                <a class="post-title-link" href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/" itemprop="url">
+                  Check and Install Mac OS X Software Updates from the Terminal
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -323,9 +469,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,29 +478,28 @@
       
         
           
-            <a id="more"></a>
-<h3 id="List-All-Available-Mac-Software-Updates-from-Command-Line"><a href="#List-All-Available-Mac-Software-Updates-from-Command-Line" class="headerlink" title="List All Available Mac Software Updates from Command Line"></a>List All Available Mac Software Updates from Command Line</h3><p>To get a list of available software updates, type the following command:</p>
-<figure class="highlight plain"><figcaption><span>-l```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">You will see a list of available updates.</div><div class="line"></div><div class="line">### Installing All Available Updates from Terminal</div><div class="line"></div><div class="line">You can then install all available software updates with the following command:</div><div class="line"></div><div class="line">```sudo softwareupdate -iva</div></pre></td></tr></table></figure>
-<p>The use of sudo is required to get superuser privileges to actually install the updates.</p>
-<h3 id="Install-Recommended-Updates-Only-from-Terminal-in-OS-X"><a href="#Install-Recommended-Updates-Only-from-Terminal-in-OS-X" class="headerlink" title="Install Recommended Updates Only from Terminal in OS X"></a>Install Recommended Updates Only from Terminal in OS X</h3><p>You can also install only the recommended updates with:</p>
-<figure class="highlight plain"><figcaption><span>softwareupdate -irv```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### Installing &amp; Ignoring Specific Software Updates to Mac from Terminal of OS X</div><div class="line">Or you can just install specific software updates by specifying the shorthand package name from the previous list, like so:</div><div class="line"></div><div class="line">```sudo softwareupdate -i iPhoneConfigurationUtility-3.2</div></pre></td></tr></table></figure>
-<p>If there are any updates you want to ignore, you can do so with the –ignore flag, for example:</p>
-<figure class="highlight plain"><figcaption><span>softwareupdate --ignore iWeb3.0.2-3.0.2```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">If you want to see all the available command line shortcuts for Software Update, just type:</div><div class="line"></div><div class="line">```softwareupdate -h</div></pre></td></tr></table></figure>
-<p>This is really useful for remotely updating Macs, setting up automated updates via a bash script, or if you just want to geek out.<br>This tool is available in all versions of OS X and therefore it can be used to update just about any Mac with necessary software updates. This is one way to avoid using the Mac App Store to update a Mac if that is necessary for whatever reason.</p>
-
-          
+          List All Available Mac Software Updates from Command LineTo get a list of available software updates, type the following command:
+-l```12345678You wil
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/26/check-and-install-mac-os-x-software-updates-from-the-terminal/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -370,10 +513,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -386,11 +525,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/21/unix-into-apue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -409,8 +544,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/21/unix-into-apue/" itemprop="url">unix高级编程引入apue.h</a></h1>
+                <a class="post-title-link" href="/2015/11/21/unix-into-apue/" itemprop="url">
+                  unix高级编程引入apue.h
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -451,9 +594,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -461,7 +602,16 @@
 
       
         
-          <p>apue.h头文件为作者自己编写而非系统自带，故需要自行添加！</p>
+          
+          apue.h头文件为作者自己编写而非系统自带，故需要自行添加！
+第一：打开网站 http://www.apuebook.com/
+第二：选择合适的版本（一共有三个版本，根据书的版本选择）下载源码source code
+解压: tar -zxvf src.2e.tar.gz
+
+得到apue.2e
+
+复
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/11/21/unix-into-apue/#more" rel="contents">
@@ -472,139 +622,15 @@
         
       
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/17/c-cpp-preprocessor/" itemprop="url">C/C++ 预处理指令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-17T00:00:00+08:00">
-                2015-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文主要记录了C/C++预处理指令</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/11/17/c-cpp-preprocessor/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div>
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
-
-    
 
     <footer class="post-footer">
       
@@ -618,10 +644,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -634,11 +656,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/linux-swap-conf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -657,8 +675,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/17/linux-swap-conf/" itemprop="url">linux的swap扩容</a></h1>
+                <a class="post-title-link" href="/2015/11/17/linux-swap-conf/" itemprop="url">
+                  linux的swap扩容
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -699,9 +725,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -709,7 +733,17 @@
 
       
         
-          <p>很多时候，Linux的虚拟内存配置的并不尽如人意，这时候我们需要自己再分配一下，这里提供两个方法。</p>
+          
+          很多时候，Linux的虚拟内存配置的并不尽如人意，这时候我们需要自己再分配一下，这里提供两个方法。
+方法一：
+free查看系统内存及交换分区的使用率
+  #free –m
+
+使用虚拟设备生成空文件
+
+
+12#dd  if=/dev/zero  of=目录/文件名  bs=容量  count=次数#d
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/11/17/linux-swap-conf/#more" rel="contents">
@@ -720,15 +754,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -742,10 +776,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -758,11 +788,132 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/17/c-cpp-preprocessor/" itemprop="url">
+                  C/C++ 预处理指令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-17T00:00:00+08:00">
+                2015-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          本文主要记录了C/C++预处理指令，常见的预处理指令如下：
+#空指令，无任何效果#include包含一个源代码文件#define定义宏#undef取消已定义的宏#if如果给定条件为真，则编译下面代码#ifdef如果宏已经定义，则编译下面代码#ifndef如果宏没有定义，则编译下面代码#elif如果前
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/11/17/c-cpp-preprocessor/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/16/macbook-shortcuts/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -781,8 +932,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/16/macbook-shortcuts/" itemprop="url">Macbook技巧整理</a></h1>
+                <a class="post-title-link" href="/2015/11/16/macbook-shortcuts/" itemprop="url">
+                  Macbook技巧整理
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -845,9 +1004,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -855,10 +1012,14 @@
 
       
         
-          Mac使用技巧与常用命令，不断更新中
+          
+          常用命令篇1234防止Mac休眠，-t 代表持续时间 ```$ caffeinate -t 12800
+1234清除内存、硬盘缓存、swap，从储存角度看，等同于重启，直接输入后回车即可```pbcopy &amp; pbpaste
+这两个工具可以打通命令行和剪贴板。当然用鼠标操作复制粘贴也可以——
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/11/16/macbook-shortcuts/">
+            <a class="btn" href="/2015/11/16/macbook-shortcuts/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -866,15 +1027,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -888,10 +1049,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -904,11 +1061,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/13/code-self-discipline/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -927,8 +1080,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/13/code-self-discipline/" itemprop="url">程序员的自我修养 读书笔记</a></h1>
+                <a class="post-title-link" href="/2015/11/13/code-self-discipline/" itemprop="url">
+                  程序员的自我修养 读书笔记
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -969,9 +1130,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -979,10 +1138,14 @@
 
       
         
-          概念解析，重点理解
+          
+          驱动程序驱动程序可以看作是操作系统的一部分，它往往跟操作系统内核一起运行在特权级，但它又与操作系统内核之间有一定的独立性，使得驱动程序有比较好的灵活性。
+系统抽象UNIX中，硬件设备的访问形式跟访问普通的文件形式一样
+Windows系统中，图形硬件被抽象成了GDI，声音和多媒体设备被抽象成了Dire
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/11/13/code-self-discipline/">
+            <a class="btn" href="/2015/11/13/code-self-discipline/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -990,15 +1153,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1012,10 +1175,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1028,11 +1187,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/12/cpp-d-lib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1051,8 +1206,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/12/cpp-d-lib/" itemprop="url">Linux动态库相关知识整理</a></h1>
+                <a class="post-title-link" href="/2015/11/12/cpp-d-lib/" itemprop="url">
+                  Linux动态库相关知识整理
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1093,9 +1256,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1103,7 +1264,10 @@
 
       
         
-          <p>动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。</p>
+          
+          动态库和静态库在C/C++开发中很常见，相比静态库直接被编译到可执行程序， 动态库运行时加载使得可执行程序的体积更小，更新动态库可以不用重新编译可执 行程序等诸多好处。作者是一个Linux后台开发，这些知识经常用到，所以 整理了一下这方面的知识。静态库相对简单，本文只关心Linux平台下的动态库。
+
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/11/12/cpp-d-lib/#more" rel="contents">
@@ -1114,15 +1278,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1136,10 +1300,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1152,11 +1312,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/linux-nc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1175,8 +1331,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/09/linux-nc/" itemprop="url">linux nc命令</a></h1>
+                <a class="post-title-link" href="/2015/11/09/linux-nc/" itemprop="url">
+                  linux nc命令
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1217,9 +1381,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1227,7 +1389,10 @@
 
       
         
-          <p><strong>功能说明</strong>：功能强大的网络工具</p>
+          
+          功能说明：功能强大的网络工具
+语　法：nc [-hlnruz][-g&lt;网关…&gt;][-G&lt;指向器数目&gt;][-i&lt;延迟秒数&gt;][-o&lt;输出文件&gt;][-p&lt;通信端口&gt;][-s&lt;来源位址&gt;][-v…][-w&lt;超时秒数&gt;][主
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/11/09/linux-nc/#more" rel="contents">
@@ -1238,15 +1403,15 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1260,10 +1425,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1276,12 +1437,8 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/newbee-problem/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/09/all-about-java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1299,8 +1456,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/11/09/newbee-problem/" itemprop="url">新人破冰问题</a></h1>
+                <a class="post-title-link" href="/2015/11/09/all-about-java/" itemprop="url">
+                  all about java
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1341,9 +1506,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1351,12 +1514,14 @@
 
       
         
-          <blockquote>
-<p>传闻中阿里巴巴的破冰问题，搬过来看一下，有的问题与Google的有异曲同工之妙</p>
-</blockquote>
+          
+          https://tower.im/
+doc
+
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/11/09/newbee-problem/#more" rel="contents">
+            <a class="btn" href="/2015/11/09/all-about-java/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1364,135 +1529,15 @@
         
       
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/11/08/server-dev-things/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/08/server-dev-things/" itemprop="url">服务端开发那些事儿</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-08T00:00:00+08:00">
-                2015-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/Chen-tao/Chen-tao.github.io/blob/master/docs/things-about-service-dev.pdf" target="_blank" rel="external">PPT</a></p>
-
-          
-        
+    <div>
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
-
-    
 
     <footer class="post-footer">
       
@@ -1506,10 +1551,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1518,11 +1559,11 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
-
+          
           </div>
           
 
@@ -1542,7 +1583,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -1560,33 +1600,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1595,18 +1631,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -1636,7 +1711,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1649,7 +1724,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -1666,7 +1741,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -1686,14 +1761,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -1720,29 +1787,26 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -1750,12 +1814,7 @@
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -1769,6 +1828,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -1776,6 +1844,9 @@
   
 
   
+
+  
+
 
   
 

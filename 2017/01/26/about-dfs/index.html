@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,42 +68,44 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法,递归,回溯,DFS,搜索," />
-
-
-
+  <meta name="keywords" content="算法,DFS,搜索,递归,回溯," />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="总结复习一下DFS算法。 深度优先算法是N种算法的基础，是算法学习中的重中之重。 可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。">
-<meta name="keywords" content="算法,递归,回溯,DFS,搜索">
+<meta name="description" content="Recursive DFS Non-Recursive DFS (for Tree) DFS with depth DFS for binary tree–PreOrder traversal   Cycle Detection Topology Sort LeetCode DFS Subsets     总结复习一下DFS算法。 深度优先算法是N种算法的基础，是算法学习中的重中之重。 可以解">
+<meta name="keywords" content="算法,DFS,搜索,递归,回溯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DFS深度优先搜索算法总结">
 <meta property="og:url" content="http://chen-tao.github.io/2017/01/26/about-dfs/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="总结复习一下DFS算法。 深度优先算法是N种算法的基础，是算法学习中的重中之重。 可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。">
+<meta property="og:description" content="Recursive DFS Non-Recursive DFS (for Tree) DFS with depth DFS for binary tree–PreOrder traversal   Cycle Detection Topology Sort LeetCode DFS Subsets     总结复习一下DFS算法。 深度优先算法是N种算法的基础，是算法学习中的重中之重。 可以解">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7glkmecsj30bl08fq3b.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwgy1fc7gowbrw3j30c409hmxs.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fc7gqb4esdj308f08y74n.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwgy1fc7gqggvlfj308f0a0gm7.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fc7i519tsrj30d6083jru.jpg">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DFS深度优先搜索算法总结">
-<meta name="twitter:description" content="总结复习一下DFS算法。 深度优先算法是N种算法的基础，是算法学习中的重中之重。 可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。">
+<meta name="twitter:description" content="Recursive DFS Non-Recursive DFS (for Tree) DFS with depth DFS for binary tree–PreOrder traversal   Cycle Detection Topology Sort LeetCode DFS Subsets     总结复习一下DFS算法。 深度优先算法是N种算法的基础，是算法学习中的重中之重。 可以解">
 <meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fc7glkmecsj30bl08fq3b.jpg">
 
 
@@ -119,10 +114,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -146,7 +140,11 @@
 
 
 
-  <title>DFS深度优先搜索算法总结 | Chen-Tao</title>
+  <title> DFS深度优先搜索算法总结 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -161,17 +159,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,8 +211,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -228,11 +232,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -264,11 +278,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/26/about-dfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -286,7 +296,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DFS深度优先搜索算法总结</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DFS深度优先搜索算法总结
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -349,19 +366,32 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>总结复习一下DFS算法。</p>
+        <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<ul>
+<li><a href="#recursive-dfs">Recursive DFS</a></li>
+<li><a href="#non-recursive-dfs">Non-Recursive DFS</a><ul>
+<li><a href="#for-tree-dfs-with-depth">(for Tree) DFS with depth</a></li>
+<li><a href="#dfs-for-binary-tree--preorder-traversal">DFS for binary tree–PreOrder traversal</a></li>
+</ul>
+</li>
+<li><a href="#cycle-detection">Cycle Detection</a></li>
+<li><a href="#topology-sort">Topology Sort</a></li>
+<li><a href="#leetcode-dfs">LeetCode DFS</a><ul>
+<li><a href="#subsets">Subsets</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<p>总结复习一下DFS算法。</p>
 <p>深度优先算法是N种算法的基础，是算法学习中的重中之重。</p>
 <p>可以解决的问题类型也很多：递归，回溯，隐图式搜索，甚至是暴力类型算法的万金油。</p>
-<a id="more"></a>
 <h2 id="DFS-intro"><a href="#DFS-intro" class="headerlink" title="DFS intro"></a>DFS intro</h2><p>图的深度优先搜索(Depth First Search)，和树的先序遍历比较类似。</p>
 <p>它的思想：假设初始状态是图中所有顶点均未被访问，则从某个顶点v出发，首先访问该顶点，然后依次从它的各个未被访问的邻接点出发深度优先搜索遍历图，直至图中所有和v有路径相通的顶点都被访问到。 若此时尚有其他顶点未被访问到，则另选一个未被访问的顶点作起始点，重复上述过程，直至图中所有顶点都被访问到为止。</p>
 <p>显然，深度优先搜索是一个递归的过程。</p>
@@ -451,15 +481,21 @@
 
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -467,19 +503,19 @@
           
             <a href="/tags/算法/" rel="tag"># 算法</a>
           
-            <a href="/tags/递归/" rel="tag"># 递归</a>
-          
-            <a href="/tags/回溯/" rel="tag"># 回溯</a>
-          
             <a href="/tags/DFS/" rel="tag"># DFS</a>
           
             <a href="/tags/搜索/" rel="tag"># 搜索</a>
+          
+            <a href="/tags/递归/" rel="tag"># 递归</a>
+          
+            <a href="/tags/回溯/" rel="tag"># 回溯</a>
           
         </div>
       
 
       
-      
+        
       
 
       
@@ -507,10 +543,6 @@
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -520,7 +552,7 @@
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -544,7 +576,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -571,33 +602,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -606,18 +633,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -663,7 +729,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -676,7 +742,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -693,7 +759,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -713,14 +779,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -747,42 +805,38 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -796,6 +850,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -803,6 +866,9 @@
   
 
   
+
+  
+
 
   
 

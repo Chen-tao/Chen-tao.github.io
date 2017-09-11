@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -83,11 +76,15 @@
 
 
 
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -103,7 +100,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Algorithm_1.jpg">
 <meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Algorithm_2.jpg">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chen-Tao">
 <meta name="twitter:description" content="基本算法理论渐进记号的性质［记号O的定义］   经典排序算法如果 Ai = Aj，排序前 Ai 在 Aj 前，排序后Ai还是在Aj前，则称排序算法是稳定的。    排序法 最差时间分析 平均时间复杂度 空间复杂度 稳定度     冒泡排序 n^2 n^2 1 稳定   选择排序 n^2 n^2 1 不稳定   插入排序 n^2 n^2 1 稳定   快速排序 n^2 nlogn logn 不稳定">
@@ -115,10 +112,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -142,7 +138,17 @@
 
 
 
-  <title> | Chen-Tao</title>
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -157,17 +163,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,8 +215,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,11 +236,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -252,11 +274,7 @@
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
+  <header class="post-header">
 
 	<h1 class="post-title" itemprop="name headline"></h1>
 
@@ -264,13 +282,9 @@
 
 </header>
 
-      
-      
-      
-      <div class="post-body">
-        
-        
-          <h1 id="基本算法理论"><a href="#基本算法理论" class="headerlink" title="基本算法理论"></a>基本算法理论</h1><h2 id="渐进记号的性质"><a href="#渐进记号的性质" class="headerlink" title="渐进记号的性质"></a>渐进记号的性质</h2><p>［<a href="http://www.nowcoder.com/questionTerminal/281cab90faae4597a1164e25ea42fd87" target="_blank" rel="external">记号O的定义</a>］</p>
+    
+    
+      <h1 id="基本算法理论"><a href="#基本算法理论" class="headerlink" title="基本算法理论"></a>基本算法理论</h1><h2 id="渐进记号的性质"><a href="#渐进记号的性质" class="headerlink" title="渐进记号的性质"></a>渐进记号的性质</h2><p>［<a href="http://www.nowcoder.com/questionTerminal/281cab90faae4597a1164e25ea42fd87" target="_blank" rel="external">记号O的定义</a>］</p>
 <p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Algorithm_1.jpg" alt=""></p>
 <p><img src="http://7xrlu9.com1.z0.glb.clouddn.com/Algorithm_2.jpg" alt=""></p>
 <h1 id="经典排序算法"><a href="#经典排序算法" class="headerlink" title="经典排序算法"></a>经典排序算法</h1><p>如果 Ai = Aj，排序前 Ai 在 Aj 前，排序后Ai还是在Aj前，则称排序算法是<code>稳定</code>的。</p>
@@ -364,18 +378,10 @@
 <p>［<a href="http://www.nowcoder.com/questionTerminal/4d323088446d41f69a3868293d0575fe" target="_blank" rel="external">可能的拓扑序列</a>］</p>
 <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p><a href="http://mindhacks.cn/2008/06/13/why-is-quicksort-so-quick/" target="_blank" rel="external">数学之美番外篇：快排为什么那样快</a></p>
 
-        
-      </div>
-      
-      
-      
-    </div>
-    
-    
     
   </div>
 
-
+          
           </div>
           
 
@@ -399,23 +405,13 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
@@ -426,33 +422,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -461,18 +453,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -483,22 +514,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本算法理论"><span class="nav-number">1.</span> <span class="nav-text">基本算法理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#渐进记号的性质"><span class="nav-number">1.1.</span> <span class="nav-text">渐进记号的性质</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典排序算法"><span class="nav-number">2.</span> <span class="nav-text">经典排序算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心算法"><span class="nav-number">3.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串算法"><span class="nav-number">4.</span> <span class="nav-text">字符串算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图算法"><span class="nav-number">5.</span> <span class="nav-text">图算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#拓扑排序"><span class="nav-number">5.1.</span> <span class="nav-text">拓扑排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">6.</span> <span class="nav-text">算法</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -518,7 +533,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -531,7 +546,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -548,7 +563,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -568,14 +583,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -602,29 +609,26 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -632,12 +636,7 @@
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -651,6 +650,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -658,6 +666,9 @@
   
 
   
+
+  
+
 
   
 

@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -103,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_Daemon_1.png">
 <meta property="og:image" content="http://7xrlu9.com1.z0.glb.clouddn.com/Linux_OS_Daemon_2.png">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chen-Tao">
 <meta name="twitter:description" content="守护进程守护进程，也即通常所说的 Daemon 进程，是 Linux 下一种特殊的后台服务进程，它独立于控制终端并且周期性的执行某种任务或者等待处理某些发生的事件。守护进程通常在系统引导时启动，在系统关闭时终止。Linux 系统下大多数服务都是通过守护进程实现的。守护进程的名称通常以 d 结尾，如 httpd、crond、mysqld等。 控制终端是什么？ 终端是用户与操作系统进行交流的界面。在">
@@ -115,10 +110,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -142,7 +136,17 @@
 
 
 
-  <title> | Chen-Tao</title>
+  <title>
+  
+
+  
+     | Chen-Tao
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -157,17 +161,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,8 +213,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -224,11 +234,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -252,11 +272,7 @@
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
+  <header class="post-header">
 
 	<h1 class="post-title" itemprop="name headline"></h1>
 
@@ -264,13 +280,9 @@
 
 </header>
 
-      
-      
-      
-      <div class="post-body">
-        
-        
-          <h1 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h1><p>守护进程，也即通常所说的 Daemon 进程，是 Linux 下一种特殊的后台服务进程，它独立于控制终端并且周期性的执行某种任务或者等待处理某些发生的事件。守护进程通常在系统引导时启动，在系统关闭时终止。Linux 系统下大多数服务都是通过守护进程实现的。守护进程的名称通常以 d 结尾，如 httpd、crond、mysqld等。</p>
+    
+    
+      <h1 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h1><p>守护进程，也即通常所说的 Daemon 进程，是 Linux 下一种特殊的后台服务进程，它独立于控制终端并且周期性的执行某种任务或者等待处理某些发生的事件。守护进程通常在系统引导时启动，在系统关闭时终止。Linux 系统下大多数服务都是通过守护进程实现的。守护进程的名称通常以 d 结尾，如 httpd、crond、mysqld等。</p>
 <p><strong>控制终端是什么？</strong></p>
 <p>终端是用户与操作系统进行交流的界面。在 Linux 系统中，用户由终端登录系统登入系统后会得到一个 shell 进程，这个终端便成为这个 shell 进程的控制终端（Controlling Terminal）。shell 进程启动的其他进程，由于复制了父进程的信息，因此也都同依附于这个控制终端。</p>
 <p>从终端启动的进程都依附于该终端，并受终端控制和影响。终端关闭，相应的进程都会自动关闭。守护进程脱离终端的目的，也即是不受终端变化的影响不被终端打断，当然也不想在终端显示执行过程中的信息。</p>
@@ -374,18 +386,10 @@ int main(int argc, char *argv[])
 <p>参考：</p>
 <p><a href="http://alfred-sun.github.io/blog/2015/06/18/daemon-implementation/" target="_blank" rel="external">Linux 守护进程的实现</a></p>
 
-        
-      </div>
-      
-      
-      
-    </div>
-    
-    
     
   </div>
 
-
+          
           </div>
           
 
@@ -409,23 +413,13 @@ int main(int argc, char *argv[])
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
@@ -436,33 +430,29 @@ int main(int argc, char *argv[])
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -471,18 +461,57 @@ int main(int argc, char *argv[])
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -493,22 +522,6 @@ int main(int argc, char *argv[])
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#守护进程"><span class="nav-number">1.</span> <span class="nav-text">守护进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何实现守护进程"><span class="nav-number">2.</span> <span class="nav-text">如何实现守护进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建子进程，父进程退出"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 创建子进程，父进程退出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-子进程创建新会话"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 子进程创建新会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-改变当前目录"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. 改变当前目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-重设文件权限掩码"><span class="nav-number">2.0.4.</span> <span class="nav-text">4. 重设文件权限掩码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-关闭文件描述符"><span class="nav-number">2.0.5.</span> <span class="nav-text">5. 关闭文件描述符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#守护进程实例"><span class="nav-number">3.</span> <span class="nav-text">守护进程实例</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -528,7 +541,7 @@ int main(int argc, char *argv[])
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -541,7 +554,7 @@ int main(int argc, char *argv[])
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -558,7 +571,7 @@ int main(int argc, char *argv[])
         
       </div>
     
-
+    
   </div>
 
   
@@ -578,14 +591,6 @@ int main(int argc, char *argv[])
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -612,29 +617,26 @@ int main(int argc, char *argv[])
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -642,12 +644,7 @@ int main(int argc, char *argv[])
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -661,6 +658,15 @@ int main(int argc, char *argv[])
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -668,6 +674,9 @@ int main(int argc, char *argv[])
   
 
   
+
+  
+
 
   
 

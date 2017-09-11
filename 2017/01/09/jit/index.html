@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="java,jvm,jit," />
@@ -84,33 +77,35 @@
 
 
 
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
 
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
-<meta name="description" content="why JIT and JIT in java">
+
+
+
+
+
+<meta name="description" content="为什么JITJIT 是 just in time 的缩写, 也就是即时编译编译器。使用即时编译器技术，能够加速程序的执行速度。 以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。 这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。  Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Jav">
 <meta name="keywords" content="java,jvm,jit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JIT编译器解读">
 <meta property="og:url" content="http://chen-tao.github.io/2017/01/09/jit/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="why JIT and JIT in java">
+<meta property="og:description" content="为什么JITJIT 是 just in time 的缩写, 也就是即时编译编译器。使用即时编译器技术，能够加速程序的执行速度。 以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。 这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。  Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Jav">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fbldh80l07j30fh0h576f.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006y8lVagw1fbldpe8c6vj30f50gut9l.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fbldzegb7sj31380lmae5.jpg">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006y8lVagw1fbldzuain2j31360m40vp.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fble0dpvrwj31320m0q76.jpg">
-<meta property="og:updated_time" content="2017-08-27T01:38:16.000Z">
+<meta property="og:updated_time" content="2017-09-11T05:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JIT编译器解读">
-<meta name="twitter:description" content="why JIT and JIT in java">
+<meta name="twitter:description" content="为什么JITJIT 是 just in time 的缩写, 也就是即时编译编译器。使用即时编译器技术，能够加速程序的执行速度。 以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。 这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。  Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Jav">
 <meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006y8lVagw1fbldh80l07j30fh0h576f.jpg">
 
 
@@ -119,10 +114,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -146,7 +140,11 @@
 
 
 
-  <title>JIT编译器解读 | Chen-Tao</title>
+  <title> JIT编译器解读 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -161,17 +159,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,8 +211,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -228,11 +232,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -264,11 +278,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/01/09/jit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -286,7 +296,14 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JIT编译器解读</h1>
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JIT编译器解读
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -349,18 +366,14 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>why JIT and JIT in java</p>
-<a id="more"></a>
-<h2 id="为什么JIT"><a href="#为什么JIT" class="headerlink" title="为什么JIT"></a>为什么JIT</h2><p><strong>JIT 是 just in time 的缩写, 也就是即时编译编译器。</strong>使用即时编译器技术，能够加速程序的执行速度。</p>
+        <h2 id="为什么JIT"><a href="#为什么JIT" class="headerlink" title="为什么JIT"></a>为什么JIT</h2><p><strong>JIT 是 just in time 的缩写, 也就是即时编译编译器。</strong>使用即时编译器技术，能够加速程序的执行速度。</p>
 <p>以Java/C#,NET为代表的Coffee Based 语言，是建立在虚拟机之上的。</p>
 <p>这种虚拟机和一般其他语言的运行库有一个很大不同，就是它好像一个有独立体系结构的计算机。 </p>
 <p>Java/C#,NET的程序要运行在这些虚拟机之上，就必须要编译成虚拟机独有的中间语言。Java叫字节码，C#,NET有很多种叫法，姑且简称CIL。这些中间语言身上有很深很深的汇编指令集样式语法痕迹，这也从 另一个侧面说明虚拟机的体系结构多么像一个冯诺依曼计算机。</p>
@@ -407,15 +420,21 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
 
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+        
 
-    
+      
+    </div>
 
-    
+    <div>
+      
+        
+
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -431,7 +450,7 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
       
 
       
-      
+        
       
 
       
@@ -459,10 +478,6 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
       
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -472,7 +487,7 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
     </div>
   </div>
 
-
+          
           </div>
           
 
@@ -496,7 +511,6 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -523,33 +537,29 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -558,18 +568,57 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -615,7 +664,7 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -628,7 +677,7 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -645,7 +694,7 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
         
       </div>
     
-
+    
   </div>
 
   
@@ -665,14 +714,6 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -699,42 +740,38 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
 
 
   
 
 
-  
-
-
-
-
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
 
+
+
+  
+
+
+
+
+	
 
 
 
@@ -748,6 +785,15 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -755,6 +801,9 @@ HotSpot虚拟机中内置了两个JIT编译器：Client Complier和Server Compli
   
 
   
+
+  
+
 
   
 

@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
@@ -75,7 +68,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -84,10 +77,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -111,10 +106,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
-    tabs: true,
     motion: true,
     duoshuo: {
       userId: '0',
@@ -138,7 +132,11 @@
 
 
 
-  <title>Chen-Tao</title>
+  <title> Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
 
@@ -153,17 +151,13 @@
 
 
 
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -211,8 +205,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -222,11 +226,21 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -258,12 +272,8 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysql-too-many-connection-solve/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/28/some-mysql-optimize/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -281,8 +291,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/05/15/mysql-too-many-connection-solve/" itemprop="url">记一次 mysql 'too many connection' </a></h1>
+                <a class="post-title-link" href="/2015/05/28/some-mysql-optimize/" itemprop="url">
+                  比较全面的MySQL优化参考
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -294,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-15T00:00:00+08:00">
-                2015-05-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-28T00:00:00+08:00">
+                2015-05-28
               </time>
             
 
@@ -323,9 +341,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -334,39 +350,27 @@
       
         
           
-            <p>早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。</p>
-<ol>
-<li><p>试图定位</p>
-<p> 连接过多，连续登录也无法入库，这时候先去查看了<code>/etc/my.cnf</code>，发现预设的连接数<code>max_connection=500</code>，排除了预设不足的问题</p>
-</li>
-<li><p>确认现场</p>
-<p> 使用<code>netstat -plan | grep 3306</code>查看已经存在的连接，发现已经到上限，果然还是不行</p>
-</li>
-<li><p>重启服务</p>
-<p> <code>/etc/init.d/mysql restart</code></p>
-<p> 正常stop，但是start时出现<code>manager of pid-file quit without updating file</code>，检查文件后发现正常，检查磁盘发现磁盘满了= =，清理文件后，正常启动</p>
-</li>
-<li><p>重新定位</p>
-<p> 重启后执行<code>show processlist;</code>，发现有很多线程状态是<code>waiting for table</code>, 而且基本都是一些写操作<code>(insert)</code>，感觉很奇怪，google了一下发现可能是有系统线程lock了表导致其他任务等待，进一步查询发现有一个<code>checking table</code>的线程，kill之后，处于等待状态的任务被迅速执行完毕，基本确定是这里的问题。</p>
-</li>
-<li><p>mysql系统任务</p>
-<p> mysql系统会定期执行一些维护的任务，<code>check table</code>就是其中的一类，当然也可以手动执行(本质上都是命令)，它用于检查一个或多个表是否有错误。<code>CHECK TABLE</code>对<code>MyISAM</code>和<code>InnoDB</code>表有作用。这里，<code>check</code>比较重要的一点就是，执行期间会将相应的表锁定，而且如果参数不当会导致执行时间过长，对于任务密集的表来说，要谨慎操作。</p>
-</li>
-</ol>
-
-          
+          本文整理了一些MySQL的通用优化方法，做个简单的总结分享，旨在帮助那些没有专职MySQL DBA的企业做好基本的优化工作，至于具体的SQL优化，大部分通过加适当的索引即可达到效果，更复杂的就需要具体分析了，可以参考本站的一些优化案例或者联系我，下方有我的联系方式。这是上篇。1、硬件层相关优化1.1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/28/some-mysql-optimize/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -380,10 +384,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -396,11 +396,155 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/18/java-concurrency-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/18/java-concurrency-tips/" itemprop="url">
+                  Java concurrency tips
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-18T00:00:00+08:00">
+                2015-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          UsesWhat are some possible uses for counting semaphores? The following come to mind:
+
+Limiting concurrent access to disk (this can kill performance du
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/18/java-concurrency-tips/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysqlwaiting-for-tables/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -419,8 +563,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/05/15/mysqlwaiting-for-tables/" itemprop="url">mysql中的Waiting for tables</a></h1>
+                <a class="post-title-link" href="/2015/05/15/mysqlwaiting-for-tables/" itemprop="url">
+                  mysql中的Waiting for tables
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -461,9 +613,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -472,21 +622,27 @@
       
         
           
-            <p>在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于<a href="http://dev.mysql.com/doc/refman/5.6/en/general-thread-states.html" target="_blank" rel="external">Waiting for tables</a>的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询<span style="color: #ff0000;"><strong>阻塞</strong></span>了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，这还是说不通的。那么我们就来看看所有的请求处于Waiting for tables这个状态是什么原因导致的：</p><p></p>
-<p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table, it must wait until all other threads have closed the table in question.</p><br><p>This notification takes place if another thread has used <a title="12.4.6.3. FLUSH Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/flush.html" target="_blank" rel="external"><code>FLUSH TABLES</code></a> or one of the following statements on the table in question: <code>FLUSH TABLES <em><code>tbl<em>name</em></code></em></code>, <a title="12.1.6. ALTER TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="external"><code>ALTER TABLE</code></a>, <a title="12.1.26. RENAME TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/rename-table.html" target="_blank" rel="external"><code>RENAME TABLE</code></a>, <a title="12.4.2.5. REPAIR TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/repair-table.html" target="_blank" rel="external"><code>REPAIR TABLE</code></a>, <a title="12.4.2.1. ANALYZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/analyze-table.html" target="_blank" rel="external"><code>ANALYZE TABLE</code></a>, or<a title="12.4.2.4. OPTIMIZE TABLE Syntax" href="http://dev.mysql.com/doc/refman/5.6/en/optimize-table.html" target="_blank" rel="external"><code>OPTIMIZE TABLE</code></a>.</p><br><p>从文档上的解释来看，是主库做了一个flush tables的操作，导致所有的表都需要打开，但是由于在10-07号放假，应该不会有人在主库上执行flush tables，而且从日志中可以看到：</p><br><p>1044    system user                     Connect 27406   Flushing tables FLUSH TABLES</p><br><p>所以可以判断是系统自己执行了这个操作，那么既然不是主库上执行而来，那么这个flush tables操作是从slave上复制过来的（M-M结构)，</p><br><p>那么备库的什么操作会有flush tables，真的百思不其解，我们备库在6点之前做的是什么，后端应用的dump?还是数据库的备份？是不是xtrabackup，很有可能是xtrabackup在备份的时候做的fulsh tables，查看备份脚本，应该轮到mysqldump做逻辑备份操作了，并不是xtrabackup，检查了mysqldump的备份脚本，脚本里：</p><br><p>-uroot -P$port &#8211;protocol=tcp &#8211;single-transaction &#8211;master-data=2是这样的</p><br><p>Single-transaction这个选项是加上了的，希望再一次被打破 &gt;&lt;</p><br><p>最后想还是想到到官网上去看看，mysqldump+flush tables是否有bug，</p><br><p>唉，搜索了一下果然发现了蹊跷：</p><br><p><a href="http://bugs.mysql.com/bug.php?id=35157" target="_blank" rel="external">http://bugs.mysql.com/bug.php?id=35157</a></p><br><p>When using the &#8211;master-data option with mysqldump, mysqldump uses   a FLUSH TABLES command.  However, this statement got replicated to   the slave(s), which caused the slave(s) to block unnecessarily while  the FLUSH tables command completed.</p><br><p>在5.0存在的bug很好的解释了这个问题，在mysqldump加入了&#8211;master-data就会将flush tables记录到binglog中，然后在被同步到主库，主库执行binglog后，由于有一个大查询正在</p><br><p>执行，这个子查询由于执行了很长时间，阻塞了flush tables的操作,最后导致了雪崩，所有的请求都被阻塞：</p><br><p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table,</p><br><p>it must wait until all other threads have closed the table in question.</p><br><p>综合上篇的所写，Mysqldump的在5.0的bug加上数据库的低效子查询构成这次故障的原因。</p><br><p>峰回路转，山穷水尽，哈哈</p>
-          
+          在问题的诊断中，注意到一个较为严重的问题，就是我们生产库中全部的数据库访问请求都处于Waiting for tables的状态，在将大查询kill掉后，所有的请求恢复正常；简单的理解为大查询阻塞了其他访问请求，但是这个理论是不可信，如果阻塞该表的DML还可以理解，但是把该数据库上的所有请求都阻塞了，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/15/mysqlwaiting-for-tables/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -500,10 +656,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -516,11 +668,137 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/15/mysql-too-many-connection-solve/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/15/mysql-too-many-connection-solve/" itemprop="url">
+                  记一次 mysql 'too many connection' 
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-15T00:00:00+08:00">
+                2015-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。
+
+试图定位
+ 连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题
+
+确认现场
+ 使用netstat -
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/15/mysql-too-many-connection-solve/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/05/06/every-programmer-should-know-these-latency-numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -539,8 +817,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/05/06/every-programmer-should-know-these-latency-numbers/" itemprop="url">Every Programmer Should Know These Latency Numbers</a></h1>
+                <a class="post-title-link" href="/2015/05/06/every-programmer-should-know-these-latency-numbers/" itemprop="url">
+                  Every Programmer Should Know These Latency Numbers
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -581,9 +867,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -592,21 +876,28 @@
       
         
           
-            <p>每个程序原需要知道的计算机延时</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L1 cache reference ......................... 0.5 ns</div><div class="line">Branch mispredict ............................ 5 nsL2 cache reference ........................... 7 nsMutex lock/unlock ........................... 25 nsMain memory reference ...................... 100 ns             Compress 1K bytes with Zippy ............. 3,000 ns  =   3 µsSend 2K bytes over 1 Gbps network ....... 20,000 ns  =  20 µsSSD random read ........................ 150,000 ns  = 150 µsRead 1 MB sequentially from memory ..... 250,000 ns  = 250 µsRound trip within same datacenter ...... 500,000 ns  = 0.5 msRead 1 MB sequentially from SSD* ..... 1,000,000 ns  =   1 msDisk seek ........................... 10,000,000 ns  =  10 msRead 1 MB sequentially from disk .... 20,000,000 ns  =  20 msSend packet CA-Netherlands(RTT) .... 150,000,000 ns  = 150 ms</div></pre></td></tr></table></figure>
-          
+          每个程序原需要知道的计算机延时
+12L1 cache reference ......................... 0.5 nsBranch mispredict ............................ 5 nsL2 cache reference ........
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/06/every-programmer-should-know-these-latency-numbers/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -620,10 +911,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -636,11 +923,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/27/osx-terminal-tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -659,8 +942,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/04/27/osx-terminal-tips/" itemprop="url">OSX terminal tips</a></h1>
+                <a class="post-title-link" href="/2015/04/27/osx-terminal-tips/" itemprop="url">
+                  OSX terminal tips
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -701,9 +992,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -712,165 +1001,33 @@
       
         
           
-            <p>OS X的终端下通用很多Unix的工具和脚本。如果从Linux迁移到OS X会发现很多熟悉的命令和脚本工具，其实并没有任何区别。</p>
+          OS X的终端下通用很多Unix的工具和脚本。如果从Linux迁移到OS X会发现很多熟悉的命令和脚本工具，其实并没有任何区别。
 
-<p>但是OS X也提供了很多其他系统所没有的特别的命令行工具。我们推荐8个这类的工具，希望有助于提高在Mac的命令行环境下的效率。</p>
+但是OS X也提供了很多其他系统所没有的特别的命令行工具。我们推荐8个这类的工具，希望有助于提高在Mac的命令行环境下的效率。
 
-<h2>1. open</h2>
+1. open
 
-<p><code>open</code>命令用于打开文件、目录或执行程序。就等同于在命令行模式下，重复图形界面“双击”的动作。例如这个命令与在Finder中双击Safari是一样的：</p>
-
-<pre><code>$ open /Applications/Safari.app/
-</code></pre>
-
-<p>如果<code>open</code>一个文件，则会使用关联的程序打开之。例如<code>open screenshot.png</code>会在Preview中查看图片。</p>
-
-<p>可以使用<code>-a</code>选项要求自行选择打开的程序，或使用<code>-e</code>强制在TextEdit中编辑此文件。</p>
-
-<p><code>open</code>一个目录会在Finder窗口中打开此目录。一个很有用的技巧是<code>open .</code>打开当前目录。</p>
-
-<p>Finder和终端的交互是双向的——把文件从Finder中拖入终端，就等同于把文件的完整路径粘贴到命令行中。</p>
-
-<h2>2. pbcopy 和 pbpaste</h2>
-
-<p>这两个工具可以打通命令行和剪贴板。当然用鼠标操作复制粘贴也可以——但这两个工具的真正威力，发挥在将其用作Unix工具的时候。意思就是说：可以将这两个工具用作管道、IO重定向以及和其他命令的整合。例如：</p>
-
-<pre><code>$ ls ~ | pbcopy
-</code></pre>
-
-<p>可以将主目录的文件列表复制到剪贴板。</p>
-
-<p>也可以把任意文件的内容读入剪贴板：</p>
-
-<pre><code>$ pbcopy &lt; blogpost.txt
-</code></pre>
-
-<p>做点更疯狂的尝试：获取最新Google纪念徽标（doodle）的URL并复制到剪贴板：</p>
-
-<pre><code>$ curl http://www.google.com/doodles#oodles/archive | grep -A5 'latest-doodle on' | grep 'img src' | sed s/.*'&lt;img src="\/\/'/''/ | sed s/'" alt=".*'/''/ | pbcopy
-</code></pre>
-
-<p>使用管道语法配合<code>pbcopy</code>工具可以简单的抓取命令的输出，而不必向上滚动翻阅终端窗口。可以用于和他人分享命令行的标准和错误输出。<code>pbcopy</code>和<code>pbpaste</code>也可以用于自动化或加速执行一些事情。例如把一些邮件的主题存为任务列表，就可以先从Mail.app中复制主题，再运行：</p>
-
-<pre><code>$ pbpaste &gt;&gt; tasklist.txt
-</code></pre>
-
-<h2>3. mdfind</h2>
-
-<p>许多Linux用户都发现Linux下查找文件的方法在OS X上不好用。当然经典的Unix <code>find</code>命令总是可以，但既然OS X有杀手级搜索工具Spotlight，为什么不在命令行上也使用一下呢？</p>
-
-<p>这就是<code>mdfind</code>命令了。Spotlight能做的查找，<code>mdfind</code>也能做。包括搜索文件的内容和元数据（metadata）。</p>
-
-<p><code>mdfind</code>还提供更多的搜索选项。例如<code>-onlyin</code>选项可以约束搜索范围为一个目录：</p>
-
-<pre><code>$ mdfind -onlyin ~/Documents essay
-</code></pre>
-
-<p><code>mdfind</code>的索引数据库在后台自动更新，不过你也可以使用<code>mdutil</code>工具诊断数据库的问题，诊断<code>mdfind</code>的问题也等同于诊断Spotlight。如果Spotlight的工作不正确，<code>mdutil -E</code>命令可以强制重建索引数据库。也可以用<code>mdutil -i</code>彻底关闭文件索引。</p>
-
-<h2>4. screencapture</h2>
-
-<p><code>screencapture</code>命令可以截图。和<code>Grab.app</code>与<code>cmd + shift + 3</code>或<code>cmd + shift + 4</code>热键相似，但更加的灵活。</p>
-
-<p>抓取包含鼠标光标的全屏幕，并以<code>image.png</code>插入到新邮件的附件中：</p>
-
-<pre><code>$ screencapture -C -M image.png 
-</code></pre>
-
-<p>用鼠标选择抓取窗口（及阴影）并复制到剪贴板：</p>
-
-<pre><code>$ screencapture -c -W
-</code></pre>
-
-<p>延时10秒后抓屏，并在Preview中打开之：</p>
-
-<pre><code>$ screencapture -T 10 -P image.png
-</code></pre>
-
-<p>用鼠标截取一个矩形区域，抓取后存为pdf文件：</p>
-
-<pre><code>$ screencapture -s -t pdf image.pdf
-</code></pre>
-
-<p>更多用法请参阅<code>screencapture –help</code>。</p>
-
-<h2>5. launchctl</h2>
-
-<p><code>launchctl</code>管理OS X的启动脚本，控制启动计算机时需要开启的服务。也可以设置定时执行特定任务的脚本，就像Linux cron一样。</p>
-
-<p>例如，开机时自动启动Apache服务器：</p>
-
-<pre><code>$ sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
-</code></pre>
-
-<p>运行<code>launchctl list</code>显示当前的启动脚本。<code>sudo launchctl unload [path/to/script]</code>停止正在运行的启动脚本，再加上<code>-w</code>选项即可去除开机启动。用这个方法可以一次去除Adobe或Microsoft Office所附带的所有“自动更新”后台程序。</p>
-
-<p>Launchd脚本存储在以下位置：</p>
-
-<pre><code>~/Library/LaunchAgents    
-/Library/LaunchAgents          
-/Library/LaunchDaemons
-/System/Library/LaunchAgents
-/System/Library/LaunchDaemons
-</code></pre>
-
-<p>启动脚本的格式可以参考<a rel="external" href="http://paul.annesley.cc/2012/09/mac-os-x-launchd-is-cool/" target="_blank">这篇blog</a>，或苹果开发者中心的<a rel="external" href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html" target="_blank">文章</a>。你也可以使用<a rel="external" href="http://www.peterborgapps.com/lingon/" target="_blank">Lingon</a>应用来完全取代命令行。</p>
-
-<h2>6. say</h2>
-
-<p><code>say</code>是一个文本转语音（TTS）的有趣的工具，引擎和OS X使用的一样也是VoiceOver。如果不加其他选项，则会简单的语音朗读你给定的字符串：</p>
-
-<pre><code>$ say "Never trust a computer you can't lift."
-</code></pre>
-
-<p>用<code>-f</code>选项朗读特定文本文件，<code>-o</code>选项将朗读结果存为音频文件而不是播放：</p>
-
-<pre><code>$ say -f mynovel.txt -o myaudiobook.aiff
-</code></pre>
-
-<p><code>say</code>命令可以用于在脚本中播放警告或提示。例如你可以设置Automator或Hazel脚本处理文件，并在任务完成时用<code>say</code>命令语音提示。</p>
-
-<p>最好玩（不过也负罪感十足）的用法是：通过SSH连接到朋友或同事的计算机，然后用<code>say</code>命令给他们一个大大大惊喜……</p>
-
-<p>可以在系统设置（System Preferences）的字典和语音（Dictation &amp; Speech）选项中调整系统的语音选项甚至是语音的语言。</p>
-
-<h2>7. diskutil</h2>
-
-<p><code>diskutil</code>是OS X磁盘工具应用的命令行版。既可以完成图形界面应用的所有任务，也可以做一些全盘填0、全盘填随机数等额外的任务。先使用<code>diskutil list</code>查看所有磁盘的列表和所在路径，然后对特定的磁盘执行命令。</p>
-
-<p>警告：不正确使用<code>diskutil</code>可能意外的破坏磁盘数据。请小心。</p>
-
-<h2>8. brew</h2>
-
-<p>Homebrew程序提供的<code>brew</code>，严格来讲不是一个OS X的原生命令，但任何一个OS X的专业用户都不会错过它。“OS X缺少的包管理器”这个评价是恰如其分的。如果你曾经在Linux上使用过<code>apt-get</code>（或其他包管理器——译者注），你就会发现Homebrew基本上是一样的。</p>
-
-<p>使用<code>brew</code>可以简单的获取数千种开源工具和函数库。例如<code>brew install imagemagick</code>就可以安装ImageMagick（几乎可以处理任何图像问题，转换任何格式的图像工具），<code>brew install node</code>可以安装Node.js（当前大热的服务器端JavaScript编程工具）。</p>
-
-<p>也可以通过Homebrew做有趣的事情：<code>brew install archey</code>会安装Archey（在启动命令行时显示苹果LOGO和计算机硬件参数的小工具）。</p>
-
-<p><img src="http://segmentfault.com/img/bVciJb" alt="请输入图片描述"></p>
-
-<p>Homebrew能安装的工具数量庞大，并且一直保持更新。Homebrew最棒的一点是：所有的文件都被约束在<code>/usr/local/</code>一个位置之下。也就是说可以通过Homebrew安装新版软件的同时，保持系统内置的依赖库或其他软件不变。同时如果想彻底删除Homebrew，也变得非常简单。</p>
-
-<p>（注：删除Homebrew最好还是不要直接删除<code>/usr/local/</code>。应当用这个<a rel="external" href="https://gist.github.com/mxcl/1173223" target="_blank">卸载脚本</a>。）</p>
-
-<p>最后，这里还有一篇OS X所有命令的<a rel="external" href="http://ss64.com/osx/" target="_blank">完整列表</a>。</p>
-
-<p><hr></p>
-<p><a rel="external" href="http://segmentfault.com/a/1190000000509514" target="_blank">8个不可不知的Mac OS X专用命令行工具</a><br><br>原文：<a rel="external" href="http://www.mitchchn.me/2014/os-x-terminal/" target="_blank">Eight Terminal Utilities Every OS X Command Line User Should Know</a><br><br>编译：<a rel="external" href="http://segmentfault.com/" target="_blank">SegmentFault</a><br><br>责任：沙渺</p>
-          
+open命令用于打开
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/27/osx-terminal-tips/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -884,10 +1041,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -900,12 +1053,8 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-new-of-jdk8/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-tcpip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -923,8 +1072,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/04/23/some-new-of-jdk8/" itemprop="url">JDK7-8 进步点</a></h1>
+                <a class="post-title-link" href="/2015/04/23/some-tcpip/" itemprop="url">
+                  some tcpip
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -965,9 +1122,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -976,61 +1131,27 @@
       
         
           
-            <ol>
-<li>关于反射，两个最让人郁闷的地方都修正了<br>旧版JDK，反射时可能抛出ClassNotFoundException、NoSuchMethodException、IllegalAccessException还有InvocationTargetExcetpion，不知道别人怎样，反正我肯定会很偷懒的只捕捉或声明Exception类了，虽然可能有一百个理由说这样不好。JDK7之后，这堆异常有了叫ReflectiveOperationExcetpion的父类，抓它就行。</li>
-</ol>
-<p>旧版JDK，还有个很莫名其妙的地方，就是所有反射，都拿不到参数名，无论名字叫啥，都返回arg0，arg1，所以在CXF，SpringMVC里，你都要把参数名字用annotation再写一遍：</p>
-<p> Person getEmployee(@PathParam(“dept”) Long dept, @QueryParam(“id”) Long id)<br>现在，JDK8新提供的类java.lang.reflect.Parameter可以反射参数名了，编译时要加参数，如 javac -parameters xxx.java，或者Eclipse里设置。然后就可以写成:</p>
-<p> Person getEmployee(@PathParam Long dept, @QueryParam Long id)</p>
-<ol>
-<li><p>比AtomicLong更好的高并发计数器<br>在超高并发的场景下，AtomicLong其实没有银弹，虽然没有锁，一样要通过不停循环的CAS来解决并发冲突。</p>
-<p>for ( ; ; ) {<br>long current = get();<br>long next = current + 1;<br>if (compareAndSet(current, next))<br>return next;<br>}<br>可见，如果并发很高，每条线程可能要转好几轮的compareAndSet()才把自己的increment()做了。</p>
-</li>
-</ol>
-<p>那这时候，是不是会想起ConcurrentHashMap，分散开十六把锁来分散冲突概率的模式？</p>
-<p>JDK8新增了一个LongAdder来实现这个思路，内部有多个计数器，每次increment()会落到其中一个计数器上，到sum()的时候再把它们的值汇总。</p>
-<p>没有JDK8的同学也没所谓，Guava把LongAdder拷贝了一份。</p>
-<p>但注意，此计数器适合高并发地increment()，到了某个时刻才sum()一次的统计型场景，如果要频繁、高并发地查询计数器的当前值，分散计数器带来的好处就抵消了。<br>另外，它的实现也比AtomicLong复杂不少，如果并发度不是那么高，继续用AtomicLong其实也挺好，简单就是好。<br>PS. 在酷壳有一篇更详细的讲解：&lt;从LongAdder看更高效的无锁实现&gt;</p>
-<ol>
-<li>JDK7/8中排序算法的改进<br>面试季的同学背一脑袋的插入、归并、冒泡、快排，那，JDK到底看上了哪家的排序算法？</li>
-</ol>
-<p>Colletions.sort(list) 与 Arrays.sort(T[])<br>Colletions.sort()实际会将list转为数组，然后调用Arrays.sort()，排完了再转回List。<br>PS. JDK8里，List有自己的sort()方法了，像ArrayList就直接用自己内部的数组来排，而LinkedList, CopyOnWriteArrayList还是要复制出一份数组。</p>
-<p>而Arrays.sort()，对原始类型(int[],double[],char[],byte[])，JDK6里用的是快速排序，对于对象类型(Object[])，JDK6则使用归并排序。为什么要用不同的算法呢？</p>
-<p>JDK7的进步<br>到了JDK7，快速排序升级为双基准快排(双基准快排 vs 三路快排)；归并排序升级为归并排序的改进版TimSort，一个JDK的自我进化。</p>
-<p>JDK8的进步<br>再到了JDK8， 对大集合增加了Arrays.parallelSort()函数，使用fork-Join框架，充分利用多核，对大的集合进行切分然后再归并排序，而在小的连续片段里，依然使用TimSort与DualPivotQuickSort。</p>
-<p>结论<br>JDK团队的努力，从一些简单的New Features / Change List 根本看不到，所以没事升级一下JDK还是好的…..</p>
-<ol>
-<li><p>高并发的ThreadLocalRandom<br>JDK7的Concurrent包里有一个ThreadLocalRandom，伪随机数序列的算法和父类util.Random一样，遵照高德纳老爷子在《The Art of Computer Programming, Volume 2》里说的：</p>
-<p>x(0)=seed;<br>x(i+1)=(A* x(i) +B) mod M;<br>区别是Random里的seed要用到AtomicLong，还要经常compareAndSet(current, next)来避免并发冲突，而ThreadLocalRandom用ThreadLocal模式来解决并发问题，seed用long就行了。</p>
-</li>
-</ol>
-<p>用法： int r = ThreadLocalRandom.current() .nextInt(1000);</p>
-<p>没有JDK7的，可自行Copy Paste这个类，Netty和Esper都是这么干的。</p>
-<p>ImportNews翻译了一篇更详细的文章： 多线程环境下生成随机数</p>
-<ol>
-<li>JDK7<br>JDK6好像终于混不下去了，Spring Boot 1.2带的Tomcat和Jetty都要JDK7才能跑。没有用spring boot的Parent的话，要把Tomcat版本降下去挺麻烦的。另外JavaSimon的4.0版也需要JDK7了。</li>
-</ol>
-<p>发现新JDK无论吸引人与否，比如JDK8y有了种种突破，最终还是靠Big Player的框架类库决然升级才能带动开发者的升级。而Big Player们又在担心如果升级了会丢失一些无法升级的用户…..麻杆打狼两头怕。</p>
-<ol>
-<li>《写给大忙人看的Java SE 8》<br>《写给大忙人看的Java SE 8》 ：Java8的改进太大, 值得《Core Java》的作者再码一本， 事实上，为了保持兼容性，很多代码都保持在JDK5/6的水平上，这本书一次过将JDK7/JDK8的更新讲了，是本快捷的升级指南。</li>
-</ol>
-<ol>
-<li>Nashorn<br>Nashorn——在JDK 8中融合Java与JavaScript之力： JDK8的新JavaScript引擎据说是JDK6时的2-10倍，另外Avatar.js可以在Java里跑Node.js及其类库， 然后Node.js里又再调用Java的类库，纸包鸡包纸。</li>
-</ol>
-
+          TCP 的那些事儿（上） by 陈皓TCP 的那些事儿（下） by 陈皓Linux &amp;TCP相关参数的总结 by 锋寒Linux TCP/IP 协议栈调优 by 鸟窝Web基础架构：负载均衡和LVS by ImportNew单播，组播(多播)，广播以及任播 by 鸟窝
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/23/some-tcpip/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1044,10 +1165,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1060,11 +1177,132 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-new-of-jdk8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/23/some-new-of-jdk8/" itemprop="url">
+                  JDK7-8 进步点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-23T00:00:00+08:00">
+                2015-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+关于反射，两个最让人郁闷的地方都修正了旧版JDK，反射时可能抛出ClassNotFoundException、NoSuchMethodException、IllegalAccessException还有InvocationTargetExcetpion，不知道别人怎样，反正我肯定会很偷懒的只捕捉或
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/23/some-new-of-jdk8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
   
   
   
-  <div class="post-block">
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/java-collection-basic-infos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1083,8 +1321,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/04/23/java-collection-basic-infos/" itemprop="url">java集合小抄</a></h1>
+                <a class="post-title-link" href="/2015/04/23/java-collection-basic-infos/" itemprop="url">
+                  java集合小抄
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1147,9 +1393,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1158,130 +1402,28 @@
       
         
           
-            <h1 id="1-List"><a href="#1-List" class="headerlink" title="1. List"></a>1. List</h1><h2 id="1-1-ArrayList"><a href="#1-1-ArrayList" class="headerlink" title="1.1 ArrayList"></a>1.1 ArrayList</h2><p>以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。</p>
-<p>按数组下标访问元素－get（i）、set（i,e） 的性能很高，这是数组的基本优势。</p>
-<p>如果按下标插入元素、删除元素－add（i,e）、 remove（i）、remove（e），则要用System.arraycopy（）来复制移动部分受影响的元素，性能就变差了。</p>
-<p>越是前面的元素，修改时要移动的元素越多。直接在数组末尾加入元素－常用的add（e），删除最后一个元素则无影响。</p>
-<h2 id="1-2-LinkedList"><a href="#1-2-LinkedList" class="headerlink" title="1.2 LinkedList"></a>1.2 LinkedList</h2><p>以双向链表实现。链表无容量限制，但双向链表本身使用了更多空间，每插入一个元素都要构造一个额外的Node对象，也需要额外的链表指针操作。</p>
-<p>按下标访问元素－get（i）、set（i,e） 要悲剧的部分遍历链表将指针移动到位 （如果i&gt;数组大小的一半，会从末尾移起）。</p>
-<p>插入、删除元素时修改前后节点的指针即可，不再需要复制移动。但还是要部分遍历链表的指针才能移动到下标所指的位置。</p>
-<p>只有在链表两头的操作－add（）、addFirst（）、removeLast（）或用iterator（）上的remove（）倒能省掉指针的移动。</p>
-<p>Apache Commons 有个TreeNodeList，里面是棵二叉树，可以快速移动指针到位。</p>
-<h2 id="1-3-CopyOnWriteArrayList"><a href="#1-3-CopyOnWriteArrayList" class="headerlink" title="1.3 CopyOnWriteArrayList"></a>1.3 CopyOnWriteArrayList</h2><p>并发优化的ArrayList。基于不可变对象策略，在修改时先复制出一个数组快照来修改，改好了，再让内部指针指向新数组。</p>
-<p>因为对快照的修改对读操作来说不可见，所以读读之间不互斥，读写之间也不互斥，只有写写之间要加锁互斥。但复制快照的成本昂贵，典型的适合读多写少的场景。</p>
-<p>虽然增加了addIfAbsent（e）方法，会遍历数组来检查元素是否已存在，性能可想像的不会太好。</p>
-<h2 id="1-4-遗憾"><a href="#1-4-遗憾" class="headerlink" title="1.4 遗憾"></a>1.4 遗憾</h2><p>无论哪种实现，按值返回下标contains（e）, indexOf（e）, remove（e） 都需遍历所有元素进行比较，性能可想像的不会太好。</p>
-<p>没有按元素值排序的SortedList。</p>
-<p>除了CopyOnWriteArrayList，再没有其他线程安全又并发优化的实现如ConcurrentLinkedList。凑合着用Set与Queue中的等价类时，会缺少一些List特有的方法如get（i）。如果更新频率较高，或数组较大时，还是得用Collections.synchronizedList（list），对所有操作用同一把锁来保证线程安全。</p>
-<h1 id="2-Map"><a href="#2-Map" class="headerlink" title="2.Map"></a>2.Map</h1><h2 id="2-1-HashMap"><a href="#2-1-HashMap" class="headerlink" title="2.1 HashMap"></a>2.1 HashMap</h2><p>以Entry[]数组实现的哈希桶数组，用Key的哈希值取模桶数组的大小可得到数组下标。</p>
-<p>插入元素时，如果两条Key落在同一个桶（比如哈希值1和17取模16后都属于第一个哈希桶），我们称之为哈希冲突。</p>
-<p>JDK的做法是链表法，Entry用一个next属性实现多个Entry以单向链表存放。查找哈希值为17的key时，先定位到哈希桶，然后链表遍历桶里所有元素，逐个比较其Hash值然后key值。</p>
-<p>在JDK8里，新增默认为8的阈值，当一个桶里的Entry超过閥值，就不以单向链表而以红黑树来存放以加快Key的查找速度。</p>
-<p>当然，最好还是桶里只有一个元素，不用去比较。所以默认当Entry数量达到桶数量的75%时，哈希冲突已比较严重，就会成倍扩容桶数组，并重新分配所有原来的Entry。扩容成本不低，所以也最好有个预估值。</p>
-<p>取模用与操作（hash &amp; （arrayLength-1））会比较快，所以数组的大小永远是2的N次方， 你随便给一个初始值比如17会转为32。默认第一次放入元素时的初始值是16。</p>
-<p>iterator（）时顺着哈希桶数组来遍历，看起来是个乱序。</p>
-<h2 id="2-2-LinkedHashMap"><a href="#2-2-LinkedHashMap" class="headerlink" title="2.2 LinkedHashMap"></a>2.2 LinkedHashMap</h2><p>扩展HashMap，每个Entry增加双向链表，号称是最占内存的数据结构。</p>
-<p>支持iterator（）时按Entry的插入顺序来排序（如果设置accessOrder属性为true，则所有读写访问都排序）。</p>
-<p>插入时，Entry把自己加到Header Entry的前面去。如果所有读写访问都要排序，还要把前后Entry的before/after拼接起来以在链表中删除掉自己，所以此时读操作也是线程不安全的了。</p>
-<h2 id="2-3-TreeMap"><a href="#2-3-TreeMap" class="headerlink" title="2.3 TreeMap"></a>2.3 TreeMap</h2><p>以红黑树实现，红黑树又叫自平衡二叉树：</p>
-<p>对于任一节点而言，其到叶节点的每一条路径都包含相同数目的黑结点。</p>
-<p>上面的规定，使得树的层数不会差的太远，使得所有操作的复杂度不超过 O（lgn），但也使得插入，修改时要复杂的左旋右旋来保持树的平衡。</p>
-<p>支持iterator（）时按Key值排序，可按实现了Comparable接口的Key的升序排序，或由传入的Comparator控制。可想象的，在树上插入/删除元素的代价一定比HashMap的大。</p>
-<p>支持SortedMap接口，如firstKey（），lastKey（）取得最大最小的key，或sub（fromKey, toKey）, tailMap（fromKey）剪取Map的某一段。</p>
-<h2 id="2-4-EnumMap"><a href="#2-4-EnumMap" class="headerlink" title="2.4 EnumMap"></a>2.4 EnumMap</h2><p>EnumMap的原理是，在构造函数里要传入枚举类，那它就构建一个与枚举的所有值等大的数组，按Enum. ordinal（）下标来访问数组。性能与内存占用俱佳。</p>
-<p>美中不足的是，因为要实现Map接口，而 V get（Object key）中key是Object而不是泛型K，所以安全起见，EnumMap每次访问都要先对Key进行类型判断，在JMC里录得不低的采样命中频率。</p>
-<h2 id="2-5-ConcurrentHashMap"><a href="#2-5-ConcurrentHashMap" class="headerlink" title="2.5 ConcurrentHashMap"></a>2.5 ConcurrentHashMap</h2><p>并发优化的HashMap。</p>
-<p>在JDK5里的经典设计，默认16把写锁（可以设置更多），有效分散了阻塞的概率。数据结构为Segment[]，每个Segment一把锁。Segment里面才是哈希桶数组。Key先算出它在哪个Segment里，再去算它在哪个哈希桶里。</p>
-<p>也没有读锁，因为put/remove动作是个原子动作（比如put的整个过程是一个对数组元素/Entry 指针的赋值操作），读操作不会看到一个更新动作的中间状态。</p>
-<p>但在JDK8里，Segment[]的设计被抛弃了，改为精心设计的，只在需要锁的时候加锁。</p>
-<p>支持ConcurrentMap接口，如putIfAbsent（key，value）与相反的replace（key，value）与以及实现CAS的replace（key, oldValue, newValue）。</p>
-<h2 id="2-6-ConcurrentSkipListMap"><a href="#2-6-ConcurrentSkipListMap" class="headerlink" title="2.6 ConcurrentSkipListMap"></a>2.6 ConcurrentSkipListMap</h2><p>JDK6新增的并发优化的SortedMap，以SkipList结构实现。Concurrent包选用它是因为它支持基于CAS的无锁算法，而红黑树则没有好的无锁算法。</p>
-<p>原理上，可以想象为多个链表组成的N层楼，其中的元素从稀疏到密集，每个元素有往右与往下的指针。从第一层楼开始遍历，如果右端的值比期望的大，那就往下走一层，继续往前走。</p>
-<p>典型的空间换时间。每次插入，都要决定在哪几层插入，同时，要决定要不要多盖一层楼。</p>
-<p>它的size（）同样不能随便调，会遍历来统计。</p>
-<h1 id="3-Set"><a href="#3-Set" class="headerlink" title="3.Set"></a>3.Set</h1><p>所有Set几乎都是内部用一个Map来实现, 因为Map里的KeySet就是一个Set，而value是假值，全部使用同一个Object即可。</p>
-<p>Set的特征也继承了那些内部的Map实现的特征。</p>
-<p><strong>HashSet</strong>：内部是HashMap。</p>
-<p><strong>LinkedHashSet</strong>：内部是LinkedHashMap。</p>
-<p><strong>TreeSet</strong>：内部是TreeMap的SortedSet。</p>
-<p><strong>ConcurrentSkipListSet</strong>：内部是ConcurrentSkipListMap的并发优化的SortedSet。</p>
-<p><strong>CopyOnWriteArraySet</strong>：内部是CopyOnWriteArrayList的并发优化的Set，利用其addIfAbsent（）方法实现元素去重，如前所述该方法的性能很一般。</p>
-<p>好像少了个<strong>ConcurrentHashSet</strong>，本来也该有一个内部用ConcurrentHashMap的简单实现，但JDK偏偏没提供。Jetty就自己简单封了一个，Guava则直接用java.util.Collections.newSetFromMap（new ConcurrentHashMap（）） 实现。</p>
-<h1 id="4-Queue"><a href="#4-Queue" class="headerlink" title="4.Queue"></a>4.Queue</h1><p>Queue是在两端出入的List，所以也可以用数组或链表来实现。</p>
-<h2 id="4-1-普通队列"><a href="#4-1-普通队列" class="headerlink" title="4.1 普通队列"></a>4.1 普通队列</h2><h3 id="4-1-1-LinkedList"><a href="#4-1-1-LinkedList" class="headerlink" title="4.1.1 LinkedList"></a>4.1.1 LinkedList</h3><p>是的，以双向链表实现的LinkedList既是List，也是Queue。</p>
-<h3 id="4-1-2-ArrayDeque"><a href="#4-1-2-ArrayDeque" class="headerlink" title="4.1.2 ArrayDeque"></a>4.1.2 ArrayDeque</h3><p>以循环数组实现的双向Queue。大小是2的倍数，默认是16。</p>
-<p>为了支持FIFO，即从数组尾压入元素（快），从数组头取出元素（超慢），就不能再使用普通ArrayList的实现了，改为使用循环数组。</p>
-<p>有队头队尾两个下标：弹出元素时，队头下标递增；加入元素时，队尾下标递增。如果加入元素时已到数组空间的末尾，则将元素赋值到数组[0]，同时队尾下标指向0，再插入下一个元素则赋值到数组[1]，队尾下标指向1。如果队尾的下标追上队头，说明数组所有空间已用完，进行双倍的数组扩容。</p>
-<h3 id="4-1-3-PriorityQueue"><a href="#4-1-3-PriorityQueue" class="headerlink" title="4.1.3 PriorityQueue"></a>4.1.3 PriorityQueue</h3><p>用平衡二叉最小堆实现的优先级队列，不再是FIFO，而是按元素实现的Comparable接口或传入Comparator的比较结果来出队，数值越小，优先级越高，越先出队。但是注意其iterator（）的返回不会排序。</p>
-<p>平衡最小二叉堆，用一个简单的数组即可表达，可以快速寻址，没有指针什么的。最小的在queue[0] ，比如queue[4]的两个孩子，会在queue[2<em>4+1] 和 queue[2</em>（4+1）]，即queue[9]和queue[10]。</p>
-<p>入队时，插入queue[size]，然后二叉地往上比较调整堆。</p>
-<p>出队时，弹出queue[0]，然后把queque[size]拿出来二叉地往下比较调整堆。</p>
-<p>初始大小为11，空间不够时自动50%扩容。</p>
-<h2 id="4-2-线程安全的队列"><a href="#4-2-线程安全的队列" class="headerlink" title="4.2 线程安全的队列"></a><strong>4.2 线程安全的队列</strong></h2><h3 id="4-2-1-ConcurrentLinkedQueue-Deque"><a href="#4-2-1-ConcurrentLinkedQueue-Deque" class="headerlink" title="4.2.1 ConcurrentLinkedQueue/Deque"></a>4.2.1 ConcurrentLinkedQueue/Deque</h3><p>无界的并发优化的Queue，基于链表，实现了依赖于CAS的无锁算法。</p>
-<p>ConcurrentLinkedQueue的结构是单向链表和head/tail两个指针，因为入队时需要修改队尾元素的next指针，以及修改tail指向新入队的元素两个CAS动作无法原子，所以需要的特殊的算法。</p>
-<h2 id="4-3-线程安全的阻塞队列"><a href="#4-3-线程安全的阻塞队列" class="headerlink" title="4.3 线程安全的阻塞队列"></a><strong>4.3 线程安全的阻塞队列</strong></h2><p>BlockingQueue，一来如果队列已空不用重复的查看是否有新数据而会阻塞在那里，二来队列的长度受限，用以保证生产者与消费者的速度不会相差太远。当入队时队列已满，或出队时队列已空，不同函数的效果见下表：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>立刻报异常</th>
-<th>立刻返回布尔</th>
-<th>阻塞等待</th>
-<th>可设定等待时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>入队</td>
-<td>add（e）</td>
-<td>offer（e）</td>
-<td>put（e）</td>
-<td>offer（e, timeout, unit）</td>
-</tr>
-<tr>
-<td>出队</td>
-<td>remove（）</td>
-<td>poll（）</td>
-<td>take（）</td>
-<td>poll（timeout, unit）</td>
-</tr>
-<tr>
-<td>查看</td>
-<td>element（）</td>
-<td>peek（）</td>
-<td>无</td>
-<td>无</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-3-1-ArrayBlockingQueue"><a href="#4-3-1-ArrayBlockingQueue" class="headerlink" title="4.3.1 ArrayBlockingQueue"></a>4.3.1 ArrayBlockingQueue</h3><p>定长的并发优化的BlockingQueue，也是基于循环数组实现。有一把公共的锁与notFull、notEmpty两个Condition管理队列满或空时的阻塞状态。</p>
-<h3 id="4-3-2-LinkedBlockingQueue-Deque"><a href="#4-3-2-LinkedBlockingQueue-Deque" class="headerlink" title="4.3.2 LinkedBlockingQueue/Deque"></a>4.3.2 LinkedBlockingQueue/Deque</h3><p>可选定长的并发优化的BlockingQueue，基于链表实现，所以可以把长度设为Integer.MAX_VALUE成为无界无等待的。</p>
-<p>利用链表的特征，分离了takeLock与putLock两把锁，继续用notEmpty、notFull管理队列满或空时的阻塞状态。</p>
-<h3 id="4-3-3-PriorityBlockingQueue"><a href="#4-3-3-PriorityBlockingQueue" class="headerlink" title="4.3.3 PriorityBlockingQueue"></a>4.3.3 PriorityBlockingQueue</h3><p>无界的PriorityQueue，也是基于数组存储的二叉堆（见前）。一把公共的锁实现线程安全。因为无界，空间不够时会自动扩容，所以入列时不会锁，出列为空时才会锁。</p>
-<h3 id="4-3-4-DelayQueue"><a href="#4-3-4-DelayQueue" class="headerlink" title="4.3.4 DelayQueue"></a>4.3.4 DelayQueue</h3><p>内部包含一个PriorityQueue，同样是无界的，同样是出列时才会锁。一把公共的锁实现线程安全。元素需实现Delayed接口，每次调用时需返回当前离触发时间还有多久，小于0表示该触发了。</p>
-<p>pull（）时会用peek（）查看队头的元素，检查是否到达触发时间。ScheduledThreadPoolExecutor用了类似的结构。</p>
-<h2 id="4-4-同步队列"><a href="#4-4-同步队列" class="headerlink" title="4.4 同步队列"></a><strong>4.4 同步队列</strong></h2><p>SynchronousQueue同步队列本身无容量，放入元素时，比如等待元素被另一条线程的消费者取走再返回。JDK线程池里用它。</p>
-<p>JDK7还有个LinkedTransferQueue，在普通线程安全的BlockingQueue的基础上，增加一个transfer（e） 函数，效果与SynchronousQueue一样。</p>
-<h2 id="5-参考文档"><a href="#5-参考文档" class="headerlink" title="5.参考文档"></a>5.参考文档</h2><ul>
-<li><strong>红黑树：</strong> <a href="https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md" target="_blank" rel="external">https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md</a></li>
-<li><strong>跳表：</strong><a href="http://blog.sina.com.cn/s/blog_72995dcc01017w1t.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_72995dcc01017w1t.html</a></li>
-<li><strong>二叉堆：</strong><a href="http://blog.csdn.net/lcore/article/details/9100073" target="_blank" rel="external">http://blog.csdn.net/lcore/article/details/9100073</a></li>
-<li><strong>ConcurrentLinkedQueue</strong>：<a href="http://www.ibm.com/developerworks/cn/java/j-jtp04186/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-jtp04186/</a></li>
-</ul>
-
-          
+          1. List1.1 ArrayList以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。
+按数组下标访问元素－get（i）、set（i,e） 的性能很高
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/23/java-collection-basic-infos/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1295,10 +1437,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1311,130 +1449,7 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-tcpip/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/23/some-tcpip/" itemprop="url">some tcpip</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-23T00:00:00+08:00">
-                2015-04-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://coolshell.cn/articles/11564.html" target="_blank" rel="external">TCP 的那些事儿（上）</a> by 陈皓<br><br><a href="http://coolshell.cn/articles/11609.html" target="_blank" rel="external">TCP 的那些事儿（下）</a> by 陈皓</p><br><p><a href="http://weibo.com/p/230418e59371cc0102vg4n" target="_blank" rel="external">Linux &amp;TCP相关参数的总结</a> by 锋寒<br><br><a href="http://colobu.com/2014/09/18/linux-tcpip-tuning/" target="_blank" rel="external">Linux TCP/IP 协议栈调优</a> by 鸟窝</p><br><p><a href="http://www.importnew.com/11229.html" target="_blank" rel="external">Web基础架构：负载均衡和LVS</a> by ImportNew<br><br><a href="http://colobu.com/2014/10/21/udp-and-unicast-multicast-broadcast-anycast/" target="_blank" rel="external">单播，组播(多播)，广播以及任播</a> by 鸟窝</p>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/21/linux-find-words-in-files/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1453,8 +1468,16 @@
         
         
           <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2015/04/21/linux-find-words-in-files/" itemprop="url">Linux 批量查找文件内容</a></h1>
+                <a class="post-title-link" href="/2015/04/21/linux-find-words-in-files/" itemprop="url">
+                  Linux 批量查找文件内容
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1495,9 +1518,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1506,37 +1527,32 @@
       
         
           
-            <p>Linux查找文件内容的常用命令方法。  </p>
-<p>从文件内容查找匹配指定字符串的行：</p>
-<p><code>$ grep &quot;被查找的字符串&quot; 文件名</code></p>
-<p>例子：在当前目录里第一级文件夹中寻找包含指定字符串的.in文件</p>
-<p><code>grep &quot;thermcontact&quot; */*.in</code></p>
-<p>从文件内容查找与正则表达式匹配的行：</p>
-<p><code>$ grep –e “正则表达式” 文件名</code></p>
-<p>查找时不区分大小写：</p>
-<p><code>$ grep –i &quot;被查找的字符串&quot; 文件</code></p>
-<p>查找匹配的行数：</p>
-<p><code>$ grep -c &quot;被查找的字符串&quot; 文件名</code></p>
-<p>从文件内容查找不匹配指定字符串的行：</p>
-<p><code>$ grep –v &quot;被查找的字符串&quot; 文件名</code></p>
-<p>从根目录开始查找所有扩展名为.log的文本文件，并找出包含”ERROR”的行</p>
-<p><code>find / -type f -name &quot;*.log&quot; | xargs grep &quot;ERROR&quot;</code></p>
-<p>例子：从当前目录开始查找所有扩展名为.in的文本文件，并找出包含”thermcontact”的行</p>
-<p><code>find . -name &quot;*.in&quot; | xargs grep &quot;thermcontact&quot;</code></p>
-
-          
+          Linux查找文件内容的常用命令方法。  
+从文件内容查找匹配指定字符串的行：
+$ grep &quot;被查找的字符串&quot; 文件名
+例子：在当前目录里第一级文件夹中寻找包含指定字符串的.in文件
+grep &quot;thermcontact&quot; */*.in
+从文件内容查找与正则
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/04/21/linux-find-words-in-files/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
       
@@ -1550,288 +1566,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/20/some-domestic-mirrors/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/20/some-domestic-mirrors/" itemprop="url">Some Domestic Mirrors</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-20T00:00:00+08:00">
-                2015-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="mirrors">Mirrors</h2>
-
-<h3 id="section">华北地区</h3>
-
-<h4 id="tuna-httpmirrorstunatsinghuaeducn"><a href="http://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="external">清华大学 TUNA 镜像源</a></h4>
-
-<h4 id="httpmirrorbiteducnweb"><a href="http://mirror.bit.edu.cn/web/" target="_blank" rel="external">北京理工大学开源软件镜像服务</a></h4>
-
-<h4 id="httpmirrorbjtueducncn"><a href="http://mirror.bjtu.edu.cn/cn/" target="_blank" rel="external">北京交通大学</a></h4>
-
-<h4 id="httpubuntubuct6educnzh-cn"><a href="http://ubuntu.buct6.edu.cn/zh-CN/" target="_blank" rel="external">北京化工大学镜像站</a></h4>
-
-<h3 id="section-1">华东南地区</h3>
-
-<h4 id="httpftpsjtueducn"><a href="http://ftp.sjtu.edu.cn/" target="_blank" rel="external">上海交通大学</a></h4>
-
-<h4 id="httpmirrorsxmueducn"><a href="http://mirrors.xmu.edu.cn/" target="_blank" rel="external">厦门大学开源软件镜像服务</a></h4>
-
-<h4 id="httpmirrorslifetoyorg"><a href="http://mirrors.lifetoy.org/" target="_blank" rel="external">浙江大学开源镜像站</a></h4>
-
-<h3 id="section-2">东北地区</h3>
-
-<h4 id="httpmirrorneueducn"><a href="http://mirror.neu.edu.cn/" target="_blank" rel="external">东北大学</a></h4>
-
-<h4 id="httpmirrordluteducn"><a href="http://mirror.dlut.edu.cn/" target="_blank" rel="external">大连理工大学</a></h4>
-
-<h4 id="httprunhiteducnhtml"><a href="http://run.hit.edu.cn/html/" target="_blank" rel="external">哈尔滨工业大学开源镜像站</a></h4>
-
-<h4 id="httpmirrorsneusofteducn"><a href="http://mirrors.neusoft.edu.cn/" target="_blank" rel="external">大连东软信息学院</a></h4>
-
-<h3 id="section-3">其他地区</h3>
-
-<h4 id="httpmirrorsustceducn"><a href="http://mirrors.ustc.edu.cn/" target="_blank" rel="external">中国科学技术大学开源软件镜像</a></h4>
-
-<h4 id="httpmirrorshusteducn"><a href="http://mirrors.hust.edu.cn/" target="_blank" rel="external">华中科技大学开源镜像站</a></h4>
-
-<h4 id="httpmirrorscqueducn"><a href="http://mirrors.cqu.edu.cn/" target="_blank" rel="external">重庆大学镜像源</a></h4>
-
-<h4 id="httpmirrorsopencascn"><a href="http://mirrors.opencas.cn/" target="_blank" rel="external">中国科学院开源协会镜像站</a></h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/20/mac-show-hide-files/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/04/20/mac-show-hide-files/" itemprop="url">Mac show hide files</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-20T00:00:00+08:00">
-                2015-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>显示：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool true</code></p>
-<p>隐藏：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool false</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1840,11 +1574,11 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
-
+          
           </div>
           
 
@@ -1864,7 +1598,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -1882,33 +1615,29 @@
           
         </div>
         <nav class="site-state motion-element">
-
+        
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">180</span>
+              <a href="/archives">
+                <span class="site-state-item-count">182</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
           
-            
-            
             <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">94</span>
+              <a href="/tags">
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1917,18 +1646,57 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
         
-        
-          <div class="cc-license motion-element" itemprop="license">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
         
@@ -1958,7 +1726,7 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-heartbeat"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Tao</span>
 </div>
@@ -1971,7 +1739,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
@@ -1988,7 +1756,7 @@
         
       </div>
     
-
+    
   </div>
 
   
@@ -2008,14 +1776,6 @@
 
 
   
-
-
-
-
-
-
-
-
 
 
 
@@ -2042,29 +1802,26 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
-
-  
-  
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+  
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -2072,12 +1829,7 @@
 
 
 
-
-
-
-
-  
-
+	
 
 
 
@@ -2091,6 +1843,15 @@
 
   
 
+
+
+
+
+  
+
+
+
+  
   
 
   
@@ -2098,6 +1859,9 @@
   
 
   
+
+  
+
 
   
 
