@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://chen-tao.github.io/"/>
-  <updated>2017-09-11T06:13:11.000Z</updated>
+  <updated>2017-09-11T12:15:40.000Z</updated>
   <id>http://chen-tao.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Golang Workers / Job Queue</title>
+    <link href="http://chen-tao.github.io/2017/09/11/Golang-Workers-Job-Queue/"/>
+    <id>http://chen-tao.github.io/2017/09/11/Golang-Workers-Job-Queue/</id>
+    <published>2017-09-11T12:09:39.000Z</published>
+    <updated>2017-09-11T12:15:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>A running example of the code from:</p><ul><li><a href="http://marcio.io/2015/07/handling-1-million-requests-per-minute-with-golang" target="_blank" rel="external">http://marcio.io/2015/07/handling-1-million-requests-per-minute-with-golang</a></li><li><a href="http://nesv.github.io/golang/2014/02/25/worker-queues-in-go.html" target="_blank" rel="external">http://nesv.github.io/golang/2014/02/25/worker-queues-in-go.html</a></li></ul><p>This gist creates a working example from blog post, and a alternate example using simple worker pool.</p><p>TLDR: if you want simple and controlled concurrency use a <a href="https://gist.github.com/harlow/49318d54f45d29f1a77cc641faf14054" target="_blank" rel="external">worker pool</a>.</p><h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>Small refactorings made to original code:</p><ul><li>Use non-exported private methods</li><li>Remove global variables</li><li>Bring the flags closer to their usage in <code>main()</code> from <a href="https://robots.thoughtbot.com/where-to-define-command-line-flags-in-go" target="_blank" rel="external">where to define flags in program</a>.</li></ul><h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>Simplify the worker queue by removing the <code>Dispatcher</code>.</p><ul><li>Creates workers directly and passes job queue to them</li></ul><p><a href="https://gist.github.com/harlow/dbcd639cf8d396a2ab73#file-worker_refactored-go" target="_blank" rel="external">https://gist.github.com/harlow/dbcd639cf8d396a2ab73#file-worker_refactored-go</a></p><h2 id="Run-the-Application"><a href="#Run-the-Application" class="headerlink" title="Run the Application"></a>Run the Application</h2><p>Boot either the <code>worker_original.go</code> or the <code>worker_refactored.go</code> applications. Use flags to adjust the <code>max_workers</code> and <code>max_queue_size</code> to override the default values.</p><pre><code>$ go run worker_original.go -max_workers 5</code></pre><p>cURL the application from another terminal window:</p><pre><code>$ for i in {1..15}; do curl localhost:8080/work -d name=job$i -d delay=$(expr $i % 9 + 1)s; done</code></pre><h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><p>The test run with Pprof show performance characteristics remain the same between both examples.</p><h2 id="Code-Time"><a href="#Code-Time" class="headerlink" title="Code Time"></a>Code Time</h2><script src="https://gist.github.com/Chen-tao/69d3dd7202dba1beb8abedf6fe712308.js"></script>]]></content>
+    
+    <summary type="html">
+    
+      看 otium/queue 如何用go实现的后台处理任务队列
+    
+    </summary>
+    
+      <category term="Golang" scheme="http://chen-tao.github.io/categories/Golang/"/>
+    
+    
+      <category term="Golang" scheme="http://chen-tao.github.io/tags/Golang/"/>
+    
+      <category term="MQ" scheme="http://chen-tao.github.io/tags/MQ/"/>
+    
+      <category term="消息队列" scheme="http://chen-tao.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Golang 如何确定App是否运行在Docker内</title>
@@ -212,11 +238,11 @@
     
       <category term="BFS" scheme="http://chen-tao.github.io/tags/BFS/"/>
     
-      <category term="DFS" scheme="http://chen-tao.github.io/tags/DFS/"/>
-    
       <category term="递归" scheme="http://chen-tao.github.io/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="回溯" scheme="http://chen-tao.github.io/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+      <category term="DFS" scheme="http://chen-tao.github.io/tags/DFS/"/>
     
   </entry>
   
@@ -246,13 +272,13 @@
     
       <category term="算法" scheme="http://chen-tao.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="DFS" scheme="http://chen-tao.github.io/tags/DFS/"/>
-    
-      <category term="搜索" scheme="http://chen-tao.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
-    
       <category term="递归" scheme="http://chen-tao.github.io/tags/%E9%80%92%E5%BD%92/"/>
     
       <category term="回溯" scheme="http://chen-tao.github.io/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+      <category term="DFS" scheme="http://chen-tao.github.io/tags/DFS/"/>
+    
+      <category term="搜索" scheme="http://chen-tao.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
     
   </entry>
   
@@ -514,37 +540,6 @@
       <category term="linux" scheme="http://chen-tao.github.io/tags/linux/"/>
     
       <category term="shell" scheme="http://chen-tao.github.io/tags/shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日本历史笔记</title>
-    <link href="http://chen-tao.github.io/2016/05/15/nihongo-history-note/"/>
-    <id>http://chen-tao.github.io/2016/05/15/nihongo-history-note/</id>
-    <published>2016-05-14T16:00:00.000Z</published>
-    <updated>2017-09-11T05:37:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>德川家康</strong></p><p>松平家 三河国 爱知县 竹千代</p><p>森山之崩 松平清康(家康爷爷)之死 妖刀村正</p><hr><p><strong>织田信长</strong></p><p>织田信秀(信长父亲) 尾张之虎</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;德川家康&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;松平家 三河国 爱知县 竹千代&lt;/p&gt;
-&lt;p&gt;森山之崩 松平清康(家康爷爷)之死 妖刀村正&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;织田信长&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;织田信秀(信长父亲) 尾张之虎&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="日本" scheme="http://chen-tao.github.io/tags/%E6%97%A5%E6%9C%AC/"/>
-    
-      <category term="历史" scheme="http://chen-tao.github.io/tags/%E5%8E%86%E5%8F%B2/"/>
     
   </entry>
   
