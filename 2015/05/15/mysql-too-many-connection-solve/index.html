@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。  试图定位  连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题  确认现场  使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行  重启服务  /e">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
+<meta property="og:updated_time" content="2017-09-14T03:41:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次 mysql &#39;too many connection&#39; ">
 <meta name="twitter:description" content="早上发现测试环境mysql服务出现了”too many coonection”的问题，记录下解决过程。  试图定位  连接过多，连续登录也无法入库，这时候先去查看了/etc/my.cnf，发现预设的连接数max_connection=500，排除了预设不足的问题  确认现场  使用netstat -plan | grep 3306查看已经存在的连接，发现已经到上限，果然还是不行  重启服务  /e">
@@ -475,7 +475,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">184</span>
+                <span class="site-state-item-count">185</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -493,7 +493,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">99</span>
+                <span class="site-state-item-count">100</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
