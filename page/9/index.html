@@ -1444,7 +1444,7 @@ open命令用于打开
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/some-new-of-jdk8/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/04/23/java-collection-basic-infos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1466,8 +1466,8 @@ open命令用于打开
             
               
                 
-                <a class="post-title-link" href="/2015/04/23/some-new-of-jdk8/" itemprop="url">
-                  JDK7-8 进步点
+                <a class="post-title-link" href="/2015/04/23/java-collection-basic-infos/" itemprop="url">
+                  java集合小抄
                 </a>
               
             
@@ -1493,6 +1493,28 @@ open命令用于打开
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1521,12 +1543,12 @@ open命令用于打开
       
         
           
-          
-关于反射，两个最让人郁闷的地方都修正了旧版JDK，反射时可能抛出ClassNotFoundException、NoSuchMethodException、IllegalAccessException还有InvocationTargetExcetpion，不知道别人怎样，反正我肯定会很偷懒的只捕捉或
+          1. List1.1 ArrayList以数组实现。节约空间，但数组有容量限制。超出限制时会增加50%容量，用System.arraycopy（）复制到新的数组。因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。
+按数组下标访问元素－get（i）、set（i,e） 的性能很高
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/04/23/some-new-of-jdk8/#more" rel="contents">
+            <a class="btn" href="/2015/04/23/java-collection-basic-infos/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1618,7 +1640,7 @@ open命令用于打开
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1627,7 +1649,7 @@ open命令用于打开
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">101</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

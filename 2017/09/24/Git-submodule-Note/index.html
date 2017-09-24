@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Golang,gvm," />
+  <meta name="keywords" content="Git,github," />
 
 
 
@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="go版本之间的变化较大，尤其从1.4开始，增删了很多包和相关的代码。使用gvm可以模拟各种版本的go环境，进行相关的代码调试">
-<meta name="keywords" content="Golang,gvm">
+<meta name="description" content="项目中使用了git的submodule功能，但突然发现，更新项目或者重写clone项目时，submodule并没有一起更新……这里总结和学习一下submodule相关的功能">
+<meta name="keywords" content="Git,github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用gvm管理多版本golang">
-<meta property="og:url" content="http://chen-tao.github.io/2017/09/14/Use-gvm-manage-golang-version/index.html">
+<meta property="og:title" content="Git submodule Note">
+<meta property="og:url" content="http://chen-tao.github.io/2017/09/24/Git-submodule-Note/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="go版本之间的变化较大，尤其从1.4开始，增删了很多包和相关的代码。使用gvm可以模拟各种版本的go环境，进行相关的代码调试">
+<meta property="og:description" content="项目中使用了git的submodule功能，但突然发现，更新项目或者重写clone项目时，submodule并没有一起更新……这里总结和学习一下submodule相关的功能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-14T05:52:34.000Z">
+<meta property="og:updated_time" content="2017-09-24T03:32:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用gvm管理多版本golang">
-<meta name="twitter:description" content="go版本之间的变化较大，尤其从1.4开始，增删了很多包和相关的代码。使用gvm可以模拟各种版本的go环境，进行相关的代码调试">
+<meta name="twitter:title" content="Git submodule Note">
+<meta name="twitter:description" content="项目中使用了git的submodule功能，但突然发现，更新项目或者重写clone项目时，submodule并没有一起更新……这里总结和学习一下submodule相关的功能">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://chen-tao.github.io/2017/09/14/Use-gvm-manage-golang-version/"/>
+  <link rel="canonical" href="http://chen-tao.github.io/2017/09/24/Git-submodule-Note/"/>
 
 
 
 
 
-  <title> 使用gvm管理多版本golang | Chen-Tao </title>
+  <title> Git submodule Note | Chen-Tao </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/09/14/Use-gvm-manage-golang-version/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/09/24/Git-submodule-Note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -294,7 +294,7 @@
             
             
               
-                使用gvm管理多版本golang
+                Git submodule Note
               
             
           </h1>
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-14T13:36:32+08:00">
-                2017-09-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T11:29:54+08:00">
+                2017-09-24
               </time>
             
 
@@ -332,8 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Golang/" itemprop="url" rel="index">
-                    <span itemprop="name">Golang</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -356,7 +356,7 @@
 
           
               <div class="post-description">
-                  go版本之间的变化较大，尤其从1.4开始，增删了很多包和相关的代码。使用gvm可以模拟各种版本的go环境，进行相关的代码调试
+                  项目中使用了git的submodule功能，但突然发现，更新项目或者重写clone项目时，submodule并没有一起更新……这里总结和学习一下submodule相关的功能
               </div>
           
 
@@ -371,35 +371,26 @@
       
 
       
-        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>Golang发展迅速，代码迭代非常快，想要调试和梳理项目进程就成了一件相对棘手的事情。偶然间发现了gvm - <a href="http://github.com/moovweb/gvm" target="_blank" rel="external">Go Version Manager</a>，算是找到了调试切换版本的福音。</p>
-<h2 id="关于gvm"><a href="#关于gvm" class="headerlink" title="关于gvm"></a>关于gvm</h2><p>GVM，类似于ruby 中的<a href="https://rvm.io/" target="_blank" rel="external">RVM</a>，java 中的<a href="https://github.com/linux-china/jenv" target="_blank" rel="external">jenv</a>（国产），可用于方便管理 Go 的版本，它有如下几个主要特性：</p>
-<ul>
-<li><p>管理 Go 的多个版本，包括安装、卸载和指定使用 Go 的某个版本</p>
-</li>
-<li><p>查看官方所有可用的 Go 版本，同时可以查看本地已安装和默认使用的 Go 版本</p>
-</li>
-<li><p>管理多个 GOPATH，并可编辑 Go 的环境变量</p>
-</li>
-<li><p>可将当前目录关联到 GOPATH</p>
-</li>
-<li><p>可以查看 GOROOT 下的文件差异</p>
-</li>
-</ul>
-<h2 id="Go-版本切换"><a href="#Go-版本切换" class="headerlink" title="Go 版本切换"></a>Go 版本切换</h2><p>二进制文件的管理比较简单，通过链接使用不同版本的程序即可，实际上主要是一些环境变量和标准库的设置问题，环境变量主要是 GOPATH 以及 GOROOT，标准库的话需要在切换 go 版本时也能跟着切换。gvm 实际上就是帮助完成这些配置工作。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>按照官方文档操作即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)</div><div class="line"><span class="comment"># or</span></div><div class="line">zsh &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)</div></pre></td></tr></table></figure>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$ gvm</div><div class="line">Usage: gvm [<span class="built_in">command</span>]</div><div class="line"></div><div class="line">Description:</div><div class="line">  GVM is the Go Version Manager</div><div class="line"></div><div class="line">Commands:</div><div class="line">  version    - <span class="built_in">print</span> the gvm version number</div><div class="line">  get        - gets the latest code (<span class="keyword">for</span> debugging)</div><div class="line">  use        - select a go version to use (--default to <span class="built_in">set</span> permanently)</div><div class="line">  diff       - view changes to Go root</div><div class="line">  <span class="built_in">help</span>       - display this usage text</div><div class="line">  implode    - completely remove gvm</div><div class="line">  install    - install go versions</div><div class="line">  uninstall  - uninstall go versions</div><div class="line">  cross      - install go cross compilers</div><div class="line">  linkthis   - link this directory into GOPATH</div><div class="line">  list       - list installed go versions</div><div class="line">  listall    - list available versions</div><div class="line">  <span class="built_in">alias</span>      - manage go version aliases</div><div class="line">  pkgset     - manage go packages sets</div><div class="line">  pkgenv     - edit the environment <span class="keyword">for</span> a package <span class="built_in">set</span></div></pre></td></tr></table></figure>
-<p>Mac下需要这样一把（如果你的环境有问题的话）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div><div class="line">brew update</div><div class="line">brew install mercurial</div></pre></td></tr></table></figure>
-<p>一般常规的操作是</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先列一下看支持哪些版本</span></div><div class="line">gvm listall</div><div class="line"></div><div class="line"><span class="comment"># 看下自己环境有哪些版本</span></div><div class="line">gvm list</div><div class="line"></div><div class="line"><span class="comment"># 安装需要的版本，比如go1.8.3，加--default代表每次再进terminal时默认使用这个版本</span></div><div class="line">gvm install go1.8.3 [--default]</div><div class="line"></div><div class="line"><span class="comment"># 然后看下是否成功</span></div><div class="line">go version</div><div class="line">go env</div><div class="line"></div><div class="line"><span class="comment"># 如果不需要gvm的环境变量，则需要到GVM_ROOT/environments下面去删除</span></div><div class="line"><span class="comment"># 注意是清空文件</span></div><div class="line">&gt; <span class="variable">$GVM_ROOT</span>/environments/go1.8.3</div><div class="line"></div><div class="line"><span class="comment"># 如果需要每次打开terminal都生效的话，以下命令加入到bashrc/zshrc，注意要加在GOPATH/GOROOT的setting之前（如果希望环境变量不被修改的话）</span></div><div class="line"><span class="built_in">source</span> /Users/chentao/.gvm/scripts/gvm</div></pre></td></tr></table></figure>
-<h2 id="几点注意"><a href="#几点注意" class="headerlink" title="几点注意"></a>几点注意</h2><ul>
-<li>在 Linux 下安装 GVM，需要安装相关依赖，详情见<a href="https://github.com/moovweb/gvm" target="_blank" rel="external">官网说明</a></li>
-<li>GVM 官方显示没对 Windows 做支持，考虑到 Windows 不是程序员的标配吧（有同学回复用 git-windows客户端，自带bash功能，可以自行尝试安装下）。</li>
-<li>GVM 安装新版本之后，Go 环境变量会重新设置，为了节约磁盘空间和时间，建议把之前版本的 GOPATH 内容移动到新版本对应的 GOPATH 目录下，相关路径可以通过 go env 获取</li>
-<li>在同一版本下，用 gvm pkgset 创建多个 GOPATH，可能会占用你比较大的磁盘空间</li>
-<li>使用 gvm implode 需谨慎</li>
-<li>GVM 是用 shell 编写</li>
+        <h2 id="add-submodule"><a href="#add-submodule" class="headerlink" title="add submodule"></a>add submodule</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule add --force gitr:service_rpc/idl idl</div></pre></td></tr></table></figure>
+<p>If this repo has not previously been used submodule then Git will create a directory in the directory called <em>.gitmodules</em> , which records the URL of the remote repo and the submodule in this project path.</p>
+<p>After executing this command submodule and <em>.gitmodules</em> will automatically staged, this time can commit and push.</p>
+<h3 id="Update-submodule"><a href="#Update-submodule" class="headerlink" title="Update submodule"></a>Update submodule</h3><p>Individual repo update is too much trouble, it is necessary to separate directory under execution <code>git pull</code>to pull the upstream code, but that would be more secure; all at once to update all of submodule can use this <code>foreach</code>command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule foreach --recursive git pull origin master</div></pre></td></tr></table></figure>
+<h3 id="Remove-submodule"><a href="#Remove-submodule" class="headerlink" title="Remove submodule"></a>Remove submodule</h3><p>I thought there will be like <code>git submodule rm</code>such an instruction, the result is not even, you must manually remove the hard ground one by one, not knowing what not to implement this directive considerations, I hope that future versions can add to it.</p>
+<p>Remove submodule has the following steps to do, first remove the submodule directory from the version control system:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git rm --cached /path/to/files</div><div class="line">rm -rf /path/to/files</div></pre></td></tr></table></figure>
+<p>Again to modify <em>.gitmodules</em> , remove the <em>unwrought</em> submodule, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[submodule &quot;.vim/bundle/vim-gitgutter&quot;] </div><div class="line">  path = .vim/bundle/vim-gitgutter </div><div class="line">  url = git://github.com/airblade/vim-gitgutter.git </div><div class="line">-[submodule &quot;.vim/bundle/vim-autoclose&quot;] </div><div class="line">- path = .vim/bundle/vim-autoclose </div><div class="line">- url = git://github.com/Townk/vim-autoclose.git</div></pre></td></tr></table></figure>
+<p>Not yet finished! But also modify the contents of <em>.git / config</em> , with. <em>Gitmodules</em> , the need to remove the submodule deleted, and finally commit.</p>
+<h3 id="clone-when-the-submodule-together-to-catch-down"><a href="#clone-when-the-submodule-together-to-catch-down" class="headerlink" title="clone when the submodule together to catch down"></a>clone when the submodule together to catch down</h3><p>Implementation of <code>git clone</code>Git clone does not automatically come together when submodule must be added <code>--recursive</code>recursive parameter, so you can catch all associated submodule in submodule down together:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone --recursive git@github.com:chinghanho/.dotfiles.git</div></pre></td></tr></table></figure>
+<p>If you have been caught to find submodule is empty, you can use the following instructions to catch, <code>init</code>will be registered in _.git / config` remote repo URL and local path:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git submodule init</div><div class="line">git submodule update --recursive</div></pre></td></tr></table></figure>
+<p>Or merged into one line <code>git submodule update --init --recursive</code>can, if upstream someone to turn over <em>.gitmodules</em> , it seems that local end also using this method update.</p>
+<h2 id="Explanation-of-instructions"><a href="#Explanation-of-instructions" class="headerlink" title="Explanation of instructions"></a>Explanation of instructions</h2><ul>
+<li><code>git submodule init</code>: According to <em>.gitmodules</em> name and URL, these information will be registered to . *Git *<em>/ config</em> , but not <em>.gitmodules</em> not removed submodule, the use of this directive and no way to automatically delete. <em>Git / config</em> related content, you must manually delete ;</li>
+<li><code>git submodule update</code>: According to registered (that is, <em>.git / config</em> ) submodule to update, such as clone lost submodule, which is the last paragraph of the method, so the implementation of this instruction before the best plus <code>--init</code>;</li>
+<li><code>git submodule sync</code>: If the submodule’s remote URL changes, you can correct the URL in <em>.gitmodules</em> , and then execute this command, the submodule’s remote URL will be corrected.</li>
 </ul>
 
       
@@ -424,9 +415,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Golang/" rel="tag"># Golang</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
-            <a href="/tags/gvm/" rel="tag"># gvm</a>
+            <a href="/tags/github/" rel="tag"># github</a>
           
         </div>
       
@@ -528,7 +519,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -537,7 +528,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-count">101</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -617,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于gvm"><span class="nav-number">2.</span> <span class="nav-text">关于gvm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-版本切换"><span class="nav-number">3.</span> <span class="nav-text">Go 版本切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">5.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几点注意"><span class="nav-number">6.</span> <span class="nav-text">几点注意</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#add-submodule"><span class="nav-number">1.</span> <span class="nav-text">add submodule</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-submodule"><span class="nav-number">1.1.</span> <span class="nav-text">Update submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-submodule"><span class="nav-number">1.2.</span> <span class="nav-text">Remove submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone-when-the-submodule-together-to-catch-down"><span class="nav-number">1.3.</span> <span class="nav-text">clone when the submodule together to catch down</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explanation-of-instructions"><span class="nav-number">2.</span> <span class="nav-text">Explanation of instructions</span></a></li></ol></div>
             
 
           </div>
