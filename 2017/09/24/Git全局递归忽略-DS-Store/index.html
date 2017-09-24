@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Mac,OS X,Git," />
 
 
 
@@ -89,16 +89,18 @@
 
 
 
-<meta name="description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chen-Tao">
-<meta property="og:url" content="http://chen-tao.github.io/archives/2015/04/page/2/index.html">
+<meta name="description" content="解决Mac下统一递归的忽略.DS_Store的方法">
+<meta name="keywords" content="Mac,OS X,Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git全局递归忽略.DS_Store">
+<meta property="og:url" content="http://chen-tao.github.io/2017/09/24/Git全局递归忽略-DS-Store/index.html">
 <meta property="og:site_name" content="Chen-Tao">
-<meta property="og:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta property="og:description" content="解决Mac下统一递归的忽略.DS_Store的方法">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-24T06:01:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chen-Tao">
-<meta name="twitter:description" content="Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU">
+<meta name="twitter:title" content="Git全局递归忽略.DS_Store">
+<meta name="twitter:description" content="解决Mac下统一递归的忽略.DS_Store的方法">
 
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://chen-tao.github.io/archives/2015/04/page/2/"/>
+  <link rel="canonical" href="http://chen-tao.github.io/2017/09/24/Git全局递归忽略-DS-Store/"/>
 
 
 
 
 
-  <title> 归档 | Chen-Tao </title>
+  <title> Git全局递归忽略.DS_Store | Chen-Tao </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -157,7 +159,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -261,291 +263,208 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-       
-        
-      非常好! 目前共计 187 篇日志。 继续努力。
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2017/09/24/Git全局递归忽略-DS-Store/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Git全局递归忽略.DS_Store
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T13:43:21+08:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  解决Mac下统一递归的忽略.DS_Store的方法
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <blockquote>
+<p>Mac下，只要在Finder访问过的文件夹，都会生成一个.DS_Store的文件，Mac用它来存储当前文件夹的一些Meta信息。对于Git来说，不经意间总是会干扰到其他正常的提交和本地仓库状态，是很烦恼，找了半天，终于有一个比较好的办法处理了</p>
+</blockquote>
+<p>流程大致是这样的：</p>
+<h2 id="对于项目内已经提交了-DS-Store到仓库的情况"><a href="#对于项目内已经提交了-DS-Store到仓库的情况" class="headerlink" title="对于项目内已经提交了.DS_Store到仓库的情况"></a>对于项目内已经提交了.DS_Store到仓库的情况</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name .DS_Store -print0 | xargs -0 git rm --ignore-unmatch</div></pre></td></tr></table></figure>
+<p>搜索一下项目内所有的<code>.DS_Store</code>，全部<code>rm</code>掉，然后再<code>push</code>一把</p>
+<h2 id="对于今后的项目，做全局的配置"><a href="#对于今后的项目，做全局的配置" class="headerlink" title="对于今后的项目，做全局的配置"></a>对于今后的项目，做全局的配置</h2><p>如果没有<code>~/. gitignore_global</code>文件，<code>echo</code>也会为你生成一个，这里的主要目的是覆盖所有可能的<code>OS X</code>版本生成的<code>.DS_Store</code>，逐一执行一次就可以了，之后<code>cat</code>一下看是否正常写入了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">".DS_Store"</span> &gt;&gt; ~/.gitignore_global</div><div class="line"><span class="built_in">echo</span> <span class="string">"._.DS_Store"</span> &gt;&gt; ~/.gitignore_global</div><div class="line"><span class="built_in">echo</span> <span class="string">"**/.DS_Store"</span> &gt;&gt; ~/.gitignore_global</div><div class="line"><span class="built_in">echo</span> <span class="string">"**/._.DS_Store"</span> &gt;&gt; ~/.gitignore_global</div></pre></td></tr></table></figure>
+<p>然后设置一下全局的配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global core.excludesfile ~/.gitignore_global</div></pre></td></tr></table></figure>
+<p>大功告成~</p>
+<p>另外，Github还提供了一个官方的全局示例，可以根据实际需求使用：</p>
+<script src="https://gist.github.com/Chen-tao/98be9441fd238a1eccadba141d89d64a.js"></script>
+
+<blockquote>
+<p>最后补充一下<code>.gitignore</code>的语法</p>
+</blockquote>
+<h3 id="gitignore规范"><a href="#gitignore规范" class="headerlink" title="gitignore规范"></a>gitignore规范</h3><ul>
+<li>所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。</li>
+<li>可以使用标准的 glob 模式匹配。</li>
+<li>匹配模式最后跟反斜杠（/）说明要忽略的是目录。</li>
+<li>要忽略指定模式以外的文件或目录，可以在模式前加上（!）取反。</li>
+</ul>
+<h3 id="glob模式要点"><a href="#glob模式要点" class="headerlink" title="glob模式要点"></a>glob模式要点</h3><ul>
+<li><code>*</code>:任意个任意字符,</li>
+<li><code>[]</code>:匹配任何一个在方括号中的字符,</li>
+<li><code>?</code>:匹配一个任意字符，</li>
+<li><code>[0-9]</code>:匹配字符范围内所有字符</li>
+</ul>
+
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mac/" rel="tag"># Mac</a>
+          
+            <a href="/tags/OS-X/" rel="tag"># OS X</a>
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
         </div>
       
+
+      
+        
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/24/Git-submodule-Note/" rel="next" title="Git submodule Note">
+                <i class="fa fa-chevron-left"></i> Git submodule Note
+              </a>
+            
+          </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          <span class="post-nav-divider"></span>
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/12/vim-useful/" itemprop="url">
-              
-                <span itemprop="name">vim useful</span>
-              
-            </a>
-        
-      </h1>
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-04-12T00:00:00+08:00"
-              content="2015-04-12" >
-          04-12
-        </time>
-      </div>
-
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/10/cocoapod-install-and-simple-use/" itemprop="url">
-              
-                <span itemprop="name">cocoapod install and simple use</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-04-10T00:00:00+08:00"
-              content="2015-04-10" >
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/" itemprop="url">
-              
-                <span itemprop="name">Analysing iOS App Network Performances on Cellular/Wi Fi</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-04-05T00:00:00+08:00"
-              content="2015-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/05/use-mac-to-catch-web-pkg-on-iphone/" itemprop="url">
-              
-                <span itemprop="name">Use Mac to Catch Web Pkg on iPhone</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-04-05T00:00:00+08:00"
-              content="2015-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/05/wireshark-crash-on-mac-osx/" itemprop="url">
-              
-                <span itemprop="name">wireshark crash on Mac OSX</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-04-05T00:00:00+08:00"
-              content="2015-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/04/mac-os-x-1010-yosemite-dashboardspotlight/" itemprop="url">
-              
-                <span itemprop="name">Mac OS X 10.10 Yosemite 关闭Dashboard和Spotlight</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-04-04T00:00:00+08:00"
-              content="2015-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/04/04/starting-and-stopping-background-services-with-homebrew/" itemprop="url">
-              
-                <span itemprop="name">Starting and Stopping Background Services with Homebrew</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-04-04T00:00:00+08:00"
-              content="2015-04-04" >
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2015/04/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2015/04/">1</a><span class="page-number current">2</span>
-  </nav>
-
-
+    </div>
+  </div>
 
           
           </div>
@@ -553,6 +472,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -572,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
@@ -676,6 +608,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对于项目内已经提交了-DS-Store到仓库的情况"><span class="nav-number">1.</span> <span class="nav-text">对于项目内已经提交了.DS_Store到仓库的情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于今后的项目，做全局的配置"><span class="nav-number">2.</span> <span class="nav-text">对于今后的项目，做全局的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gitignore规范"><span class="nav-number">2.1.</span> <span class="nav-text">gitignore规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#glob模式要点"><span class="nav-number">2.2.</span> <span class="nav-text">glob模式要点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -781,11 +729,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
