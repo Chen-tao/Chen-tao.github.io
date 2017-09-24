@@ -21,4 +21,4 @@ Moving to this site , as a back.
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+[Apache](./LICENSE)
