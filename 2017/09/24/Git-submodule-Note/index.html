@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Chen-Tao">
 <meta property="og:description" content="项目中使用了git的submodule功能，但突然发现，更新项目或者重写clone项目时，submodule并没有一起更新……这里总结和学习一下submodule相关的功能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-24T03:32:43.000Z">
+<meta property="og:updated_time" content="2017-09-24T03:51:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git submodule Note">
 <meta name="twitter:description" content="项目中使用了git的submodule功能，但突然发现，更新项目或者重写clone项目时，submodule并没有一起更新……这里总结和学习一下submodule相关的功能">
@@ -371,7 +371,7 @@
       
 
       
-        <h2 id="add-submodule"><a href="#add-submodule" class="headerlink" title="add submodule"></a>add submodule</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule add --force gitr:service_rpc/idl idl</div></pre></td></tr></table></figure>
+        <h3 id="add-submodule"><a href="#add-submodule" class="headerlink" title="add submodule"></a>add submodule</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule add --force gitr:service_rpc/idl idl</div></pre></td></tr></table></figure>
 <p>If this repo has not previously been used submodule then Git will create a directory in the directory called <em>.gitmodules</em> , which records the URL of the remote repo and the submodule in this project path.</p>
 <p>After executing this command submodule and <em>.gitmodules</em> will automatically staged, this time can commit and push.</p>
 <h3 id="Update-submodule"><a href="#Update-submodule" class="headerlink" title="Update submodule"></a>Update submodule</h3><p>Individual repo update is too much trouble, it is necessary to separate directory under execution <code>git pull</code>to pull the upstream code, but that would be more secure; all at once to update all of submodule can use this <code>foreach</code>command:</p>
@@ -608,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#add-submodule"><span class="nav-number">1.</span> <span class="nav-text">add submodule</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-submodule"><span class="nav-number">1.1.</span> <span class="nav-text">Update submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-submodule"><span class="nav-number">1.2.</span> <span class="nav-text">Remove submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone-when-the-submodule-together-to-catch-down"><span class="nav-number">1.3.</span> <span class="nav-text">clone when the submodule together to catch down</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explanation-of-instructions"><span class="nav-number">2.</span> <span class="nav-text">Explanation of instructions</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-submodule"><span class="nav-number">1.</span> <span class="nav-text">add submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-submodule"><span class="nav-number">2.</span> <span class="nav-text">Update submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-submodule"><span class="nav-number">3.</span> <span class="nav-text">Remove submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone-when-the-submodule-together-to-catch-down"><span class="nav-number">4.</span> <span class="nav-text">clone when the submodule together to catch down</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explanation-of-instructions"><span class="nav-number"></span> <span class="nav-text">Explanation of instructions</span></a></div>
             
 
           </div>
