@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -295,8 +295,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">
-                  El Capitan & Homebrew
+                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
+                  垃圾回收（GC）的三种基本方式
                 </a>
               
             
@@ -350,12 +350,137 @@
       
         
           
-          El Capitan &amp; HomebrewPart of the OS X 10.11/El Capitan changes is something called System Integrity Protection or “SIP”.
-SIP prevents you from wri
+          垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
+其实这三种方式也可
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/02/el-cap-homebrew/#more" rel="contents">
+            <a class="btn" href="/2015/10/02/gc/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/kilim-work-way/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/02/kilim-work-way/" itemprop="url">
+                  Kilim工作原理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
+                2015-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Kilim工作原理1. Kilim中的Task，即用户线程如何调度和切换？相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU在多任务的调度上操作系统采取抢占式和协作式两种方式。
+2.Kilim如何识别线程堆栈中哪些方法是Pau
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/02/kilim-work-way/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -896,169 +1021,6 @@ Are you using MySQL’s utf8 charset in your databases? In this
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/some-blogs-i-see/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/18/some-blogs-i-see/" itemprop="url">
-                  常刷的博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
-                2015-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/常用/" itemprop="url" rel="index">
-                    <span itemprop="name">常用</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-算法
-http://x-wei.github.io/
-http://wangkuiwu.github.io/
-
-基础
-  LeftNotEasy
-  四火的唠叨
-  redisCN
-  redis
-  the5fire
-  GO
-  0xfe
-  编译器
-  底层大神
-  Dev OS
-  鸟窝
-
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/07/18/some-blogs-i-see/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1190,7 +1152,7 @@ cocoapods管理-cocoap
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/arch-collections/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/some-blogs-i-see/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1212,8 +1174,8 @@ cocoapods管理-cocoap
             
               
                 
-                <a class="post-title-link" href="/2015/07/17/arch-collections/" itemprop="url">
-                  架构资料集合
+                <a class="post-title-link" href="/2015/07/18/some-blogs-i-see/" itemprop="url">
+                  常刷的博客
                 </a>
               
             
@@ -1229,8 +1191,8 @@ cocoapods管理-cocoap
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T00:00:00+08:00">
-                2015-07-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
+                2015-07-18
               </time>
             
 
@@ -1239,6 +1201,28 @@ cocoapods管理-cocoap
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/常用/" itemprop="url" rel="index">
+                    <span itemprop="name">常用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1267,14 +1251,28 @@ cocoapods管理-cocoap
       
         
           
-          简介
-以前见过零零散散地介绍一些知名网站架构的分析文章。最近D瓜哥也想研究一下各大知名网站的架构。所以，就搜集了一下这方面资料。限于时间问题，这篇文章分享的文章并没有都看完，所以不保证所有文章的质量。另外，如果有朋友发现更好的文章，欢迎留言告知。再补充进来。
-知名网站架构分析
-探索Google Ap
+          
+算法
+http://x-wei.github.io/
+http://wangkuiwu.github.io/
+
+基础
+  LeftNotEasy
+  四火的唠叨
+  redisCN
+  redis
+  the5fire
+  GO
+  0xfe
+  编译器
+  底层大神
+  Dev OS
+  鸟窝
+
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/07/17/arch-collections/#more" rel="contents">
+            <a class="btn" href="/2015/07/18/some-blogs-i-see/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1443,7 +1441,7 @@ cocoapods管理-cocoap
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/14/java-qrcode-demo/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/17/arch-collections/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1465,8 +1463,8 @@ cocoapods管理-cocoap
             
               
                 
-                <a class="post-title-link" href="/2015/07/14/java-qrcode-demo/" itemprop="url">
-                  java生成二维码
+                <a class="post-title-link" href="/2015/07/17/arch-collections/" itemprop="url">
+                  架构资料集合
                 </a>
               
             
@@ -1482,8 +1480,8 @@ cocoapods管理-cocoap
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-14T00:00:00+08:00">
-                2015-07-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-17T00:00:00+08:00">
+                2015-07-17
               </time>
             
 
@@ -1520,16 +1518,14 @@ cocoapods管理-cocoap
       
         
           
-          使用Google开源库zxing生成二维码
-
-在pom.xml文件中添加以下依赖：
-&lt;dependency&gt;
-    &lt;groupId&gt;com.google.zxing&lt;/groupId&gt;
-    &lt;artifactId&gt;core&lt;/artifa
+          简介
+以前见过零零散散地介绍一些知名网站架构的分析文章。最近D瓜哥也想研究一下各大知名网站的架构。所以，就搜集了一下这方面资料。限于时间问题，这篇文章分享的文章并没有都看完，所以不保证所有文章的质量。另外，如果有朋友发现更好的文章，欢迎留言告知。再补充进来。
+知名网站架构分析
+探索Google Ap
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/07/14/java-qrcode-demo/#more" rel="contents">
+            <a class="btn" href="/2015/07/17/arch-collections/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1612,7 +1608,7 @@ cocoapods管理-cocoap
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">188</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1621,7 +1617,7 @@ cocoapods管理-cocoap
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1630,7 +1626,7 @@ cocoapods管理-cocoap
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">102</span>
+                <span class="site-state-item-count">104</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
