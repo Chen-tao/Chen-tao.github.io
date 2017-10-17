@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -295,8 +295,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">
-                  El Capitan & Homebrew
+                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
+                  垃圾回收（GC）的三种基本方式
                 </a>
               
             
@@ -350,12 +350,137 @@
       
         
           
-          El Capitan &amp; HomebrewPart of the OS X 10.11/El Capitan changes is something called System Integrity Protection or “SIP”.
-SIP prevents you from wri
+          垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
+其实这三种方式也可
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/02/el-cap-homebrew/#more" rel="contents">
+            <a class="btn" href="/2015/10/02/gc/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/kilim-work-way/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/02/kilim-work-way/" itemprop="url">
+                  Kilim工作原理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-02T00:00:00+08:00">
+                2015-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Kilim工作原理1. Kilim中的Task，即用户线程如何调度和切换？相比传统的Thread多线程间抢占式调度，Kilim中的Task采用的是协作式调度，即由Task本身负责释放和恢复占用CPU在多任务的调度上操作系统采取抢占式和协作式两种方式。
+2.Kilim如何识别线程堆栈中哪些方法是Pau
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/02/kilim-work-way/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -647,6 +772,130 @@ I never really expected to find myself giving advice to people graduating from a
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/02/jvm/" itemprop="url">
+                  JVM的相关知识整理和学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
+                2015-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          JVM是虚拟机，也是一种规范，他遵循着冯·诺依曼体系结构的设计原理。冯·诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。从dos到
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/08/02/jvm/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/how-to-support-full-unicode-in-mysql-databases/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -772,7 +1021,7 @@ Are you using MySQL’s utf8 charset in your databases? In this
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -794,8 +1043,8 @@ Are you using MySQL’s utf8 charset in your databases? In this
             
               
                 
-                <a class="post-title-link" href="/2015/08/02/jvm/" itemprop="url">
-                  JVM的相关知识整理和学习
+                <a class="post-title-link" href="/2015/07/18/ios-developer-infos-coll/" itemprop="url">
+                  iOS developer infos coll
                 </a>
               
             
@@ -811,8 +1060,8 @@ Are you using MySQL’s utf8 charset in your databases? In this
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
-                2015-08-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
+                2015-07-18
               </time>
             
 
@@ -849,11 +1098,18 @@ Are you using MySQL’s utf8 charset in your databases? In this
       
         
           
-          JVM是虚拟机，也是一种规范，他遵循着冯·诺依曼体系结构的设计原理。冯·诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。从dos到
+           介绍工欲善其事，必先利其器。这篇博文，主要是总结自己在开发iOS过程中使用到的一些可以提高效率的方法和工具。
+开发工具，当然还是首选Xcode。
+常用快捷键
+木说我不告诉你常用片段
+Objective-C常用片段
+Swift常用片段
+我自己常用的Xcode插件
+cocoapods管理-cocoap
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/08/02/jvm/#more" rel="contents">
+            <a class="btn" href="/2015/07/18/ios-developer-infos-coll/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1017,137 +1273,6 @@ http://wangkuiwu.github.io/
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/07/18/some-blogs-i-see/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/18/ios-developer-infos-coll/" itemprop="url">
-                  iOS developer infos coll
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
-                2015-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-           介绍工欲善其事，必先利其器。这篇博文，主要是总结自己在开发iOS过程中使用到的一些可以提高效率的方法和工具。
-开发工具，当然还是首选Xcode。
-常用快捷键
-木说我不告诉你常用片段
-Objective-C常用片段
-Swift常用片段
-我自己常用的Xcode插件
-cocoapods管理-cocoap
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/07/18/ios-developer-infos-coll/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1434,135 +1559,6 @@ cocoapods管理-cocoap
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/14/java-qrcode-demo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/14/java-qrcode-demo/" itemprop="url">
-                  java生成二维码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-14T00:00:00+08:00">
-                2015-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          使用Google开源库zxing生成二维码
-
-在pom.xml文件中添加以下依赖：
-&lt;dependency&gt;
-    &lt;groupId&gt;com.google.zxing&lt;/groupId&gt;
-    &lt;artifactId&gt;core&lt;/artifa
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/07/14/java-qrcode-demo/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1612,7 +1608,7 @@ cocoapods管理-cocoap
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">187</span>
+                <span class="site-state-item-count">188</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
