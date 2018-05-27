@@ -273,6 +273,135 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/10/31/linux-get-process-return-value/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2013/10/31/linux-get-process-return-value/" itemprop="url">
+                  Linux获取进程返回值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-10-31T00:00:00+08:00">
+                2013-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          受人之托写一个Linux小Demo，大致意思是这样的： 
+
+创建进程，并等待进程结束，获取进程返回值。 
+
+创建进程来说，fork()就可以了，比较简单这里就不来了。我模拟2个C程序，依次启动就相当于创建了2个进程（就不再fork了）。 
+等待进程结束的话，为了相对直观，令第二个进程Son睡眠10秒
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2013/10/31/linux-get-process-return-value/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/10/05/school-project-rebuild/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1406,133 +1535,6 @@ Federated
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2013/09/02/linux-session-process/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2013/09/02/linux-session-process/" itemprop="url">
-                  Linux会话与进程剖析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-02T00:00:00+08:00">
-                2013-09-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          我们都用一个常识，那就是当关掉窗口或者会话的时候，进程会被杀死(通俗的说，就是断开了相关了任务连接)，那么，这是为什么呢？其实这都是SIGHUP信号引起的。 
-SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念： 
-
-进程组(process group)一个或多个进程的集合，每个进程都
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/09/02/linux-session-process/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1582,7 +1584,7 @@ SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念：
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">189</span>
+                <span class="site-state-item-count">190</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1600,7 +1602,7 @@ SIGHUP信号在Linux系统中，关于进程与会话有这样几个概念：
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-count">108</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
