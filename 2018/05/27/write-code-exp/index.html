@@ -1,0 +1,801 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="感悟,人生,通用技能,能力提升," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="From Ken Mazaika">
+<meta name="keywords" content="感悟,人生,通用技能,能力提升">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程的经验">
+<meta property="og:url" content="http://chen-tao.github.io/2018/05/27/write-code-exp/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="From Ken Mazaika">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-27T12:29:54.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编程的经验">
+<meta name="twitter:description" content="From Ken Mazaika">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2018/05/27/write-code-exp/"/>
+
+
+
+
+
+  <title> 编程的经验 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2018/05/27/write-code-exp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                编程的经验
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T00:00:00+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/感悟/" itemprop="url" rel="index">
+                    <span itemprop="name">感悟</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  From Ken Mazaika
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>有经验的程序员会做到下面 29 项事情，这也是每个新手程序员应该知道的事情。</p>
+<p>如果你想成为更好的开发者，你应该尤其注意第15 点和第29 点。</p>
+<ol>
+<li><p><strong>积极大胆地谷歌。</strong>你得知道如何有效地组织搜索关键字，查阅别人写的代码，然后合理地用在代码里，从而解决问题。</p>
+</li>
+<li><p><strong>拥抱变化，坚持不懈。</strong>老手程序员在接触新技术时，能欣然接受像个初学者一样处处受挫，并总能在完成工作的同时自学成才。</p>
+</li>
+<li><p><strong>承认细节的重要性。</strong>例如变量和函数的命名、CSS 属性的命名、该用哈希还是用数组，以及其他看起来微不足道，但可能对项目有深远影响的事情。</p>
+</li>
+<li><p><strong>承认大多数的“重要决定”其实并没有那么重要。</strong>一般的开发者经常在技术选型等“重大问题”上陷入唇枪舌战，而程序员老鸟们会避免浪费时间在骂战中。这一点上，他们就像禅宗大师一样（zen-like）。</p>
+</li>
+<li><p><strong>选择合适的工具解决问题。</strong>网上有无数的开源库、工具和框架，让人眼花缭乱。而老手们清楚地知道针对怎样的问题，应该用什么样的工具。</p>
+</li>
+<li><p><strong>明白代码「不值钱」（该删就删）。</strong>你必须习惯于删掉几百行代码来重写程序的某一部分，毫不留情。</p>
+</li>
+<li><p><strong>在评估技术的时候要全面。</strong>例如，我一直在鼓吹Elixir。它语法优美，社区完善，有很大的潜力。但Elixir诞生的时间太短，所以如果要构建复杂的功能，可能会难以找到能帮你提高效率的开源工具。因此，在评估要不要选择使用一项技术时，你得把所有这些因素都考虑在内。</p>
+</li>
+<li><p><strong>学会说“我不知道”。</strong>没有比拒绝承认自己不知道更能浪费一个开发者的时间了。</p>
+</li>
+<li><p><strong>仔细分析错误信息里的线索。</strong>传统教育告诉我们：失败是坏事。报错信息这种东西也经常被跟失败联系起来，然而优秀程序员明白，这些错误消息里其实隐藏着能将你指向最终正确解决方案的线索。</p>
+</li>
+<li><p><strong>了解过早优化和必要的“炫技式”优化的区别。</strong>老手们清楚在什么时候需要写一些看上去没那么好懂，但会让程序运行更快的代码。</p>
+</li>
+<li><p><strong>每个人都会犯错，为自己的过失负责。</strong>而尤其在团队里，把责任推来推去没有任何意义，因为错误的发生往往不只是一方的因素造成的。</p>
+</li>
+<li><p><strong>成为你所用的开发工具的重度用户。</strong>如果长期在某个开发环境下有相当比例的开发工作，那你应该去掌握使用它的细节。</p>
+</li>
+<li><p><strong>学会用Vim（至少会一点）。</strong> 你至少应该在这个编辑器里学会勉强地移动和翻页。</p>
+</li>
+<li><p><strong>不要接陌生技术领域的私活。</strong>个人做自由职业项目，其中很大一部分挑战就是评估项目时间。不要规划自己未知领域的事情，那会让你处于想当尴尬的境地。</p>
+</li>
+<li><p><strong>不要数你干活花了几个小时。</strong>技术大牛会把时间花在有深度的工作上，并且他们清楚花了多少时间完全不重要。</p>
+</li>
+<li><p><strong>学会坦然接受批评。</strong>当你的代码因为各种原因四分五裂时，你需要培养用理性和逻辑的方式来应对（而不是情绪化处理）。</p>
+</li>
+<li><p><strong>同有更多经验的人结对编程。</strong>没有比这个更高效的编程学习方式了。</p>
+</li>
+<li><p><strong>一定要先自己做一遍代码审查。</strong>当你在GitHub上发起一个pull request之前，先把代码当成别人写的，自己先审查一遍。</p>
+</li>
+<li><p><strong>认识到做自由职业的难点不是写代码，而是其余的所有事情。</strong>销售、推广、客户支持，质量保证以及产品管理，所有这些都会花费大量时间。</p>
+</li>
+<li><p><strong>发现并解决更大的问题。</strong>优秀的程序员不拘泥于眼前的问题，而是清楚如何用更长远的方式彻底的解决这一类问题。</p>
+</li>
+<li><p><strong>深入了解一些大型开源项目的核心能让你开发时如虎添翼。</strong>如果你知道如何给你的项目打猴子补丁(Monkey Patch), 那么你将无所不能。</p>
+</li>
+<li><p><strong>跳过多数的会议。</strong>你的公司雇你是来写代码的，而不是谈代码的。当会议多到失控的时候，不去参加也没有任何问题。而且一旦你开始这样做，别人会更珍惜你的时间。</p>
+</li>
+<li><p><strong>知道什么时候开始回馈。</strong> 到了某个时候你需要将你的技能和经验传授给年轻的开发人员，就像你的导师当时教授你一样。</p>
+</li>
+<li><p><strong>能写烂代码。</strong>有时候可以当一当“胶带式程序员”。关键是随着时间推移，你需要弄清楚什么时候可以走捷径，什么时候必须走捷径。这其实是最难掌握的技能之一。</p>
+</li>
+<li><p><strong>礼貌地告诉别人你工作到很晚。</strong>如果你是办公室里最后一个，可以发一封简短的汇报邮件。别人一般会注意到邮件上的时间戳的。</p>
+</li>
+<li><p><strong>像一个领导者(Leader)一样做事，而不是老板(Boss)。</strong>老板是让别人为他工作的人，领导者是人们追随的人。做个领导者。</p>
+</li>
+<li><p><strong>去打打桌上足球。</strong>从长期来看，同其他开发者（或不同岗位上的同事）建立联系会比在紧巴巴的期限里交付一个功能更有价值。</p>
+</li>
+<li><p><strong>在压力下学习。</strong>你需要知道如何应对像系统宕机而你要负责将它复原的情况，即使一开始你完全没有头绪。</p>
+</li>
+<li><p><strong>“Move fast and break things” 别让完美主义阻止你做事。</strong>错误往往是最好的学习机会。所以别把犯错当作失败，而应该把它们当作值得学习的经历，并意识到：正是不断克服和突破这些错误，作为一个程序员，你才能不断成长起来。</p>
+</li>
+</ol>
+<p>像生活中的很多事情一样，编程也是你做的越多，了解的就越多。所以如果你是一个新手程序员，还是直接去编码吧。记得将这些最佳实践应用在日常工作中，来不断提升你的编程技艺。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/感悟/" rel="tag"># 感悟</a>
+          
+            <a href="/tags/人生/" rel="tag"># 人生</a>
+          
+            <a href="/tags/通用技能/" rel="tag"># 通用技能</a>
+          
+            <a href="/tags/能力提升/" rel="tag"># 能力提升</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/30/go-sync-map/" rel="next" title="golang Map 并发安全的几个点">
+                <i class="fa fa-chevron-left"></i> golang Map 并发安全的几个点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">190</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

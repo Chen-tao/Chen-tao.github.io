@@ -98,7 +98,7 @@
 <meta property="og:description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。 用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。 写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://files.blogcn.com/wp06/M00/00/B6/CpCCFVXOolgAAAAAAABJ-m_ZJA0544.png">
-<meta property="og:updated_time" content="2017-09-11T05:36:22.000Z">
+<meta property="og:updated_time" content="2017-09-14T03:41:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Netty权威指南》里没有说到的Decoder编写细节">
 <meta name="twitter:description" content="以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。 用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。 写Decoder又总是从解决TCP粘包开始，所谓TCP粘包，就是一条消息，比如100K的，会拆成多个TCP包发送到服务端，Netty必">
@@ -424,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/03/java-classloader-infos/" rel="next" title="ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖">
-                <i class="fa fa-chevron-left"></i> ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖
+              <a href="/2015/10/03/nettytcp/" rel="next" title="高性能网络框架Netty的TCP拆包、粘包解决方案">
+                <i class="fa fa-chevron-left"></i> 高性能网络框架Netty的TCP拆包、粘包解决方案
               </a>
             
           </div>
@@ -434,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/03/nettyjava/" rel="prev" title="Netty之Java堆外内存扫盲贴">
-                Netty之Java堆外内存扫盲贴 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/03/java-classloader-infos/" rel="prev" title="ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖">
+                ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -499,7 +499,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">189</span>
+                <span class="site-state-item-count">190</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -517,7 +517,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-count">108</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
