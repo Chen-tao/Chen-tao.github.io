@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/6-mysql-useful-exp/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/java-classloader-infos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -295,8 +295,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/03/6-mysql-useful-exp/" itemprop="url">
-                  6个有用的MySQL语句
+                <a class="post-title-link" href="/2015/10/03/java-classloader-infos/" itemprop="url">
+                  ClassLoader, JavaAgent, Aspectj Weaving一站式扫盲帖
                 </a>
               
             
@@ -322,6 +322,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -350,19 +372,15 @@
       
         
           
-          
-计算年数 你想通过生日来计算这个人有几岁了。
-
-``SELECTDATE_FORMAT(FROM_DAYS(TO_DAYS(now()) - TO_DAYS(@dateofbirth)), ‘%Y’)
-
-0;``
+          为了尽量简单明了容易背，有些部分写得比较干。
+0. 参考资料：书：《深入了解Java虚拟机》、《实战Java虚拟机》规范：Java语言规范 第12章源码： OpenJDK 7的Java及C代码( Class.c , Classloader.c，jvm.cpp)
 
 
-两个时间的差取得两个 datetime 值的差。假设 dt1 和 dt2 是 d
+1. Class装载的三个阶段1.
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/03/6-mysql-useful-exp/#more" rel="contents">
+            <a class="btn" href="/2015/10/03/java-classloader-infos/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -551,7 +569,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/6-mysql-useful-exp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -573,8 +591,140 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
-                  垃圾回收（GC）的三种基本方式
+                <a class="post-title-link" href="/2015/10/03/6-mysql-useful-exp/" itemprop="url">
+                  6个有用的MySQL语句
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+计算年数 你想通过生日来计算这个人有几岁了。
+
+``SELECTDATE_FORMAT(FROM_DAYS(TO_DAYS(now()) - TO_DAYS(@dateofbirth)), ‘%Y’)
+
+0;``
+
+
+两个时间的差取得两个 datetime 值的差。假设 dt1 和 dt2 是 d
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/03/6-mysql-useful-exp/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">
+                  El Capitan & Homebrew
                 </a>
               
             
@@ -628,12 +778,12 @@
       
         
           
-          垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
-其实这三种方式也可
+          El Capitan &amp; HomebrewPart of the OS X 10.11/El Capitan changes is something called System Integrity Protection or “SIP”.
+SIP prevents you from wri
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/02/gc/#more" rel="contents">
+            <a class="btn" href="/2015/10/02/el-cap-homebrew/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -801,7 +951,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -823,8 +973,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">
-                  El Capitan & Homebrew
+                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
+                  垃圾回收（GC）的三种基本方式
                 </a>
               
             
@@ -878,12 +1028,12 @@
       
         
           
-          El Capitan &amp; HomebrewPart of the OS X 10.11/El Capitan changes is something called System Integrity Protection or “SIP”.
-SIP prevents you from wri
+          垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
+其实这三种方式也可
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/02/el-cap-homebrew/#more" rel="contents">
+            <a class="btn" href="/2015/10/02/gc/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1175,130 +1325,6 @@ I never really expected to find myself giving advice to people graduating from a
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/02/jvm/" itemprop="url">
-                  JVM的相关知识整理和学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
-                2015-08-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          JVM是虚拟机，也是一种规范，他遵循着冯·诺依曼体系结构的设计原理。冯·诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。从dos到
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/08/02/jvm/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/how-to-support-full-unicode-in-mysql-databases/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1424,7 +1450,7 @@ Are you using MySQL’s utf8 charset in your databases? In this
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/07/18/some-blogs-i-see/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1446,8 +1472,8 @@ Are you using MySQL’s utf8 charset in your databases? In this
             
               
                 
-                <a class="post-title-link" href="/2015/07/18/some-blogs-i-see/" itemprop="url">
-                  常刷的博客
+                <a class="post-title-link" href="/2015/08/02/jvm/" itemprop="url">
+                  JVM的相关知识整理和学习
                 </a>
               
             
@@ -1463,8 +1489,8 @@ Are you using MySQL’s utf8 charset in your databases? In this
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-18T00:00:00+08:00">
-                2015-07-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
+                2015-08-02
               </time>
             
 
@@ -1473,28 +1499,6 @@ Are you using MySQL’s utf8 charset in your databases? In this
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/常用/" itemprop="url" rel="index">
-                    <span itemprop="name">常用</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1523,28 +1527,11 @@ Are you using MySQL’s utf8 charset in your databases? In this
       
         
           
-          
-算法
-http://x-wei.github.io/
-http://wangkuiwu.github.io/
-
-基础
-  LeftNotEasy
-  四火的唠叨
-  redisCN
-  redis
-  the5fire
-  GO
-  0xfe
-  编译器
-  底层大神
-  Dev OS
-  鸟窝
-
+          JVM是虚拟机，也是一种规范，他遵循着冯·诺依曼体系结构的设计原理。冯·诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。从dos到
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/07/18/some-blogs-i-see/#more" rel="contents">
+            <a class="btn" href="/2015/08/02/jvm/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1627,7 +1614,7 @@ http://wangkuiwu.github.io/
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">191</span>
+                <span class="site-state-item-count">192</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1645,7 +1632,7 @@ http://wangkuiwu.github.io/
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">108</span>
+                <span class="site-state-item-count">109</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
