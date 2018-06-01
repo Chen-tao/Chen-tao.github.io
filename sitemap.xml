@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chen-tao.github.io/2018/06/01/eleme-meituan-tips/</loc>
+    
+    <lastmod>2018-06-01T07:25:08.740Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chen-tao.github.io/2018/06/01/code-review-acronyms/</loc>
     
-    <lastmod>2018-06-01T06:54:43.687Z</lastmod>
+    <lastmod>2018-06-01T07:11:09.595Z</lastmod>
     
   </url>
   
@@ -72,13 +79,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2013/09/04/trash-cli/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2013/09/05/centos-tmux-screen-byobu/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
@@ -135,14 +135,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2013/11/03/classic/</loc>
+    <loc>http://chen-tao.github.io/2013/11/04/wechat-web-login/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2013/11/04/wechat-web-login/</loc>
+    <loc>http://chen-tao.github.io/2013/11/03/classic/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/09/linux-nc/</loc>
+    <loc>http://chen-tao.github.io/2015/11/09/newbee-problem/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/09/newbee-problem/</loc>
+    <loc>http://chen-tao.github.io/2015/11/09/linux-nc/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -191,20 +191,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2013/08/18/bonferroni-corretion/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2015/11/17/linux-swap-conf/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
@@ -212,7 +198,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/21/unix-into-apue/</loc>
+    <loc>http://chen-tao.github.io/2015/11/17/c-cpp-preprocessor/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2013/08/17/flume_use/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -226,14 +219,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2016/05/15/nihongo-history-note/</loc>
+    <loc>http://chen-tao.github.io/2016/01/30/some-feeling-about-programming/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2016/01/30/some-feeling-about-programming/</loc>
+    <loc>http://chen-tao.github.io/2016/05/15/nihongo-history-note/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -268,14 +261,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2016/12/23/best-tips-of-vim/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2017/01/12/cloud-things/</loc>
+    <loc>http://chen-tao.github.io/2015/11/16/macbook-shortcuts/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -289,20 +275,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2017/01/26/about-dfs/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2017/01/27/al-template/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2017/01/25/about-bfs/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
@@ -310,7 +282,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2017/02/08/algo-pic/</loc>
+    <loc>http://chen-tao.github.io/2016/12/23/best-tips-of-vim/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -324,7 +296,28 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2017/01/28/quick-sort/</loc>
+    <loc>http://chen-tao.github.io/2017/01/12/cloud-things/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2017/01/27/al-template/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2017/02/08/algo-pic/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2017/01/26/about-dfs/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -338,21 +331,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2013/08/17/flume_use/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2013/08/21/python-regular-expression1/</loc>
-    
-    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2013/08/20/mysql-performance-optimization/</loc>
+    <loc>http://chen-tao.github.io/2013/08/18/bonferroni-corretion/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -366,7 +345,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2013/09/01/awestruck-data/</loc>
+    <loc>http://chen-tao.github.io/2013/08/20/mysql-performance-optimization/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -374,6 +353,20 @@
   
   <url>
     <loc>http://chen-tao.github.io/2013/08/22/waiting-for-me/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2013/08/21/python-regular-expression1/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2013/09/01/awestruck-data/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
@@ -394,28 +387,35 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/16/macbook-shortcuts/</loc>
+    <loc>http://chen-tao.github.io/2013/09/04/trash-cli/</loc>
     
     <lastmod>2017-09-11T05:37:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/memory_align.html</loc>
+    <loc>http://chen-tao.github.io/2017/01/28/quick-sort/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/11/21/unix-into-apue/</loc>
+    
+    <lastmod>2017-09-11T05:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/constructor_derived_class.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/local_variable.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/assign_cons.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/c_string_func.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -429,21 +429,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/constructor_derived_class.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/GDB_test.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/Linux_OS_Daemon.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/assign_cons.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -457,7 +443,21 @@
   </url>
   
   <url>
+    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/Linux_OS_Daemon.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chen-tao.github.io/CS_Offer/C++_Code/GDB_test_2.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/GDB_test.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -492,13 +492,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/categories/index.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/tags/index.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
@@ -513,7 +506,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/Statistics.html</loc>
+    <loc>http://chen-tao.github.io/categories/index.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/Python.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -534,14 +534,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/Python.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/CS_Offer/Linux_OS.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/Statistics.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -555,14 +548,21 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/Java.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/Linux_OS.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/DatabaseSystem.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/C++.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/Java.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -576,28 +576,14 @@
   </url>
   
   <url>
+    <loc>http://chen-tao.github.io/CS_Offer/DatabaseSystem.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chen-tao.github.io/CS_Offer/Culture.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/04/05/wireshark-crash-on-mac-osx/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/04/10/cocoapod-install-and-simple-use/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -625,14 +611,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/04/13/vivim/</loc>
+    <loc>http://chen-tao.github.io/2015/04/20/mac-show-hide-files/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/04/20/mac-show-hide-files/</loc>
+    <loc>http://chen-tao.github.io/2015/04/13/vivim/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -660,13 +646,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/04/23/some-tcpip/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2015/04/23/java-collection-basic-infos/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
@@ -674,14 +653,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/05/15/mysql-too-many-connection-solve/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/04/27/osx-terminal-tips/</loc>
+    <loc>http://chen-tao.github.io/2015/04/23/some-tcpip/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -695,14 +667,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/05/18/java-concurrency-tips/</loc>
+    <loc>http://chen-tao.github.io/2015/04/27/osx-terminal-tips/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/05/28/some-mysql-optimize/</loc>
+    <loc>http://chen-tao.github.io/2015/05/15/mysql-too-many-connection-solve/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -716,7 +688,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/05/28/system-arch-learning/</loc>
+    <loc>http://chen-tao.github.io/2015/05/18/java-concurrency-tips/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -730,7 +702,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/06/10/mysql-processlist-status/</loc>
+    <loc>http://chen-tao.github.io/2015/05/28/some-mysql-optimize/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -744,6 +716,20 @@
   </url>
   
   <url>
+    <loc>http://chen-tao.github.io/2015/06/06/linux-curl-explain/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/06/10/mysql-processlist-status/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chen-tao.github.io/2015/06/23/set-password-for-mysql-root-user/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
@@ -751,7 +737,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/06/06/linux-curl-explain/</loc>
+    <loc>http://chen-tao.github.io/2015/04/05/wireshark-crash-on-mac-osx/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -765,7 +751,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/06/27/httptcp/</loc>
+    <loc>http://chen-tao.github.io/2015/04/10/cocoapod-install-and-simple-use/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/05/28/system-arch-learning/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -779,21 +772,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/06/29/upgarde-postgresql/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2015/06/30/postgresql-in-action/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/07/02/static-http-file-server-in-go/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -807,7 +786,21 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/07/11/cmake-intro/</loc>
+    <loc>http://chen-tao.github.io/2015/07/02/static-http-file-server-in-go/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/06/27/httptcp/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/06/29/upgarde-postgresql/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -828,14 +821,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/</loc>
+    <loc>http://chen-tao.github.io/2015/07/18/some-blogs-i-see/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/07/17/java-monitor-and-analysis/</loc>
+    <loc>http://chen-tao.github.io/2015/07/18/ios-developer-infos-coll/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -849,7 +842,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/07/18/some-blogs-i-see/</loc>
+    <loc>http://chen-tao.github.io/2015/07/11/cmake-intro/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/07/17/java-monitor-and-analysis/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -863,13 +863,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/08/02/jvm/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2015/10/02/el-cap-homebrew/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
@@ -877,14 +870,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/08/10/neil-gaiman-keynote-address-2012/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/08/07/gcjava/</loc>
+    <loc>http://chen-tao.github.io/2015/08/02/jvm/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -898,7 +884,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/Network_HTTP.html</loc>
+    <loc>http://chen-tao.github.io/2015/08/10/neil-gaiman-keynote-address-2012/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -906,6 +892,20 @@
   
   <url>
     <loc>http://chen-tao.github.io/2015/10/03/6-mysql-useful-exp/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/More/Network_TCP.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/10/02/kilim-work-way/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -926,28 +926,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/10/03/nettydecoder/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2015/10/03/nettyjava/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/10/03/nettyreference-counted-objects/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/10/29/kafka-design/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -961,14 +940,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/10/03/nettytcp/</loc>
+    <loc>http://chen-tao.github.io/2015/10/29/welcome-to-jekyll/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/10/29/welcome-to-jekyll/</loc>
+    <loc>http://chen-tao.github.io/2015/10/29/kafka-design/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -982,21 +961,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/02/postman-expat/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2015/11/03/http2--web-/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2015/11/02/surge-confs-index/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/11/02/postman-expat/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1010,14 +982,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/04/surge-the-missing-tool-for-ios/</loc>
+    <loc>http://chen-tao.github.io/2015/11/03/http2--web-/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/04/the-trust-machine/</loc>
+    <loc>http://chen-tao.github.io/2015/11/04/surge-the-missing-tool-for-ios/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1031,7 +1003,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/11/07/atom-shortcuts/</loc>
+    <loc>http://chen-tao.github.io/2015/11/04/the-trust-machine/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/10/03/nettydecoder/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1039,6 +1018,13 @@
   
   <url>
     <loc>http://chen-tao.github.io/2015/11/05/http2-comp/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/10/03/nettyreference-counted-objects/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1059,13 +1045,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/Linux_OS_MemoryManage.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/CS_Offer/More/Python_Scipy.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
@@ -1080,7 +1059,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/Network_TCP.html</loc>
+    <loc>http://chen-tao.github.io/2015/10/03/nettytcp/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1108,7 +1087,21 @@
   </url>
   
   <url>
+    <loc>http://chen-tao.github.io/CS_Offer/More/Network_HTTP.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chen-tao.github.io/CS_Offer/More/Linux_OS_ProcessThread.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/More/Linux_OS_MemoryManage.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1129,13 +1122,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/Hadoop_Spark.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/CS_Offer/More/Linux_OS_Fork.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
@@ -1150,14 +1136,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2016/12/21/useful-coding-experience/</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/More/Hadoop_Spark.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/DataStructure_RB_Tree.html</loc>
+    <loc>http://chen-tao.github.io/2016/12/21/useful-coding-experience/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1171,7 +1157,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/C++_%E7%BD%91%E6%98%93%E6%B8%B8%E6%88%8F2017_%E5%AE%9E%E4%B9%A0.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/More/DataStructure_RB_Tree.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1179,6 +1165,13 @@
   
   <url>
     <loc>http://chen-tao.github.io/CS_Offer/More/DataStructure_B_Tree.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2015/11/07/atom-shortcuts/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1206,14 +1199,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/C++_STL.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/C++_%E7%BD%91%E6%98%93%E6%B8%B8%E6%88%8F2016_%E5%AE%9E%E4%B9%A0.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/More/C++_%E7%BD%91%E6%98%93%E6%B8%B8%E6%88%8F2017_%E5%AE%9E%E4%B9%A0.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1221,6 +1207,13 @@
   
   <url>
     <loc>http://chen-tao.github.io/CS_Offer/More/C++_%E7%BD%91%E6%98%93%E6%B8%B8%E6%88%8F2016_%E6%A0%A1%E6%8B%9B.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/More/C++_%E7%BD%91%E6%98%93%E6%B8%B8%E6%88%8F2016_%E5%AE%9E%E4%B9%A0.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1241,7 +1234,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/C++_GDB_Debug.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/More/C++_STL.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1262,14 +1255,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2017/03/09/move-to-hexo/</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/CS_Offer/More/C++_16%E7%9C%9F%E9%A2%98.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/More/C++_GDB_Debug.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1284,6 +1270,13 @@
   
   <url>
     <loc>http://chen-tao.github.io/CS_Offer/More/C++_Coding.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/More/C++_16%E7%9C%9F%E9%A2%98.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1311,13 +1304,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/c_string_func.html</loc>
-    
-    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/CS_Offer/C++_Code/union_endian.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
@@ -1332,7 +1318,28 @@
   </url>
   
   <url>
+    <loc>http://chen-tao.github.io/2017/03/09/move-to-hexo/</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chen-tao.github.io/CS_Offer/C++_Code/sizeof_demo.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/memory_align.html</loc>
+    
+    <lastmod>2017-09-11T05:36:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/CS_Offer/C++_Code/local_variable.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
@@ -1346,28 +1353,28 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/CS_Offer/C++.html</loc>
+    <loc>http://chen-tao.github.io/CS_Offer/C.html</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/10/02/kilim-work-way/</loc>
+    <loc>http://chen-tao.github.io/2015/08/07/gcjava/</loc>
     
     <lastmod>2017-09-11T05:36:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/04/05/use-mac-to-catch-web-pkg-on-iphone/</loc>
+    <loc>http://chen-tao.github.io/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/04/05/analysing-ios-app-network-performances-on-cellularwi-fi/</loc>
+    <loc>http://chen-tao.github.io/2015/04/04/mac-os-x-1010-yosemite-dashboardspotlight/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1381,14 +1388,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/11/27/postgresql-81-chinese/</loc>
+    <loc>http://chen-tao.github.io/2015/02/11/mac-homebrew--update-all-packages-at-once/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/02/11/mac-homebrew--update-all-packages-at-once/</loc>
+    <loc>http://chen-tao.github.io/2014/11/27/postgresql-81-chinese/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1451,14 +1458,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/11/20/about-kilims-ifaq/</loc>
+    <loc>http://chen-tao.github.io/2014/11/21/git-change-commit/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/11/21/git-change-commit/</loc>
+    <loc>http://chen-tao.github.io/2014/11/20/about-kilims-ifaq/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1479,13 +1486,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/09/15/linux-mem-al/</loc>
-    
-    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2014/10/27/hello/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
@@ -1493,7 +1493,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/09/14/java-tcpudp/</loc>
+    <loc>http://chen-tao.github.io/2014/09/15/linux-mem-al/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1501,6 +1501,13 @@
   
   <url>
     <loc>http://chen-tao.github.io/2014/09/14/mac-youtube-dl/</loc>
+    
+    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2014/09/14/java-tcpudp/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1570,7 +1577,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2015/04/04/mac-os-x-1010-yosemite-dashboardspotlight/</loc>
+    <loc>http://chen-tao.github.io/2015/04/05/use-mac-to-catch-web-pkg-on-iphone/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1584,7 +1591,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/05/09/wechat53/</loc>
+    <loc>http://chen-tao.github.io/2014/07/20/harry-is-a-programmer/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1598,7 +1605,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/07/20/harry-is-a-programmer/</loc>
+    <loc>http://chen-tao.github.io/2014/05/09/wechat53/</loc>
+    
+    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2014/05/08/internet-door/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1613,13 +1627,6 @@
   
   <url>
     <loc>http://chen-tao.github.io/2014/04/24/unxutils/</loc>
-    
-    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2014/05/08/internet-door/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1661,13 +1668,6 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/04/10/guava-ordering/</loc>
-    
-    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://chen-tao.github.io/2014/04/10/using-and-avoiding-null/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
@@ -1676,6 +1676,13 @@
   
   <url>
     <loc>http://chen-tao.github.io/2014/04/10/guava-preconditions/</loc>
+    
+    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chen-tao.github.io/2014/04/10/guava-ordering/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1696,14 +1703,14 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/03/01/intern-and-learn/</loc>
+    <loc>http://chen-tao.github.io/2014/03/06/internet-and-travel/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/03/06/internet-and-travel/</loc>
+    <loc>http://chen-tao.github.io/2014/03/01/intern-and-learn/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1717,6 +1724,13 @@
   </url>
   
   <url>
+    <loc>http://chen-tao.github.io/2014/02/23/quotes-from-house-of-cards-season-ii/</loc>
+    
+    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chen-tao.github.io/2014/02/23/china-future/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
@@ -1724,7 +1738,7 @@
   </url>
   
   <url>
-    <loc>http://chen-tao.github.io/2014/02/23/quotes-from-house-of-cards-season-ii/</loc>
+    <loc>http://chen-tao.github.io/2014/01/11/2013-gose-on/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
@@ -1739,13 +1753,6 @@
   
   <url>
     <loc>http://chen-tao.github.io/2014/01/09/taobao-12306/</loc>
-    
-    <lastmod>2017-09-11T05:36:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chen-tao.github.io/2014/01/11/2013-gose-on/</loc>
     
     <lastmod>2017-09-11T05:36:21.000Z</lastmod>
     
