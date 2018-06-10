@@ -1,0 +1,820 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="感悟,人生,通用技能,能力提升," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Chen-Tao" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="关于data-driven和data-informed">
+<meta name="keywords" content="感悟,人生,通用技能,能力提升">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据驱动还是数据知情">
+<meta property="og:url" content="http://chen-tao.github.io/2018/06/10/which-is-better-data-driven-or-data-informed/index.html">
+<meta property="og:site_name" content="Chen-Tao">
+<meta property="og:description" content="关于data-driven和data-informed">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.techinasia.com/wp-content/uploads/2017/11/Data-informed-1.png">
+<meta property="og:image" content="https://cdn.techinasia.com/wp-content/uploads/2017/11/Data-informed-2.png">
+<meta property="og:image" content="https://cdn.techinasia.com/wp-content/uploads/2017/11/Data-informed-3.png">
+<meta property="og:updated_time" content="2018-06-10T11:04:36.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据驱动还是数据知情">
+<meta name="twitter:description" content="关于data-driven和data-informed">
+<meta name="twitter:image" content="https://cdn.techinasia.com/wp-content/uploads/2017/11/Data-informed-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://chen-tao.github.io/2018/06/10/which-is-better-data-driven-or-data-informed/"/>
+
+
+
+
+
+  <title> 数据驱动还是数据知情 | Chen-Tao </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen-Tao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">颂其诗，读其书，不知其人，可乎？</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2018/06/10/which-is-better-data-driven-or-data-informed/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据驱动还是数据知情
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T18:52:38+08:00">
+                2018-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/感悟/" itemprop="url" rel="index">
+                    <span itemprop="name">感悟</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  关于data-driven和data-informed
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>原文：<a href="https://www.startupgrind.com/blog/which-is-better-data-driven-or-data-informed/" target="_blank" rel="external">https://www.startupgrind.com/blog/which-is-better-data-driven-or-data-informed/</a><br>翻译：ChenTao 有删改<br>informed 这个词很难找到对应的中文，在决策的语境下，叫”参考”可能比较弱，这里选择了”知情”，仅供参考。<br>万事万物没有绝对好坏，理性思考，找到适合自己现有产品的「数据原则」改进产品才是王道。</p>
+</blockquote>
+<p>数据驱动这个词已经开始成为一个流行语，堆积在其他技术术语的顶部。所以，让我先把所有人都放在同一页面上。</p>
+<h2 id="数据驱动意味着什么？"><a href="#数据驱动意味着什么？" class="headerlink" title="数据驱动意味着什么？"></a>数据驱动意味着什么？</h2><p>数据驱动意味着数据是团队和公司决策过程的中心。决策者主要以（有时仅仅是）数据作为操作标准，并且可以在没有人参与的情况下做出一些决定。</p>
+<p>以下是您通常从数据驱动的公司收到的一些信息：</p>
+<ul>
+<li>“让我们A / B测试这个并且实现更好结果的版本。”</li>
+<li>“除非你有数据，否则不要跟我说话。”</li>
+<li>“我们只是按照数据告诉我们的。”</li>
+</ul>
+<p>真正的数据驱动型组织将贯穿整个团队和功能的这一过程。这意味着每个团队（产品，市场营销，客户成功，运营等）都将数据集中用于所有决策。</p>
+<h2 id="有什么好处？"><a href="#有什么好处？" class="headerlink" title="有什么好处？"></a>有什么好处？</h2><h3 id="消除决策中的人为偏差"><a href="#消除决策中的人为偏差" class="headerlink" title="消除决策中的人为偏差"></a>消除决策中的人为偏差</h3><p>作为人类，我们有许多认知偏见。事实上，我的导师<a href="https://medium.com/u/aae159ab8ea1" target="_blank" rel="external">Misha Chellam</a>创建了<a href="https://medium.com/tradecraft-traction/flashcards-to-learn-168-cognitive-biases-4c37f3418f15" target="_blank" rel="external">flashcards</a>，以帮助人们记住他们。</p>
+<p>数据有助于让团队成员和利益相关者在同一页面上做出更少的判断。</p>
+<h3 id="耗时更少"><a href="#耗时更少" class="headerlink" title="耗时更少"></a>耗时更少</h3><p>你们中有多少人参加了三小时的会议，人们反复讨论，没有妥协的迹象？</p>
+<p>有时候，我们只会为<a href="https://www.forbes.com/sites/derosetichy/2013/04/15/what-happens-when-a-hippo-runs-your-company/" target="_blank" rel="external">HiPPO</a>（highest paid person’s opinion）进行讨论和争论，以作出最终决定。（是的，我知道你的感受。）</p>
+<p>一个<a href="http://mitsloanexperts.mit.edu/erik-brynjolfsson-on-big-data-a-revolution-in-decision-making-improves-productivity/" target="_blank" rel="external">麻省理工学院的研究</a>已经证明，是数据驱动的有它的好处。Erik Brynjolfsson教授和他的同事研究了179家大型上市公司，并得出结论认为，这些公司比其竞争对手的生产率和盈利能力高出5％。</p>
+<p>但是，数据驱动也有其缺点。</p>
+<h2 id="有什么缺点？"><a href="#有什么缺点？" class="headerlink" title="有什么缺点？"></a>有什么缺点？</h2><h3 id="它需要大量的数据才能做出准确的决策"><a href="#它需要大量的数据才能做出准确的决策" class="headerlink" title="它需要大量的数据才能做出准确的决策"></a>它需要大量的数据才能做出准确的决策</h3><p>你必须警惕异常畸变。异常值（<a href="http://www.itl.nist.gov/div898/handbook/prc/section1/prc16.htm" target="_blank" rel="external">Outliers</a>）是与平均值完全不同的数据点。在游戏中，正面的异常值被认为是“ 鲸鱼（<a href="https://venturebeat.com/2013/03/14/whales-and-why-social-gamers-are-just-gamers/" target="_blank" rel="external">whales</a>）”。这些客户大量购买或经常使用它们，为公司带来了大量收入。在我以前的公司，我们甚至创造了“捕鲸（whale hunting）”这个词。</p>
+<p><img src="https://cdn.techinasia.com/wp-content/uploads/2017/11/Data-informed-1.png" alt=""><br>在其他行业，这些可能是那些使用你的产品解决与大多数客户不同的问题的客户。他们的行为如此不同以至于他们应该被排除在用于制定关于普通客户的决策数据之外。只有几个数据点和一些异常值的数据集可能会导致您的公司不应该去的地方。</p>
+<h3 id="它需要具有数据科学知识和大量资源的人才能发挥作用"><a href="#它需要具有数据科学知识和大量资源的人才能发挥作用" class="headerlink" title="它需要具有数据科学知识和大量资源的人才能发挥作用"></a>它需要具有数据科学知识和大量资源的人才能发挥作用</h3><p>对于刚刚启动数据科学部门的创业公司和大型组织来说，由于缺乏能力和资源，可能很难完全进行数据驱动。您当前的员工可能没有足够的知识来构建基础架构，或者您甚至可能没有任何具有数据专业知识的人员。</p>
+<p>在我以前的公司，我们有10位数据科学家。在Kulina，我们只有0.5人拥有专业知识（我自己和我们的技术总和）。</p>
+<h2 id="我们收集数据的方式仍存在偏差"><a href="#我们收集数据的方式仍存在偏差" class="headerlink" title="我们收集数据的方式仍存在偏差"></a>我们收集数据的方式仍存在偏差</h2><p>大多数时候，what people say isn’t <a href="https://www.nirandfar.com/2017/02/dont-ask-people-what-they-want-observe-how-they-act.html" target="_blank" rel="external">what they do</a>。所以，如果我们通过隐式询问来收集数据，我们就会冒险做出有关错误信息的决策。例如，在Uber和#deleteuber运动的丑闻时期，我的大多数朋友<em>说</em>他们再也不会使用优步。当Lyft（Uber在美国的主要竞争对手）实施附加费时，他们都回去（继续使用Uber）了！</p>
+<p>另一个很好的例子是，当我们试图找出我们想花更多时间和金钱吸引用户的社交媒体平台时。我们发出了一个调查问卷，结果出乎意料。</p>
+<p>我们看到了名单上的Facebook，这是预期的。然而，让我们感到困惑的是，Google+名列第二（no hard feelings, Google）。</p>
+<p><img src="https://cdn.techinasia.com/wp-content/uploads/2017/11/Data-informed-2.png" alt=""><br>一些团队成员问他们是否应该花更多时间来建立Google+的存在。“也许我们不太了解我们的用户，”一位团队成员提到。由于数据驱动，我可能会着重指出这一点。但像往常一样固执，我与另一位产品营销经理讨论了什么可能会出错。</p>
+<p>我们认为，也许我们的用户可能不了解Google和Google+之间的区别。事实上，当我们更深入地看待问题的提问方式时，我们发现了一些线索来支持这个问题。我们在问卷中使用了Google+这个词，而不是使用Google+图标。如果你没有密切关注，你可能会认为我们问你是否使用过Google！</p>
+<h2 id="什么是数据知情决策（data-informed-decision）？"><a href="#什么是数据知情决策（data-informed-decision）？" class="headerlink" title="什么是数据知情决策（data-informed decision）？"></a>什么是数据知情决策（data-informed decision）？</h2><p>掌握数据是指将数据作为决策制定的唯一<em>因素</em>，而不是将其作为整个基础。这种决策可以让顾客体验，直觉，品牌一致性和HiPPO等其他因素起到带头作用。</p>
+<h2 id="有什么好处？-1"><a href="#有什么好处？-1" class="headerlink" title="有什么好处？"></a>有什么好处？</h2><p>好处是数据现在受到挑战（challenged）。我们不是单纯依据数据做出决定，而是用它来创建一个假设。这是因为不管数据有多好，都有其局限性。这只是现实的快照，并没有描绘出我们客户旅程和行为的全貌。</p>
+<blockquote>
+<p>我觉得有必要在这里贴下原文，很精彩。（译者按）</p>
+</blockquote>
+<p>（We don’t purely base our decisions on data but use it to create a hypothesis. This is because no matter how good data is, it has its limitations. It’s just a snapshot of reality that doesn’t paint the full picture of our customer journey and behavior.）</p>
+<p>通过了解数据，我们不得不使用其他因素来帮助做出更好的决策，包括我们自己的判断。</p>
+<p>（By being data-informed, we are forced to use other factors to help make better decisions, including our own judgment.）</p>
+<p>例如，在我以前的游戏公司，周末我们的收入总是很高，因为这是用户玩游戏的时候。但是在某个特定的星期一，有一位新产品负责人就那个周末的低收入接近了我。他非常担心。</p>
+<p>我怀疑我们的收入下降了，因为我们在上周末进行了销售。过去五次我们销售的产品也出现同样的效果。如果我们之前看过同样的周期，我们的平均水平实际上会更好。<br><img src="https://cdn.techinasia.com/wp-content/uploads/2017/11/Data-informed-3.png" alt=""></p>
+<p>事实上，Facebook的新闻馈送实际上是在没有数据驱动的情况下实施的。Facebook产品设计师<a href="https://medium.com/u/786bc50498eb" target="_blank" rel="external">Adam Mosseri</a>及其团队当时决定创建<a href="https://www.youtube.com/watch?v=bKZiXAFeBeY" target="_blank" rel="external">没有数据</a>（without data）的新闻馈送。这种变化引起了很多负面反应，许多用户都很生气。有些人甚至创建了一个名为“ <a href="http://www.businessinsider.com/mark-zuckerberg-joins-facebook-group-i-automatically-hate-the-new-facebook-home-page-2009-10/?IR=T" target="_blank" rel="external">我自动讨厌新的Facebook主页”的Facebook组织</a>。</p>
+<p>但是根据Mosseri的说法，“在一天结束时，我们必须要有一个勇于在没有数据的情况下做出大胆的决定。”</p>
+<p>但这并不意味着以数据为依据的决策没有缺点。</p>
+<h2 id="有什么缺点（drawbacks）？"><a href="#有什么缺点（drawbacks）？" class="headerlink" title="有什么缺点（drawbacks）？"></a>有什么缺点（drawbacks）？</h2><p>在做出决定之前，掌握数据需要大量的时间，讨论和分析。结论也不容易形成。但请记住，在一天结束的时候，“世界上所有的数据都不能解决一个根本不好的产品，”前SoundCloud高级产品经理<a href="https://medium.com/u/6be9b065c847" target="_blank" rel="external">Andy Carvell说</a>。</p>
+<p>为了创新并为我们的客户构建合适的产品，我们不能只坐在房间里看着数据和图表。</p>
+<p>通过与客户交谈收集定性反馈信息，通过可用性测试观察他们的挣扎情况，以及确定客户聘用您的工作是构建产品的关键。</p>
+<h2 id="我的建议（recommendations）"><a href="#我的建议（recommendations）" class="headerlink" title="我的建议（recommendations）"></a>我的建议（recommendations）</h2><p>对于小公司，你应该始终致力于更多的数据驱动。您可能不会使用您收集的数据（甚至根本收集数据）。你拥有的数据越多，你就会产生更好的假设。</p>
+<blockquote>
+<p>小团队产品现状问题较多且需要快速改进，用data-driven可以快速确定改进目标，提高改进效率（译者按）</p>
+</blockquote>
+<p>（For larger companies, you should be able to make bold decisions that not only move your key metrics but also improve customer experience. We should use data to help us make better decisions, but not rely on it 100 percent.）</p>
+<p>对于大公司，您应该能够做出大胆的决定，不仅可以移动关键指标，还可以改善客户体验。我们应该使用数据来帮助我们做出更好的决策，但不能100％地依靠它。</p>
+<blockquote>
+<p>大团队的产品一般都较为稳定，每一次改进决策需要更为慎重，所以需要更多的维度来衡量改进产品（译者按）</p>
+</blockquote>
+<p>（For smaller companies, you should always aim to be more data-driven. You probably don’t utilize the data you collect (or even collect them at all). The more data you have, the better hypotheses you will generate.）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/感悟/" rel="tag"># 感悟</a>
+          
+            <a href="/tags/人生/" rel="tag"># 人生</a>
+          
+            <a href="/tags/通用技能/" rel="tag"># 通用技能</a>
+          
+            <a href="/tags/能力提升/" rel="tag"># 能力提升</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/01/code-review-acronyms/" rel="next" title="一些CR的缩写">
+                <i class="fa fa-chevron-left"></i> 一些CR的缩写
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400"
+               alt="Chen Tao" />
+          <p class="site-author-name" itemprop="name">Chen Tao</p>
+           
+              <p class="site-description motion-element" itemprop="description">Engineer Blogger Creator Runner | ML DM JVM Web | 旅行 电影 歌手 摄影 | 读书的要义是尽量求得客观的认识，不是为了炫耀自己的‘创造力’，或‘发前人所未发’。 优秀程序员的价值，不在于其所掌握的几招屠龙之术，而是在细节中见真著。 如果我们可以一次把事情做对做好，在允许的范围内尽可能追求卓越，为什么不去做呢。 | @HNU</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">193</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Chen-tao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Chentao11" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/546410275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chen-tao-68-95" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据驱动意味着什么？"><span class="nav-number">1.</span> <span class="nav-text">数据驱动意味着什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有什么好处？"><span class="nav-number">2.</span> <span class="nav-text">有什么好处？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消除决策中的人为偏差"><span class="nav-number">2.1.</span> <span class="nav-text">消除决策中的人为偏差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#耗时更少"><span class="nav-number">2.2.</span> <span class="nav-text">耗时更少</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有什么缺点？"><span class="nav-number">3.</span> <span class="nav-text">有什么缺点？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#它需要大量的数据才能做出准确的决策"><span class="nav-number">3.1.</span> <span class="nav-text">它需要大量的数据才能做出准确的决策</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#它需要具有数据科学知识和大量资源的人才能发挥作用"><span class="nav-number">3.2.</span> <span class="nav-text">它需要具有数据科学知识和大量资源的人才能发挥作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们收集数据的方式仍存在偏差"><span class="nav-number">4.</span> <span class="nav-text">我们收集数据的方式仍存在偏差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是数据知情决策（data-informed-decision）？"><span class="nav-number">5.</span> <span class="nav-text">什么是数据知情决策（data-informed decision）？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有什么好处？-1"><span class="nav-number">6.</span> <span class="nav-text">有什么好处？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有什么缺点（drawbacks）？"><span class="nav-number">7.</span> <span class="nav-text">有什么缺点（drawbacks）？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的建议（recommendations）"><span class="nav-number">8.</span> <span class="nav-text">我的建议（recommendations）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Tao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
