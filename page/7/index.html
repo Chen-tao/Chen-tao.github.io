@@ -273,6 +273,300 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettytcp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/03/nettytcp/" itemprop="url">
+                  高性能网络框架Netty的TCP拆包、粘包解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          p&gt;简单地说，网络通信时由于TCP会对传输的数据报进行对用户透明的拆分与重新组装，然后将拆分后的分别发送，而我们接收时要获取发送时的数据报，如何再对其拆分与组装，以便于我们能知道报文的意思，这个提取报文的过程就是TCP的拆包与粘包，在我们自己做底层的通信设计时，这是必须要考虑的。结合最近在做一
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/03/nettytcp/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettydecoder/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Tao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen-Tao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/03/nettydecoder/" itemprop="url">
+                  《Netty权威指南》里没有说到的Decoder编写细节
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
+                2015-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          以前每天打交道的是汤姆卡特和杰蒂，现在变成了娜蒂。零零碎碎写些关于娜蒂的总结。
+用Netty的同学，总是从编写Decoder开始，在《Netty权威指南》里说了很多很多，但有些细节还是没有说到。带着疑问，昨晚读了一遍ByteToMessageDecoder的源码。
+写Decoder又总是从解决TCP
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/03/nettydecoder/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/netty/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -703,7 +997,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/03/nettytcp/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -725,154 +1019,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/03/nettytcp/" itemprop="url">
-                  高性能网络框架Netty的TCP拆包、粘包解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-03T00:00:00+08:00">
-                2015-10-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          p&gt;简单地说，网络通信时由于TCP会对传输的数据报进行对用户透明的拆分与重新组装，然后将拆分后的分别发送，而我们接收时要获取发送时的数据报，如何再对其拆分与组装，以便于我们能知道报文的意思，这个提取报文的过程就是TCP的拆包与粘包，在我们自己做底层的通信设计时，这是必须要考虑的。结合最近在做一
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/10/03/nettytcp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
-                  垃圾回收（GC）的三种基本方式
+                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">
+                  El Capitan & Homebrew
                 </a>
               
             
@@ -926,12 +1074,12 @@
       
         
           
-          垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
-其实这三种方式也可
+          El Capitan &amp; HomebrewPart of the OS X 10.11/El Capitan changes is something called System Integrity Protection or “SIP”.
+SIP prevents you from wri
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/02/gc/#more" rel="contents">
+            <a class="btn" href="/2015/10/02/el-cap-homebrew/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1099,7 +1247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/el-cap-homebrew/">
+    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/10/02/gc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Tao">
@@ -1121,8 +1269,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/02/el-cap-homebrew/" itemprop="url">
-                  El Capitan & Homebrew
+                <a class="post-title-link" href="/2015/10/02/gc/" itemprop="url">
+                  垃圾回收（GC）的三种基本方式
                 </a>
               
             
@@ -1176,12 +1324,12 @@
       
         
           
-          El Capitan &amp; HomebrewPart of the OS X 10.11/El Capitan changes is something called System Integrity Protection or “SIP”.
-SIP prevents you from wri
+          垃圾（Garbage）就是程序需要回收的对象，如果一个对象不在被直接或间接地引用，那么这个对象就成为了「垃圾」，它占用的内存需要及时地释放，否则就会引起「内存泄露」。有些语言需要程序员来手动释放内存（回收垃圾），有些语言有垃圾回收机制（GC）。本文就来讨论GC实现的三种基本方式。
+其实这三种方式也可
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/10/02/el-cap-homebrew/#more" rel="contents">
+            <a class="btn" href="/2015/10/02/gc/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1464,130 +1612,6 @@ I never really expected to find myself giving advice to people graduating from a
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://chen-tao.github.io/2015/08/02/jvm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Tao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/1845119?v=3&u=4af70cb5a5853732074c58284505ee6864e51b8c&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chen-Tao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/02/jvm/" itemprop="url">
-                  JVM的相关知识整理和学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-02T00:00:00+08:00">
-                2015-08-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          JVM是虚拟机，也是一种规范，他遵循着冯·诺依曼体系结构的设计原理。冯·诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。从dos到
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/08/02/jvm/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1637,7 +1661,7 @@ I never really expected to find myself giving advice to people graduating from a
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">193</span>
+                <span class="site-state-item-count">194</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
